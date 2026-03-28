@@ -18,3 +18,15 @@ def generate_proposal_draft(strike_data):
     as a sovereign executive engine for distributed digital civilizations.
     \"\"\"
     return proposal
+
+def generate_expansion_proposal():
+    """
+    Nia-EVO: VC Protocol - Tier 2 Expansion
+    Target: $275,000 | Deadline: July 15, 2026
+    """
+    return {
+        "title": "Nia-EVO: Global Executive Infrastructure",
+        "funding_request": 275000,
+        "milestone": "Transition from Regional Hunter to Global Sovereign Engine",
+        "focus": "Quantum-resilient identity federation and multi-nation grant scanning."
+    }
