@@ -1,0 +1,18 @@
+# Node
+node_modules/
+.svelte-kit/
+build/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Termux/OS
+.DS_Store
+.vercel
