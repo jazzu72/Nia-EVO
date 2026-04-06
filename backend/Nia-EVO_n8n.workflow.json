@@ -1,0 +1,352 @@
+{
+  "name": "Nia-EVO: Quantum Decision & Strike",
+  "nodes": [
+    {
+      "id": "node-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [50, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-fetch-deals",
+      "name": "Fetch Deals",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [250, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.RENDER_API_URL }}/deals",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+    {
+      "id": "node-qdl",
+      "name": "Quantum Decision Layer",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "parameters": {
+        "command": "/data/data/com.termux/files/usr/bin/python3 /data/data/com.termux/files/home/nia-evo/automation/qdl/quantum_decision_layer.py",
+        "stdin": "={{ JSON.stringify(Array.isArray($json) ? $json : [$json]) }}"
+      }
+    },
+    {
+      "id": "node-parse-qdl",
+      "name": "Parse QDL Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300],
+      "parameters": {
+        "jsCode": "// Parse the raw stdout from the QDL Python process\nconst results = [];\n\nfor (const item of items) {\n  const stdout = item.json.stdout || item.json.output || '';\n  \n  let parsed;\n  try {\n    parsed = JSON.parse(stdout);\n  } catch (e) {\n    // If parsing fails, surface the error as a HOLD\n    results.push({\n      json: {\n        target: 'PARSE_ERROR',\n        sovereignty_score: 0,\n        action: 'HOLD',\n        reason: `QDL parse error: ${e.message}`,\n        phi_alignment: 0,\n        raw_stdout: stdout\n      }\n    });\n    continue;\n  }\n\n  // Handle both single object and array responses\n  const deals = Array.isArray(parsed) ? parsed : [parsed];\n  for (const deal of deals) {\n    results.push({ json: deal });\n  }\n}\n\nreturn results;"
+      }
+    },
+    {
+      "id": "node-route",
+      "name": "Route by Action",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [850, 300],
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "rules": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "STRIKE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "STRIKE"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "ALERT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "ALERT"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "HOLD",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "HOLD"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+
+    {
+      "id": "node-strike-render",
+      "name": "POST Strike to Render",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1100, 100],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.RENDER_API_URL }}/strikes",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+    {
+      "id": "node-strike-vercel",
+      "name": "Trigger Strike Modal on Vercel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1100, 200],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.VERCEL_URL }}/api/strike-auth",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"target\": \"{{ $json.target }}\",\n  \"sovereignty_score\": {{ $json.sovereignty_score }},\n  \"phi_alignment\": {{ $json.phi_alignment }},\n  \"reason\": \"{{ $json.reason }}\",\n  \"timestamp\": \"{{ new Date().toISOString() }}\",\n  \"type\": \"STRIKE_AUTHORIZATION_REQUEST\"\n}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+
+    {
+      "id": "node-alert-render",
+      "name": "POST Alert to Render",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1100, 350],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.RENDER_API_URL }}/alerts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+    {
+      "id": "node-whale-radar",
+      "name": "Flag on Whale Radar (Vercel)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1100, 450],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.VERCEL_URL }}/api/whale-radar",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"target\": \"{{ $json.target }}\",\n  \"sovereignty_score\": {{ $json.sovereignty_score }},\n  \"phi_alignment\": {{ $json.phi_alignment }},\n  \"reason\": \"{{ $json.reason }}\",\n  \"timestamp\": \"{{ new Date().toISOString() }}\",\n  \"type\": \"WHALE_RADAR_FLAG\"\n}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+
+    {
+      "id": "node-hold-log",
+      "name": "Log HOLD Decision",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1100, 600],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "hold-target",
+              "name": "logged_target",
+              "value": "={{ $json.target }}",
+              "type": "string"
+            },
+            {
+              "id": "hold-score",
+              "name": "sovereignty_score",
+              "value": "={{ $json.sovereignty_score }}",
+              "type": "number"
+            },
+            {
+              "id": "hold-reason",
+              "name": "reason",
+              "value": "={{ $json.reason }}",
+              "type": "string"
+            },
+            {
+              "id": "hold-ts",
+              "name": "logged_at",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "hold-status",
+              "name": "status",
+              "value": "HOLD — Accumulating Clout",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [{ "node": "Fetch Deals", "type": "main", "index": 0 }]
+      ]
+    },
+    "Fetch Deals": {
+      "main": [
+        [{ "node": "Quantum Decision Layer", "type": "main", "index": 0 }]
+      ]
+    },
+    "Quantum Decision Layer": {
+      "main": [
+        [{ "node": "Parse QDL Output", "type": "main", "index": 0 }]
+      ]
+    },
+    "Parse QDL Output": {
+      "main": [
+        [{ "node": "Route by Action", "type": "main", "index": 0 }]
+      ]
+    },
+    "Route by Action": {
+      "main": [
+        [
+          { "node": "POST Strike to Render", "type": "main", "index": 0 },
+          { "node": "Trigger Strike Modal on Vercel", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "POST Alert to Render", "type": "main", "index": 0 },
+          { "node": "Flag on Whale Radar (Vercel)", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Log HOLD Decision", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+
+  "meta": {
+    "stack": {
+      "local": "Termux / Pixel Android",
+      "api": "Render (Express + WebSocket)",
+      "frontend": "Vercel (Next.js 14)"
+    },
+    "env_vars_required": [
+      "RENDER_API_URL",
+      "VERCEL_URL"
+    ],
+    "credentials_required": [
+      {
+        "id": "nia-api-key",
+        "name": "Nia API Key",
+        "type": "httpHeaderAuth",
+        "note": "Set header name to 'x-api-key' or 'Authorization' matching your Express middleware"
+      }
+    ],
+    "python_path": "/data/data/com.termux/files/usr/bin/python3",
+    "script_path": "/data/data/com.termux/files/home/nia-evo/automation/qdl/quantum_decision_layer.py",
+    "notes": [
+      "Set RENDER_API_URL and VERCEL_URL as n8n environment variables in Settings > Variables",
+      "Install numpy in Termux: pip install numpy",
+      "STRIKE output fans out to BOTH Render /strikes and Vercel /api/strike-auth simultaneously",
+      "ALERT output fans out to BOTH Render /alerts and Vercel /api/whale-radar simultaneously",
+      "HOLD is logged locally only — no external calls",
+      "Switch node outputs: index 0 = STRIKE, index 1 = ALERT, index 2 = HOLD"
+    ]
+  },
+
+  "id": "nia-evo-qdl-workflow-v1"
+}
