@@ -1,0 +1,198 @@
+{
+  "name": "Nia-EVO: Jarvis Terminal Webhook",
+  "nodes": [
+    {
+      "id": "node-jarvis-webhook",
+      "name": "Jarvis Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "jarvis",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": false
+        }
+      }
+    },
+    {
+      "id": "node-validate-input",
+      "name": "Validate Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300],
+      "parameters": {
+        "jsCode": "const body = items[0].json.body || items[0].json;\nconst command = (body.command || body.input || '').trim();\n\nif (!command) {\n  return [{\n    json: {\n      valid: false,\n      error: 'No command provided.',\n      command: null\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    valid: true,\n    command,\n    operator: body.operator || 'J. LeSane',\n    ts: new Date().toISOString()\n  }\n}];"
+      }
+    },
+    {
+      "id": "node-check-valid",
+      "name": "Command Valid?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [650, 300],
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "rules": [
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.valid }}",
+                    "rightValue": true,
+                    "operator": { "type": "boolean", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "VALID"
+            },
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.valid }}",
+                    "rightValue": false,
+                    "operator": { "type": "boolean", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "INVALID"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-forward-cmd",
+      "name": "Forward to NIA-EVO /cmd",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 200],
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:3001/cmd",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"input\": \"{{ $json.command }}\",\n  \"operator\": \"{{ $json.operator }}\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "nia-api-key",
+          "name": "Nia API Key"
+        }
+      }
+    },
+    {
+      "id": "node-enrich-response",
+      "name": "Enrich Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 200],
+      "parameters": {
+        "jsCode": "const nia = items[0].json;\n\nreturn [{\n  json: {\n    ok: true,\n    source: 'NIA-EVO',\n    node: 'Node 23505-Sovereign',\n    command: nia.input || null,\n    action: nia.action || 'ECHO',\n    reply: nia.reply || nia.response || 'Command processed.',\n    data: nia.data || null,\n    sovereignty_score: nia.sovereignty_score || null,\n    ts: nia.ts || new Date().toISOString()\n  }\n}];"
+      }
+    },
+    {
+      "id": "node-respond-ok",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1300, 200],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Content-Type", "value": "application/json" },
+              { "name": "X-NIA-Node", "value": "23505-Sovereign" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "node-respond-invalid",
+      "name": "Respond Invalid",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 420],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": false,\n  \"source\": \"NIA-EVO\",\n  \"error\": \"{{ $json.error }}\",\n  \"ts\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {
+          "responseCode": 400,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Content-Type", "value": "application/json" }
+            ]
+          }
+        }
+      }
+    }
+  ],
+
+  "connections": {
+    "Jarvis Webhook": {
+      "main": [
+        [{ "node": "Validate Input", "type": "main", "index": 0 }]
+      ]
+    },
+    "Validate Input": {
+      "main": [
+        [{ "node": "Command Valid?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Command Valid?": {
+      "main": [
+        [{ "node": "Forward to NIA-EVO /cmd", "type": "main", "index": 0 }],
+        [{ "node": "Respond Invalid", "type": "main", "index": 0 }]
+      ]
+    },
+    "Forward to NIA-EVO /cmd": {
+      "main": [
+        [{ "node": "Enrich Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Enrich Response": {
+      "main": [
+        [{ "node": "Respond OK", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+
+  "meta": {
+    "webhook_url": "http://localhost:5678/webhook/jarvis",
+    "forwards_to": "http://localhost:3001/cmd",
+    "test_curl": "curl -X POST http://localhost:5678/webhook/jarvis -H 'Content-Type: application/json' -d '{\"command\":\"status\"}'",
+    "valid_commands": [
+      "status", "ping", "deals", "strikes", "alerts", "radar",
+      "clear radar", "strike <target>"
+    ],
+    "response_headers": {
+      "X-NIA-Node": "23505-Sovereign"
+    }
+  },
+
+  "id": "nia-evo-jarvis-webhook-v1"
+}
