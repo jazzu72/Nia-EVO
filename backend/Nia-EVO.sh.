@@ -1,0 +1,167 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ============================================================
+#  NIA-EVO SUPER LAUNCHER
+#  Node 23505-Sovereign — House of Jazzu
+#  Services: NIA-EVO API + n8n + Jarvis Webhook Test
+# ============================================================
+
+trap 'echo -e "\n${RED}❌ Launcher interrupted.${NC}"; exit 1' INT
+
+# ----------------------------
+# COLORS
+# ----------------------------
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+# ----------------------------
+# PATHS
+# ----------------------------
+NIA_DIR="$HOME/nia-evo/apps/api"
+LOG_DIR="$HOME/nia-evo/logs"
+SERVER="$NIA_DIR/server.mjs"
+
+mkdir -p "$LOG_DIR"
+
+# ----------------------------
+# BANNER
+# ----------------------------
+echo ""
+echo -e "${CYAN}╔══════════════════════════════════════╗${NC}"
+echo -e "${CYAN}║      NIA-EVO SUPER LAUNCHER          ║${NC}"
+echo -e "${CYAN}║      Node 23505-Sovereign            ║${NC}"
+echo -e "${CYAN}╚══════════════════════════════════════╝${NC}"
+echo ""
+
+# ----------------------------
+# STEP 1 — SYSTEM PACKAGES
+# ----------------------------
+echo -e "${YELLOW}📦 Step 1: Updating system packages...${NC}"
+pkg install -y nodejs-lts git curl 2>&1 | tail -3
+echo -e "${GREEN}   ✔ System packages ready${NC}"
+
+# ----------------------------
+# STEP 2 — INSTALL n8n IF MISSING
+# ----------------------------
+echo ""
+echo -e "${YELLOW}🔁 Step 2: Checking n8n...${NC}"
+if ! command -v n8n &>/dev/null; then
+  echo -e "   Installing n8n globally (this may take 5–10 min)..."
+  npm install -g n8n
+  if ! command -v n8n &>/dev/null; then
+    echo -e "${RED}   ❌ n8n install failed. Check npm logs.${NC}"
+    exit 1
+  fi
+fi
+echo -e "${GREEN}   ✔ n8n $(n8n --version) ready${NC}"
+
+# ----------------------------
+# STEP 3 — NIA-EVO DEPENDENCIES
+# ----------------------------
+echo ""
+echo -e "${YELLOW}📦 Step 3: Installing NIA-EVO dependencies...${NC}"
+if [ ! -f "$SERVER" ]; then
+  echo -e "${RED}   ❌ server.mjs not found at $SERVER${NC}"
+  echo -e "   Make sure the file exists before launching."
+  exit 1
+fi
+cd "$NIA_DIR"
+npm install 2>&1 | tail -3
+echo -e "${GREEN}   ✔ NIA-EVO dependencies ready${NC}"
+
+# ----------------------------
+# STEP 4 — KILL STALE PROCESSES
+# ----------------------------
+echo ""
+echo -e "${YELLOW}⏹  Step 4: Stopping stale processes...${NC}"
+pkill -f "server.mjs" 2>/dev/null && echo -e "   NIA-EVO API stopped" || echo -e "   API was not running"
+pkill -f "n8n"        2>/dev/null && echo -e "   n8n stopped"         || echo -e "   n8n was not running"
+sleep 1
+
+# ----------------------------
+# STEP 5 — START NIA-EVO API
+# ----------------------------
+echo ""
+echo -e "${YELLOW}🧠 Step 5: Starting NIA-EVO API...${NC}"
+nohup node "$SERVER" >> "$LOG_DIR/nia-evo.log" 2>&1 &
+NIA_PID=$!
+echo "$NIA_PID" > "$LOG_DIR/api.pid"
+sleep 2
+
+HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/ 2>/dev/null || echo "000")
+if [ "$HTTP_STATUS" = "200" ]; then
+  echo -e "${GREEN}   ✔ NIA-EVO API alive — PID $NIA_PID (HTTP $HTTP_STATUS)${NC}"
+else
+  echo -e "${YELLOW}   ⚠ NIA-EVO not yet responding (HTTP $HTTP_STATUS) — may still be booting${NC}"
+fi
+
+# ----------------------------
+# STEP 6 — START n8n
+# ----------------------------
+echo ""
+echo -e "${YELLOW}🔁 Step 6: Starting n8n...${NC}"
+nohup n8n start >> "$LOG_DIR/n8n.log" 2>&1 &
+N8N_PID=$!
+echo "$N8N_PID" > "$LOG_DIR/n8n.pid"
+echo -e "${GREEN}   ✔ n8n started — PID $N8N_PID${NC}"
+echo -e "${CYAN}   Waiting 25s for n8n to register webhooks...${NC}"
+
+for i in $(seq 1 25); do
+  printf "\r   [%-25s] %ds" "$(printf '#%.0s' $(seq 1 $i))" "$i"
+  sleep 1
+done
+echo ""
+
+# ----------------------------
+# STEP 7 — WEBHOOK TEST
+# ----------------------------
+echo ""
+echo -e "${YELLOW}⚡ Step 7: Testing Jarvis webhook...${NC}"
+
+WEBHOOK_RESPONSE=$(curl -s -X POST http://localhost:5678/webhook/jarvis \
+  -H "Content-Type: application/json" \
+  -d '{"command":"status"}' 2>/dev/null || echo "")
+
+if [ -z "$WEBHOOK_RESPONSE" ]; then
+  echo -e "${YELLOW}   ⚠ No response — import nia_evo_jarvis_workflow.json into n8n and activate it.${NC}"
+else
+  echo -e "${GREEN}   ✔ Webhook responded:${NC}"
+  if command -v jq &>/dev/null; then
+    echo "$WEBHOOK_RESPONSE" | jq .
+  else
+    echo "$WEBHOOK_RESPONSE"
+  fi
+fi
+
+# ----------------------------
+# SUMMARY
+# ----------------------------
+echo ""
+echo -e "${GREEN}╔══════════════════════════════════════╗${NC}"
+echo -e "${GREEN}║  ✅  NIA-EVO STACK ONLINE            ║${NC}"
+echo -e "${GREEN}╚══════════════════════════════════════╝${NC}"
+echo ""
+echo -e "  ${BOLD}NIA-EVO API${NC}   http://localhost:3001"
+echo -e "  ${BOLD}n8n UI${NC}        http://localhost:5678"
+echo -e "  ${BOLD}Jarvis Hook${NC}   http://localhost:5678/webhook/jarvis"
+echo ""
+echo -e "  ${BOLD}Logs:${NC}"
+echo -e "    tail -f $LOG_DIR/nia-evo.log"
+echo -e "    tail -f $LOG_DIR/n8n.log"
+echo ""
+echo -e "  ${BOLD}Test:${NC}"
+echo -e "    curl -X POST http://localhost:5678/webhook/jarvis \\"
+echo -e "      -H 'Content-Type: application/json' \\"
+echo -e "      -d '{\"command\":\"status\"}'"
+echo ""
+
+# ----------------------------
+# TAIL LOGS
+# ----------------------------
+echo -e "${CYAN}📝 Tailing live logs — CTRL+C to exit${NC}"
+echo ""
+tail -f "$LOG_DIR/nia-evo.log" "$LOG_DIR/n8n.log"
