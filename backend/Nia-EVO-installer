@@ -1,0 +1,1021 @@
+#!/bin/bash
+set -e
+
+# ══════════════════════════════════════════════════════════════════
+# NIA-EVO FULL INSTALLER v2.1
+# Pixel/Termux · Lexar 128GB · Render · Vercel
+# House of Jazzu — Sovereign Acquisition Platform
+# ══════════════════════════════════════════════════════════════════
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  🏛️  HOUSE OF JAZZU — NIA-EVO INSTALLER"
+echo "  Node: 23505-Sovereign | Operator: J. LeSane"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+echo "🧹 Cleaning environment..."
+pkill -9 node 2>/dev/null || true
+rm -rf ~/nia-evo
+export NODE_OPTIONS="--max-old-space-size=2048"
+
+echo "📁 Scaffolding directories..."
+mkdir -p ~/nia-evo/apps/api
+mkdir -p ~/nia-evo/apps/web/src/pages
+mkdir -p ~/nia-evo/apps/web/src/components
+mkdir -p ~/nia-evo/apps/web/src/styles
+mkdir -p ~/nia-evo/apps/web/src/hooks
+mkdir -p ~/nia-evo/apps/web/src/lib
+
+
+# ══════════════════════════════════════════════════════════════════
+# 1️⃣  JARVIS BRAIN — BACKEND  (→ Render)
+# ══════════════════════════════════════════════════════════════════
+echo ""
+echo "🧠 Building Jarvis Brain (API)..."
+cd ~/nia-evo/apps/api
+
+# ── package.json ──────────────────────────────────────────────────
+# NOTE: lowdb v6 has broken ESM imports in many Node versions.
+# Using native fs/promises + JSON — zero deps, zero breakage.
+cat > package.json <<'EOF'
+{
+  "name": "nia-api",
+  "version": "2.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev":   "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws":      "^8.16.0",
+    "cors":    "^2.8.5",
+    "dotenv":  "^16.3.1",
+    "uuid":    "^9.0.0"
+  }
+}
+EOF
+
+# ── server.js ─────────────────────────────────────────────────────
+cat > server.js <<'EOF'
+import express            from "express";
+import { WebSocketServer } from "ws";
+import cors               from "cors";
+import { randomUUID }     from "crypto";
+import { readFile, writeFile } from "fs/promises";
+import { existsSync }     from "fs";
+import dotenv             from "dotenv";
+
+dotenv.config();
+
+const PORT         = process.env.PORT         || 3001;
+const FRONTEND_URL = process.env.FRONTEND_URL  || "*";
+// DB_PATH: use /sdcard/Lexar_Vault/db.json on Termux,
+//          ./db.json on Render (set via env var)
+const DB_PATH      = process.env.DB_PATH       || "./db.json";
+
+const app = express();
+app.use(express.json());
+app.use(cors({ origin: FRONTEND_URL, methods: ["GET","POST","PUT","DELETE","OPTIONS"] }));
+
+// ── JSON Database ─────────────────────────────────────────────────
+async function readDB() {
+  try {
+    if (!existsSync(DB_PATH)) await writeDB(seed());
+    return JSON.parse(await readFile(DB_PATH, "utf8"));
+  } catch { return seed(); }
+}
+async function writeDB(data) {
+  await writeFile(DB_PATH, JSON.stringify(data, null, 2));
+}
+function seed() {
+  return {
+    meta:  { operator: "J. LeSane", node: "23505-Sovereign", built: new Date().toISOString() },
+    deals: [
+      { id: randomUUID(), target: "MD-WHALE",  address: "4722 Chesapeake Dr, Annapolis MD 21401",   value: 125500, arv: 210000, equity: 84500,  status: "ACQUIRING", strategy: "SUBJECT_TO",       priority: "CRITICAL", created: new Date().toISOString() },
+      { id: randomUUID(), target: "DC-DUPLEX", address: "1809 Georgia Ave NW, Washington DC 20001", value: 380000, arv: 550000, equity: 170000, status: "ANALYSIS",  strategy: "CREATIVE_FINANCE", priority: "HIGH",     created: new Date().toISOString() },
+      { id: randomUUID(), target: "VA-FLIP",   address: "2203 Rebel Court, Richmond VA 23220",      value: 87000,  arv: 145000, equity: 58000,  status: "PIPELINE",  strategy: "WHOLESALE",        priority: "MEDIUM",   created: new Date().toISOString() },
+    ],
+    commands: [],
+  };
+}
+
+// ── Broadcast helpers ─────────────────────────────────────────────
+const clients = new Set();
+const emit = (data) => {
+  const msg = JSON.stringify(data);
+  clients.forEach(ws => { if (ws.readyState === 1) ws.send(msg); });
+};
+
+// ── Routes ────────────────────────────────────────────────────────
+app.get("/health", (_, res) => res.json({ status: "SOVEREIGN_ONLINE", node: "23505", ts: Date.now() }));
+
+app.get("/deals", async (_, res) => res.json((await readDB()).deals));
+
+app.post("/deals", async (req, res) => {
+  const db   = await readDB();
+  const deal = { id: randomUUID(), ...req.body, created: new Date().toISOString() };
+  db.deals.push(deal);
+  await writeDB(db);
+  emit({ type: "DEAL_ADDED", payload: deal });
+  res.status(201).json(deal);
+});
+
+app.put("/deals/:id", async (req, res) => {
+  const db  = await readDB();
+  const idx = db.deals.findIndex(d => d.id === req.params.id);
+  if (idx === -1) return res.status(404).json({ error: "Not found" });
+  db.deals[idx] = { ...db.deals[idx], ...req.body };
+  await writeDB(db);
+  emit({ type: "DEAL_UPDATED", payload: db.deals[idx] });
+  res.json(db.deals[idx]);
+});
+
+app.delete("/deals/:id", async (req, res) => {
+  const db = await readDB();
+  db.deals = db.deals.filter(d => d.id !== req.params.id);
+  await writeDB(db);
+  emit({ type: "DEAL_REMOVED", payload: { id: req.params.id } });
+  res.json({ removed: req.params.id });
+});
+
+app.get("/metrics", async (_, res) => {
+  const { deals } = await readDB();
+  res.json({
+    dealCount:   deals.length,
+    totalEquity: deals.reduce((s, d) => s + (d.equity || 0), 0),
+    totalValue:  deals.reduce((s, d) => s + (d.value  || 0), 0),
+    totalArv:    deals.reduce((s, d) => s + (d.arv    || 0), 0),
+    liveStrikes: deals.filter(d => d.status === "ACQUIRING").length,
+  });
+});
+
+app.post("/cmd", async (req, res) => {
+  const db  = await readDB();
+  const cmd = { id: randomUUID(), input: req.body.input || "", ts: new Date().toISOString() };
+  cmd.response = jarvis(cmd.input, db);
+  db.commands  = [...(db.commands || []).slice(-99), cmd];
+  await writeDB(db);
+  emit({ type: "CMD_EXECUTED", payload: cmd });
+  res.json({ status: "EXECUTED", ...cmd });
+});
+
+// ── Jarvis Intelligence ───────────────────────────────────────────
+function jarvis(raw = "", db) {
+  const input  = raw.toLowerCase().trim();
+  const deals  = db.deals || [];
+  const equity = deals.reduce((s, d) => s + (d.equity || 0), 0);
+  const $      = n => "$" + Number(n).toLocaleString("en-US");
+
+  if (input === "help" || input === "?")
+    return "COMMANDS: status · pipeline · whale · metrics · strike · analyze [target] · ↑↓ history";
+
+  if (input.includes("status"))
+    return `SOVEREIGN STATUS — ${deals.length} deals · ${deals.filter(d=>d.status==="ACQUIRING").length} live acquisitions · ${$(equity)} equity locked · All nodes nominal.`;
+
+  if (input.includes("pipeline"))
+    return deals.map(d => `[${d.status}] ${d.target} ${$(d.value)} eq:${$(d.equity)}`).join(" | ");
+
+  if (input.includes("whale") || input.includes("md-"))
+    return (() => {
+      const w = deals.find(d => d.target?.includes("MD"));
+      return w ? `MD-WHALE: ${w.status} | Offer ${$(w.value)} | ARV ${$(w.arv)} | Spread ${$(w.equity)} | ${w.strategy}` : "MD-WHALE not in pipeline.";
+    })();
+
+  if (input.includes("metric"))
+    return `METRICS: ${deals.length} deals · ${$(equity)} equity · ARV pool ${$(deals.reduce((s,d)=>s+(d.arv||0),0))} · ${deals.filter(d=>d.status==="ACQUIRING").length} strikes active`;
+
+  if (input.includes("strike") || input.includes("execute"))
+    return "STRIKE ARMED — Subject-To docs ready · Escrow alert queued · Title search requested · Lender notification staged · ETA 72hr. Awaiting authorization.";
+
+  if (input.startsWith("analyze")) {
+    const term = input.replace("analyze","").trim().toUpperCase();
+    const t    = deals.find(d => d.target?.includes(term) || d.address?.toUpperCase().includes(term));
+    return t ? `${t.target}: ${t.address} | Offer ${$(t.value)} | ARV ${$(t.arv)} | Equity ${$(t.equity)} | ${t.strategy} | ${t.priority}` : `"${term}" not found. Try: pipeline`;
+  }
+
+  return `JARVIS LOGGED: "${raw}" — No automated action. Awaiting directive.`;
+}
+
+// ── WebSocket + Heartbeat ─────────────────────────────────────────
+const server = app.listen(PORT, () => {
+  console.log(`\n🧠  NIA-EVO BRAIN ONLINE  :${PORT}`);
+  console.log(`🏛️   House of Jazzu · ${new Date().toLocaleString()}\n`);
+});
+
+const wss = new WebSocketServer({ server });
+wss.on("connection", async ws => {
+  clients.add(ws);
+  ws.send(JSON.stringify({ type: "INIT", payload: await readDB() }));
+
+  // 25s heartbeat keeps Render free tier alive
+  const hb = setInterval(() => {
+    if (ws.readyState === 1) ws.send(JSON.stringify({ type: "PING", ts: Date.now() }));
+    else { clearInterval(hb); clients.delete(ws); }
+  }, 25000);
+
+  ws.on("close",   () => { clearInterval(hb); clients.delete(ws); });
+  ws.on("error",   () => { clearInterval(hb); clients.delete(ws); });
+  ws.on("message", async raw => {
+    try {
+      const { type, payload } = JSON.parse(raw);
+      if (type === "CMD") {
+        const db   = await readDB();
+        const resp = jarvis(payload, db);
+        ws.send(JSON.stringify({ type: "CMD_RESPONSE", payload: resp }));
+      }
+    } catch { /* ignore */ }
+  });
+});
+EOF
+
+# ── .env for Termux dev ───────────────────────────────────────────
+cat > .env <<'EOF'
+PORT=3001
+DB_PATH=/sdcard/Lexar_Vault/db.json
+FRONTEND_URL=http://localhost:3000
+EOF
+
+# ── .env.production (edit before Render deploy) ───────────────────
+cat > .env.production.example <<'EOF'
+PORT=3001
+DB_PATH=./db.json
+FRONTEND_URL=https://your-app.vercel.app
+EOF
+
+# ── render.yaml ───────────────────────────────────────────────────
+cat > render.yaml <<'EOF'
+services:
+  - type: web
+    name: nia-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: ./db.json
+      - key: FRONTEND_URL
+        sync: false
+EOF
+
+echo "📦 Installing API dependencies..."
+npm install
+echo "✅  JARVIS BRAIN BUILT"
+
+
+# ══════════════════════════════════════════════════════════════════
+# 2️⃣  SOVEREIGN UI — FRONTEND  (→ Vercel)
+# ══════════════════════════════════════════════════════════════════
+echo ""
+echo "🖥️  Building Sovereign UI (Next.js)..."
+cd ~/nia-evo/apps/web
+
+# ── package.json ──────────────────────────────────────────────────
+cat > package.json <<'EOF'
+{
+  "name": "nia-web",
+  "version": "2.1.0",
+  "private": true,
+  "scripts": {
+    "dev":   "next dev -p 3000",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next":         "14.0.4",
+    "react":        "18.2.0",
+    "react-dom":    "18.2.0",
+    "lucide-react": "0.284.0"
+  },
+  "devDependencies": {
+    "tailwindcss":  "3.3.5",
+    "autoprefixer": "10.4.16",
+    "postcss":      "8.4.32"
+  }
+}
+EOF
+
+# ── next.config.js ────────────────────────────────────────────────
+cat > next.config.js <<'EOF'
+/** @type {import('next').NextConfig} */
+module.exports = {
+  reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
+    NEXT_PUBLIC_WS_URL:  process.env.NEXT_PUBLIC_WS_URL  || "ws://localhost:3001",
+  },
+};
+EOF
+
+# ── postcss.config.js ─────────────────────────────────────────────
+cat > postcss.config.js <<'EOF'
+module.exports = { plugins: { tailwindcss: {}, autoprefixer: {} } };
+EOF
+
+# ── tailwind.config.js ────────────────────────────────────────────
+cat > tailwind.config.js <<'EOF'
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        void:    "#05070D",
+        ink:     "#090D16",
+        panel:   "#0E1520",
+        rim:     "#16202E",
+        accent:  "#00E5C8",
+        gold:    "#F0B429",
+        strike:  "#F03D5F",
+        sky:     "#38BDF8",
+        dim:     "#3D4F63",
+      },
+      fontFamily: {
+        display: ["'Rajdhani'",   "sans-serif"],
+        mono:    ["'IBM Plex Mono'", "monospace"],
+        ui:      ["'Outfit'",     "system-ui", "sans-serif"],
+      },
+      animation: {
+        "pulse-dim":  "pulse 4s ease-in-out infinite",
+        "sweep":      "sweep 3s linear infinite",
+        "blink":      "blink 1.2s step-end infinite",
+        "rise":       "rise 0.35s ease forwards",
+        "flicker":    "flicker 8s ease-in-out infinite",
+      },
+      keyframes: {
+        sweep: {
+          "0%":   { transform: "translateY(-100%)", opacity: "0" },
+          "15%":  { opacity: "1" },
+          "85%":  { opacity: "1" },
+          "100%": { transform: "translateY(600%)", opacity: "0" },
+        },
+        blink:   { "50%": { opacity: "0" } },
+        rise:    { "from": { opacity: "0", transform: "translateY(10px)" }, "to": { opacity: "1", transform: "translateY(0)" } },
+        flicker: { "0%,100%": { opacity: "1" }, "92%": { opacity: "1" }, "93%": { opacity: "0.6" }, "94%": { opacity: "1" }, "96%": { opacity: "0.8" }, "97%": { opacity: "1" } },
+      },
+      backgroundImage: {
+        "grid-dim": "linear-gradient(rgba(0,229,200,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,200,.03) 1px,transparent 1px)",
+      },
+      backgroundSize: { "grid": "48px 48px" },
+    },
+  },
+  plugins: [],
+};
+EOF
+
+# ── vercel.json ───────────────────────────────────────────────────
+cat > vercel.json <<'EOF'
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://nia-api.onrender.com",
+    "NEXT_PUBLIC_WS_URL":  "wss://nia-api.onrender.com"
+  }
+}
+EOF
+
+# ── .env.local (Termux dev) ───────────────────────────────────────
+cat > .env.local <<'EOF'
+NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_WS_URL=ws://localhost:3001
+EOF
+
+# ── globals.css ───────────────────────────────────────────────────
+cat > src/styles/globals.css <<'EOF'
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #00E5C8;
+  --strike: #F03D5F;
+  --gold:   #F0B429;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #05070D;
+  color: #C9D8E8;
+  font-family: 'Outfit', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection         { background: #00E5C820; color: #00E5C8; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #00E5C825; border-radius: 2px; }
+
+@layer utilities {
+  .text-glow-accent { text-shadow: 0 0 20px var(--accent); }
+  .text-glow-strike { text-shadow: 0 0 20px var(--strike); }
+  .text-glow-gold   { text-shadow: 0 0 20px var(--gold); }
+  .ring-accent      { box-shadow: 0 0 0 1px #00E5C830, 0 0 20px #00E5C810; }
+  .ring-strike      { box-shadow: 0 0 0 1px #F03D5F30, 0 0 20px #F03D5F10; }
+  .lift             { transition: transform .18s ease, box-shadow .18s ease; }
+  .lift:hover       { transform: translateY(-2px); box-shadow: 0 12px 32px #00000070; }
+}
+EOF
+
+# ── _app.js ───────────────────────────────────────────────────────
+cat > src/pages/_app.js <<'EOF'
+import "../styles/globals.css";
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+EOF
+
+# ── lib/fmt.js ────────────────────────────────────────────────────
+cat > src/lib/fmt.js <<'EOF'
+export const $     = n => "$" + Number(n || 0).toLocaleString("en-US");
+export const pct   = (a, b) => b > 0 ? ((a / b) * 100).toFixed(0) + "%" : "—";
+export const ago   = iso => { const s = (Date.now() - new Date(iso)) / 1000; if (s < 60) return "just now"; if (s < 3600) return `${~~(s/60)}m ago`; if (s < 86400) return `${~~(s/3600)}h ago`; return `${~~(s/86400)}d ago`; };
+EOF
+
+# ── hooks/useWebSocket.js ─────────────────────────────────────────
+cat > src/hooks/useWebSocket.js <<'EOF'
+import { useState, useEffect, useRef, useCallback } from "react";
+
+export function useWebSocket(url) {
+  const [status,  setStatus]  = useState("CONNECTING");
+  const [lastMsg, setLastMsg] = useState(null);
+  const ws   = useRef(null);
+  const retry = useRef(null);
+
+  const connect = useCallback(() => {
+    if (!url || typeof window === "undefined") return;
+    try {
+      ws.current = new WebSocket(url);
+      ws.current.onopen    = () => setStatus("LIVE");
+      ws.current.onclose   = () => { setStatus("OFFLINE"); retry.current = setTimeout(connect, 5000); };
+      ws.current.onerror   = () => setStatus("ERROR");
+      ws.current.onmessage = e => { try { setLastMsg(JSON.parse(e.data)); } catch {} };
+    } catch { setStatus("ERROR"); }
+  }, [url]);
+
+  useEffect(() => {
+    connect();
+    return () => { clearTimeout(retry.current); ws.current?.close(); };
+  }, [connect]);
+
+  const send = useCallback(data => {
+    if (ws.current?.readyState === 1) ws.current.send(JSON.stringify(data));
+  }, []);
+
+  return { status, lastMsg, send };
+}
+EOF
+
+# ── components/StatusPill.js ──────────────────────────────────────
+cat > src/components/StatusPill.js <<'EOF'
+const STYLES = {
+  ACQUIRING:        "bg-strike/12   text-strike  border-strike/25",
+  ANALYSIS:         "bg-gold/12     text-gold     border-gold/25",
+  PIPELINE:         "bg-sky/12      text-sky      border-sky/25",
+  CLOSED:           "bg-accent/12   text-accent   border-accent/25",
+};
+
+export default function StatusPill({ status }) {
+  const s = STYLES[status] || "bg-dim/20 text-dim border-dim/30";
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border ${s}`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse-dim" />
+      {status?.replace(/_/g," ")}
+    </span>
+  );
+}
+EOF
+
+# ── components/Stat.js ────────────────────────────────────────────
+cat > src/components/Stat.js <<'EOF'
+export default function Stat({ label, value, sub, bright, icon: Icon }) {
+  return (
+    <div className={`relative bg-panel rounded-2xl p-4 border lift overflow-hidden ${bright ? "border-accent/25 ring-accent" : "border-rim"}`}>
+      <div className="flex items-center gap-1.5 mb-2.5">
+        {Icon && <Icon size={10} className={bright ? "text-accent" : "text-dim"} />}
+        <span className="text-[8px] text-dim uppercase tracking-[0.2em]">{label}</span>
+      </div>
+      <div className={`font-display text-[1.6rem] leading-none font-bold ${bright ? "text-accent text-glow-accent" : "text-white"}`}>
+        {value}
+      </div>
+      {sub && <div className="text-[9px] text-dim mt-1.5">{sub}</div>}
+    </div>
+  );
+}
+EOF
+
+# ── components/DealCard.js ────────────────────────────────────────
+cat > src/components/DealCard.js <<'EOF'
+import { MapPin, TrendingUp, Zap } from "lucide-react";
+import StatusPill from "./StatusPill";
+import { $, pct } from "../lib/fmt";
+
+const STRAT = { SUBJECT_TO: "text-strike", CREATIVE_FINANCE: "text-gold", WHOLESALE: "text-sky" };
+
+export default function DealCard({ deal, onStrike }) {
+  const spread = pct(deal.equity, deal.arv);
+  return (
+    <article className="group relative bg-panel border border-rim rounded-2xl p-5 lift overflow-hidden animate-rise">
+      {deal.priority === "CRITICAL" && (
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-strike/60 to-transparent" />
+      )}
+      <div className="flex items-start justify-between mb-3.5">
+        <div>
+          <h3 className="font-display font-bold text-[1.1rem] text-white tracking-wide leading-none">{deal.target}</h3>
+          <p className="flex items-center gap-1 text-[9px] text-dim mt-1.5">
+            <MapPin size={8} className="flex-shrink-0" />
+            <span className="truncate max-w-[170px]">{deal.address}</span>
+          </p>
+        </div>
+        <StatusPill status={deal.status} />
+      </div>
+
+      <div className="grid grid-cols-3 gap-2 mb-4">
+        <div className="bg-void/60 rounded-xl p-2.5">
+          <p className="text-[7px] text-dim uppercase tracking-widest mb-1">Offer</p>
+          <p className="font-mono text-[11px] font-bold text-white">{$(deal.value)}</p>
+        </div>
+        <div className="bg-void/60 rounded-xl p-2.5">
+          <p className="text-[7px] text-dim uppercase tracking-widest mb-1">ARV</p>
+          <p className="font-mono text-[11px] font-bold text-white">{$(deal.arv)}</p>
+        </div>
+        <div className="bg-accent/8 border border-accent/20 rounded-xl p-2.5">
+          <p className="text-[7px] text-accent/60 uppercase tracking-widest mb-1">Equity</p>
+          <p className="font-mono text-[11px] font-bold text-accent">{$(deal.equity)}</p>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <TrendingUp size={9} className="text-accent" />
+          <span className="font-mono text-[9px] text-accent">{spread}</span>
+          <span className={`text-[8px] font-bold uppercase ${STRAT[deal.strategy]||"text-dim"}`}>
+            {deal.strategy?.replace(/_/g," ")}
+          </span>
+        </div>
+        {deal.status === "ACQUIRING" && (
+          <button
+            onClick={() => onStrike?.(deal)}
+            className="flex items-center gap-1 bg-strike hover:brightness-110 text-white text-[8px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg transition-all hover:scale-105 active:scale-95"
+          >
+            <Zap size={8} /> STRIKE
+          </button>
+        )}
+      </div>
+    </article>
+  );
+}
+EOF
+
+# ── components/Terminal.js ────────────────────────────────────────
+cat > src/components/Terminal.js <<'EOF'
+import { useState, useRef, useEffect } from "react";
+import { Terminal as TermIcon, Send, ChevronRight } from "lucide-react";
+
+const API = process.env.NEXT_PUBLIC_API_URL;
+const QUICK = ["status","pipeline","whale","metrics","strike","help"];
+
+export default function Terminal() {
+  const [lines,   setLines]   = useState([
+    { k:"sys", v:"JARVIS v2.1 — NIA-EVO Sovereign Intelligence" },
+    { k:"sys", v:"Node 23505 operational. Type 'help' for directives." },
+  ]);
+  const [input,   setInput]   = useState("");
+  const [busy,    setBusy]    = useState(false);
+  const [hist,    setHist]    = useState([]);
+  const [hIdx,    setHIdx]    = useState(-1);
+  const endRef   = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior:"smooth" }); }, [lines]);
+
+  async function run(e) {
+    e?.preventDefault();
+    const cmd = input.trim();
+    if (!cmd || busy) return;
+    setInput(""); setHIdx(-1);
+    setHist(h => [cmd,...h].slice(0,50));
+    setLines(l => [...l, { k:"in", v:cmd }]);
+    setBusy(true);
+    try {
+      const r = await fetch(`${API}/cmd`, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({input:cmd}) });
+      const d = await r.json();
+      setLines(l => [...l, { k:"out", v: d.response||"—" }]);
+    } catch(err) {
+      setLines(l => [...l, { k:"err", v:`CONNECTION FAILURE: ${err.message}` }]);
+    } finally {
+      setBusy(false);
+      inputRef.current?.focus();
+    }
+  }
+
+  function onKey(e) {
+    if (e.key==="ArrowUp")   { const i=Math.min(hIdx+1,hist.length-1); setHIdx(i); setInput(hist[i]||""); }
+    if (e.key==="ArrowDown") { const i=Math.max(hIdx-1,-1);            setHIdx(i); setInput(i===-1?"":hist[i]||""); }
+  }
+
+  const STYLE = { sys:"text-accent/35", in:"text-white/90", out:"text-accent", err:"text-strike" };
+  const GLYPH = { sys:"◌", in:"◈", out:"▶", err:"✕" };
+
+  return (
+    <section className="bg-panel border border-rim rounded-2xl overflow-hidden">
+      {/* Header */}
+      <header className="flex items-center gap-2 px-4 py-3 border-b border-rim bg-void/40">
+        <TermIcon size={12} className="text-accent" />
+        <span className="font-mono text-[9px] text-accent uppercase tracking-[0.2em]">Jarvis Terminal</span>
+        <div className="ml-auto flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-strike/50" />
+          <div className="w-2.5 h-2.5 rounded-full bg-gold/50" />
+          <div className="w-2.5 h-2.5 rounded-full bg-accent/50" />
+        </div>
+      </header>
+
+      {/* Output */}
+      <div
+        className="h-48 overflow-y-auto p-4 space-y-1.5 bg-void/50 cursor-text"
+        onClick={() => inputRef.current?.focus()}
+      >
+        {lines.map((l,i) => (
+          <p key={i} className={`flex gap-2 font-mono text-[10px] leading-relaxed ${STYLE[l.k]||"text-dim"}`}>
+            <span className="opacity-40 select-none flex-shrink-0">{GLYPH[l.k]}</span>
+            <span className="break-all">{l.v}</span>
+          </p>
+        ))}
+        {busy && <p className="flex gap-2 font-mono text-[10px] text-accent/50"><span className="opacity-40">▶</span><span className="animate-pulse">PROCESSING...</span></p>}
+        <div ref={endRef} />
+      </div>
+
+      {/* Quick commands */}
+      <div className="flex gap-2 px-4 py-2 overflow-x-auto border-t border-rim/50 no-scrollbar">
+        {QUICK.map(q => (
+          <button key={q} onClick={() => { setInput(q); inputRef.current?.focus(); }}
+            className="flex-shrink-0 font-mono text-[8px] uppercase text-dim hover:text-accent border border-rim hover:border-accent/30 rounded-lg px-2 py-1 transition-all">
+            {q}
+          </button>
+        ))}
+      </div>
+
+      {/* Input */}
+      <form onSubmit={run} className="flex items-center gap-2 px-4 py-3 border-t border-rim bg-void/40">
+        <ChevronRight size={12} className="text-accent flex-shrink-0" />
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={onKey}
+          placeholder="Enter directive..."
+          className="flex-1 bg-transparent text-[10px] font-mono text-white outline-none placeholder:text-dim/40 caret-accent"
+          disabled={busy}
+          autoComplete="off"
+          spellCheck="false"
+        />
+        <button type="submit" disabled={busy||!input.trim()} className="text-accent disabled:opacity-20 hover:text-white transition-colors">
+          <Send size={12} />
+        </button>
+      </form>
+    </section>
+  );
+}
+EOF
+
+# ── pages/index.js — THE PREMIUM DASHBOARD ───────────────────────
+cat > src/pages/index.js <<'EOF'
+import { useState, useEffect } from "react";
+import Head from "next/head";
+import {
+  Shield, Zap, Target, TrendingUp, Database,
+  BarChart2, Wifi, WifiOff, Activity, AlertCircle, Eye
+} from "lucide-react";
+import { useWebSocket } from "../hooks/useWebSocket";
+import Terminal  from "../components/Terminal";
+import DealCard  from "../components/DealCard";
+import Stat      from "../components/Stat";
+import { $, pct } from "../lib/fmt";
+
+const API = process.env.NEXT_PUBLIC_API_URL;
+const WS  = process.env.NEXT_PUBLIC_WS_URL;
+
+const WS_STYLE = {
+  LIVE:         "text-accent  border-accent/30  bg-accent/8",
+  OFFLINE:      "text-dim     border-dim/30     bg-dim/8",
+  ERROR:        "text-strike  border-strike/30  bg-strike/8",
+  RECONNECTING: "text-gold    border-gold/30    bg-gold/8",
+  CONNECTING:   "text-dim     border-dim/30     bg-dim/8",
+};
+
+const FILTERS = ["ALL","ACQUIRING","ANALYSIS","PIPELINE","CLOSED"];
+
+export default function Dashboard() {
+  const [deals,   setDeals]   = useState([]);
+  const [filter,  setFilter]  = useState("ALL");
+  const [strike,  setStrike]  = useState(null);
+  const { status, lastMsg }   = useWebSocket(WS);
+
+  // Initial data load
+  useEffect(() => {
+    fetch(`${API}/deals`).then(r => r.json()).then(setDeals).catch(console.error);
+  }, []);
+
+  // Live mutations via WebSocket
+  useEffect(() => {
+    if (!lastMsg || lastMsg.type === "PING") return;
+    const { type, payload } = lastMsg;
+    if (type === "INIT")         { setDeals(payload?.deals || []); return; }
+    if (type === "DEAL_ADDED")   { setDeals(d => [...d, payload]); return; }
+    if (type === "DEAL_UPDATED") { setDeals(d => d.map(x => x.id === payload.id ? payload : x)); return; }
+    if (type === "DEAL_REMOVED") { setDeals(d => d.filter(x => x.id !== payload.id)); return; }
+  }, [lastMsg]);
+
+  const totalEquity  = deals.reduce((s,d) => s + (d.equity||0), 0);
+  const totalValue   = deals.reduce((s,d) => s + (d.value||0),  0);
+  const totalArv     = deals.reduce((s,d) => s + (d.arv||0),    0);
+  const liveStrikes  = deals.filter(d => d.status === "ACQUIRING").length;
+  const whale        = deals.find(d => d.priority === "CRITICAL" && d.status === "ACQUIRING");
+  const visible      = filter === "ALL" ? deals : deals.filter(d => d.status === filter);
+  const wsBadge      = WS_STYLE[status] || WS_STYLE.CONNECTING;
+
+  return (
+    <>
+      <Head>
+        <title>NIA-EVO · House of Jazzu</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+      </Head>
+
+      {/* Grid background */}
+      <div className="fixed inset-0 bg-grid-dim bg-grid opacity-100 pointer-events-none" />
+
+      <div className="relative min-h-screen bg-void/95">
+
+        {/* ── NAVBAR ─────────────────────────────────────────── */}
+        <nav className="sticky top-0 z-50 bg-ink/80 backdrop-blur-2xl border-b border-rim">
+          <div className="max-w-7xl mx-auto px-5 h-14 flex items-center justify-between">
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-accent/10 border border-accent/25 rounded-xl flex items-center justify-center ring-accent">
+                <Shield size={15} className="text-accent" />
+              </div>
+              <div>
+                <p className="font-display font-bold text-base text-white tracking-[0.12em] leading-none">
+                  HOUSE OF JAZZU
+                </p>
+                <p className="text-[7px] text-dim uppercase tracking-[0.3em]">NIA-EVO · Sovereign Platform</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span className={`flex items-center gap-1.5 text-[8px] font-bold font-mono px-2.5 py-1.5 rounded-full border uppercase tracking-wider ${wsBadge}`}>
+                {status === "LIVE" ? <Wifi size={8}/> : <WifiOff size={8}/>}
+                {status}
+              </span>
+              <div className="hidden md:block text-right">
+                <p className="text-[10px] text-white/60 font-mono">J. LeSane</p>
+                <p className="text-[8px] text-dim">Node 23505</p>
+              </div>
+            </div>
+
+          </div>
+        </nav>
+
+        <main className="max-w-7xl mx-auto px-5 py-8 space-y-8">
+
+          {/* ── STAT STRIP ─────────────────────────────────────── */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <Stat label="Total Equity"    value={$(totalEquity)} sub={`${deals.length} deals tracked`} bright icon={TrendingUp} />
+            <Stat label="Portfolio Value" value={$(totalValue)}  sub={`ARV pool ${$(totalArv)}`} icon={Database} />
+            <Stat label="Pipeline"        value={deals.length}   sub={`${filter} view`}            icon={BarChart2} />
+            <Stat label="Live Strikes"    value={liveStrikes}    sub="in acquisition"               icon={Zap} />
+          </div>
+
+          {/* ── WHALE RADAR ────────────────────────────────────── */}
+          {whale && (
+            <div className="relative bg-ink border border-strike/30 rounded-2xl p-7 overflow-hidden ring-strike animate-flicker">
+              {/* sweep line */}
+              <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-strike/40 to-transparent animate-sweep pointer-events-none" />
+              {/* corner glow */}
+              <div className="absolute -right-24 -top-24 w-80 h-80 bg-strike/6 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <Target size={13} className="text-strike animate-pulse" />
+                    <span className="font-mono text-[9px] text-strike uppercase tracking-[0.2em]">Primary Target — Whale Radar</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-strike/10 border border-strike/25 px-3 py-1.5 rounded-full">
+                    <Activity size={8} className="text-strike animate-pulse" />
+                    <span className="font-mono text-[8px] text-strike font-bold uppercase tracking-wider">LIVE ACQUISITION</span>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-5 gap-8 items-end">
+                  <div className="md:col-span-3 space-y-4">
+                    <div>
+                      <h2 className="font-display font-bold text-[3.5rem] leading-none text-white tracking-wider">
+                        {whale.target}
+                      </h2>
+                      <p className="text-dim text-sm mt-1">{whale.address}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-6">
+                      {[
+                        ["Acquisition",   $(whale.value),  "text-white"],
+                        ["ARV",           $(whale.arv),    "text-white/50"],
+                        ["Equity Spread", $(whale.equity), "text-accent text-glow-accent"],
+                      ].map(([lbl,val,cls]) => (
+                        <div key={lbl}>
+                          <p className="text-[8px] text-dim uppercase tracking-[0.2em] mb-1">{lbl}</p>
+                          <p className={`font-display font-bold text-[2rem] leading-none ${cls}`}>{val}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-[9px] text-dim font-mono">
+                      Spread: {pct(whale.equity, whale.arv)} · Strategy: {whale.strategy?.replace(/_/g," ")} · Priority: {whale.priority}
+                    </p>
+                  </div>
+
+                  <div className="md:col-span-2 space-y-3">
+                    <button
+                      onClick={() => setStrike(whale)}
+                      className="w-full flex items-center justify-center gap-2 bg-strike hover:brightness-110 text-white py-4 rounded-2xl font-bold text-sm uppercase tracking-[0.15em] transition-all hover:scale-[1.02] active:scale-95 ring-strike"
+                    >
+                      <Zap size={15} /> Execute Subject-To Strike
+                    </button>
+                    <button className="w-full flex items-center justify-center gap-2 border border-rim hover:border-white/20 text-dim hover:text-white py-3 rounded-2xl text-xs font-bold uppercase tracking-widest transition-all">
+                      <Eye size={12} /> Generate LOI
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── PIPELINE ──────────────────────────────────────── */}
+          <div>
+            <div className="flex items-center justify-between mb-5">
+              <p className="font-mono text-[9px] text-dim uppercase tracking-[0.25em]">Deal Pipeline</p>
+              <div className="flex gap-1.5 flex-wrap justify-end">
+                {FILTERS.map(f => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={`text-[8px] font-bold uppercase px-3 py-1.5 rounded-lg transition-all font-mono tracking-wider ${
+                      filter === f
+                        ? "bg-accent/15 text-accent border border-accent/30"
+                        : "text-dim border border-transparent hover:text-white"
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {visible.length === 0 ? (
+              <div className="flex items-center justify-center gap-2 py-20 text-dim border border-dashed border-rim rounded-2xl">
+                <AlertCircle size={13} />
+                <span className="text-xs font-mono">{deals.length === 0 ? "API offline — start backend" : "No deals match filter"}</span>
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {visible.map(deal => (
+                  <DealCard key={deal.id} deal={deal} onStrike={setStrike} />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* ── JARVIS TERMINAL ────────────────────────────────── */}
+          <Terminal />
+
+        </main>
+
+        {/* ── STRIKE MODAL ─────────────────────────────────────── */}
+        {strike && (
+          <div className="fixed inset-0 bg-void/90 backdrop-blur-lg z-50 flex items-end sm:items-center justify-center p-4" onClick={() => setStrike(null)}>
+            <div
+              className="bg-ink border border-strike/35 rounded-2xl p-7 w-full max-w-md ring-strike animate-rise"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <Zap size={17} className="text-strike animate-pulse" />
+                <h3 className="font-display font-bold text-[1.8rem] text-white tracking-widest">STRIKE SEQUENCE</h3>
+              </div>
+              <p className="font-mono text-[9px] text-dim mb-6 uppercase tracking-widest">
+                {strike.target} · {$(strike.value)} acquisition · {strike.strategy?.replace(/_/g," ")}
+              </p>
+
+              <div className="space-y-2 mb-7">
+                {[
+                  ["📋","Subject-To Agreement",  "PREPARED"],
+                  ["🏦","Lender Notification",   "QUEUED"],
+                  ["📑","Title Search",           "REQUESTED"],
+                  ["🔐","Escrow Alert",           "TRANSMITTED"],
+                  ["⏱", "ETA to Close",           "72 HOURS"],
+                ].map(([ico,label,val]) => (
+                  <div key={label} className="flex items-center justify-between bg-void/50 border border-rim rounded-xl px-4 py-2.5">
+                    <span className="text-[11px] text-white/60">{ico} {label}</span>
+                    <span className="font-mono text-[8px] font-bold text-accent uppercase tracking-wider">{val}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => setStrike(null)}
+                  className="py-3.5 rounded-xl border border-rim text-dim font-bold text-sm hover:border-white/20 hover:text-white transition-all"
+                >
+                  ABORT
+                </button>
+                <button
+                  onClick={() => setStrike(null)}
+                  className="py-3.5 rounded-xl bg-strike text-white font-bold text-sm uppercase tracking-[0.15em] hover:brightness-110 transition-all active:scale-95"
+                >
+                  ⚡ AUTHORIZE
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <footer className="text-center py-10 font-mono text-[7px] text-dim/25 uppercase tracking-[0.7em]">
+          T-Mobile Secured · Lexar Encrypted · House of Jazzu © 2024
+        </footer>
+      </div>
+    </>
+  );
+}
+EOF
+
+echo "📦 Installing UI dependencies..."
+npm install
+echo "✅  SOVEREIGN UI BUILT"
+
+
+# ══════════════════════════════════════════════════════════════════
+# 3️⃣  ROOT — Git + Deploy Instructions
+# ══════════════════════════════════════════════════════════════════
+cd ~/nia-evo
+cat > README.md <<'EOF'
+# NIA-EVO · House of Jazzu
+Sovereign Real Estate Acquisition Platform
+
+## Stack
+- **API**: Node ESM · Express · WebSockets → **Render**
+- **UI**: Next.js 14 · Tailwind · Rajdhani/IBM Plex Mono → **Vercel**
+- **Dev**: Termux on Pixel · Lexar 128GB vault
+
+## Local Dev (Termux — two tabs)
+```bash
+# Tab 1
+cd ~/nia-evo/apps/api && npm start
+
+# Tab 2
+cd ~/nia-evo/apps/web && npm run dev
+# → http://localhost:3000
+```
+
+## Deploy
+
+### API → Render
+1. `cd apps/api && git init && git add . && git commit -m "brain v2"`
+2. Push to GitHub
+3. New Web Service on render.com → connect repo
+4. Build: `npm install` | Start: `npm start`
+5. Add env vars: `FRONTEND_URL`, `DB_PATH=./db.json`
+6. Note your URL: `https://nia-api.onrender.com`
+
+### UI → Vercel
+1. `cd apps/web && vercel login && vercel --prod`
+2. Set env vars in Vercel dashboard:
+   - `NEXT_PUBLIC_API_URL=https://nia-api.onrender.com`
+   - `NEXT_PUBLIC_WS_URL=wss://nia-api.onrender.com`
+3. Update Render `FRONTEND_URL` to your Vercel URL
+
+## Jarvis Commands
+`status` · `pipeline` · `whale` · `metrics` · `strike` · `analyze [target]` · `help`
+EOF
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  ✅  NIA-EVO v2.1 — ALL SYSTEMS BUILT"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "  LOCAL DEV:"
+echo "  Tab 1 → cd ~/nia-evo/apps/api && npm start"
+echo "  Tab 2 → cd ~/nia-evo/apps/web && npm run dev"
+echo "           Open: http://localhost:3000"
+echo ""
+echo "  DEPLOY:"
+echo "  API  → render.com (see apps/api/render.yaml)"
+echo "  UI   → vercel --prod  (see apps/web/vercel.json)"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  ⚡  SOVEREIGN NODE 23505 — OPERATIONAL"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
