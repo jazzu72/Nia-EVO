@@ -1,0 +1,34 @@
+app.post('/cmd', async (req, res) => {
+  const input = req.body.input;
+
+  console.log("🧠 COMMAND RECEIVED:", input);
+
+  try {
+    // 🧠 Run through NIA AI system
+    const niaResult = await nia.processDirective(input);
+
+    // 🔗 Optional: still send to n8n
+    let n8nResult = null;
+    try {
+      const response = await axios.post(
+        'http://localhost:5678/webhook/jar',
+        { command: input }
+      );
+      n8nResult = response.data;
+    } catch {
+      n8nResult = "n8n offline";
+    }
+
+    res.json({
+      status: "success",
+      nia: niaResult,
+      n8n: n8nResult
+    });
+
+  } catch (err) {
+    res.json({
+      status: "error",
+      message: err.message
+    });
+  }
+});
