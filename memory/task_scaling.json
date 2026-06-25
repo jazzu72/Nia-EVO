@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": 1782157061357,
+    "heartbeat": 15000,
+    "memory_summary": 45000,
+    "environment_sensing": 30000,
+    "environment_evaluation": 31500,
+    "adaptive_behavior": 33000,
+    "task_scaling": 37500
+  },
+  {
+    "timestamp": 1782157099406,
+    "heartbeat": 22500,
+    "memory_summary": 67500,
+    "environment_sensing": 45000,
+    "environment_evaluation": 47250,
+    "adaptive_behavior": 49500,
+    "task_scaling": 56250
+  },
+  {
+    "timestamp": 1782157150106,
+    "heartbeat": 15000,
+    "memory_summary": 45000,
+    "environment_sensing": 30000,
+    "environment_evaluation": 31500,
+    "adaptive_behavior": 33000,
+    "task_scaling": 37500,
+    "anomaly_detection": 42000
+  },
+  {
+    "timestamp": 1782232493934,
+    "heartbeat": 15000,
+    "memory_summary": 45000,
+    "environment_sensing": 30000,
+    "environment_evaluation": 31500,
+    "adaptive_behavior": 33000,
+    "task_scaling": 37500,
+    "anomaly_detection": 42000,
+    "plan_step_execution": 52500
+  },
+  {
+    "timestamp": 1782232531960,
+    "heartbeat": 15000,
+    "memory_summary": 45000,
+    "environment_sensing": 30000,
+    "environment_evaluation": 31500,
+    "adaptive_behavior": 33000,
+    "task_scaling": 37500,
+    "anomaly_detection": 42000,
+    "plan_step_execution": 52500
+  },
+  {
+    "timestamp": 1782232570024,
+    "heartbeat": 15000,
+    "memory_summary": 45000,
+    "environment_sensing": 30000,
+    "environment_evaluation": 31500,
+    "adaptive_behavior": 33000,
+    "task_scaling": 37500,
+    "anomaly_detection": 42000,
+    "plan_step_execution": 52500
+  },
+  {
+    "timestamp": 1782232645037,
+    "heartbeat": 10000,
+    "memory_summary": 30000,
+    "environment_sensing": 20000,
+    "environment_evaluation": 21000,
+    "adaptive_behavior": 22000,
+    "task_scaling": 25000,
+    "anomaly_detection": 28000,
+    "plan_step_execution": 35000
+  }
+]

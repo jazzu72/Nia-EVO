@@ -1,0 +1,128 @@
+[
+  {
+    "timestamp": 1782156975075,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "WARN",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782157061340,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "WARN",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782157094396,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "WARN",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782157150079,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "WARN",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782232493900,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "WARN",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782232526951,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "OK",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782232560005,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "OK",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782232593059,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "OK",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  },
+  {
+    "timestamp": 1782232645002,
+    "status": {
+      "cpu": "OK",
+      "mem": "OK",
+      "disk": "OK",
+      "battery": "OK",
+      "net": "CRITICAL",
+      "processes": "OK"
+    },
+    "actions": [
+      "pause_network_tasks"
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>House of Jazzu - NIA-EVO</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: monospace; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    h1 { color: #d4af37; font-size: 2em; margin: 20px 0; }
+    .deals-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .deals-table th, .deals-table td { padding: 12px; text-align: left; border: 1px solid #d4af37; }
+    .deals-table th { background: #1a1a1a; color: #d4af37; }
+    .hot { color: #ff4444; font-weight: bold; }
+    .warm { color: #ffaa00; }
+    .button { background: #d4af37; color: #000; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; margin: 10px 0; }
+    .button:hover { background: #ffd700; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏰 House of Jazzu - NIA-EVO</h1>
+    <h2 style="color: #d4af37;">Deal Discovery Dashboard</h2>
+    
+    <button class="button" onclick="loadDeals()">🔍 LOAD DEALS</button>
+    
+    <table class="deals-table">
+      <thead>
+        <tr>
+          <th>Deal</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>ARV</th>
+          <th>Fee</th>
+          <th>Quality</th>
+        </tr>
+      </thead>
+      <tbody id="deals">
+        <tr><td colspan="6" style="text-align: center;">Click button to load deals</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    async function loadDeals() {
+      console.log('Loading deals...');
+      const res = await fetch('/api/deals');
+      const deals = await res.json();
+      console.log('Got deals:', deals.length);
+      
+      const tbody = document.getElementById('deals');
+      tbody.innerHTML = '';
+      
+      deals.forEach(d => {
+        const row = document.createElement('tr');
+        const quality = d.estFee > 8000 ? 'HOT' : d.estFee > 6000 ? 'WARM' : 'COLD';
+        row.innerHTML = `
+          <td>${d.title.substring(0, 50)}</td>
+          <td>${d.location}</td>
+          <td>$${d.price.toLocaleString()}</td>
+          <td>$${d.estARV.toLocaleString()}</td>
+          <td>$${d.estFee.toLocaleString()}</td>
+          <td class="${quality.toLowerCase()}">${quality}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+  </script>
+</body>
+</html>

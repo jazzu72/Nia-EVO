@@ -1,0 +1,101 @@
+[
+  {
+    "timestamp": 1782156739137,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7155496K used,   597308K free,     1040K buffers\n Swap:  3876396K total,  3106580K used,   769816K free,  1757724K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.0Gi       584Mi        39Mi       1.8Gi       1.6Gi\nSwap:          3.7Gi       3.0Gi       751Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -1205468,\n  \"current_average\": -567187,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 925000,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782156869970,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  6869320K used,   883484K free,     1600K buffers\n Swap:  3876396K total,  3138288K used,   738108K free,  1528948K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       4.9Gi       863Mi        39Mi       1.6Gi       1.7Gi\nSwap:          3.7Gi       3.0Gi       720Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -1275000,\n  \"current_average\": -440625,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 912500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782156974132,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  6815620K used,   937184K free,     1504K buffers\n Swap:  3876396K total,  3143356K used,   733040K free,  1501408K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       4.9Gi       914Mi        39Mi       1.6Gi       1.7Gi\nSwap:          3.7Gi       3.0Gi       715Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -1241406,\n  \"current_average\": -530468,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 902500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782157060382,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  6883656K used,   869148K free,     1504K buffers\n Swap:  3876396K total,  3114172K used,   762224K free,  1547360K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       4.9Gi       847Mi        39Mi       1.6Gi       1.7Gi\nSwap:          3.7Gi       3.0Gi       744Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -1112500,\n  \"current_average\": -496093,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 892500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782157090469,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  6968884K used,   783920K free,     1504K buffers\n Swap:  3876396K total,  3114172K used,   762224K free,  1548352K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.0Gi       765Mi        39Mi       1.6Gi       1.7Gi\nSwap:          3.7Gi       3.0Gi       744Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -718750,\n  \"current_average\": -292187,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 890000,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782157149120,
+    "cpu": "Tasks: 6 total,   2 running,   4 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  6869892K used,   882912K free,     1504K buffers\n Swap:  3876396K total,  3116628K used,   759768K free,  1537360K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       4.9Gi       859Mi        39Mi       1.6Gi       1.7Gi\nSwap:          3.7Gi       3.0Gi       741Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   62G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 36.0,\n  \"voltage\": 3728,\n  \"current\": -877343,\n  \"current_average\": -450781,\n  \"percentage\": 17,\n  \"level\": 17,\n  \"scale\": 100,\n  \"charge_counter\": 882500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782232492940,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7300488K used,   452316K free,     1000K buffers\n Swap:  3876396K total,  3847092K used,    29304K free,  1809936K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.1Gi       439Mi        37Mi       1.9Gi       1.5Gi\nSwap:          3.7Gi       3.7Gi        28Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   61G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 33.1,\n  \"voltage\": 3794,\n  \"current\": -1243750,\n  \"current_average\": -609375,\n  \"percentage\": 32,\n  \"level\": 32,\n  \"scale\": 100,\n  \"charge_counter\": 1675000,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782232523027,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7345316K used,   407488K free,     1444K buffers\n Swap:  3876396K total,  3875952K used,      444K free,  1776672K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.2Gi       398Mi        37Mi       1.8Gi       1.4Gi\nSwap:          3.7Gi       3.7Gi       0.0Ki",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   61G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 33.1,\n  \"voltage\": 3794,\n  \"current\": -1010937,\n  \"current_average\": -510156,\n  \"percentage\": 32,\n  \"level\": 32,\n  \"scale\": 100,\n  \"charge_counter\": 1670000,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782232553059,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7257872K used,   494932K free,     1444K buffers\n Swap:  3876396K total,  3854188K used,    22208K free,  1787144K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.1Gi       482Mi        37Mi       1.8Gi       1.5Gi\nSwap:          3.7Gi       3.7Gi        21Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   61G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 33.1,\n  \"voltage\": 3794,\n  \"current\": -494531,\n  \"current_average\": -352343,\n  \"percentage\": 32,\n  \"level\": 32,\n  \"scale\": 100,\n  \"charge_counter\": 1667500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782232583143,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7262372K used,   490432K free,     1448K buffers\n Swap:  3876396K total,  3844376K used,    32020K free,  1798740K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.1Gi       478Mi        37Mi       1.9Gi       1.5Gi\nSwap:          3.7Gi       3.7Gi        31Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   61G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 33.1,\n  \"voltage\": 3794,\n  \"current\": -1359375,\n  \"current_average\": -328906,\n  \"percentage\": 32,\n  \"level\": 32,\n  \"scale\": 100,\n  \"charge_counter\": 1665000,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  },
+  {
+    "timestamp": 1782232644025,
+    "cpu": "Tasks: 6 total,   1 running,   5 sleeping,   0 stopped,   0 zombie\n  Mem:  7752804K total,  7232172K used,   520632K free,     1460K buffers\n Swap:  3876396K total,  3827476K used,    48920K free,  1829740K cached\n800%cpu   0%user   0%nice   0%sys 800%idle   0%iow   0%irq   0%sirq   0%host\n   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS",
+    "mem": "total        used        free      shared  buff/cache   available\nMem:           7.4Gi       5.0Gi       509Mi        37Mi       1.9Gi       1.6Gi\nSwap:          3.7Gi       3.6Gi        47Mi",
+    "disk": "Filesystem       Size Used Avail Use% Mounted on\n/dev/block/dm-63 109G  48G   61G  44% /data/misc/profiles/ref/com.termux",
+    "battery": "{\n  \"present\": true,\n  \"technology\": \"Li-ion\",\n  \"health\": \"GOOD\",\n  \"plugged\": \"UNPLUGGED\",\n  \"status\": \"DISCHARGING\",\n  \"temperature\": 33.1,\n  \"voltage\": 3794,\n  \"current\": -1252343,\n  \"current_average\": -500000,\n  \"percentage\": 32,\n  \"level\": 32,\n  \"scale\": 100,\n  \"charge_counter\": 1657500,\n  \"energy\": null,\n  \"cycle\": 36\n}",
+    "net": "ERR",
+    "processes": "7"
+  }
+]

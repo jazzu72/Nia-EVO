@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": 1782157150108,
+    "anomalies": {
+      "network": "OFFLINE"
+    }
+  },
+  {
+    "timestamp": 1782232493936,
+    "anomalies": {
+      "network": "OFFLINE"
+    }
+  },
+  {
+    "timestamp": 1782232535966,
+    "anomalies": {
+      "network": "OFFLINE"
+    }
+  },
+  {
+    "timestamp": 1782232578037,
+    "anomalies": {
+      "network": "OFFLINE"
+    }
+  },
+  {
+    "timestamp": 1782232645042,
+    "anomalies": {
+      "network": "OFFLINE"
+    }
+  }
+]
