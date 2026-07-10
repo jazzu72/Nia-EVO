@@ -1,3 +1,43 @@
-node_modules/
+# Environment variables (NEVER commit secrets)
 .env
-.env.*
+.env.local
+.env.*.local
+NIA-CEO/.env
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database
+*.db
+vault.db
+
+# Secrets (encrypted)
+secrets.enc
+*.key
+
+# Build
+dist/
+build/
+
+# Temp
+tmp/
+temp/
+.cache/
+
+# IDE
+.vscode/settings.json
+
