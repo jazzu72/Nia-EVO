@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nia-evo-2
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node src/api/server.js
+    healthCheckPath: /api/watson/health
+    autoDeploy: true
+    
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
