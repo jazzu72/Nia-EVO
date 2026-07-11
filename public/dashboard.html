@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NIA-EVO 2030 – Executive Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: #141b2b;
+            --bg-sidebar: #0d1220;
+            --border-color: #1f2a3f;
+            --text-primary: #e8edf5;
+            --text-secondary: #94a3b8;
+            --gold: #f5b342;
+            --gold-dim: #b8860b;
+            --green: #4ade80;
+            --blue: #60a5fa;
+            --purple: #c084fc;
+            --red: #f87171;
+            --sidebar-width: 240px;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            min-height: 100vh;
+        }
+        /* ─── Sidebar ─── */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        .sidebar .logo { font-size: 1.6rem; font-weight: 800; color: var(--gold); letter-spacing: -0.02em; }
+        .sidebar .subtitle { font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2rem; }
+        .sidebar .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem 1rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+        .sidebar .nav-item:hover { background: var(--bg-card); color: var(--text-primary); }
+        .sidebar .nav-item.active { background: var(--bg-card); color: var(--gold); border-left: 2px solid var(--gold); }
+        .sidebar .nav-item .icon { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+        .sidebar .nav-divider { border: none; border-top: 1px solid var(--border-color); margin: 0.8rem 0; }
+        .sidebar .bottom { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+        .sidebar .bottom .version { font-size: 0.65rem; color: var(--text-secondary); text-align: center; }
+        /* ─── Main ─── */
+        .main { flex: 1; padding: 2rem 2.5rem; overflow-y: auto; max-height: 100vh; }
+        .main .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .main .header h1 { font-size: 1.5rem; font-weight: 700; }
+        .main .header .badge { background: var(--bg-card); padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.7rem; color: var(--text-secondary); border: 1px solid var(--border-color); }
+        /* ─── Stats ─── */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.2rem 1.5rem; transition: border 0.2s; }
+        .stat-card:hover { border-color: var(--gold-dim); }
+        .stat-card .label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.04em; }
+        .stat-card .value { font-size: 1.8rem; font-weight: 700; margin: 0.2rem 0; }
+        .stat-card .change { font-size: 0.7rem; color: var(--green); }
+        .text-gold { color: var(--gold); }
+        .text-blue { color: var(--blue); }
+        .text-green { color: var(--green); }
+        .text-purple { color: var(--purple); }
+        /* ─── Panels ─── */
+        .panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .panel .panel-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        /* ─── Tables ─── */
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { text-align: left; padding: 0.6rem 0.5rem; color: var(--text-secondary); font-weight: 400; border-bottom: 1px solid var(--border-color); }
+        td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border-color); }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 600; background: #1a2a3a; color: var(--blue); }
+        .badge-success { background: #1a3a2a; color: var(--green); }
+        .badge-warning { background: #3a2a1a; color: #facc15; }
+        .badge-closed { background: #1a2a3a; color: var(--purple); }
+        /* ─── Chat ─── */
+        .chat-box { background: var(--bg-primary); border-radius: 0.8rem; padding: 1rem; max-height: 200px; overflow-y: auto; border: 1px solid var(--border-color); margin-top: 0.5rem; }
+        .chat-message { margin-bottom: 0.5rem; padding: 0.4rem 0.8rem; border-radius: 0.5rem; font-size: 0.85rem; max-width: 85%; }
+        .chat-message.user { background: #1a2a3a; margin-left: auto; text-align: right; }
+        .chat-message.nia { background: #1a3a2a; }
+        .chat-input { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+        .chat-input input { flex: 1; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 9999px; padding: 0.6rem 1rem; color: var(--text-primary); }
+        .chat-input input:focus { outline: none; border-color: var(--gold); }
+        .btn { padding: 0.5rem 1.2rem; border-radius: 9999px; border: none; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; background: var(--border-color); color: var(--text-primary); }
+        .btn-primary { background: var(--gold); color: #0b0f1a; }
+        .btn-primary:hover { background: #e6a832; }
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 1rem; max-height: none; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.5rem; }
+        .status-dot.online { background: var(--green); }
+        .flex { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+        .text-center { text-align: center; }
+        .text-secondary { color: var(--text-secondary); }
+        .mt-1 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">🏛️ NIA-EVO</div>
+    <div class="subtitle">Autonomous CEO · 2030</div>
+    <div class="nav-item active" data-section="dashboard"><span class="icon">📊</span>Dashboard</div>
+    <div class="nav-item" data-section="deals"><span class="icon">🏠</span>Real Estate</div>
+    <div class="nav-item" data-section="grants"><span class="icon">📋</span>Grants</div>
+    <div class="nav-item" data-section="voice"><span class="icon">🎤</span>Voice</div>
+    <div class="nav-item" data-section="legacy"><span class="icon">📜</span>Legacy</div>
+    <hr class="nav-divider" />
+    <div class="nav-item" data-section="settings"><span class="icon">⚙️</span>Settings</div>
+    <div class="bottom"><div class="version">v2.0 · House of Jazzu</div></div>
+</div>
+
+<div class="main" id="mainContent">
+    <div class="header">
+        <div><h1 id="pageTitle">📊 Dashboard</h1><span style="font-size:0.8rem;color:var(--text-secondary);">Real-time overview</span></div>
+        <div class="flex">
+            <span class="badge" id="liveStatus">🟢 Live</span>
+            <button class="btn btn-outline" onclick="refreshAll()">⟳ Refresh</button>
+        </div>
+    </div>
+
+    <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><div class="label">💰 Capital Available</div><div class="value text-gold" id="balance">—</div><div class="change" id="balanceChange">+0% this month</div></div>
+        <div class="stat-card"><div class="label">🏠 Deals Found</div><div class="value text-blue" id="dealCount">—</div><div class="change">In pipeline</div></div>
+        <div class="stat-card"><div class="label">📋 Grants Targeted</div><div class="value text-green" id="grantCount">—</div><div class="change">Total value</div></div>
+        <div class="stat-card"><div class="label">🧠 Memory</div><div class="value text-purple" id="memoryCount">—</div><div class="change">Conversations</div></div>
+    </div>
+
+    <div id="section-deals" class="panel">
+        <div class="panel-title">🏠 Real Estate Pipeline</div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>Address</th><th>Price</th><th>Score</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody id="dealsTable"><tr><td colspan="5" style="text-align:center;color:var(--text-secondary);padding:1.5rem;">No deals yet</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="section-grants" class="panel" style="display:none;">
+        <div class="panel-title">📋 Grant Opportunities</div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>Grant</th><th>Amount</th><th>Deadline</th><th>Status</th></tr></thead>
+                <tbody id="grantsTable"><tr><td colspan="4" style="text-align:center;color:var(--text-secondary);padding:1.5rem;">No grants found</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="section-voice" class="panel" style="display:none;">
+        <div class="panel-title">🎤 Voice Communication</div>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:0.5rem;">Talk to NIA-EVO using your voice.</p>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message nia">👋 I am NIA-EVO 2030. How can I help you today?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendChat()">
+            <button class="btn btn-primary" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <div id="section-legacy" class="panel" style="display:none;">
+        <div class="panel-title">📜 Legacy Preservation</div>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:0.5rem;">Your vision, values, and voice preserved for the future.</p>
+        <div style="background:var(--bg-primary);padding:1rem;border-radius:0.8rem;border-left:3px solid var(--gold);">
+            <p style="color:var(--text-secondary);font-style:italic;">"I built NIA-EVO to carry my vision, my values, and my voice into the future."</p>
+            <p style="color:var(--gold);font-size:0.8rem;margin-top:0.3rem;">— Jason LeSane, Founder</p>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="badge badge-success">Systems before hustle</span>
+            <span class="badge badge-success">Autonomy before chaos</span>
+            <span class="badge badge-success">Legacy over ego</span>
+            <span class="badge badge-success">Execution over theory</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_BASE = window.location.hostname === 'localhost' ? '' : 'https://nia-evo-2.onrender.com';
+    const API_KEY = 'your-secret-api-key';
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            this.classList.add('active');
+            const section = this.dataset.section;
+            document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
+            const target = document.getElementById(`section-${section}`);
+            if (target) { target.style.display = 'block'; document.getElementById('pageTitle').textContent = this.textContent.trim(); }
+        });
+    });
+
+    async function fetchAPI(endpoint) {
+        try {
+            const res = await fetch(`${API_BASE}${endpoint}`, { headers: { 'X-API-Key': API_KEY } });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+        } catch { return null; }
+    }
+
+    async function refreshAll() {
+        document.getElementById('liveStatus').textContent = '⏳ Loading...';
+        const balance = await fetchAPI('/api/balance');
+        document.getElementById('balance').textContent = balance?.available ? `$${balance.available.toLocaleString()}` : '—';
+        const deals = await fetchAPI('/api/deals');
+        const dealList = deals?.deals || [];
+        document.getElementById('dealCount').textContent = dealList.length;
+        const tableBody = document.getElementById('dealsTable');
+        if (dealList.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-secondary);padding:1.5rem;">No deals yet</td></tr>';
+        } else {
+            tableBody.innerHTML = dealList.slice(0, 10).map(d => `
+                <tr>
+                    <td>${d.address || '—'}</td>
+                    <td>$${d.price?.toLocaleString() || '—'}</td>
+                    <td>${d.score || '—'}</td>
+                    <td><span class="badge ${d.status === 'CLOSED' ? 'badge-closed' : d.status === 'QUALIFIED' ? 'badge-warning' : ''}">${d.status || 'NEW'}</span></td>
+                    <td><button class="btn btn-outline" style="padding:0.2rem 0.8rem;font-size:0.7rem;" onclick="alert('View deal details')">View</button></td>
+                </tr>
+            `).join('');
+        }
+        const grants = await fetchAPI('/api/grants/search');
+        document.getElementById('grantCount').textContent = grants?.total ? `$${grants.total.toLocaleString()}` : '—';
+        const grantsTable = document.getElementById('grantsTable');
+        if (grants?.grants?.length) {
+            grantsTable.innerHTML = grants.grants.slice(0, 5).map(g => `
+                <tr>
+                    <td>${g.name || '—'}</td>
+                    <td>$${g.amount?.toLocaleString() || '—'}</td>
+                    <td>${g.deadline || '—'}</td>
+                    <td><span class="badge">${g.status || 'PENDING'}</span></td>
+                </tr>
+            `).join('');
+        }
+        try {
+            const mem = await fetch('/data/memory/memory.json').then(r => r.json()).catch(() => ({}));
+            document.getElementById('memoryCount').textContent = mem?.conversations?.length || 0;
+        } catch { document.getElementById('memoryCount').textContent = '0'; }
+        document.getElementById('liveStatus').textContent = '🟢 Live';
+    }
+
+    async function sendChat() {
+        const input = document.getElementById('chatInput');
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+        const chatBox = document.getElementById('chatBox');
+        chatBox.innerHTML += `<div class="chat-message user">${msg}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+        try {
+            const res = await fetch(`${API_BASE}/api/v1/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            });
+            const data = await res.json();
+            chatBox.innerHTML += `<div class="chat-message nia">${data.response || 'I am processing your request.'}</div>`;
+        } catch {
+            chatBox.innerHTML += `<div class="chat-message nia">I am NIA-EVO 2030. I hear you. Let\'s build the future.</div>`;
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    refreshAll();
+    setInterval(refreshAll, 30000);
+</script>
+</body>
+</html>
