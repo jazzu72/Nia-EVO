@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const twilio = require('twilio');
 require('dotenv').config();
 
 const app = express();
@@ -9,17 +10,30 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Initialize Twilio
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioPhone = process.env.TWILIO_PHONE_NUMBER;
+
+let twilioClient;
+if (accountSid && authToken) {
+  twilioClient = twilio(accountSid, authToken);
+  console.log('✅ Twilio client initialized');
+} else {
+  console.log('⚠️  Twilio credentials missing - SMS will be simulated');
+}
+
 console.log('\n🏰 NIA WATSON API SERVER - BOOTING\n');
 
 // ════════════════════════════════════════════════════════════════════════════
 // HEALTH CHECK
 // ════════════════════════════════════════════════════════════════════════════
 app.get('/api/watson/health', (req, res) => {
-  console.log('✅ GET /api/watson/health - 200 (${Date.now()}ms)');
   res.json({
     status: 'Watson Online',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    smsEngine: twilioClient ? 'REAL' : 'SIMULATED'
   });
 });
 
@@ -27,7 +41,6 @@ app.get('/api/watson/health', (req, res) => {
 // DEALS ENDPOINT
 // ════════════════════════════════════════════════════════════════════════════
 app.get('/api/deals', (req, res) => {
-  console.log('✅ GET /api/deals - 200');
   const deals = [
     {
       id: 1,
@@ -53,7 +66,6 @@ app.get('/api/deals', (req, res) => {
 // BALANCE ENDPOINT
 // ════════════════════════════════════════════════════════════════════════════
 app.get('/api/balance', (req, res) => {
-  console.log('✅ GET /api/balance - 200');
   res.json({
     available: 203400,
     allocated: 0,
@@ -66,7 +78,6 @@ app.get('/api/balance', (req, res) => {
 // GRANTS ENDPOINT
 // ════════════════════════════════════════════════════════════════════════════
 app.get('/api/grants/search', (req, res) => {
-  console.log('✅ GET /api/grants/search - 200');
   const grants = [
     { id: 1, name: 'NSF SBIR Phase 1', amount: 150000, likelihood: 0.35 },
     { id: 2, name: 'SBA Microloan', amount: 50000, likelihood: 0.65 },
@@ -85,7 +96,7 @@ app.get('/api/grants/search', (req, res) => {
 });
 
 // ════════════════════════════════════════════════════════════════════════════
-// SMS OUTREACH - FULL PIPELINE (CRITICAL)
+// SMS OUTREACH - FULL PIPELINE - REAL SMS SENDING
 // ════════════════════════════════════════════════════════════════════════════
 app.post('/api/outreach/full-pipeline', async (req, res) => {
   const { address, purchasePrice, rehabCost } = req.body;
@@ -102,21 +113,53 @@ app.post('/api/outreach/full-pipeline', async (req, res) => {
     // SMS Message
     const smsMessage = `We buy houses! We're interested in ${address}. Cash offer up to $${offerPrice}. Call us at ${process.env.BUSINESS_PHONE || '757-339-9245'}.`;
 
-    console.log(`✅ POST /api/outreach/full-pipeline - 200`);
-    console.log(`📱 [SMS] ${smsMessage}`);
-
-    res.json({
+    let result = {
       status: 'success',
       address: address,
       purchasePrice: purchasePrice,
       rehabCost: rehabCost || 0,
       arv: arv,
       offer: offerPrice,
-      sms: {
-        status: 'sent',
-        message: smsMessage,
-        timestamp: new Date().toISOString()
-      },
+      message: smsMessage,
+      timestamp: new Date().toISOString()
+    };
+
+    // SEND REAL SMS IF TWILIO IS CONFIGURED
+    if (twilioClient && twilioPhone) {
+      try {
+        const message = await twilioClient.messages.create({
+          from: twilioPhone,
+          to: '+1' + (process.env.BUSINESS_PHONE || '7573399245').replace(/\D/g, '').slice(-10),
+          body: smsMessage
+        });
+
+        result.sms = {
+          status: 'REAL - SENT',
+          messageSid: message.sid,
+          from: message.from,
+          to: message.to,
+          timestamp: message.dateCreated
+        };
+
+        console.log(`📱 [REAL SMS SENT] ${message.sid} to seller`);
+      } catch (twilioError) {
+        result.sms = {
+          status: 'REAL - FAILED',
+          error: twilioError.message
+        };
+        console.log(`❌ [SMS FAILED] ${twilioError.message}`);
+      }
+    } else {
+      // SIMULATED SMS IF TWILIO NOT CONFIGURED
+      result.sms = {
+        status: 'SIMULATED (Twilio not configured)',
+        message: smsMessage
+      };
+      console.log(`📱 [SIMULATED SMS] ${smsMessage}`);
+    }
+
+    res.json({
+      ...result,
       pipeline: 'Pipeline complete'
     });
   } catch (err) {
@@ -133,7 +176,6 @@ app.post('/api/valuation/estimate', (req, res) => {
   const mao = arv * 0.65;
   const profit = mao - purchasePrice;
 
-  console.log('✅ POST /api/valuation/estimate - 200');
   res.json({
     address,
     purchasePrice,
@@ -148,7 +190,6 @@ app.post('/api/valuation/estimate', (req, res) => {
 // DASHBOARD
 // ════════════════════════════════════════════════════════════════════════════
 app.get('/dashboard', (req, res) => {
-  console.log('✅ GET /dashboard - 200');
   res.sendFile(__dirname + '/public/dashboard.html');
 });
 
@@ -182,6 +223,13 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server online on port ${PORT}`);
   console.log(`✅ Test: curl http://localhost:${PORT}/api/watson/health`);
+  console.log('');
+  if (twilioClient && twilioPhone) {
+    console.log('✅ REAL SMS SENDING ACTIVE');
+    console.log(`   From: ${twilioPhone}`);
+  } else {
+    console.log('⚠️  SMS will be SIMULATED (missing Twilio config)');
+  }
   console.log('');
 });
 
