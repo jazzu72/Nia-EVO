@@ -4,24 +4,15 @@
   "description": "House of Jazzu Autonomous Capital Management System",
   "main": "server-watson.js",
   "scripts": {
-    "start": "node server-watson.js",
-    "dev": "nodemon server-watson.js",
-    "test": "node test.js"
+    "start": "node server-watson.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "twilio": "^3.83.3",
-    "axios": "^1.4.0",
-    "nodemon": "^3.0.1"
+    "axios": "^1.4.0"
   },
-  "keywords": [
-    "real-estate",
-    "automation",
-    "capital-management",
-    "nia"
-  ],
   "author": "House of Jazzu LLC",
   "license": "MIT"
 }
