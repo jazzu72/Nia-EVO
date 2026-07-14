@@ -1,32 +1,27 @@
 {
   "name": "nia-capital-os",
   "version": "1.0.0",
-  "description": "Grant automation system for Nia Capital OS",
-  "main": "NIA_GRANTS_AUTONOMOUS.js",
+  "description": "House of Jazzu Autonomous Capital Management System",
+  "main": "server-watson.js",
   "scripts": {
-    "start": "node NIA_GRANTS_AUTONOMOUS.js list",
-    "list": "node NIA_GRANTS_AUTONOMOUS.js list",
-    "add": "node NIA_GRANTS_AUTONOMOUS.js add",
-    "update": "node NIA_GRANTS_AUTONOMOUS.js update",
-    "run": "node NIA_GRANTS_AUTONOMOUS.js run",
-    "report": "node NIA_GRANTS_AUTONOMOUS.js report",
-    "config": "node NIA_GRANTS_AUTONOMOUS.js config"
+    "start": "node server-watson.js",
+    "dev": "nodemon server-watson.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "twilio": "^3.83.3",
+    "axios": "^1.4.0",
+    "nodemon": "^3.0.1"
   },
   "keywords": [
-    "grants",
+    "real-estate",
     "automation",
+    "capital-management",
     "nia"
   ],
-  "author": "Nia Capital OS",
-  "license": "MIT",
-  "dependencies": {
-    "@sparticuz/chromium": "^149.0.0",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "dotenv-cli": "^11.0.0",
-    "express": "^5.2.1",
-    "nodemailer": "^9.0.3",
-    "pdf-lib": "^1.17.1",
-    "twilio": "^6.0.2"
-  }
+  "author": "House of Jazzu LLC",
+  "license": "MIT"
 }
