@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nia Capital OS - Autonomous Real Estate Capital Management System">
+  <meta name="description" content="Nia Capital OS - Autonomous Real Estate Acquisition System">
   <meta name="theme-color" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>House of Jazzu - Nia Capital OS</title>
   <link rel="manifest" href="/manifest.json">
-  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232563eb' width='192' height='192'/><text x='96' y='140' font-size='120' font-weight='bold' text-anchor='middle' fill='white'>🏰</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232563eb' width='192' height='192'/><text x='96' y='140' font-size='120' font-weight='bold' text-anchor='middle' fill='white'>🏰</text></svg>">
   <style>
     * {
       margin: 0;
@@ -18,33 +14,19 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #2563eb;
-      --secondary: #7c3aed;
-      --accent: #06b6d4;
-      --dark: #0a0e27;
-      --text: #f1f5f9;
-      --text-secondary: #cbd5e1;
-    }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 100%);
-      color: var(--text);
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #f1f5f9;
       line-height: 1.6;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* Navigation */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
       background: rgba(10, 14, 39, 0.8);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -53,72 +35,75 @@
     .logo {
       font-size: 24px;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .nav-links {
+    .nav-buttons {
       display: flex;
-      gap: 30px;
-      list-style: none;
+      gap: 15px;
     }
 
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .cta-button {
-      padding: 10px 24px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    .btn {
+      padding: 10px 20px;
       border: none;
       border-radius: 8px;
-      color: white;
       font-weight: 600;
       cursor: pointer;
-      transition: transform 0.3s;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 14px;
     }
 
-    .cta-button:hover {
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+    }
+
+    .btn-primary:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
     }
 
-    /* Hero */
+    .btn-secondary {
+      background: transparent;
+      color: #cbd5e1;
+      border: 1px solid #2563eb;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 40px 40px;
       text-align: center;
-      animation: slideIn 0.8s ease;
+      padding: 60px 40px;
     }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero h1 {
+    .hero-content h1 {
       font-size: 64px;
       font-weight: 900;
       margin-bottom: 20px;
-      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, #f1f5f9, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.2;
     }
 
-    .hero p {
+    .hero-content p {
       font-size: 20px;
-      color: var(--text-secondary);
+      color: #cbd5e1;
       margin-bottom: 40px;
       max-width: 600px;
       margin-left: auto;
@@ -132,42 +117,9 @@
       flex-wrap: wrap;
     }
 
-    .button {
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      font-size: 16px;
-      transition: all 0.3s;
-    }
-
-    .button-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-    }
-
-    .button-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
-    }
-
-    .button-secondary {
-      background: transparent;
-      color: var(--text);
-      border: 2px solid var(--primary);
-    }
-
-    .button-secondary:hover {
-      background: rgba(37, 99, 235, 0.1);
-    }
-
-    /* Features */
     .features {
-      padding: 100px 40px;
-      max-width: 1400px;
-      margin: 0 auto;
+      padding: 80px 40px;
+      background: rgba(37, 99, 235, 0.05);
     }
 
     .features h2 {
@@ -176,14 +128,14 @@
       margin-bottom: 60px;
     }
 
-    .feature-grid {
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
     }
 
     .feature-card {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.05));
       border: 1px solid rgba(37, 99, 235, 0.2);
       border-radius: 16px;
       padding: 40px;
@@ -192,8 +144,7 @@
 
     .feature-card:hover {
       transform: translateY(-8px);
-      border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+      border-color: #2563eb;
     }
 
     .feature-icon {
@@ -202,246 +153,205 @@
     }
 
     .feature-card h3 {
-      font-size: 24px;
+      font-size: 22px;
       margin-bottom: 12px;
     }
 
     .feature-card p {
-      color: var(--text-secondary);
-      font-size: 15px;
+      color: #cbd5e1;
+      font-size: 14px;
     }
 
-    /* Stats */
     .stats {
-      padding: 100px 40px;
-      background: rgba(37, 99, 235, 0.05);
+      padding: 80px 40px;
     }
 
-    .stats-container {
-      max-width: 1400px;
-      margin: 0 auto;
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
       text-align: center;
     }
 
-    .stat {
-      animation: countUp 2s ease;
-    }
-
     .stat-value {
       font-size: 48px;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 10px;
     }
 
     .stat-label {
-      font-size: 16px;
-      color: var(--text-secondary);
+      color: #cbd5e1;
+      font-size: 14px;
     }
 
-    /* CTA Section */
-    .cta-section {
-      padding: 100px 40px;
+    .cta {
+      padding: 80px 40px;
       text-align: center;
+      background: rgba(37, 99, 235, 0.05);
     }
 
-    .cta-section h2 {
+    .cta h2 {
       font-size: 48px;
       margin-bottom: 20px;
     }
 
-    .cta-section p {
-      font-size: 20px;
-      color: var(--text-secondary);
+    .cta p {
+      font-size: 18px;
+      color: #cbd5e1;
       margin-bottom: 40px;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding: 40px;
       text-align: center;
-      color: var(--text-secondary);
-      font-size: 14px;
+      color: #64748b;
+      font-size: 13px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       nav {
         padding: 16px 20px;
+        flex-direction: column;
+        gap: 15px;
       }
 
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
+      .hero-content h1 {
         font-size: 40px;
       }
 
-      .hero p {
+      .hero-content p {
         font-size: 16px;
       }
 
-      .features {
-        padding: 60px 20px;
+      .hero-buttons {
+        flex-direction: column;
       }
 
-      .features h2 {
-        font-size: 32px;
+      .btn {
+        width: 100%;
       }
-    }
-
-    .install-prompt {
-      padding: 16px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-    }
-
-    .install-prompt.show {
-      display: block;
-    }
-
-    .install-prompt button {
-      background: white;
-      color: var(--primary);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 10px;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <div class="logo">🏰 House of Jazzu</div>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#stats">Stats</a></li>
-      <li><a href="#dashboard">Dashboard</a></li>
-    </ul>
-    <button class="cta-button" onclick="goToDashboard()">Launch App</button>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="scrollToFeatures()">Features</button>
+      <button class="btn btn-primary" onclick="openDashboard()">Open Dashboard</button>
+    </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-    <div>
+    <div class="hero-content">
       <h1>Autonomous Real Estate Capital OS</h1>
-      <p>AI-powered deal discovery, SMS outreach, and autonomous capital management. Close deals in 14-21 days.</p>
+      <p>Discover properties, manage capital, close deals. Nia Capital OS handles the intelligence. You handle the execution.</p>
       <div class="hero-buttons">
-        <button class="button button-primary" onclick="goToDashboard()">Open Dashboard</button>
-        <button class="button button-secondary" onclick="installPWA()">Install App</button>
+        <button class="btn btn-primary" onclick="openDashboard()" style="width: 200px;">Open Dashboard →</button>
+        <button class="btn btn-secondary" onclick="installPWA()" style="width: 200px;">Install App</button>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
   <section class="features" id="features">
     <h2>What Nia Does</h2>
-    <div class="feature-grid">
+    <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3>SMS Outreach</h3>
-        <p>50+ daily SMS to sellers. Automated responses and lead tracking.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏠</div>
-        <h3>Deal Scoring</h3>
-        <p>AI valuation, profit calculation, and offer automation.</p>
+        <div class="feature-icon">📊</div>
+        <h3>Real-Time Dashboard</h3>
+        <p>Monitor capital, deals, and performance metrics in real-time.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💰</div>
         <h3>Capital Management</h3>
-        <p>Real-time tracking, autonomous allocation, risk assessment.</p>
+        <p>Track available capital, deployed funds, and profit targets.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h3>Deal Pipeline</h3>
+        <p>Visualize your deal funnel from leads to closed transactions.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📋</div>
-        <h3>Grants Automation</h3>
-        <p>$1.625M pipeline across 7 federal and state programs.</p>
+        <h3>Grants Tracking</h3>
+        <p>$1.6M+ in federal and state grant programs at your fingertips.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🤖</div>
-        <h3>Autonomous Execution</h3>
-        <p>CEO engine running 24/7 making autonomous decisions.</p>
+        <h3>Autonomous Systems</h3>
+        <p>Runs 24/7 managing operations, capital allocation, and decisions.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Telegram Integration</h3>
-        <p>Real-time notifications and commands via Telegram.</p>
+        <div class="feature-icon">📱</div>
+        <h3>PWA Ready</h3>
+        <p>Install as a native app. Works offline. Always accessible.</p>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="stats" id="stats">
-    <div class="stats-container">
-      <div class="stat">
+  <section class="stats">
+    <div class="stats-grid">
+      <div>
         <div class="stat-value">$203K</div>
         <div class="stat-label">Available Capital</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">50+</div>
-        <div class="stat-label">Daily SMS Sent</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">$1.63M</div>
+      <div>
+        <div class="stat-value">$1.6M</div>
         <div class="stat-label">Grants Pipeline</div>
       </div>
-      <div class="stat">
+      <div>
         <div class="stat-value">14-21d</div>
-        <div class="stat-label">Deal Close Time</div>
+        <div class="stat-label">Deal Timeline</div>
+      </div>
+      <div>
+        <div class="stat-value">$30-50K</div>
+        <div class="stat-label">Profit Per Deal</div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="dashboard">
+  <section class="cta">
     <h2>Ready to Close Deals?</h2>
-    <p>Open the dashboard and monitor your capital, deals, and SMS responses in real-time.</p>
-    <button class="button button-primary" onclick="goToDashboard()">Open Dashboard</button>
+    <p>Your capital is ready. Your system is online. Your dashboard shows everything you need.</p>
+    <button class="btn btn-primary" onclick="openDashboard()" style="width: 200px;">Open Dashboard →</button>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>🏰 House of Jazzu - Nia Capital OS v1.0 | Autonomous Real Estate Acquisition</p>
+    <p>© 2026 Jason LeSane. All rights reserved.</p>
   </footer>
 
   <script>
-    // Service Worker Registration
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+    function openDashboard() {
+      window.location.href = '/dashboard';
     }
 
-    // PWA Install Prompt
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.querySelector('.install-prompt').classList.add('show');
-    });
+    function scrollToFeatures() {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    }
 
     function installPWA() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          deferredPrompt = null;
-        });
+      if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+      } else {
+        alert('Install option will appear when available on your device.');
       }
     }
 
-    function goToDashboard() {
-      window.location.href = '/dashboard';
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed'));
     }
+
+    // PWA Install Prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window.deferredPrompt = e;
+    });
   </script>
 </body>
 </html>
