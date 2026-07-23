@@ -1,14 +1,13 @@
-# Environment variables (NEVER commit secrets)
+# Environment
 .env
 .env.local
 .env.*.local
-NIA-CEO/.env
 
 # Node
 node_modules/
 npm-debug.log
-yarn-error.log
 package-lock.json
+yarn.lock
 
 # Logs
 logs/
@@ -16,29 +15,41 @@ logs/
 
 # OS
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# Database
-*.db
-vault.db
+# Old projects (REMOVE)
+MuseForgeOS/
+MoneyMunchkin/
+PolishOS/
+nia-career/
+nia-grants/
+nia-lesane/
+frontend/
+museforge_deploy/
 
-# Secrets (encrypted)
-secrets.enc
-*.key
+# Old files (REMOVE)
+sba_application_*.txt
+sent_emails/
+runtime/
+sales_pitch/
+*.tar.gz
+*.zip
+nohup.out
+debug-report.txt
+*.bak
 
-# Build
-dist/
-build/
-
-# Temp
-tmp/
-temp/
+# Temporary
+.temp/
 .cache/
+build/
+dist/
 
-# IDE
-.vscode/settings.json
-
-.gmail_creds.json
+# Keep only
+!config/
+!src/
+!public/
+!NIA-CEO/
+!logs/.gitkeep
+!data/.gitkeep
