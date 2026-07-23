@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo ""
+echo "  ╔══════════════════════════════════════════════════════╗"
+echo "  ║     🔄 RESTARTING NIA — FULL SYSTEM                 ║"
+echo "  ║     Backend · Frontend · All Services               ║"
+echo "  ╚══════════════════════════════════════════════════════╝"
+echo ""
+
+# ─── 1. Stop and clean everything ───────────────────────────
+echo "🛑 Stopping all processes..."
+pm2 kill 2>/dev/null
+pkill -f node 2>/dev/null
+pkill -f vite 2>/dev/null
+pkill -f npm 2>/dev/null
+
+# ─── 2. Start backend services ──────────────────────────────
+echo "🚀 Starting backend services..."
+pm2 start src/api/server.js --name api --log logs/api.log
+pm2 start NIA-CEO/autonomous.js --name ceo --log logs/ceo.log
+pm2 start NIA-CEO/chief-of-staff.js --name cos --log logs/cos.log
+pm2 start NIA_GRANTS_AUTONOMOUS.js --name grants -- run --log logs/grants.log
+pm2 start reply-parser.js --name ai-negotiator --log logs/ai-negotiator.log
+pm2 start orchestrator.js --name orchestrator --log logs/orchestrator.log
+pm2 start watcher.js --name watcher --log logs/watcher.log
+pm2 save
+
+# ─── 3. Start frontend ───────────────────────────────────────
+echo "🎨 Starting frontend..."
+cd frontend
+npm run dev -- --port 5175 &
+cd ..
+
+# ─── 4. Show status ──────────────────────────────────────────
+echo ""
+echo "  ╔══════════════════════════════════════════════════════╗"
+echo "  ║     ✅ SYSTEM RESTARTED                             ║"
+echo "  ║     API:      http://localhost:3000                 ║"
+echo "  ║     Frontend: http://localhost:5175                 ║"
+echo "  ╚══════════════════════════════════════════════════════╝"
+echo ""
+echo "📡 Check backend logs:"
+echo "  pm2 logs api"
+echo ""
+echo "📡 Check frontend logs:"
+echo "  cd frontend && npm run dev"
+echo ""

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo ""
+echo "  ╔══════════════════════════════════════════════════════╗"
+echo "  ║     🔄 RESTARTING NIA CAPITAL OS — FULL SYSTEM      ║"
+echo "  ║     CEO · CoS · API · Grants · Telegram · Apps      ║"
+echo "  ╚══════════════════════════════════════════════════════╝"
+echo ""
+
+# ─── Stop everything ────────────────────────────────────────
+echo "🛑 Stopping all processes..."
+pm2 stop all 2>/dev/null
+pm2 delete all 2>/dev/null
+pkill -f "node" 2>/dev/null
+
+# ─── Restart CEO ────────────────────────────────────────────
+echo "🚀 Starting CEO..."
+pm2 start NIA-CEO/autonomous.js --name ceo --log logs/ceo.log
+
+# ─── Restart Chief of Staff ──────────────────────────────────
+echo "📋 Starting Chief of Staff..."
+pm2 start NIA-CEO/chief-of-staff.js --name cos --log logs/cos.log
+
+# ─── Restart API ────────────────────────────────────────────
+echo "📡 Starting API Server..."
+pm2 start src/api/server.js --name api --log logs/api.log
+
+# ─── Restart Grants Engine ──────────────────────────────────
+echo "📋 Starting Grant Engine..."
+pm2 start NIA_GRANTS_AUTONOMOUS.js --name grants -- run --log logs/grants.log
+
+# ─── Restart Telegram Bot ──────────────────────────────────
+echo "🤖 Starting Telegram Bot..."
+pm2 start src/telegram/bot.js --name telegram --log logs/telegram.log
+
+# ─── Restart Applications ──────────────────────────────────
+echo "📝 Starting Applications Module..."
+pm2 start src/autonomous/applications.js --name apps --log logs/apps.log
+
+# ─── Save and show status ──────────────────────────────────
+pm2 save
+echo ""
+echo "  ╔══════════════════════════════════════════════════════╗"
+echo "  ║     ✅ NIA CAPITAL OS — ALL SYSTEMS ONLINE          ║"
+echo "  ╚══════════════════════════════════════════════════════╝"
+echo ""
+pm2 list

@@ -1,0 +1,25 @@
+# Nia Capital OS — Live Demo Script (5 minutes)
+
+## 0:00–0:30 — Intro
+"Good morning. My name is [Your Name], founder of House of Jazzu. I'm going to show you Nia — a fully autonomous CEO that runs sales, outreach, and deal closing without a human in the loop."
+
+## 0:30–1:00 — Dashboard Walkthrough
+"Open your browser to http://localhost:3000. You'll see a live dashboard showing revenue, pipeline, leads, and deals — all updated in real time."
+
+## 1:00–1:30 — Outbound SMS
+"Behind the scenes, Nia is already sending SMS to sellers via Twilio. I'll show you the logs."
+
+## 1:30–2:00 — AI Negotiation
+"When a seller replies, Nia reads the message, detects intent, and generates a reply using Mistral 7B. This is not a script — it's real AI negotiation."
+
+## 2:00–2:30 — Deal Tracking
+"Every interaction is logged in memory. She remembers who she talked to, what they said, and what stage they're at."
+
+## 2:30–3:00 — Revenue Tracking
+"Every closed deal is logged in the Quantum Vault treasury. This shows you real‑time revenue."
+
+## 3:00–4:00 — Q&A
+"What questions do you have about the system, the AI, or the deployment model?"
+
+## 4:00–5:00 — Close
+"Nia Capital OS is production‑ready. She's running right now. Let me show you."

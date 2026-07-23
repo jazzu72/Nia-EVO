@@ -1,0 +1,6 @@
+
+TO: your-email@example.com
+SUBJECT: Test
+BODY: This is a test.
+ATTACHMENT: none
+  

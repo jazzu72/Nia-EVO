@@ -16,3 +16,21 @@ Error: Cannot find module '/data/data/com.termux/files/home/nia-capital-os/NIA-C
 }
 
 Node.js v26.3.1
+node:internal/modules/cjs/loader:1522
+  throw err;
+  ^
+
+Error: Cannot find module '/data/data/com.termux/files/home/nia-capital-os/NIA-CEO/start.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1519:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1073:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1097:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1124:12)
+    at Module._load (node:internal/modules/cjs/loader:1296:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v26.3.1

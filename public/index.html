@@ -1,72 +1,446 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>House of Jazzu - NIA-EVO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nia Capital OS - Autonomous Real Estate Capital Management System">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>House of Jazzu - Nia Capital OS</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232563eb' width='192' height='192'/><text x='96' y='140' font-size='120' font-weight='bold' text-anchor='middle' fill='white'>🏰</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232563eb' width='192' height='192'/><text x='96' y='140' font-size='120' font-weight='bold' text-anchor='middle' fill='white'>🏰</text></svg>">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0a0a; color: #e0e0e0; font-family: monospace; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    h1 { color: #d4af37; font-size: 2em; margin: 20px 0; }
-    .deals-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    .deals-table th, .deals-table td { padding: 12px; text-align: left; border: 1px solid #d4af37; }
-    .deals-table th { background: #1a1a1a; color: #d4af37; }
-    .hot { color: #ff4444; font-weight: bold; }
-    .warm { color: #ffaa00; }
-    .button { background: #d4af37; color: #000; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; margin: 10px 0; }
-    .button:hover { background: #ffd700; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --secondary: #7c3aed;
+      --accent: #06b6d4;
+      --dark: #0a0e27;
+      --text: #f1f5f9;
+      --text-secondary: #cbd5e1;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .cta-button {
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 40px;
+      text-align: center;
+      animation: slideIn 0.8s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--primary);
+    }
+
+    .button-secondary:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    /* Features */
+    .features {
+      padding: 100px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 16px;
+      padding: 40px;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    /* Stats */
+    .stats {
+      padding: 100px 40px;
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .stats-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat {
+      animation: countUp 2s ease;
+    }
+
+    .stat-value {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .features {
+        padding: 60px 20px;
+      }
+
+      .features h2 {
+        font-size: 32px;
+      }
+    }
+
+    .install-prompt {
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .install-prompt.show {
+      display: block;
+    }
+
+    .install-prompt button {
+      background: white;
+      color: var(--primary);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🏰 House of Jazzu - NIA-EVO</h1>
-    <h2 style="color: #d4af37;">Deal Discovery Dashboard</h2>
-    
-    <button class="button" onclick="loadDeals()">🔍 LOAD DEALS</button>
-    
-    <table class="deals-table">
-      <thead>
-        <tr>
-          <th>Deal</th>
-          <th>Location</th>
-          <th>Price</th>
-          <th>ARV</th>
-          <th>Fee</th>
-          <th>Quality</th>
-        </tr>
-      </thead>
-      <tbody id="deals">
-        <tr><td colspan="6" style="text-align: center;">Click button to load deals</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">🏰 House of Jazzu</div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+    </ul>
+    <button class="cta-button" onclick="goToDashboard()">Launch App</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Autonomous Real Estate Capital OS</h1>
+      <p>AI-powered deal discovery, SMS outreach, and autonomous capital management. Close deals in 14-21 days.</p>
+      <div class="hero-buttons">
+        <button class="button button-primary" onclick="goToDashboard()">Open Dashboard</button>
+        <button class="button button-secondary" onclick="installPWA()">Install App</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>What Nia Does</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>SMS Outreach</h3>
+        <p>50+ daily SMS to sellers. Automated responses and lead tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h3>Deal Scoring</h3>
+        <p>AI valuation, profit calculation, and offer automation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Capital Management</h3>
+        <p>Real-time tracking, autonomous allocation, risk assessment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Grants Automation</h3>
+        <p>$1.625M pipeline across 7 federal and state programs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>Autonomous Execution</h3>
+        <p>CEO engine running 24/7 making autonomous decisions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Telegram Integration</h3>
+        <p>Real-time notifications and commands via Telegram.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="stats-container">
+      <div class="stat">
+        <div class="stat-value">$203K</div>
+        <div class="stat-label">Available Capital</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Daily SMS Sent</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">$1.63M</div>
+        <div class="stat-label">Grants Pipeline</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">14-21d</div>
+        <div class="stat-label">Deal Close Time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="dashboard">
+    <h2>Ready to Close Deals?</h2>
+    <p>Open the dashboard and monitor your capital, deals, and SMS responses in real-time.</p>
+    <button class="button button-primary" onclick="goToDashboard()">Open Dashboard</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>🏰 House of Jazzu - Nia Capital OS v1.0 | Autonomous Real Estate Acquisition</p>
+  </footer>
 
   <script>
-    async function loadDeals() {
-      console.log('Loading deals...');
-      const res = await fetch('/api/deals');
-      const deals = await res.json();
-      console.log('Got deals:', deals.length);
-      
-      const tbody = document.getElementById('deals');
-      tbody.innerHTML = '';
-      
-      deals.forEach(d => {
-        const row = document.createElement('tr');
-        const quality = d.estFee > 8000 ? 'HOT' : d.estFee > 6000 ? 'WARM' : 'COLD';
-        row.innerHTML = `
-          <td>${d.title.substring(0, 50)}</td>
-          <td>${d.location}</td>
-          <td>$${d.price.toLocaleString()}</td>
-          <td>$${d.estARV.toLocaleString()}</td>
-          <td>$${d.estFee.toLocaleString()}</td>
-          <td class="${quality.toLowerCase()}">${quality}</td>
-        `;
-        tbody.appendChild(row);
-      });
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.querySelector('.install-prompt').classList.add('show');
+    });
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          deferredPrompt = null;
+        });
+      }
+    }
+
+    function goToDashboard() {
+      window.location.href = '/dashboard';
     }
   </script>
 </body>

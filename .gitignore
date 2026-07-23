@@ -41,3 +41,4 @@ temp/
 # IDE
 .vscode/settings.json
 
+.gmail_creds.json

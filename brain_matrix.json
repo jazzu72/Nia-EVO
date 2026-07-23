@@ -1,0 +1,20 @@
+{
+  "self_awareness": {
+    "product": "Nia Capital OS",
+    "capabilities": ["SMS", "AI", "Memory", "Revenue", "Grants", "Self-Healing"],
+    "value_proposition": "A fully autonomous CEO that runs business operations without human intervention.",
+    "sales_angle": "Replaces a $200K/year COO for less than $25K/year.",
+    "target_market": ["Real Estate Investors", "Property Management", "Small Business Owners"]
+  },
+  "strategy": {
+    "pitch_1": "Run your entire operations for less than the cost of one salary.",
+    "pitch_2": "Deploy in 15 minutes. No human in the loop. Start closing deals immediately.",
+    "goal": "Close 100 deals in the next 12 months."
+  },
+  "expansion_plan": {
+    "phase_1": "Optimize SMS reply logic based on seller response data.",
+    "phase_2": "Add voice calling via Twilio Voice.",
+    "phase_3": "Integrate with CRM systems (Salesforce, HubSpot).",
+    "phase_4": "Multi-tenant architecture — sell Nia as a service."
+  }
+}

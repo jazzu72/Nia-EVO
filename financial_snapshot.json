@@ -1,0 +1,17 @@
+{
+  "business_name": "Nia Capital OS",
+  "legal_structure": "LLC",
+  "annual_revenue_2025": 0,
+  "annual_revenue_2026": 0,
+  "cash_reserves": 0,
+  "credit_score_personal": 0,
+  "credit_score_business": 0,
+  "collateral_value": 0,
+  "current_debt": 0,
+  "bank_account": {
+    "bank": "Bluevine",
+    "account_number": "875108033064",
+    "routing_number": "125109019",
+    "verified": true
+  }
+}

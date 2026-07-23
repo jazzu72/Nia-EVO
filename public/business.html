@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nia Small Business OS · Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { background: #0b0e14; color: #e8edf5; font-family: system-ui, sans-serif; }
+    .card { background: #151e2a; border: 1px solid #2a3548; border-radius: 12px; padding: 1.5rem; }
+    .stat-value { font-size: 2rem; font-weight: 700; }
+    .stat-label { color: #94a3b8; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar { background: #151e2a; border-right: 1px solid #2a3548; }
+    .sidebar a.active { background: #6c5ce7; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="flex h-screen bg-[#0b0e14]">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 flex flex-col h-full p-4">
+      <h1 class="text-xl font-bold mb-6 bg-gradient-to-r from-[#6c5ce7] to-[#a78bfa] bg-clip-text text-transparent">
+        🏢 Nia Small Business OS
+      </h1>
+      <nav class="space-y-2 flex-1">
+        <a href="/business" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors active">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          Dashboard
+        </a>
+        <a href="/business/customers" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          Customers
+        </a>
+        <a href="/business/invoices" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+          Invoices
+        </a>
+        <a href="/business/schedule" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          Schedule
+        </a>
+        <a href="/business/inventory" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors">
+          <i data-lucide="package" class="w-5 h-5"></i>
+          Inventory
+        </a>
+        <a href="/business/reports" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white transition-colors">
+          <i data-lucide="bar-chart" class="w-5 h-5"></i>
+          Reports
+        </a>
+      </nav>
+      <div class="border-t border-[#2a3548] pt-4 mt-auto">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-r from-[#6c5ce7] to-[#a78bfa] flex items-center justify-center text-xs font-bold">NJ</div>
+          <div><p class="text-sm font-medium">Nia Jazzu</p><p class="text-xs text-gray-500">CEO</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto p-8" id="main-content">
+      <div id="page-content">
+        <div class="space-y-6">
+          <h2 class="text-2xl font-bold">Small Business Dashboard</h2>
+          <p class="text-gray-400">Manage your entire business from one place.</p>
+
+          <div class="grid grid-cols-4 gap-4" id="stats-grid">
+            <div class="card"><div class="stat-label">Today's Revenue</div><div class="stat-value" id="revenue">$0</div></div>
+            <div class="card"><div class="stat-label">Outstanding Invoices</div><div class="stat-value" id="invoices">0</div></div>
+            <div class="card"><div class="stat-label">Appointments</div><div class="stat-value" id="appointments">0</div></div>
+            <div class="card"><div class="stat-label">New Leads</div><div class="stat-value" id="leads">0</div></div>
+          </div>
+
+          <div class="card">
+            <h3 class="text-lg font-medium mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="bg-[#6c5ce7] hover:bg-[#5a4bd1] text-white px-4 py-2 rounded-lg">+ New Invoice</button>
+              <button class="bg-[#151e2a] border border-[#2a3548] hover:border-[#6c5ce7] px-4 py-2 rounded-lg">+ Add Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    async function loadDashboard() {
+      try {
+        const res = await fetch('/api/business/dashboard');
+        const data = await res.json();
+        document.getElementById('revenue').textContent = '$' + data.revenue.toLocaleString();
+        document.getElementById('invoices').textContent = data.outstandingInvoices;
+        document.getElementById('appointments').textContent = data.appointments;
+        document.getElementById('leads').textContent = data.newLeads;
+      } catch (err) {
+        console.error('Dashboard error:', err);
+      }
+    }
+
+    loadDashboard();
+    setInterval(loadDashboard, 15000);
+  </script>
+</body>
+</html>

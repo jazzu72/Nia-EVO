@@ -1,0 +1,6 @@
+
+TO: your-email@gmail.com
+SUBJECT: Test from Nia CEO
+BODY: This is a test email from the autonomous system.
+ATTACHMENT: sba_application_*.txt
+  

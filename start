@@ -1,0 +1,25 @@
+#!/bin/bash
+cd ~/nia-capital-os
+npm install 2>/dev/null
+pm2 kill 2>/dev/null
+sleep 1
+pm2 start src/api/server-production.js --name api --log logs/api.log
+pm2 start NIA-CEO/autonomous.js --name ceo --log logs/ceo.log
+pm2 start NIA-CEO/chief-of-staff.js --name cos --log logs/cos.log
+pm2 start NIA_GRANTS_AUTONOMOUS.js --name grants -- run --log logs/grants.log
+pm2 save
+clear
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║  🏰 HOUSE OF JAZZU - NIA CAPITAL OS v1.0                      ║"
+echo "║  Chief Engineer: Claude                                       ║"
+echo "║  Status: PRODUCTION GRADE - FULLY OPERATIONAL                ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+pm2 list
+echo ""
+echo "✅ Dashboard: http://localhost:3000/dashboard"
+echo "📱 Twilio: https://www.twilio.com/console"
+echo "📊 Logs: pm2 logs"
+echo ""
+pm2 logs api

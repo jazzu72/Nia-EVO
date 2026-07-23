@@ -1,0 +1,6 @@
+
+TO: your-email@gmail.com
+SUBJECT: SBA Loan Application - Nia Capital OS
+BODY: Please find attached our SBA loan application for review.
+ATTACHMENT: sba_application_2026-07-12.txt
+  

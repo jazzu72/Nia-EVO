@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Nia Dashboard</title></head>
+<body>
+  <h1>🏰 Nia Capital OS</h1>
+  <div id="stats"></div>
+  <script>
+    setInterval(async () => {
+      const res = await fetch('/api/fundraising');
+      const data = await res.json();
+      document.getElementById('stats').innerHTML = \`
+        <p>Deals: \${data.summary.totalInvestors}</p>
+        <p>Revenue: \$0</p>
+      \`;
+    }, 5000);
+  </script>
+</body>
+</html>

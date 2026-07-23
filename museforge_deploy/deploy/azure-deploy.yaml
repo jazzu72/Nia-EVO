@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: museforge-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: museforge-backend
+  template:
+    metadata:
+      labels:
+        app: museforge-backend
+    spec:
+      containers:
+      - name: museforge-backend
+        image: museforge/backend:latest
+        ports:
+        - containerPort: 5000

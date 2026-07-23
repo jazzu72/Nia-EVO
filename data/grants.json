@@ -1,0 +1,57 @@
+[
+  {
+    "id": "G-001",
+    "name": "AI Research Grant",
+    "amount": 50000,
+    "status": "SUBMITTED",
+    "deadline": "2026-08-15",
+    "funder": "National Science Foundation",
+    "createdAt": "2026-07-10T00:00:00.000Z",
+    "submittedToGov": false,
+    "govSubmissionId": null
+  },
+  {
+    "id": "G-002",
+    "name": "Climate Tech Initiative",
+    "amount": 75000,
+    "status": "DRAFT",
+    "deadline": "2026-09-01",
+    "funder": "GreenTech Foundation",
+    "createdAt": "2026-07-10T00:00:00.000Z",
+    "submittedToGov": false,
+    "govSubmissionId": null
+  },
+  {
+    "id": "G-851719-pmti",
+    "name": "New Grant",
+    "amount": 25000,
+    "status": "DRAFT",
+    "deadline": "2026-10-01",
+    "funder": "DOE",
+    "createdAt": "2026-07-12T05:07:31.720Z",
+    "submittedToGov": false,
+    "govSubmissionId": null
+  },
+  {
+    "id": "G-776506-lxkj",
+    "name": "Test Grant",
+    "amount": 30000,
+    "status": "DRAFT",
+    "deadline": "2026-11-01",
+    "funder": "NASA",
+    "createdAt": "2026-07-12T10:56:16.506Z",
+    "submittedToGov": false,
+    "govSubmissionId": null
+  },
+  {
+    "id": "G-998184-4zoe",
+    "name": "Grant Name",
+    "amount": 50000,
+    "status": "SUBMITTED",
+    "deadline": "2026-08-15",
+    "funder": "Funder",
+    "createdAt": "2026-07-12T10:59:58.184Z",
+    "submittedToGov": false,
+    "govSubmissionId": null
+  }
+]

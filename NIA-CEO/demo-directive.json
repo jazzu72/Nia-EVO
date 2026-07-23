@@ -1,0 +1,12 @@
+{
+  "mission": "Produce a 4-minute demo video for Twilio + AI competition",
+  "requirements": {
+    "showTwilioSMS": true,
+    "showAIGeneration": true,
+    "showRevenueTracking": true,
+    "showSelfHealing": true,
+    "showDashboard": true
+  },
+  "outputFormat": "mp4",
+  "deadline": "2026-07-20"
+}
