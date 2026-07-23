@@ -1,6 +1,0 @@
-
-TO: lesane1972@gmail.com
-SUBJECT: Test
-BODY: This is a test.
-ATTACHMENT: none
-  

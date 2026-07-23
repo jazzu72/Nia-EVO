@@ -1,6 +1,0 @@
-
-TO: your-email@gmail.com
-SUBJECT: Test from msmtp
-BODY: This email was sent via msmtp (no Node.js SMTP).
-ATTACHMENT: none
-  
