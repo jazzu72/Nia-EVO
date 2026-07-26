@@ -1,235 +1,329 @@
-const express = require('express');
-const cors = require('cors');
-const twilio = require('twilio');
-require('dotenv').config();
+// ============================================================
+// NIA CAPITAL OS - SERVER WATSON
+// Clean Executive Runtime
+// ============================================================
+
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+
+// ============================================================
+// MIDDLEWARE
+// ============================================================
+
 app.use(cors());
 app.use(express.json());
 
-// Initialize Twilio
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioPhone = process.env.TWILIO_PHONE_NUMBER;
+console.log("🏰 Nia Capital OS Booting...");
 
-let twilioClient;
-if (accountSid && authToken) {
-  twilioClient = twilio(accountSid, authToken);
-  console.log('✅ Twilio client initialized');
-} else {
-  console.log('⚠️  Twilio credentials missing - SMS will be simulated');
+
+// ============================================================
+// ROUTE LOADER
+// ============================================================
+
+function loadRoute(file, endpoint) {
+
+    try {
+
+        const router = require(file);
+
+        app.use(endpoint, router);
+
+        console.log(`✅ ${endpoint} loaded`);
+
+    } catch (error) {
+
+        console.log(
+            `⚠️ ${endpoint} skipped: ${error.message}`
+        );
+
+    }
+
 }
 
-console.log('\n🏰 NIA WATSON API SERVER - BOOTING\n');
 
-// ════════════════════════════════════════════════════════════════════════════
-// HEALTH CHECK
-// ════════════════════════════════════════════════════════════════════════════
-app.get('/api/watson/health', (req, res) => {
-  res.json({
-    status: 'Watson Online',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    smsEngine: twilioClient ? 'REAL' : 'SIMULATED'
-  });
-});
+// ============================================================
+// CORE SYSTEM ROUTES
+// ============================================================
 
-// ════════════════════════════════════════════════════════════════════════════
-// DEALS ENDPOINT
-// ════════════════════════════════════════════════════════════════════════════
-app.get('/api/deals', (req, res) => {
-  const deals = [
-    {
-      id: 1,
-      address: '123 Main St, Baltimore, MD 21201',
-      arv: 150000,
-      score: 92.5,
-      profit: 46250,
-      status: 'active'
-    },
-    {
-      id: 2,
-      address: '456 Oak Ave, Baltimore, MD 21202',
-      arv: 180000,
-      score: 88.3,
-      profit: 55000,
-      status: 'active'
-    }
-  ];
-  res.json(deals);
-});
+loadRoute(
+"./hunter/realestate/realestate-api",
+"/api/realestate"
+);
+loadRoute(
+    "./command-center/executive-api",
+    "/api/executive"
+);
+loadRoute(
+ "./sales/sales-api",
+ "/api/sales"
+);
+loadRoute(
+"./autonomous/sales-loop-api",
+"/api/autonomous-sales"
+);
+loadRoute(
+"./reports/revenue-briefing-api",
+"/api/briefing"
+);
 
-// ════════════════════════════════════════════════════════════════════════════
-// BALANCE ENDPOINT
-// ════════════════════════════════════════════════════════════════════════════
-app.get('/api/balance', (req, res) => {
-  res.json({
-    available: 203400,
-    allocated: 0,
-    total: 203400,
-    currency: 'USD'
-  });
-});
+loadRoute(
+"./outreach/outreach-api",
+"/api/outreach"
+);
 
-// ════════════════════════════════════════════════════════════════════════════
-// GRANTS ENDPOINT
-// ════════════════════════════════════════════════════════════════════════════
-app.get('/api/grants/search', (req, res) => {
-  const grants = [
-    { id: 1, name: 'NSF SBIR Phase 1', amount: 150000, likelihood: 0.35 },
-    { id: 2, name: 'SBA Microloan', amount: 50000, likelihood: 0.65 },
-    { id: 3, name: 'HUD Community Development', amount: 250000, likelihood: 0.40 },
-    { id: 4, name: 'Maryland Business Development', amount: 100000, likelihood: 0.55 },
-    { id: 5, name: 'DOE Small Business Innovation', amount: 175000, likelihood: 0.25 },
-    { id: 6, name: 'USDA Rural Development', amount: 300000, likelihood: 0.30 },
-    { id: 7, name: 'EPA Small Business Program', amount: 100000, likelihood: 0.30 }
-  ];
-  const total = grants.reduce((sum, g) => sum + g.amount, 0);
-  res.json({
-    count: grants.length,
-    total: total,
-    grants: grants
-  });
-});
+loadRoute(
+"./conversion/deal-closer-api",
+"/api/conversion"
+);
+loadRoute(
+"./sales/sales-dashboard-api",
+"/api/sales-dashboard"
+);
+loadRoute(
+"./acquisition/acquisition-api",
+"/api/acquisition"
+);
+loadRoute(
+"./intelligence/revenue-brain-api",
+"/api/revenue-brain"
+);
 
-// ════════════════════════════════════════════════════════════════════════════
-// SMS OUTREACH - FULL PIPELINE - REAL SMS SENDING
-// ════════════════════════════════════════════════════════════════════════════
-app.post('/api/outreach/full-pipeline', async (req, res) => {
-  const { address, purchasePrice, rehabCost } = req.body;
+loadRoute(
+"./command-center/executive-dashboard-api",
+"/api/command"
+);
+loadRoute(
+"./cashflow/cashflow-api",
+"/api/cashflow"
+);
+loadRoute(
+"./sales/nia-sales-api",
+"/api/sales"
+);
 
-  if (!address || !purchasePrice) {
-    return res.status(400).json({ error: 'Address and purchasePrice required' });
-  }
+loadRoute(
+"./chief-of-staff/chief-api",
+"/api/chief"
+);
+loadRoute(
+"./intelligence/hunter-api",
+"/api/intelligence"
+);
 
-  try {
-    // Calculate offer
-    const arv = purchasePrice * 1.2;
-    const offerPrice = Math.round(arv * 0.6 - (rehabCost || 0));
+loadRoute(
+"./memory/memory-api",
+"/api/memory"
+);
 
-    // SMS Message
-    const smsMessage = `We buy houses! We're interested in ${address}. Cash offer up to $${offerPrice}. Call us at ${process.env.BUSINESS_PHONE || '757-339-9245'}.`;
+loadRoute(
+"./dashboard/dashboard-api",
+"/api/dashboard"
+);
+loadRoute(
+"./proposals/proposal-api",
+"/api/proposals"
+);
+loadRoute(
+"./ceo/ceo-api",
+"/api/ceo"
+);
+loadRoute(
+"./opportunities/opportunity-api",
+"/api/opportunities"
+);
+loadRoute(
+"./autonomous/autonomous-api",
+"/api/autonomous"
+);
 
-    let result = {
-      status: 'success',
-      address: address,
-      purchasePrice: purchasePrice,
-      rehabCost: rehabCost || 0,
-      arv: arv,
-      offer: offerPrice,
-      message: smsMessage,
-      timestamp: new Date().toISOString()
-    };
+loadRoute(
+"./autopilot/autopilot-api",
+"/api/autopilot"
+);
+loadRoute(
+"./intelligence/intelligence-api",
+"/api/intelligence"
+);
+loadRoute(
+"./autopilot/autopilot-api",
+"/api/autopilot"
+);
+loadRoute(
+"./router/opportunity-router-api",
+"/api/router"
+);
 
-    // SEND REAL SMS IF TWILIO IS CONFIGURED
-    if (twilioClient && twilioPhone) {
-      try {
-        const message = await twilioClient.messages.create({
-          from: twilioPhone,
-          to: '+1' + (process.env.BUSINESS_PHONE || '7573399245').replace(/\D/g, '').slice(-10),
-          body: smsMessage
+loadRoute(
+ "./command-center/revenue-dashboard-api",
+ "/api/command"
+);
+loadRoute(
+"./command-center/revenue-dashboard-api",
+"/api/command"
+);
+
+loadRoute(
+ "./acquisition/acquisition-leads-api",
+ "/api/acquisition/leads"
+);
+
+loadRoute(
+ "./revenue/automation/automation-api",
+ "/api/revenue/automation"
+);
+loadRoute(
+ "./revenue/intelligence/intelligence-api",
+ "/api/revenue/intelligence"
+);
+loadRoute(
+ "./revenue/outreach/outreach-api",
+ "/api/outreach"
+);
+loadRoute(
+ "./revenue/acquisition/acquisition-api",
+ "/api/acquisition/leads"
+);
+loadRoute("./revenue/intelligence-api", "/api/revenue/intelligence");
+loadRoute("./command-center/revenue-dashboard-api", "/api/command");
+loadRoute(
+ "./revenue/conversion/conversion-api",
+ "/api/conversion"
+);
+loadRoute(
+    "./funding/funding-api",
+    "/api/funding"
+);
+
+loadRoute(
+ "./revenue/proposals/proposal-api",
+ "/api/proposals"
+);
+loadRoute(
+ "./revenue/operator/operator-api",
+ "/api/operator"
+);
+loadRoute(
+ "./revenue/followup/followup-api",
+ "/api/followup"
+);
+loadRoute(
+    "./hunter/hunter-api",
+    "/api/hunter"
+);
+
+
+loadRoute(
+    "./acquisition/acquisition-api",
+    "/api/acquisition"
+);
+
+
+loadRoute(
+    "./revenue/revenue-api",
+    "/api/revenue"
+);
+
+
+loadRoute(
+    "./revenue/prospects/prospect-api",
+    "/api/prospects"
+);
+
+loadRoute(
+ "./command-center/revenue-dashboard-api",
+ "/api/command"
+);
+
+loadRoute(
+"./command-center/revenue-dashboard-api",
+"/api/command"
+);
+// ============================================================
+// HEALTH SYSTEM
+// ============================================================
+
+app.get(
+    "/api/system/health",
+    (req,res)=>{
+
+        res.json({
+
+            status:"online",
+
+            system:"Nia Capital OS",
+
+            timestamp:new Date().toISOString(),
+
+            uptime:process.uptime()
+
         });
 
-        result.sms = {
-          status: 'REAL - SENT',
-          messageSid: message.sid,
-          from: message.from,
-          to: message.to,
-          timestamp: message.dateCreated
-        };
-
-        console.log(`📱 [REAL SMS SENT] ${message.sid} to seller`);
-      } catch (twilioError) {
-        result.sms = {
-          status: 'REAL - FAILED',
-          error: twilioError.message
-        };
-        console.log(`❌ [SMS FAILED] ${twilioError.message}`);
-      }
-    } else {
-      // SIMULATED SMS IF TWILIO NOT CONFIGURED
-      result.sms = {
-        status: 'SIMULATED (Twilio not configured)',
-        message: smsMessage
-      };
-      console.log(`📱 [SIMULATED SMS] ${smsMessage}`);
     }
+);
 
-    res.json({
-      ...result,
-      pipeline: 'Pipeline complete'
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
-// ════════════════════════════════════════════════════════════════════════════
-// PROPERTY VALUATION
-// ════════════════════════════════════════════════════════════════════════════
-app.post('/api/valuation/estimate', (req, res) => {
-  const { address, purchasePrice } = req.body;
-  const arv = purchasePrice * 1.2;
-  const mao = arv * 0.65;
-  const profit = mao - purchasePrice;
 
-  res.json({
-    address,
-    purchasePrice,
-    arv,
-    mao,
-    profit,
-    roi: ((profit / purchasePrice) * 100).toFixed(2) + '%'
-  });
-});
+// ============================================================
+// ROOT
+// ============================================================
 
-// ════════════════════════════════════════════════════════════════════════════
-// DASHBOARD
-// ════════════════════════════════════════════════════════════════════════════
-app.get('/dashboard', (req, res) => {
-  res.sendFile(__dirname + '/public/dashboard.html');
-});
+app.get(
+    "/",
+    (req,res)=>{
 
-app.get('/', (req, res) => {
-  res.redirect('/dashboard');
-});
+        res.json({
 
-// ════════════════════════════════════════════════════════════════════════════
+            system:"Nia Capital OS",
+
+            status:"running",
+
+            version:"1.0"
+
+        });
+
+    }
+);
+
+
+
+// ============================================================
 // 404 HANDLER
-// ════════════════════════════════════════════════════════════════════════════
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Not Found',
-    path: req.path,
-    method: req.method,
-    available_endpoints: [
-      'GET /api/watson/health',
-      'GET /api/deals',
-      'GET /api/balance',
-      'GET /api/grants/search',
-      'POST /api/outreach/full-pipeline',
-      'POST /api/valuation/estimate',
-      'GET /dashboard'
-    ]
-  });
-});
+// ============================================================
 
-// ════════════════════════════════════════════════════════════════════════════
+app.use(
+    (req,res)=>{
+
+        res.status(404).json({
+
+            error:"Route not found",
+
+            path:req.path
+
+        });
+
+    }
+);
+
+
+
+// ============================================================
 // START SERVER
-// ════════════════════════════════════════════════════════════════════════════
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Server online on port ${PORT}`);
-  console.log(`✅ Test: curl http://localhost:${PORT}/api/watson/health`);
-  console.log('');
-  if (twilioClient && twilioPhone) {
-    console.log('✅ REAL SMS SENDING ACTIVE');
-    console.log(`   From: ${twilioPhone}`);
-  } else {
-    console.log('⚠️  SMS will be SIMULATED (missing Twilio config)');
-  }
-  console.log('');
-});
+// ============================================================
 
+app.listen(
+    PORT,
+    "0.0.0.0",
+    ()=>{
+
+        console.log(
+            `🏰 Nia OS running on http://0.0.0.0:${PORT}`
+        );
+
+    }
+);
