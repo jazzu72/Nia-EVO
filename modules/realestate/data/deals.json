@@ -1,0 +1,14 @@
+[
+  {
+    "purchase": 100000,
+    "repairs": 25000,
+    "arv": 200000,
+    "totalInvestment": 125000,
+    "estimatedProfit": 75000,
+    "roi": "60.00%",
+    "recommendation": "GOOD DEAL - REVIEW",
+    "id": 1785176040088,
+    "created": "2026-07-27T18:14:00.088Z",
+    "status": "analyzed"
+  }
+]

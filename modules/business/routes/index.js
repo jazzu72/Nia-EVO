@@ -1,36 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const business = require('../business-engine');
 
-router.get('/dashboard', (req, res) => {
-  res.json(business.getDashboard());
+
+router.get('/dashboard',(req,res)=>{
+
+res.json({
+
+system:"Nia Small Business OS",
+
+customers:0,
+leads:0,
+invoices:0,
+revenue:0,
+tasks:0
+
 });
 
-router.get('/invoices', (req, res) => {
-  res.json(business.data.invoices);
 });
 
-router.post('/invoices', (req, res) => {
-  const invoice = business.addInvoice(req.body);
-  res.status(201).json(invoice);
+
+router.post('/lead',(req,res)=>{
+
+res.json({
+
+success:true,
+message:"Lead added",
+lead:req.body
+
 });
 
-router.get('/appointments', (req, res) => {
-  res.json(business.data.appointments);
 });
 
-router.post('/appointments', (req, res) => {
-  const appt = business.addAppointment(req.body);
-  res.status(201).json(appt);
-});
-
-router.get('/leads', (req, res) => {
-  res.json(business.data.leads);
-});
-
-router.post('/leads', (req, res) => {
-  const lead = business.addLead(req.body);
-  res.status(201).json(lead);
-});
 
 module.exports = router;

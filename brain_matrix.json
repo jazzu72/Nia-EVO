@@ -13,7 +13,6 @@
   },
   "expansion_plan": {
     "phase_1": "Optimize SMS reply logic based on seller response data.",
-    "phase_2": "Add voice calling via Twilio Voice.",
     "phase_3": "Integrate with CRM systems (Salesforce, HubSpot).",
     "phase_4": "Multi-tenant architecture — sell Nia as a service."
   }

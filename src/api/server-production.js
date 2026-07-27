@@ -1,6 +1,5 @@
 /**
  * NIA CAPITAL OS - Production API Server
- * SIMPLIFIED: Works without Twilio, Telegram, or any external services
  */
 
 const express = require('express');

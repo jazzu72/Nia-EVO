@@ -19,7 +19,6 @@ echo ""
 pm2 list
 echo ""
 echo "✅ Dashboard: http://localhost:3000/dashboard"
-echo "📱 Twilio: https://www.twilio.com/console"
 echo "📊 Logs: pm2 logs"
 echo ""
 pm2 logs api

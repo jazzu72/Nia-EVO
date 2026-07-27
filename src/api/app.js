@@ -40,7 +40,17 @@ app.get('/sw.js', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/sw.js'));
 });
 
+const businessRoutes = require('../../modules/business/routes');
+const realestateRoutes = require('../../modules/realestate/routes');
+
+app.use('/api/business', businessRoutes);
+app.use('/api/realestate', realestateRoutes);
 // ════════════════════════════════════════════════════════════════════════════
+
+app.get('/realestate-dashboard',(req,res)=>{
+res.sendFile(path.join(__dirname,'../../public/dashboard/realestate.html'));
+});
+
 // API - WHAT MATTERS FOR REVENUE
 // ════════════════════════════════════════════════════════════════════════════
 

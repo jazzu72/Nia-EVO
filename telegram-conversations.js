@@ -13,9 +13,6 @@ function sendToPhone(message) {
   bot.sendMessage(CHAT_ID, message);
 }
 
-// ─── Poll Twilio for new replies ────────────────────────────
-function checkTwilioReplies() {
-  exec('curl -s http://localhost:3000/api/twilio/replies', (err, out) => {
     if (err) return;
     try {
       const replies = JSON.parse(out);
@@ -80,4 +77,3 @@ bot.onText(/\/list/, (msg) => {
 
 // ─── Start monitoring ────────────────────────────────────────
 console.log('💬 Conversational Telegram bot is running.');
-setInterval(checkTwilioReplies, 30000);

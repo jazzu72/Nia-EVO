@@ -55,7 +55,6 @@ function sendTelegramMessage(message) {
 // Alert formats
 const alerts = {
   smsReceived: (seller, message) => 
-    `📱 <b>SMS Received</b>\n${seller}\n"${message}"\n\n<i>Respond immediately: https://www.twilio.com/console</i>`,
   
   dealCreated: (address, price, profit) =>
     `🏠 <b>Deal Created</b>\n${address}\nPrice: $${price.toLocaleString()}\nProfit: $${profit.toLocaleString()}`,
