@@ -4,6 +4,7 @@
 // ============================================================
 
 const express = require("express");
+const ceoDashboard = require("./ceo/dashboard-api");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -21,11 +22,23 @@ app.use(express.json());
 
 console.log("🏰 Nia Capital OS Booting...");
 
+app.use("/api/grants", require("./grants-engine/grant-api"));
+console.log("✅ /api/grants loaded");
+
+app.use("/api/funding", require("./funding/funding-api"));
+console.log("✅ /api/funding loaded");
+
+app.use(
+);
+
 
 // ============================================================
 // ROUTE LOADER
 // ============================================================
 
+app.use("/api/ceo", require("./ceo/grant-dashboard-api"));
+
+app.use("/api/ceo", require("./ceo/grant-autopilot-api"));
 function loadRoute(file, endpoint) {
 
     try {
@@ -173,6 +186,9 @@ loadRoute(
  "/api/acquisition/leads"
 );
 
+app.use("/api/ceo", require("./ceo/decision-api"));
+
+app.use("/api/ceo", require("./ceo/grant-autopilot-api"));
 loadRoute(
  "./revenue/automation/automation-api",
  "/api/revenue/automation"
@@ -196,8 +212,6 @@ loadRoute(
  "/api/conversion"
 );
 loadRoute(
-    "./funding/funding-api",
-    "/api/funding"
 );
 
 loadRoute(
@@ -293,6 +307,33 @@ app.get(
 
 
 // ============================================================
+
+
+
+
+
+// CORE FUNDING + GRANTS ROUTES
+try {
+} catch(e) {
+console.log("GRANTS ERROR:",e.message);
+}
+
+try {
+} catch(e) {
+console.log("FUNDING ERROR:",e.message);
+}
+
+
+
+// ============================================================
+// FUNDING + GRANTS API
+// ============================================================
+app.use("/api/grants", require("./grants-engine/grant-api"));
+console.log("✅ /api/grants mounted");
+
+app.use("/api/funding", require("./funding/funding-api"));
+console.log("✅ /api/funding mounted");
+
 // 404 HANDLER
 // ============================================================
 
@@ -301,7 +342,6 @@ app.use(
 
         res.status(404).json({
 
-            error:"Route not found",
 
             path:req.path
 
@@ -316,6 +356,43 @@ app.use(
 // START SERVER
 // ============================================================
 
+
+
+
+
+
+try {
+} catch(e) {
+  console.log("⚠️ grants route:", e.message);
+}
+
+try {
+} catch(e) {
+  console.log("⚠️ funding route:", e.message);
+}
+
+
+
+// ===== FINAL ROUTE REPAIR =====
+try {
+ console.log("✅ grants mounted");
+} catch(e) {
+ console.log("❌ grants failed:", e.message);
+}
+
+try {
+ console.log("✅ funding mounted");
+} catch(e) {
+ console.log("❌ funding failed:", e.message);
+}
+
+app.use((req,res)=>{
+ res.status(404).json({
+  error:"Route not found",
+  path:req.path
+ });
+});
+
 app.listen(
     PORT,
     "0.0.0.0",
@@ -327,3 +404,8 @@ app.listen(
 
     }
 );
+
+
+
+
+// FINAL FALLBACK

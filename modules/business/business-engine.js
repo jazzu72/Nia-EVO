@@ -1,64 +1,44 @@
-const sqlite3 = require('sqlite3').verbose();
+const fs = require('fs');
 const path = require('path');
+const DATA_FILE = path.join(__dirname, '../../data/business.json');
 
-const dbPath = path.join(__dirname, 'data', 'business.db');
-const db = new sqlite3.Database(dbPath);
-
-// ─── Initialize tables ──────────────────────────────────────
-db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS invoices (
-    id TEXT PRIMARY KEY,
-    customer TEXT,
-    amount REAL,
-    paid INTEGER DEFAULT 0,
-    created_at TEXT
-  )`);
-
-  db.run(`CREATE TABLE IF NOT EXISTS appointments (
-    id TEXT PRIMARY KEY,
-    customer TEXT,
-    date TEXT,
-    time TEXT,
-    notes TEXT
-  )`);
-
-  db.run(`CREATE TABLE IF NOT EXISTS leads (
-    id TEXT PRIMARY KEY,
-    name TEXT,
-    email TEXT,
-    phone TEXT,
-    status TEXT DEFAULT 'new',
-    created_at TEXT
-  )`);
-});
+function loadData() {
+  if (!fs.existsSync(DATA_FILE)) return { revenue: 0, invoices: [], appointments: [], leads: [] };
+  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+}
+function saveData(data) { fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2)); }
 
 class BusinessEngine {
-  getDashboard(callback) {
-    db.get(`SELECT COUNT(*) as invoices FROM invoices WHERE paid = 0`, (err, inv) => {
-      db.get(`SELECT COUNT(*) as appointments FROM appointments`, (err, appt) => {
-        db.get(`SELECT COUNT(*) as leads FROM leads WHERE status = 'new'`, (err, leads) => {
-          callback({
-            revenue: 2430,
-            outstandingInvoices: inv ? inv.invoices : 0,
-            appointments: appt ? appt.appointments : 0,
-            newLeads: leads ? leads.leads : 0,
-            inventoryAlerts: 3,
-            payrollDue: 'Friday',
-            customerMessages: 5,
-            ceoTasks: 7
-          });
-        });
-      });
-    });
+  constructor() { this.data = loadData(); }
+  getDashboard() {
+    const inv = this.data.invoices || [];
+    const appt = this.data.appointments || [];
+    const leads = this.data.leads || [];
+    return {
+      revenue: this.data.revenue || 0,
+      outstandingInvoices: inv.filter(i => !i.paid).length,
+      appointments: appt.length,
+      newLeads: leads.filter(l => l.status === 'new').length,
+      inventoryAlerts: 3,
+      payrollDue: 'Friday',
+      customerMessages: 5,
+      ceoTasks: 7
+    };
   }
-
-  addInvoice(invoice, callback) {
-    const id = Date.now().toString();
-    const stmt = db.prepare(`INSERT INTO invoices (id, customer, amount, paid, created_at) VALUES (?, ?, ?, 0, ?)`);
-    stmt.run(id, invoice.customer, invoice.amount, new Date().toISOString());
-    stmt.finalize();
-    callback({ id, ...invoice, paid: false });
+  addInvoice(invoice) {
+    this.data.invoices.push({ ...invoice, id: Date.now().toString(), paid: false });
+    saveData(this.data);
+    return invoice;
+  }
+  addAppointment(appt) {
+    this.data.appointments.push({ ...appt, id: Date.now().toString() });
+    saveData(this.data);
+    return appt;
+  }
+  addLead(lead) {
+    this.data.leads.push({ ...lead, id: Date.now().toString(), status: 'new' });
+    saveData(this.data);
+    return lead;
   }
 }
-
 module.exports = new BusinessEngine();

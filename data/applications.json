@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "APP-1785008604378",
+    "grantTitle": "AI Innovation Grant",
+    "organization": "Innovation Foundation",
+    "amount": 1000000,
+    "company": "House of Jazzu",
+    "mission": "Building AI, quantum technology, education, and business automation systems.",
+    "status": "Draft",
+    "created": "2026-07-25T19:43:24.378Z"
+  }
+]

@@ -53,3 +53,16 @@ dist/
 !NIA-CEO/
 !logs/.gitkeep
 !data/.gitkeep
+node_modules/
+.pm2/
+*.log
+
+data/*.json
+data/*/*.json
+
+backups/
+.env
+
+web-ui/node_modules/
+
+.DS_Store

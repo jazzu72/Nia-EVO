@@ -1,0 +1,12 @@
+{
+  "name":"nia-opportunity-crm",
+  "version":"1.0.0",
+  "private":true,
+  "scripts":{
+    "start":"node crm.js"
+  },
+  "dependencies":{
+    "express":"^4.21.2",
+    "@seald-io/nedb":"^4.1.2"
+  }
+}

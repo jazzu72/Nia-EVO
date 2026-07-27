@@ -1,0 +1,56 @@
+[
+  {
+    "id": "APP-1785169434022",
+    "grant": "Virginia Innovation Partnership Corporation",
+    "amount": 250000,
+    "company": "House of Jazzu",
+    "status": "DRAFT_READY",
+    "sections": {
+      "executiveSummary": "House of Jazzu is building AI-powered technology platforms including Nia Capital OS, an autonomous business intelligence system.",
+      "problem": "Small businesses lack affordable AI infrastructure for operations, funding discovery, and growth.",
+      "solution": "Nia provides AI-driven executive decision support, automation, and capital discovery.",
+      "innovation": "A unified AI operating system combining business intelligence, automation, and financial strategy."
+    },
+    "created": "2026-07-27T16:23:54.022Z"
+  },
+  {
+    "id": "SUB-1785170149941",
+    "grant": "Virginia Innovation Partnership Corporation",
+    "amount": 250000,
+    "company": "House of Jazzu",
+    "status": "IN_PROGRESS",
+    "checklist": [
+      {
+        "item": "Executive Summary",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Problem Statement",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Innovation Description",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Milestone Plan",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Budget",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Founder Information",
+        "status": "PENDING"
+      },
+      {
+        "item": "Financial Documents",
+        "status": "PENDING"
+      }
+    ],
+    "readinessScore": 71,
+    "nextAction": "Complete founder information and financial documentation",
+    "created": "2026-07-27T16:35:49.941Z"
+  }
+]

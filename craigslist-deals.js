@@ -1,7 +1,7 @@
-import Parser from "rss-parser";
+const Parser=require("rss-parser");
 const parser = new Parser();
 
-export async function fetchCraigslistDeals(city = "norfolk") {
+async function fetchCraigslistDeals(city = "norfolk") {
   try {
     const url = `https://${city}.craigslist.org/search/rea?format=rss`;
     const feed = await parser.parseURL(url);
@@ -18,3 +18,6 @@ export async function fetchCraigslistDeals(city = "norfolk") {
     return [];
   }
 }
+
+
+module.exports={fetchCraigslistDeals};

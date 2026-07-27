@@ -1,48 +1,39 @@
-/**
- * NIA CEO - Autonomous Capital Management
- * FIXED: No SMS loops, focused execution only
- */
-
-const fs = require('fs');
-const axios = require('axios');
+const { OpenAI } = require('@langchain/openai');
+const { ChatOpenAI } = require('@langchain/openai');
+const { HumanMessage, SystemMessage } = require('@langchain/core/messages');
 require('dotenv').config();
 
-const CONFIG = {
-  twilio: {
-    accountSid: process.env.TWILIO_ACCOUNT_SID,
-    authToken: process.env.TWILIO_AUTH_TOKEN,
-    phoneNumber: process.env.TWILIO_PHONE_NUMBER
-  },
-  cycle: 3600000, // 1 hour (not every minute)
-  debug: true
+// ─── Tools (placeholders — integrate real ones as needed) ──
+const tools = {
+  sms: { send: async (to, message) => console.log(`📱 SMS to ${to}: ${message}`) },
+  email: { send: async (to, subj, body) => console.log(`📧 Email to ${to}: ${subj}`) },
+  calendar: { schedule: async (email, date, desc) => console.log(`📅 Inspection: ${date} for ${email}`) },
+  docusign: { send: async (email, doc) => console.log(`📄 Contract to ${email}`) },
+  stripe: { transfer: async (amt, dest) => console.log(`💰 Transfer $${amt} to ${dest}`) },
+  grants: { submit: async (grant) => console.log(`📋 Submitting ${grant.title}`) }
 };
 
-// Load leads from file (no API calls during startup)
-function loadLeads() {
+const llm = new ChatOpenAI({ modelName: 'gpt-3.5-turbo', temperature: 0.2 });
+
+async function runCycle() {
+  console.log('🤖 CEO CYCLE STARTED');
+
+  const systemPrompt = `You are Nia, autonomous CEO of House of Jazzu.
+Your goal: Close real estate deals and secure grants.
+Available tools: sms, email, calendar, docusign, stripe, grants.
+Respond in JSON: { "action": "tool_name", "params": {...}, "next": "description" }`;
+
+  const messages = [
+    new SystemMessage(systemPrompt),
+    new HumanMessage('Check for new leads and send an SMS to any new lead.'),
+  ];
+
   try {
-    if (fs.existsSync('./data/leads.json')) {
-      return JSON.parse(fs.readFileSync('./data/leads.json', 'utf8'));
-    }
+    const response = await llm.invoke(messages);
+    console.log('🧠 Decision:', response.content);
   } catch (err) {
-    console.log('No leads file yet');
+    console.error('❌ LLM Error:', err.message);
   }
-  return {};
 }
 
-// CEO Decision Loop
-function runCycle() {
-  console.log('\n🤖 CEO CYCLE STARTED');
-  console.log(`⏰ Time: ${new Date().toISOString()}`);
-  
-  const leads = loadLeads();
-  const leadCount = Object.keys(leads).length;
-  
-  console.log(`📊 Status: ${leadCount} leads in system`);
-  console.log('✅ Ready for Jason to execute: respond to SMS, schedule inspections, close deals');
-}
-
-// Run cycle every hour (not every minute)
-runCycle();
-setInterval(runCycle, CONFIG.cycle);
-
-console.log('\n✅ CEO Engine running (cycles every 1 hour)\n');
+setInterval(runCycle, 60000);

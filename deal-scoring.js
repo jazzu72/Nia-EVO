@@ -1,4 +1,4 @@
-import crypto from "crypto";
+const crypto=require("crypto");
 
 const distressKeywords = [
   "as-is", "as is", "must sell", "motivated", "urgent",
@@ -24,13 +24,13 @@ const locationWeights = {
   "23224": 15
 };
 
-export function hashDeal(deal) {
+function hashDeal(deal) {
   return crypto.createHash("sha256")
     .update((deal.title || "") + (deal.link || ""))
     .digest("hex");
 }
 
-export function scoreDeal(deal) {
+function scoreDeal(deal) {
   let score = 0;
   const tags = [];
   let reasonParts = [];
@@ -77,3 +77,6 @@ export function scoreDeal(deal) {
     reason: reasonParts.join(", ")
   };
 }
+
+
+module.exports={hashDeal};

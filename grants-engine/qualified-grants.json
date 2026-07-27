@@ -1,0 +1,20 @@
+[
+  {
+    "name":"Virginia Innovation Partnership Corporation",
+    "amount":250000,
+    "focus":["startup","technology","Virginia","AI"],
+    "score":120
+  },
+  {
+    "name":"NSF America Seed Fund",
+    "amount":256000,
+    "focus":["AI","software","technology","innovation"],
+    "score":95
+  },
+  {
+    "name":"SBIR/STTR Programs",
+    "amount":150000,
+    "focus":["research","AI","technology"],
+    "score":70
+  }
+]

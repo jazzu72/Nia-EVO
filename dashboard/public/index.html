@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Nia Command Center</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#111;
+color:white;
+padding:30px;
+
+}
+
+
+.card{
+
+background:#222;
+padding:20px;
+margin:15px;
+border-radius:10px;
+
+}
+
+
+.online{
+
+color:#00ff88;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>🏰 Nia Command Center</h1>
+
+
+<div class="card">
+
+<h2>System Status</h2>
+
+<p id="status">
+Loading...
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Modules</h2>
+
+<ul id="modules"></ul>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>CEO Message</h2>
+
+<p>
+
+Nia Capital OS is monitoring operations.
+
+</p>
+
+</div>
+
+
+
+<script>
+
+
+fetch("/api/status")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+
+document.getElementById("status")
+.innerHTML =
+"<span class='online'>● "+
+data.status+
+"</span>";
+
+
+
+data.modules.forEach(m=>{
+
+let li=document.createElement("li");
+
+li.innerHTML="✅ "+m;
+
+document
+.getElementById("modules")
+.appendChild(li);
+
+});
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+

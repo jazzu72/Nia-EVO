@@ -1,0 +1,7 @@
+{
+"financial_transactions":"approval_required",
+"contract_signing":"approval_required",
+"grant_submission":"approval_required",
+"marketing_messages":"allowed",
+"internal_reports":"allowed"
+}
