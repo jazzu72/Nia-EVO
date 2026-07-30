@@ -1,0 +1,17 @@
+{
+  "system": "Nia Revenue Communication Dispatcher",
+  "timestamp": "2026-07-29T10:21:10.177Z",
+  "status": "ACTIVE",
+  "queuedMessages": 1,
+  "messages": [
+    {
+      "id": 1785319645067,
+      "target": "Revenue Opportunity",
+      "channel": "PENDING",
+      "message": "Follow up regarding Prepare customer follow-up.",
+      "status": "READY_TO_SEND",
+      "createdAt": "2026-07-29T10:21:10.177Z"
+    }
+  ],
+  "nextAction": "Send priority revenue follow-ups"
+}

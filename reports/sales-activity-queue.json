@@ -1,0 +1,28 @@
+{
+  "system": "Nia Sales Activity Queue",
+  "timestamp": "2026-07-29T13:12:18.092Z",
+  "tasks": [
+    {
+      "id": 1785330738092,
+      "campaign": "Little Guys Recharge Customer Acquisition",
+      "action": "Find and contact prospects",
+      "priority": "HIGH",
+      "status": "READY"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "AI Automation Services",
+      "action": "Find and contact prospects",
+      "priority": "HIGH",
+      "status": "READY"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "Grant & Funding Pipeline",
+      "action": "Find and contact prospects",
+      "priority": "HIGH",
+      "status": "READY"
+    }
+  ],
+  "totalTasks": 3
+}

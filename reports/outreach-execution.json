@@ -1,0 +1,31 @@
+{
+  "system": "Nia Outreach Execution Engine",
+  "timestamp": "2026-07-29T13:14:43.260Z",
+  "queuedActions": 3,
+  "actions": [
+    {
+      "id": 1785330738092,
+      "target": "Little Guys Recharge Customer Acquisition",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.259Z"
+    },
+    {
+      "id": 1785330738092,
+      "target": "AI Automation Services",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.260Z"
+    },
+    {
+      "id": 1785330738092,
+      "target": "Grant & Funding Pipeline",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.260Z"
+    }
+  ]
+}

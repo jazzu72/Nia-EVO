@@ -1,0 +1,32 @@
+{
+  "system": "Nia Zapier Integration Registry",
+  "timestamp": "2026-07-29T10:37:46.325Z",
+  "status": "OPERATIONAL",
+  "integrations": [
+    {
+      "name": "Lead Intake",
+      "endpoint": "/api/zapier-webhook",
+      "purpose": "Receive leads from external sources",
+      "status": "READY"
+    },
+    {
+      "name": "Outbound Actions",
+      "endpoint": "/api/zapier-outbound",
+      "purpose": "Send Nia actions to external tools",
+      "status": "READY"
+    },
+    {
+      "name": "Revenue Pipeline",
+      "endpoint": "revenue-opportunity-engine",
+      "purpose": "Score and prioritize opportunities",
+      "status": "READY"
+    },
+    {
+      "name": "Communication",
+      "endpoint": "revenue-communication-dispatcher",
+      "purpose": "Prepare customer outreach",
+      "status": "READY"
+    }
+  ],
+  "nextAction": "Connect Zapier workflows"
+}

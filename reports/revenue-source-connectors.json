@@ -1,0 +1,25 @@
+{
+  "system": "Nia Revenue Source Connectors",
+  "timestamp": "2026-07-29T10:27:53.868Z",
+  "sources": [
+    {
+      "name": "Little Guys Recharge & Detailing",
+      "type": "service_business",
+      "status": "ACTIVE",
+      "action": "Generate customer leads"
+    },
+    {
+      "name": "AI Automation Services",
+      "type": "b2b_service",
+      "status": "ACTIVE",
+      "action": "Find business clients"
+    },
+    {
+      "name": "Grant Opportunities",
+      "type": "funding",
+      "status": "ACTIVE",
+      "action": "Track funding opportunities"
+    }
+  ],
+  "activeSources": 3
+}

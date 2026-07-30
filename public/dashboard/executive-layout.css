@@ -1,0 +1,81 @@
+body{
+background:#030712;
+}
+
+.executive-panel,
+.kpi-panel,
+.pipeline-panel,
+.activity-panel,
+.priority-panel,
+.followup-panel,
+.report-panel,
+.deal-panel,
+.health-panel{
+display:block;
+margin:20px 0;
+}
+
+.exec-metrics,
+#nia-kpis{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.exec-metrics div,
+.kpi-card{
+background:linear-gradient(145deg,#111827,#0b1220);
+border:1px solid rgba(255,255,255,.1);
+border-radius:22px;
+padding:24px;
+min-height:120px;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+transition:.25s;
+}
+
+.exec-metrics div:hover,
+.kpi-card:hover{
+transform:translateY(-5px);
+border-color:#5865ff;
+}
+
+.exec-metrics b,
+.kpi-card b{
+display:block;
+font-size:32px;
+margin-top:12px;
+color:#6ee7ff;
+}
+
+.deal-card,
+.priority-item,
+.followup-item{
+background:#0f172a;
+border-radius:18px;
+padding:20px;
+margin:12px 0;
+border-left:4px solid #5865ff;
+}
+
+#executive-snapshot{
+font-size:16px;
+line-height:1.8;
+}
+
+.exec-status{
+padding:20px;
+background:#071426;
+border-radius:18px;
+margin-bottom:20px;
+color:#9fffd1;
+}
+
+@media(max-width:700px){
+.app{
+padding:12px;
+}
+.exec-metrics,
+#nia-kpis{
+grid-template-columns:1fr;
+}
+}

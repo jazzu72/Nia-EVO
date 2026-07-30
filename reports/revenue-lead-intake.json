@@ -1,0 +1,14 @@
+{
+  "system": "Nia Revenue Lead Intake",
+  "timestamp": "2026-07-29T10:18:53.970Z",
+  "totalLeads": 1,
+  "latestLead": {
+    "id": 1785320333967,
+    "name": "cd ~/nia-capital-os && cat > runtime/revenue-transaction-capture.js <<'EOF'",
+    "type": "const fs=require(\"fs\");",
+    "estimatedValue": 0,
+    "status": "NEW",
+    "created": "2026-07-29T10:18:53.967Z"
+  },
+  "nextAction": "Send lead to revenue scoring engine"
+}

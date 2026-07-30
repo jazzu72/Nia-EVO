@@ -1,0 +1,22 @@
+{
+  "system": "Nia Deal Follow-Up Engine",
+  "timestamp": "2026-07-29T09:55:55.937Z",
+  "totalFollowUps": 1,
+  "followups": [
+    {
+      "id": 1785255760308,
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "priority": "HIGH",
+      "action": "Initiate follow-up sequence",
+      "steps": [
+        "Verify contact information",
+        "Confirm interest and timeline",
+        "Schedule negotiation discussion",
+        "Update deal status"
+      ],
+      "status": "READY"
+    }
+  ],
+  "nextAction": "Execute highest priority follow-up"
+}

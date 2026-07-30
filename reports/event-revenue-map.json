@@ -1,0 +1,27 @@
+{
+  "system": "Nia Event Revenue Map",
+  "timestamp": "2026-07-29T13:26:47.115Z",
+  "routes": {
+    "NEW_LEAD": {
+      "process": "opportunity-qualification-engine",
+      "outcome": "Create sales opportunity"
+    },
+    "CUSTOMER_RESPONSE": {
+      "process": "customer-response-engine",
+      "outcome": "Update deal status"
+    },
+    "MEETING_BOOKED": {
+      "process": "meeting-pipeline-manager",
+      "outcome": "Advance pipeline"
+    },
+    "PAYMENT_RECEIVED": {
+      "process": "revenue-transaction-capture",
+      "outcome": "Update revenue ledger"
+    },
+    "DEAL_CLOSED": {
+      "process": "revenue-intelligence-update",
+      "outcome": "Improve conversion model"
+    }
+  },
+  "status": "ACTIVE"
+}

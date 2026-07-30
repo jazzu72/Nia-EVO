@@ -1,0 +1,15 @@
+{
+  "system": "Nia Customer Intake Engine",
+  "timestamp": "2026-07-29T13:30:11.621Z",
+  "fields": [
+    "name",
+    "company",
+    "email",
+    "phone",
+    "service",
+    "budget",
+    "source"
+  ],
+  "status": "READY",
+  "nextAction": "Receive first real customer inquiry"
+}

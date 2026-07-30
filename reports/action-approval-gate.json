@@ -1,0 +1,16 @@
+{
+  "system": "Nia Action Approval Gate",
+  "timestamp": "2026-07-29T13:18:40.425Z",
+  "pendingActions": {
+    "outreach": 3,
+    "meetings": 0,
+    "completed": 0
+  },
+  "rules": {
+    "requireApproval": true,
+    "logEveryAction": true,
+    "trackOutcome": true
+  },
+  "status": "ACTIVE",
+  "nextAction": "Approve and execute revenue actions"
+}

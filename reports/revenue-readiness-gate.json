@@ -1,0 +1,13 @@
+{
+  "system": "Nia Revenue Readiness Gate",
+  "timestamp": "2026-07-28T19:38:44.669Z",
+  "decision": "BUILD",
+  "score": 10,
+  "revenueStatus": "ATTENTION",
+  "opportunityCount": 1,
+  "blockers": [
+    "No closed revenue transactions",
+    "System readiness below execution threshold"
+  ],
+  "nextAction": "Advance highest ranked opportunity"
+}

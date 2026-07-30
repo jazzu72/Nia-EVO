@@ -1,0 +1,21 @@
+{
+  "system": "Nia CEO Command Dashboard",
+  "timestamp": "2026-07-28T19:36:59.278Z",
+  "status": "ATTENTION",
+  "score": 75,
+  "grade": "CHECK REQUIRED",
+  "revenue": {
+    "metrics": {},
+    "readiness": {}
+  },
+  "deals": {
+    "metrics": {},
+    "readiness": {},
+    "ranking": {}
+  },
+  "execution": {
+    "metrics": {},
+    "health": {}
+  },
+  "nextActions": []
+}

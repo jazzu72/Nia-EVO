@@ -1,0 +1,15 @@
+{
+  "system": "Nia Lead Qualification Automation",
+  "timestamp": "2026-07-29T13:34:45.416Z",
+  "rules": {
+    "highValue": "value >= 5000",
+    "mediumValue": "value >= 1000",
+    "lowValue": "value < 1000"
+  },
+  "scoring": {
+    "budget": 40,
+    "urgency": 30,
+    "fit": 30
+  },
+  "status": "ACTIVE"
+}

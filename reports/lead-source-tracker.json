@@ -1,0 +1,22 @@
+{
+  "system": "Nia Lead Source Tracker",
+  "timestamp": "2026-07-29T13:31:38.366Z",
+  "activeSources": 3,
+  "sources": [
+    {
+      "name": "Zapier Leads",
+      "type": "automation",
+      "status": "READY"
+    },
+    {
+      "name": "Website Inquiry",
+      "type": "web",
+      "status": "READY"
+    },
+    {
+      "name": "Local Business Outreach",
+      "type": "sales",
+      "status": "READY"
+    }
+  ]
+}

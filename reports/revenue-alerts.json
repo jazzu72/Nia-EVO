@@ -1,0 +1,13 @@
+{
+  "system": "Nia Revenue Alert Engine",
+  "timestamp": "2026-07-28T18:38:44.553Z",
+  "alertCount": 1,
+  "alerts": [
+    {
+      "type": "revenue_readiness",
+      "severity": "medium",
+      "message": "Revenue readiness score below target",
+      "timestamp": "2026-07-28T18:38:44.551Z"
+    }
+  ]
+}

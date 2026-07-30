@@ -1,0 +1,26 @@
+{
+  "system": "Nia CEO Daily Briefing",
+  "timestamp": "2026-07-28T17:30:43.670Z",
+  "executive": {
+    "status": "OPERATIONAL",
+    "pipeline": 180000,
+    "deals": 1,
+    "actions": 1,
+    "auditEvents": 26
+  },
+  "infrastructure": {
+    "heartbeat": "ONLINE",
+    "uptime": 210.482481263
+  },
+  "priorities": [
+    {
+      "id": 1785255760308,
+      "type": "property-review",
+      "target": "Norfolk VA",
+      "priority": "HIGH",
+      "status": "pending",
+      "offer": 180000,
+      "created": "2026-07-28T16:22:40.308Z"
+    }
+  ]
+}

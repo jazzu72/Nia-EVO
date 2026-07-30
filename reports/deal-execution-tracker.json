@@ -1,0 +1,16 @@
+{
+  "system": "Nia Deal Execution Tracker",
+  "timestamp": "2026-07-29T09:54:04.655Z",
+  "activeDeals": 1,
+  "pendingQueue": 11,
+  "deals": [
+    {
+      "id": 1785255760308,
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "priority": "HIGH",
+      "status": "PENDING_EXECUTION",
+      "nextAction": "Contact, negotiate, and advance toward close"
+    }
+  ]
+}

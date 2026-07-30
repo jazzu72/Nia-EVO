@@ -1,0 +1,12 @@
+{
+  "system": "Nia Zapier External Event Router",
+  "timestamp": "2026-07-29T10:38:43.378Z",
+  "status": "ACTIVE",
+  "registeredIntegrations": 4,
+  "supportedEvents": [
+    "lead_received",
+    "opportunity_created",
+    "revenue_closed"
+  ],
+  "nextAction": "Await external Zapier event"
+}

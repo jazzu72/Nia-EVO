@@ -1,0 +1,12 @@
+{
+  "system": "Nia Revenue API Health Check",
+  "timestamp": "2026-07-29T10:10:59.238Z",
+  "endpoint": "/api/revenue-command-api",
+  "status": "ONLINE",
+  "checks": {
+    "revenueBrief": true,
+    "revenueLedger": true,
+    "commandAPI": true
+  },
+  "nextAction": "Monitor revenue command interface"
+}

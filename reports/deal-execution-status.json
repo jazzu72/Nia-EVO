@@ -1,0 +1,20 @@
+{
+  "system": "Nia Deal Execution Status",
+  "timestamp": "2026-07-29T09:59:13.051Z",
+  "status": "ACTIVE_EXECUTION",
+  "priorityDeal": {
+    "id": 1785255760308,
+    "target": "Norfolk VA",
+    "offer": 180000,
+    "conversionScore": 90,
+    "recommendation": "Prioritize closing action"
+  },
+  "progress": {
+    "activityEvents": 1,
+    "pendingActions": 1
+  },
+  "blockers": [
+    "Awaiting real-world follow-up outcome"
+  ],
+  "nextAction": "Complete next follow-up step and update outcome"
+}

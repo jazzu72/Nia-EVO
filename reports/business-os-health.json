@@ -1,0 +1,29 @@
+{
+  "system": "Nia Business Operating System Health",
+  "timestamp": "2026-07-29T13:31:02.372Z",
+  "readiness": "5/5",
+  "status": "READY_FOR_REAL_CUSTOMERS",
+  "nextAction": "Connect first live customer source",
+  "checks": [
+    {
+      "system": "reports/revenue-offer-catalog.json",
+      "status": "ONLINE"
+    },
+    {
+      "system": "reports/customer-intake-engine.json",
+      "status": "ONLINE"
+    },
+    {
+      "system": "data/customer-followup-queue.json",
+      "status": "ONLINE"
+    },
+    {
+      "system": "data/revenue-ledger.json",
+      "status": "ONLINE"
+    },
+    {
+      "system": "reports/revenue-system-verification.json",
+      "status": "ONLINE"
+    }
+  ]
+}

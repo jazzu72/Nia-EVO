@@ -1,0 +1,12 @@
+{
+  "system": "Nia Revenue Command Center Health",
+  "timestamp": "2026-07-29T10:13:53.869Z",
+  "endpoint": "/api/revenue-command-center",
+  "checks": {
+    "commandSummary": true,
+    "apiModule": true,
+    "ceoSnapshot": true
+  },
+  "status": "ONLINE",
+  "nextAction": "Monitor live revenue command interface"
+}

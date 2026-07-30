@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1785197909730,
+    "property": "Norfolk VA",
+    "buyer": "Demo Buyer",
+    "amount": 180000,
+    "stage": "under_contract",
+    "nextAction": "closing coordination",
+    "revenue": 0,
+    "created": "2026-07-28T00:18:29.730Z"
+  },
+  {
+    "id": 1785254707814,
+    "address": "Norfolk VA",
+    "stage": "buyer_review",
+    "estimatedRevenue": 5000,
+    "status": "active",
+    "updated": "2026-07-28T16:13:30.020Z"
+  }
+]

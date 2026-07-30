@@ -1,0 +1,22 @@
+{
+  "system": "Nia Deal Closing Command",
+  "timestamp": "2026-07-29T09:58:25.558Z",
+  "priorityDeal": {
+    "id": 1785255760308,
+    "target": "Norfolk VA",
+    "offer": 180000,
+    "conversionScore": 90,
+    "recommendation": "Prioritize closing action"
+  },
+  "executionPlan": [
+    "Review opportunity details",
+    "Confirm contact and follow-up status",
+    "Advance negotiation step",
+    "Record outcome"
+  ],
+  "activity": {
+    "totalEvents": 1,
+    "pending": 1
+  },
+  "nextAction": "Execute priority deal follow-up"
+}

@@ -1,0 +1,14 @@
+{
+  "system": "Nia Meeting Pipeline Manager",
+  "timestamp": "2026-07-29T13:16:52.596Z",
+  "scheduled": 0,
+  "stages": [
+    "CONTACTED",
+    "RESPONDED",
+    "MEETING_PENDING",
+    "PROPOSAL",
+    "CLOSED"
+  ],
+  "status": "ACTIVE",
+  "nextAction": "Schedule qualified conversations"
+}

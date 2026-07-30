@@ -1,0 +1,12 @@
+{
+  "system": "Nia Opportunity Action Board",
+  "timestamp": "2026-07-29T13:29:12.302Z",
+  "priority": null,
+  "actions": [
+    "Contact prospect",
+    "Create proposal",
+    "Schedule meeting",
+    "Close transaction"
+  ],
+  "status": "ACTIVE"
+}

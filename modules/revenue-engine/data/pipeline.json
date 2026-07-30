@@ -1,0 +1,60 @@
+{
+  "system": "Nia Revenue Engine",
+  "status": "ACTIVE",
+  "stages": [
+    "lead_found",
+    "lead_scored",
+    "offer_created",
+    "contacted",
+    "followup",
+    "converted",
+    "paid"
+  ],
+  "leads": [
+    {
+      "id": 1785263399161,
+      "name": "Sample Revenue Opportunity",
+      "type": "business_prospect",
+      "source": "nia-revenue-engine",
+      "stage": "lead_scored",
+      "created": "2026-07-28T18:29:59.161Z",
+      "score": 85,
+      "priority": "HIGH"
+    }
+  ],
+  "offers": [
+    {
+      "id": 1785263442985,
+      "leadId": 1785263399161,
+      "customer": "Sample Revenue Opportunity",
+      "offer": "AI Business Automation Assessment",
+      "estimatedValue": 500,
+      "stage": "outreach_ready",
+      "created": "2026-07-28T18:30:42.985Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1785263495806,
+      "outreachId": 1785263468818,
+      "customer": "Sample Revenue Opportunity",
+      "status": "prospect",
+      "revenue": 0,
+      "created": "2026-07-28T18:31:35.806Z"
+    }
+  ],
+  "revenue": 0,
+  "updatedAt": "2026-07-28T18:32:04.185Z",
+  "outreach": [
+    {
+      "id": 1785263468818,
+      "offerId": 1785263442985,
+      "customer": "Sample Revenue Opportunity",
+      "channel": "pending",
+      "messageStatus": "ready",
+      "stage": "contacted",
+      "created": "2026-07-28T18:31:08.818Z"
+    }
+  ],
+  "transactions": []
+}

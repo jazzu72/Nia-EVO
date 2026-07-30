@@ -1,0 +1,24 @@
+{
+  "system": "Nia Kaizen Improvement Backlog",
+  "timestamp": "2026-07-29T18:25:52.040Z",
+  "items": [
+    {
+      "id": 1,
+      "priority": "HIGH",
+      "area": "Revenue",
+      "task": "Improve conversion pipeline"
+    },
+    {
+      "id": 2,
+      "priority": "MEDIUM",
+      "area": "Automation",
+      "task": "Remove manual tasks"
+    },
+    {
+      "id": 3,
+      "priority": "MEDIUM",
+      "area": "Communication",
+      "task": "Improve command reliability"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "system": "Nia Live Lead Import Engine",
+  "timestamp": "2026-07-29T13:34:33.964Z",
+  "sources": [
+    "Zapier",
+    "Website",
+    "Referral",
+    "Manual Entry"
+  ],
+  "importedLeads": 0,
+  "status": "READY",
+  "nextAction": "Receive first external lead"
+}

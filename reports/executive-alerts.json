@@ -1,0 +1,11 @@
+{
+  "system": "Nia Executive Alert Engine",
+  "timestamp": "2026-07-28T18:07:23.138Z",
+  "alertCount": 1,
+  "alerts": [
+    {
+      "type": "system_score",
+      "message": "System score below 100: 75"
+    }
+  ]
+}

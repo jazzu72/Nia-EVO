@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1785359011756,
+    "name": "Sample Prospect",
+    "company": "Example Company",
+    "service": "AI Business Automation",
+    "value": 2500,
+    "status": "NEW",
+    "created": "2026-07-29T21:03:31.756Z",
+    "qualified": true,
+    "score": 2500
+  }
+]

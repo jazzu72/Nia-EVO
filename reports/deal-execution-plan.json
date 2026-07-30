@@ -1,0 +1,16 @@
+{
+  "system": "Nia Deal Execution Engine",
+  "timestamp": "2026-07-28T18:48:20.627Z",
+  "actions": [
+    {
+      "id": 1785264500625,
+      "type": "property-review",
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "action": "begin_deal_execution",
+      "priority": "HIGH",
+      "stage": "analysis",
+      "created": "2026-07-28T18:48:20.626Z"
+    }
+  ]
+}

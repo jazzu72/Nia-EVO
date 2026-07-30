@@ -13,28 +13,30 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(
-path.join(__dirname,"../../public")
-));
+app.use(
+  express.static(
+    path.join(__dirname, "../../public")
+  )
+);
 
 
 // ===============================
-// SYSTEM HEALTH
+// SYSTEM HEALTH CORE
 // ===============================
 
-app.get("/api/health",(req,res)=>{
+app.get("/api/health", (req, res) => {
 
-res.json({
+  res.json({
 
-system:"Nia Capital OS",
+    system: "Nia Capital OS",
 
-status:"ONLINE",
+    status: "ONLINE",
 
-timestamp:new Date().toISOString(),
+    timestamp: new Date().toISOString(),
 
-node:process.version
+    node: process.version
 
-});
+  });
 
 });
 
@@ -43,86 +45,98 @@ node:process.version
 // MODULE LOADER
 // ===============================
 
-
 const modules = [
 
-["customer-intake","customer-intake"],
-["live-events","live-events"],
-["revenue-leads","revenue-leads"],
-["revenue-engine","revenue-engine"],
-["revenue-dashboard","revenue-dashboard"],
-["leads","leads"],
-["opportunities","opportunities"],
-["realestate","realestate"],
-["business","business"],
-["grants","grants"],
-["decision","decision"],
-["memory","memory"],
-["reports","reports"]
+  ["customer-intake","customer-intake"],
+  ["live-events","live-events"],
+  ["revenue-leads","revenue-leads"],
+  ["revenue-engine","revenue-engine"],
+  ["revenue-dashboard","revenue-dashboard"],
+  ["leads","leads"],
+  ["opportunities","opportunities"],
+  ["realestate","realestate"],
+  ["business","business"],
+  ["grants","grants"],
+  ["decision","decision"],
+  ["memory","memory"],
+  ["reports","reports"],
+  ["system-health","system-health"]
 
 ];
 
 
-modules.forEach(([route,name])=>{
+modules.forEach(([name, path]) => {
 
-try{
+  try {
 
-app.use(
-`/api/${route}`,
-require(`../../modules/${name}/routes`)
-);
+    app.use(
+      `/api/${name}`,
+      require(`../../modules/${path}/routes`)
+    );
 
-console.log(
-"LOADED:",
-route
-);
+    console.log(`LOADED: ${name}`);
 
-}
+  } catch(err) {
 
-catch(err){
+    console.log(`FAILED: ${name}`, err.message);
 
-console.log(
-"SKIPPED:",
-route,
-err.message
-);
+  }
 
-}
+});
+
+// ===============================
+// ROOT STATUS
+// ===============================
+
+app.get("/api/status",(req,res)=>{
+
+  res.json({
+
+    system:"NIA CAPITAL OS",
+
+    status:"ONLINE",
+
+    mode:"EXECUTIVE CORE",
+
+    modules:modules.length
+
+  });
 
 });
 
 
-
 // ===============================
-// 404
+// 404 HANDLER
 // ===============================
 
 app.use((req,res)=>{
 
-res.status(404).json({
+  res.status(404).json({
 
-error:"Route not found",
+    error:"Route not found",
 
-path:req.path
+    path:req.path
 
-});
+  });
 
 });
 
 
 // ===============================
-// ERROR CONTROL
+// ERROR HANDLER
 // ===============================
 
 app.use((err,req,res,next)=>{
 
-console.error(err);
+  console.error(err);
 
-res.status(500).json({
+  res.status(500).json({
 
-error:"Nia Core Error"
+    error:"Internal Server Error",
 
-});
+    message:err.message
+
+  });
 
 });
 

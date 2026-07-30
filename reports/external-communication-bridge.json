@@ -1,0 +1,43 @@
+{
+  "system": "Nia External Communication Bridge",
+  "timestamp": "2026-07-29T13:17:33.420Z",
+  "queuedMessages": [
+    {
+      "id": 1785330738092,
+      "target": "Little Guys Recharge Customer Acquisition",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.259Z",
+      "dispatchStatus": "QUEUED",
+      "nextAction": "Send outreach"
+    },
+    {
+      "id": 1785330738092,
+      "target": "AI Automation Services",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.260Z",
+      "dispatchStatus": "QUEUED",
+      "nextAction": "Send outreach"
+    },
+    {
+      "id": 1785330738092,
+      "target": "Grant & Funding Pipeline",
+      "action": "SEND_INITIAL_OUTREACH",
+      "channel": "EMAIL/SMS/CALL",
+      "status": "READY",
+      "createdAt": "2026-07-29T13:14:43.260Z",
+      "dispatchStatus": "QUEUED",
+      "nextAction": "Send outreach"
+    }
+  ],
+  "channels": [
+    "EMAIL",
+    "SMS",
+    "CRM"
+  ],
+  "status": "READY",
+  "nextAction": "Send approved outreach through connected provider"
+}

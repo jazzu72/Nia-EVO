@@ -1,0 +1,15 @@
+{
+  "system": "Nia Revenue Proposal Generator",
+  "timestamp": "2026-07-29T10:39:42.126Z",
+  "proposal": {
+    "client": "cd ~/nia-capital-os && cat > runtime/revenue-transaction-capture.js <<'EOF'",
+    "opportunityType": "const fs=require(\"fs\");",
+    "estimatedValue": 0,
+    "offerStatus": "READY",
+    "nextSteps": [
+      "Send proposal",
+      "Schedule meeting",
+      "Close agreement"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "system": "Nia Revenue Execution Pulse",
+  "timestamp": "2026-07-28T19:47:44.418Z",
+  "decision": "CONVERT_OFFERS",
+  "activeTasks": 1,
+  "pending": 1,
+  "completed": 0,
+  "executorStatus": "pending",
+  "status": "EXECUTION_ACTIVE",
+  "nextAction": "Complete highest priority revenue task"
+}

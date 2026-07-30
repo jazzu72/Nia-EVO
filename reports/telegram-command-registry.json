@@ -1,0 +1,15 @@
+{
+  "system": "Nia Telegram Command Registry",
+  "timestamp": "2026-07-29T13:53:35.300Z",
+  "commands": [
+    "/status",
+    "/revenue",
+    "/find_leads",
+    "/analyze_deal",
+    "/create_offer",
+    "/daily_report",
+    "/execute"
+  ],
+  "routing": "ACTIVE",
+  "status": "READY"
+}

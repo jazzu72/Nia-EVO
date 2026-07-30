@@ -1,0 +1,30 @@
+{
+  "date": "2026-07-28T18:07:47.142Z",
+  "system": "Nia Capital OS CEO Report",
+  "metrics": {
+    "activeDeals": 1,
+    "pipelineValue": 180000,
+    "pendingActions": 1
+  },
+  "deals": [
+    {
+      "id": 1785256231855,
+      "offerId": 1785254707814,
+      "address": "Norfolk VA",
+      "value": 180000,
+      "stage": "new",
+      "created": "2026-07-28T16:30:31.855Z"
+    }
+  ],
+  "priorities": [
+    {
+      "id": 1785255760308,
+      "type": "property-review",
+      "target": "Norfolk VA",
+      "priority": "HIGH",
+      "status": "pending",
+      "offer": 180000,
+      "created": "2026-07-28T16:22:40.308Z"
+    }
+  ]
+}

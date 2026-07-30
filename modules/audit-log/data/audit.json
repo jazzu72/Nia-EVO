@@ -1,0 +1,1215 @@
+[
+  {
+    "id": 1785261346272,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:55:46.272Z"
+  },
+  {
+    "id": 1785261349876,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:55:49.876Z"
+  },
+  {
+    "id": 1785261353749,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:55:53.749Z"
+  },
+  {
+    "id": 1785261357473,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T17:55:57.473Z"
+  },
+  {
+    "id": 1785261357599,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:55:57.599Z"
+  },
+  {
+    "id": 1785261361345,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:01.345Z"
+  },
+  {
+    "id": 1785261365219,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:05.219Z"
+  },
+  {
+    "id": 1785261368957,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:08.957Z"
+  },
+  {
+    "id": 1785261372866,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:12.866Z"
+  },
+  {
+    "id": 1785261376677,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:16.677Z"
+  },
+  {
+    "id": 1785261380438,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:20.438Z"
+  },
+  {
+    "id": 1785261384278,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:24.278Z"
+  },
+  {
+    "id": 1785261388094,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:28.094Z"
+  },
+  {
+    "id": 1785261391995,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:31.995Z"
+  },
+  {
+    "id": 1785261395630,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:35.630Z"
+  },
+  {
+    "id": 1785261399614,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:39.614Z"
+  },
+  {
+    "id": 1785261403347,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:43.347Z"
+  },
+  {
+    "id": 1785261404203,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T17:56:44.203Z"
+  },
+  {
+    "id": 1785261407148,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:47.148Z"
+  },
+  {
+    "id": 1785261410891,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:50.891Z"
+  },
+  {
+    "id": 1785261414752,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:54.752Z"
+  },
+  {
+    "id": 1785261417477,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T17:56:57.477Z"
+  },
+  {
+    "id": 1785261418569,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:56:58.569Z"
+  },
+  {
+    "id": 1785261422645,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:02.645Z"
+  },
+  {
+    "id": 1785261426376,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:06.376Z"
+  },
+  {
+    "id": 1785261430112,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:10.112Z"
+  },
+  {
+    "id": 1785261433805,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:13.805Z"
+  },
+  {
+    "id": 1785261437701,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:17.701Z"
+  },
+  {
+    "id": 1785261441470,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:21.470Z"
+  },
+  {
+    "id": 1785261445159,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:25.159Z"
+  },
+  {
+    "id": 1785261448981,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:28.981Z"
+  },
+  {
+    "id": 1785261452921,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:32.921Z"
+  },
+  {
+    "id": 1785261456614,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:36.614Z"
+  },
+  {
+    "id": 1785261460497,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:40.497Z"
+  },
+  {
+    "id": 1785261464207,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T17:57:44.207Z"
+  },
+  {
+    "id": 1785261464301,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:44.301Z"
+  },
+  {
+    "id": 1785261468111,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:48.111Z"
+  },
+  {
+    "id": 1785261472057,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:52.057Z"
+  },
+  {
+    "id": 1785261475898,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:55.898Z"
+  },
+  {
+    "id": 1785261477473,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T17:57:57.473Z"
+  },
+  {
+    "id": 1785261479780,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:57:59.780Z"
+  },
+  {
+    "id": 1785261483428,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:03.428Z"
+  },
+  {
+    "id": 1785261487405,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:07.405Z"
+  },
+  {
+    "id": 1785261491067,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:11.067Z"
+  },
+  {
+    "id": 1785261495016,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:15.016Z"
+  },
+  {
+    "id": 1785261498719,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:18.719Z"
+  },
+  {
+    "id": 1785261502545,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:22.545Z"
+  },
+  {
+    "id": 1785261506378,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:26.378Z"
+  },
+  {
+    "id": 1785261510076,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:30.076Z"
+  },
+  {
+    "id": 1785261513965,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:33.965Z"
+  },
+  {
+    "id": 1785261517674,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:37.674Z"
+  },
+  {
+    "id": 1785261521697,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:41.697Z"
+  },
+  {
+    "id": 1785261524209,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T17:58:44.209Z"
+  },
+  {
+    "id": 1785261525361,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:45.361Z"
+  },
+  {
+    "id": 1785261529157,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:49.157Z"
+  },
+  {
+    "id": 1785261532962,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:52.962Z"
+  },
+  {
+    "id": 1785261536774,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:58:56.774Z"
+  },
+  {
+    "id": 1785261537470,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T17:58:57.470Z"
+  },
+  {
+    "id": 1785261540650,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:00.650Z"
+  },
+  {
+    "id": 1785261544642,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:04.642Z"
+  },
+  {
+    "id": 1785261548608,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:08.608Z"
+  },
+  {
+    "id": 1785261552137,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:12.137Z"
+  },
+  {
+    "id": 1785261556175,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:16.176Z"
+  },
+  {
+    "id": 1785261559782,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:19.782Z"
+  },
+  {
+    "id": 1785261563727,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:23.727Z"
+  },
+  {
+    "id": 1785261567431,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:27.431Z"
+  },
+  {
+    "id": 1785261571277,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:31.277Z"
+  },
+  {
+    "id": 1785261575009,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:35.009Z"
+  },
+  {
+    "id": 1785261578806,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:38.806Z"
+  },
+  {
+    "id": 1785261582543,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:42.543Z"
+  },
+  {
+    "id": 1785261584208,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T17:59:44.208Z"
+  },
+  {
+    "id": 1785261586468,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:46.468Z"
+  },
+  {
+    "id": 1785261590281,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:50.281Z"
+  },
+  {
+    "id": 1785261594100,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:54.100Z"
+  },
+  {
+    "id": 1785261597468,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T17:59:57.468Z"
+  },
+  {
+    "id": 1785261598044,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T17:59:58.044Z"
+  },
+  {
+    "id": 1785261602059,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:02.059Z"
+  },
+  {
+    "id": 1785261605630,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:05.630Z"
+  },
+  {
+    "id": 1785261609554,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:09.554Z"
+  },
+  {
+    "id": 1785261613269,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:13.269Z"
+  },
+  {
+    "id": 1785261617067,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:17.067Z"
+  },
+  {
+    "id": 1785261621048,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:21.048Z"
+  },
+  {
+    "id": 1785261624794,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:24.794Z"
+  },
+  {
+    "id": 1785261628650,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:28.650Z"
+  },
+  {
+    "id": 1785261632448,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:32.448Z"
+  },
+  {
+    "id": 1785261636359,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:36.359Z"
+  },
+  {
+    "id": 1785261640098,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:40.098Z"
+  },
+  {
+    "id": 1785261643994,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:43.994Z"
+  },
+  {
+    "id": 1785261644014,
+    "event": "backup_verification",
+    "detail": "backup_available: 4 backup folders",
+    "timestamp": "2026-07-28T18:00:44.014Z"
+  },
+  {
+    "id": 1785261644211,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:00:44.211Z"
+  },
+  {
+    "id": 1785261647966,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:47.966Z"
+  },
+  {
+    "id": 1785261651776,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:51.776Z"
+  },
+  {
+    "id": 1785261655530,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:55.530Z"
+  },
+  {
+    "id": 1785261657486,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:00:57.486Z"
+  },
+  {
+    "id": 1785261659299,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:00:59.299Z"
+  },
+  {
+    "id": 1785261663268,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:03.268Z"
+  },
+  {
+    "id": 1785261667279,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:07.279Z"
+  },
+  {
+    "id": 1785261671105,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:11.105Z"
+  },
+  {
+    "id": 1785261675012,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:15.012Z"
+  },
+  {
+    "id": 1785261678738,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:18.738Z"
+  },
+  {
+    "id": 1785261682621,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:22.621Z"
+  },
+  {
+    "id": 1785261686317,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:26.317Z"
+  },
+  {
+    "id": 1785261691083,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:31.083Z"
+  },
+  {
+    "id": 1785261694749,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:34.749Z"
+  },
+  {
+    "id": 1785261699148,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:39.148Z"
+  },
+  {
+    "id": 1785261702994,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:42.994Z"
+  },
+  {
+    "id": 1785261704211,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:01:44.211Z"
+  },
+  {
+    "id": 1785261706983,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:46.983Z"
+  },
+  {
+    "id": 1785261710599,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:50.599Z"
+  },
+  {
+    "id": 1785261713706,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:53.706Z"
+  },
+  {
+    "id": 1785261717486,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:01:57.486Z"
+  },
+  {
+    "id": 1785261718033,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:01:58.033Z"
+  },
+  {
+    "id": 1785261722285,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:02.285Z"
+  },
+  {
+    "id": 1785261727160,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:07.160Z"
+  },
+  {
+    "id": 1785261730414,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:10.414Z"
+  },
+  {
+    "id": 1785261734631,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:14.631Z"
+  },
+  {
+    "id": 1785261737231,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:17.231Z"
+  },
+  {
+    "id": 1785261740321,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:20.321Z"
+  },
+  {
+    "id": 1785261744115,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:24.115Z"
+  },
+  {
+    "id": 1785261748011,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:28.011Z"
+  },
+  {
+    "id": 1785261752558,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:32.558Z"
+  },
+  {
+    "id": 1785261756682,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:36.682Z"
+  },
+  {
+    "id": 1785261761046,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:41.046Z"
+  },
+  {
+    "id": 1785261763527,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:43.527Z"
+  },
+  {
+    "id": 1785261764209,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:02:44.209Z"
+  },
+  {
+    "id": 1785261767144,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:47.144Z"
+  },
+  {
+    "id": 1785261770751,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:50.751Z"
+  },
+  {
+    "id": 1785261775755,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:55.755Z"
+  },
+  {
+    "id": 1785261777497,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:02:57.497Z"
+  },
+  {
+    "id": 1785261779632,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:02:59.632Z"
+  },
+  {
+    "id": 1785261783958,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:03.958Z"
+  },
+  {
+    "id": 1785261788397,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:08.397Z"
+  },
+  {
+    "id": 1785261791015,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:11.015Z"
+  },
+  {
+    "id": 1785261794889,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:14.889Z"
+  },
+  {
+    "id": 1785261799994,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:19.994Z"
+  },
+  {
+    "id": 1785261803560,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:23.560Z"
+  },
+  {
+    "id": 1785261808073,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:28.073Z"
+  },
+  {
+    "id": 1785261812520,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:32.520Z"
+  },
+  {
+    "id": 1785261815344,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:35.344Z"
+  },
+  {
+    "id": 1785261819123,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:39.123Z"
+  },
+  {
+    "id": 1785261822599,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:42.599Z"
+  },
+  {
+    "id": 1785261824210,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:03:44.210Z"
+  },
+  {
+    "id": 1785261828183,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:48.183Z"
+  },
+  {
+    "id": 1785261832372,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:52.372Z"
+  },
+  {
+    "id": 1785261837000,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:03:57.000Z"
+  },
+  {
+    "id": 1785261837494,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:03:57.494Z"
+  },
+  {
+    "id": 1785261841916,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:01.916Z"
+  },
+  {
+    "id": 1785261845414,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:05.414Z"
+  },
+  {
+    "id": 1785261850638,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:10.638Z"
+  },
+  {
+    "id": 1785261853866,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:13.866Z"
+  },
+  {
+    "id": 1785261858062,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:18.062Z"
+  },
+  {
+    "id": 1785261863190,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:23.190Z"
+  },
+  {
+    "id": 1785261869117,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:29.117Z"
+  },
+  {
+    "id": 1785261873193,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:33.193Z"
+  },
+  {
+    "id": 1785261877138,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:37.138Z"
+  },
+  {
+    "id": 1785261881978,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:41.978Z"
+  },
+  {
+    "id": 1785261884209,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:04:44.209Z"
+  },
+  {
+    "id": 1785261886827,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:46.827Z"
+  },
+  {
+    "id": 1785261895627,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:55.627Z"
+  },
+  {
+    "id": 1785261897481,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:04:57.481Z"
+  },
+  {
+    "id": 1785261899267,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:04:59.267Z"
+  },
+  {
+    "id": 1785261902820,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:02.820Z"
+  },
+  {
+    "id": 1785261908775,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:08.775Z"
+  },
+  {
+    "id": 1785261913221,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:13.221Z"
+  },
+  {
+    "id": 1785261918675,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:18.675Z"
+  },
+  {
+    "id": 1785261923384,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:23.384Z"
+  },
+  {
+    "id": 1785261926627,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:26.627Z"
+  },
+  {
+    "id": 1785261932279,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:32.279Z"
+  },
+  {
+    "id": 1785261936879,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:36.879Z"
+  },
+  {
+    "id": 1785261944016,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:44.016Z"
+  },
+  {
+    "id": 1785261944215,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:05:44.215Z"
+  },
+  {
+    "id": 1785261947156,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:47.156Z"
+  },
+  {
+    "id": 1785261950295,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:50.295Z"
+  },
+  {
+    "id": 1785261956525,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:05:56.525Z"
+  },
+  {
+    "id": 1785261957490,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:05:57.490Z"
+  },
+  {
+    "id": 1785261964041,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:04.041Z"
+  },
+  {
+    "id": 1785261971037,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:11.037Z"
+  },
+  {
+    "id": 1785261973138,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:13.138Z"
+  },
+  {
+    "id": 1785261977081,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:17.081Z"
+  },
+  {
+    "id": 1785261983371,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:23.371Z"
+  },
+  {
+    "id": 1785261990540,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:30.540Z"
+  },
+  {
+    "id": 1785261996004,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:36.004Z"
+  },
+  {
+    "id": 1785262000525,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:40.525Z"
+  },
+  {
+    "id": 1785262003693,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:43.693Z"
+  },
+  {
+    "id": 1785262004208,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:06:44.208Z"
+  },
+  {
+    "id": 1785262009683,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:49.683Z"
+  },
+  {
+    "id": 1785262014778,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:06:54.778Z"
+  },
+  {
+    "id": 1785262017492,
+    "event": "revenue_scan",
+    "detail": "Generated 0 offers",
+    "timestamp": "2026-07-28T18:06:57.492Z"
+  },
+  {
+    "id": 1785262021491,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:01.491Z"
+  },
+  {
+    "id": 1785262023954,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:03.954Z"
+  },
+  {
+    "id": 1785262027363,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:07.363Z"
+  },
+  {
+    "id": 1785262033676,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:13.676Z"
+  },
+  {
+    "id": 1785262042172,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:22.172Z"
+  },
+  {
+    "id": 1785262047120,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:27.120Z"
+  },
+  {
+    "id": 1785262050449,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:30.449Z"
+  },
+  {
+    "id": 1785262056370,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:36.370Z"
+  },
+  {
+    "id": 1785262064076,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:44.076Z"
+  },
+  {
+    "id": 1785262064220,
+    "event": "health_check",
+    "detail": "Nia self-healer scan completed",
+    "timestamp": "2026-07-28T18:07:44.220Z"
+  },
+  {
+    "id": 1785262069973,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"online\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:49.973Z"
+  },
+  {
+    "id": 1785262073612,
+    "event": "startup_verification",
+    "detail": "[{\"service\":\"nia\",\"status\":\"stopped\"},{\"service\":\"revenue-loop\",\"status\":\"online\"},{\"service\":\"offer-to-deal\",\"status\":\"online\"},{\"service\":\"action-queue-loop\",\"status\":\"online\"},{\"service\":\"ceo-report\",\"status\":\"online\"},{\"service\":\"nia-intelligence\",\"status\":\"online\"},{\"service\":\"nia-self-healer\",\"status\":\"online\"}]",
+    "timestamp": "2026-07-28T18:07:53.612Z"
+  },
+  {
+    "id": 1785262538984,
+    "event": "remediation_reviewed",
+    "detail": "Reviewed System score below 100: 75",
+    "timestamp": "2026-07-28T18:15:38.984Z"
+  },
+  {
+    "id": 1785263986272,
+    "event": "revenue_alert",
+    "detail": "Revenue readiness score below target",
+    "severity": "medium",
+    "timestamp": "2026-07-28T18:39:46.272Z"
+  }
+]

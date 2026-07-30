@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nia Capital OS Status</title>
+<link rel="stylesheet" href="/dashboard/nia.css">
+</head>
+
+<body>
+<div class="app">
+
+<header class="topbar">
+<h1>🏰 NIA CAPITAL OS</h1>
+<div class="status">SYSTEM STATUS</div>
+</header>
+
+<div class="executive-panel">
+<h2>Autonomous Business Command Center</h2>
+<div id="status-box">
+Checking systems...
+</div>
+</div>
+
+</div>
+
+<script>
+async function check(){
+ try{
+  const r=await fetch('/api/public-status');
+  const d=await r.json();
+
+  document.getElementById('status-box').innerHTML=`
+   <h3>🟢 ${d.status}</h3>
+   <p>Opportunities: ${d.metrics.opportunities}</p>
+   <p>Active Pipeline: ${d.metrics.activePipeline}</p>
+   <p>Pipeline Value: $${Number(d.metrics.pipelineValue).toLocaleString()}</p>
+   <small>${d.timestamp}</small>
+  `;
+ }catch(e){
+  document.getElementById('status-box').innerHTML="🔴 System unavailable";
+ }
+}
+
+check();
+setInterval(check,30000);
+</script>
+
+</body>
+</html>

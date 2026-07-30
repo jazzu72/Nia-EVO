@@ -1,0 +1,30 @@
+{
+  "system": "Nia Revenue Conversion Action Plan",
+  "timestamp": "2026-07-29T10:01:53.378Z",
+  "status": "EXECUTING",
+  "priorities": [
+    {
+      "priority": 1,
+      "action": "Advance highest-value opportunity",
+      "owner": "Nia Revenue Engine"
+    },
+    {
+      "priority": 2,
+      "action": "Complete pending follow-up actions",
+      "owner": "Deal Execution"
+    },
+    {
+      "priority": 3,
+      "action": "Record outcome and revenue event",
+      "owner": "Revenue Ledger"
+    }
+  ],
+  "targetDeal": {
+    "id": 1785255760308,
+    "target": "Norfolk VA",
+    "offer": 180000,
+    "conversionScore": 90,
+    "recommendation": "Prioritize closing action"
+  },
+  "nextAction": "Execute priority deal follow-up"
+}

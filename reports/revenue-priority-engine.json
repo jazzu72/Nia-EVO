@@ -1,0 +1,38 @@
+{
+  "system": "Nia Revenue Priority Engine",
+  "timestamp": "2026-07-29T10:39:41.904Z",
+  "highestPriority": {
+    "name": "Little Guys Recharge & Detailing",
+    "type": "service_business",
+    "status": "ACTIVE",
+    "action": "Generate customer leads",
+    "priorityScore": 100,
+    "nextAction": "Generate customer leads"
+  },
+  "ranked": [
+    {
+      "name": "Little Guys Recharge & Detailing",
+      "type": "service_business",
+      "status": "ACTIVE",
+      "action": "Generate customer leads",
+      "priorityScore": 100,
+      "nextAction": "Generate customer leads"
+    },
+    {
+      "name": "AI Automation Services",
+      "type": "b2b_service",
+      "status": "ACTIVE",
+      "action": "Find business clients",
+      "priorityScore": 90,
+      "nextAction": "Find business clients"
+    },
+    {
+      "name": "Grant Opportunities",
+      "type": "funding",
+      "status": "ACTIVE",
+      "action": "Track funding opportunities",
+      "priorityScore": 80,
+      "nextAction": "Track funding opportunities"
+    }
+  ]
+}

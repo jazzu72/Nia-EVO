@@ -1,0 +1,28 @@
+{
+  "system": "Nia CEO Live Feed",
+  "timestamp": "2026-07-28T19:35:38.927Z",
+  "status": "ATTENTION",
+  "health": "ATTENTION",
+  "command": {
+    "revenue": {
+      "metrics": {
+        "leads": 1,
+        "offers": 1,
+        "prospects": 1,
+        "transactions": 0,
+        "revenue": 0
+      },
+      "readiness": {}
+    },
+    "deals": {
+      "metrics": {},
+      "readiness": {},
+      "ranking": {}
+    },
+    "execution": {
+      "metrics": {},
+      "health": {}
+    }
+  },
+  "nextActions": []
+}

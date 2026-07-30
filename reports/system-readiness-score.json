@@ -1,0 +1,13 @@
+{
+  "system": "Nia Capital OS System Readiness",
+  "timestamp": "2026-07-28T19:37:19.882Z",
+  "score": 10,
+  "status": "NEEDS WORK",
+  "components": {
+    "revenue": 0,
+    "deals": 0,
+    "execution": {},
+    "liveHealth": 0
+  },
+  "nextAction": "Increase qualified opportunities"
+}

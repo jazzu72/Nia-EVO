@@ -1,0 +1,28 @@
+{
+  "system": "Nia Revenue Action Engine",
+  "timestamp": "2026-07-28T19:42:06.360Z",
+  "actions": [
+    {
+      "priority": "HIGH",
+      "action": "Follow up on active offers",
+      "target": {
+        "target": "Norfolk VA",
+        "offer": 180000,
+        "priority": "HIGH",
+        "score": 50,
+        "recommendation": "Review and advance deal"
+      },
+      "status": "pending"
+    },
+    {
+      "priority": "HIGH",
+      "action": "Create first transaction pathway",
+      "status": "pending"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Convert active offers into conversations",
+      "status": "pending"
+    }
+  ]
+}

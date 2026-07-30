@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nia Capital OS</title>
+<link rel="stylesheet" href="/dashboard/nia.css?v=2">
+<link rel="stylesheet" href="/dashboard/executive-layout.css?v=1"><link rel="stylesheet" href="/dashboard/mobile-shell.css?v=1"></head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+    <div>
+        <h1>🏰 NIA CAPITAL OS</h1><div style="background:red;color:#fff;padding:10px;font-size:28px">BUILD 11:56:49</div>
+        <p>Autonomous Business Intelligence Engine</p>
+    </div>
+    <div class="status">
+        <span class="dot"></span>
+        NIA ONLINE
+    </div>
+<div id="nia-last-sync">Last sync: starting...</div></header>
+
+
+<section class="hero">
+
+<div class="nia-core">
+    <div class="core-ring">
+        ◉
+    </div>
+
+    <h2>NIA EXECUTIVE CORE</h2>
+    <p id="mission">
+        Monitoring House of Jazzu operations
+    </p>
+
+    <div class="engine-grid">
+        <span>Memory <b>ACTIVE</b></span>
+        <span>Reasoning <b>ACTIVE</b></span>
+        <span>Revenue <b>READY</b></span>
+        <span>Acquisition <b>READY</b></span>
+    </div>
+</div>
+
+</section>
+
+
+<section class="metrics">
+
+<div class="panel">
+<h3>Capital Intelligence</h3>
+<strong id="capital">$0</strong>
+</div>
+
+<div class="panel">
+<h3>Revenue Pipeline</h3>
+<strong id="deals">0</strong>
+</div>
+
+<div class="panel">
+<h3>Grant Radar</h3>
+<strong id="grants">$0</strong>
+</div>
+
+<div class="panel">
+<h3>System Memory</h3>
+<strong id="memory">0%</strong>
+</div>
+
+</section>
+
+
+<section class="workspace">
+
+<div class="panel activity">
+<h3>NIA MEMORY STREAM</h3>
+<div id="nia-memory">
+Waiting for intelligence activity...
+</div>
+</div>
+
+
+<div class="panel communication">
+
+<h3>COMMUNICATE WITH NIA</h3>
+
+<textarea id="nia-command"
+placeholder="Ask Nia:
+Find grants
+Analyze properties
+Review revenue
+Prepare investor report"></textarea>
+
+<button onclick="sendCommand()">
+SEND TO NIA
+</button>
+
+<div id="nia-response">
+Nia awaiting instructions.
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+<script src="/dashboard/nia.js?v=2"></script>
+
+<script src="/dashboard/live-sync.js"></script>
+<div class="activity-panel">
+<h2>📡 Nia Activity Feed</h2>
+<div id="activity-feed">
+Waiting for activity...
+</div>
+</div>
+
+<div class="priority-panel">
+<h2>🎯 Nia Priority Queue</h2>
+<div id="priority-feed">
+Scanning priorities...
+</div>
+</div>
+<script src="/dashboard/priority-sync.js"></script>
+<div class="followup-panel">
+<h2>📞 Nia Follow-Up Queue</h2>
+<div id="followup-feed">
+Loading follow-ups...
+</div>
+</div>
+<script src="/dashboard/followup-sync.js"></script>
+<div class="pipeline-panel">
+<h2>💼 Revenue Pipeline</h2>
+<div id="pipeline-value">
+Calculating pipeline...
+</div>
+</div>
+<script src="/dashboard/pipeline-sync.js"></script>
+<div class="report-panel">
+<h2>📊 Nia CEO Report</h2>
+<div id="nia-report">
+Generating intelligence...
+</div>
+</div>
+<script src="/dashboard/report-sync.js"></script><script src="/dashboard/deal-actions.js"></script>
+<div class="deal-panel">
+<h2>🏠 Active Deal Pipeline</h2>
+<div id="deal-feed">
+Loading deals...
+</div>
+</div>
+<script src="/dashboard/deals-sync.js"></script><script src="/dashboard/nia-command.js"></script>
+<div class="health-panel">
+<h2>⚙️ Nia System Health</h2>
+<div id="system-health">
+Checking systems...
+</div>
+</div>
+<script src="/dashboard/system-health.js"></script><script src="/dashboard/command-center-refresh.js"></script>
+<div class="kpi-panel">
+<h2>📊 Executive Metrics</h2>
+<div id="nia-kpis">
+Loading metrics...
+</div>
+</div>
+<script src="/dashboard/kpi-sync.js"></script>
+<div class="executive-panel">
+<h2>🏰 Nia Executive Snapshot</h2>
+<div id="executive-snapshot">
+Loading command data...
+</div>
+</div>
+<script src="/dashboard/executive-sync.js"></script>
+<div class="memory-panel">
+<h2>🧠 Nia Command Memory</h2>
+<div id="command-memory">
+Loading memory...
+</div>
+</div>
+<script src="/dashboard/command-memory.js"></script>
+<div class="intelligence-panel">
+<h2>🧠 Nia Intelligence Core</h2>
+<div id="nia-intelligence">
+Loading intelligence...
+</div>
+</div>
+<script src="/dashboard/nia-intelligence.js"></script>
+<div class="revenue-panel">
+<h2>💵 Revenue Action Board</h2>
+<div id="revenue-board">
+Scanning opportunities...
+</div>
+</div>
+<script src="/dashboard/revenue-board.js"></script><script src="/dashboard/activity-feed.js"></script>
+<div class="grant-panel">
+<h2>🎯 Grant Intelligence</h2>
+<div id="grant-intelligence">
+Scanning funding opportunities...
+</div>
+</div>
+<script src="/dashboard/grant-intelligence.js"></script>
+<div class="opportunity-panel">
+<h2>🚀 Nia Opportunity Ranking</h2>
+<div id="opportunity-score">
+Analyzing opportunities...
+</div>
+</div>
+<script src="/dashboard/opportunity-score.js"></script>
+<div class="ceo-panel">
+<h2>👑 Nia CEO Brief</h2>
+<div id="ceo-brief">
+Generating briefing...
+</div>
+</div>
+<script src="/dashboard/ceo-brief.js"></script>
+<div class="action-panel">
+<h2>⚡ Nia Action Queue</h2>
+<div id="action-queue">
+Loading priorities...
+</div>
+</div>
+<script src="/dashboard/action-queue.js"></script>
+<div class="progress-panel">
+<h2>✅ Nia Execution Progress</h2>
+<div id="action-progress">
+Tracking completed work...
+</div>
+</div>
+<script src="/dashboard/action-progress.js"></script>
+<div class="audit-panel">
+<h2>📝 Nia Audit Trail</h2>
+<div id="audit-log">
+Loading audit history...
+</div>
+</div>
+<script src="/dashboard/audit-log.js"></script>
+<div class="executive-health-panel">
+<h2>🩺 Executive Health</h2>
+<div id="executive-health">
+Checking Nia systems...
+</div>
+</div>
+<script src="/dashboard/executive-health.js"></script>
+<div class="intelligence-panel">
+<h2>🧠 Nia Intelligence Snapshot</h2>
+<div id="intelligence-snapshot">
+Loading intelligence...
+</div>
+</div>
+<script src="/dashboard/intelligence-snapshot.js"></script>
+<div class="deployment-panel">
+<h2>🚀 Deployment Readiness</h2>
+<div id="deployment-status">
+Checking launch status...
+</div>
+</div>
+<script src="/dashboard/deployment-status.js"></script>
+<div class="launch-panel">
+<h2>🚀 Nia Launch Gate</h2>
+<div id="launch-gate">
+Checking readiness...
+</div>
+</div>
+<script src="/dashboard/launch-gate.js"></script>
+<div class="master-status-panel">
+<h2>🏰 Nia Master Status</h2>
+<div id="master-status">
+Checking systems...
+</div>
+</div>
+<script src="/dashboard/master-status.js"></script>
+<div class="ceo-command-panel">
+<h2>👑 Nia CEO Command</h2>
+<div id="ceo-command">
+Loading executive view...
+</div>
+</div>
+<script src="/dashboard/ceo-command.js"></script>
+<div class="ceo-briefing-panel">
+<h2>📊 Nia CEO Daily Briefing</h2>
+<div id="ceo-briefing">
+Loading briefing...
+</div>
+</div>
+<script src="/dashboard/ceo-briefing.js"></script>
+<div class="executive-memory-panel">
+<h2>🧠 Nia Executive Memory</h2>
+<div id="executive-memory">
+Loading historical intelligence...
+</div>
+</div>
+<script src="/dashboard/executive-memory.js"></script>
+<div class="ceo-queue-panel">
+<h2>📌 CEO Decision Queue</h2>
+<div id="ceo-queue">
+Loading executive queue...
+</div>
+</div>
+<script src="/dashboard/ceo-queue.js"></script></body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,12 @@
+{
+  "system": "Nia Customer Response Tracker",
+  "timestamp": "2026-07-29T13:39:17.753Z",
+  "responses": [],
+  "metrics": {
+    "contacted": 0,
+    "replied": 0,
+    "interested": 0,
+    "closed": 0
+  },
+  "status": "LISTENING"
+}

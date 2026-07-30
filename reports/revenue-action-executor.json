@@ -1,0 +1,25 @@
+{
+  "system": "Nia Revenue Action Executor",
+  "timestamp": "2026-07-29T10:19:26.218Z",
+  "status": "ACTIVE",
+  "tasks": 1,
+  "executionQueue": [
+    {
+      "id": 1785319645067,
+      "decision": "EXECUTE_PRIORITY_DEAL",
+      "reason": "System readiness exists, focus on closing first transaction",
+      "action": "Advance priority deal toward close",
+      "status": "READY",
+      "createdAt": "2026-07-29T10:07:25.067Z",
+      "executionStatus": "READY_FOR_EXECUTION",
+      "executionSteps": [
+        "Prepare customer follow-up",
+        "Generate proposal or offer",
+        "Schedule next contact",
+        "Record outcome"
+      ],
+      "updatedAt": "2026-07-29T10:19:26.217Z"
+    }
+  ],
+  "nextAction": "Execute highest priority revenue action"
+}

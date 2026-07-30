@@ -1,0 +1,31 @@
+{
+  "system": "Nia Prospect Activity Tracker",
+  "timestamp": "2026-07-29T13:13:07.976Z",
+  "totalProspects": 3,
+  "activity": [
+    {
+      "id": 1785330738092,
+      "campaign": "Little Guys Recharge Customer Acquisition",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "AI Automation Services",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "Grant & Funding Pipeline",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach"
+    }
+  ]
+}

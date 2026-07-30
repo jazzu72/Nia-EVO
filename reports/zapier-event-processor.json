@@ -1,0 +1,18 @@
+{
+  "system": "Nia Zapier Event Processor",
+  "timestamp": "2026-07-29T10:32:52.138Z",
+  "triggers": [
+    {
+      "event": "NEW_LEAD_RECEIVED",
+      "action": "Run opportunity scoring",
+      "pipeline": "revenue-opportunity-engine"
+    },
+    {
+      "event": "NEW_OPPORTUNITY",
+      "action": "Generate offer",
+      "pipeline": "revenue-conversion-executor"
+    }
+  ],
+  "status": "ACTIVE",
+  "nextAction": "Waiting for Zapier webhook events"
+}

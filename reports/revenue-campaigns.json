@@ -1,0 +1,26 @@
+{
+  "system": "Nia Revenue Campaign Engine",
+  "timestamp": "2026-07-29T13:12:04.278Z",
+  "activeCampaigns": 3,
+  "campaigns": [
+    {
+      "name": "Little Guys Recharge Customer Acquisition",
+      "target": "EV owners",
+      "channel": "local outreach",
+      "status": "ACTIVE"
+    },
+    {
+      "name": "AI Automation Services",
+      "target": "small businesses",
+      "channel": "B2B outreach",
+      "status": "ACTIVE"
+    },
+    {
+      "name": "Grant & Funding Pipeline",
+      "target": "funding sources",
+      "channel": "applications",
+      "status": "ACTIVE"
+    }
+  ],
+  "nextAction": "Generate qualified opportunities"
+}

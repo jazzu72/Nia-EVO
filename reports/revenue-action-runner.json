@@ -1,0 +1,16 @@
+{
+  "system": "Nia Revenue Action Runner",
+  "timestamp": "2026-07-29T10:07:25.067Z",
+  "activeTasks": 1,
+  "tasks": [
+    {
+      "id": 1785319645067,
+      "decision": "EXECUTE_PRIORITY_DEAL",
+      "reason": "System readiness exists, focus on closing first transaction",
+      "action": "Advance priority deal toward close",
+      "status": "READY",
+      "createdAt": "2026-07-29T10:07:25.067Z"
+    }
+  ],
+  "nextAction": "Advance priority deal toward close"
+}
