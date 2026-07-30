@@ -1,121 +1,129 @@
-/**
- * NIA CAPITAL OS - Core Revenue System
- * Only what matters: Landing page, Dashboard, API endpoints
- * Single purpose: Track capital and close deals
- */
-
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+require("dotenv").config();
 
 const app = express();
 
-// Middleware
+
+// ===============================
+// CORE MIDDLEWARE
+// ===============================
+
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
 
-// ════════════════════════════════════════════════════════════════════════════
-// ROUTES
-// ════════════════════════════════════════════════════════════════════════════
+app.use(express.static(
+path.join(__dirname,"../../public")
+));
 
-// Landing page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+
+// ===============================
+// SYSTEM HEALTH
+// ===============================
+
+app.get("/api/health",(req,res)=>{
+
+res.json({
+
+system:"Nia Capital OS",
+
+status:"ONLINE",
+
+timestamp:new Date().toISOString(),
+
+node:process.version
+
 });
 
-// Dashboard
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/dashboard/elite.html'));
 });
 
-// PWA
-app.get('/manifest.json', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/manifest.json'));
+
+// ===============================
+// MODULE LOADER
+// ===============================
+
+
+const modules = [
+
+["customer-intake","customer-intake"],
+["live-events","live-events"],
+["revenue-leads","revenue-leads"],
+["revenue-engine","revenue-engine"],
+["revenue-dashboard","revenue-dashboard"],
+["leads","leads"],
+["realestate","realestate"],
+["business","business"],
+["grants","grants"],
+["decision","decision"],
+["memory","memory"],
+["reports","reports"]
+
+];
+
+
+modules.forEach(([route,name])=>{
+
+try{
+
+app.use(
+`/api/${route}`,
+require(`../../modules/${name}/routes`)
+);
+
+console.log(
+"LOADED:",
+route
+);
+
+}
+
+catch(err){
+
+console.log(
+"SKIPPED:",
+route,
+err.message
+);
+
+}
+
 });
 
-app.get('/sw.js', (req, res) => {
-  res.type('application/javascript');
-  res.sendFile(path.join(__dirname, '../public/sw.js'));
+
+
+// ===============================
+// 404
+// ===============================
+
+app.use((req,res)=>{
+
+res.status(404).json({
+
+error:"Route not found",
+
+path:req.path
+
 });
 
-const businessRoutes = require('../../modules/business/routes');
-const realestateRoutes = require('../../modules/realestate/routes');
-
-app.use('/api/business', businessRoutes);
-app.use('/api/realestate', realestateRoutes);
-// ════════════════════════════════════════════════════════════════════════════
-
-app.get('/realestate-dashboard',(req,res)=>{
-res.sendFile(path.join(__dirname,'../../public/dashboard/realestate.html'));
 });
 
-// API - WHAT MATTERS FOR REVENUE
-// ════════════════════════════════════════════════════════════════════════════
 
-// System health
-app.get('/api/status', (req, res) => {
-  res.json({
-    system: 'Nia Capital OS',
-    status: 'operational',
-    uptime: Math.floor(process.uptime() / 3600) + 'h',
-    timestamp: new Date().toISOString()
-  });
+// ===============================
+// ERROR CONTROL
+// ===============================
+
+app.use((err,req,res,next)=>{
+
+console.error(err);
+
+res.status(500).json({
+
+error:"Nia Core Error"
+
 });
 
-// Capital tracking
-app.get('/api/capital', (req, res) => {
-  res.json({
-    available: 203400,
-    deployed: 0,
-    total: 203400,
-    currency: 'USD'
-  });
 });
 
-// Deals pipeline
-app.get('/api/deals', (req, res) => {
-  res.json({
-    total: 0,
-    closed: 0,
-    pipeline: 0,
-    nextDeal: null
-  });
-});
-
-// Grants
-app.get('/api/grants', (req, res) => {
-  res.json({
-    total: 1625000,
-    programs: 7,
-    status: 'monitoring'
-  });
-});
-
-// ════════════════════════════════════════════════════════════════════════════
-// ERROR HANDLERS
-// ════════════════════════════════════════════════════════════════════════════
-
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
-app.use((err, req, res, next) => {
-  console.error('Error:', err.message);
-  res.status(500).json({ error: 'Server error' });
-});
-
-// ════════════════════════════════════════════════════════════════════════════
-// START
-// ════════════════════════════════════════════════════════════════════════════
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n✅ Nia Capital OS running on port ${PORT}`);
-  console.log(`🏠 Landing: http://localhost:${PORT}/`);
-  console.log(`📊 Dashboard: http://localhost:${PORT}/dashboard`);
-  console.log(`💰 Capital: http://localhost:${PORT}/api/capital\n`);
-});
 
 module.exports = app;
