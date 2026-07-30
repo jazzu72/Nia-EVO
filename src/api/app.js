@@ -52,6 +52,7 @@ const modules = [
 ["revenue-engine","revenue-engine"],
 ["revenue-dashboard","revenue-dashboard"],
 ["leads","leads"],
+["opportunities","opportunities"],
 ["realestate","realestate"],
 ["business","business"],
 ["grants","grants"],
