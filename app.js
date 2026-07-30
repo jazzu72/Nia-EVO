@@ -562,9 +562,6 @@ alerts.criticalAlerts()
 // NIA LONG TERM MEMORY API
 // =================================
 
-const memory =
-require("./memory/memory-engine");
-
 
 app.post(
 "/api/memory/add",
