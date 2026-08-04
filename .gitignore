@@ -68,3 +68,6 @@ web-ui/node_modules/
 .DS_Store
 simpler-grants-gov/
 textbelt/
+node_modules/
+.env
+setup-github-token.sh
