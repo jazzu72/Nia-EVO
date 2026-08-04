@@ -8,9 +8,17 @@ const PORT = process.env.DASHBOARD_PORT || 5000;
 
 app.use(express.json());
 
+app.use("/grant-pdf",express.static(require("path").join(__dirname,"../grants-engine/generated-pdf")));
+app.use("/api/grants", require("../grants-engine/grant-api"));
+app.get("/api/grant-packages",(req,res)=>{res.json(require("../grants-engine/grant-document-generator").dashboard())});
+
+app.use("/grant-pdf",express.static(require("path").join(__dirname,"../grants-engine/generated-pdf")));
+app.use("/api/grants", require("../grants-engine/grant-api"));
+app.get("/api/grant-packages",(req,res)=>{res.json(require("../grants-engine/grant-document-generator").dashboard())});
+
 app.use(
 express.static(
-path.join(__dirname,"public")
+path.join(__dirname,"../public")
 )
 );
 

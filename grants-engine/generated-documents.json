@@ -278,5 +278,245 @@
       }
     ],
     "created": "2026-07-27T16:42:26.313Z"
+  },
+  {
+    "id": "DOC-1785806402553",
+    "grant": "Virginia Innovation Partnership Corporation",
+    "amount": 250000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:02.553Z"
+  },
+  {
+    "id": "DOC-1785806402583",
+    "grant": "NSF America Seed Fund",
+    "amount": 256000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:02.583Z"
+  },
+  {
+    "id": "DOC-1785806402602",
+    "grant": "Small Business Innovation Research",
+    "amount": 150000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:02.602Z"
+  },
+  {
+    "id": "DOC-1785806443172",
+    "grant": "Virginia Innovation Partnership Corporation",
+    "amount": 250000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:43.172Z"
+  },
+  {
+    "id": "DOC-1785806443174",
+    "grant": "NSF America Seed Fund",
+    "amount": 256000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:43.174Z"
+  },
+  {
+    "id": "DOC-1785806443174",
+    "grant": "Small Business Innovation Research",
+    "amount": 150000,
+    "company": "House of Jazzu",
+    "status": "PACKAGE_READY",
+    "documents": [
+      {
+        "name": "Executive Summary",
+        "content": "House of Jazzu is developing AI-powered business infrastructure through Nia Capital OS, an autonomous executive intelligence platform."
+      },
+      {
+        "name": "Problem Statement",
+        "content": "Small businesses need affordable AI systems to improve operations, discover funding opportunities, and compete digitally."
+      },
+      {
+        "name": "Innovation Description",
+        "content": "Nia Capital OS combines AI automation, business intelligence, and capital discovery into one operating system."
+      },
+      {
+        "name": "Milestone Plan",
+        "content": [
+          "Complete Nia Capital OS development",
+          "Deploy pilot operations",
+          "Acquire early customers",
+          "Scale technology infrastructure"
+        ]
+      },
+      {
+        "name": "Budget Allocation",
+        "content": {
+          "development": 100000,
+          "infrastructure": 50000,
+          "research": 50000,
+          "operations": 50000
+        }
+      }
+    ],
+    "created": "2026-08-04T01:20:43.174Z"
   }
 ]
