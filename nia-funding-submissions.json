@@ -1,0 +1,59 @@
+[
+  {
+    "id": "FUND-SUBMISSION-1785948357332",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "capitalRequest": {
+      "purchaseOffer": 93000,
+      "arv": 155000,
+      "estimatedSpread": 62000
+    },
+    "investorScore": 100,
+    "status": "READY_FOR_CAPITAL_PARTNER",
+    "packet": [
+      "DEAL_SUMMARY",
+      "ARV_ANALYSIS",
+      "PROFIT_MARGIN",
+      "TITLE_REPORT_REQUEST",
+      "EXIT_STRATEGY"
+    ],
+    "created": "2026-08-05T16:45:57.333Z"
+  },
+  {
+    "id": "FUND-SUBMISSION-1785948357340",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "capitalRequest": {
+      "purchaseOffer": 150000,
+      "arv": 250000,
+      "estimatedSpread": 100000
+    },
+    "investorScore": 100,
+    "status": "READY_FOR_CAPITAL_PARTNER",
+    "packet": [
+      "DEAL_SUMMARY",
+      "ARV_ANALYSIS",
+      "PROFIT_MARGIN",
+      "TITLE_REPORT_REQUEST",
+      "EXIT_STRATEGY"
+    ],
+    "created": "2026-08-05T16:45:57.340Z"
+  },
+  {
+    "id": "FUND-SUBMISSION-1785948357340",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "capitalRequest": {
+      "purchaseOffer": 95000,
+      "arv": 180000,
+      "estimatedSpread": 85000
+    },
+    "investorScore": 100,
+    "status": "READY_FOR_CAPITAL_PARTNER",
+    "packet": [
+      "DEAL_SUMMARY",
+      "ARV_ANALYSIS",
+      "PROFIT_MARGIN",
+      "TITLE_REPORT_REQUEST",
+      "EXIT_STRATEGY"
+    ],
+    "created": "2026-08-05T16:45:57.340Z"
+  }
+]

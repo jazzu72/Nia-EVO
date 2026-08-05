@@ -1,0 +1,17 @@
+[
+  {
+    "id": "INVESTOR-CONTACT-1785949246259",
+    "packageId": "INVESTOR-PACKAGE-1785949187484",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "targets": [
+      "PRIVATE_INVESTORS",
+      "REAL_ESTATE_FUNDS",
+      "CAPITAL_PARTNERS"
+    ],
+    "subject": "NIA Capital Opportunity: 4110 Reisterstown Rd, Baltimore MD",
+    "message": "Investment opportunity identified by NIA Capital OS. Purchase: $93000 | ARV: $155000 | Projected Spread: $62000",
+    "status": "READY_FOR_REVIEW",
+    "priority": "HIGH",
+    "created": "2026-08-05T17:00:46.260Z"
+  }
+]

@@ -1,0 +1,189 @@
+[
+  {
+    "auditId": "AUDIT-b092ce4e089f",
+    "executionId": "EXEC-ACTION-1785947469597",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "2342b94bd80aa6b73d250f105180178306c1ab2c004390eb5bf61ee3de5f8e99",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-20cec88a3e05",
+    "executionId": "EXEC-ACTION-1785947469607",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "REQUEST_TITLE_REVIEW",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "92977750ef4c486174ef0366d2f4a3a2aec856b35512f662ab969a8af30d98a8",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-8429f2fb305f",
+    "executionId": "EXEC-ACTION-1785947469611",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "128d9895d20244afcbdbf30bdb34b8d149069f11055f5be6a5de18e360529a01",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-c82e44af7662",
+    "executionId": "EXEC-ACTION-1785947589634",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "REQUEST_TITLE_REVIEW",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "c1f5b8e21ee302905e6763d549f0198bfd31ab5b6adf724b3488f436c6e979ea",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-2e25e688e0cc",
+    "executionId": "EXEC-ACTION-1785947709623",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "REQUEST_TITLE_REVIEW",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "32e80298db731a16eb253e1cefc0b83c4685e31dd7c0887c81e441ea7ac04980",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-8e652990fb45",
+    "executionId": "EXEC-ACTION-1785947949638",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "1ad8f67be47f232993803b84a77f34294f48b881c8e67d2a2dc3d6d2fb7357d0",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-1a98ca01012f",
+    "executionId": "EXEC-ACTION-1785948189629",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "6ff22671b1cb6f10e2ed8b35c2c50a592e1b9a0b1ac85aa3ca6f3dfb5d827863",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-15c668b067f9",
+    "executionId": "EXEC-ACTION-1785948189631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "e212f23fc2b8a054e0c5edb2ba135668b2baec28c81db068895db5765403a3f7",
+    "timestamp": "2026-08-05T16:59:38.450Z"
+  },
+  {
+    "auditId": "AUDIT-76a9927eba07",
+    "executionId": "EXEC-ACTION-1785948189631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "f8cca027a6124769e26f993df1dea119479608ff2dd7f81b01fa6e2a59486ef2",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-26c977106984",
+    "executionId": "EXEC-ACTION-1785948189631",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "REQUEST_TITLE_REVIEW",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "21ef2da99950e03a0a735d2882cc9a84a45bd9ed7e8767f4dffb951f40cca2c1",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-24d77acdd4c5",
+    "executionId": "EXEC-ACTION-1785948249631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "5cfe8a36a61a259b1589d84d7d324459647f4b80b6ce1be42455450e9231d887",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-31106581cb1e",
+    "executionId": "EXEC-ACTION-1785948249633",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "39a5ace573156270129c6e99d64c0b906f382d953b851752738409a313904724",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-d35a6e870a11",
+    "executionId": "EXEC-ACTION-1785948249633",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "9bd043c981e670d937536a5705edb5637221b7cbe7b18e573fc726b647aca888",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-621b5480b5dd",
+    "executionId": "EXEC-ACTION-1785948309631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "a7cbb44ce24e671a660ee97f200536efb3e41a8e4fa6a76b3b1e4b18fd3907ca",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-958bf6bd1864",
+    "executionId": "EXEC-ACTION-1785948369632",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "d131cb14277f4d82d3fbb47c870b1cbfd13bbfd41369bb72391eab83bb077eec",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-7530d13cf6fa",
+    "executionId": "EXEC-ACTION-1785948369635",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "214f71c3a702a2ba3a5e73425398352a2da391133808951736073d586467ade9",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  },
+  {
+    "auditId": "AUDIT-e2407df6be34",
+    "executionId": "EXEC-ACTION-1785948369636",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "status": "COMPLETED",
+    "approvalRequired": true,
+    "verified": false,
+    "hash": "d5a7be6b5a82fec325e4387a53e80e9dd5c6df12875d4f46eae1c7d73b30d65d",
+    "timestamp": "2026-08-05T16:59:38.451Z"
+  }
+]

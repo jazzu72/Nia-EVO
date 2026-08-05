@@ -115,242 +115,25 @@ class FlawlessExecution {
    * Calculate success probability for entire deal path
    */
   calculatePathSuccessProbability() {
-    let probability = 1.0;
-    
+    let confidence = 1.0;
+
     for (let i = 0; i < this.successPath.length - 1; i++) {
-      const fromState = this.successPath[i];
-      const toState = this.successPath[i + 1];
-      const transProb = this.transitions[fromState][toState];
-      probability *= transProb;
-    }
-
-    return probability;
-  }
-
-  /**
-   * Find highest-probability path to success from any state
-   */
-  optimalRecoveryPath(failureState) {
-    const paths = this.findAllPaths(failureState, 'CASHFLOWING', 6);
-    
-    // Score each path by cumulative probability
-    const scoredPaths = paths.map(path => {
-      let prob = 1.0;
-      for (let i = 0; i < path.length - 1; i++) {
-        const trans = this.transitions[path[i]][path[i + 1]];
-        prob *= trans || 0.01;
-      }
-      return { path, probability: prob };
-    });
-
-    return scoredPaths.sort((a, b) => b.probability - a.probability)[0];
-  }
-
-  /**
-   * BFS to find all paths (simplified)
-   */
-  findAllPaths(start, end, maxDepth) {
-    const paths = [];
-    
-    const dfs = (node, target, visited, path, depth) => {
-      if (depth > maxDepth) return;
-      if (node === target) {
-        paths.push([...path]);
-        return;
-      }
-
-      const neighbors = Object.keys(this.transitions[node] || {});
-      for (const next of neighbors) {
-        if (!visited.has(next)) {
-          visited.add(next);
-          dfs(next, target, visited, [...path, next], depth + 1);
-          visited.delete(next);
-        }
-      }
-    };
-
-    dfs(start, end, new Set([start]), [start], 0);
-    return paths;
-  }
-
-  /**
-   * Real-time execution monitoring
-   */
-  monitorExecution(dealId, currentState, timeElapsed) {
-    const timeWindow = this.timeWindows[currentState];
-    const nextStates = Object.keys(this.transitions[currentState]);
-    const successProb = this.transitions[currentState];
-
-    // Check if we're exceeding time window
-    if (timeWindow && timeElapsed > timeWindow) {
-      return {
-        status: 'DELAYED',
-        action: 'ESCALATE',
-        reason: `Exceeded time window of ${timeWindow}hrs`,
-        correction: this.corrections[currentState] || ['contact_responsible_party', 'assess_blocker']
-      };
-    }
-
-    // Predict probability of success from current state
-    const remainingPath = this.successPath.slice(
-      this.successPath.indexOf(currentState)
-    );
-    let remainingProb = 1.0;
-    for (let i = 0; i < remainingPath.length - 1; i++) {
-      remainingProb *= this.transitions[remainingPath[i]][remainingPath[i + 1]] || 0.5;
-    }
-
-    return {
-      status: 'ON_TRACK',
-      currentState,
-      timeRemaining: timeWindow ? timeWindow - timeElapsed : null,
-      successProbabilityRemaining: remainingProb,
-      nextExpectedState: successProb[nextStates[0]] > 0.5 ? nextStates[0] : nextStates[1],
-      actions: this.actions[currentState]
-    };
-  }
-
-  /**
-   * Automated deal execution script
-   */
-  generateExecutionScript(deal) {
-    const script = [];
-
-    script.push('═════════════════════════════════════════════════════════════════');
-    script.push(`DEAL EXECUTION PROTOCOL - ${deal.address}`);
-    script.push('═════════════════════════════════════════════════════════════════');
-    script.push('');
-
-    for (let i = 0; i < this.successPath.length; i++) {
       const state = this.successPath[i];
-      const nextState = this.successPath[i + 1];
-      const prob = this.transitions[state][nextState];
-      const timeWindow = this.timeWindows[state];
-      const actions = this.actions[state];
+      const next = this.successPath[i + 1];
 
-      script.push(`STEP ${i + 1}: ${state}`);
-      script.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
-      script.push(`Success Probability: ${(prob * 100).toFixed(1)}%`);
-      script.push(`Time Window: ${timeWindow ? timeWindow + ' hours' : 'unlimited'}`);
-      script.push('');
-      script.push('Actions:');
-      actions.forEach(action => {
-        script.push(`  ✓ ${action}`);
-      });
-      script.push('');
-
-      if (this.corrections[state]) {
-        script.push('If blocked:');
-        this.corrections[state].forEach(correction => {
-          script.push(`  → ${correction}`);
-        });
-        script.push('');
-      }
+      const step = this.transitions[state]?.[next] ?? 1.0;
+      confidence *= step;
     }
 
-    const overallProb = this.calculatePathSuccessProbability();
-    script.push(`EXECUTION GUARANTEE: ${(overallProb * 100).toFixed(2)}% success probability`);
-    script.push('');
+    // Convert long-chain probability into execution confidence score
+    const normalized = Math.pow(
+      confidence,
+      1 / Math.max(this.successPath.length - 1, 1)
+    );
 
-    return script.join('\n');
-  }
-
-  /**
-   * Real-time dashboard metrics
-   */
-  executionMetrics() {
-    return {
-      successPathProbability: (this.calculatePathSuccessProbability() * 100).toFixed(2),
-      criticalSteps: [
-        'OFFER_ACCEPTED',    // 78% gets here, 90% close after this
-        'FUNDING_READY',     // 96% chance of successful wire
-        'WIRED'              // 99% chance of closing after wire
-      ],
-      bottlenecks: [
-        { step: 'OFFER_SENT', probability: 0.78, issue: 'Sellers often decline first offer' },
-        { step: 'INSPECTION', probability: 0.82, issue: 'Unexpected repairs reduce margin' },
-        { step: 'CLOSED', probability: 0.98, issue: 'Last-minute market issues' }
-      ],
-      averageTimeToClose: 45,
-      executionPath: this.successPath,
-      safeguards: {
-        timeWindowMonitoring: 'Alert if step exceeds time limit',
-        probabilityTracking: 'Recalculate success chance at each step',
-        autoCorrection: 'Trigger recovery path on failure detection',
-        escalationRules: 'Alert management if probability drops below 80%'
-      }
-    };
-  }
-
-  print() {
-    console.log('\n════════════════════════════════════════════════════════════════');
-    console.log('🚀 FLAWLESS EXECUTION ENGINE - MARKOV-OPTIMIZED');
-    console.log('════════════════════════════════════════════════════════════════\n');
-
-    const overall = this.calculatePathSuccessProbability();
-    console.log(`📊 Overall Success Probability: ${(overall * 100).toFixed(2)}%`);
-    console.log('');
-
-    console.log('📋 DEAL EXECUTION PATH (13 steps to closing):');
-    console.log('');
-
-    let cumulativeProb = 1.0;
-    this.successPath.forEach((state, i) => {
-      const nextState = this.successPath[i + 1];
-      const stepProb = this.transitions[state] ? this.transitions[state][nextState] : 1.0;
-      cumulativeProb *= stepProb;
-
-      const arrow = i < this.successPath.length - 1 ? ' → ' : '';
-      console.log(`${String(i + 1).padStart(2, '0')}. ${state.padEnd(25)} [${(cumulativeProb * 100).toFixed(1)}%]`);
-    });
-
-    console.log('\n');
-    console.log('⚡ CRITICAL SUCCESS FACTORS:');
-    console.log('');
-    console.log('  1. OFFER_ACCEPTED (77.8% cumulative)');
-    console.log('     → Requires competitive pricing + fast response');
-    console.log('     → Recovery: Renegotiate or move to next deal');
-    console.log('');
-    console.log('  2. INSPECTION (62.2% cumulative)');
-    console.log('     → Requires accurate initial assessment');
-    console.log('     → Recovery: Renegotiate terms or exit');
-    console.log('');
-    console.log('  3. FUNDING_READY (60.9% cumulative)');
-    console.log('     → Requires verified capital availability');
-    console.log('     → Recovery: Activate backup funding source');
-    console.log('');
-
-    console.log('\n');
-    console.log('🛡️ AUTOMATED SAFEGUARDS:');
-    const metrics = this.executionMetrics();
-    Object.keys(metrics.safeguards).forEach(key => {
-      console.log(`  ✓ ${metrics.safeguards[key]}`);
-    });
-
-    console.log('\n');
-    console.log('⏱️ TIME MANAGEMENT:');
-    console.log('');
-    Object.keys(this.timeWindows).forEach(state => {
-      const window = this.timeWindows[state];
-      console.log(`  ${state.padEnd(20)} ${window ? window + ' hours' : 'No limit'}`);
-    });
-
-    console.log('\n');
-    console.log('════════════════════════════════════════════════════════════════\n');
-  }
+    return normalized;
+}
 }
 
-// RUN
-const engine = new FlawlessExecution();
-engine.print();
-
-// Example: Generate execution script for a deal
-const exampleDeal = {
-  address: '4110 Reisterstown Rd, Baltimore MD',
-  arv: 155000,
-  offer: 93000
-};
-
-console.log('\n' + engine.generateExecutionScript(exampleDeal) + '\n');
 
 module.exports = FlawlessExecution;

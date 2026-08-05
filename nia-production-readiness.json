@@ -1,0 +1,13 @@
+{
+  "system": "NIA-CAPITAL-OS",
+  "mode": "PRODUCTION_READINESS",
+  "servicesOnline": 10,
+  "failedServices": [],
+  "files": {
+    "mission": true,
+    "audit": true,
+    "pipeline": true,
+    "investors": true
+  },
+  "timestamp": "2026-08-05T16:58:50.257Z"
+}

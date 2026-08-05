@@ -1,0 +1,71 @@
+[
+  {
+    "id": "ACTION-1785948366615",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "priority": "HIGH",
+    "opportunityScore": 100,
+    "spread": 62000,
+    "created": "2026-08-05T16:46:06.615Z"
+  },
+  {
+    "id": "ACTION-1785948366615",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "REQUEST_TITLE_REVIEW",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.615Z"
+  },
+  {
+    "id": "ACTION-1785948366615",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "action": "PREPARE_CAPITAL_PACKAGE",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.615Z"
+  },
+  {
+    "id": "ACTION-1785948366617",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "priority": "HIGH",
+    "opportunityScore": 100,
+    "spread": 100000,
+    "created": "2026-08-05T16:46:06.617Z"
+  },
+  {
+    "id": "ACTION-1785948366617",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "REQUEST_TITLE_REVIEW",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.617Z"
+  },
+  {
+    "id": "ACTION-1785948366617",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "action": "PREPARE_CAPITAL_PACKAGE",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.617Z"
+  },
+  {
+    "id": "ACTION-1785948366620",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "CONTACT_SELLER_AND_VERIFY_DEAL",
+    "priority": "HIGH",
+    "opportunityScore": 100,
+    "spread": 85000,
+    "created": "2026-08-05T16:46:06.620Z"
+  },
+  {
+    "id": "ACTION-1785948366620",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "REQUEST_TITLE_REVIEW",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.620Z"
+  },
+  {
+    "id": "ACTION-1785948366620",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "action": "PREPARE_CAPITAL_PACKAGE",
+    "priority": "HIGH",
+    "created": "2026-08-05T16:46:06.620Z"
+  }
+]

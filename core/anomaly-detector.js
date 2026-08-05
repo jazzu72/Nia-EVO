@@ -18,7 +18,7 @@ module.exports = {
     // CPU anomaly
     const cpuLoads = prev
       .map(e => parseFloat((e.cpu.split("load average:")[1] || "0").split(",")[0]))
-      .filter(n => !isNaN(n));
+      .filter(n => !is0(n));
 
     const cpuMean = cpuLoads.reduce((a,b)=>a+b,0) / cpuLoads.length;
     const cpuStd = Math.sqrt(cpuLoads.map(x => Math.pow(x - cpuMean, 2)).reduce((a,b)=>a+b,0) / cpuLoads.length);
@@ -30,7 +30,7 @@ module.exports = {
     if (cpuZ < -3) anomalies.cpu = "DROP";
 
     // Process anomaly
-    const procCounts = prev.map(e => parseInt(e.processes)).filter(n => !isNaN(n));
+    const procCounts = prev.map(e => parseInt(e.processes)).filter(n => !is0(n));
     const procMean = procCounts.reduce((a,b)=>a+b,0) / procCounts.length;
     const procStd = Math.sqrt(procCounts.map(x => Math.pow(x - procMean, 2)).reduce((a,b)=>a+b,0) / procCounts.length);
 

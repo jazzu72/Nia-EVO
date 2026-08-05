@@ -1,0 +1,29 @@
+[
+  {
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "score": 100,
+    "state": "CAPITAL_READY",
+    "next": "INVESTOR_REVIEW",
+    "updated": "2026-08-05T17:00:31.450Z"
+  },
+  {
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "score": 100,
+    "state": "CAPITAL_READY",
+    "next": "INVESTOR_REVIEW",
+    "updated": "2026-08-05T17:00:31.450Z"
+  },
+  {
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "score": 100,
+    "state": "CAPITAL_READY",
+    "next": "INVESTOR_REVIEW",
+    "updated": "2026-08-05T17:00:31.450Z"
+  },
+  {
+    "score": 20,
+    "state": "VERIFIED",
+    "next": "RANKED",
+    "updated": "2026-08-05T17:00:31.450Z"
+  }
+]

@@ -1,0 +1,464 @@
+[
+  {
+    "id": "BOOT-1785945274721",
+    "property": "UNKNOWN",
+    "status": "READY",
+    "confidence": null,
+    "timestamp": "2026-08-05T15:58:59.068Z"
+  },
+  {
+    "id": "EXEC-1785945344342",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T15:58:59.074Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:00:09.066Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:00:19.065Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:00:29.069Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:00:49.078Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "CLOSING_PREP",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:00:59.077Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:09.076Z"
+  },
+  {
+    "id": "EXEC-1785945608795",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:19.077Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:19.078Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:29.079Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:49.080Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "CLOSING_PREP",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:01:59.078Z"
+  },
+  {
+    "id": "EXEC-1785945665170",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:02:19.081Z"
+  },
+  {
+    "id": "EXEC-1785945729478",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:02:19.086Z"
+  },
+  {
+    "id": "EXEC-1785945729478",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:02:29.079Z"
+  },
+  {
+    "id": "EXEC-1785945729478",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:02:49.078Z"
+  },
+  {
+    "id": "EXEC-1785945729478",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "CLOSING_PREP",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:02:59.078Z"
+  },
+  {
+    "id": "EXEC-1785945729478",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:03:19.078Z"
+  },
+  {
+    "id": "EXEC-1785946029490",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:19.097Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:19.097Z"
+  },
+  {
+    "id": "EXEC-1785946029490",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:29.108Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:29.115Z"
+  },
+  {
+    "id": "EXEC-1785946029490",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:49.100Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:49.105Z"
+  },
+  {
+    "id": "EXEC-1785946029490",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "CLOSING_PREP",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:59.108Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:07:59.110Z"
+  },
+  {
+    "id": "EXEC-1785946029490",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:08:19.105Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:08:59.108Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:12:19.125Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:12:29.125Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:12:49.131Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:12:59.129Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:13:49.133Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:14:29.139Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:14:39.141Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:14:49.143Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:14:59.142Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:15:29.151Z"
+  },
+  {
+    "id": "EXEC-1785946462774",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:15:49.146Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:19:29.169Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:19:39.171Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:19:49.169Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:19:59.171Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:20:29.169Z"
+  },
+  {
+    "id": "EXEC-1785946762798",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:20:49.168Z"
+  },
+  {
+    "id": "EXEC-1785946033816",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:09.186Z"
+  },
+  {
+    "id": "EXEC-1785946333835",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:09.187Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:29.189Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:39.189Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:39.194Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "READY_FOR_EXECUTION",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:39.195Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:49.190Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:49.194Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "DUE_DILIGENCE",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:49.194Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:59.192Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:59.197Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:24:59.197Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:09.193Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "EXECUTION_STARTED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:09.197Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "FUNDING_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:29.195Z"
+  },
+  {
+    "id": "EXEC-1785947062794",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:49.197Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:49.201Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "TITLE_REVIEW",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:49.202Z"
+  },
+  {
+    "id": "EXEC-1785947074353",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:59.199Z"
+  },
+  {
+    "id": "EXEC-1785947074366",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "status": "COMPLETED",
+    "confidence": "91.01%",
+    "timestamp": "2026-08-05T16:25:59.201Z"
+  }
+]

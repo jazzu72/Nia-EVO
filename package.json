@@ -1,22 +1,11 @@
 {
   "name": "nia-capital-os",
   "version": "1.0.0",
-  "description": "Autonomous real estate capital management system",
-  "main": "src/api/app.js",
+  "description": "NIA Capital OS Production Engine",
+  "main": "nia-mission-dashboard-api.js",
   "scripts": {
-    "start": "node src/api/app.js",
-    "dev": "nodemon src/api/app.js"
+    "start": "node nia-mission-dashboard-api.js",
+    "health": "node nia-production-check.js"
   },
-  "dependencies": {
-    "@slack/bolt": "^5.0.0",
-    "@slack/web-api": "^8.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.6.1",
-    "express": "^4.18.2",
-    "node-telegram-bot-api": "^1.2.0",
-    "pdfkit": "^0.19.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "dependencies": {}
 }

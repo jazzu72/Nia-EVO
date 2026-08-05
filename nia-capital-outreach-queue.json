@@ -1,0 +1,59 @@
+[
+  {
+    "id": "OUTREACH-1785949193772",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "targetTypes": [
+      "PRIVATE_INVESTOR",
+      "REAL_ESTATE_FUND",
+      "HARD_MONEY_LENDER",
+      "CAPITAL_PARTNER"
+    ],
+    "messageStatus": "READY",
+    "dealSummary": {
+      "purchase": 93000,
+      "arv": 155000,
+      "spread": 62000
+    },
+    "priority": "URGENT",
+    "nextAction": "CONTACT_CAPITAL_PARTNER",
+    "created": "2026-08-05T16:59:53.772Z"
+  },
+  {
+    "id": "OUTREACH-1785949193773",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "targetTypes": [
+      "PRIVATE_INVESTOR",
+      "REAL_ESTATE_FUND",
+      "HARD_MONEY_LENDER",
+      "CAPITAL_PARTNER"
+    ],
+    "messageStatus": "READY",
+    "dealSummary": {
+      "purchase": 150000,
+      "arv": 250000,
+      "spread": 100000
+    },
+    "priority": "URGENT",
+    "nextAction": "CONTACT_CAPITAL_PARTNER",
+    "created": "2026-08-05T16:59:53.773Z"
+  },
+  {
+    "id": "OUTREACH-1785949193773",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "targetTypes": [
+      "PRIVATE_INVESTOR",
+      "REAL_ESTATE_FUND",
+      "HARD_MONEY_LENDER",
+      "CAPITAL_PARTNER"
+    ],
+    "messageStatus": "READY",
+    "dealSummary": {
+      "purchase": 95000,
+      "arv": 180000,
+      "spread": 85000
+    },
+    "priority": "URGENT",
+    "nextAction": "CONTACT_CAPITAL_PARTNER",
+    "created": "2026-08-05T16:59:53.773Z"
+  }
+]

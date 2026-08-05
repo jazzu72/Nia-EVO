@@ -1,0 +1,198 @@
+[
+  {
+    "id": "ALERT-1785946740215",
+    "actionId": "ACTION-1785946679735",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:19:00.215Z"
+  },
+  {
+    "id": "ALERT-1785946740227",
+    "actionId": "ACTION-1785946679738",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:19:00.227Z"
+  },
+  {
+    "id": "ALERT-1785946740228",
+    "actionId": "ACTION-1785946679739",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:19:00.228Z"
+  },
+  {
+    "id": "ALERT-1785946740230",
+    "actionId": "ACTION-1785946739745",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:19:00.230Z"
+  },
+  {
+    "id": "ALERT-1785946740231",
+    "actionId": "ACTION-1785946739748",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:19:00.231Z"
+  },
+  {
+    "id": "ALERT-1785946800237",
+    "actionId": "ACTION-1785946799745",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:20:00.237Z"
+  },
+  {
+    "id": "ALERT-1785946800244",
+    "actionId": "ACTION-1785946799748",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:20:00.244Z"
+  },
+  {
+    "id": "ALERT-1785946800247",
+    "actionId": "ACTION-1785946799749",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:20:00.247Z"
+  },
+  {
+    "id": "ALERT-1785946800251",
+    "actionId": "ACTION-1785946799753",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:20:00.251Z"
+  },
+  {
+    "id": "ALERT-1785946860237",
+    "actionId": "ACTION-1785946859745",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:21:00.237Z"
+  },
+  {
+    "id": "ALERT-1785946860239",
+    "actionId": "ACTION-1785946859754",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:21:00.239Z"
+  },
+  {
+    "id": "ALERT-1785946860240",
+    "actionId": "ACTION-1785946859760",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:21:00.240Z"
+  },
+  {
+    "id": "ALERT-1785946920237",
+    "actionId": "ACTION-1785946919756",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:22:00.237Z"
+  },
+  {
+    "id": "ALERT-1785946920242",
+    "actionId": "ACTION-1785946919758",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:22:00.242Z"
+  },
+  {
+    "id": "ALERT-1785946920242",
+    "actionId": "ACTION-1785946919764",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:22:00.242Z"
+  },
+  {
+    "id": "ALERT-1785946980243",
+    "actionId": "ACTION-1785946979748",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:23:00.243Z"
+  },
+  {
+    "id": "ALERT-1785946980245",
+    "actionId": "ACTION-1785946979750",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:23:00.245Z"
+  },
+  {
+    "id": "ALERT-1785946980246",
+    "actionId": "ACTION-1785946979751",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:23:00.246Z"
+  },
+  {
+    "id": "ALERT-1785947040241",
+    "actionId": "ACTION-1785947039746",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:24:00.241Z"
+  },
+  {
+    "id": "ALERT-1785947040245",
+    "actionId": "ACTION-1785947039748",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:24:00.245Z"
+  },
+  {
+    "id": "ALERT-1785947100243",
+    "actionId": "ACTION-1785947099751",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:25:00.243Z"
+  },
+  {
+    "id": "ALERT-1785947100248",
+    "actionId": "ACTION-1785947099755",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:25:00.248Z"
+  },
+  {
+    "id": "ALERT-1785947100249",
+    "actionId": "ACTION-1785947099756",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:25:00.249Z"
+  },
+  {
+    "id": "ALERT-1785947100250",
+    "actionId": "ACTION-1785947099757",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | NORFOLK FORECLOSURE OPPORTUNITY",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:25:00.250Z"
+  },
+  {
+    "id": "ALERT-1785947160247",
+    "actionId": "ACTION-1785947159750",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:26:00.247Z"
+  },
+  {
+    "id": "ALERT-1785947160249",
+    "actionId": "ACTION-1785947159752",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:26:00.249Z"
+  },
+  {
+    "id": "ALERT-1785947160250",
+    "actionId": "ACTION-1785947159753",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | 4110 Reisterstown Rd, Baltimore MD",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:26:00.250Z"
+  },
+  {
+    "id": "ALERT-1785947160252",
+    "actionId": "ACTION-1785947159754",
+    "message": "NIA ACTION READY: CONTACT_SELLER_AND_VERIFY_DEAL | NORFOLK FORECLOSURE OPPORTUNITY",
+    "priority": "B",
+    "timestamp": "2026-08-05T16:26:00.252Z"
+  }
+]
