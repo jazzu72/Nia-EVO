@@ -1,73 +1,11 @@
-# Environment
-.env
-.env.local
-.env.*.local
-
-# Node
 node_modules/
-npm-debug.log
-package-lock.json
-yarn.lock
-
-# Logs
-logs/
+.env
 *.log
 
-# OS
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+nia-backups/
+*.json
 
-# Old projects (REMOVE)
-MuseForgeOS/
-MoneyMunchkin/
-PolishOS/
-nia-career/
-nia-grants/
-nia-lesane/
-frontend/
-museforge_deploy/
+!package.json
+!docker-compose.yml
 
-# Old files (REMOVE)
-sba_application_*.txt
-sent_emails/
-runtime/
-sales_pitch/
-*.tar.gz
-*.zip
-nohup.out
-debug-report.txt
-*.bak
-
-# Temporary
-.temp/
-.cache/
-build/
-dist/
-
-# Keep only
-!config/
-!src/
-!public/
-!NIA-CEO/
-!logs/.gitkeep
-!data/.gitkeep
-node_modules/
 .pm2/
-*.log
-
-data/*.json
-data/*/*.json
-
-backups/
-.env
-
-web-ui/node_modules/
-
-.DS_Store
-simpler-grants-gov/
-textbelt/
-node_modules/
-.env
-setup-github-token.sh

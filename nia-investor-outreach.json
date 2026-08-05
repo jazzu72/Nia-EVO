@@ -1,7 +1,7 @@
 [
   {
-    "id": "INVESTOR-CONTACT-1785949246259",
-    "packageId": "INVESTOR-PACKAGE-1785949187484",
+    "id": "INVESTOR-CONTACT-1785949306261",
+    "packageId": "INVESTOR-PACKAGE-1785949247485",
     "property": "4110 Reisterstown Rd, Baltimore MD",
     "targets": [
       "PRIVATE_INVESTORS",
@@ -12,6 +12,36 @@
     "message": "Investment opportunity identified by NIA Capital OS. Purchase: $93000 | ARV: $155000 | Projected Spread: $62000",
     "status": "READY_FOR_REVIEW",
     "priority": "HIGH",
-    "created": "2026-08-05T17:00:46.260Z"
+    "created": "2026-08-05T17:01:46.261Z"
+  },
+  {
+    "id": "INVESTOR-CONTACT-1785949306267",
+    "packageId": "INVESTOR-PACKAGE-1785949247486",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "targets": [
+      "PRIVATE_INVESTORS",
+      "REAL_ESTATE_FUNDS",
+      "CAPITAL_PARTNERS"
+    ],
+    "subject": "NIA Capital Opportunity: 757 VIRGINIA TARGET PROPERTY",
+    "message": "Investment opportunity identified by NIA Capital OS. Purchase: $150000 | ARV: $250000 | Projected Spread: $100000",
+    "status": "READY_FOR_REVIEW",
+    "priority": "URGENT",
+    "created": "2026-08-05T17:01:46.267Z"
+  },
+  {
+    "id": "INVESTOR-CONTACT-1785949306268",
+    "packageId": "INVESTOR-PACKAGE-1785949247490",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "targets": [
+      "PRIVATE_INVESTORS",
+      "REAL_ESTATE_FUNDS",
+      "CAPITAL_PARTNERS"
+    ],
+    "subject": "NIA Capital Opportunity: NORFOLK FORECLOSURE OPPORTUNITY",
+    "message": "Investment opportunity identified by NIA Capital OS. Purchase: $95000 | ARV: $180000 | Projected Spread: $85000",
+    "status": "READY_FOR_REVIEW",
+    "priority": "URGENT",
+    "created": "2026-08-05T17:01:46.268Z"
   }
 ]
