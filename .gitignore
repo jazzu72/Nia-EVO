@@ -9,3 +9,4 @@ nia-backups/
 !docker-compose.yml
 
 .pm2/
+backups/
