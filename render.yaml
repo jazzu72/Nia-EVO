@@ -1,14 +1,10 @@
 services:
   - type: web
-    name: nia-evo-production
+    name: nia-capital-os
     runtime: node
-    plan: standard
+    plan: free
     buildCommand: npm install
-    startCommand: node server-watson.js
-    healthCheckPath: /api/watson/health
+    startCommand: node revenue-api.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
-
