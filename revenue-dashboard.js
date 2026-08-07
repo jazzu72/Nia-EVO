@@ -1,35 +1,32 @@
-const fs = require("fs");
-const http = require("http");
+const fs=require("fs");
 
-const PORT = 3010;
-const FILE = "nia-revenue.json";
+const FILE="./data/revenue-pipeline.json";
 
-http.createServer((req,res)=>{
-  if(req.url === "/revenue") {
-    let data = [];
+function report(){
 
-    if(fs.existsSync(FILE)) {
-      data = JSON.parse(fs.readFileSync(FILE));
-    }
+const data=JSON.parse(fs.readFileSync(FILE,"utf8"));
 
-    const total = data.reduce(
-      (sum,d)=>sum + Number(d.estimatedProfit || 0),0
-    );
+const contacts=data.contacts||[];
 
-    res.writeHead(200,{"Content-Type":"application/json"});
-    res.end(JSON.stringify({
-      system:"NIA-REVENUE-DASHBOARD",
-      deals:data.length,
-      totalEstimatedProfit:total,
-      records:data
-    },null,2));
+const pipeline=contacts
+.filter(c=>c.dealStatus!=="won")
+.reduce((sum,c)=>sum+((c.probability||0)/100)*2500,0);
 
-    return;
-  }
+const report={
+ timestamp:new Date().toISOString(),
+ totalLeads:contacts.length,
+ hotLeads:contacts.filter(c=>c.probability>=70).length,
+ proposals:contacts.filter(c=>c.proposalSent).length,
+ closedDeals:(data.closedDeals||[]).length,
+ revenue:data.revenue||0,
+ estimatedPipeline:Math.round(pipeline)
+};
 
-  res.writeHead(404);
-  res.end("NOT FOUND");
+console.log(JSON.stringify(report,null,2));
 
-}).listen(PORT,()=>{
-  console.log("💵 NIA REVENUE DASHBOARD ONLINE PORT",PORT);
-});
+return report;
+}
+
+report();
+
+module.exports={report};

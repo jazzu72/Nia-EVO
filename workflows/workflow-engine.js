@@ -159,7 +159,7 @@ memory.addMemory({
 
 category:"workflow",
 
-title:item.name,
+title:workflow.name,
 
 content:
 `Workflow moved to ${nextStage}`,

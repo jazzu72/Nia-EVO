@@ -7,5 +7,15 @@
     "start": "node nia-mission-dashboard-api.js",
     "health": "node nia-production-check.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@langchain/core": "^1.2.5",
+    "@langchain/openai": "^1.5.6",
+    "axios": "^1.19.0",
+    "node-cron": "^4.6.0",
+    "pdf-lib": "^1.17.1",
+    "rss-parser": "^3.13.0",
+    "stripe": "^22.4.0",
+    "telegraf": "^4.16.3",
+    "twilio": "^6.0.2"
+  }
 }

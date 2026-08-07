@@ -165,3 +165,80 @@ bot.command('prospects', async (ctx) => {
   });
   ctx.reply(msg, { parse_mode: 'Markdown' });
 });
+
+bot.command('kill', (ctx) => {
+  const killFlag = './data/kill-switch.flag';
+  if (fs.existsSync(killFlag)) {
+    ctx.reply('🛑 Kill switch already active. Use /resume to reactivate.');
+  } else {
+    fs.writeFileSync(killFlag, 'killed');
+    ctx.reply('🛑 Kill switch activated. Nia CEO agent paused.');
+  }
+});
+
+bot.command('resume', (ctx) => {
+  const killFlag = './data/kill-switch.flag';
+  if (fs.existsSync(killFlag)) {
+    fs.unlinkSync(killFlag);
+    ctx.reply('✅ Nia CEO agent resumed.');
+  } else {
+    ctx.reply('✅ Already running.');
+  }
+});
+
+bot.command('truth', (ctx) => {
+  const log = fs.existsSync('./data/truth-log.json') ? JSON.parse(fs.readFileSync('./data/truth-log.json')) : [];
+  const last = log.slice(-5).map(e => `${e.timestamp} – ${e.action}`).join('\n');
+  ctx.reply(`📖 Truth Log (last 5):\n${last || 'No entries.'}`);
+});
+
+bot.command('kill', (ctx) => {
+  const killFlag = './data/kill-switch.flag';
+  if (fs.existsSync(killFlag)) {
+    ctx.reply('🛑 Kill switch already active. Use /resume to reactivate.');
+  } else {
+    fs.writeFileSync(killFlag, 'killed');
+    ctx.reply('🛑 Kill switch activated. Nia CEO agent paused.');
+  }
+});
+
+bot.command('resume', (ctx) => {
+  const killFlag = './data/kill-switch.flag';
+  if (fs.existsSync(killFlag)) {
+    fs.unlinkSync(killFlag);
+    ctx.reply('✅ Nia CEO agent resumed.');
+  } else {
+    ctx.reply('✅ Already running.');
+  }
+});
+
+bot.command('truth', (ctx) => {
+  const log = fs.existsSync('./data/truth-log.json') ? JSON.parse(fs.readFileSync('./data/truth-log.json')) : [];
+  const last = log.slice(-5).map(e => `${e.timestamp} – ${e.action}`).join('\n');
+  ctx.reply(`📖 Truth Log (last 5):\n${last || 'No entries.'}`);
+});
+
+// ─── Bluevine Commands ──────────────────────────────────────
+bot.command('balance', (ctx) => {
+  const bank = require('./modules/banking/bluevine');
+  const bal = bank.getBalance();
+  ctx.reply(`💰 Bluevine Balance: $${bal.toLocaleString()}`);
+});
+
+bot.command('deposit', (ctx) => {
+  const args = ctx.message.text.split(' ');
+  const amount = parseFloat(args[1]);
+  const note = args.slice(2).join(' ') || 'Revenue deposit';
+  if (!amount || isNaN(amount)) {
+    return ctx.reply('Usage: /deposit <amount> [note]');
+  }
+  const bank = require('./modules/banking/bluevine');
+  const result = bank.updateBalance(amount, note);
+  ctx.reply(`✅ Deposit of $${amount} recorded.\nNew balance: $${result.balance.toLocaleString()}`);
+});
+
+bot.command('account', (ctx) => {
+  const bank = require('./modules/banking/bluevine');
+  const acc = bank.getAccount();
+  ctx.reply(`🏦 Bank: ${acc.bank}\nAccount: ${acc.accountNumber.slice(-4).padStart(12, '*')}\nRouting: ${acc.routingNumber}`);
+});
