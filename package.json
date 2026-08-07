@@ -4,7 +4,7 @@
   "description": "NIA Capital OS Production Engine",
   "main": "nia-mission-dashboard-api.js",
   "scripts": {
-    "start": "node nia-mission-dashboard-api.js",
+    "start": "node revenue-api.js",
     "health": "node nia-production-check.js"
   },
   "dependencies": {
