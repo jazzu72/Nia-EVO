@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: nia-capital-os
+    name: nia-evo-3
     runtime: node
     plan: free
     buildCommand: npm install
     startCommand: node revenue-api.js
-    healthCheckPath: /health
-    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
