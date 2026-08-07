@@ -1,357 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nia Capital OS - Autonomous Real Estate Acquisition System">
-  <meta name="theme-color" content="#2563eb">
-  <title>House of Jazzu - Nia Capital OS</title>
-  <link rel="manifest" href="/manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nia-EVO · House of Jazzu</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Base */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-      color: #f1f5f9;
-      line-height: 1.6;
-      min-height: 100vh;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(10, 14, 39, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    h1, h2, h3, .serif {
+      font-family: 'Playfair Display', serif;
     }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #2563eb, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 15px;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s;
-      font-size: 14px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #cbd5e1;
-      border: 1px solid #2563eb;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(37, 99, 235, 0.1);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 40px;
-    }
-
-    .hero-content h1 {
-      font-size: 64px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #f1f5f9, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-    }
-
-    .hero-content p {
-      font-size: 20px;
-      color: #cbd5e1;
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .features {
-      padding: 80px 40px;
-      background: rgba(37, 99, 235, 0.05);
-    }
-
-    .features h2 {
-      font-size: 48px;
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .feature-card {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.05));
-      border: 1px solid rgba(37, 99, 235, 0.2);
+    
+    .gold { color: #D4AF37; }
+    .gold-border { border-color: #D4AF37; }
+    .gold-bg { background: #D4AF37; }
+    .gold-glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); }
+    
+    /* Console panel */
+    .console-panel {
+      background: #111111;
+      border: 1px solid #2a2a2a;
       border-radius: 16px;
-      padding: 40px;
-      transition: all 0.3s;
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      position: relative;
+      overflow: hidden;
     }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: #2563eb;
+    .console-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37, #D4AF37, transparent);
+      opacity: 0.6;
     }
-
-    .feature-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
+    .console-line {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid #1a1a1a;
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
     }
-
-    .feature-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
+    .console-line:nth-child(1) { animation-delay: 0.1s; }
+    .console-line:nth-child(2) { animation-delay: 0.3s; }
+    .console-line:nth-child(3) { animation-delay: 0.5s; }
+    .console-line:nth-child(4) { animation-delay: 0.7s; }
+    .console-line:nth-child(5) { animation-delay: 0.9s; }
+    .console-line:nth-child(6) { animation-delay: 1.1s; }
+    .console-line:nth-child(7) { animation-delay: 1.3s; }
+    
+    .console-timestamp { color: #666; min-width: 80px; }
+    .console-level { color: #D4AF37; font-weight: 600; min-width: 60px; }
+    .console-msg { color: #ccc; }
+    .console-msg .highlight { color: #D4AF37; }
+    
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
-    .feature-card p {
-      color: #cbd5e1;
-      font-size: 14px;
+    
+    /* Dashboard Entry Card */
+    .entry-card {
+      background: #0f0f0f;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
     }
-
-    .stats {
-      padding: 80px 40px;
+    .entry-card:hover {
+      border-color: #D4AF37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
     }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      text-align: center;
+    .entry-card .pulse-ring {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+      pointer-events: none;
     }
-
-    .stat-value {
-      font-size: 48px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #2563eb, #06b6d4);
+    @keyframes pulseGlow {
+      0%, 100% { border-color: rgba(212, 175, 55, 0.1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.1); }
+      50% { border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+    }
+    .entry-card .status-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 8px;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .entry-card .status-readout {
+      font-size: 0.8rem;
+      color: #888;
+      letter-spacing: 0.02em;
+      margin-top: 0.25rem;
+    }
+    .entry-card .hover-summary {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      font-size: 0.9rem;
+      color: #bbb;
+      border-top: 1px solid #222;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+    }
+    .entry-card:hover .hover-summary {
+      opacity: 1;
+      max-height: 80px;
+    }
+    
+    /* Modals */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    .modal-box h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal-box .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.2s;
+    }
+    .modal-box .close-btn:hover { color: #fff; }
+    .modal-box input, .modal-box textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #f0f0f0;
+      margin-top: 0.5rem;
+      font-family: inherit;
+    }
+    .modal-box input:focus, .modal-box textarea:focus {
+      outline: none;
+      border-color: #D4AF37;
+    }
+    .modal-box label {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    
+    /* Responsive */
+    @media (max-width: 640px) {
+      .console-panel { font-size: 0.7rem; padding: 1rem; }
+      .console-timestamp { min-width: 60px; }
+      .console-level { min-width: 45px; }
+      .entry-card { padding: 1.5rem; }
+      .modal-box { padding: 1.5rem; }
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #D4AF37, #f5e56b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .stat-label {
-      color: #cbd5e1;
-      font-size: 14px;
-    }
-
-    .cta {
-      padding: 80px 40px;
-      text-align: center;
-      background: rgba(37, 99, 235, 0.05);
-    }
-
-    .cta h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .cta p {
-      font-size: 18px;
-      color: #cbd5e1;
-      margin-bottom: 40px;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 40px;
-      text-align: center;
-      color: #64748b;
-      font-size: 13px;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        padding: 16px 20px;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .hero-content h1 {
-        font-size: 40px;
-      }
-
-      .hero-content p {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">🏰 House of Jazzu</div>
-    <div class="nav-buttons">
-      <button class="btn btn-secondary" onclick="scrollToFeatures()">Features</button>
-      <button class="btn btn-primary" onclick="openDashboard()">Open Dashboard</button>
-    </div>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Autonomous Real Estate Capital OS</h1>
-      <p>Discover properties, manage capital, close deals. Nia Capital OS handles the intelligence. You handle the execution.</p>
-      <div class="hero-buttons">
-        <button class="btn btn-primary" onclick="openDashboard()" style="width: 200px;">Open Dashboard →</button>
-        <button class="btn btn-secondary" onclick="installPWA()" style="width: 200px;">Install App</button>
+<!-- ============================================================
+     LANDING PAGE
+     ============================================================ -->
+
+<main class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+
+  <!-- HERO SECTION -->
+  <section class="flex flex-col items-center text-center mb-24" aria-labelledby="hero-title">
+    <div class="inline-flex items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-full px-4 py-1.5 text-xs tracking-widest uppercase text-[#888] mb-6">
+      <span class="inline-block w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+      House of Jazzu · Nia-EVO
+    </div>
+    
+    <h1 id="hero-title" class="text-5xl md:text-7xl font-bold serif leading-tight max-w-3xl">
+      The AI that <span class="gold-gradient-text">supervises itself</span>.
+    </h1>
+    
+    <p class="mt-6 text-lg md:text-xl text-[#bbb] max-w-2xl font-light">
+      An autonomous runtime that learns from every execution, promotes only validated improvements,
+      and answers to a human-in-the-loop governance — all under the House of Jazzu.
+    </p>
+    
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a href="#" id="requestAccessBtn" class="inline-block bg-[#D4AF37] text-[#0a0a0a] font-semibold px-8 py-3 rounded-full hover:bg-[#c4a030] transition-colors shadow-lg shadow-[#D4AF37]/10">
+        Request Access
+      </a>
+      <a href="#console" class="inline-block border border-[#2a2a2a] text-white px-8 py-3 rounded-full hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all">
+        See the System
+      </a>
+    </div>
+  </section>
+
+  <!-- CONSOLE PANEL -->
+  <section id="console" class="mb-24" aria-label="Live AI command center console">
+    <div class="console-panel max-w-4xl mx-auto">
+      <div class="flex items-center justify-between border-b border-[#1a1a1a] pb-2 mb-4 text-xs text-[#666] tracking-widest">
+        <span>NIA-EVO · RUNTIME CONSOLE</span>
+        <span>ACTIVE · v3.2.1</span>
+      </div>
+      
+      <div class="space-y-1">
+        <div class="console-line">
+          <span class="console-timestamp">14:23:01</span>
+          <span class="console-level">INFO</span>
+          <span class="console-msg">Orchestrator · <span class="highlight">service_registry</span> synced (12 nodes)</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:03</span>
+          <span class="console-level">RECURSIVE</span>
+          <span class="console-msg">Learning module :: <span class="highlight">memory_graph</span> updated (Δ weight +0.17)</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:05</span>
+          <span class="console-level">WATCHDOG</span>
+          <span class="console-msg">All agents <span class="highlight">nominal</span> · audit trail logged</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:07</span>
+          <span class="console-level">PROMOTION</span>
+          <span class="console-msg">Strategy engine · candidate <span class="highlight">v2.4.1</span> passed validation</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:09</span>
+          <span class="console-level">GOVERNANCE</span>
+          <span class="console-msg">Human override token <span class="highlight">active</span> · no autonomous asset control</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:11</span>
+          <span class="console-level">TELEMETRY</span>
+          <span class="console-msg">Event bus · 2.4k messages/sec · <span class="highlight">0.01%</span> error rate</span>
+        </div>
+        <div class="console-line">
+          <span class="console-timestamp">14:23:13</span>
+          <span class="console-level">LEARNING</span>
+          <span class="console-msg">Recursive improvement cycle #<span class="highlight">274</span> — self‑evaluation complete</span>
+        </div>
+      </div>
+      
+      <!-- simulated activity graph -->
+      <div class="mt-6 h-16 flex items-end gap-1 opacity-30">
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-8"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-14"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-6"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-20"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-12"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-16"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-8"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-24"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-10"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-18"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-14"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-22"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-8"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-12"></div>
+        <div class="w-2 bg-[#D4AF37]/40 rounded-t h-16"></div>
       </div>
     </div>
   </section>
 
-  <section class="features" id="features">
-    <h2>What Nia Does</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Real-Time Dashboard</h3>
-        <p>Monitor capital, deals, and performance metrics in real-time.</p>
+  <!-- FEATURE BLOCKS -->
+  <section class="mb-24" aria-label="Core features">
+    <h2 class="text-3xl md:text-4xl font-bold serif text-center mb-16">
+      Built on <span class="gold">code, not promises</span>.
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">🧠</div>
+        <h3 class="text-lg font-semibold serif gold">Recursive Learning Engine</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Self‑supervising improvement cycles — every execution informs the next.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">💰</div>
-        <h3>Capital Management</h3>
-        <p>Track available capital, deployed funds, and profit targets.</p>
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">⚖️</div>
+        <h3 class="text-lg font-semibold serif gold">Governed Control Plane</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Strict human‑in‑the‑loop oversight. No autonomous asset control.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏠</div>
-        <h3>Deal Pipeline</h3>
-        <p>Visualize your deal funnel from leads to closed transactions.</p>
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">🤖</div>
+        <h3 class="text-lg font-semibold serif gold">Multi‑Agent Orchestration</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Distributed service registry, async event bus, and telemetry.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">📋</div>
-        <h3>Grants Tracking</h3>
-        <p>$1.6M+ in federal and state grant programs at your fingertips.</p>
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">📝</div>
+        <h3 class="text-lg font-semibold serif gold">Audit Trail &amp; Human Oversight</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Every decision logged, every promotion signed off.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <h3>Autonomous Systems</h3>
-        <p>Runs 24/7 managing operations, capital allocation, and decisions.</p>
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">🦀</div>
+        <h3 class="text-lg font-semibold serif gold">Rust / Python Hybrid Core</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Performance of Rust with the flexibility of Python.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3>PWA Ready</h3>
-        <p>Install as a native app. Works offline. Always accessible.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="stats">
-    <div class="stats-grid">
-      <div>
-        <div class="stat-value">$203K</div>
-        <div class="stat-label">Available Capital</div>
-      </div>
-      <div>
-        <div class="stat-value">$1.6M</div>
-        <div class="stat-label">Grants Pipeline</div>
-      </div>
-      <div>
-        <div class="stat-value">14-21d</div>
-        <div class="stat-label">Deal Timeline</div>
-      </div>
-      <div>
-        <div class="stat-value">$30-50K</div>
-        <div class="stat-label">Profit Per Deal</div>
+      <div class="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+        <div class="text-3xl mb-3">🔮</div>
+        <h3 class="text-lg font-semibold serif gold">Strategy Engine</h3>
+        <p class="text-sm text-[#aaa] mt-2 leading-relaxed">Long‑term economic reasoning with adaptive planning.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Ready to Close Deals?</h2>
-    <p>Your capital is ready. Your system is online. Your dashboard shows everything you need.</p>
-    <button class="btn btn-primary" onclick="openDashboard()" style="width: 200px;">Open Dashboard →</button>
+  <!-- TRUST / COMPLIANCE SECTION -->
+  <section class="mb-24 border-t border-[#1a1a1a] pt-12 pb-12" aria-label="Trust and governance">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold serif mb-4">
+        Human‑in‑the‑loop, <span class="gold">by design</span>.
+      </h2>
+      <p class="text-[#aaa] leading-relaxed max-w-xl mx-auto">
+        Nia-EVO is governed by a strict control plane that requires explicit human approval for every
+        promotion, every asset‑affecting decision, and every strategic shift. <strong class="text-white">Autonomous
+        asset control is never permitted.</strong>
+      </p>
+      <div class="mt-8 flex justify-center gap-8 text-sm text-[#777]">
+        <span class="flex items-center gap-2"><span class="text-[#D4AF37]">✓</span> No auto‑trading</span>
+        <span class="flex items-center gap-2"><span class="text-[#D4AF37]">✓</span> No auto‑deployment</span>
+        <span class="flex items-center gap-2"><span class="text-[#D4AF37]">✓</span> Full audit log</span>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>🏰 House of Jazzu - Nia Capital OS v1.0 | Autonomous Real Estate Acquisition</p>
-    <p>© 2026 Jason LeSane. All rights reserved.</p>
-  </footer>
+  <!-- FINAL CONVERSION / REQUEST ACCESS -->
+  <section id="request-access" class="mb-24 bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-8 md:p-12 border border-[#1a1a1a] text-center">
+    <h2 class="text-3xl md:text-4xl font-bold serif gold-gradient-text mb-4">
+      Ready to govern your own intelligence?
+    </h2>
+    <p class="text-[#bbb] max-w-xl mx-auto mb-8">
+      Access is limited to qualified operators. Request a private instance of Nia-EVO.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#" id="requestAccessBtn2" class="inline-block bg-[#D4AF37] text-[#0a0a0a] font-semibold px-10 py-3 rounded-full hover:bg-[#c4a030] transition-colors shadow-lg shadow-[#D4AF37]/10">
+        Request Access
+      </a>
+      <a href="#" id="contactBtn" class="inline-block border border-[#2a2a2a] text-white px-10 py-3 rounded-full hover:border-[#D4AF37] hover:bg-[#D4AF37]/5 transition-all">
+        Contact House of Jazzu
+      </a>
+    </div>
+  </section>
 
-  <script>
-    function openDashboard() {
-      window.location.href = '/nia-dashboard';
-    }
+</main>
 
-    function scrollToFeatures() {
-      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-    }
+<!-- ============================================================
+     DASHBOARD ENTRY BUTTON
+     ============================================================ -->
 
-    function installPWA() {
-      if (window.deferredPrompt) {
-        window.deferredPrompt.prompt();
-      } else {
-        alert('Install option will appear when available on your device.');
-      }
-    }
+<section class="bg-[#0a0a0a] py-12 border-t border-[#1a1a1a]">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="text-sm text-[#666] uppercase tracking-widest mb-6">From the House of Jazzu dashboard</p>
+    
+    <div class="entry-card" id="entryCard">
+      <div class="pulse-ring"></div>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">🏰</span>
+          <div>
+            <div class="text-xl font-bold serif gold">Enter Nia-EVO</div>
+            <div class="status-readout">
+              <span class="status-dot"></span>
+              System: <span class="text-white">Nominal</span> · Last Promotion: <span class="text-[#D4AF37]">2026-08-07 14:23:09</span>
+            </div>
+          </div>
+        </div>
+        <span class="text-[#D4AF37] text-2xl opacity-50">›</span>
+      </div>
+      <div class="hover-summary text-left">
+        <p class="text-sm">
+          <strong class="gold">Nia-EVO v3.2.1</strong> — Self‑supervising runtime with recursive learning,
+          governed control plane, and full audit trail. 12 active agents, 0.01% error rate.
+        </p>
+      </div>
+    </div>
+    <p class="mt-4 text-xs text-[#555]">Click to launch the live runtime dashboard</p>
+  </div>
+</section>
 
-    // Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed'));
-    }
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
 
-    // PWA Install Prompt
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      window.deferredPrompt = e;
-    });
-  </script>
+<!-- Request Access Modal -->
+<div class="modal-overlay" id="requestModal">
+  <div class="modal-box">
+    <span class="close-btn" id="closeRequestModal">✕</span>
+    <h2 class="serif gold">Request Access</h2>
+    <p class="text-sm text-[#aaa] mt-2">Fill out the form below and we'll review your request.</p>
+    <form id="requestForm">
+      <label>Name</label>
+      <input type="text" placeholder="Your full name" required />
+      <label>Email</label>
+      <input type="email" placeholder="you@domain.com" required />
+      <label>Organization</label>
+      <input type="text" placeholder="Your company or institution" />
+      <label>Why do you need Nia-EVO?</label>
+      <textarea rows="3" placeholder="Briefly describe your use case…"></textarea>
+      <button type="submit" class="mt-4 w-full bg-[#D4AF37] text-[#0a0a0a] font-semibold py-2 rounded-lg hover:bg-[#c4a030] transition-colors">
+        Submit Request
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <span class="close-btn" id="closeContactModal">✕</span>
+    <h2 class="serif gold">Contact House of Jazzu</h2>
+    <p class="text-sm text-[#aaa] mt-2">You can reach us directly via email or phone.</p>
+    <div class="mt-4 space-y-3 text-[#ccc]">
+      <p><span class="gold">Email:</span> <a href="mailto:info@houseofjazzu.com" class="hover:text-[#D4AF37]">info@houseofjazzu.com</a></p>
+      <p><span class="gold">Phone:</span> <a href="tel:+17573399245" class="hover:text-[#D4AF37]">+1 757-339-9245</a></p>
+      <p><span class="gold">Address:</span> Norfolk, VA 23505</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<footer class="border-t border-[#1a1a1a] py-8 text-center text-sm text-[#666]">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <span class="serif text-base text-[#888]">🏰 House of Jazzu</span>
+    <span class="text-xs tracking-widest">NIA-EVO · Autonomous Runtime</span>
+    <span class="text-xs">Built for one operator. Backed by code, not promises.</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT — MODALS & ENTRY CARD
+     ============================================================ -->
+
+<script>
+  // ---- Modals ----
+  const requestModal = document.getElementById('requestModal');
+  const contactModal = document.getElementById('contactModal');
+  const requestBtns = [document.getElementById('requestAccessBtn'), document.getElementById('requestAccessBtn2')];
+  const contactBtn = document.getElementById('contactBtn');
+  const closeRequest = document.getElementById('closeRequestModal');
+  const closeContact = document.getElementById('closeContactModal');
+
+  function openModal(modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeModal(modal) { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
+
+  requestBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModal(requestModal); }));
+  contactBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactModal); });
+  closeRequest.addEventListener('click', () => closeModal(requestModal));
+  closeContact.addEventListener('click', () => closeModal(contactModal));
+  window.addEventListener('click', (e) => {
+    if (e.target === requestModal) closeModal(requestModal);
+    if (e.target === contactModal) closeModal(contactModal);
+  });
+
+  // ---- Entry Card ----
+  document.getElementById('entryCard').addEventListener('click', function() {
+    // In production, replace this with window.location.href = '/dashboard'
+    alert('🚀 Launching Nia-EVO runtime dashboard… (simulated)');
+  });
+</script>
+
 </body>
 </html>
