@@ -5,6 +5,5 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: node revenue-api.js
-    envVars:
-      - key: NODE_ENV
-        value: production
+    healthCheckPath: /api/revenue
+    autoDeploy: true
