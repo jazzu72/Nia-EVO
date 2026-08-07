@@ -10,3 +10,4 @@ nia-backups/
 
 .pm2/
 backups/
+public/index.html.bak*
