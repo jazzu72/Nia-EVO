@@ -27,6 +27,7 @@ res.json({
 
 app.get("/", (req, res) => res.json({ system: "NIA-CAPITAL-OS", status: "ONLINE", message: "Revenue automation engine deployed", endpoints: ["/health", "/api/revenue"] }));
 app.get("/", (req, res) => res.json({ system: "NIA-CAPITAL-OS", status: "ONLINE", message: "Revenue automation engine deployed", endpoints: ["/health", "/api/revenue"] }));
+app.get("/", (req, res) => res.json({ system: "NIA-CAPITAL-OS", status: "ONLINE", message: "Revenue automation engine deployed", endpoints: ["/health", "/api/revenue"] }));
 app.listen(PORT,()=>{
  console.log(`📊 Revenue API running on port ${PORT}`);
 });
