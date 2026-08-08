@@ -17,3 +17,8 @@ app.get('/health', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Revenue API running on port ${PORT}`);
 });
+
+// ─── Catch‑all for unknown routes ────────────────────────────
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found', path: req.path });
+});
