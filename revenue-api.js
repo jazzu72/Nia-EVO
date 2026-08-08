@@ -10,6 +10,10 @@ app.get('/api/revenue', (req, res) => {
   res.json({ revenue: 2500, deals: 1, timestamp: new Date().toISOString() });
 });
 
+app.get('/health', (req, res) => {
+  res.json({ status: 'healthy', system: 'Nia-EVO Revenue API' });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Revenue API running on port ${PORT}`);
 });
