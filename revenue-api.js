@@ -221,7 +221,8 @@ function financialWriteAllowed() {
 
     return (
       config.allowFinancialActions === true &&
-      process.env.NIA_FINANCIAL_ACTION_APPROVED === 'true'
+      process.env.NIA_FINANCIAL_ACTION_APPROVED === 'true' &&
+      process.env.NIA_FINANCIAL_ACTIONS_ENABLED === 'true'
     );
   } catch {
     return false;
