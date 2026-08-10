@@ -293,6 +293,21 @@ app.post('/api/finance/transaction', express.json(), async (req, res) => {
   }
 });
 
+app.get('/api/executive/status', async (req, res) => {
+  return res.json({
+    system: 'NIA-CAPITAL-OS',
+    mode: 'CONTROLLED_EXECUTION',
+    decisionEngine: 'AVAILABLE',
+    financialExecution: 'BLOCKED',
+    approvalRequired: true,
+    automaticMoneyMovement: false,
+    databaseWriteAuthorization: false,
+    reconciliationRequired: true,
+    status: 'operational_safe_mode',
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get('/api/finance/classification', async (req, res) => {
   try {
     if (!pool) {
