@@ -309,6 +309,26 @@ app.get('/api/executive/status', async (req, res) => {
 });
 
 
+app.get('/api/nia/decision', async (req,res) => {
+  res.json({
+    system:'NIA-CAPITAL-OS',
+    status:'decision_support_only',
+    readOnly:true,
+    recommendation:'OWNER_REVIEW_REQUIRED',
+    confidence:'UNVERIFIED',
+    evidenceRequired:true,
+    financialExecutionAllowed:false,
+    externalExecutionAllowed:false,
+    ownerApprovalRequired:true,
+    actions:[
+      'collect_evidence',
+      'classify',
+      'verify',
+      'prepare_owner_review'
+    ]
+  });
+});
+
 app.get('/api/nia/truth', async (req,res) => {
   res.json({
     system:'NIA-CAPITAL-OS',
