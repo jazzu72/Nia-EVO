@@ -40,4 +40,11 @@ async function search(keyword = 'small business technology') {
   });
 }
 
-module.exports = { search };
+
+async function fetchOpportunity(opportunityId) {
+  return post('/v1/api/fetchOpportunity', {
+    opportunityId
+  });
+}
+
+module.exports = { search, fetchOpportunity };
