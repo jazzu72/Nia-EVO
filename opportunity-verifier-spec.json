@@ -1,0 +1,25 @@
+{
+  "system": "NIA OPPORTUNITY VERIFIER",
+  "mode": "READ_ONLY",
+  "requiredEvidence": [
+    "identifiable_opportunity",
+    "official_source",
+    "eligibility_evidence",
+    "deadline_evidence",
+    "application_path"
+  ],
+  "promotion": {
+    "OBSERVED": "candidate discovered",
+    "CLASSIFIED": "candidate categorized",
+    "VERIFIED": "all required evidence present",
+    "APPROVED": "owner explicitly approves",
+    "EXECUTED": "authorized submission/action"
+  },
+  "safety": {
+    "modifyDatabase": false,
+    "submitApplication": false,
+    "financialWrite": false,
+    "moneyMovement": false,
+    "ownerApprovalAutomation": false
+  }
+}
