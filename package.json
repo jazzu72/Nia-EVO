@@ -2,7 +2,7 @@
   "name": "nia-capital-os",
   "version": "1.0.0",
   "description": "NIA Capital OS Production Engine",
-  "main": "nia-mission-dashboard-api.js",
+  "main": "revenue-api.js",
   "scripts": {
     "start": "node revenue-api.js",
     "health": "node nia-production-check.js"
