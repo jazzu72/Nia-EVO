@@ -82,6 +82,41 @@ app.get('/api/revenue', async (req, res) => {
 });
 
 
+app.get('/api/revenue/audit', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          id,
+          amount,
+          description,
+          created_at AS timestamp
+        FROM revenue_ledger
+        ORDER BY created_at DESC
+        LIMIT 100
+      `);
+
+      return res.json({
+        storage: 'postgresql',
+        count: result.rows.length,
+        entries: result.rows,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const ledger = readLedger();
+
+    res.json({
+      storage: 'local-fallback',
+      count: ledger.entries.length,
+      entries: ledger.entries.slice(-100).reverse(),
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Revenue audit unavailable' });
+  }
+});
+
 app.get('/api/revenue/summary', async (req, res) => {
   try {
     if (pool) {
