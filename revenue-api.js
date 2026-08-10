@@ -260,6 +260,88 @@ app.post('/api/finance/transaction', express.json(), async (req, res) => {
   }
 });
 
+app.get('/api/finance/classification', async (req, res) => {
+  try {
+    if (!pool) {
+      return res.status(503).json({
+        error: 'Financial classification requires PostgreSQL'
+      });
+    }
+
+    const revenueResult = await pool.query(`
+      SELECT
+        id,
+        amount,
+        description,
+        created_at AS timestamp
+      FROM revenue_ledger
+      ORDER BY created_at DESC
+      LIMIT 100
+    `);
+
+    const entries = revenueResult.rows.map(row => {
+      const description = String(row.description || '').toLowerCase();
+
+      let classification = 'REQUIRES_BUSINESS_CONFIRMATION';
+
+      if (
+        description.includes('test') ||
+        description.includes('connectivity') ||
+        description.includes('validation') ||
+        description.includes('probe')
+      ) {
+        classification = 'TEST';
+      } else if (
+        description.includes('simulation') ||
+        description.includes('simulated') ||
+        description.includes('paper') ||
+        description.includes('backtest')
+      ) {
+        classification = 'SIMULATION';
+      } else if (
+        description.includes('internal') ||
+        description.includes('transfer')
+      ) {
+        classification = 'INTERNAL';
+      }
+
+      return {
+        id: row.id,
+        amount: row.amount,
+        description: row.description,
+        classification,
+        timestamp: row.timestamp
+      };
+    });
+
+    const totals = {
+      TEST: 0,
+      SIMULATION: 0,
+      INTERNAL: 0,
+      REQUIRES_BUSINESS_CONFIRMATION: 0
+    };
+
+    for (const entry of entries) {
+      totals[entry.classification] += Number(entry.amount || 0);
+    }
+
+    return res.json({
+      system: 'NIA-CAPITAL-OS',
+      status: 'classification_only',
+      read_only: true,
+      entries,
+      totals,
+      note: 'Classification is advisory only. No financial records modified.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Financial classification error:', err);
+    return res.status(500).json({
+      error: 'Financial classification unavailable'
+    });
+  }
+});
+
 app.get('/api/finance/reconciliation', async (req, res) => {
   try {
     if (!pool) {
