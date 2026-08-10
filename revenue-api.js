@@ -309,6 +309,21 @@ app.get('/api/executive/status', async (req, res) => {
 });
 
 
+app.get('/api/nia/opportunities', async (req,res) => {
+  try {
+    const opportunities = [
+      {id:'OPP-REVENUE',type:'revenue',truthState:'OBSERVED',verified:false,approved:false,executable:false},
+      {id:'OPP-GRANT',type:'grant',truthState:'OBSERVED',verified:false,approved:false,executable:false},
+      {id:'OPP-CONTRACT',type:'contract',truthState:'OBSERVED',verified:false,approved:false,executable:false},
+      {id:'OPP-PARTNERSHIP',type:'partnership',truthState:'OBSERVED',verified:false,approved:false,executable:false},
+      {id:'OPP-REAL-ESTATE',type:'real_estate',truthState:'OBSERVED',verified:false,approved:false,executable:false}
+    ];
+    res.json({system:'NIA-CAPITAL-OS',status:'opportunity_control_only',readOnly:true,executionAllowed:false,ownerApprovalRequired:true,opportunities});
+  } catch(err) {
+    res.status(500).json({system:'NIA-CAPITAL-OS',status:'unavailable',readOnly:true});
+  }
+});
+
 app.get('/api/nia/status', async (req, res) => {
   try {
     let vaultStatus = { status: 'unavailable' };
