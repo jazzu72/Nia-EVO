@@ -11,3 +11,5 @@ nia-backups/
 .pm2/
 backups/
 public/index.html.bak*
+audit-backups/
+revenue-api.js.pre-*
