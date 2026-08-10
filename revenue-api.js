@@ -91,7 +91,7 @@ app.get('/api/revenue/summary', async (req, res) => {
           COUNT(*) AS deals,
           COALESCE(AVG(amount), 0) AS average_deal,
           COALESCE(MAX(amount), 0) AS largest_deal
-        FROM revenue
+        FROM revenue_ledger
       `);
 
       return res.json({
