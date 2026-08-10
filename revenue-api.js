@@ -211,7 +211,39 @@ app.get('/api/finance/transactions', async (req, res) => {
   }
 });
 
+
+function financialWriteAllowed() {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const configPath = path.join(__dirname, 'src', 'vault', 'config.json');
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+
+    return (
+      config.allowFinancialActions === true &&
+      process.env.NIA_FINANCIAL_ACTION_APPROVED === 'true'
+    );
+  } catch {
+    return false;
+  }
+}
+
+function requireFinancialWriteApproval(req, res) {
+  if (!financialWriteAllowed()) {
+    return res.status(403).json({
+      ok: false,
+      error: 'Financial write blocked by Quantum Vault policy',
+      policy: 'allowFinancialActions=false',
+      approvalRequired: true,
+      readOnly: true,
+      databaseModified: false
+    });
+  }
+  return true;
+}
+
 app.post('/api/finance/transaction', express.json(), async (req, res) => {
+  if (requireFinancialWriteApproval(req, res) !== true) return;
   try {
     const type = String(req.body.type || '').toLowerCase();
     const amount = Number(req.body.amount);
@@ -543,6 +575,7 @@ app.get('/api/revenue/summary', async (req, res) => {
 });
 
 app.post('/api/revenue', express.json(), async (req, res) => {
+  if (requireFinancialWriteApproval(req, res) !== true) return;
   const amount = Number(req.body.amount);
 
   if (!Number.isFinite(amount) || amount <= 0) {
