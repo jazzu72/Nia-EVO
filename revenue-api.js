@@ -308,6 +308,109 @@ app.get('/api/executive/status', async (req, res) => {
   });
 });
 
+
+app.get('/api/nia/status', async (req, res) => {
+  try {
+    let vaultStatus = { status: 'unavailable' };
+
+    try {
+      const vault = require('./vault-integration');
+      vaultStatus = vault.health();
+    } catch (err) {
+      vaultStatus = {
+        status: 'error',
+        error: 'Vault health unavailable'
+      };
+    }
+
+    let databaseStatus = 'unavailable';
+    let revenueEntries = 0;
+    let transactionEntries = 0;
+
+    if (pool) {
+      try {
+        const revenueResult = await pool.query(
+          'SELECT COUNT(*)::int AS count FROM revenue_ledger'
+        );
+
+        const transactionResult = await pool.query(
+          'SELECT COUNT(*)::int AS count FROM financial_transactions'
+        );
+
+        revenueEntries = revenueResult.rows[0].count;
+        transactionEntries = transactionResult.rows[0].count;
+        databaseStatus = 'healthy';
+      } catch (err) {
+        databaseStatus = 'error';
+      }
+    }
+
+    const financialApproved =
+      process.env.NIA_FINANCIAL_ACTION_APPROVED === 'true';
+
+    const financialActionsEnabled =
+      process.env.NIA_FINANCIAL_ACTIONS_ENABLED === 'true';
+
+    return res.json({
+      system: 'NIA-CAPITAL-OS',
+      mode: 'controlled-autonomous',
+      status: 'operational',
+      read_only_status: true,
+
+      vault: {
+        status: vaultStatus.status || 'initialized',
+        encryption: 'AES-256-GCM',
+        approvalRequired: true
+      },
+
+      database: {
+        status: databaseStatus,
+        revenueEntries,
+        transactionEntries
+      },
+
+      financialControl: {
+        allowFinancialActions: false,
+        approvalRequired: true,
+        environmentApproved: financialApproved,
+        actionsEnabled: financialActionsEnabled,
+        executionAllowed:
+          financialApproved && financialActionsEnabled
+      },
+
+      capabilities: {
+        monitoring: true,
+        classification: true,
+        reconciliation: true,
+        opportunityAnalysis: true,
+        decisionSupport: true,
+        ownerApprovalQueue: true,
+        automaticMoneyMovement: false,
+        automaticFinancialWrites: false,
+        automaticDeletion: false
+      },
+
+      truthModel: [
+        'OBSERVED',
+        'CLASSIFIED',
+        'VERIFIED',
+        'APPROVED',
+        'EXECUTED'
+      ],
+
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('NIA status error:', err);
+
+    return res.status(500).json({
+      system: 'NIA-CAPITAL-OS',
+      status: 'status_unavailable',
+      readOnly: true
+    });
+  }
+});
+
 app.get('/api/finance/classification', async (req, res) => {
   try {
     if (!pool) {
