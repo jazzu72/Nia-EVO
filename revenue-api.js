@@ -309,6 +309,20 @@ app.get('/api/executive/status', async (req, res) => {
 });
 
 
+app.get('/api/nia/approval-queue', async (req,res) => {
+  res.json({
+    system:'NIA-CAPITAL-OS',
+    status:'owner_approval_queue',
+    readOnly:true,
+    pending:[],
+    approvalRequired:true,
+    autoApprove:false,
+    executionAllowed:false,
+    moneyMovementAllowed:false,
+    note:'Only explicit owner authorization may advance an item beyond APPROVED.'
+  });
+});
+
 app.get('/api/nia/decision', async (req,res) => {
   res.json({
     system:'NIA-CAPITAL-OS',
