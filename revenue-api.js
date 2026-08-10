@@ -26,6 +26,16 @@ async function initDatabase() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS financial_transactions (
+      id BIGSERIAL PRIMARY KEY,
+      type VARCHAR(20) NOT NULL CHECK (type IN ('revenue','expense')),
+      amount NUMERIC(14,2) NOT NULL CHECK (amount > 0),
+      description TEXT NOT NULL DEFAULT 'Financial transaction',
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
   return true;
 }
 
@@ -81,6 +91,41 @@ app.get('/api/revenue', async (req, res) => {
   }
 });
 
+
+app.get('/api/finance/summary', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          COALESCE(SUM(amount) FILTER (WHERE type = 'revenue'), 0) AS revenue,
+          COALESCE(SUM(amount) FILTER (WHERE type = 'expense'), 0) AS expenses,
+          COALESCE(SUM(amount) FILTER (WHERE type = 'revenue'), 0) -
+          COALESCE(SUM(amount) FILTER (WHERE type = 'expense'), 0) AS net_cash
+        FROM financial_transactions
+      `);
+
+      return res.json({
+        system: 'NIA-CAPITAL-OS',
+        financials: result.rows[0],
+        storage: 'postgresql',
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    res.json({
+      system: 'NIA-CAPITAL-OS',
+      financials: {
+        revenue: 0,
+        expenses: 0,
+        net_cash: 0
+      },
+      storage: 'local-fallback',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Financial summary unavailable' });
+  }
+});
 
 app.get('/api/revenue/dashboard', async (req, res) => {
   try {
