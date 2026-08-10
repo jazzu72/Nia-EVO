@@ -309,6 +309,28 @@ app.get('/api/executive/status', async (req, res) => {
 });
 
 
+app.get('/api/nia/truth', async (req,res) => {
+  res.json({
+    system:'NIA-CAPITAL-OS',
+    status:'truth_control_only',
+    readOnly:true,
+    states:[
+      {state:'OBSERVED',requires:'source evidence'},
+      {state:'CLASSIFIED',requires:'NIA classification'},
+      {state:'VERIFIED',requires:'independent confirmation'},
+      {state:'APPROVED',requires:'owner approval'},
+      {state:'EXECUTED',requires:'authorized execution'}
+    ],
+    promotionRules:{
+      observedToClassified:true,
+      classifiedToVerified:false,
+      verifiedToApproved:false,
+      approvedToExecuted:false
+    },
+    note:'No state promotion creates financial authority.'
+  });
+});
+
 app.get('/api/nia/opportunities', async (req,res) => {
   try {
     const opportunities = [
