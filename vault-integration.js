@@ -1,17 +1,31 @@
-const fs = require('fs');
-const VAULT_FILE = './runtime/vault/secrets.enc';
+const path = require('path');
+
+const QuantumVault = require('./src/vault/core/vault');
+
+const vault = new QuantumVault(
+  path.join(__dirname, 'src/vault/config.json')
+);
 
 function getSecret(key) {
-  try {
-    const data = JSON.parse(fs.readFileSync(VAULT_FILE, 'utf8'));
-    return data[key] || null;
-  } catch { return null; }
+  if (!key) throw new Error('Secret key is required');
+  return vault.retrieveSecret(key);
 }
 
 function setSecret(key, value) {
-  const data = JSON.parse(fs.readFileSync(VAULT_FILE, 'utf8'));
-  data[key] = value;
-  fs.writeFileSync(VAULT_FILE, JSON.stringify(data, null, 2));
+  if (!key) throw new Error('Secret key is required');
+  if (value === undefined || value === null) {
+    throw new Error('Secret value is required');
+  }
+
+  return vault.storeSecret(key, String(value));
 }
 
-module.exports = { getSecret, setSecret };
+function health() {
+  return vault.health();
+}
+
+module.exports = {
+  getSecret,
+  setSecret,
+  health
+};
