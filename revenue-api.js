@@ -1,10 +1,33 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { Pool } = require('pg');
 const app = express();
 const PORT = process.env.PORT || 3100;
 const DEPLOYMENT_ID = 'NIA-REVENUE-API-B33C913';
 const LEDGER = path.join(__dirname, 'revenue-ledger.json');
+
+
+
+const pool = process.env.DATABASE_URL
+  ? new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    })
+  : null;
+
+async function initDatabase() {
+  if (!pool) return false;
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS revenue_ledger (
+      id BIGSERIAL PRIMARY KEY,
+      amount NUMERIC(14,2) NOT NULL CHECK (amount > 0),
+      description TEXT NOT NULL DEFAULT 'Revenue entry',
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
+  return true;
+}
 
 function readLedger() {
   try { return JSON.parse(fs.readFileSync(LEDGER, 'utf8')); }
@@ -15,33 +38,103 @@ app.get('/', (req, res) => {
   res.json({ service: 'Nia-EVO Revenue API', status: 'online' });
 });
 
-app.get('/api/revenue', (req, res) => {
-  const ledger = readLedger();
-  res.json({
-    revenue: ledger.revenue,
-    deals: ledger.deals,
-    entries: ledger.entries,
-    timestamp: new Date().toISOString()
-  });
+app.get('/api/revenue', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          COALESCE(SUM(amount), 0) AS revenue,
+          COUNT(*)::int AS deals,
+          COALESCE(
+            json_agg(
+              json_build_object(
+                'id', id,
+                'amount', amount,
+                'description', description,
+                'timestamp', created_at
+              )
+              ORDER BY created_at DESC
+            ), '[]'
+          ) AS entries
+        FROM revenue_ledger
+      `);
+
+      return res.json({
+        revenue: Number(result.rows[0].revenue),
+        deals: result.rows[0].deals,
+        entries: result.rows[0].entries,
+        storage: 'postgresql',
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const ledger = readLedger();
+    res.json({
+      revenue: ledger.revenue,
+      deals: ledger.deals,
+      entries: ledger.entries,
+      storage: 'local-fallback',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Database unavailable' });
+  }
 });
 
-app.post('/api/revenue', express.json(), (req, res) => {
+app.post('/api/revenue', express.json(), async (req, res) => {
   const amount = Number(req.body.amount);
+
   if (!Number.isFinite(amount) || amount <= 0) {
-    return res.status(400).json({ error: 'amount must be a positive number' });
+    return res.status(400).json({
+      error: 'amount must be a positive number'
+    });
   }
-  const ledger = readLedger();
-  const entry = {
-    id: `REV-${Date.now()}`,
-    amount,
-    description: req.body.description || 'Revenue entry',
-    timestamp: new Date().toISOString()
-  };
-  ledger.revenue += amount;
-  ledger.deals += 1;
-  ledger.entries.push(entry);
-  fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2));
-  res.status(201).json({ ok: true, entry, revenue: ledger.revenue, deals: ledger.deals });
+
+  try {
+    if (pool) {
+      const result = await pool.query(
+        `INSERT INTO revenue_ledger (amount, description)
+         VALUES ($1, $2)
+         RETURNING id, amount, description, created_at`,
+        [amount, req.body.description || 'Revenue entry']
+      );
+
+      return res.status(201).json({
+        ok: true,
+        storage: 'postgresql',
+        entry: {
+          id: `REV-${result.rows[0].id}`,
+          amount: Number(result.rows[0].amount),
+          description: result.rows[0].description,
+          timestamp: result.rows[0].created_at
+        }
+      });
+    }
+
+    const ledger = readLedger();
+    const entry = {
+      id: `REV-${Date.now()}`,
+      amount,
+      description: req.body.description || 'Revenue entry',
+      timestamp: new Date().toISOString()
+    };
+
+    ledger.revenue += amount;
+    ledger.deals += 1;
+    ledger.entries.push(entry);
+
+    fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2));
+
+    res.status(201).json({
+      ok: true,
+      storage: 'local-fallback',
+      entry,
+      revenue: ledger.revenue,
+      deals: ledger.deals
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Database unavailable' });
+  }
 });
 
 app.get('/health', (req, res) => {
@@ -53,21 +146,16 @@ app.get('/health', (req, res) => {
   });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Revenue API running on port ${PORT}`);
-});
+initDatabase()
+  .then(() => {
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Revenue API running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ Database initialization failed:', err.message);
+    process.exit(1);
+  });
 
-// ─── Catch‑all for unknown routes ────────────────────────────
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found', path: req.path });
-});
-
-// ─── Catch‑all for unknown routes ────────────────────────────
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found', path: req.path });
-});
-
-// ─── Catch‑all for unknown routes ────────────────────────────
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found', path: req.path });
-});
+/*
+*/
