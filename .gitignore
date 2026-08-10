@@ -3,7 +3,6 @@ node_modules/
 *.log
 
 nia-backups/
-*.json
 
 !package.json
 !docker-compose.yml
@@ -13,3 +12,5 @@ backups/
 public/index.html.bak*
 audit-backups/
 revenue-api.js.pre-*
+NIA-CEO/.env
+runtime/
