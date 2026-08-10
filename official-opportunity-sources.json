@@ -1,0 +1,25 @@
+{
+  "system": "NIA OFFICIAL OPPORTUNITY SOURCES",
+  "sources": [
+    {
+      "name": "Grants.gov",
+      "domain": "grants.gov",
+      "type": "federal_grants"
+    },
+    {
+      "name": "NSF",
+      "domain": "nsf.gov",
+      "type": "federal_research_grants"
+    },
+    {
+      "name": "SBA",
+      "domain": "sba.gov",
+      "type": "small_business_funding"
+    },
+    {
+      "name": "Virginia",
+      "domain": "virginia.gov",
+      "type": "state_programs"
+    }
+  ]
+}
