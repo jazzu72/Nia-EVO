@@ -28,6 +28,23 @@ async function initDatabase() {
   `);
 
   await pool.query(`
+    CREATE TABLE IF NOT EXISTS deals (
+      id BIGSERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      source TEXT NOT NULL DEFAULT 'unknown',
+      category TEXT NOT NULL DEFAULT 'general',
+      status VARCHAR(20) NOT NULL DEFAULT 'open'
+        CHECK (status IN ('open','won','lost','cancelled')),
+      expected_value NUMERIC(14,2) NOT NULL DEFAULT 0
+        CHECK (expected_value >= 0),
+      actual_value NUMERIC(14,2) NOT NULL DEFAULT 0
+        CHECK (actual_value >= 0),
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `);
+
+  await pool.query(`
     CREATE TABLE IF NOT EXISTS financial_transactions (
       id BIGSERIAL PRIMARY KEY,
       type VARCHAR(20) NOT NULL CHECK (type IN ('revenue','expense')),
@@ -91,6 +108,70 @@ app.get('/api/revenue', async (req, res) => {
   }
 });
 
+
+app.post('/api/deals', express.json(), async (req, res) => {
+  try {
+    const name = String(req.body.name || '').trim();
+    const source = String(req.body.source || 'unknown').trim();
+    const category = String(req.body.category || 'general').trim();
+    const status = String(req.body.status || 'open').toLowerCase();
+    const expectedValue = Number(req.body.expected_value || 0);
+    const actualValue = Number(req.body.actual_value || 0);
+
+    if (!name) {
+      return res.status(400).json({ error: 'name is required' });
+    }
+
+    if (!['open','won','lost','cancelled'].includes(status)) {
+      return res.status(400).json({
+        error: 'invalid deal status'
+      });
+    }
+
+    if (
+      !Number.isFinite(expectedValue) ||
+      expectedValue < 0 ||
+      !Number.isFinite(actualValue) ||
+      actualValue < 0
+    ) {
+      return res.status(400).json({
+        error: 'deal values must be non-negative numbers'
+      });
+    }
+
+    if (!pool) {
+      return res.status(503).json({
+        error: 'Deal storage unavailable'
+      });
+    }
+
+    const result = await pool.query(
+      `INSERT INTO deals
+       (name, source, category, status, expected_value, actual_value)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       RETURNING id, name, source, category, status,
+                 expected_value, actual_value, created_at, updated_at`,
+      [
+        name,
+        source,
+        category,
+        status,
+        expectedValue,
+        actualValue
+      ]
+    );
+
+    res.status(201).json({
+      ok: true,
+      storage: 'postgresql',
+      deal: result.rows[0]
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Deal creation failed'
+    });
+  }
+});
 
 app.get('/api/finance/transactions', async (req, res) => {
   try {
