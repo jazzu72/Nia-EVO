@@ -92,6 +92,55 @@ app.get('/api/revenue', async (req, res) => {
 });
 
 
+app.post('/api/finance/transaction', express.json(), async (req, res) => {
+  try {
+    const type = String(req.body.type || '').toLowerCase();
+    const amount = Number(req.body.amount);
+    const description = String(req.body.description || 'Financial transaction').trim();
+
+    if (!['revenue', 'expense'].includes(type)) {
+      return res.status(400).json({
+        error: 'type must be revenue or expense'
+      });
+    }
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return res.status(400).json({
+        error: 'amount must be a positive number'
+      });
+    }
+
+    if (!description) {
+      return res.status(400).json({
+        error: 'description is required'
+      });
+    }
+
+    if (pool) {
+      const result = await pool.query(
+        `INSERT INTO financial_transactions (type, amount, description)
+         VALUES ($1, $2, $3)
+         RETURNING id, type, amount, description, created_at AS timestamp`,
+        [type, amount, description]
+      );
+
+      return res.status(201).json({
+        ok: true,
+        storage: 'postgresql',
+        transaction: result.rows[0]
+      });
+    }
+
+    res.status(503).json({
+      error: 'Financial transaction storage unavailable'
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Financial transaction failed'
+    });
+  }
+});
+
 app.get('/api/finance/summary', async (req, res) => {
   try {
     if (pool) {
