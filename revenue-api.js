@@ -81,6 +81,43 @@ app.get('/api/revenue', async (req, res) => {
   }
 });
 
+
+app.get('/api/revenue/summary', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          COALESCE(SUM(amount), 0) AS revenue,
+          COUNT(*) AS deals,
+          COALESCE(AVG(amount), 0) AS average_deal,
+          COALESCE(MAX(amount), 0) AS largest_deal
+        FROM revenue
+      `);
+
+      return res.json({
+        ...result.rows[0],
+        storage: 'postgresql',
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const ledger = readLedger();
+
+    res.json({
+      revenue: ledger.revenue,
+      deals: ledger.deals,
+      average_deal: ledger.deals ? ledger.revenue / ledger.deals : 0,
+      largest_deal: ledger.entries.length
+        ? Math.max(...ledger.entries.map(e => e.amount))
+        : 0,
+      storage: 'local-fallback',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Revenue summary unavailable' });
+  }
+});
+
 app.post('/api/revenue', express.json(), async (req, res) => {
   const amount = Number(req.body.amount);
 
