@@ -92,6 +92,44 @@ app.get('/api/revenue', async (req, res) => {
 });
 
 
+app.get('/api/finance/transactions', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          id,
+          type,
+          amount,
+          description,
+          created_at AS timestamp
+        FROM financial_transactions
+        ORDER BY created_at DESC
+        LIMIT 100
+      `);
+
+      return res.json({
+        system: 'NIA-CAPITAL-OS',
+        storage: 'postgresql',
+        count: result.rows.length,
+        transactions: result.rows,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    return res.json({
+      system: 'NIA-CAPITAL-OS',
+      storage: 'local-fallback',
+      count: 0,
+      transactions: [],
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Financial transaction audit unavailable'
+    });
+  }
+});
+
 app.post('/api/finance/transaction', express.json(), async (req, res) => {
   try {
     const type = String(req.body.type || '').toLowerCase();
