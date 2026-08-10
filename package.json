@@ -11,6 +11,7 @@
     "@langchain/core": "^1.2.5",
     "@langchain/openai": "^1.5.6",
     "axios": "^1.19.0",
+    "express": "^5.2.1",
     "node-cron": "^4.6.0",
     "pdf-lib": "^1.17.1",
     "rss-parser": "^3.13.0",
