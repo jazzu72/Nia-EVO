@@ -82,6 +82,49 @@ app.get('/api/revenue', async (req, res) => {
 });
 
 
+app.get('/api/revenue/dashboard', async (req, res) => {
+  try {
+    if (pool) {
+      const result = await pool.query(`
+        SELECT
+          COALESCE(SUM(amount), 0) AS revenue,
+          COUNT(*)::int AS deals,
+          COALESCE(AVG(amount), 0) AS average_deal,
+          COALESCE(MAX(amount), 0) AS largest_deal,
+          COALESCE(MIN(amount), 0) AS smallest_deal
+        FROM revenue_ledger
+      `);
+
+      return res.json({
+        system: 'NIA-CAPITAL-OS',
+        status: 'operational',
+        financials: result.rows[0],
+        storage: 'postgresql',
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const ledger = readLedger();
+    const amounts = ledger.entries.map(e => Number(e.amount));
+
+    res.json({
+      system: 'NIA-CAPITAL-OS',
+      status: 'operational',
+      financials: {
+        revenue: ledger.revenue,
+        deals: ledger.deals,
+        average_deal: ledger.deals ? ledger.revenue / ledger.deals : 0,
+        largest_deal: amounts.length ? Math.max(...amounts) : 0,
+        smallest_deal: amounts.length ? Math.min(...amounts) : 0
+      },
+      storage: 'local-fallback',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Revenue dashboard unavailable' });
+  }
+});
+
 app.get('/api/revenue/audit', async (req, res) => {
   try {
     if (pool) {
