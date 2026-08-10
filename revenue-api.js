@@ -260,6 +260,57 @@ app.post('/api/finance/transaction', express.json(), async (req, res) => {
   }
 });
 
+app.get('/api/finance/reconciliation', async (req, res) => {
+  try {
+    if (!pool) {
+      return res.status(503).json({
+        error: 'Financial reconciliation requires PostgreSQL'
+      });
+    }
+
+    const revenueResult = await pool.query(`
+      SELECT
+        COALESCE(SUM(amount), 0) AS revenue_total,
+        COUNT(*)::int AS revenue_entries
+      FROM revenue_ledger
+    `);
+
+    const financeResult = await pool.query(`
+      SELECT
+        COALESCE(SUM(amount) FILTER (WHERE type = 'revenue'), 0) AS cash_revenue,
+        COALESCE(SUM(amount) FILTER (WHERE type = 'expense'), 0) AS expenses,
+        COUNT(*)::int AS finance_entries
+      FROM financial_transactions
+    `);
+
+    const revenue = Number(revenueResult.rows[0].revenue_total);
+    const cashRevenue = Number(financeResult.rows[0].cash_revenue);
+    const expenses = Number(financeResult.rows[0].expenses);
+
+    return res.json({
+      system: 'NIA-CAPITAL-OS',
+      status: 'reconciliation_only',
+      revenue_ledger: {
+        total: revenue,
+        entries: revenueResult.rows[0].revenue_entries
+      },
+      cash_flow: {
+        revenue: cashRevenue,
+        expenses,
+        net_cash: cashRevenue - expenses,
+        entries: financeResult.rows[0].finance_entries
+      },
+      difference: revenue - cashRevenue,
+      note: 'READ-ONLY reconciliation. No financial records modified.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Financial reconciliation unavailable'
+    });
+  }
+});
+
 app.get('/api/finance/summary', async (req, res) => {
   try {
     if (pool) {
