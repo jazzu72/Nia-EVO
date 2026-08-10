@@ -1,0 +1,22 @@
+{
+  "system": "NIA OPPORTUNITY EVIDENCE CONTRACT",
+  "version": "1.0.0",
+  "required": [
+    "identifiable_opportunity",
+    "official_source",
+    "eligibility_evidence",
+    "deadline_evidence",
+    "application_path"
+  ],
+  "promotion": {
+    "completeEvidence": "VERIFIED",
+    "incompleteEvidence": "CLASSIFIED"
+  },
+  "safety": {
+    "databaseWrite": false,
+    "applicationSubmission": false,
+    "financialExecution": false,
+    "moneyMovement": false,
+    "ownerApprovalAutomation": false
+  }
+}
