@@ -1,0 +1,37 @@
+{
+  "system": "NIA-CAPITAL-OS",
+  "mode": "AUTONOMOUS_OPERATOR",
+  "policyVersion": "1.0.0",
+  "allowed": {
+    "discover": true,
+    "research": true,
+    "classify": true,
+    "verify": true,
+    "rank": true,
+    "prepare": true,
+    "monitor": true,
+    "queue": true,
+    "notifyOwner": true
+  },
+  "requiresOwnerApproval": {
+    "financialActions": true,
+    "moneyMovement": true,
+    "applicationSubmission": true,
+    "externalCommitments": true,
+    "irreversibleActions": true
+  },
+  "blocked": {
+    "automaticMoneyMovement": true,
+    "automaticFinancialWrites": true,
+    "automaticApplicationSubmission": true,
+    "automaticDeletion": true,
+    "automaticOwnerApproval": true
+  },
+  "promotion": [
+    "OBSERVED",
+    "CLASSIFIED",
+    "VERIFIED",
+    "APPROVED",
+    "EXECUTED"
+  ]
+}
