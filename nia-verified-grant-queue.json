@@ -1,0 +1,49 @@
+{
+  "system": "NIA VERIFIED GRANT QUEUE",
+  "count": 4,
+  "queue": [
+    {
+      "title": "NSF SBIR",
+      "grant": "NSF SBIR Phase I",
+      "source": "nsf.gov",
+      "score": 92,
+      "verificationStatus": "CLASSIFIED",
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "ownerApprovalRequired": true
+    },
+    {
+      "title": "SBA SBIR",
+      "grant": "SBA SBIR Phase II",
+      "source": "sba.gov",
+      "score": 85,
+      "verificationStatus": "CLASSIFIED",
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "ownerApprovalRequired": true
+    },
+    {
+      "title": "Grants.gov",
+      "grant": "Grants.gov Opportunity",
+      "source": "grants.gov",
+      "score": 78,
+      "verificationStatus": "CLASSIFIED",
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "ownerApprovalRequired": true
+    },
+    {
+      "title": "Virginia Innovation Funding",
+      "grant": "Virginia Innovation Grant",
+      "source": "virginia.gov",
+      "score": 88,
+      "verificationStatus": "CLASSIFIED",
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "ownerApprovalRequired": true
+    }
+  ],
+  "updated": "2026-08-06T00:57:14.498Z",
+  "qualityGate": "EVIDENCE_REQUIRED",
+  "promotionRule": "OBSERVED->CLASSIFIED->VERIFIED->APPROVED->EXECUTED"
+}
