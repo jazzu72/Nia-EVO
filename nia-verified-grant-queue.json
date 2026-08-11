@@ -10,7 +10,16 @@
       "verificationStatus": "CLASSIFIED",
       "submissionAllowed": false,
       "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true
+      "ownerApprovalRequired": true,
+      "evidence": [],
+      "moneyMovementAllowed": false,
+      "requiredEvidence": [
+        "identifiable_opportunity",
+        "official_source",
+        "eligibility_evidence",
+        "deadline_evidence",
+        "application_path"
+      ]
     },
     {
       "title": "SBA SBIR",
@@ -20,7 +29,16 @@
       "verificationStatus": "CLASSIFIED",
       "submissionAllowed": false,
       "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true
+      "ownerApprovalRequired": true,
+      "evidence": [],
+      "moneyMovementAllowed": false,
+      "requiredEvidence": [
+        "identifiable_opportunity",
+        "official_source",
+        "eligibility_evidence",
+        "deadline_evidence",
+        "application_path"
+      ]
     },
     {
       "title": "Grants.gov",
@@ -30,7 +48,16 @@
       "verificationStatus": "CLASSIFIED",
       "submissionAllowed": false,
       "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true
+      "ownerApprovalRequired": true,
+      "evidence": [],
+      "moneyMovementAllowed": false,
+      "requiredEvidence": [
+        "identifiable_opportunity",
+        "official_source",
+        "eligibility_evidence",
+        "deadline_evidence",
+        "application_path"
+      ]
     },
     {
       "title": "Virginia Innovation Funding",
@@ -40,7 +67,16 @@
       "verificationStatus": "CLASSIFIED",
       "submissionAllowed": false,
       "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true
+      "ownerApprovalRequired": true,
+      "evidence": [],
+      "moneyMovementAllowed": false,
+      "requiredEvidence": [
+        "identifiable_opportunity",
+        "official_source",
+        "eligibility_evidence",
+        "deadline_evidence",
+        "application_path"
+      ]
     }
   ],
   "updated": "2026-08-06T00:57:14.498Z",
