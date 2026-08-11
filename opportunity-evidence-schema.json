@@ -1,0 +1,14 @@
+{
+  "required": [
+    "identifiable_opportunity",
+    "official_source",
+    "eligibility_evidence",
+    "deadline_evidence",
+    "application_path"
+  ],
+  "verificationStatus": "CLASSIFIED",
+  "submissionAllowed": false,
+  "financialExecutionAllowed": false,
+  "moneyMovementAllowed": false,
+  "ownerApprovalRequired": true
+}
