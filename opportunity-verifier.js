@@ -1,27 +1,25 @@
 const REQUIRED = [
-  'identifiable_opportunity',
-  'official_source',
-  'eligibility_evidence',
-  'deadline_evidence',
-  'application_path'
+  "identifiable_opportunity",
+  "official_source",
+  "eligibility_evidence",
+  "deadline_evidence",
+  "application_path"
 ];
 
-function verify(opportunity = {}) {
-  const evidence = opportunity.evidence || {};
-
-  const missing = REQUIRED.filter(key => {
-    const value = evidence[key];
-    return value === undefined || value === null || value === '';
-  });
+function verify(candidate = {}) {
+  const missing = REQUIRED.filter(k =>
+    !candidate[k] || String(candidate[k]).trim() === ""
+  );
 
   return {
-    state: missing.length === 0 ? 'VERIFIED' : 'CLASSIFIED',
+    status: missing.length ? "CLASSIFIED" : "VERIFIED",
     verified: missing.length === 0,
-    missing,
-    reason: missing.length
-      ? 'Required evidence is incomplete'
-      : 'All required verification evidence is present'
+    missingEvidence: missing,
+    submissionAllowed: false,
+    financialExecutionAllowed: false,
+    moneyMovementAllowed: false,
+    ownerApprovalRequired: true
   };
 }
 
-module.exports = { REQUIRED, verify };
+module.exports = { verify, REQUIRED };
