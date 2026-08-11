@@ -21,6 +21,10 @@ app.use(cors());
 app.use(express.json());
 
 console.log("🏰 Nia Capital OS Booting...");
+app.use("/dashboard", express.static("public/dashboard"));
+console.log("✅ /dashboard static mount loaded");
+app.use("/api/owner", require("./owner-draft-api"));
+console.log("✅ /api/owner loaded");
 
 app.use("/api/grants", require("./grants-engine/grant-api"));
 console.log("✅ /api/grants loaded");
@@ -28,8 +32,7 @@ console.log("✅ /api/grants loaded");
 app.use("/api/funding", require("./funding/funding-api"));
 console.log("✅ /api/funding loaded");
 
-app.use(
-);
+
 
 
 // ============================================================
@@ -210,8 +213,6 @@ loadRoute("./command-center/revenue-dashboard-api", "/api/command");
 loadRoute(
  "./revenue/conversion/conversion-api",
  "/api/conversion"
-);
-loadRoute(
 );
 
 loadRoute(
