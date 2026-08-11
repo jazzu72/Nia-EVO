@@ -1,0 +1,25 @@
+{
+  "system": "NIA OPPORTUNITY EVIDENCE COLLECTOR",
+  "version": "1.0.0",
+  "mode": "READ_ONLY",
+  "requiredEvidence": [
+    "identifiable_opportunity",
+    "official_source",
+    "eligibility_evidence",
+    "deadline_evidence",
+    "application_path"
+  ],
+  "allowedSources": [
+    "grants.gov",
+    "nsf.gov",
+    "sba.gov",
+    "virginia.gov"
+  ],
+  "safety": {
+    "modifyDatabase": false,
+    "submitApplication": false,
+    "financialWrite": false,
+    "moneyMovement": false,
+    "ownerApprovalAutomation": false
+  }
+}
