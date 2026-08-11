@@ -1,85 +1,8 @@
 {
   "system": "NIA VERIFIED GRANT QUEUE",
-  "count": 4,
-  "queue": [
-    {
-      "title": "NSF SBIR",
-      "grant": "NSF SBIR Phase I",
-      "source": "nsf.gov",
-      "score": 92,
-      "verificationStatus": "CLASSIFIED",
-      "submissionAllowed": false,
-      "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true,
-      "evidence": [],
-      "moneyMovementAllowed": false,
-      "requiredEvidence": [
-        "identifiable_opportunity",
-        "official_source",
-        "eligibility_evidence",
-        "deadline_evidence",
-        "application_path"
-      ]
-    },
-    {
-      "title": "SBA SBIR",
-      "grant": "SBA SBIR Phase II",
-      "source": "sba.gov",
-      "score": 85,
-      "verificationStatus": "CLASSIFIED",
-      "submissionAllowed": false,
-      "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true,
-      "evidence": [],
-      "moneyMovementAllowed": false,
-      "requiredEvidence": [
-        "identifiable_opportunity",
-        "official_source",
-        "eligibility_evidence",
-        "deadline_evidence",
-        "application_path"
-      ]
-    },
-    {
-      "title": "Grants.gov",
-      "grant": "Grants.gov Opportunity",
-      "source": "grants.gov",
-      "score": 78,
-      "verificationStatus": "CLASSIFIED",
-      "submissionAllowed": false,
-      "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true,
-      "evidence": [],
-      "moneyMovementAllowed": false,
-      "requiredEvidence": [
-        "identifiable_opportunity",
-        "official_source",
-        "eligibility_evidence",
-        "deadline_evidence",
-        "application_path"
-      ]
-    },
-    {
-      "title": "Virginia Innovation Funding",
-      "grant": "Virginia Innovation Grant",
-      "source": "virginia.gov",
-      "score": 88,
-      "verificationStatus": "CLASSIFIED",
-      "submissionAllowed": false,
-      "financialExecutionAllowed": false,
-      "ownerApprovalRequired": true,
-      "evidence": [],
-      "moneyMovementAllowed": false,
-      "requiredEvidence": [
-        "identifiable_opportunity",
-        "official_source",
-        "eligibility_evidence",
-        "deadline_evidence",
-        "application_path"
-      ]
-    }
-  ],
-  "updated": "2026-08-06T00:57:14.498Z",
+  "count": 0,
+  "queue": [],
   "qualityGate": "EVIDENCE_REQUIRED",
-  "promotionRule": "OBSERVED->CLASSIFIED->VERIFIED->APPROVED->EXECUTED"
+  "promotionRule": "OBSERVED->CLASSIFIED->VERIFIED->APPROVED->EXECUTED",
+  "updated": "2026-08-11T17:14:39.648Z"
 }
