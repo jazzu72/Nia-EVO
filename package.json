@@ -2,9 +2,9 @@
   "name": "nia-capital-os",
   "version": "1.0.0",
   "description": "NIA Capital OS Production Engine",
-  "main": "revenue-api.js",
+  "main": "server-watson.js",
   "scripts": {
-    "start": "node revenue-api.js",
+    "start": "node server-watson.js",
     "health": "node nia-production-check.js"
   },
   "dependencies": {
