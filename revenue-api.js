@@ -1,3 +1,32 @@
+// ============================================================
+// NIA PRODUCTION HANDOFF
+// Render's active service may still launch revenue-api.js.
+// Delegate that process to the canonical NIA runtime.
+// ============================================================
+
+if (require.main === module) {
+  const { spawnSync } = require("child_process");
+  const path = require("path");
+
+  console.log("🏰 NIA PRODUCTION HANDOFF");
+  console.log("➡️ revenue-api.js -> server-watson.js");
+
+  const result = spawnSync(
+    process.execPath,
+    [path.join(__dirname, "server-watson.js")],
+    {
+      stdio: "inherit",
+      env: process.env
+    }
+  );
+
+  process.exit(
+    typeof result.status === "number"
+      ? result.status
+      : 1
+  );
+}
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
