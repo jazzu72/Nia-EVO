@@ -1,17 +1,15 @@
 // ============================================================
 // NIA CAPITAL OS - SERVER WATSON
-// Clean Executive Runtime
+// Clean Production Runtime
 // ============================================================
 
 const express = require("express");
-const ceoDashboard = require("./ceo/dashboard-api");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
-
 
 // ============================================================
 // MIDDLEWARE
@@ -19,394 +17,188 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 console.log("🏰 Nia Capital OS Booting...");
-app.use("/dashboard", express.static("public/dashboard"));
-console.log("✅ /dashboard static mount loaded");
-app.use("/api/owner", require("./owner-draft-api"));
-console.log("✅ /api/owner loaded");
-
-app.use("/api/grants", require("./grants-engine/grant-api"));
-console.log("✅ /api/grants loaded");
-
-app.use("/api/funding", require("./funding/funding-api"));
-console.log("✅ /api/funding loaded");
-
-
-
 
 // ============================================================
-// ROUTE LOADER
+// ROUTE LOADER - SAFE LOADING WITH ERROR HANDLING
 // ============================================================
 
-app.use("/api/ceo", require("./ceo/grant-dashboard-api"));
-
-app.use("/api/ceo", require("./ceo/grant-autopilot-api"));
-function loadRoute(file, endpoint) {
-
-    try {
-
-        const router = require(file);
-
-        app.use(endpoint, router);
-
-        console.log(`✅ ${endpoint} loaded`);
-
-    } catch (error) {
-
-        console.log(
-            `⚠️ ${endpoint} skipped: ${error.message}`
-        );
-
-    }
-
+function loadRoute(filePath, endpoint) {
+  try {
+    const router = require(filePath);
+    app.use(endpoint, router);
+    console.log(`✅ ${endpoint} loaded`);
+  } catch (error) {
+    console.warn(`⚠️  ${endpoint} skipped: ${error.message}`);
+  }
 }
-
 
 // ============================================================
 // CORE SYSTEM ROUTES
 // ============================================================
 
-loadRoute(
-"./hunter/realestate/realestate-api",
-"/api/realestate"
-);
-loadRoute(
-    "./command-center/executive-api",
-    "/api/executive"
-);
-loadRoute(
- "./sales/sales-api",
- "/api/sales"
-);
-loadRoute(
-"./autonomous/sales-loop-api",
-"/api/autonomous-sales"
-);
-loadRoute(
-"./reports/revenue-briefing-api",
-"/api/briefing"
-);
+// Grants & Funding
+loadRoute("./grants-engine/grant-api", "/api/grants");
+loadRoute("./funding/funding-api", "/api/funding");
 
-loadRoute(
-"./outreach/outreach-api",
-"/api/outreach"
-);
+// Owner & CEO
+loadRoute("./owner-draft-api", "/api/owner");
+loadRoute("./ceo/grant-dashboard-api", "/api/ceo/dashboard");
+loadRoute("./ceo/grant-autopilot-api", "/api/ceo/autopilot");
+loadRoute("./ceo/decision-api", "/api/ceo/decision");
+loadRoute("./ceo/ceo-api", "/api/ceo");
 
-loadRoute(
-"./conversion/deal-closer-api",
-"/api/conversion"
-);
-loadRoute(
-"./sales/sales-dashboard-api",
-"/api/sales-dashboard"
-);
-loadRoute(
-"./acquisition/acquisition-api",
-"/api/acquisition"
-);
-loadRoute(
-"./intelligence/revenue-brain-api",
-"/api/revenue-brain"
-);
+// Real Estate & Sales
+loadRoute("./hunter/realestate/realestate-api", "/api/realestate");
+loadRoute("./sales/sales-api", "/api/sales");
+loadRoute("./sales/sales-dashboard-api", "/api/sales-dashboard");
+loadRoute("./sales/nia-sales-api", "/api/sales");
 
-loadRoute(
-"./command-center/executive-dashboard-api",
-"/api/command"
-);
-loadRoute(
-"./cashflow/cashflow-api",
-"/api/cashflow"
-);
-loadRoute(
-"./sales/nia-sales-api",
-"/api/sales"
-);
+// Acquisition & Conversion
+loadRoute("./acquisition/acquisition-api", "/api/acquisition");
+loadRoute("./acquisition/acquisition-leads-api", "/api/acquisition/leads");
+loadRoute("./conversion/deal-closer-api", "/api/conversion");
 
-loadRoute(
-"./chief-of-staff/chief-api",
-"/api/chief"
-);
-loadRoute(
-"./intelligence/hunter-api",
-"/api/intelligence"
-);
+// Autonomous & Autopilot
+loadRoute("./autonomous/sales-loop-api", "/api/autonomous-sales");
+loadRoute("./autonomous/autonomous-api", "/api/autonomous");
+loadRoute("./autopilot/autopilot-api", "/api/autopilot");
 
-loadRoute(
-"./memory/memory-api",
-"/api/memory"
-);
+// Intelligence & Analytics
+loadRoute("./intelligence/revenue-brain-api", "/api/revenue-brain");
+loadRoute("./intelligence/hunter-api", "/api/intelligence");
+loadRoute("./intelligence/intelligence-api", "/api/intelligence");
 
-loadRoute(
-"./dashboard/dashboard-api",
-"/api/dashboard"
-);
-loadRoute(
-"./proposals/proposal-api",
-"/api/proposals"
-);
-loadRoute(
-"./ceo/ceo-api",
-"/api/ceo"
-);
-loadRoute(
-"./opportunities/opportunity-api",
-"/api/opportunities"
-);
-loadRoute(
-"./autonomous/autonomous-api",
-"/api/autonomous"
-);
-
-loadRoute(
-"./autopilot/autopilot-api",
-"/api/autopilot"
-);
-loadRoute(
-"./intelligence/intelligence-api",
-"/api/intelligence"
-);
-loadRoute(
-"./autopilot/autopilot-api",
-"/api/autopilot"
-);
-loadRoute(
-"./router/opportunity-router-api",
-"/api/router"
-);
-
-loadRoute(
- "./command-center/revenue-dashboard-api",
- "/api/command"
-);
-loadRoute(
-"./command-center/revenue-dashboard-api",
-"/api/command"
-);
-
-loadRoute(
- "./acquisition/acquisition-leads-api",
- "/api/acquisition/leads"
-);
-
-app.use("/api/ceo", require("./ceo/decision-api"));
-
-app.use("/api/ceo", require("./ceo/grant-autopilot-api"));
-loadRoute(
- "./revenue/automation/automation-api",
- "/api/revenue/automation"
-);
-loadRoute(
- "./revenue/intelligence/intelligence-api",
- "/api/revenue/intelligence"
-);
-loadRoute(
- "./revenue/outreach/outreach-api",
- "/api/outreach"
-);
-loadRoute(
- "./revenue/acquisition/acquisition-api",
- "/api/acquisition/leads"
-);
+// Reports & Insights
+loadRoute("./reports/revenue-briefing-api", "/api/briefing");
 loadRoute("./revenue/intelligence-api", "/api/revenue/intelligence");
+
+// Command Center & Executive
+loadRoute("./command-center/executive-api", "/api/executive");
+loadRoute("./command-center/executive-dashboard-api", "/api/command");
 loadRoute("./command-center/revenue-dashboard-api", "/api/command");
-loadRoute(
- "./revenue/conversion/conversion-api",
- "/api/conversion"
-);
 
-loadRoute(
- "./revenue/proposals/proposal-api",
- "/api/proposals"
-);
-loadRoute(
- "./revenue/operator/operator-api",
- "/api/operator"
-);
-loadRoute(
- "./revenue/followup/followup-api",
- "/api/followup"
-);
-loadRoute(
-    "./hunter/hunter-api",
-    "/api/hunter"
-);
+// Chief of Staff
+loadRoute("./chief-of-staff/chief-api", "/api/chief");
 
+// Outreach & Engagement
+loadRoute("./outreach/outreach-api", "/api/outreach");
+loadRoute("./revenue/outreach/outreach-api", "/api/outreach");
 
-loadRoute(
-    "./acquisition/acquisition-api",
-    "/api/acquisition"
-);
+// Cashflow & Finances
+loadRoute("./cashflow/cashflow-api", "/api/cashflow");
 
+// Revenue & Operations
+loadRoute("./revenue/revenue-api", "/api/revenue");
+loadRoute("./revenue/prospects/prospect-api", "/api/prospects");
+loadRoute("./revenue/automation/automation-api", "/api/revenue/automation");
+loadRoute("./revenue/acquisition/acquisition-api", "/api/acquisition/leads");
+loadRoute("./revenue/conversion/conversion-api", "/api/conversion");
+loadRoute("./revenue/proposals/proposal-api", "/api/proposals");
+loadRoute("./revenue/operator/operator-api", "/api/operator");
+loadRoute("./revenue/followup/followup-api", "/api/followup");
 
-loadRoute(
-    "./revenue/revenue-api",
-    "/api/revenue"
-);
+// Opportunities & Router
+loadRoute("./opportunities/opportunity-api", "/api/opportunities");
+loadRoute("./router/opportunity-router-api", "/api/router");
 
-
-loadRoute(
-    "./revenue/prospects/prospect-api",
-    "/api/prospects"
-);
-
-loadRoute(
- "./command-center/revenue-dashboard-api",
- "/api/command"
-);
-
-loadRoute(
-"./command-center/revenue-dashboard-api",
-"/api/command"
-);
-// ============================================================
-// HEALTH SYSTEM
-// ============================================================
-
-app.get(
-    "/api/system/health",
-    (req,res)=>{
-
-        res.json({
-
-            status:"online",
-
-            system:"Nia Capital OS",
-
-            timestamp:new Date().toISOString(),
-
-            uptime:process.uptime()
-
-        });
-
-    }
-);
-
-
+// Memory & Dashboard
+loadRoute("./memory/memory-api", "/api/memory");
+loadRoute("./dashboard/dashboard-api", "/api/dashboard");
+loadRoute("./proposals/proposal-api", "/api/proposals");
 
 // ============================================================
-// ROOT
+// HEALTH CHECK ENDPOINTS
 // ============================================================
 
-app.get(
-    "/",
-    (req,res)=>{
+app.get("/api/health", (req, res) => {
+  res.json({
+    system: "Nia Capital OS",
+    status: "ONLINE",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    node: process.version
+  });
+});
 
-        res.json({
+app.get("/api/watson/health", (req, res) => {
+  res.json({
+    status: "Watson Online",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    version: "1.0.0",
+    environment: process.env.NODE_ENV || "production"
+  });
+});
 
-            system:"Nia Capital OS",
-
-            status:"running",
-
-            version:"1.0"
-
-        });
-
-    }
-);
-
-
-
-// ============================================================
-
-
-
-
-
-// CORE FUNDING + GRANTS ROUTES
-try {
-} catch(e) {
-console.log("GRANTS ERROR:",e.message);
-}
-
-try {
-} catch(e) {
-console.log("FUNDING ERROR:",e.message);
-}
-
-
+app.get("/api/system/health", (req, res) => {
+  res.json({
+    status: "online",
+    system: "Nia Capital OS",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
 
 // ============================================================
-// FUNDING + GRANTS API
+// STATUS ENDPOINTS
 // ============================================================
-app.use("/api/grants", require("./grants-engine/grant-api"));
-console.log("✅ /api/grants mounted");
 
-app.use("/api/funding", require("./funding/funding-api"));
-console.log("✅ /api/funding mounted");
+app.get("/api/status", (req, res) => {
+  res.json({
+    system: "Nia Capital OS",
+    status: "OPERATIONAL",
+    timestamp: new Date().toISOString(),
+    version: "1.0",
+    environment: process.env.NODE_ENV || "production"
+  });
+});
 
+app.get("/", (req, res) => {
+  res.json({
+    system: "Nia Capital OS",
+    status: "running",
+    version: "1.0",
+    timestamp: new Date().toISOString()
+  });
+});
+
+// ============================================================
 // 404 HANDLER
 // ============================================================
 
-app.use(
-    (req,res)=>{
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Route not found",
+    path: req.path,
+    method: req.method
+  });
+});
 
-        res.status(404).json({
+// ============================================================
+// ERROR HANDLER
+// ============================================================
 
-
-            path:req.path
-
-        });
-
-    }
-);
-
-
+app.use((err, req, res, next) => {
+  console.error("Error:", err.message);
+  res.status(500).json({
+    error: "Internal Server Error",
+    message: err.message,
+    timestamp: new Date().toISOString()
+  });
+});
 
 // ============================================================
 // START SERVER
 // ============================================================
 
-
-
-
-
-
-try {
-} catch(e) {
-  console.log("⚠️ grants route:", e.message);
-}
-
-try {
-} catch(e) {
-  console.log("⚠️ funding route:", e.message);
-}
-
-
-
-// ===== FINAL ROUTE REPAIR =====
-try {
- console.log("✅ grants mounted");
-} catch(e) {
- console.log("❌ grants failed:", e.message);
-}
-
-try {
- console.log("✅ funding mounted");
-} catch(e) {
- console.log("❌ funding failed:", e.message);
-}
-
-app.use((req,res)=>{
- res.status(404).json({
-  error:"Route not found",
-  path:req.path
- });
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`\n🚀 Nia Capital OS ONLINE`);
+  console.log(`📍 Listening on port ${PORT}`);
+  console.log(`🌍 http://0.0.0.0:${PORT}`);
+  console.log(`⏰ Started at ${new Date().toISOString()}\n`);
 });
 
-app.listen(
-    PORT,
-    "0.0.0.0",
-    ()=>{
-
-        console.log(
-            `🏰 Nia OS running on http://0.0.0.0:${PORT}`
-        );
-
-    }
-);
-
-
-
-
-// FINAL FALLBACK
+module.exports = app;
