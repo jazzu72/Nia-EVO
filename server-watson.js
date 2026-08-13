@@ -156,6 +156,16 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+    system: "Nia Capital OS",
+    deployment: "NIA-CAPITAL-OS",
+    entrypoint: "server-watson.js",
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get("/", (req, res) => {
   res.json({
     system: "Nia Capital OS",
