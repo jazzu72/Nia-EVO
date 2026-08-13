@@ -156,6 +156,33 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.post("/api/owner/funding/analyze", (req, res) => {
+  try {
+    const engine = require("./funding-engine/house-of-jazzu-funding-engine");
+    const opportunity = req.body || {};
+
+    if (!opportunity.name && !opportunity.title) {
+      return res.status(400).json({
+        ok: false,
+        error: "FUNDING_OPPORTUNITY_NAME_REQUIRED"
+      });
+    }
+
+    const result = engine.analyze(opportunity);
+
+    return res.status(200).json({
+      ok: true,
+      ...result
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_ANALYSIS_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.get("/api/owner/grant-registry", (req, res) => {
   try {
     const fs = require("fs");
