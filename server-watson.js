@@ -156,6 +156,46 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.get("/api/owner/grant-registry", (req, res) => {
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const file = path.join(__dirname, "data/canonical-grant-registry.json");
+    if (!fs.existsSync(file)) {
+      return res.status(404).json({
+        ok: false,
+        error: "CANONICAL_GRANT_REGISTRY_MISSING"
+      });
+    }
+    const registry = JSON.parse(fs.readFileSync(file, "utf8"));
+    return res.status(200).json({
+      ok: true,
+      mode: "OWNER_REVIEW_ONLY",
+      registryVersion: registry.registryVersion,
+      canonicalOpportunityCount: registry.canonicalOpportunityCount,
+      verifiedDraftCount: registry.verifiedDraftCount,
+      quarantinedDraftCount: registry.quarantinedDraftCount,
+      safety: {
+        submissionAllowed: false,
+        signingAllowed: false,
+        financialExecutionAllowed: false,
+        moneyMovementAllowed: false,
+        automaticApprovalAllowed: false,
+        ownerApprovalRequired: true,
+        ownerSignatureRequired: true
+      },
+      verified: registry.verified || [],
+      quarantined: registry.quarantined || []
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "CANONICAL_GRANT_REGISTRY_READ_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "healthy",
