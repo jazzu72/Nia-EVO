@@ -8,13 +8,13 @@ function syncReviewQueue() {
     throw new Error("INVALID_REVIEW_QUEUE_ORGANIZATION");
   }
 
-  const saved = registry.upsertQueue(queue.entries || []);
+  const saved = registry.upsertQueue(queue.queue || []);
 
   return {
     ok: true,
     organization: saved.organization,
     opportunityCount: saved.opportunities.length,
-    reviewQueueCount: (queue.entries || []).length,
+    reviewQueueCount: (queue.queue || []).length,
     synchronizedAt: new Date().toISOString(),
     safety: {
       submissionAllowed: false,
