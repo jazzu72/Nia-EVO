@@ -156,6 +156,34 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.post("/api/owner/funding/intake", (req, res) => {
+  try {
+    const intake = require("./funding-engine/verified-funding-intake");
+    const body = req.body || {};
+    const candidates = Array.isArray(body.candidates) ? body.candidates : [];
+
+    if (!candidates.length) {
+      return res.status(400).json({
+        ok: false,
+        error: "FUNDING_CANDIDATES_REQUIRED"
+      });
+    }
+
+    const result = intake.intake(candidates);
+
+    return res.status(200).json({
+      ok: true,
+      ...result
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_INTAKE_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.post("/api/owner/funding/analyze", (req, res) => {
   try {
     const engine = require("./funding-engine/house-of-jazzu-funding-engine");
