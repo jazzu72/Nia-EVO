@@ -156,6 +156,24 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.get("/api/owner/funding/discovery", async (req, res) => {
+  try {
+    const engine = require("./funding-engine/funding-discovery-engine");
+    const result = await engine.discover();
+
+    return res.status(200).json({
+      ok: true,
+      ...result
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_DISCOVERY_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.post("/api/owner/funding/intake", (req, res) => {
   try {
     const intake = require("./funding-engine/verified-funding-intake");
