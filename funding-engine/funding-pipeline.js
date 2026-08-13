@@ -1,5 +1,6 @@
 const discovery = require("./funding-discovery-engine");
 const deduplicator = require("./funding-deduplicator");
+const opportunityRegistry = require("./funding-opportunity-registry");
 const collector = require("./funding-source-collector");
 const gate = require("./funding-evidence-quality-gate");
 
@@ -37,7 +38,11 @@ async function run(candidates) {
     };
   });
 
+  const registryResult =
+    opportunityRegistry.upsertQueue(ownerReviewQueue);
+
   return {
+    registryOpportunityCount: registryResult.opportunities.length,
     deduplication: {
       inputCount: deduplication.inputCount,
       uniqueCount: deduplication.uniqueCount,
