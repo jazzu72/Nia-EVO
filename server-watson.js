@@ -223,6 +223,42 @@ app.get("/api/owner/funding/review", (req, res) => {
   }
 });
 
+app.get("/api/owner/funding/decisions", (req, res) => {
+  try {
+    const ledger = require("./funding-engine/funding-decision-ledger");
+    const result = ledger.loadLedger();
+
+    if (result.organization !== "House of Jazzu") {
+      return res.status(500).json({
+        ok: false,
+        error: "LEDGER_ORGANIZATION_MISMATCH"
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      organization: result.organization,
+      entryCount: result.entries.length,
+      entries: result.entries,
+      safety: {
+        submissionAllowed: false,
+        signingAllowed: false,
+        financialExecutionAllowed: false,
+        moneyMovementAllowed: false,
+        automaticApprovalAllowed: false,
+        ownerApprovalRequired: true,
+        ownerSignatureRequired: true
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_DECISION_LEDGER_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.post("/api/owner/funding/pipeline", async (req, res) => {
   try {
     const pipeline = require("./funding-engine/funding-pipeline");
