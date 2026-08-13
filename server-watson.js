@@ -156,6 +156,24 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.get("/api/owner/funding/review/queue", (req, res) => {
+  try {
+    const prioritizer = require("./funding-engine/funding-review-prioritizer");
+    const result = prioritizer.buildReviewQueue();
+
+    return res.status(200).json({
+      ok: true,
+      ...result
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_REVIEW_QUEUE_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.get("/api/owner/funding/review", (req, res) => {
   try {
     const ledger = require("./funding-engine/funding-review-ledger");
