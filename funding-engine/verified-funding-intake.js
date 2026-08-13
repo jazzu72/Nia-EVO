@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const sourceAdapter = require("./official-source-adapter");
 
 const PROFILE_PATH = path.join(
   __dirname, "..", "data", "funding", "house-of-jazzu-profile.json"
@@ -23,6 +24,13 @@ function verifyCandidate(candidate) {
     "fundingAmountEvidence"
   ];
 
+  let sourceRecord;
+  try {
+    sourceRecord = sourceAdapter.buildSourceRecord(candidate.officialUrl || "");
+  } catch {
+    sourceRecord = null;
+  }
+
   const missing = required.filter(
     key => !candidate[key] || String(candidate[key]).trim() === ""
   );
@@ -32,9 +40,17 @@ function verifyCandidate(candidate) {
     /^https?:\/\/[^/]+/i.test(candidate.officialUrl);
 
   return {
-    verified: missing.length === 0 && !!officialHost,
+    verified:
+      missing.length === 0 &&
+      !!officialHost &&
+      !!sourceRecord &&
+      sourceRecord.sourceVerified === true,
     missing,
-    sourceVerified: missing.indexOf("source") === -1 && !!officialHost,
+    sourceVerified:
+      missing.indexOf("source") === -1 &&
+      !!officialHost &&
+      !!sourceRecord &&
+      sourceRecord.sourceVerified === true,
     eligibilityVerified: missing.indexOf("eligibilityEvidence") === -1,
     deadlineVerified: missing.indexOf("deadlineEvidence") === -1,
     amountVerified: missing.indexOf("fundingAmountEvidence") === -1
