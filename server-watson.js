@@ -156,6 +156,45 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.post("/api/owner/funding/collect", async (req, res) => {
+  try {
+    const collector = require("./funding-engine/funding-source-collector");
+    const body = req.body || {};
+    const candidates = Array.isArray(body.candidates) ? body.candidates : [];
+
+    if (!candidates.length) {
+      return res.status(400).json({
+        ok: false,
+        error: "FUNDING_CANDIDATES_REQUIRED"
+      });
+    }
+
+    const invalid = candidates.find(
+      x => !x || !x.name || !x.officialUrl
+    );
+
+    if (invalid) {
+      return res.status(400).json({
+        ok: false,
+        error: "CANDIDATE_NAME_AND_OFFICIAL_URL_REQUIRED"
+      });
+    }
+
+    const result = await collector.collect(candidates);
+
+    return res.status(200).json({
+      ok: true,
+      ...result
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_COLLECTION_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.get("/api/owner/funding/discovery", async (req, res) => {
   try {
     const engine = require("./funding-engine/funding-discovery-engine");
