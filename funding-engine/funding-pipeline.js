@@ -1,8 +1,12 @@
 const discovery = require("./funding-discovery-engine");
+const deduplicator = require("./funding-deduplicator");
 const collector = require("./funding-source-collector");
 const gate = require("./funding-evidence-quality-gate");
 
 async function run(candidates) {
+  const deduplication = deduplicator.deduplicate(candidates);
+  const uniqueCandidates = deduplication.unique;
+
   const discoveryResult = await discovery.discover();
   const collected = await collector.collect(candidates || []);
   const quality = gate.evaluateQueue(collected.results || []);
