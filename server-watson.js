@@ -156,6 +156,37 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.get("/api/owner/funding/review", (req, res) => {
+  try {
+    const ledger = require("./funding-engine/funding-review-ledger");
+    const data = ledger.loadLedger();
+
+    const entries = Array.isArray(data.entries) ? data.entries : [];
+
+    return res.status(200).json({
+      ok: true,
+      organization: data.organization,
+      entryCount: entries.length,
+      entries,
+      safety: {
+        submissionAllowed: false,
+        signingAllowed: false,
+        financialExecutionAllowed: false,
+        moneyMovementAllowed: false,
+        automaticApprovalAllowed: false,
+        ownerApprovalRequired: true,
+        ownerSignatureRequired: true
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_REVIEW_LOAD_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.post("/api/owner/funding/pipeline", async (req, res) => {
   try {
     const pipeline = require("./funding-engine/funding-pipeline");
