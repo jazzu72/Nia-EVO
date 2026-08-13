@@ -156,6 +156,24 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+app.post("/api/owner/funding/pipeline", async (req, res) => {
+  try {
+    const pipeline = require("./funding-engine/funding-pipeline");
+    const body = req.body || {};
+    const candidates = Array.isArray(body.candidates) ? body.candidates : [];
+
+    const result = await pipeline.run(candidates);
+
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_PIPELINE_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.post("/api/owner/funding/collect", async (req, res) => {
   try {
     const collector = require("./funding-engine/funding-source-collector");
