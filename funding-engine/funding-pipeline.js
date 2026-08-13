@@ -8,7 +8,7 @@ async function run(candidates) {
   const uniqueCandidates = deduplication.unique;
 
   const discoveryResult = await discovery.discover();
-  const collected = await collector.collect(candidates || []);
+  const collected = await collector.collect(uniqueCandidates);
   const quality = gate.evaluateQueue(collected.results || []);
 
   const ownerReviewQueue = quality.results.map(item => {
