@@ -1,48 +1,54 @@
 const discovery = require("./funding-discovery-engine");
 const collector = require("./funding-source-collector");
+const gate = require("./funding-evidence-quality-gate");
 
-async function run(candidates = []) {
-  const plan = discovery.buildSearchPlan();
+async function run(candidates) {
+  const discoveryResult = await discovery.discover();
+  const collected = await collector.collect(candidates || []);
+  const quality = gate.evaluateQueue(collected.results || []);
 
-  if (!Array.isArray(candidates)) {
-    throw new Error("CANDIDATES_MUST_BE_ARRAY");
-  }
+  const ownerReviewQueue = quality.results.map(item => {
+    let reviewPriority = "REJECTED";
 
-  const collected = candidates.length
-    ? await collector.collect(candidates)
-    : {
-        organization: discovery.loadProfile().organization.name,
-        mode: discovery.loadProfile().ownerControls.mode,
-        candidateCount: 0,
-        evidenceFoundCount: 0,
-        results: []
-      };
+    if (item.quality.status === "VERIFIED") {
+      reviewPriority = "HIGH";
+    } else if (item.quality.status === "NEEDS_REVIEW") {
+      reviewPriority = "LOW";
+    }
 
-  const ranked = collected.results
-    .map(item => ({
-      ...item,
-      reviewPriority:
-        item.verificationStatus === "EVIDENCE_FOUND_REQUIRES_REVIEW"
-          ? "HIGH"
-          : item.verificationStatus === "INSUFFICIENT_EVIDENCE"
-            ? "LOW"
-            : "REJECTED"
-    }))
-    .sort((a, b) => {
-      const rank = { HIGH: 0, LOW: 1, REJECTED: 2 };
-      return rank[a.reviewPriority] - rank[b.reviewPriority];
-    });
+    return {
+      name: item.name,
+      officialUrl: item.officialUrl,
+      verificationStatus: item.quality.status,
+      passedChecks: item.quality.passedChecks,
+      reviewPriority,
+      ownerReviewOnly: true,
+      submissionAllowed: false,
+      signingAllowed: false,
+      financialExecutionAllowed: false,
+      moneyMovementAllowed: false,
+      automaticApprovalAllowed: false,
+      ownerApprovalRequired: true,
+      ownerSignatureRequired: true
+    };
+  });
 
   return {
     ok: true,
-    organization: collected.organization,
-    mode: collected.mode,
-    searchTermCount: plan.length,
-    candidateCount: ranked.length,
-    evidenceFoundCount: ranked.filter(
-      x => x.reviewPriority === "HIGH"
-    ).length,
-    ownerReviewQueue: ranked,
+    organization: discoveryResult.organization,
+    mode: discoveryResult.mode,
+    generatedAt: new Date().toISOString(),
+    searchTermCount: discoveryResult.searchPlan.length,
+    candidateCount: ownerReviewQueue.length,
+    evidenceFoundCount: quality.verifiedCount,
+    needsReviewCount: quality.needsReviewCount,
+    rejectedCount: quality.rejectedCount,
+    ownerReviewQueue,
+    qualityGate: {
+      verifiedCount: quality.verifiedCount,
+      needsReviewCount: quality.needsReviewCount,
+      rejectedCount: quality.rejectedCount
+    },
     safety: {
       submissionAllowed: false,
       signingAllowed: false,
@@ -55,4 +61,6 @@ async function run(candidates = []) {
   };
 }
 
-module.exports = { run };
+module.exports = {
+  run
+};
