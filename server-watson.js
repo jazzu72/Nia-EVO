@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/owner", requireOwnerAuth);
+app.use("/api/owner/chat", require("./nia-chat-api"));
 
 console.log("🏰 Nia Capital OS Booting...");
 
@@ -236,6 +237,162 @@ app.post("/api/owner/funding/opportunities/sync", (req, res) => {
     return res.status(500).json({
       ok: false,
       error: "FUNDING_REGISTRY_SYNC_FAILED",
+      message: err.message
+    });
+  }
+});
+
+
+
+app.post("/api/owner/funding/lifecycle/transition", (req, res) => {
+  try {
+    const stateMachine = require("./funding-engine/funding-decision-state-machine");
+    const lifecycleStore = require("./funding-engine/funding-lifecycle-store");
+    const ledger = require("./funding-engine/funding-transition-ledger");
+
+    const {
+      opportunityId,
+      targetState,
+      reason
+    } = req.body || {};
+
+    if (!opportunityId || !targetState) {
+      return res.status(400).json({
+        ok: false,
+        error: "TRANSITION_INPUT_REQUIRED"
+      });
+    }
+
+    const data = lifecycleStore.loadStore();
+
+    const record = data.records.find(
+      x => x.id === String(opportunityId)
+    );
+
+    if (!record) {
+      return res.status(404).json({
+        ok: false,
+        error: "OPPORTUNITY_NOT_FOUND"
+      });
+    }
+
+    const previousState = record.state;
+
+    if (!stateMachine.canTransition(previousState, targetState)) {
+      return res.status(409).json({
+        ok: false,
+        error: "INVALID_STATE_TRANSITION",
+        opportunityId: record.id,
+        previousState,
+        targetState
+      });
+    }
+
+    /*
+     * Explicit safety boundary:
+     * this endpoint never authorizes submission, signing,
+     * financial execution, money movement, or automatic approval.
+     */
+    const nextRecord = {
+      ...record,
+      state: targetState,
+      submissionAllowed: false,
+      signingAllowed: false,
+      financialExecutionAllowed: false,
+      moneyMovementAllowed: false,
+      automaticApprovalAllowed: false,
+      ownerApprovalRequired: true,
+      ownerSignatureRequired: true
+    };
+
+    lifecycleStore.upsertRecord(nextRecord);
+
+    const event = ledger.appendEvent({
+      id: `transition-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      opportunityId: record.id,
+      previousState,
+      newState: targetState,
+      actor: "OWNER",
+      reason: reason || "OWNER_AUTHENTICATED_TRANSITION",
+      timestamp: new Date().toISOString()
+    });
+
+    return res.status(200).json({
+      ok: true,
+      organization: "House of Jazzu",
+      transition: event,
+      state: nextRecord,
+      safety: {
+        submissionAllowed: false,
+        signingAllowed: false,
+        financialExecutionAllowed: false,
+        moneyMovementAllowed: false,
+        automaticApprovalAllowed: false,
+        ownerApprovalRequired: true,
+        ownerSignatureRequired: true
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_TRANSITION_FAILED",
+      message: err.message
+    });
+  }
+});
+
+app.get("/api/owner/funding/lifecycle", (req, res) => {
+  try {
+    const stateMachine = require("./funding-engine/funding-decision-state-machine");
+    const registry = require("./funding-engine/funding-opportunity-registry");
+
+    const data = registry.loadRegistry();
+
+    if (data.organization !== "House of Jazzu") {
+      return res.status(500).json({
+        ok: false,
+        error: "REGISTRY_ORGANIZATION_MISMATCH"
+      });
+    }
+
+    const opportunities = Array.isArray(data.opportunities)
+      ? data.opportunities
+      : [];
+
+    const lifecycle = opportunities.map((item) => {
+      const id = item.id || item.opportunityId || item.name;
+
+      if (!id) {
+        throw new Error("OPPORTUNITY_ID_MISSING");
+      }
+
+      const record = stateMachine.initialRecord(String(id));
+
+      return {
+        id: record.id,
+        state: record.state,
+        ownerApprovalRequired: record.ownerApprovalRequired,
+        ownerSignatureRequired: record.ownerSignatureRequired,
+        submissionAllowed: record.submissionAllowed,
+        signingAllowed: record.signingAllowed,
+        financialExecutionAllowed: record.financialExecutionAllowed,
+        moneyMovementAllowed: record.moneyMovementAllowed,
+        automaticApprovalAllowed: record.automaticApprovalAllowed
+      };
+    });
+
+    return res.status(200).json({
+      ok: true,
+      organization: data.organization,
+      lifecycleCount: lifecycle.length,
+      lifecycle,
+      transitions: stateMachine.TRANSITIONS,
+      safety: stateMachine.SAFETY
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_LIFECYCLE_LOAD_FAILED",
       message: err.message
     });
   }
