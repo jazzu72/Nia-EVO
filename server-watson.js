@@ -223,6 +223,21 @@ app.get("/api/owner/funding/review", (req, res) => {
   }
 });
 
+app.post("/api/owner/funding/opportunities/sync", (req, res) => {
+  try {
+    const sync = require("./funding-engine/funding-registry-sync");
+    const result = sync.syncReviewQueue();
+
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_REGISTRY_SYNC_FAILED",
+      message: err.message
+    });
+  }
+});
+
 app.get("/api/owner/funding/opportunities", (req, res) => {
   try {
     const registry = require("./funding-engine/funding-opportunity-registry");
