@@ -21,11 +21,6 @@ async function run(candidates) {
     }
 
     return {
-    deduplication: {
-      inputCount: deduplication.inputCount,
-      uniqueCount: deduplication.uniqueCount,
-      duplicateCount: deduplication.duplicateCount
-    },
       name: item.name,
       officialUrl: item.officialUrl,
       verificationStatus: item.quality.status,
@@ -43,6 +38,11 @@ async function run(candidates) {
   });
 
   return {
+    deduplication: {
+      inputCount: deduplication.inputCount,
+      uniqueCount: deduplication.uniqueCount,
+      duplicateCount: deduplication.duplicateCount
+    },
     ok: true,
     organization: discoveryResult.organization,
     mode: discoveryResult.mode,
