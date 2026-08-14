@@ -14,43 +14,70 @@ router.post("/message", async (req, res) => {
       });
     }
 
-    if (!process.env.OPENAI_API_KEY) {
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
       return res.status(503).json({
         ok: false,
-        error: "LLM_PROVIDER_NOT_CONFIGURED"
+        error: "NIA_LLM_NOT_CONFIGURED"
       });
     }
 
-    const { ChatOpenAI } = require("@langchain/openai");
+    const model = process.env.NIA_CHAT_MODEL || "gpt-4o-mini";
 
-    const model = new ChatOpenAI({
-      model: process.env.NIA_CHAT_MODEL || "gpt-4o-mini",
-      temperature: 0.2
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are Nia, the executive AI assistant for House of Jazzu. " +
+              "You assist the owner with strategy, research, software, funding analysis, " +
+              "operations and planning. You may analyze and recommend actions, but you " +
+              "must never claim to have submitted applications, signed agreements, moved " +
+              "money, approved funding, or executed financial transactions without explicit " +
+              "owner authorization and a separate execution mechanism."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ]
+      })
     });
 
-    const response = await model.invoke([
-      {
-        role: "system",
-        content:
-          "You are Nia, the executive AI of House of Jazzu. " +
-          "You communicate directly with the owner. " +
-          "You may analyze, explain, plan, research, and recommend actions. " +
-          "Do not claim to have executed an external action unless the system confirms it. " +
-          "Financial execution, signing, money movement, funding submission, or irreversible actions " +
-          "require explicit owner approval."
-      },
-      {
-        role: "user",
-        content: message
-      }
-    ]);
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("NIA_LLM_ERROR:", data);
+      return res.status(502).json({
+        ok: false,
+        error: "NIA_LLM_REQUEST_FAILED"
+      });
+    }
+
+    const answer =
+      data?.choices?.[0]?.message?.content?.trim();
+
+    if (!answer) {
+      return res.status(502).json({
+        ok: false,
+        error: "NIA_EMPTY_RESPONSE"
+      });
+    }
 
     return res.json({
       ok: true,
       agent: "Nia",
       organization: "House of Jazzu",
       mode: "OWNER_CHAT",
-      response: response.content,
+      response: answer,
       autonomousActions: false,
       ownerApprovalRequired: true
     });
@@ -60,8 +87,7 @@ router.post("/message", async (req, res) => {
 
     return res.status(500).json({
       ok: false,
-      error: "NIA_CHAT_FAILED",
-      message: err.message
+      error: "NIA_CHAT_FAILED"
     });
   }
 });
