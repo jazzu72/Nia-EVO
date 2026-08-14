@@ -274,8 +274,301 @@
       }
     }
   </style>
+
+<style id="nia-executive-shell">
+:root{
+  --bg:#080b12;
+  --panel:#101620;
+  --panel2:#151c28;
+  --line:rgba(255,255,255,.09);
+  --text:#f4f7fb;
+  --muted:#8d99aa;
+  --accent:#8b7cff;
+  --success:#37d39b;
+  --warning:#f5b942;
+  --danger:#ff6678;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(139,124,255,.13),transparent 30%),
+    radial-gradient(circle at 90% 10%,rgba(55,211,155,.07),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.nia-shell{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:240px 1fr;
+}
+.nia-sidebar{
+  border-right:1px solid var(--line);
+  background:rgba(8,11,18,.88);
+  padding:24px 16px;
+  position:sticky;
+  top:0;
+  height:100vh;
+}
+.nia-brand{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.04em;
+  margin-bottom:32px;
+}
+.nia-brand span{color:var(--accent)}
+.nia-nav{
+  display:grid;
+  gap:6px;
+}
+.nia-nav button{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  text-align:left;
+  padding:12px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+.nia-nav button:hover,
+.nia-nav button.active{
+  background:var(--panel2);
+  color:var(--text);
+}
+.nia-main{
+  padding:28px;
+  max-width:1500px;
+  width:100%;
+  margin:auto;
+}
+.nia-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:28px;
+}
+.nia-title h1{
+  margin:0;
+  font-size:30px;
+  letter-spacing:-.04em;
+}
+.nia-title p{
+  margin:6px 0 0;
+  color:var(--muted);
+}
+.nia-status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--success);
+  font-size:13px;
+}
+.nia-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--success);
+  box-shadow:0 0 14px var(--success);
+}
+.nia-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+.nia-card{
+  background:linear-gradient(145deg,rgba(21,28,40,.96),rgba(12,17,25,.96));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+}
+.nia-card h3{
+  margin:0 0 8px;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:600;
+}
+.nia-value{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+.nia-section{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:18px;
+}
+.nia-chat{
+  min-height:360px;
+}
+.nia-chat-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.nia-chat-header strong{font-size:17px}
+.nia-chat-window{
+  min-height:230px;
+  max-height:420px;
+  overflow:auto;
+  background:#0a0e15;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+}
+.nia-chat-form{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.nia-chat-form input{
+  flex:1;
+  min-width:0;
+  border:1px solid var(--line);
+  background:#0a0e15;
+  color:var(--text);
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+}
+.nia-chat-form button,
+.nia-action{
+  border:0;
+  border-radius:10px;
+  padding:11px 15px;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  font-weight:700;
+}
+.nia-action.secondary{
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+.nia-actions{
+  display:grid;
+  gap:10px;
+}
+.nia-actions button{
+  width:100%;
+}
+.nia-message{
+  padding:10px 12px;
+  border-radius:10px;
+  margin-bottom:8px;
+  background:var(--panel2);
+  color:#dce3ee;
+  font-size:14px;
+}
+.nia-message.owner{border-left:3px solid var(--accent)}
+.nia-message.nia{border-left:3px solid var(--success)}
+@media(max-width:1000px){
+  .nia-shell{grid-template-columns:1fr}
+  .nia-sidebar{
+    position:relative;
+    height:auto;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .nia-nav{grid-template-columns:repeat(4,1fr)}
+  .nia-grid{grid-template-columns:repeat(2,1fr)}
+  .nia-section{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .nia-main{padding:16px}
+  .nia-grid{grid-template-columns:1fr}
+  .nia-nav{grid-template-columns:repeat(2,1fr)}
+  .nia-topbar{align-items:flex-start}
+}
+</style>
 </head>
 <body>
+
+<div class="nia-shell" id="niaExecutiveShell">
+  <aside class="nia-sidebar">
+    <div class="nia-brand">NIA <span>CAPITAL OS</span></div>
+    <nav class="nia-nav">
+      <button class="active" data-view="overview">Overview</button>
+      <button data-view="capital">Capital</button>
+      <button data-view="deals">Deals</button>
+      <button data-view="grants">Grants</button>
+      <button data-view="revenue">Revenue</button>
+      <button data-view="intelligence">Intelligence</button>
+      <button data-view="memory">Memory</button>
+      <button data-view="settings">System</button>
+    </nav>
+  </aside>
+
+  <main class="nia-main">
+    <header class="nia-topbar">
+      <div class="nia-title">
+        <h1>Executive Command Center</h1>
+        <p>House of Jazzu · Nia autonomous operating layer</p>
+      </div>
+      <div class="nia-status">
+        <span class="nia-dot"></span>
+        <span id="niaLiveStatus">SYSTEM ONLINE</span>
+      </div>
+    </header>
+
+    <section class="nia-grid">
+      <article class="nia-card">
+        <h3>CAPITAL</h3>
+        <div class="nia-value" id="niaCapitalValue">—</div>
+      </article>
+      <article class="nia-card">
+        <h3>PIPELINE</h3>
+        <div class="nia-value" id="niaPipelineValue">—</div>
+      </article>
+      <article class="nia-card">
+        <h3>OPPORTUNITIES</h3>
+        <div class="nia-value" id="niaOpportunityValue">—</div>
+      </article>
+      <article class="nia-card">
+        <h3>SYSTEM HEALTH</h3>
+        <div class="nia-value" id="niaHealthValue">ONLINE</div>
+      </article>
+    </section>
+
+    <section class="nia-section">
+      <article class="nia-card nia-chat">
+        <div class="nia-chat-header">
+          <strong>Talk to Nia</strong>
+          <span class="nia-status"><span class="nia-dot"></span> OWNER CHANNEL</span>
+        </div>
+
+        <div class="nia-chat-window" id="niaChatWindow">
+          <div class="nia-message nia">
+            Nia is online. Owner communication channel ready.
+          </div>
+        </div>
+
+        <form class="nia-chat-form" id="niaChatForm">
+          <input id="niaChatInput" autocomplete="off"
+                 placeholder="Ask Nia what is happening..." />
+          <button type="submit">Send</button>
+        </form>
+      </article>
+
+      <article class="nia-card">
+        <h3>QUICK ACTIONS</h3>
+        <div class="nia-actions">
+          <button class="nia-action" id="niaRefresh">Refresh System</button>
+          <button class="nia-action secondary" id="niaCapital">Capital Status</button>
+          <button class="nia-action secondary" id="niaGrants">Grant Pipeline</button>
+          <button class="nia-action secondary" id="niaDeals">Deal Pipeline</button>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+
   <header>
     <div class="header-content">
       <div class="logo">
@@ -467,13 +760,13 @@
       <div class="section-title">⚡ Quick Actions</div>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         </button>
-        <button class="button primary" onclick="alert('Monitoring system logs...')">
+        <button class="button primary" id="systemLogsBtn" type="button">
           📊 View System Logs
         </button>
-        <button class="button secondary" onclick="alert('Capital: $203,400 available')">
+        <button class="button secondary" id="capitalStatusBtn" type="button">
           💰 Capital Status
         </button>
-        <button class="button secondary" onclick="alert('7 grants worth $1.625M in pipeline')">
+        <button class="button secondary" id="grantsStatusBtn" type="button">
           📋 Grants Status
         </button>
       </div>
@@ -517,5 +810,194 @@
 
 <script src="/dashboard/owner-grant-review.js"></script>
 
+
+<script>
+(function () {
+  async function api(path) {
+    const res = await fetch(path, { credentials: "same-origin" });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    return data;
+  }
+
+  const logsBtn = document.getElementById("systemLogsBtn");
+  const capitalBtn = document.getElementById("capitalStatusBtn");
+  const grantsBtn = document.getElementById("grantsStatusBtn");
+
+  if (logsBtn) {
+    logsBtn.addEventListener("click", async () => {
+      logsBtn.disabled = true;
+      logsBtn.textContent = "Loading system status...";
+      try {
+        const data = await api("/api/system/status");
+        console.log("Nia system status:", data);
+        alert(
+          "NIA SYSTEM STATUS\n\n" +
+          JSON.stringify(data, null, 2)
+        );
+      } catch (err) {
+        console.error(err);
+        alert("Unable to load system status: " + err.message);
+      } finally {
+        logsBtn.disabled = false;
+        logsBtn.textContent = "📊 View System Logs";
+      }
+    });
+  }
+
+  if (capitalBtn) {
+    capitalBtn.addEventListener("click", async () => {
+      capitalBtn.disabled = true;
+      capitalBtn.textContent = "Checking capital...";
+      try {
+        const data = await api("/api/capital");
+        console.log("Nia capital:", data);
+        alert(
+          "CAPITAL STATUS\n\n" +
+          JSON.stringify(data, null, 2)
+        );
+      } catch (err) {
+        console.error(err);
+        alert("Capital endpoint unavailable: " + err.message);
+      } finally {
+        capitalBtn.disabled = false;
+        capitalBtn.textContent = "💰 Capital Status";
+      }
+    });
+  }
+
+  if (grantsBtn) {
+    grantsBtn.disabled = false;
+    grantsBtn.addEventListener("click", async () => {
+      grantsBtn.disabled = true;
+      grantsBtn.textContent = "Loading grants...";
+      try {
+        const data = await api("/api/grants");
+        console.log("Nia grants:", data);
+        alert(
+          "GRANT PIPELINE\n\n" +
+          JSON.stringify(data, null, 2)
+        );
+      } catch (err) {
+        console.error(err);
+        alert("Grant endpoint unavailable: " + err.message);
+      } finally {
+        grantsBtn.disabled = false;
+        grantsBtn.textContent = "📋 Grants Status";
+      }
+    });
+  }
+})();
+</script>
+
+
+<script id="niaExecutiveShellJS">
+(function(){
+  // Preserve the existing dashboard DOM. The executive shell is already injected server-side.
+
+  // The original page is preserved below this marker in the backup.
+  // This script intentionally does not mutate backend routes.
+  const $=id=>document.getElementById(id);
+
+  async function api(path, options={}){
+    const r=await fetch(path,{
+      credentials:"same-origin",
+      ...options,
+      headers:{
+        "Content-Type":"application/json",
+        ...(options.headers||{})
+      }
+    });
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||`HTTP ${r.status}`);
+    return d;
+  }
+
+  function addMessage(text,who){
+    const box=$("niaChatWindow");
+    if(!box)return;
+    const el=document.createElement("div");
+    el.className=`nia-message ${who}`;
+    el.textContent=text;
+    box.appendChild(el);
+    box.scrollTop=box.scrollHeight;
+  }
+
+  async function refresh(){
+    try{
+      const d=await api("/api/system/status");
+      $("niaHealthValue").textContent="ONLINE";
+      $("niaLiveStatus").textContent="SYSTEM ONLINE";
+      $("niaCapitalValue").textContent=
+        d.capital !== undefined ? `$${Number(d.capital).toLocaleString()}` : "—";
+    }catch(e){
+      $("niaHealthValue").textContent="DEGRADED";
+      $("niaLiveStatus").textContent="CHECK REQUIRED";
+      console.error(e);
+    }
+  }
+
+  $("niaRefresh")?.addEventListener("click",refresh);
+
+  $("niaChatForm")?.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const input=$("niaChatInput");
+    const message=input.value.trim();
+    if(!message)return;
+
+    addMessage(message,"owner");
+    input.value="";
+
+    try{
+      const d=await api("/api/owner/chat/message",{
+        method:"POST",
+        body:JSON.stringify({message})
+      });
+
+      addMessage(
+        d.response ||
+        d.message ||
+        "Nia received the message.",
+        "nia"
+      );
+    }catch(err){
+      addMessage("Nia chat unavailable: "+err.message,"nia");
+    }
+  });
+
+  $("niaCapital")?.addEventListener("click",async()=>{
+    try{
+      const d=await api("/api/capital");
+      addMessage("Capital status: "+JSON.stringify(d),"nia");
+    }catch(e){addMessage("Capital status unavailable.","nia")}
+  });
+
+  $("niaGrants")?.addEventListener("click",async()=>{
+    try{
+      const d=await api("/api/grants");
+      addMessage("Grant pipeline loaded.","nia");
+      console.log(d);
+    }catch(e){addMessage("Grant pipeline unavailable.","nia")}
+  });
+
+  $("niaDeals")?.addEventListener("click",async()=>{
+    try{
+      const d=await api("/api/deals");
+      addMessage("Deal pipeline loaded.","nia");
+      console.log(d);
+    }catch(e){addMessage("Deal pipeline unavailable.","nia")}
+  });
+
+  document.querySelectorAll("[data-view]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("[data-view]").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+      addMessage(`Nia view selected: ${b.dataset.view}`,"nia");
+    });
+  });
+
+  refresh();
+})();
+</script>
 </body>
 </html>
