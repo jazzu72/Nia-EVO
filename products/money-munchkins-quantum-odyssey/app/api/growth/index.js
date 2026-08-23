@@ -59,6 +59,34 @@ router.post("/pilot-signup", (req, res) => {
   }
 });
 
+
+router.post("/pilot-intake", (req, res) => {
+  const { parentGuardian, email, consent } = req.body || {};
+
+  if (!parentGuardian || !email || !email.includes("@") || consent !== true) {
+    return res.status(400).json({
+      success: false,
+      error: "PARENT_GUARDIAN_CONSENT_REQUIRED"
+    });
+  }
+
+  try {
+    funnel.track(email.toLowerCase(), "signup");
+    funnel.track(email.toLowerCase(), "pilotCohort");
+
+    return res.status(201).json({
+      success: true,
+      message: "PILOT_INTAKE_RECORDED",
+      autoSend: false
+    });
+  } catch {
+    return res.status(400).json({
+      success: false,
+      error: "PILOT_INTAKE_FAILED"
+    });
+  }
+});
+
 router.get("/metrics", (req, res) => {
   res.json({
     success: true,
