@@ -51,6 +51,10 @@ app.get("/money-munchkins/pilot", (req,res) => {
   res.sendFile(require("path").join(__dirname,"web/pilot/index.html"));
 });
 
+app.get("/money-munchkins/investor-center", (req,res) => {
+  res.sendFile(require("path").join(__dirname,"web/investor/index.html"));
+});
+
 app.get("/money-munchkins/investor", (req,res) => {
   res.sendFile(require("path").join(__dirname,"web/investor/index.html"));
 });
