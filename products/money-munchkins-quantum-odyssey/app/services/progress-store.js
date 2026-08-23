@@ -2,6 +2,23 @@ const fs = require("fs");
 const path = require("path");
 
 const FILE = path.join(__dirname, "../../data/progress.json");
+const EVENTS = path.join(__dirname, "../../data/investor-events.json");
+
+function recordEvent(type, profileId, metadata = {}) {
+  let events = [];
+  if (fs.existsSync(EVENTS)) {
+    try { events = JSON.parse(fs.readFileSync(EVENTS, "utf8")); } catch {}
+  }
+  events.push({
+    type,
+    profileId,
+    metadata,
+    timestamp: new Date().toISOString()
+  });
+  const tmp = EVENTS + ".tmp";
+  fs.writeFileSync(tmp, JSON.stringify(events, null, 2));
+  fs.renameSync(tmp, EVENTS);
+}
 
 function load() {
   if (!fs.existsSync(FILE)) return {};
@@ -27,6 +44,7 @@ function createProfile({ id, displayName }) {
 
   if (data[id]) throw new Error("PROFILE_ALREADY_EXISTS");
 
+  recordEvent("profile_created", id);
   data[id] = {
     id,
     displayName,
@@ -55,6 +73,10 @@ function completeMission(id, missionId, reward = 10) {
   }
 
   profile.completedMissions.push(missionId);
+    recordEvent("mission_completed", id, {
+      missionId,
+      reward
+    });
   profile.sparkCoins += reward;
   profile.xp += reward;
 
@@ -66,5 +88,6 @@ module.exports = {
   load,
   getProfile,
   createProfile,
-  completeMission
+  completeMission,
+  recordEvent
 };
