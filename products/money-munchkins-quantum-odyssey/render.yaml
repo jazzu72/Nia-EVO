@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: money-munchkins-quantum-odyssey
+    runtime: node
+    rootDir: products/money-munchkins-quantum-odyssey
+    buildCommand: npm install --prefix app
+    startCommand: node app/server.js
+    healthCheckPath: /api/money-munchkins/health
+    envVars:
+      - key: MONEY_MUNCHKINS_PARENT_CODE
+        sync: false
