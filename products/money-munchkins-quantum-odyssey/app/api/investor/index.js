@@ -44,6 +44,20 @@ router.get("/metrics", (req, res) => {
       transactions: rev.transactions,
       revenueUSD: rev.revenueUSD,
       averageRevenuePerCustomer: rev.averageRevenuePerCustomer,
+      activationRate: progress.profiles
+        ? Number((progress.missionsCompleted > 0
+          ? Math.min(100, (progress.missionsCompleted / progress.profiles) * 100)
+          : 0).toFixed(1))
+        : 0,
+      missionsPerProfile: progress.profiles
+        ? Number((progress.missionsCompleted / progress.profiles).toFixed(2))
+        : 0,
+      paidConversionRate: progress.profiles
+        ? Number(((rev.paidCustomers / progress.profiles) * 100).toFixed(1))
+        : 0,
+      revenuePerPilot: progress.profiles
+        ? Number((rev.revenueUSD / progress.profiles).toFixed(2))
+        : 0,
       health: "operational"
     },
     generatedAt: new Date().toISOString()
