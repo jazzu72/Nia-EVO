@@ -13,7 +13,9 @@ function load() {
 }
 
 function save(data) {
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+  const tmp = FILE + ".tmp";
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2));
+  fs.renameSync(tmp, FILE);
 }
 
 function getProfile(id) {
