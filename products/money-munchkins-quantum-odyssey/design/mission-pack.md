@@ -3,47 +3,30 @@
 ## Starter Mission Pack
 
 ### Mission 1 — Welcome to Quantum Odyssey
-
 Meet BitBot and receive your first 10 Spark Coins.
 
-**Challenge:** Choose a smart way to use your Spark Coins.
-
-**Parent Prompt:** Ask your child why they made their choice.
+**Challenge:** Choose one smart way to use your Spark Coins.
 
 **Reward:** 10 Spark Coins + 10 XP
 
----
-
 ### Mission 2 — Needs vs. Wants
+Help BitBot sort purchases into Needs and Wants.
 
-BitBot needs help sorting purchases.
-
-**Challenge:** Decide whether each item is a Need or a Want.
-
-**Parent Prompt:** Ask: Can something be both a need and a want?
+**Challenge:** Explain why an item belongs in each category.
 
 **Reward:** 20 Spark Coins + 20 XP
 
----
-
 ### Mission 3 — Build Your First Budget
-
 You have a limited number of Spark Coins.
 
-**Challenge:** Decide how much to spend, save, and keep for a goal.
-
-**Parent Prompt:** Ask your child what they would change if they had 5 more coins.
+**Challenge:** Decide how much to spend, save, and reserve for a goal.
 
 **Reward:** 30 Spark Coins + 30 XP
 
----
-
 ## Quantum Money Master
 
-Complete all three missions.
-
-**Skills practiced:**
-- Needs vs. wants
+Skills practiced:
+- Needs vs. Wants
 - Budgeting
 - Saving
 - Goal-setting

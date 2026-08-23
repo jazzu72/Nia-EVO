@@ -3,9 +3,20 @@ const crypto = require("crypto");
 const store = require("../services/progress-store");
 
 const router = express.Router();
+function checkParentRate(ip) {
+  const now=Date.now();
+  const x=rateState.get(ip)||{count:0,start:now};
+  if(now-x.start>60000){x.count=0;x.start=now;}
+  x.count++;
+  rateState.set(ip,x);
+  return x.count<=10;
+}
 const sessions = new Map();
 
 router.post("/gate", (req, res) => {
+  if (!checkParentRate(req.ip)) {
+    return res.status(429).json({success:false,error:"PARENT_RATE_LIMITED"});
+  }
   const { parentCode } = req.body || {};
 
   const configuredCode = process.env.MONEY_MUNCHKINS_PARENT_CODE;
