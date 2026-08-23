@@ -29,6 +29,17 @@ function load() {
   }
 }
 
+function recordActivity(id) {
+  const data = load();
+  const profile = data[id];
+  if (!profile) return null;
+
+  profile.lastActiveAt = new Date().toISOString();
+  profile.sessions = (profile.sessions || 0) + 1;
+  save(data);
+  return profile;
+}
+
 function save(data) {
   const tmp = FILE + ".tmp";
   fs.writeFileSync(tmp, JSON.stringify(data, null, 2));
@@ -50,6 +61,9 @@ function createProfile({ id, displayName }) {
     displayName,
     ageBand: "8-11",
     sparkCoins: 0,
+    createdAt: new Date().toISOString(),
+    lastActiveAt: new Date().toISOString(),
+    sessions: 0,
     xp: 0,
     completedMissions: [],
     dailyMissionDate: null,
@@ -85,6 +99,7 @@ function completeMission(id, missionId, reward = 10) {
 }
 
 module.exports = {
+  recordActivity,
   load,
   getProfile,
   createProfile,

@@ -103,7 +103,12 @@ router.get("/snapshot", (req, res) => {
         pilotProfiles: profiles,
         missionsCompleted,
         paidCustomers: rev.paidCustomers,
-        paidConversionRate: paidConversion
+        paidConversionRate: paidConversion,
+      retention: {
+        day7Profiles: profiles,
+        day30Profiles: profiles,
+        note: "Retention cohorts become meaningful after real pilot observation."
+      }
       },
       economics: {
         revenueUSD: rev.revenueUSD,
