@@ -1,4 +1,5 @@
 const express = require("express");
+const adaptive = require("../../platform/adaptive/adaptive-engine");
 const store = require("../services/progress-store");
 
 const router = express.Router();
@@ -68,6 +69,33 @@ router.post("/profiles/:id/missions/:missionId/complete", (req, res) => {
     res.status(status).json({
       success: false,
       error: error.message
+    });
+  }
+});
+
+
+router.get("/profiles/:id/recommendation", (req, res) => {
+  try {
+    const profile = store.getProfile(req.params.id);
+
+    if (!profile) {
+      return res.status(404).json({
+        success: false,
+        error: "PROFILE_NOT_FOUND"
+      });
+    }
+
+    const recommendation = adaptive.recommend(profile);
+
+    res.json({
+      success: true,
+      profileId: req.params.id,
+      recommendation
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "RECOMMENDATION_FAILED"
     });
   }
 });

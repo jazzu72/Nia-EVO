@@ -1,4 +1,5 @@
 const express = require("express");
+const outcomes = require("../../platform/learning/outcomes-engine");
 const fs = require("fs");
 const path = require("path");
 const store = require("../services/progress-store");
@@ -57,6 +58,47 @@ router.get("/report/:id", (req, res) => {
       missions.find(m => !m.completed)?.title ||
       "Starter curriculum complete"
   });
+});
+
+
+router.post("/outcomes", (req, res) => {
+  try {
+    const { profileId, phase, skills } = req.body || {};
+
+    if (!profileId || !["pre", "post"].includes(phase) || !skills) {
+      return res.status(400).json({
+        success: false,
+        error: "INVALID_OUTCOME_REQUEST"
+      });
+    }
+
+    const result = outcomes.record(profileId, phase, skills);
+
+    res.status(201).json({
+      success: true,
+      outcome: result
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "OUTCOME_RECORD_FAILED"
+    });
+  }
+});
+
+router.get("/outcomes/:profileId", (req, res) => {
+  try {
+    res.json({
+      success: true,
+      profileId: req.params.profileId,
+      result: outcomes.calculate(req.params.profileId)
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "OUTCOME_REPORT_FAILED"
+    });
+  }
 });
 
 module.exports = router;
