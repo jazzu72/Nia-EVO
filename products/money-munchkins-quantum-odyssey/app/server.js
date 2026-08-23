@@ -4,6 +4,7 @@ const api = require("./api");
 const progress = require("./api/progress");
 const investor = require("./api/investor");
 const growth = require("./api/growth");
+const analytics = require("./api/analytics");
 const parent = require("./api/parent");
 const pilotFeedback = require("./api/pilot-feedback");
 const learning = require("./api/learning");
@@ -39,6 +40,7 @@ app.use("/api/money-munchkins", api);
 app.use("/api/money-munchkins/progress", progress);
 app.use("/api/money-munchkins/investor", investor);
 app.use("/api/money-munchkins/growth", growth);
+app.use("/api/money-munchkins/analytics", analytics);
 app.get("/money-munchkins/investor", (req,res) => {
   res.sendFile(require("path").join(__dirname,"web/investor/index.html"));
 });
