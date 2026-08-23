@@ -9,3 +9,5 @@ services:
     envVars:
       - key: MONEY_MUNCHKINS_PARENT_CODE
         sync: false
+      - key: MONEY_MUNCHKINS_INVESTOR_CODE
+        sync: false

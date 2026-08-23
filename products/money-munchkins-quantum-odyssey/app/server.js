@@ -52,6 +52,13 @@ app.get("/money-munchkins/pilot", (req,res) => {
 });
 
 app.get("/money-munchkins/investor-center", (req,res) => {
+  const configured = process.env.MONEY_MUNCHKINS_INVESTOR_CODE;
+  const supplied = req.headers["x-investor-code"];
+
+  if (!configured || supplied !== configured) {
+    return res.status(401).send("Investor access required");
+  }
+
   res.sendFile(require("path").join(__dirname,"web/investor/index.html"));
 });
 
