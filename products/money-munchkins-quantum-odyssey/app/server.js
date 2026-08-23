@@ -7,6 +7,7 @@ const growth = require("./api/growth");
 const analytics = require("./api/analytics");
 const audit = require("./api/audit");
 const revenue = require("./api/revenue");
+const payments = require("./api/payments");
 const parent = require("./api/parent");
 const pilotFeedback = require("./api/pilot-feedback");
 const learning = require("./api/learning");
@@ -45,6 +46,7 @@ app.use("/api/money-munchkins/growth", growth);
 app.use("/api/money-munchkins/analytics", analytics);
 app.use("/api/money-munchkins/audit", audit);
 app.use("/api/money-munchkins/revenue", revenue);
+app.use("/api/money-munchkins/payments", payments);
 app.get("/money-munchkins/pilot", (req,res) => {
   res.sendFile(require("path").join(__dirname,"web/pilot/index.html"));
 });
