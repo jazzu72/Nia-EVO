@@ -1,0 +1,16 @@
+{
+  "SMOKE-1787493320": {
+    "id": "SMOKE-1787493320",
+    "displayName": "Smoke Test",
+    "ageBand": "8-11",
+    "sparkCoins": 10,
+    "xp": 10,
+    "completedMissions": [
+      "QUEST-COIN-COLLECTOR"
+    ],
+    "dailyMissionDate": null,
+    "dailyMissionCount": 0,
+    "dailyMissionLimit": 3,
+    "createdAt": "2026-08-23T13:55:20.140Z"
+  }
+}
