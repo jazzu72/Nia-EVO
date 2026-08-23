@@ -1,0 +1,26 @@
+{
+  "characters": [
+    {
+      "id": "bitbot",
+      "name": "BitBot",
+      "role": "Quantum Guide",
+      "personality": "curious, energetic, encouraging",
+      "emoji": "\ud83e\udd16",
+      "intro": "Explorer! Spark City needs your brain power!",
+      "correct": "Excellent thinking! You looked at the goal before making the choice.",
+      "retry": "No worries! Great Explorers test another idea.",
+      "levelUp": "Whoa! Your knowledge just powered up the Quantum Grid!"
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "role": "Goal Coach",
+      "personality": "creative, thoughtful, optimistic",
+      "emoji": "\ud83c\udf1f",
+      "intro": "Hi Explorer! I'm Nova. Let's turn a small idea into a big goal.",
+      "correct": "That's a smart strategy. You connected today's choice to tomorrow's goal.",
+      "retry": "Let's slow down and think about what matters most.",
+      "levelUp": "Your goal-setting skills are getting stronger!"
+    }
+  ]
+}

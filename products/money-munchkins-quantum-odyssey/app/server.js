@@ -1,0 +1,53 @@
+const express = require("express");
+
+const api = require("./api");
+const progress = require("./api/progress");
+const parent = require("./api/parent");
+const pilotFeedback = require("./api/pilot-feedback");
+const learning = require("./api/learning");
+
+const app = express();
+const PORT = process.env.MONEY_MUNCHKINS_PORT || 3310;
+
+app.use(express.json());
+const DAILY_MISSION_LIMIT=3;
+const dailyMissionLog=new Map();
+
+function enforceDailyLimit(req,res,next){
+  const id=req.params.id;
+  const today=new Date().toISOString().slice(0,10);
+  const key=id+":"+today;
+  const count=dailyMissionLog.get(key)||0;
+  if(count>=DAILY_MISSION_LIMIT){
+    return res.status(429).json({
+      success:false,
+      error:"DAILY_MISSION_LIMIT_REACHED",
+      limit:DAILY_MISSION_LIMIT
+    });
+  }
+  req.dailyMissionKey=key;
+  next();
+}
+
+
+app.use("/money-munchkins", express.static(__dirname + "/web"));
+app.use("/money-munchkins-pilot", express.static(__dirname + "/../pilot/feedback"));
+
+app.use("/api/money-munchkins", api);
+app.use("/api/money-munchkins/progress", progress);
+app.use("/api/money-munchkins/parent", parent);
+app.use("/api/money-munchkins/pilot-feedback", pilotFeedback);
+app.use("/api/money-munchkins/learning", learning);
+
+app.get("/", (req, res) => {
+  res.json({
+    name: "Money Munchkins: Quantum Odyssey",
+    version: "0.1.0",
+    status: "online"
+  });
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("🚀 Money Munchkins running");
+  console.log(`🌐 http://127.0.0.1:${PORT}`);
+});

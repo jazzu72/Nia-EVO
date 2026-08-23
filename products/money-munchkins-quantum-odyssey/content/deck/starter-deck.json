@@ -1,0 +1,86 @@
+{
+  "deck": "Quantum Odyssey Starter Deck",
+  "version": "0.1",
+  "ageBand": "8-11",
+  "cards": [
+    {
+      "id": "CHAR-001",
+      "type": "character",
+      "name": "BitBot",
+      "role": "Money Guide",
+      "lesson": "Smart money choices start with smart questions.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=CHAR-001"
+    },
+    {
+      "id": "CHAR-002",
+      "type": "character",
+      "name": "Nova",
+      "role": "Goal Explorer",
+      "lesson": "A goal gives your saving a purpose.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=CHAR-002"
+    },
+    {
+      "id": "NEED-001",
+      "type": "needs",
+      "name": "Lunch",
+      "answer": "need",
+      "lesson": "Food is a basic need.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=NEED-001"
+    },
+    {
+      "id": "NEED-002",
+      "type": "needs",
+      "name": "School Supplies",
+      "answer": "need",
+      "lesson": "Learning often requires supplies and tools.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=NEED-002"
+    },
+    {
+      "id": "WANT-001",
+      "type": "wants",
+      "name": "Video Game",
+      "answer": "want",
+      "lesson": "Entertainment can be fun without being a basic need.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=WANT-001"
+    },
+    {
+      "id": "WANT-002",
+      "type": "wants",
+      "name": "Collectible Toy",
+      "answer": "want",
+      "lesson": "Wants are things we would like to have.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=WANT-002"
+    },
+    {
+      "id": "BUDGET-001",
+      "type": "budget",
+      "name": "Thirty Coin Challenge",
+      "startingCoins": 30,
+      "lesson": "A budget helps you decide where limited money should go.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=BUDGET-001"
+    },
+    {
+      "id": "BUDGET-002",
+      "type": "budget",
+      "name": "Five More Coins",
+      "startingCoins": 5,
+      "lesson": "Extra money creates choices about spending, saving, and goals.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=BUDGET-002"
+    },
+    {
+      "id": "GOAL-001",
+      "type": "goal",
+      "name": "Dream Goal",
+      "lesson": "Saving a little at a time can move you toward a bigger goal.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=GOAL-001"
+    },
+    {
+      "id": "CHOICE-001",
+      "type": "decision",
+      "name": "Think Before You Spend",
+      "prompt": "Would you spend, save, or wait?",
+      "lesson": "Good decisions consider both today and tomorrow.",
+      "qrTarget": "http://127.0.0.1:3310/money-munchkins/?card=CHOICE-001"
+    }
+  ]
+}

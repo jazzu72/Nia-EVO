@@ -1,0 +1,106 @@
+{
+  "gameSystem": "Quantum Seasons",
+  "version": "0.1",
+  "designPrinciples": [
+    "short missions",
+    "visible progression",
+    "collectible rewards",
+    "choice and strategy",
+    "safe competition with yourself",
+    "parent-visible progress",
+    "no advertising",
+    "no gambling mechanics",
+    "no real-money rewards"
+  ],
+  "season": {
+    "id": "QSEASON-001",
+    "name": "The Spark City Expedition",
+    "theme": "Explore Spark City and help BitBot restore the Quantum Grid.",
+    "levels": [
+      {
+        "level": 1,
+        "xpRequired": 0,
+        "unlock": "BitBot Badge"
+      },
+      {
+        "level": 2,
+        "xpRequired": 20,
+        "unlock": "Needs Detective Badge"
+      },
+      {
+        "level": 3,
+        "xpRequired": 40,
+        "unlock": "Budget Builder Badge"
+      },
+      {
+        "level": 4,
+        "xpRequired": 60,
+        "unlock": "Quantum Money Master Badge"
+      },
+      {
+        "level": 5,
+        "xpRequired": 100,
+        "unlock": "Spark City Explorer Badge"
+      }
+    ]
+  },
+  "dailyQuests": [
+    {
+      "id": "DQ-001",
+      "name": "Spark Saver",
+      "challenge": "Choose one thing you could save for instead of buying immediately.",
+      "xp": 10
+    },
+    {
+      "id": "DQ-002",
+      "name": "Need or Want Detective",
+      "challenge": "Classify five everyday items as needs or wants.",
+      "xp": 10
+    },
+    {
+      "id": "DQ-003",
+      "name": "Budget Boss",
+      "challenge": "Create a plan for 20 Spark Coins.",
+      "xp": 15
+    }
+  ],
+  "weeklyQuest": {
+    "id": "WQ-001",
+    "name": "Quantum Mission",
+    "challenge": "Complete three learning missions and explain one decision to a parent or teacher.",
+    "xp": 30,
+    "reward": "Quantum Explorer Badge"
+  },
+  "collectibles": [
+    "BitBot Badge",
+    "Nova Badge",
+    "Needs Detective Badge",
+    "Budget Builder Badge",
+    "Goal Setter Badge",
+    "Spark Saver Badge",
+    "Quantum Explorer Badge",
+    "Spark City Explorer Badge"
+  ],
+  "specialEvents": [
+    {
+      "id": "EVENT-001",
+      "name": "The Great Coin Rescue",
+      "story": "Spark City's coin vault needs a smarter budget.",
+      "skills": [
+        "budgeting",
+        "saving",
+        "decision-making"
+      ]
+    },
+    {
+      "id": "EVENT-002",
+      "name": "Nova's Big Goal",
+      "story": "Nova wants to reach a goal without spending all her Spark Coins.",
+      "skills": [
+        "goal-setting",
+        "delayed-gratification",
+        "planning"
+      ]
+    }
+  ]
+}
