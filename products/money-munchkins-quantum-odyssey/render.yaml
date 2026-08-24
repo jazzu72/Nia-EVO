@@ -6,7 +6,14 @@ services:
     buildCommand: npm install --prefix app
     startCommand: node app/server.js
     healthCheckPath: /api/money-munchkins/health
+    autoDeploy: true
     envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PAYMENT_PROVIDER
+        value: manual
+      - key: PORT
+        value: "10000"
       - key: MONEY_MUNCHKINS_PARENT_CODE
         sync: false
       - key: MONEY_MUNCHKINS_INVESTOR_CODE
