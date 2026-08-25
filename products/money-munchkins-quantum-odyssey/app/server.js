@@ -13,7 +13,7 @@ const pilotFeedback = require("./api/pilot-feedback");
 const learning = require("./api/learning");
 
 const app = express();
-const PORT = process.env.MONEY_MUNCHKINS_PORT || 3310;
+const PORT = Number(process.env.PORT || process.env.MONEY_MUNCHKINS_PORT || 3310);
 
 app.use(express.json());
 const DAILY_MISSION_LIMIT=3;
