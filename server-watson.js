@@ -24,6 +24,8 @@ app.use("/api/owner", requireOwnerAuth);
 app.use("/api/owner/chat", require("./nia-chat-api"));
 
 console.log("🏰 Nia Capital OS Booting...");
+app.use("/api/funding", require("./funding-engine/capital-radar-api"));
+console.log("✅ /api/funding capital radar loaded");
 
 // ============================================================
 // ROUTE LOADER - SAFE LOADING WITH ERROR HANDLING
@@ -89,7 +91,7 @@ loadRoute("./chief-of-staff/chief-api", "/api/chief");
 
 // Outreach & Engagement
 loadRoute("./outreach/outreach-api", "/api/outreach");
-loadRoute("./revenue/outreach/outreach-api", "/api/outreach");
+loadRoute("./outreach/outreach-execution-api", "/api/outreach/execution");
 
 // Cashflow & Finances
 loadRoute("./cashflow/cashflow-api", "/api/cashflow");
@@ -98,7 +100,6 @@ loadRoute("./cashflow/cashflow-api", "/api/cashflow");
 loadRoute("./revenue/revenue-api", "/api/revenue");
 loadRoute("./revenue/prospects/prospect-api", "/api/prospects");
 loadRoute("./revenue/automation/automation-api", "/api/revenue/automation");
-loadRoute("./revenue/acquisition/acquisition-api", "/api/acquisition/leads");
 loadRoute("./revenue/conversion/conversion-api", "/api/conversion");
 loadRoute("./revenue/proposals/proposal-api", "/api/proposals");
 loadRoute("./revenue/operator/operator-api", "/api/operator");
