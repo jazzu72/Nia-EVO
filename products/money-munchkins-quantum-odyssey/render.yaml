@@ -1,6 +1,7 @@
 services:
   - type: web
     name: money-munchkins-quantum-odyssey
+    rootDir: products/money-munchkins-quantum-odyssey
     runtime: node
     buildCommand: npm install --prefix app
     startCommand: node app/server.js
