@@ -117,5 +117,7 @@
       "applicationStatus": "NOT_STARTED",
       "humanApprovalRequired": true
     }
-  ]
+  ],
+  "lastLiveVerification": "2026-08-26T15:31:39.474Z",
+  "liveVerifiedCount": 1
 }

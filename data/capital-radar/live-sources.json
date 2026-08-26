@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-08-26T15:31:39.467Z",
+  "sourceCount": 5,
+  "results": [
+    {
+      "name": "Hello Alice Funding",
+      "url": "https://www.helloalice.com/small-business-grants-and-funding",
+      "tags": [
+        "grant",
+        "small-business",
+        "startup",
+        "minority",
+        "technology"
+      ],
+      "httpStatus": 429,
+      "checkedAt": "2026-08-26T15:31:37.116Z",
+      "detectedStatus": "SOURCE_ERROR",
+      "verified": false,
+      "humanApprovalRequired": true
+    },
+    {
+      "name": "Verizon Small Business",
+      "url": "https://www.verizon.com/business/solutions/small-business/",
+      "tags": [
+        "grant",
+        "technology",
+        "small-business"
+      ],
+      "httpStatus": 200,
+      "checkedAt": "2026-08-26T15:31:38.140Z",
+      "detectedStatus": "VERIFY",
+      "verified": false,
+      "humanApprovalRequired": true
+    },
+    {
+      "name": "Main Street Rising",
+      "url": "https://mainstreet.helloalice.com/",
+      "tags": [
+        "AI",
+        "pitch",
+        "small-business",
+        "cash-prize"
+      ],
+      "httpStatus": 200,
+      "checkedAt": "2026-08-26T15:31:38.512Z",
+      "detectedStatus": "VERIFY",
+      "verified": false,
+      "humanApprovalRequired": true
+    },
+    {
+      "name": "Black Ambition",
+      "url": "https://blackambitionprize.com/apply-now/",
+      "tags": [
+        "Black-founder",
+        "startup",
+        "technology",
+        "prize"
+      ],
+      "httpStatus": 200,
+      "checkedAt": "2026-08-26T15:31:39.056Z",
+      "detectedStatus": "POSSIBLY_OPEN",
+      "verified": true,
+      "humanApprovalRequired": true
+    },
+    {
+      "name": "NAACP Powershift",
+      "url": "https://naacp.org/find-resources/grants/powershift-entrepreneur-grant",
+      "tags": [
+        "Black-founder",
+        "grant",
+        "small-business"
+      ],
+      "httpStatus": 200,
+      "checkedAt": "2026-08-26T15:31:39.467Z",
+      "detectedStatus": "CLOSED",
+      "verified": false,
+      "humanApprovalRequired": true
+    }
+  ]
+}
