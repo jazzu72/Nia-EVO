@@ -32,6 +32,8 @@ const fs = require('fs');
 const path = require('path');
 const { Pool } = require('pg');
 const app = express();
+app.use("/api/funding", require("./funding-engine/capital-radar-api"));
+console.log("✅ /api/funding capital radar loaded");
 const PORT = process.env.PORT || 3100;
 const DEPLOYMENT_ID = 'NIA-REVENUE-API-B33C913';
 const LEDGER = path.join(__dirname, 'revenue-ledger.json');
