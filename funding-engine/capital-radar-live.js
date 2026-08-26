@@ -185,3 +185,8 @@ main().catch(err => {
   console.error("❌ RADAR FAILURE:", err.message);
   process.exit(1);
 });
+
+main().catch(err => {
+  console.error("❌ RADAR FAILURE:", err.message);
+  process.exit(1);
+});

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T15:31:39.467Z",
+  "generatedAt": "2026-08-26T15:32:20.987Z",
   "sourceCount": 5,
   "results": [
     {
@@ -13,7 +13,7 @@
         "technology"
       ],
       "httpStatus": 429,
-      "checkedAt": "2026-08-26T15:31:37.116Z",
+      "checkedAt": "2026-08-26T15:32:19.285Z",
       "detectedStatus": "SOURCE_ERROR",
       "verified": false,
       "humanApprovalRequired": true
@@ -27,7 +27,7 @@
         "small-business"
       ],
       "httpStatus": 200,
-      "checkedAt": "2026-08-26T15:31:38.140Z",
+      "checkedAt": "2026-08-26T15:32:19.697Z",
       "detectedStatus": "VERIFY",
       "verified": false,
       "humanApprovalRequired": true
@@ -42,7 +42,7 @@
         "cash-prize"
       ],
       "httpStatus": 200,
-      "checkedAt": "2026-08-26T15:31:38.512Z",
+      "checkedAt": "2026-08-26T15:32:20.010Z",
       "detectedStatus": "VERIFY",
       "verified": false,
       "humanApprovalRequired": true
@@ -57,7 +57,7 @@
         "prize"
       ],
       "httpStatus": 200,
-      "checkedAt": "2026-08-26T15:31:39.056Z",
+      "checkedAt": "2026-08-26T15:32:20.550Z",
       "detectedStatus": "POSSIBLY_OPEN",
       "verified": true,
       "humanApprovalRequired": true
@@ -71,7 +71,7 @@
         "small-business"
       ],
       "httpStatus": 200,
-      "checkedAt": "2026-08-26T15:31:39.467Z",
+      "checkedAt": "2026-08-26T15:32:20.987Z",
       "detectedStatus": "CLOSED",
       "verified": false,
       "humanApprovalRequired": true
