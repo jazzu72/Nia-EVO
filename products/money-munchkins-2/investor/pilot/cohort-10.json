@@ -1,0 +1,20 @@
+{
+  "cohort": "pilot-10",
+  "targetFamilies": 10,
+  "status": "recruiting",
+  "metrics": {
+    "signups": 0,
+    "activated": 0,
+    "missionsCompleted": 0,
+    "retained7d": 0,
+    "paidCustomers": 0,
+    "revenueUSD": 0
+  },
+  "successCriteria": {
+    "activationRatePct": 70,
+    "sevenDayRetentionPct": 40,
+    "paidConversionPct": 10,
+    "revenueUSD": 1
+  },
+  "rule": "Only verified production events may update these metrics."
+}

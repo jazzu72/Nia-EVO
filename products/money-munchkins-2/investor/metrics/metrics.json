@@ -1,0 +1,37 @@
+{
+  "product": "Money Munchkins: Quantum Odyssey",
+  "version": "0.2.0",
+  "pilot": {
+    "participants": 0,
+    "activated": 0,
+    "completed_first_mission": 0,
+    "completed_all_core_missions": 0,
+    "day_7_retained": 0,
+    "day_30_retained": 0
+  },
+  "engagement": {
+    "sessions": 0,
+    "missions_started": 0,
+    "missions_completed": 0,
+    "spark_coins_awarded": 0,
+    "xp_awarded": 0
+  },
+  "parent": {
+    "dashboard_views": 0,
+    "gate_attempts": 0,
+    "successful_gate_attempts": 0
+  },
+  "commercial": {
+    "pilot_inquiries": 0,
+    "paid_customers": 0,
+    "monthly_recurring_revenue": 0,
+    "annual_recurring_revenue": 0,
+    "conversion_rate": 0,
+    "average_revenue_per_user": 0
+  },
+  "learning": {
+    "pre_assessment_completed": 0,
+    "post_assessment_completed": 0,
+    "skill_improvement_rate": 0
+  }
+}

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: money-munchkins-2
+    runtime: node
+    rootDir: products/money-munchkins-2
+    buildCommand: npm install --prefix app
+    startCommand: node app/server.js
+    healthCheckPath: /api/money-munchkins/health
+    autoDeploy: true

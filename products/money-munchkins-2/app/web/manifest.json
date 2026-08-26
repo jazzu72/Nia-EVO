@@ -1,0 +1,12 @@
+{
+  "name": "Money Munchkins: Quantum Odyssey",
+  "short_name": "Money Munchkins",
+  "description": "A story-driven financial literacy adventure for young explorers.",
+  "start_url": "/money-munchkins/",
+  "scope": "/money-munchkins/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f4f6",
+  "theme_color": "#111827",
+  "categories": ["education", "kids", "games"]
+}

@@ -1,0 +1,50 @@
+{
+  "product": "Money Munchkins: Quantum Odyssey",
+  "ageBand": "8-11",
+  "learningFramework": "story-guided financial literacy",
+  "missions": [
+    {
+      "id": "MMQ-001",
+      "title": "Welcome to Quantum Odyssey",
+      "domain": "Money Basics",
+      "skill": "Decision Making",
+      "objective": "Recognize that money choices involve tradeoffs.",
+      "mechanic": "guided_choice",
+      "mastery": {
+        "minimumScore": 1,
+        "attempts": 3
+      },
+      "parentPrompt": "Why did you choose that option?",
+      "teacherNote": "Encourage the learner to explain the reason behind the choice rather than focusing only on the outcome."
+    },
+    {
+      "id": "MMQ-002",
+      "title": "Needs vs. Wants",
+      "domain": "Financial Literacy",
+      "skill": "Needs vs. Wants",
+      "objective": "Distinguish common needs from discretionary wants and explain the reasoning.",
+      "mechanic": "classification",
+      "mastery": {
+        "minimumScore": 4,
+        "totalQuestions": 5
+      },
+      "parentPrompt": "Can something be both a need and a want? Explain.",
+      "teacherNote": "Accept reasonable explanations because context can change whether something is a need or want."
+    },
+    {
+      "id": "MMQ-003",
+      "title": "Build Your First Budget",
+      "domain": "Budgeting",
+      "skill": "Budget Allocation",
+      "objective": "Allocate a limited amount of money among spending, saving, and a goal.",
+      "mechanic": "allocation",
+      "mastery": {
+        "requiresBalancedBudget": true,
+        "minimumSavings": 1,
+        "requiresGoalAllocation": true
+      },
+      "parentPrompt": "What would you change if you had five more coins?",
+      "teacherNote": "Focus on reasoning, tradeoffs, and the relationship between present spending and future goals."
+    }
+  ]
+}

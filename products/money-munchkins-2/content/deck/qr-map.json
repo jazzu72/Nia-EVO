@@ -1,0 +1,56 @@
+{
+  "purpose": "Physical-to-digital card mapping",
+  "baseUrl": "http://127.0.0.1:3310/money-munchkins/",
+  "cards": [
+    {
+      "id": "CHAR-001",
+      "name": "BitBot",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=CHAR-001"
+    },
+    {
+      "id": "CHAR-002",
+      "name": "Nova",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=CHAR-002"
+    },
+    {
+      "id": "NEED-001",
+      "name": "Lunch",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=NEED-001"
+    },
+    {
+      "id": "NEED-002",
+      "name": "School Supplies",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=NEED-002"
+    },
+    {
+      "id": "WANT-001",
+      "name": "Video Game",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=WANT-001"
+    },
+    {
+      "id": "WANT-002",
+      "name": "Collectible Toy",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=WANT-002"
+    },
+    {
+      "id": "BUDGET-001",
+      "name": "Thirty Coin Challenge",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=BUDGET-001"
+    },
+    {
+      "id": "BUDGET-002",
+      "name": "Five More Coins",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=BUDGET-002"
+    },
+    {
+      "id": "GOAL-001",
+      "name": "Dream Goal",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=GOAL-001"
+    },
+    {
+      "id": "CHOICE-001",
+      "name": "Think Before You Spend",
+      "url": "http://127.0.0.1:3310/money-munchkins/?card=CHOICE-001"
+    }
+  ]
+}

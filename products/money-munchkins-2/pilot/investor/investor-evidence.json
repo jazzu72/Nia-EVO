@@ -1,0 +1,33 @@
+{
+  "product": "Money Munchkins: Quantum Odyssey",
+  "release": "money-munchkins-pilot-v0.2.0-10-g5fd9123",
+  "commit": "5fd9123",
+  "generatedAt": "2026-08-23T14:22:42.433889+00:00",
+  "stage": "Pilot",
+  "traction": {
+    "learnerProfiles": 1,
+    "activeLearners": 1,
+    "missionsCompleted": 1,
+    "trackedFunnelUsers": 0
+  },
+  "evidence": {
+    "auditLedgerEvents": 0,
+    "rewardProtection": "verified",
+    "parentGate": "verified",
+    "atomicProgressPersistence": "verified",
+    "qrStarterDeck": "10 assets",
+    "missionPack": "PDF generated"
+  },
+  "investmentCase": {
+    "targetValuationUSD": 25000000,
+    "status": "aspirational",
+    "requiredNextProofPoints": [
+      "paid pilot revenue",
+      "repeat-family retention",
+      "measured learning gains",
+      "customer acquisition economics",
+      "school/education partnerships",
+      "independent pilot validation"
+    ]
+  }
+}
