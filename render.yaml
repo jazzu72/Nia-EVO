@@ -5,6 +5,7 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: node revenue-api.js
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
