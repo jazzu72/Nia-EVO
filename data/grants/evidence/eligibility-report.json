@@ -1,0 +1,45 @@
+{
+  "campaign": "Money Munchkins 2 Grant Campaign",
+  "generatedAt": "2026-08-26T20:07:51.877393+00:00",
+  "grants": [
+    {
+      "id": "SKIP-FALL-2026",
+      "name": "Skip Fall Grant",
+      "amount": 10000,
+      "deadline": "2026-09-18T23:59:00-04:00",
+      "url": "https://helloskip.com/dashboard/opportunity/10k-fall-grants",
+      "verified": true,
+      "http_status": 200,
+      "eligibility_notes": [
+        "Source reachable; eligibility and current deadline require page-level review."
+      ],
+      "next_action": "MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "id": "OUTTA-EXCUSES-2026-Q3",
+      "name": "Outta Excuses Small Business Empowerment Grant",
+      "amount": 3000,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "url": "https://www.outtaexcuses.com/general-5-1",
+      "verified": true,
+      "http_status": 200,
+      "eligibility_notes": [
+        "Source reachable; eligibility and current deadline require page-level review."
+      ],
+      "next_action": "MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "id": "SECRETSOS-2026-Q3",
+      "name": "Secretsos Small Business Grant",
+      "amount": 2500,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "url": "https://assets.secretsos.com/",
+      "verified": true,
+      "http_status": 200,
+      "eligibility_notes": [
+        "Source reachable; eligibility and current deadline require page-level review."
+      ],
+      "next_action": "MANUAL_REVIEW_REQUIRED"
+    }
+  ]
+}
