@@ -86,7 +86,19 @@ function completeMission(id, missionId, reward = 10) {
     throw new Error("MISSION_ALREADY_COMPLETED");
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+  if (profile.dailyMissionDate !== today) {
+    profile.dailyMissionDate = today;
+    profile.dailyMissionCount = 0;
+  }
+
+  const dailyLimit = Number(profile.dailyMissionLimit || 3);
+  if (profile.dailyMissionCount >= dailyLimit) {
+    throw new Error("DAILY_MISSION_LIMIT_REACHED");
+  }
+
   profile.completedMissions.push(missionId);
+  profile.dailyMissionCount += 1;
     recordEvent("mission_completed", id, {
       missionId,
       reward
