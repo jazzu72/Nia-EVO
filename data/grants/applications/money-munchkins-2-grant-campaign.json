@@ -1,0 +1,68 @@
+{
+  "campaign": "Money Munchkins 2 Grant Campaign",
+  "owner": "Jason Lesane",
+  "product": "Money Munchkins 2",
+  "status": "ACTIVE",
+  "submission_policy": {
+    "drafting": true,
+    "eligibility_review": true,
+    "document_collection": true,
+    "application_preparation": true,
+    "submit_without_approval": false,
+    "pay_application_fee_without_approval": false,
+    "legal_certification_without_approval": false
+  },
+  "grants": [
+    {
+      "id": "SKIP-FALL-2026",
+      "name": "Skip Fall Grant",
+      "amount": 10000,
+      "deadline": "2026-09-18T23:59:00-04:00",
+      "priority": 1,
+      "status": "RESEARCH_AND_DRAFT",
+      "application_url": "https://helloskip.com/dashboard/opportunity/10k-fall-grants"
+    },
+    {
+      "id": "OUTTA-EXCUSES-2026-Q3",
+      "name": "Outta Excuses Small Business Empowerment Grant",
+      "amount": 3000,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "priority": 2,
+      "status": "RESEARCH_AND_DRAFT",
+      "application_url": "https://www.outtaexcuses.com/general-5-1"
+    },
+    {
+      "id": "SECRETSOS-2026-Q3",
+      "name": "Secretsos Small Business Grant",
+      "amount": 2500,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "priority": 3,
+      "status": "RESEARCH_AND_DRAFT",
+      "application_url": "https://assets.secretsos.com/"
+    }
+  ],
+  "workflow": [
+    "DISCOVER",
+    "VERIFY_ELIGIBILITY",
+    "COLLECT_EVIDENCE",
+    "DRAFT_APPLICATION",
+    "OWNER_REVIEW",
+    "OWNER_APPROVAL",
+    "SUBMIT",
+    "VERIFY_SUBMISSION",
+    "TRACK_DECISION"
+  ],
+  "required_evidence": [
+    "business_identity",
+    "business_description",
+    "product_description",
+    "founder_story",
+    "traction",
+    "customer_or_pilot_evidence",
+    "revenue_information",
+    "funding_need",
+    "use_of_funds",
+    "business_plan",
+    "website_or_product_url"
+  ]
+}
