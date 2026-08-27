@@ -1,3 +1,4 @@
+app.get("/api/payments/status",(req,res)=>{const p=process.env.PAYMENT_PROVIDER||"manual";res.json({success:true,provider:p,configured:p==="stripe"&&!!process.env.STRIPE_SECRET_KEY});});
 const express = require("express");
 
 const api = require("./api");
