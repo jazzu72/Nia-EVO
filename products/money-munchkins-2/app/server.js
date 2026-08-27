@@ -15,6 +15,7 @@ const learning = require("./api/learning");
 const app = express();
 const PORT = Number(process.env.PORT || process.env.MONEY_MUNCHKINS_PORT || 3310);
 
+app.get("/api/money-munchkins/health",(req,res)=>res.json({ok:true,service:"money-munchkins-2",status:"healthy"}));
 app.use(express.json());
 const DAILY_MISSION_LIMIT=3;
 const dailyMissionLog=new Map();

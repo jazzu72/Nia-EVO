@@ -7,3 +7,18 @@ services:
     startCommand: npm run start --prefix app
     healthCheckPath: /api/money-munchkins/health
     autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PAYMENT_PROVIDER
+        value: stripe
+      - key: PORT
+        value: "10000"
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: PUBLIC_APP_URL
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
