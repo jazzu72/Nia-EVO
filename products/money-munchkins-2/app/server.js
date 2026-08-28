@@ -1,5 +1,7 @@
 const express = require("express");
 
+app.get("/api/payments/status",(req,res)=>{const p=process.env.PAYMENT_PROVIDER||"manual";res.json({success:true,provider:p,configured:p==="stripe"&&Boolean(process.env.STRIPE_SECRET_KEY)});});
+
 const api = require("./api");
 const progress = require("./api/progress");
 const investor = require("./api/investor");
