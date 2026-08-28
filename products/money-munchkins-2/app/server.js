@@ -1,6 +1,5 @@
 const express = require("express");
 
-app.get("/api/payments/status",(req,res)=>{const p=process.env.PAYMENT_PROVIDER||"manual";res.json({success:true,provider:p,configured:p==="stripe"&&Boolean(process.env.STRIPE_SECRET_KEY)});});
 
 const api = require("./api");
 const progress = require("./api/progress");
@@ -18,6 +17,7 @@ const app = express();
 const PORT = Number(process.env.PORT || process.env.MONEY_MUNCHKINS_PORT || 3310);
 
 app.get("/api/money-munchkins/health",(req,res)=>res.json({ok:true,service:"money-munchkins-2",status:"healthy"}));
+app.get("/api/payments/status",(req,res)=>{const p=process.env.PAYMENT_PROVIDER||"manual";res.json({success:true,provider:p,configured:p==="stripe"&&Boolean(process.env.STRIPE_SECRET_KEY)});});
 app.use(express.json());
 const DAILY_MISSION_LIMIT=3;
 const dailyMissionLog=new Map();
