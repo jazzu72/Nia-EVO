@@ -39,6 +39,13 @@ function enforceDailyLimit(req,res,next){
 }
 
 
+app.get("/money-munchkins/dashboard", (req,res)=>{
+  const required=process.env.MONEY_MUNCHKINS_DASHBOARD_CODE;
+  if(required && req.query.code !== required)
+    return res.status(401).send("Dashboard access code required");
+  res.sendFile(require("path").join(__dirname,"web/dashboard/index.html"));
+});
+
 app.use("/money-munchkins", express.static(__dirname + "/web"));
 app.use("/money-munchkins-pilot", express.static(__dirname + "/../pilot/feedback"));
 
@@ -72,12 +79,16 @@ app.use("/api/money-munchkins/parent", parent);
 app.use("/api/money-munchkins/pilot-feedback", pilotFeedback);
 app.use("/api/money-munchkins/learning", learning);
 
-app.get("/", (req, res) => {
+app.get("/api/status",(req,res)=>{
   res.json({
-    name: "Money Munchkins: Quantum Odyssey",
-    version: "0.1.0",
-    status: "online"
+    name:"Money Munchkins: Quantum Odyssey",
+    version:"0.1.0",
+    status:"online"
   });
+});
+
+app.get("/",(req,res)=>{
+  res.sendFile(require("path").join(__dirname,"web/index.html"));
 });
 
 app.listen(PORT, "0.0.0.0", () => {

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Munchkins — Ops Console</title>
+<style>
+body{margin:0;background:#0d0b1f;color:#f5f1e8;font-family:monospace;padding:25px}
+.wrap{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card,.panel{background:#161331;border:1px solid #ffffff12;border-radius:14px;padding:20px}
+.value{font-family:Arial;font-size:27px;font-weight:bold;margin-top:10px}.ok{color:#4ade80}.bad{color:#ff6b6b}
+.panel{margin-top:15px}table{width:100%;border-collapse:collapse}td{padding:12px;border-bottom:1px solid #ffffff12}
+a{color:#ffc857;text-decoration:none}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🚀 Money Munchkins — Ops Console</h1>
+
+<div class="grid">
+<div class="card">HEALTH<div id="health" class="value">...</div></div>
+<div class="card">PAYMENTS<div id="payments" class="value">...</div></div>
+<div class="card">PROVIDER<div id="provider" class="value">...</div></div>
+<div class="card">MISSION CAP<div class="value">3</div></div>
+</div>
+
+<div class="panel">
+<h2>Production API</h2>
+<table>
+<tr><td>/api/money-munchkins/health</td><td id="hcode">...</td></tr>
+<tr><td>/api/payments/status</td><td id="pcode">...</td></tr>
+<tr><td>/api/status</td><td id="scode">...</td></tr>
+</table>
+</div>
+
+<div class="panel">
+<h2>Quick Links</h2>
+<p><a href="/">Public Landing</a></p>
+<p><a href="/api/money-munchkins/health">Health JSON</a></p>
+<p><a href="/api/payments/status">Payment JSON</a></p>
+</div>
+</div>
+
+<script>
+async function check(path,id){
+ try{
+  const r=await fetch(path);
+  document.getElementById(id).textContent=r.status;
+  return r;
+ }catch(e){
+  document.getElementById(id).textContent='ERR';
+ }
+}
+async function refresh(){
+ const h=await fetch('/api/money-munchkins/health').then(r=>r.json());
+ const p=await fetch('/api/payments/status').then(r=>r.json());
+ document.getElementById('health').textContent=h.status||'unknown';
+ document.getElementById('health').className='value ok';
+ document.getElementById('payments').textContent=p.configured?'configured':'manual';
+ document.getElementById('payments').className='value '+(p.configured?'ok':'');
+ document.getElementById('provider').textContent=p.provider||'—';
+ await check('/api/money-munchkins/health','hcode');
+ await check('/api/payments/status','pcode');
+ await check('/api/status','scode');
+}
+refresh();setInterval(refresh,30000);
+</script>
+</body>
+</html>
