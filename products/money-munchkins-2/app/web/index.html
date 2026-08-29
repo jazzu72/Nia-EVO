@@ -14,7 +14,6 @@
       --accent-gold: #FFB800;
       --text-main: #F8FAFC;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Plus Jakarta Sans", sans-serif; }
     body {
       background: radial-gradient(circle at 50% 0%, #1E1B4B 0%, var(--bg-dark) 70%);
@@ -25,8 +24,6 @@
       align-items: center;
       overflow-x: hidden;
     }
-
-    /* Top Bar Header */
     header {
       width: 100%;
       max-width: 1100px;
@@ -38,15 +35,9 @@
     }
     .brand { font-weight: 900; font-size: 1.4rem; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px; }
     .spark-counter { background: rgba(255, 184, 0, 0.15); border: 2px solid var(--accent-gold); padding: 8px 16px; border-radius: 99px; font-weight: 800; color: var(--accent-gold); display: flex; align-items: center; gap: 8px; animation: pulse 2s infinite; }
-
-    /* Main Container */
     main { width: 100%; max-width: 1100px; padding: 40px 20px; flex: 1; }
-
-    /* Screen Views */
     .view-screen { display: none; opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .view-screen.active { display: block; opacity: 1; transform: translateY(0); }
-
-    /* Fortnite-Style Hero Cards & Buttons */
     .hero-banner {
       background: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(6, 182, 212, 0.2));
       border: 2px solid rgba(255, 255, 255, 0.2);
@@ -57,7 +48,6 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
     .hero-banner h1 { font-size: 3rem; font-weight: 900; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 20px rgba(0, 240, 255, 0.5); }
-    
     .btn-fortnite {
       background: linear-gradient(180deg, #00F0FF 0%, #0082FF 100%);
       color: #000;
@@ -75,15 +65,12 @@
     }
     .btn-fortnite:hover { transform: translateY(-3px); box-shadow: 0 11px 0 #0051B3, 0 20px 30px rgba(0, 240, 255, 0.6); }
     .btn-fortnite:active { transform: translateY(5px); box-shadow: 0 3px 0 #0051B3, 0 5px 10px rgba(0, 240, 255, 0.4); }
-
     .btn-secondary {
       background: linear-gradient(180deg, #9D00FF 0%, #6400A3 100%);
       color: #FFF;
       box-shadow: 0 8px 0 #41006B, 0 15px 25px rgba(157, 0, 255, 0.4);
     }
     .btn-secondary:hover { box-shadow: 0 11px 0 #41006B, 0 20px 30px rgba(157, 0, 255, 0.6); }
-
-    /* Character Grid */
     .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
     .char-card {
       background: var(--card-bg);
@@ -96,21 +83,16 @@
     }
     .char-card:hover { transform: translateY(-10px) scale(1.03); border-color: var(--accent-cyan); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3); }
     .char-emoji { font-size: 4rem; margin-bottom: 12px; display: block; animation: float 3s ease-in-out infinite; }
-
-    /* Keyframes */
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
   </style>
 </head>
 <body>
-
   <header>
     <div class="brand">⚡ NIA CAPITAL OS // MONEY MUNCHKINS 2</div>
     <div class="spark-counter">⚡ <span id="sparkCount">150</span> SPARK COINS</div>
   </header>
-
   <main>
-    <!-- LANDING PAGE / DASHBOARD -->
     <section id="landingScreen" class="view-screen active">
       <div class="hero-banner">
         <h1>Quantum Odyssey</h1>
@@ -120,12 +102,9 @@
           <button class="btn-fortnite btn-secondary" onclick="switchScreen("dashboardScreen")">📊 Parent / Teacher Dashboard</button>
         </div>
       </div>
-
       <h2 style="margin-top: 40px; text-transform: uppercase; letter-spacing: 1px;">Active Squad Roster</h2>
       <div class="character-grid" id="characterRoster"></div>
     </section>
-
-    <!-- GAMEPLAY SCREEN -->
     <section id="gameplayScreen" class="view-screen">
       <div class="hero-banner" style="text-align: left;">
         <button class="btn-fortnite btn-secondary" onclick="switchScreen("landingScreen")" style="font-size: 0.8rem; padding: 10px 20px;">← Back to Base</button>
@@ -137,8 +116,6 @@
         </div>
       </div>
     </section>
-
-    <!-- PARENT/TEACHER DASHBOARD -->
     <section id="dashboardScreen" class="view-screen">
       <div class="hero-banner" style="text-align: left;">
         <button class="btn-fortnite btn-secondary" onclick="switchScreen("landingScreen")" style="font-size: 0.8rem; padding: 10px 20px;">← Back to Base</button>
@@ -152,22 +129,18 @@
       </div>
     </section>
   </main>
-
   <script>
     let sparkCoins = 150;
-
     function switchScreen(screenId) {
       document.querySelectorAll(".view-screen").forEach(s => s.classList.remove("active"));
       const target = document.getElementById(screenId);
       if (target) target.classList.add("active");
     }
-
     function rewardSpark(amount) {
       sparkCoins += amount;
       document.getElementById("sparkCount").textContent = sparkCoins;
       alert(amount > 0 ? `🎉 Quest Accomplished! +${amount} Spark Coins!` : `💸 Spent ${Math.abs(amount)} Spark Coins.`);
     }
-
     async function fetchCharacters() {
       try {
         const res = await fetch("/api/money-munchkins/characters");
@@ -185,10 +158,7 @@
         console.error("Character fetch failed", e);
       }
     }
-
-    window.onload = () => {
-      fetchCharacters();
-    };
+    window.onload = () => { fetchCharacters(); };
   </script>
 </body>
 </html>
