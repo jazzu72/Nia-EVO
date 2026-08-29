@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polish OS - Quantum AI Visual Feed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --card-bg: #121212;
+      --border-color: #262626;
+      --accent-gradient: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Plus Jakarta Sans", sans-serif; }
+    body { background: var(--bg-dark); color: #F8FAFC; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    header { width: 100%; max-width: 600px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 10; }
+    .brand { font-weight: 900; font-size: 1.4rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    main { width: 100%; max-width: 600px; padding: 20px 0; flex: 1; display: flex; flex-direction: column; gap: 24px; }
+    .post-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; margin: 0 16px; }
+    .post-header { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 0.95rem; }
+    .post-media { width: 100%; height: 350px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; position: relative; }
+    .quantum-badge { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); border: 1px solid #DD2A7B; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; color: #FF007A; backdrop-filter: blur(5px); }
+    .post-footer { padding: 12px 16px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">✨ POLISH OS</div>
+    <div style="font-size: 0.8rem; font-weight: 700; color: #8134AF;">QUANTUM FEED</div>
+  </header>
+  <main id="feedContainer">
+    <!-- Dynamic feed injection -->
+  </main>
+  <script>
+    async function loadFeed() {
+      try {
+        const res = await fetch("/api/polish/feed");
+        const data = await res.json();
+        const container = document.getElementById("feedContainer");
+        container.innerHTML = data.posts.map(p => `
+          <div class="post-card">
+            <div class="post-header">
+              <span>@${p.author.toLowerCase().replace(/\s+/g, "")}</span>
+              <span style="color: #8134AF; font-size: 0.8rem;">Verified Quantum</span>
+            </div>
+            <div class="post-media">
+              <span style="color: #94A3B8; font-weight: 600;">🔮 AI Quantum Resonance Visual</span>
+              <div class="quantum-badge">Resonance: ${p.quantum_score}</div>
+            </div>
+            <div class="post-footer">
+              <p style="font-weight: 800; margin-bottom: 6px; font-size: 0.9rem;">❤️ ${p.likes} likes</p>
+              <p><strong style="margin-right: 8px;">${p.author}</strong>${p.caption}</p>
+            </div>
+          </div>
+        `).join("");
+      } catch(e) { console.error(e); }
+    }
+    window.onload = loadFeed;
+  </script>
+</body>
+</html>
