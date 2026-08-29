@@ -1,71 +1,262 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Money Munchkins — Ops Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#0d0b1f;color:#f5f1e8;font-family:monospace;padding:25px}
-.wrap{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.card,.panel{background:#161331;border:1px solid #ffffff12;border-radius:14px;padding:20px}
-.value{font-family:Arial;font-size:27px;font-weight:bold;margin-top:10px}.ok{color:#4ade80}.bad{color:#ff6b6b}
-.panel{margin-top:15px}table{width:100%;border-collapse:collapse}td{padding:12px;border-bottom:1px solid #ffffff12}
-a{color:#ffc857;text-decoration:none}
-@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.grid{grid-template-columns:1fr}}
+  :root{
+    --bg:#0D0B1F;
+    --panel:#161331;
+    --panel-2:#1D1A3E;
+    --line:rgba(245,241,232,.08);
+    --paper:#F5F1E8;
+    --dim:#9791BE;
+    --mint:#4ADE80;
+    --amber:#FFC857;
+    --red:#FF6B6B;
+    --violet:#7C5CD6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--paper);
+    font-family:'IBM Plex Mono',monospace;
+    padding:28px 20px 60px;
+  }
+  .display{font-family:'Space Grotesk',sans-serif;}
+  .wrap{max-width:1100px;margin:0 auto;}
+  header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
+  header h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;display:flex;align-items:center;gap:10px;}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);}
+  .dot.bad{background:var(--red);box-shadow:0 0 10px var(--red);}
+  header .meta{font-size:12px;color:var(--dim);}
+  .refresh-note{font-size:11px;color:var(--dim);}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;}
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.grid{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;
+    position:relative;overflow:hidden;
+  }
+  .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);}
+  .card .value{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin-top:8px;}
+  .card .sub{font-size:11.5px;color:var(--dim);margin-top:6px;}
+  .value.ok{color:var(--mint);}
+  .value.warn{color:var(--amber);}
+  .value.bad{color:var(--red);}
+
+  .panels{display:grid;grid-template-columns:1.3fr .7fr;gap:14px;}
+  @media (max-width:900px){.panels{grid-template-columns:1fr;}}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px;}
+  .panel h2{font-family:'Space Grotesk',sans-serif;font-size:15px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+  .panel h2 span.tag{font-size:10.5px;color:var(--dim);font-weight:400;text-transform:uppercase;letter-spacing:.06em;}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  th{text-align:left;color:var(--dim);font-weight:500;padding:8px 6px;border-bottom:1px solid var(--line);text-transform:uppercase;font-size:10.5px;letter-spacing:.06em;}
+  td{padding:9px 6px;border-bottom:1px solid var(--line);color:var(--paper);}
+  tr:last-child td{border-bottom:none;}
+  .status-chip{
+    display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:999px;
+    background:rgba(74,222,128,.12);color:var(--mint);
+  }
+  .status-chip.off{background:rgba(151,145,190,.12);color:var(--dim);}
+
+  .endpoint-list{display:flex;flex-direction:column;gap:8px;}
+  .endpoint-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 12px;background:var(--panel-2);border-radius:10px;font-size:12px;
+  }
+  .endpoint-row .path{color:var(--paper);}
+  .endpoint-row .code{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;}
+  .code.c200{background:rgba(74,222,128,.15);color:var(--mint);}
+  .code.c000{background:rgba(255,107,107,.15);color:var(--red);}
+  .code.pending{background:rgba(151,145,190,.15);color:var(--dim);}
+
+  .empty{color:var(--dim);font-size:12.5px;padding:16px 0;text-align:center;}
+
+  .foot{margin-top:20px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .foot a{color:var(--dim);}
+  .foot a:hover{color:var(--paper);}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>🚀 Money Munchkins — Ops Console</h1>
+  <header>
+    <h1><span class="dot" id="headerDot"></span> Money Munchkins — Ops Console</h1>
+    <div class="meta">
+      <div id="lastUpdated">last check: —</div>
+      <div class="refresh-note">auto-refreshes every 30s</div>
+    </div>
+  </header>
 
-<div class="grid">
-<div class="card">HEALTH<div id="health" class="value">...</div></div>
-<div class="card">PAYMENTS<div id="payments" class="value">...</div></div>
-<div class="card">PROVIDER<div id="provider" class="value">...</div></div>
-<div class="card">MISSION CAP<div class="value">3</div></div>
-</div>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Service Health</div>
+      <div class="value" id="healthCard">—</div>
+      <div class="sub" id="healthSub">/api/money-munchkins/health</div>
+    </div>
+    <div class="card">
+      <div class="label">Payments</div>
+      <div class="value" id="paymentsCard">—</div>
+      <div class="sub" id="paymentsSub">/api/payments/status</div>
+    </div>
+    <div class="card">
+      <div class="label">Provider</div>
+      <div class="value" id="providerCard">—</div>
+      <div class="sub">PAYMENT_PROVIDER env</div>
+    </div>
+    <div class="card">
+      <div class="label">Daily Mission Cap</div>
+      <div class="value">3<span style="font-size:14px;color:var(--dim);"> / munchkin</span></div>
+      <div class="sub">enforced server-side</div>
+    </div>
+  </div>
 
-<div class="panel">
-<h2>Production API</h2>
-<table>
-<tr><td>/api/money-munchkins/health</td><td id="hcode">...</td></tr>
-<tr><td>/api/payments/status</td><td id="pcode">...</td></tr>
-<tr><td>/api/status</td><td id="scode">...</td></tr>
-</table>
-</div>
+  <div class="panels">
+    <div>
+      <div class="panel">
+        <h2>API surface <span class="tag">live poll</span></h2>
+        <div class="endpoint-list" id="endpointList"></div>
+      </div>
 
-<div class="panel">
-<h2>Quick Links</h2>
-<p><a href="/">Public Landing</a></p>
-<p><a href="/api/money-munchkins/health">Health JSON</a></p>
-<p><a href="/api/payments/status">Payment JSON</a></p>
-</div>
+      <div class="panel">
+        <h2>Mounted routers <span class="tag">from server.js</span></h2>
+        <table>
+          <thead><tr><th>Mount path</th><th>Module</th></tr></thead>
+          <tbody id="routerTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Quick links</h2>
+        <table>
+          <tbody>
+            <tr><td>Public landing</td><td><a href="/" style="color:var(--amber)">/</a></td></tr>
+            <tr><td>Investor center</td><td><a href="/money-munchkins/investor" style="color:var(--amber)">/investor</a></td></tr>
+            <tr><td>Pilot feedback</td><td><a href="/money-munchkins/pilot" style="color:var(--amber)">/pilot</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>Environment</h2>
+        <table>
+          <tbody id="envTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Money Munchkins: Quantum Odyssey · internal console</div>
+    <div><a href="/api/money-munchkins/health">raw health JSON</a> · <a href="/api/payments/status">raw payment JSON</a></div>
+  </div>
 </div>
 
 <script>
-async function check(path,id){
- try{
-  const r=await fetch(path);
-  document.getElementById(id).textContent=r.status;
-  return r;
- }catch(e){
-  document.getElementById(id).textContent='ERR';
- }
-}
-async function refresh(){
- const h=await fetch('/api/money-munchkins/health').then(r=>r.json());
- const p=await fetch('/api/payments/status').then(r=>r.json());
- document.getElementById('health').textContent=h.status||'unknown';
- document.getElementById('health').className='value ok';
- document.getElementById('payments').textContent=p.configured?'configured':'manual';
- document.getElementById('payments').className='value '+(p.configured?'ok':'');
- document.getElementById('provider').textContent=p.provider||'—';
- await check('/api/money-munchkins/health','hcode');
- await check('/api/payments/status','pcode');
- await check('/api/status','scode');
-}
-refresh();setInterval(refresh,30000);
+  const endpoints = [
+    { label: 'Health', path: '/api/money-munchkins/health' },
+    { label: 'Payments status', path: '/api/payments/status' },
+    { label: 'Missions', path: '/api/money-munchkins/missions' },
+    { label: 'Characters', path: '/api/money-munchkins/characters' },
+    { label: 'Cards', path: '/api/money-munchkins/cards' },
+  ];
+
+  const routers = [
+    ['/api/money-munchkins', 'api/index.js'],
+    ['/api/money-munchkins/progress', 'api/progress.js'],
+    ['/api/money-munchkins/investor', 'api/investor/'],
+    ['/api/money-munchkins/growth', 'api/growth/'],
+    ['/api/money-munchkins/analytics', 'api/analytics/'],
+    ['/api/money-munchkins/audit', 'api/audit/'],
+    ['/api/money-munchkins/revenue', 'api/revenue/'],
+    ['/api/money-munchkins/payments', 'api/payments/'],
+    ['/api/money-munchkins/parent', 'api/parent.js'],
+    ['/api/money-munchkins/pilot-feedback', 'api/pilot-feedback.js'],
+    ['/api/money-munchkins/learning', 'api/learning.js'],
+  ];
+
+  function renderRouterTable(){
+    document.getElementById('routerTable').innerHTML = routers.map(([mount, mod]) =>
+      `<tr><td>${mount}</td><td style="color:var(--dim)">${mod}</td></tr>`
+    ).join('');
+  }
+
+  function renderEnvTable(env){
+    const rows = [
+      ['Provider', env.provider || '—'],
+      ['Configured', env.configured ? 'yes' : 'no'],
+    ];
+    document.getElementById('envTable').innerHTML = rows.map(([k,v]) =>
+      `<tr><td>${k}</td><td>${v}</td></tr>`
+    ).join('');
+  }
+
+  async function pollEndpoint(ep){
+    const row = document.createElement('div');
+    row.className = 'endpoint-row';
+    row.innerHTML = `<span class="path">${ep.label} <span style="color:var(--dim)">${ep.path}</span></span><span class="code pending">…</span>`;
+    document.getElementById('endpointList').appendChild(row);
+    const codeEl = row.querySelector('.code');
+    try {
+      const res = await fetch(ep.path);
+      codeEl.textContent = res.status;
+      codeEl.className = 'code ' + (res.status === 200 ? 'c200' : 'c000');
+      return { ep, ok: res.status === 200, data: res.status === 200 ? await res.json().catch(()=>null) : null };
+    } catch (e) {
+      codeEl.textContent = 'ERR';
+      codeEl.className = 'code c000';
+      return { ep, ok: false, data: null };
+    }
+  }
+
+  async function refresh(){
+    document.getElementById('endpointList').innerHTML = '';
+    renderRouterTable();
+
+    const results = await Promise.all(endpoints.map(pollEndpoint));
+    const health = results.find(r => r.ep.path.includes('health'));
+    const payments = results.find(r => r.ep.path.includes('payments'));
+
+    const headerDot = document.getElementById('headerDot');
+    const healthCard = document.getElementById('healthCard');
+    const healthSub = document.getElementById('healthSub');
+    if (health && health.ok && health.data) {
+      healthCard.textContent = health.data.status || 'healthy';
+      healthCard.className = 'value ok';
+      healthSub.textContent = health.data.service || '/api/money-munchkins/health';
+      headerDot.className = 'dot';
+    } else {
+      healthCard.textContent = 'down';
+      healthCard.className = 'value bad';
+      headerDot.className = 'dot bad';
+    }
+
+    const paymentsCard = document.getElementById('paymentsCard');
+    const providerCard = document.getElementById('providerCard');
+    if (payments && payments.ok && payments.data) {
+      paymentsCard.textContent = payments.data.configured ? 'configured' : 'manual';
+      paymentsCard.className = 'value ' + (payments.data.configured ? 'ok' : 'warn');
+      providerCard.textContent = payments.data.provider || '—';
+      renderEnvTable(payments.data);
+    } else {
+      paymentsCard.textContent = 'down';
+      paymentsCard.className = 'value bad';
+    }
+
+    document.getElementById('lastUpdated').textContent = 'last check: ' + new Date().toLocaleTimeString();
+  }
+
+  refresh();
+  setInterval(refresh, 30000);
 </script>
 </body>
 </html>
