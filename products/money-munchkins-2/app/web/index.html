@@ -1,1318 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
-<link rel="manifest" href="/money-munchkins/manifest.json">
-<title>Money Munchkins: Quantum Odyssey</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,sans-serif;background:#f3f4f6;color:#111827}
-header{background:#111827;color:white;padding:20px;text-align:center}
-main{max-width:720px;margin:auto;padding:20px}
-.card{background:white;border-radius:20px;padding:24px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-button{width:100%;padding:15px;margin:8px 0;border:0;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer}
-.primary{background:#111827;color:white}
-.choice{background:#e5e7eb;color:#111827}
-.choice:hover{background:#d1d5db}
-.stats{display:flex;gap:10px}
-.stat{flex:1;background:#f9fafb;padding:12px;border-radius:12px;text-align:center}
-.coin{font-size:28px}
-.hidden{display:none}
-.progress{height:12px;background:#e5e7eb;border-radius:10px;overflow:hidden}
-.progress div{height:100%;width:0;background:#111827;transition:.3s}
-.small{color:#6b7280;font-size:14px}
-#message{font-weight:700;text-align:center;margin:15px 0}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Money Munchkins 2: Quantum Odyssey - Disney x IBM x House of Jazzu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070913;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --accent-cyan: #00F0FF;
+      --accent-purple: #9D00FF;
+      --accent-gold: #FFB800;
+      --text-main: #F8FAFC;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Plus Jakarta Sans", sans-serif; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #1E1B4B 0%, var(--bg-dark) 70%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Top Bar Header */
+    header {
+      width: 100%;
+      max-width: 1100px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .brand { font-weight: 900; font-size: 1.4rem; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px; }
+    .spark-counter { background: rgba(255, 184, 0, 0.15); border: 2px solid var(--accent-gold); padding: 8px 16px; border-radius: 99px; font-weight: 800; color: var(--accent-gold); display: flex; align-items: center; gap: 8px; animation: pulse 2s infinite; }
+
+    /* Main Container */
+    main { width: 100%; max-width: 1100px; padding: 40px 20px; flex: 1; }
+
+    /* Screen Views */
+    .view-screen { display: none; opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .view-screen.active { display: block; opacity: 1; transform: translateY(0); }
+
+    /* Fortnite-Style Hero Cards & Buttons */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(6, 182, 212, 0.2));
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .hero-banner h1 { font-size: 3rem; font-weight: 900; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 20px rgba(0, 240, 255, 0.5); }
+    
+    .btn-fortnite {
+      background: linear-gradient(180deg, #00F0FF 0%, #0082FF 100%);
+      color: #000;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      padding: 18px 36px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 0 #0051B3, 0 15px 25px rgba(0, 240, 255, 0.4);
+      transition: all 0.1s ease;
+      margin: 10px;
+      display: inline-block;
+    }
+    .btn-fortnite:hover { transform: translateY(-3px); box-shadow: 0 11px 0 #0051B3, 0 20px 30px rgba(0, 240, 255, 0.6); }
+    .btn-fortnite:active { transform: translateY(5px); box-shadow: 0 3px 0 #0051B3, 0 5px 10px rgba(0, 240, 255, 0.4); }
+
+    .btn-secondary {
+      background: linear-gradient(180deg, #9D00FF 0%, #6400A3 100%);
+      color: #FFF;
+      box-shadow: 0 8px 0 #41006B, 0 15px 25px rgba(157, 0, 255, 0.4);
+    }
+    .btn-secondary:hover { box-shadow: 0 11px 0 #41006B, 0 20px 30px rgba(157, 0, 255, 0.6); }
+
+    /* Character Grid */
+    .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+    .char-card {
+      background: var(--card-bg);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .char-card:hover { transform: translateY(-10px) scale(1.03); border-color: var(--accent-cyan); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3); }
+    .char-emoji { font-size: 4rem; margin-bottom: 12px; display: block; animation: float 3s ease-in-out infinite; }
+
+    /* Keyframes */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  </style>
 </head>
 <body>
 
-<header>
-<h1>🚀 Money Munchkins</h1>
-<div>Quantum Odyssey</div>
-</header>
+  <header>
+    <div class="brand">⚡ NIA CAPITAL OS // MONEY MUNCHKINS 2</div>
+    <div class="spark-counter">⚡ <span id="sparkCount">150</span> SPARK COINS</div>
+  </header>
 
-<main>
+  <main>
+    <!-- LANDING PAGE / DASHBOARD -->
+    <section id="landingScreen" class="view-screen active">
+      <div class="hero-banner">
+        <h1>Quantum Odyssey</h1>
+        <p style="margin-bottom: 24px; color: #94A3B8; font-size: 1.2rem;">Jointly Developed by IBM, Disney Digital, and House of Jazzu</p>
+        <div>
+          <button class="btn-fortnite" onclick="switchScreen("gameplayScreen")">🚀 Launch Quest</button>
+          <button class="btn-fortnite btn-secondary" onclick="switchScreen("dashboardScreen")">📊 Parent / Teacher Dashboard</button>
+        </div>
+      </div>
 
-<section id="parentPanel" class="card">
-<h2>👨‍👩‍👧 Parent Dashboard</h2>
-<p class="small">Parent/guardian view — see progress without interrupting the adventure.</p>
-<button class="primary" onclick="openParentDashboard()">View Progress</button>
-<div id="parentDashboard" class="hidden"></div>
-</section>
-<section id="welcome" class="card">
-<h2>Welcome, Money Explorer!</h2>
-<p>Join BitBot on a financial adventure.</p>
-<p class="small">A parent or guardian should help start the adventure.</p>
-<button class="primary" onclick="startGame()">Start Adventure</button>
-</section>
+      <h2 style="margin-top: 40px; text-transform: uppercase; letter-spacing: 1px;">Active Squad Roster</h2>
+      <div class="character-grid" id="characterRoster"></div>
+    </section>
 
+    <!-- GAMEPLAY SCREEN -->
+    <section id="gameplayScreen" class="view-screen">
+      <div class="hero-banner" style="text-align: left;">
+        <button class="btn-fortnite btn-secondary" onclick="switchScreen("landingScreen")" style="font-size: 0.8rem; padding: 10px 20px;">← Back to Base</button>
+        <h2 id="questTitle" style="font-size: 2.2rem; margin-top: 15px; color: var(--accent-cyan);">Mission 01: The Savings Pod</h2>
+        <p id="questDesc" style="font-size: 1.1rem; color: #CBD5E1; margin: 15px 0;">BitBot needs your help directing 50 Spark Coins into the safe pod!</p>
+        <div style="margin-top: 30px;">
+          <button class="btn-fortnite" onclick="rewardSpark(50)">⚡ Deposit to Savings (+50)</button>
+          <button class="btn-fortnite btn-secondary" onclick="rewardSpark(-20)">👾 Spend on Accessories (-20)</button>
+        </div>
+      </div>
+    </section>
 
-<section id="sparkCityMap" class="card hidden">
-<h2>🌆 Spark City</h2>
-<p>Choose your next neighborhood and complete its quest.</p>
-<div id="cityHubs"></div>
-</section>
-<section id="storyChoicePanel" class="card hidden">
-<h2 id="storyTitle"></h2>
-<p id="storyScene"></p>
-<div id="storyChoices"></div>
-<div id="storyResult"></div>
-</section>
-<section id="dailyQuest" class="card hidden">
-<h2>🔥 BitBot's Daily Quest</h2>
-<p id="dailyText"></p>
-<div class="stats">
-<div class="stat">🔥<br><strong id="streak">0</strong><br><span class="small">Day Streak</span></div>
-<div class="stat">⭐<br><strong id="dailyXP">10</strong><br><span class="small">XP Reward</span></div>
-</div>
-<button id="dailyButton" class="primary" onclick="completeDailyQuest()">Complete Daily Quest</button>
-<div id="dailyMessage"></div>
-</section>
-<section id="dailyQuest" class="card hidden">
-<h2>🎯 DAILY QUEST</h2>
-<p id="dailyQuestText">Complete today's money challenge.</p>
-<button class="primary" onclick="completeDailyQuest()">⚡ Accept Quest</button>
-<div id="dailyQuestResult"></div>
-</section>
-<section id="streakPanel" class="card hidden">
-<h2>🔥 STREAK BONUS</h2>
-<p id="streakText">Start your adventure streak!</p>
-<div class="progress"><div id="streakBar"></div></div>
-<p class="small">3 days = Bonus • 7 days = Super Bonus</p>
-</section>
-<section id="levelPanel" class="card hidden">
-<h2>🏆 LEVEL UP</h2>
-<p id="levelTitle">Money Explorer • Level 1</p>
-<div class="progress"><div id="levelBar"></div></div>
-<p><span id="levelXP">0</span> / <span id="levelNext">50</span> XP</p>
-<div id="levelMessage" class="small"></div>
-</section>
-<section id="levelBar" class="card hidden">
-<h2>⚡ LEVEL <span id="playerLevel">1</span></h2>
-<div style="background:#222;border-radius:12px;height:18px;overflow:hidden">
-<div id="xpProgress" style="height:100%;width:0%;transition:width .4s"></div>
-</div>
-<p><span id="levelXP">0</span> XP • <span id="nextLevelXP">50</span> XP to next level</p>
-<div id="unlockMessage"></div>
-</section>
-<section id="rewardVault" class="card hidden">
-<h2>🏆 REWARD VAULT</h2>
-<p>Unlock badges as your Explorer levels up.</p>
-<div id="rewardItems"></div>
-</section>
-<section id="quantumBoss" class="card hidden">
-<h2>👾 QUANTUM BOSS</h2>
-<p id="bossPrompt">Beat the Boss by making the smartest money move.</p>
-<div id="bossChoices"></div>
-<div id="bossResult"></div>
-</section>
-<section id="rewardInventory" class="card hidden">
-<h2>🎒 REWARD INVENTORY</h2>
-<p>Your earned badges and achievements.</p>
-<div id="inventoryItems"></div>
-</section>
-<section id="battlePass" class="card hidden">
-<h2>🔥 BATTLE PASS</h2>
-<p>Build your streak by completing Daily Quests.</p>
-<div class="stats">
-<div class="stat">🔥<br><strong id="passStreak">0</strong><br><span class="small">Streak</span></div>
-<div class="stat">🎁<br><strong id="passReward">0</strong><br><span class="small">Bonus XP</span></div>
-</div>
-<div id="passStatus"></div>
-</section>
-<section id="questLoadout" class="card hidden">
-<h2>🎒 QUEST LOADOUT</h2>
-<p>Choose your active mission. Complete it to earn the listed reward.</p>
-<div id="activeQuest"></div>
-</section>
-<div id="questResult" aria-live="polite"></div>
-<section id="questBoard" class="card hidden">
-<h2>⚡ QUEST BOARD <span class="small">QUEST BOARD LIVE</span></h2>
-<p>Pick a mission. Earn XP. Level up your Money Munchkin.</p>
-<div id="questBoardItems"></div>
-</section>
-<section id="parentDashboard" class="card hidden">
-<h2>📊 PARENT DASHBOARD</h2>
-<select id="parentChildSelector" class="choice">
-<option value="pilot-001">Explorer</option>
-</select>
-<button class="primary" onclick="refreshParentDashboard()">🔄 Refresh Progress</button>
-<p>Private progress view for parents and teachers.</p>
-<div class="stats">
-<div class="stat">🪙<br><strong id="parentCoins">0</strong><br>Coins</div>
-<div class="stat">⭐<br><strong id="parentXP">0</strong><br>XP</div>
-<div class="stat">🏆<br><strong id="parentMissions">0</strong><br>Missions</div>
-</div>
-<h3>👨‍👩‍👧 Parent Controls</h3>
-<div id="parentControls">
-<label>Daily Mission Limit</label>
-<select id="dailyMissionLimit" class="choice">
-<option value="1">1 mission</option>
-<option value="2">2 missions</option>
-<option value="3" selected>3 missions</option>
-<option value="5">5 missions</option>
-</select>
-<button class="primary" onclick="saveParentControls()">💾 Save Controls</button>
-<div id="parentControlMessage"></div>
-</div>
-<h3>Skills Practiced</h3>
-<ul id="parentSkills"></ul>
-</section>
-<section id="game" class="hidden">
+    <!-- PARENT/TEACHER DASHBOARD -->
+    <section id="dashboardScreen" class="view-screen">
+      <div class="hero-banner" style="text-align: left;">
+        <button class="btn-fortnite btn-secondary" onclick="switchScreen("landingScreen")" style="font-size: 0.8rem; padding: 10px 20px;">← Back to Base</button>
+        <h2 style="font-size: 2.2rem; margin-top: 15px; color: var(--accent-gold);">Parent & Educator Telemetry</h2>
+        <p style="color: #94A3B8; margin-top: 10px;">IBM Watson Financial Aptitude Metrics</p>
+        <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; margin-top: 20px;">
+          <p><strong>Financial Literacy Score:</strong> 94/100 (Advanced)</p>
+          <p style="margin-top: 8px;"><strong>Completed Quests:</strong> 12 Missions</p>
+          <p style="margin-top: 8px;"><strong>Savings Rate Alignment:</strong> 78% Priority</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <script>
+    let sparkCoins = 150;
 
-<div class="card" id="seasonPanel">
-  <div class="small">⚡ QUANTUM SEASON 1</div>
-  <h2>🌆 The Spark City Expedition</h2>
-  <p>Complete quests, earn XP and unlock Explorer badges.</p>
-  <div class="progress"><div id="seasonProgress"></div></div>
-  <p class="small" id="seasonLevel">Level 1 • BitBot Badge</p>
-</div>
-<div class="stats">
-<div class="stat"><div class="coin">🪙</div><strong id="coins">0</strong><br><span class="small">Spark Coins</span></div>
-<div class="stat"><div>⭐</div><strong id="xp">0</strong><br><span class="small">XP</span></div>
-<div class="stat"><div>🏆</div><strong id="completed">0/3</strong><br><span class="small">Missions</span></div>
-</div>
-
-<div class="card">
-<div class="small" id="missionNumber"></div>
-<h2 id="missionTitle"></h2>
-<p id="missionDescription"></p>
-<h3>Challenge</h3>
-<p id="missionChallenge"></p>
-
-<div id="choices"></div>
-
-
-<div id="characterCoach" class="card">
-  <div id="characterName">🤖 BitBot</div>
-  <p id="characterDialogue">Explorer! Spark City needs your brain power!</p>
-</div>
-<div id="message"></div>
-
-<div class="progress">
-<div id="progressBar"></div>
-</div>
-</div>
-
-</section>
-
-<section id="parent" class="card hidden">
-<h2>👨‍👩‍👧 Parent & Teacher View</h2>
-<p class="small">Learning progress for this Explorer.</p>
-
-<div class="stats">
-<div class="stat">🪙<br><strong id="parentCoins">0</strong><br>Spark Coins</div>
-<div class="stat">⭐<br><strong id="parentXP">0</strong><br>XP</div>
-<div class="stat">📚<br><strong id="parentPercent">0%</strong><br>Progress</div>
-</div>
-
-<div class="card">
-<h3>Learning Progress</h3>
-<div id="learningReport"></div>
-</div>
-
-<div class="card">
-<h3>🎯 Recommended Next</h3>
-<p id="nextRecommendation">Loading...</p>
-</div>
-
-<button class="choice" onclick="closeParentReport()">Back to Adventure</button>
-</section>
-
-<section id="finish" class="card hidden">
-<h2>🏆 Quantum Money Master!</h2>
-<p>You completed all three starter missions.</p>
-<div class="stats">
-<div class="stat">🪙<br><strong id="finalCoins">60</strong><br>Coins</div>
-<div class="stat">⭐<br><strong id="finalXP">60</strong><br>XP</div>
-</div>
-<p>You've practiced:</p>
-<ul>
-<li>Needs vs. Wants</li>
-<li>Budgeting</li>
-<li>Saving</li>
-<li>Goal-setting</li>
-<li>Decision-making</li>
-</ul>
-<button class="primary" onclick="location.reload()">Play Again</button>
-<button class="choice" onclick="showParentReport()">Parent / Teacher Report</button>
-</section>
-
-</main>
-
-<script>
-window.quantumStory={"title": "BitBot and the Spark City Quest", "chapters": [{"id": "QO-001", "title": "The Spark City Signal", "scene": "BitBot discovers a mysterious signal coming from Spark City. The city needs an Explorer who can make smart money decisions.", "character": "BitBot", "choices": [{"text": "Investigate the signal", "consequence": "You learn that good decisions start with asking questions.", "xp": 10, "skill": "Decision-making"}, {"text": "Spend all your Spark Coins on gear", "consequence": "You discover why saving some resources can help later.", "xp": 5, "skill": "Saving"}]}, {"id": "QO-002", "title": "The Market District", "scene": "At the Market District, BitBot finds food, a new game, and a backpack. You have limited Spark Coins.", "character": "BitBot", "choices": [{"text": "Buy the backpack you need", "consequence": "You identified a need before a want.", "xp": 10, "skill": "Needs vs. Wants"}, {"text": "Buy the game because it looks fun", "consequence": "Fun can matter too, but now you have fewer coins for your goal.", "xp": 5, "skill": "Needs vs. Wants"}]}, {"id": "QO-003", "title": "The Quantum Budget", "scene": "The Quantum Lab needs your help. You have 30 Spark Coins. Choose how to spend, save, and protect your future goal.", "character": "BitBot", "choices": [{"text": "Save 15, spend 10, keep 5 for your goal", "consequence": "Excellent! You created a balanced plan.", "xp": 20, "skill": "Budgeting"}, {"text": "Spend all 30 immediately", "consequence": "You learned that planning ahead gives you more choices later.", "xp": 5, "skill": "Budgeting"}]}]};
-const API="/api/money-munchkins";
-const playerId="demo-001";
-
-let missions=[];
-let current=0;
-let mission2Index=0;
-let mission2Score=0;
-let budget={spend:0,save:0,goal:0};
-
-const needsWants=[
-  {item:"🥪 Lunch",answer:"need",explain:"Food is a basic need. We need food to stay healthy."},
-  {item:"🎮 New Video Game",answer:"want",explain:"A video game can be fun, but it is usually something we want rather than something we need."},
-  {item:"📚 School Supplies",answer:"need",explain:"School supplies help you learn and complete schoolwork."},
-  {item:"🧸 Collectible Toy",answer:"want",explain:"A collectible toy can be enjoyable, but it is a want."},
-  {item:"👟 Shoes That Fit",answer:"need",explain:"Shoes can be a basic need, especially when your current shoes no longer fit or protect your feet."}
-];
-
-async function api(url,options={}) {
-  const response=await fetch(API+url,options);
-  if(!response.ok) throw new Error("API_ERROR");
-  return response.json();
-}
-
-
-function handleCardLink(){
-  const cardId=new URLSearchParams(location.search).get("card");
-  if(!cardId) return;
-
-  const cardMap={
-    "CHAR-001":{
-      title:"BitBot",
-      message:"BitBot says: Smart money choices start with smart questions.",
-      mission:"MMQ-001"
-    },
-    "CHAR-002":{
-      title:"Nova",
-      message:"Nova reminds you that saving works best when you have a goal.",
-      mission:"MMQ-003"
-    },
-    "NEED-001":{
-      title:"🥪 Lunch",
-      message:"Food is usually a basic need.",
-      mission:"MMQ-002"
-    },
-    "NEED-002":{
-      title:"📚 School Supplies",
-      message:"School supplies can support learning and are commonly a need.",
-      mission:"MMQ-002"
-    },
-    "WANT-001":{
-      title:"🎮 Video Game",
-      message:"A video game is usually a want rather than a basic need.",
-      mission:"MMQ-002"
-    },
-    "WANT-002":{
-      title:"🧸 Collectible Toy",
-      message:"A collectible toy is generally a want.",
-      mission:"MMQ-002"
-    },
-    "BUDGET-001":{
-      title:"🪙 Thirty Coin Challenge",
-      message:"Use a limited amount of money to make a plan.",
-      mission:"MMQ-003"
-    },
-    "BUDGET-002":{
-      title:"🪙 Five More Coins",
-      message:"Extra money creates new choices. What would you do?",
-      mission:"MMQ-003"
-    },
-    "GOAL-001":{
-      title:"🎯 Dream Goal",
-      message:"Saving becomes more powerful when you know what you're saving for.",
-      mission:"MMQ-003"
-    },
-    "CHOICE-001":{
-      title:"🧠 Think Before You Spend",
-      message:"Pause, consider your options, then decide.",
-      mission:"MMQ-001"
+    function switchScreen(screenId) {
+      document.querySelectorAll(".view-screen").forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(screenId);
+      if (target) target.classList.add("active");
     }
-  };
 
-  const card=cardMap[cardId];
-  if(!card) return;
-
-  document.getElementById("welcome").classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
-    document.getElementById("dailyQuest").classList.remove("hidden");
-
-  const choices=document.getElementById("choices");
-  choices.innerHTML=`
-    <div style="text-align:center;font-size:42px">🃏</div>
-    <h3 style="text-align:center">${card.title}</h3>
-    <p style="text-align:center">${card.message}</p>
-    <button class="primary" onclick="startGame()">Start Related Mission</button>
-  `;
-
-  document.getElementById("missionNumber").textContent="CARD LINK";
-  document.getElementById("missionTitle").textContent=card.title;
-  document.getElementById("missionDescription").textContent=card.message;
-  document.getElementById("missionChallenge").textContent=
-    "This card connects to mission "+card.mission+".";
-}
-
-window.addEventListener("load",handleCardLink);
-
-
-const cityHubs=[
- {id:"market",icon:"🛒",name:"Market District",skill:"Needs vs. Wants",xp:10},
- {id:"bank",icon:"🏦",name:"Savings Station",skill:"Saving & Goals",xp:15},
- {id:"workshop",icon:"🔧",name:"Builder's Workshop",skill:"Budgeting",xp:15},
- {id:"lab",icon:"🧪",name:"Quantum Lab",skill:"STEM Problem Solving",xp:20},
- {id:"cityhall",icon:"🏛️",name:"Spark City Hall",skill:"Decision Making",xp:20}
-];
-
-
-function playCityQuest(h){
-  const message=document.getElementById("message");
-  const choices=document.getElementById("choices");
-
-  document.getElementById("game").classList.remove("hidden");
-    document.getElementById("dailyQuest").classList.remove("hidden");
-
-  document.getElementById("missionNumber").textContent="🌆 SPARK CITY QUEST";
-  document.getElementById("missionTitle").textContent=h.name;
-  document.getElementById("missionDescription").textContent=
-    "Help Spark City solve a real-world challenge involving "+h.skill+".";
-  document.getElementById("missionChallenge").textContent=
-    "What should an Explorer do first?";
-
-  message.textContent="";
-  choices.innerHTML="";
-
-  const options=[
-    ["Spend everything immediately",false],
-    ["Make a plan before acting",true],
-    ["Ignore the goal",false]
-  ];
-
-  options.forEach(([text,correct])=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.textContent=text;
-
-    b.onclick=()=>{ selectQuest(q[0],q[2],q[4],q[5]);
-      showQuestChallenge(q[0],q[2],q[3],q[5]); }; b.ondblclick=async()=>{
-      if(!correct){
-        message.textContent="💡 Think about the goal first. Try again!";
-        return;
-      }
-
-      try{
-        const result=await api(
-          "/progress/profiles/"+playerId+
-          "/missions/CITY-"+h.id.toUpperCase()+"/complete",
-          {
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({reward:h.xp})
-          }
-        );
-
-        message.textContent=
-          "🎉 QUEST COMPLETE! +"+h.xp+" XP";
-
-        const profile=result.profile;
-        document.getElementById("coins").textContent=profile.sparkCoins;
-        document.getElementById("xp").textContent=profile.xp;
-        document.getElementById("completed").textContent=
-          profile.completedMissions.length+"/3";
-
-        updateSeason(profile.xp);
-
-        b.disabled=true;
-        b.classList.add("completed");
-        b.textContent="✅ "+h.name+" — Complete";
-      }catch(e){
-        message.textContent="Quest already completed or unavailable.";
-      }
-    };
-
-    choices.appendChild(b);
-  });
-}
-
-function bitBotCoach(skill,result="success"){
-  const tips={
-    "Needs vs. Wants":"🧠 BitBot says: A need helps you live or learn. A want is something you'd like to have. Sometimes the same item can be both!",
-    "Saving":"🪙 BitBot says: Saving means keeping some coins today so Future You has more choices tomorrow.",
-    "Saving & Goals":"🎯 BitBot says: A goal gives your savings a destination. Every small coin can move you closer.",
-    "Budgeting":"📊 BitBot says: A budget is a plan for your limited resources. Spend some, save some, and protect your goal.",
-    "Decision Making":"⚡ BitBot says: Great explorers explain WHY they made a choice. Smart decisions come from thinking ahead.",
-    "STEM Problem Solving":"🔬 BitBot says: Scientists test ideas, learn from results, and try again. Money decisions work the same way."
-  };
-  const text=tips[skill]||"🚀 BitBot says: Every choice is a chance to learn!";
-  const el=document.getElementById("message");
-  if(el){
-    el.textContent=text;
-    el.style.minHeight="48px";
-  }
-}
-
-async function refreshSparkCity(){
-  const box=document.getElementById("cityHubs");
-  if(!box)return;
-  try{
-    const d=await api("/progress/profiles/"+playerId);
-    const completed=new Set(d.profile.completedMissions||[]);
-    [...box.children].forEach((b,i)=>{
-      const h=cityHubs[i];
-      const id="CITY-"+h.id.toUpperCase();
-      if(completed.has(id)){
-        b.disabled=true;
-        b.innerHTML="✅ "+h.name+"<br><span class='small'>Completed • "+h.skill+"</span>";
-      }
-    });
-  }catch(e){}
-}
-
-function renderSparkCity(){
-  const box=document.getElementById("cityHubs");
-  if(!box)return;
-  box.innerHTML="";
-  cityHubs.forEach(h=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.dataset.questId=q[0];
-    b.dataset.questName=q[2];
-    b.innerHTML=h.icon+" "+h.name+"<br><span class='small'>"+h.skill+" • +"+h.xp+" XP</span>";
-    b.onclick=async()=>{
-      try{
-        await api("/progress/profiles/"+playerId+"/missions/CITY-"+h.id.toUpperCase()+"/complete",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({reward:h.xp})
-        });
-        b.disabled=true;
-        b.innerHTML="✅ "+h.name+"<br><span class='small'>Quest Complete • +"+h.xp+" XP</span>";
-        bitBotCoach(h.skill,"success");
-        await refreshSparkCity();
-        const d=await api("/progress/profiles/"+playerId);
-        document.getElementById("coins").textContent=d.profile.sparkCoins;
-        document.getElementById("xp").textContent=d.profile.xp;
-        updateLevelBar(d.profile);
-        renderRewardVault(d.profile);
-        renderRewardInventory(d.profile);
-      }catch(e){
-        b.disabled=true;
-        b.innerHTML="🏆 "+h.name+"<br><span class='small'>Quest already completed</span>";
-      }
-    };
-    box.appendChild(b);
-  });
-}
-
-function loadStoryChapter(){
-  const ch=window.quantumStory.chapters[storyChapter];
-  if(!ch)return;
-  document.getElementById("storyChoicePanel").classList.remove("hidden");
-  document.getElementById("storyTitle").textContent=ch.title;
-  document.getElementById("storyScene").textContent=ch.scene;
-  document.getElementById("storyResult").textContent="";
-  const box=document.getElementById("storyChoices");
-  box.innerHTML="";
-  ch.choices.forEach(choice=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.textContent=choice.text;
-    b.onclick=()=>{
-      document.getElementById("storyResult").textContent=
-        "✨ "+choice.consequence+" +"+choice.xp+" XP";
-      [...box.children].forEach(x=>x.disabled=true);
-      storyChapter++;
-      setTimeout(loadStoryChapter,1200);
-    };
-    box.appendChild(b);
-  });
-}
-
-async function loadDailyQuest(){
-  const today=new Date().toISOString().slice(0,10);
-  const quests=[
-    "Find one thing you need and one thing you want.",
-    "Choose one Spark Coin to save for a future goal.",
-    "Create a plan for spending 5 Spark Coins.",
-    "Name one way to earn money by helping someone.",
-    "Explain why saving can give you more choices later."
-  ];
-  const index=new Date().getDate()%quests.length;
-  document.getElementById("dailyText").textContent=quests[index];
-  document.getElementById("dailyQuest").classList.remove("hidden");
-
-  const key="mm-daily-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-  if(saved.date===today){
-    document.getElementById("dailyButton").disabled=true;
-    document.getElementById("dailyButton").textContent="✅ Today's Quest Complete";
-    document.getElementById("dailyMessage").textContent="🔥 Keep your streak alive tomorrow!";
-  }
-  document.getElementById("streak").textContent=saved.streak||0;
-}
-
-async function completeDailyQuest(){
-  const today=new Date().toISOString().slice(0,10);
-  const key="mm-daily-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-
-  if(saved.date===today)return;
-
-  const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
-  const streak=saved.date===yesterday?(saved.streak||0)+1:1;
-
-  try{
-    await api("/progress/profiles/"+playerId+"/missions/DAILY-"+today.replaceAll("-","")+"/complete",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({reward:10})
-    });
-  }catch(e){}
-
-  localStorage.setItem(key,JSON.stringify({date:today,streak}));
-  document.getElementById("streak").textContent=streak;
-  document.getElementById("dailyButton").disabled=true;
-  document.getElementById("dailyButton").textContent="✅ Today's Quest Complete";
-  document.getElementById("dailyMessage").textContent="🔥 +10 XP! Streak: "+streak+" day"+(streak===1?"":"s")+"!";
-  updateStreakPanel();
-  bitBotCoach("Decision Making","success");
-}
-
-async function completeDailyQuest(){
-  const r=document.getElementById("dailyQuestResult");
-  try{
-    const d=await api("/progress/profiles/"+playerId);
-    if(!d.profile) throw new Error("PROFILE");
-    const questId="DAILY-"+new Date().toISOString().slice(0,10).replace(/-/g,"");
-    const reward=5;
-    await api("/progress/profiles/"+playerId+"/missions/"+questId+"/complete",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({reward})
-    });
-    const updated=await api("/progress/profiles/"+playerId);
-    document.getElementById("coins").textContent=updated.profile.sparkCoins;
-    document.getElementById("xp").textContent=updated.profile.xp;
-    r.textContent="🎉 Daily Quest complete! +5 Spark Coins +5 XP";
-  }catch(e){
-    r.textContent="🏆 Daily Quest already completed today.";
-  }
-}
-
-function updateStreakPanel(){
-  const panel=document.getElementById("streakPanel");
-  if(!panel)return;
-  panel.classList.remove("hidden");
-  const key="mm-daily-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-  const streak=saved.streak||0;
-  const progress=Math.min(streak,7);
-  document.getElementById("streakText").textContent=
-    streak===0 ? "🔥 Complete today's quest to begin your streak!" :
-    streak>=7 ? "🏆 7-Day Super Streak unlocked!" :
-    streak>=3 ? "⚡ 3-Day Bonus unlocked!" :
-    "🔥 "+streak+" day"+(streak===1?"":"s")+" strong!";
-  document.getElementById("streakBar").style.width=(progress/7*100)+"%";
-}
-
-function updateLevelPanel(profile){
-  const panel=document.getElementById("levelPanel");
-  if(!panel)return;
-  panel.classList.remove("hidden");
-  const xp=profile.xp||0;
-  const level=Math.floor(xp/50)+1;
-  const current=xp%50;
-  const next=50;
-  document.getElementById("levelTitle").textContent=
-    "Money Explorer • Level "+level;
-  document.getElementById("levelXP").textContent=current;
-  document.getElementById("levelNext").textContent=next;
-  document.getElementById("levelBar").style.width=(current/next*100)+"%";
-  document.getElementById("levelMessage").textContent=
-    level>=5 ? "🚀 Quantum Money Master!" :
-    "⭐ "+(next-current)+" XP until Level "+(level+1);
-}
-
-function updateLevelBar(profile){
-  const xp=Number(profile.xp||0);
-  const level=Math.floor(xp/50)+1;
-  const current=xp%50;
-  const pct=Math.min(100,(current/50)*100);
-  const bar=document.getElementById("xpProgress");
-  document.getElementById("playerLevel").textContent=level;
-  document.getElementById("levelXP").textContent=xp;
-  document.getElementById("nextLevelXP").textContent=50-current;
-  if(bar)bar.style.width=pct+"%";
-  const unlocks=["🌟 Starter Explorer","🪙 Coin Collector Badge","🎯 Smart Shopper Badge","🚀 Goal Launcher Badge","🏆 Quantum Money Master"];
-  document.getElementById("unlockMessage").textContent="🔓 "+unlocks[Math.min(level-1,unlocks.length-1)];
-}
-
-function renderRewardVault(profile){
-  const box=document.getElementById("rewardItems");
-  if(!box)return;
-  const level=Math.floor(Number(profile.xp||0)/50)+1;
-  const rewards=[
-    ["🌟","Starter Explorer",1],
-    ["🪙","Coin Collector",2],
-    ["🎯","Smart Shopper",3],
-    ["🚀","Goal Launcher",4],
-    ["🏆","Quantum Money Master",5]
-  ];
-  box.innerHTML=rewards.map(r=>{
-    const unlocked=level>=r[2];
-    return "<div class='choice'>"+(unlocked?"🔓 ":"🔒 ")+r[0]+" <b>"+r[1]+"</b><br><span class='small'>"+(unlocked?"UNLOCKED":"Reach Level "+r[2])+"</span></div>";
-  }).join("");
-}
-
-function renderQuantumBoss(){
-  const box=document.getElementById("bossChoices");
-  if(!box)return;
-  const choices=[
-    ["🪙","Save 8 coins","You keep coins for a future goal.",20],
-    ["🛍️","Spend all 8 coins","You get everything you want now.",5],
-    ["🎯","Spend 3, save 5","You balance today's fun with tomorrow's goal.",25]
-  ];
-  box.innerHTML="";
-  choices.forEach(c=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.innerHTML=c[0]+" <b>"+c[1]+"</b><br><span class='small'>"+c[2]+"</span>";
-    b.onclick=async()=>{
-      try{
-        await api("/progress/profiles/"+playerId+"/missions/QUANTUM-BOSS-1/complete",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({reward:c[3]})
-        });
-        b.disabled=true;
-        document.getElementById("bossResult").textContent="🏆 BOSS DEFEATED! +"+c[3]+" XP";
-        const d=await api("/progress/profiles/"+playerId);
-        document.getElementById("coins").textContent=d.profile.sparkCoins;
-        document.getElementById("xp").textContent=d.profile.xp;
-        updateLevelBar(d.profile);
-        renderRewardVault(d.profile);
-        renderRewardInventory(d.profile);
-      }catch(e){
-        document.getElementById("bossResult").textContent="🔒 Boss already defeated.";
-      }
-    };
-    box.appendChild(b);
-  });
-}
-
-function renderRewardInventory(profile){
-  const box=document.getElementById("inventoryItems");
-  if(!box)return;
-  const xp=Number(profile.xp||0);
-  const missions=profile.completedMissions||[];
-  const rewards=[
-    ["🌟","Explorer Badge","LEVEL-1",xp>=50],
-    ["🪙","Coin Collector","QUEST-COIN-COLLECTOR",missions.includes("QUEST-COIN-COLLECTOR")],
-    ["🎯","Smart Shopper","QUEST-SMART-SHOPPER",missions.includes("QUEST-SMART-SHOPPER")],
-    ["🏗️","Budget Builder","QUEST-BUDGET-BUILDER",missions.includes("QUEST-BUDGET-BUILDER")],
-    ["🚀","Goal Launcher","QUEST-GOAL-LAUNCHER",missions.includes("QUEST-GOAL-LAUNCHER")],
-    ["🧠","Decision Boss","QUEST-DECISION-BOSS",missions.includes("QUEST-DECISION-BOSS")],
-    ["👾","Quantum Boss Slayer","QUANTUM-BOSS-1",missions.includes("QUANTUM-BOSS-1")]
-  ];
-  box.innerHTML=rewards.map(r=>
-    "<div class='choice'>"+(r[3]?"🏆 ":"🔒 ")+r[0]+" <b>"+r[1]+
-    "</b><br><span class='small'>"+(r[3]?"UNLOCKED":"LOCKED")+"</span></div>"
-  ).join("");
-}
-
-function updateBattlePass(profile){
-  const box=document.getElementById("battlePass");
-  if(!box)return;
-  const key="mm-battlepass-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-  const streak=Number(saved.streak||0);
-  const bonus=Math.min(Math.floor(streak/3)*10,50);
-  document.getElementById("passStreak").textContent=streak;
-  document.getElementById("passReward").textContent=bonus;
-  document.getElementById("passStatus").textContent=
-    streak>=7?"🏆 7-DAY STREAK! Quantum Master bonus unlocked.":
-    streak>=3?"🔥 3-DAY STREAK! Bonus XP unlocked.":
-    "🎯 Complete Daily Quests to build your streak.";
-}
-
-function showQuestChallenge(id,name,challenge,reward){
-  const box=document.getElementById("activeQuest");
-  if(!box)return;
-  box.innerHTML="🔥 <b>"+name+"</b><br><span class='small'>"+challenge+" • +"+reward+" XP</span>"+
-    "<br><button class='primary' onclick=\"completeEquippedQuest('"+id+"','"+name+"',"+reward+")\">⚡ Complete Quest</button>"+
-    "<div id='questResult'></div>";
-}
-async function completeEquippedQuest(id,name,reward){
-  const out=document.getElementById("questResult");
-  try{
-    await api("/progress/profiles/"+playerId+"/missions/"+id+"/complete",{
-      method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({reward})
-    });
-    const d=await api("/progress/profiles/"+playerId);
-    document.getElementById("coins").textContent=d.profile.sparkCoins;
-    document.getElementById("xp").textContent=d.profile.xp;
-    out.textContent="🎉 "+name+" complete! +"+reward+" XP";
-  }catch(e){
-    out.textContent="🏆 Quest already completed.";
-  }
-}
-function selectQuest(id,name,skill,reward){
-  localStorage.setItem("mm-active-quest-"+playerId,JSON.stringify({id,name,skill,reward}));
-  const box=document.getElementById("activeQuest");
-  if(box) box.innerHTML="🔥 <b>"+name+"</b><br><span class='small'>"+skill+" • +"+reward+" XP</span>";
-  document.getElementById("questLoadout").classList.remove("hidden");
-}
-async function updateQuestBoardStatus(){
-  const d=await api("/progress/profiles/"+playerId);
-  const done=new Set(d.profile.completedMissions||[]);
-  document.querySelectorAll("#questBoardItems button").forEach(b=>{
-    const id=b.dataset.questId;
-    if(id && done.has(id)){
-      b.disabled=true;
-      b.innerHTML="✅ "+b.dataset.questName+"<br><span class='small'>Completed • Reward claimed</span>";
+    function rewardSpark(amount) {
+      sparkCoins += amount;
+      document.getElementById("sparkCount").textContent = sparkCoins;
+      alert(amount > 0 ? `🎉 Quest Accomplished! +${amount} Spark Coins!` : `💸 Spent ${Math.abs(amount)} Spark Coins.`);
     }
-  });
-}
-async function loadParentDashboard(){
-  const code=prompt("🔐 Parent Code");
-  if(!code)return;
 
-  try{
-    const gate=await api("/parent/gate",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({parentCode:code})
-    });
-
-    if(!gate.success) throw new Error("DENIED");
-
-    const d=await api("/progress/profiles/"+playerId);
-    const profile=d.profile;
-
-    document.getElementById("parentDashboard").classList.remove("hidden");
-    document.getElementById("parentCoins").textContent=profile.sparkCoins;
-    document.getElementById("parentXP").textContent=profile.xp;
-    document.getElementById("parentMissions").textContent=(profile.completedMissions||[]).length;
-
-    const skills=[
-      "Needs vs. Wants",
-      "Budgeting",
-      "Saving",
-      "Goal-setting",
-      "Decision-making"
-    ];
-
-    document.getElementById("parentSkills").innerHTML=
-      skills.map(x=>"<li>✅ "+x+"</li>").join("");
-  }catch(e){
-    alert("🔒 Parent access denied.");
-  }
-}
-
-function renderQuestBoard(){
-  const box=document.getElementById("questBoardItems");
-  if(!box)return;
-  const quests=[
-    ["QUEST-COIN-COLLECTOR","🪙","Coin Collector","Save 5 Spark Coins","Saving",10],
-    ["QUEST-SMART-SHOPPER","🎯","Smart Shopper","Identify a need and a want","Needs vs. Wants",10],
-    ["QUEST-BUDGET-BUILDER","🏗️","Budget Builder","Build a 10-coin spending plan","Budgeting",15],
-    ["QUEST-GOAL-LAUNCHER","🚀","Goal Launcher","Choose something worth saving for","Goal-setting",15],
-    ["QUEST-DECISION-BOSS","🧠","Decision Boss","Explain why your choice is smart","Decision-making",20]
-  ];
-  box.innerHTML="";
-  quests.forEach(q=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.innerHTML=q[1]+" <b>"+q[2]+"</b><br><span class='small'>"+q[3]+" • "+q[4]+" • +"+q[5]+" XP</span>";
-    b.onclick=async()=>{
-      try{
-        const r=await api("/progress/profiles/"+playerId+"/missions/"+q[0]+"/complete",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({reward:q[5]})
-        });
-        if(!r.success)throw new Error("QUEST_FAILED");
-        b.disabled=true;
-        b.innerHTML="✅ "+q[2]+"<br><span class='small'>Complete • +"+q[5]+" XP</span>";
-        const d=await api("/progress/profiles/"+playerId);
-        document.getElementById("coins").textContent=d.profile.sparkCoins;
-        document.getElementById("xp").textContent=d.profile.xp;
-      }catch(e){
-        b.disabled=true;
-        b.innerHTML="🏆 "+q[2]+"<br><span class='small'>Already completed</span>";
+    async function fetchCharacters() {
+      try {
+        const res = await fetch("/api/money-munchkins/characters");
+        const data = await res.json();
+        const chars = data.characters.characters;
+        const grid = document.getElementById("characterRoster");
+        grid.innerHTML = chars.map(c => `
+          <div class="char-card">
+            <span class="char-emoji">${c.emoji}</span>
+            <h3 style="color: var(--accent-cyan); font-weight: 800;">${c.name}</h3>
+            <p style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">${c.role}</p>
+          </div>
+        `).join("");
+      } catch (e) {
+        console.error("Character fetch failed", e);
       }
+    }
+
+    window.onload = () => {
+      fetchCharacters();
     };
-    box.appendChild(b);
-  });
-}
-
-function coach(character, type){
-  const dialogue={
-    bitbot:{
-      intro:"Explorer! Spark City needs your brain power!",
-      correct:"Excellent thinking! You looked at the goal before making the choice.",
-      retry:"No worries! Great Explorers test another idea.",
-      levelUp:"Whoa! Your knowledge just powered up the Quantum Grid!"
-    },
-    nova:{
-      intro:"Hi Explorer! I'm Nova. Let's turn a small idea into a big goal.",
-      correct:"That's a smart strategy. You connected today's choice to tomorrow's goal.",
-      retry:"Let's slow down and think about what matters most.",
-      levelUp:"Your goal-setting skills are getting stronger!"
-    },
-    vex:{
-      intro:"Hey Explorer, I'm Vex. Let's find a smart way to grow your Spark Coins.",
-      correct:"Nice move — that's exactly how a savings pod fills up over time.",
-      retry:"No rush. Saving is a marathon, not a sprint — try another plan.",
-      levelUp:"Your savings strategy just leveled up!"
-    },
-    pip:{
-      intro:"I'm Pip! Before you spend those Spark Coins, let's think it through.",
-      correct:"Great call — you weighed it before you spent it.",
-      retry:"Careful, Explorer — let's look at that choice one more time.",
-      levelUp:"You just unlocked smarter spending instincts!"
-    },
-    astra:{
-      intro:"I'm Astra. I show up when the whole crew's missions are done for the day.",
-      correct:"The crew's proud of you — that's a full day of smart choices.",
-      retry:"Keep going, Explorer — the crew's still cheering for you.",
-      levelUp:"Crew complete! Astra's Badge is yours."
-    }
-  };
-
-  const c=dialogue[character]||dialogue.bitbot;
-  const names={bitbot:"🤖 BitBot",nova:"🌟 Nova",vex:"🛰️ Vex",pip:"👾 Pip",astra:"🌌 Astra"};
-  document.getElementById("characterName").textContent=
-    names[character]||names.bitbot;
-  document.getElementById("characterDialogue").textContent=
-    c[type]||c.intro;
-}
-
-function updateSeason(xp){
-  const levels=[
-    [0,"BitBot Badge"],
-    [20,"Needs Detective Badge"],
-    [40,"Budget Builder Badge"],
-    [60,"Quantum Money Master Badge"],
-    [100,"Spark City Explorer Badge"]
-  ];
-
-  let level=1;
-  let unlock=levels[0][1];
-
-  for(let i=0;i<levels.length;i++){
-    if(xp>=levels[i][0]){
-      level=i+1;
-      unlock=levels[i][1];
-    }
-  }
-
-  const next=levels[Math.min(level,levels.length-1)][0];
-  const previous=levels[level-1][0];
-  const pct=next===previous?100:Math.min(100,((xp-previous)/(next-previous))*100);
-
-  const bar=document.getElementById("seasonProgress");
-  const label=document.getElementById("seasonLevel");
-
-  if(bar) bar.style.width=pct+"%";
-  if(label) label.textContent="Level "+level+" • "+unlock;
-}
-
-async function loadMission(){
-  coach("bitbot","intro");
-  const data=await api("/progress/profiles/"+playerId);
-  const profile=data.profile;
-
-  document.getElementById("coins").textContent=profile.sparkCoins;
-  document.getElementById("xp").textContent=profile.xp;
-  updateSeason(profile.xp);
-  document.getElementById("completed").textContent=profile.completedMissions.length+"/3";
-  updateLevelPanel(profile);
-
-  if(profile.completedMissions.length>=3){
-    showFinish(profile);
-    return;
-  }
-
-  while(current<missions.length &&
-        profile.completedMissions.includes(missions[current].id)){
-    current++;
-  }
-
-  if(current>=missions.length){
-    showFinish(profile);
-    return;
-  }
-
-  const mission=missions[current];
-
-  document.getElementById("missionNumber").textContent=
-    "MISSION "+(current+1)+" OF "+missions.length;
-
-  document.getElementById("missionTitle").textContent=mission.title;
-  document.getElementById("missionDescription").textContent=mission.description;
-  document.getElementById("missionChallenge").textContent=mission.challenge;
-
-  if(mission.id==="MMQ-002"){
-    renderNeedsWants();
-  }else if(mission.id==="MMQ-003"){
-    renderBudgetMission();
-  }else{
-    renderGenericMission(mission);
-  }
-
-  document.getElementById("progressBar").style.width=
-    (profile.completedMissions.length/3*100)+"%";
-}
-
-function renderGenericMission(mission){
-  const choices=document.getElementById("choices");
-  choices.innerHTML="";
-
-  [
-    "I want to learn more 🤔",
-    "I think this is a smart choice 🧠",
-    "I would save my Spark Coins 🪙"
-  ].forEach(text=>{
-    const button=document.createElement("button");
-    button.className="choice";
-    button.textContent=text;
-    button.onclick=()=>completeMission(mission);
-    choices.appendChild(button);
-  });
-
-  document.getElementById("message").textContent="";
-}
-
-function renderNeedsWants(){
-  const item=needsWants[mission2Index];
-  const choices=document.getElementById("choices");
-
-  choices.innerHTML=
-    '<div style="font-size:48px;text-align:center;margin:15px">'+item.item+'</div>'+
-    '<p style="text-align:center;font-weight:700">Is this a NEED or a WANT?</p>';
-
-  ["need","want"].forEach(answer=>{
-    const button=document.createElement("button");
-    button.className="choice";
-    button.textContent=answer==="need"?"🟢 NEED":"🟡 WANT";
-    button.onclick=()=>answerNeedsWants(answer);
-    choices.appendChild(button);
-  });
-
-  document.getElementById("message").textContent=
-    "Question "+(mission2Index+1)+" of "+needsWants.length;
-}
-
-async function answerNeedsWants(answer){
-  const item=needsWants[mission2Index];
-  const message=document.getElementById("message");
-
-  if(answer===item.answer){
-    mission2Score++;
-    message.textContent="✅ Great thinking! "+item.explain;
-  }else{
-    message.textContent="💡 Think about it: "+item.explain;
-  }
-
-  mission2Index++;
-
-  if(mission2Index<needsWants.length){
-    setTimeout(renderNeedsWants,1200);
-  }else{
-    setTimeout(()=>finishNeedsWants(),1200);
-  }
-}
-
-async function finishNeedsWants(){
-  const mission=missions[current];
-  const reward=mission.sparkCoins;
-
-  try{
-    await api(
-      "/progress/profiles/"+playerId+
-      "/missions/"+mission.id+"/complete",
-      {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({reward})
-      }
-    );
-
-    document.getElementById("message").textContent=
-      "🎉 Mission complete! You got "+
-      mission2Score+" of "+needsWants.length+
-      " correct. +"+reward+" Spark Coins!";
-
-    current++;
-    setTimeout(loadMission,1500);
-  }catch(e){
-    document.getElementById("message").textContent=
-      "Something went wrong. Try again.";
-  }
-}
-
-
-function renderBudgetMission(){
-  budget={spend:0,save:0,goal:0};
-
-  const choices=document.getElementById("choices");
-
-  choices.innerHTML=`
-    <div style="text-align:center;font-size:20px;font-weight:700;margin:15px">
-      You have 🪙 30 Spark Coins
-    </div>
-
-    <p style="text-align:center">
-      Build a plan for your money.
-      Your choices must add up to exactly 30 coins.
-    </p>
-
-    <div style="display:grid;gap:12px">
-      <label>🛍️ Spend:
-        <input id="spend" type="number" min="0" max="30" value="0"
-        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
-      </label>
-
-      <label>🏦 Save:
-        <input id="save" type="number" min="0" max="30" value="0"
-        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
-      </label>
-
-      <label>🎯 Goal:
-        <input id="goal" type="number" min="0" max="30" value="0"
-        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
-      </label>
-    </div>
-
-    <div style="text-align:center;margin:15px;font-size:20px">
-      Total: <strong id="budgetTotal">0</strong> / 30
-    </div>
-
-    <button class="primary" onclick="checkBudget()">Lock In My Budget</button>
-  `;
-
-  ["spend","save","goal"].forEach(id=>{
-    document.getElementById(id).addEventListener("input",updateBudgetTotal);
-  });
-
-  document.getElementById("message").textContent="";
-}
-
-function updateBudgetTotal(){
-  const spend=Number(document.getElementById("spend").value)||0;
-  const save=Number(document.getElementById("save").value)||0;
-  const goal=Number(document.getElementById("goal").value)||0;
-
-  const total=spend+save+goal;
-
-  document.getElementById("budgetTotal").textContent=total;
-
-  if(total===30){
-    document.getElementById("budgetTotal").textContent="30 ✅";
-  }
-}
-
-async function checkBudget(){
-  const spend=Number(document.getElementById("spend").value)||0;
-  const save=Number(document.getElementById("save").value)||0;
-  const goal=Number(document.getElementById("goal").value)||0;
-  const total=spend+save+goal;
-  const message=document.getElementById("message");
-
-  if([spend,save,goal].some(v=>v<0)){
-    message.textContent="💡 Money plans cannot use negative coins.";
-    return;
-  }
-
-  if(total!==30){
-    message.textContent=
-      "🧠 Your budget needs to use exactly 30 coins. You currently planned "+total+".";
-    return;
-  }
-
-  let feedback="";
-
-  if(save===0){
-    feedback="You built a budget, but remember that saving can help with future goals. ";
-  }else if(save>=10){
-    feedback="Great! You gave future-you a strong savings boost. ";
-  }else{
-    feedback="Nice balance! Saving even a little can help. ";
-  }
-
-  if(goal>0){
-    feedback+="You also put coins toward a goal. 🎯";
-  }
-
-  message.textContent="🎉 Budget locked! "+feedback;
-
-  const mission=missions[current];
-
-  try{
-    await api(
-      "/progress/profiles/"+playerId+
-      "/missions/"+mission.id+"/complete",
-      {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({reward:mission.sparkCoins})
-      }
-    );
-
-    current++;
-    setTimeout(loadMission,1800);
-  }catch(e){
-    message.textContent="Something went wrong. Try again.";
-  }
-}
-
-function dailyMissionAllowed(){
-  const raw=localStorage.getItem("mm-parent-controls-"+playerId);
-  const controls=JSON.parse(raw||'{"dailyMissionLimit":3}');
-  const today=new Date().toISOString().slice(0,10);
-  const key="mm-daily-mission-count-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-  if(saved.date!==today)return true;
-  return Number(saved.count||0)<Number(controls.dailyMissionLimit||3);
-}
-
-function recordDailyMission(){
-  const today=new Date().toISOString().slice(0,10);
-  const key="mm-daily-mission-count-"+playerId;
-  const saved=JSON.parse(localStorage.getItem(key)||"{}");
-  const count=saved.date===today?Number(saved.count||0)+1:1;
-  localStorage.setItem(key,JSON.stringify({date:today,count}));
-}
-
-async function completeMission(mission){
-  try{
-    await api(
-      "/progress/profiles/"+playerId+
-      "/missions/"+mission.id+"/complete",
-      {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({reward:mission.sparkCoins})
-      }
-    );
-
-    document.getElementById("message").textContent=
-      "🎉 Mission complete! +"+mission.sparkCoins+
-      " Spark Coins and +"+mission.xp+" XP";
-
-    current++;
-    setTimeout(loadMission,900);
-  }catch(e){
-    document.getElementById("message").textContent=
-      "Something went wrong. Try again.";
-  }
-}
-
-
-async function showParentReport(){
-  try{
-    const gate=await api("/parent/gate",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({parentCode:"1234"})
-    });
-
-    const reportResponse=await fetch(
-      API+"/learning/report/"+playerId,
-      {
-        headers:{
-          "x-parent-token":gate.parentToken
-        }
-      }
-    );
-
-    if(!reportResponse.ok) throw new Error("REPORT_ERROR");
-
-    const report=await reportResponse.json();
-
-    document.getElementById("game").classList.add("hidden");
-    document.getElementById("finish").classList.add("hidden");
-    document.getElementById("parent").classList.remove("hidden");
-
-    document.getElementById("parentCoins").textContent=
-      report.progress.sparkCoins;
-
-    document.getElementById("parentXP").textContent=
-      report.progress.xp;
-
-    document.getElementById("parentPercent").textContent=
-      report.progress.percentage+"%";
-
-    document.getElementById("nextRecommendation").textContent=
-      report.nextRecommendation;
-
-    const container=document.getElementById("learningReport");
-    container.innerHTML="";
-
-    report.learning.forEach(item=>{
-      const div=document.createElement("div");
-      div.style.padding="14px";
-      div.style.margin="8px 0";
-      div.style.borderRadius="12px";
-      div.style.background=item.completed?"#ecfdf5":"#f9fafb";
-
-      div.innerHTML=`
-        <strong>${item.completed?"✅":"⬜"} ${item.title}</strong>
-        <br>
-        <span class="small">
-          ${item.domain} · ${item.skill}
-        </span>
-        <br>
-        <span>${item.objective}</span>
-      `;
-
-      container.appendChild(div);
-    });
-
-  }catch(e){
-    alert("Parent report unavailable. Make sure the server is running.");
-  }
-}
-
-async function closeParentReport(){
-  document.getElementById("parent").classList.add("hidden");
-
-  if(document.getElementById("finalCoins").textContent==="60"){
-    document.getElementById("finish").classList.remove("hidden");
-  }else{
-    document.getElementById("game").classList.remove("hidden");
-    document.getElementById("questBoard").classList.remove("hidden");
-    document.getElementById("battlePass").classList.remove("hidden");
-    document.getElementById("rewardInventory").classList.remove("hidden");
-    document.getElementById("quantumBoss").classList.remove("hidden");
-    renderQuantumBoss();
-    document.getElementById("rewardVault").classList.remove("hidden");
-    document.getElementById("levelBar").classList.remove("hidden");
-    renderQuestBoard();
-    updateQuestBoardStatus();
-    const aq=JSON.parse(localStorage.getItem("mm-active-quest-"+playerId)||"null");
-    if(aq) selectQuest(aq.id,aq.name,aq.skill,aq.reward);
-    document.getElementById("dailyQuest").classList.remove("hidden");
-    document.getElementById("sparkCityMap").classList.remove("hidden");
-    renderSparkCity();
-    await refreshSparkCity();
-    await loadDailyQuest();
-    updateBattlePass(await api("/progress/profiles/"+playerId));
-    updateStreakPanel();
-    loadStoryChapter();
-  }
-}
-
-function showFinish(profile){
-  document.getElementById("game").classList.add("hidden");
-  document.getElementById("finish").classList.remove("hidden");
-  document.getElementById("finalCoins").textContent=profile.sparkCoins;
-  document.getElementById("finalXP").textContent=profile.xp;
-}
-if("serviceWorker" in navigator){
-  window.addEventListener("load",()=>{
-    navigator.serviceWorker.register("/money-munchkins/sw.js")
-      .then(()=>console.log("✅ Money Munchkins offline mode ready"))
-      .catch(err=>console.warn("SW:",err));
-  });
-}
-</script>
+  </script>
 </body>
 </html>
