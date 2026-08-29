@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: museforge
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: museforge-app
+  namespace: museforge
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: museforge
+  template:
+    metadata:
+      labels:
+        app: museforge
+    spec:
+      containers:
+      - name: museforge
+        image: ghcr.io/jazzu72/museforge-os:latest
+        ports:
+        - containerPort: 3320
+        env:
+        - name: PORT
+          value: "3320"
