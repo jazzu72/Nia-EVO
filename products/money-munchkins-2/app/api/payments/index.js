@@ -38,8 +38,8 @@ router.post("/checkout", async (req, res) => {
     const session = await provider.createCheckout({
       customerId,
       priceId,
-      successUrl: `${base}/money-munchkins/pilot?payment=success`,
-      cancelUrl: `${base}/money-munchkins/pilot?payment=cancelled`
+      successUrl: `${base}/pilot?payment=success`,
+      cancelUrl: `${base}/pilot?payment=cancelled`
     });
 
     res.json({
