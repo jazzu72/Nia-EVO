@@ -1,506 +1,1318 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="/money-munchkins/manifest.json">
 <title>Money Munchkins: Quantum Odyssey</title>
-<meta name="description" content="A galaxy of money missions for kids — earn, save, and spend wisely with a crew of Munchkin explorers.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink-deep:#12102A;
-    --ink-panel:#1B1740;
-    --violet:#5B3E96;
-    --gold:#FFC857;
-    --nebula:#FF6FA0;
-    --mint:#4ADE80;
-    --paper:#F5F1E8;
-    --paper-dim:#C9C4DE;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--ink-deep);
-    color:var(--paper);
-    font-family:'Inter',sans-serif;
-    overflow-x:hidden;
-  }
-  body::before{
-    content:"";
-    position:fixed;inset:0;
-    background-image:
-      radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,.55), transparent),
-      radial-gradient(1.5px 1.5px at 70% 65%, rgba(255,255,255,.4), transparent),
-      radial-gradient(2px 2px at 85% 20%, rgba(255,255,255,.5), transparent),
-      radial-gradient(1px 1px at 45% 80%, rgba(255,255,255,.35), transparent),
-      radial-gradient(1.5px 1.5px at 10% 90%, rgba(255,255,255,.4), transparent),
-      radial-gradient(1.5px 1.5px at 92% 50%, rgba(255,255,255,.45), transparent);
-    background-repeat:repeat;
-    background-size:600px 600px;
-    pointer-events:none;
-    z-index:0;
-    opacity:.7;
-  }
-  .display{font-family:'Space Grotesk',sans-serif;}
-  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.02em;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
-
-  nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0;}
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;}
-  .brand-mark{width:28px;height:28px;border-radius:50%;background:conic-gradient(from 90deg,var(--gold),var(--nebula),var(--violet),var(--gold));box-shadow:0 0 18px rgba(255,200,87,.5);}
-  nav .links{display:flex;gap:28px;font-size:14px;color:var(--paper-dim);}
-  nav .links a:hover{color:var(--paper);}
-
-  header.hero{padding:80px 0 60px;position:relative;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--gold);background:rgba(255,200,87,.1);border:1px solid rgba(255,200,87,.35);
-    padding:6px 12px;border-radius:999px;margin-bottom:28px;
-  }
-  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint);}
-  h1{
-    font-size:clamp(40px,7vw,74px);
-    line-height:1.02;
-    font-weight:700;
-    letter-spacing:-.02em;
-    max-width:820px;
-  }
-  h1 .accent{color:var(--gold);}
-  .lede{max-width:520px;margin-top:24px;font-size:18px;line-height:1.6;color:var(--paper-dim);}
-  .cta-row{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
-  .btn{
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;
-    padding:14px 26px;border-radius:12px;display:inline-flex;align-items:center;gap:8px;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn-primary{background:var(--gold);color:#1B1740;box-shadow:0 8px 24px rgba(255,200,87,.25);}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,200,87,.35);}
-  .btn-ghost{border:1px solid rgba(245,241,232,.25);color:var(--paper);}
-  .btn-ghost:hover{border-color:rgba(245,241,232,.55);}
-
-  .orbit-stage{
-    position:absolute;top:40px;right:-40px;width:420px;height:420px;
-    display:flex;align-items:center;justify-content:center;
-    pointer-events:none;
-  }
-  .orbit-ring{
-    position:absolute;border:1px dashed rgba(245,241,232,.15);border-radius:50%;
-  }
-  .orbit-ring.r1{width:300px;height:300px;}
-  .orbit-ring.r2{width:400px;height:400px;}
-  .coin{
-    width:96px;height:96px;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #FFE29A, var(--gold) 60%, #C98A1F 100%);
-    box-shadow:0 0 50px rgba(255,200,87,.45);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:#1B1740;
-  }
-  .orbiter{
-    position:absolute;width:300px;height:300px;
-    animation:spin 14s linear infinite;
-  }
-  .orbiter .card{
-    position:absolute;top:-4px;left:50%;transform:translateX(-50%);
-    width:44px;height:44px;border-radius:12px;
-    background:var(--nebula);
-    box-shadow:0 0 24px rgba(255,111,160,.55);
-    display:flex;align-items:center;justify-content:center;font-size:20px;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-  @media (prefers-reduced-motion: reduce){ .orbiter{animation:none;} }
-  @media (max-width:900px){ .orbit-stage{display:none;} }
-
-  section{padding:70px 0;position:relative;}
-  .section-head{max-width:560px;margin-bottom:44px;}
-  .section-head .eyebrow{margin-bottom:16px;}
-  .section-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:700;letter-spacing:-.01em;}
-  .section-head p{margin-top:14px;color:var(--paper-dim);font-size:16px;line-height:1.6;}
-
-  .missions{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  @media (max-width:820px){.missions{grid-template-columns:1fr;}}
-  .mission-card{
-    background:var(--ink-panel);border:1px solid rgba(245,241,232,.08);border-radius:18px;
-    padding:26px;position:relative;overflow:hidden;
-  }
-  .mission-card::after{
-    content:"";position:absolute;top:-40%;right:-30%;width:180px;height:180px;border-radius:50%;
-    background:radial-gradient(circle, var(--glow,var(--violet)) 0%, transparent 70%);opacity:.5;
-  }
-  .mission-card .level{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);}
-  .mission-card h3{font-family:'Space Grotesk',sans-serif;font-size:20px;margin:10px 0 10px;}
-  .mission-card p{color:var(--paper-dim);font-size:14.5px;line-height:1.55;}
-  .mission-card .pill{
-    display:inline-block;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;
-    padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--gold);
-  }
-
-  .trust{
-    background:var(--ink-panel);border-radius:24px;padding:48px;
-    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
-    border:1px solid rgba(245,241,232,.08);
-  }
-  @media (max-width:820px){.trust{grid-template-columns:1fr;padding:32px;}}
-  .trust h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,4vw,34px);margin-bottom:16px;}
-  .trust p{color:var(--paper-dim);line-height:1.65;font-size:15.5px;}
-  .trust-list{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
-  .trust-list li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--paper);}
-  .check{
-    flex:none;width:20px;height:20px;border-radius:6px;background:rgba(74,222,128,.15);
-    color:var(--mint);display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:2px;
-  }
-  .readout{
-    background:var(--ink-deep);border:1px solid rgba(245,241,232,.08);border-radius:16px;padding:22px;
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--paper-dim);
-  }
-  .readout .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(245,241,232,.08);}
-  .readout .row:last-child{border-bottom:none;}
-  .readout .ok{color:var(--mint);}
-
-  .crew{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-  @media (max-width:820px){.crew{grid-template-columns:repeat(2,1fr);}}
-  .flip-card{perspective:1000px;height:190px;cursor:pointer;}
-  .flip-card .flip-inner{
-    position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);
-    transform-style:preserve-3d;
-  }
-  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
-  .flip-face{
-    position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;
-    padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-    border:1px solid rgba(245,241,232,.08);
-  }
-  .flip-front{background:var(--ink-panel);}
-  .flip-front .emoji{font-size:38px;margin-bottom:10px;}
-  .flip-front h4{font-family:'Space Grotesk',sans-serif;font-size:16px;}
-  .flip-front .tap-hint{margin-top:8px;font-size:11px;color:var(--paper-dim);font-family:'IBM Plex Mono',monospace;}
-  .flip-back{
-    background:linear-gradient(160deg,var(--violet),var(--ink-panel));
-    transform:rotateY(180deg);
-  }
-  .flip-back .stat{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
-  .flip-back p{font-size:13px;line-height:1.45;color:var(--paper);}
-
-  .simulator{
-    background:var(--ink-panel);border-radius:20px;padding:32px;border:1px solid rgba(245,241,232,.08);
-  }
-  @media (max-width:820px){.simulator{padding:22px;}}
-  .sim-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:24px;}
-  .sim-stardust{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;display:flex;align-items:center;gap:8px;}
-  .sim-stardust .icon{color:var(--gold);}
-  .sim-steps{display:flex;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--paper-dim);}
-  .sim-steps .step{padding:4px 10px;border-radius:999px;border:1px solid rgba(245,241,232,.15);}
-  .sim-steps .step.active{color:var(--gold);border-color:var(--gold);background:rgba(255,200,87,.08);}
-  .sim-steps .step.done{color:var(--mint);border-color:var(--mint);}
-
-  .sim-body{min-height:120px;}
-  .sim-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
-  .sim-btn{
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;
-    padding:12px 20px;border-radius:10px;border:none;cursor:pointer;
-    background:var(--gold);color:#1B1740;transition:transform .12s ease,opacity .12s ease;
-  }
-  .sim-btn:hover:not(:disabled){transform:translateY(-2px);}
-  .sim-btn:disabled{opacity:.35;cursor:not-allowed;}
-  .sim-btn.alt{background:transparent;border:1px solid rgba(245,241,232,.3);color:var(--paper);}
-  .sim-note{font-size:13.5px;color:var(--paper-dim);margin-top:14px;line-height:1.55;min-height:20px;}
-
-  .pod-track{background:var(--ink-deep);border-radius:999px;height:14px;overflow:hidden;margin:16px 0;border:1px solid rgba(245,241,232,.1);}
-  .pod-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--nebula),var(--gold));transition:width .5s ease;border-radius:999px;}
-  .pod-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--paper-dim);}
-
-  footer{padding:50px 0 70px;border-top:1px solid rgba(245,241,232,.08);}
-  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-  .foot-links{display:flex;gap:24px;font-size:14px;color:var(--paper-dim);}
-  .foot-links a:hover{color:var(--paper);}
-  .foot-small{margin-top:24px;font-size:12.5px;color:rgba(245,241,232,.4);}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:#f3f4f6;color:#111827}
+header{background:#111827;color:white;padding:20px;text-align:center}
+main{max-width:720px;margin:auto;padding:20px}
+.card{background:white;border-radius:20px;padding:24px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+button{width:100%;padding:15px;margin:8px 0;border:0;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer}
+.primary{background:#111827;color:white}
+.choice{background:#e5e7eb;color:#111827}
+.choice:hover{background:#d1d5db}
+.stats{display:flex;gap:10px}
+.stat{flex:1;background:#f9fafb;padding:12px;border-radius:12px;text-align:center}
+.coin{font-size:28px}
+.hidden{display:none}
+.progress{height:12px;background:#e5e7eb;border-radius:10px;overflow:hidden}
+.progress div{height:100%;width:0;background:#111827;transition:.3s}
+.small{color:#6b7280;font-size:14px}
+#message{font-weight:700;text-align:center;margin:15px 0}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav>
-    <div class="brand"><span class="brand-mark"></span> Money Munchkins</div>
-    <div class="links">
-      <a href="#missions">Missions</a>
-      <a href="#parents">For Parents</a>
-      <a href="/money-munchkins/investor">Investors</a>
-    </div>
-  </nav>
-</div>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Quantum Odyssey · Live</div>
-    <h1>A galaxy of<br>money missions,<br><span class="accent">built for kids.</span></h1>
-    <p class="lede">Munchkins earn stardust for real chores, launch savings pods toward a goal, and learn to spend wisely — one mission at a time. No ads, no in-app pressure, three missions a day.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#parents">See how it works</a>
-      <a class="btn btn-ghost" href="/money-munchkins/investor">Investor center →</a>
-    </div>
-  </div>
-  <div class="orbit-stage">
-    <div class="orbit-ring r1"></div>
-    <div class="orbit-ring r2"></div>
-    <div class="coin">$</div>
-    <div class="orbiter"><div class="card">🚀</div></div>
-  </div>
+<header>
+<h1>🚀 Money Munchkins</h1>
+<div>Quantum Odyssey</div>
 </header>
 
-<div class="wrap">
-  <section id="missions">
-    <div class="section-head">
-      <div class="eyebrow">The Loop</div>
-      <h2>Three missions. Every day.</h2>
-      <p>A hard daily cap keeps it a habit, not a habit-forming app. Munchkins always know exactly where they stand.</p>
-    </div>
-    <div class="missions">
-      <div class="mission-card" style="--glow:var(--gold)">
-        <div class="level">MISSION 01</div>
-        <h3>Earn</h3>
-        <p>Log a real-world chore or task. A grown-up confirms it, and stardust lands in the mission's wallet.</p>
-        <span class="pill">+ stardust</span>
-      </div>
-      <div class="mission-card" style="--glow:var(--nebula)">
-        <div class="level">MISSION 02</div>
-        <h3>Save</h3>
-        <p>Point stardust at a savings pod — a bike, a game, a gift for someone else — and watch the orbit fill in.</p>
-        <span class="pill">savings pod</span>
-      </div>
-      <div class="mission-card" style="--glow:var(--violet)">
-        <div class="level">MISSION 03</div>
-        <h3>Spend</h3>
-        <p>When a pod is full, Munchkins choose: cash it out, keep growing it, or split it three ways.</p>
-        <span class="pill">their call</span>
-      </div>
-    </div>
-  </section>
+<main>
 
-  <section id="crew">
-    <div class="section-head">
-      <div class="eyebrow">Meet the Crew</div>
-      <h2>Every Munchkin has a specialty.</h2>
-      <p>Tap a crewmate to see their power. Kids pick one to guide their missions — no wrong choice.</p>
-    </div>
-    <div class="crew">
-      <div class="flip-card" data-crew>
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <div class="emoji">🪐</div>
-            <h4>Nova</h4>
-            <div class="tap-hint">tap to flip</div>
-          </div>
-          <div class="flip-face flip-back">
-            <div class="stat">Earn Specialist</div>
-            <p>Spots chores worth extra stardust and tracks streaks so nothing's forgotten.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flip-card" data-crew>
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <div class="emoji">🛰️</div>
-            <h4>Vex</h4>
-            <div class="tap-hint">tap to flip</div>
-          </div>
-          <div class="flip-face flip-back">
-            <div class="stat">Save Strategist</div>
-            <p>Helps pick a savings pod goal and shows how small deposits add up over time.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flip-card" data-crew>
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <div class="emoji">👾</div>
-            <h4>Pip</h4>
-            <div class="tap-hint">tap to flip</div>
-          </div>
-          <div class="flip-face flip-back">
-            <div class="stat">Spend Advisor</div>
-            <p>Walks through the trade-offs before a pod gets cashed out — no impulse spends.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flip-card" data-crew>
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <div class="emoji">🌌</div>
-            <h4>Astra</h4>
-            <div class="tap-hint">tap to flip</div>
-          </div>
-          <div class="flip-face flip-back">
-            <div class="stat">Crew Leader</div>
-            <p>Unlocks once all three missions are logged — celebrates the daily streak.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="parentPanel" class="card">
+<h2>👨‍👩‍👧 Parent Dashboard</h2>
+<p class="small">Parent/guardian view — see progress without interrupting the adventure.</p>
+<button class="primary" onclick="openParentDashboard()">View Progress</button>
+<div id="parentDashboard" class="hidden"></div>
+</section>
+<section id="welcome" class="card">
+<h2>Welcome, Money Explorer!</h2>
+<p>Join BitBot on a financial adventure.</p>
+<p class="small">A parent or guardian should help start the adventure.</p>
+<button class="primary" onclick="startGame()">Start Adventure</button>
+</section>
 
-  <section id="play">
-    <div class="section-head">
-      <div class="eyebrow">Try It</div>
-      <h2>Play a mission, right here.</h2>
-      <p>This is the actual loop — earn, save, spend — running client-side. No account needed to try it.</p>
-    </div>
-    <div class="simulator">
-      <div class="sim-top">
-        <div class="sim-stardust"><span class="icon">✦</span> <span id="stardustCount">0</span> stardust</div>
-        <div class="sim-steps">
-          <span class="step active" id="stepEarn">01 EARN</span>
-          <span class="step" id="stepSave">02 SAVE</span>
-          <span class="step" id="stepSpend">03 SPEND</span>
-        </div>
-      </div>
 
-      <div class="sim-body" id="simBody">
-        <p style="color:var(--paper-dim);font-size:14.5px;margin-bottom:16px;">Log today's chore to earn stardust.</p>
-        <div class="sim-row">
-          <button class="sim-btn" id="logChoreBtn" onclick="logChore()">Log a chore (+10 ✦)</button>
-        </div>
-        <div class="sim-note" id="simNote"></div>
-      </div>
-    </div>
-  </section>
+<section id="sparkCityMap" class="card hidden">
+<h2>🌆 Spark City</h2>
+<p>Choose your next neighborhood and complete its quest.</p>
+<div id="cityHubs"></div>
+</section>
+<section id="storyChoicePanel" class="card hidden">
+<h2 id="storyTitle"></h2>
+<p id="storyScene"></p>
+<div id="storyChoices"></div>
+<div id="storyResult"></div>
+</section>
+<section id="dailyQuest" class="card hidden">
+<h2>🔥 BitBot's Daily Quest</h2>
+<p id="dailyText"></p>
+<div class="stats">
+<div class="stat">🔥<br><strong id="streak">0</strong><br><span class="small">Day Streak</span></div>
+<div class="stat">⭐<br><strong id="dailyXP">10</strong><br><span class="small">XP Reward</span></div>
+</div>
+<button id="dailyButton" class="primary" onclick="completeDailyQuest()">Complete Daily Quest</button>
+<div id="dailyMessage"></div>
+</section>
+<section id="dailyQuest" class="card hidden">
+<h2>🎯 DAILY QUEST</h2>
+<p id="dailyQuestText">Complete today's money challenge.</p>
+<button class="primary" onclick="completeDailyQuest()">⚡ Accept Quest</button>
+<div id="dailyQuestResult"></div>
+</section>
+<section id="streakPanel" class="card hidden">
+<h2>🔥 STREAK BONUS</h2>
+<p id="streakText">Start your adventure streak!</p>
+<div class="progress"><div id="streakBar"></div></div>
+<p class="small">3 days = Bonus • 7 days = Super Bonus</p>
+</section>
+<section id="levelPanel" class="card hidden">
+<h2>🏆 LEVEL UP</h2>
+<p id="levelTitle">Money Explorer • Level 1</p>
+<div class="progress"><div id="levelBar"></div></div>
+<p><span id="levelXP">0</span> / <span id="levelNext">50</span> XP</p>
+<div id="levelMessage" class="small"></div>
+</section>
+<section id="levelBar" class="card hidden">
+<h2>⚡ LEVEL <span id="playerLevel">1</span></h2>
+<div style="background:#222;border-radius:12px;height:18px;overflow:hidden">
+<div id="xpProgress" style="height:100%;width:0%;transition:width .4s"></div>
+</div>
+<p><span id="levelXP">0</span> XP • <span id="nextLevelXP">50</span> XP to next level</p>
+<div id="unlockMessage"></div>
+</section>
+<section id="rewardVault" class="card hidden">
+<h2>🏆 REWARD VAULT</h2>
+<p>Unlock badges as your Explorer levels up.</p>
+<div id="rewardItems"></div>
+</section>
+<section id="quantumBoss" class="card hidden">
+<h2>👾 QUANTUM BOSS</h2>
+<p id="bossPrompt">Beat the Boss by making the smartest money move.</p>
+<div id="bossChoices"></div>
+<div id="bossResult"></div>
+</section>
+<section id="rewardInventory" class="card hidden">
+<h2>🎒 REWARD INVENTORY</h2>
+<p>Your earned badges and achievements.</p>
+<div id="inventoryItems"></div>
+</section>
+<section id="battlePass" class="card hidden">
+<h2>🔥 BATTLE PASS</h2>
+<p>Build your streak by completing Daily Quests.</p>
+<div class="stats">
+<div class="stat">🔥<br><strong id="passStreak">0</strong><br><span class="small">Streak</span></div>
+<div class="stat">🎁<br><strong id="passReward">0</strong><br><span class="small">Bonus XP</span></div>
+</div>
+<div id="passStatus"></div>
+</section>
+<section id="questLoadout" class="card hidden">
+<h2>🎒 QUEST LOADOUT</h2>
+<p>Choose your active mission. Complete it to earn the listed reward.</p>
+<div id="activeQuest"></div>
+</section>
+<div id="questResult" aria-live="polite"></div>
+<section id="questBoard" class="card hidden">
+<h2>⚡ QUEST BOARD <span class="small">QUEST BOARD LIVE</span></h2>
+<p>Pick a mission. Earn XP. Level up your Money Munchkin.</p>
+<div id="questBoardItems"></div>
+</section>
+<section id="parentDashboard" class="card hidden">
+<h2>📊 PARENT DASHBOARD</h2>
+<select id="parentChildSelector" class="choice">
+<option value="pilot-001">Explorer</option>
+</select>
+<button class="primary" onclick="refreshParentDashboard()">🔄 Refresh Progress</button>
+<p>Private progress view for parents and teachers.</p>
+<div class="stats">
+<div class="stat">🪙<br><strong id="parentCoins">0</strong><br>Coins</div>
+<div class="stat">⭐<br><strong id="parentXP">0</strong><br>XP</div>
+<div class="stat">🏆<br><strong id="parentMissions">0</strong><br>Missions</div>
+</div>
+<h3>👨‍👩‍👧 Parent Controls</h3>
+<div id="parentControls">
+<label>Daily Mission Limit</label>
+<select id="dailyMissionLimit" class="choice">
+<option value="1">1 mission</option>
+<option value="2">2 missions</option>
+<option value="3" selected>3 missions</option>
+<option value="5">5 missions</option>
+</select>
+<button class="primary" onclick="saveParentControls()">💾 Save Controls</button>
+<div id="parentControlMessage"></div>
+</div>
+<h3>Skills Practiced</h3>
+<ul id="parentSkills"></ul>
+</section>
+<section id="game" class="hidden">
 
-  <section id="parents">
-    <div class="trust">
-      <div>
-        <div class="eyebrow">For Parents</div>
-        <h2>You approve everything that matters.</h2>
-        <p>Money Munchkins is a learning layer on top of decisions you still make. No card is charged, no chore is credited, and no pod is cashed out without a grown-up in the loop.</p>
-        <ul class="trust-list">
-          <li><span class="check">✓</span> Daily mission limit — never a bottomless scroll</li>
-          <li><span class="check">✓</span> Every "earn" needs parent confirmation</li>
-          <li><span class="check">✓</span> No ads, no third-party trackers, no in-app purchases</li>
-          <li><span class="check">✓</span> Payment status and system health published live</li>
-        </ul>
-      </div>
-      <div class="readout" id="statusReadout">
-        <div class="row"><span>service</span><span class="mono">money-munchkins-2</span></div>
-        <div class="row"><span>health</span><span class="ok" id="healthVal">checking…</span></div>
-        <div class="row"><span>payments</span><span class="ok" id="paymentsVal">checking…</span></div>
-        <div class="row"><span>provider</span><span id="providerVal">—</span></div>
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="foot-row">
-      <div class="brand"><span class="brand-mark"></span> Money Munchkins</div>
-      <div class="foot-links">
-        <a href="/money-munchkins/pilot">Pilot feedback</a>
-        <a href="/money-munchkins/investor">Investors</a>
-        <a href="/api/money-munchkins/health">System status</a>
-      </div>
-    </div>
-    <div class="foot-small">Money Munchkins: Quantum Odyssey — a House of Jazzu product.</div>
-  </footer>
+<div class="card" id="seasonPanel">
+  <div class="small">⚡ QUANTUM SEASON 1</div>
+  <h2>🌆 The Spark City Expedition</h2>
+  <p>Complete quests, earn XP and unlock Explorer badges.</p>
+  <div class="progress"><div id="seasonProgress"></div></div>
+  <p class="small" id="seasonLevel">Level 1 • BitBot Badge</p>
+</div>
+<div class="stats">
+<div class="stat"><div class="coin">🪙</div><strong id="coins">0</strong><br><span class="small">Spark Coins</span></div>
+<div class="stat"><div>⭐</div><strong id="xp">0</strong><br><span class="small">XP</span></div>
+<div class="stat"><div>🏆</div><strong id="completed">0/3</strong><br><span class="small">Missions</span></div>
 </div>
 
+<div class="card">
+<div class="small" id="missionNumber"></div>
+<h2 id="missionTitle"></h2>
+<p id="missionDescription"></p>
+<h3>Challenge</h3>
+<p id="missionChallenge"></p>
+
+<div id="choices"></div>
+
+
+<div id="characterCoach" class="card">
+  <div id="characterName">🤖 BitBot</div>
+  <p id="characterDialogue">Explorer! Spark City needs your brain power!</p>
+</div>
+<div id="message"></div>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+</div>
+
+</section>
+
+<section id="parent" class="card hidden">
+<h2>👨‍👩‍👧 Parent & Teacher View</h2>
+<p class="small">Learning progress for this Explorer.</p>
+
+<div class="stats">
+<div class="stat">🪙<br><strong id="parentCoins">0</strong><br>Spark Coins</div>
+<div class="stat">⭐<br><strong id="parentXP">0</strong><br>XP</div>
+<div class="stat">📚<br><strong id="parentPercent">0%</strong><br>Progress</div>
+</div>
+
+<div class="card">
+<h3>Learning Progress</h3>
+<div id="learningReport"></div>
+</div>
+
+<div class="card">
+<h3>🎯 Recommended Next</h3>
+<p id="nextRecommendation">Loading...</p>
+</div>
+
+<button class="choice" onclick="closeParentReport()">Back to Adventure</button>
+</section>
+
+<section id="finish" class="card hidden">
+<h2>🏆 Quantum Money Master!</h2>
+<p>You completed all three starter missions.</p>
+<div class="stats">
+<div class="stat">🪙<br><strong id="finalCoins">60</strong><br>Coins</div>
+<div class="stat">⭐<br><strong id="finalXP">60</strong><br>XP</div>
+</div>
+<p>You've practiced:</p>
+<ul>
+<li>Needs vs. Wants</li>
+<li>Budgeting</li>
+<li>Saving</li>
+<li>Goal-setting</li>
+<li>Decision-making</li>
+</ul>
+<button class="primary" onclick="location.reload()">Play Again</button>
+<button class="choice" onclick="showParentReport()">Parent / Teacher Report</button>
+</section>
+
+</main>
+
 <script>
-  fetch('/api/money-munchkins/health').then(r=>r.json()).then(d=>{
-    document.getElementById('healthVal').textContent = d.status || 'unknown';
-  }).catch(()=>{ document.getElementById('healthVal').textContent = 'unavailable'; });
+window.quantumStory={"title": "BitBot and the Spark City Quest", "chapters": [{"id": "QO-001", "title": "The Spark City Signal", "scene": "BitBot discovers a mysterious signal coming from Spark City. The city needs an Explorer who can make smart money decisions.", "character": "BitBot", "choices": [{"text": "Investigate the signal", "consequence": "You learn that good decisions start with asking questions.", "xp": 10, "skill": "Decision-making"}, {"text": "Spend all your Spark Coins on gear", "consequence": "You discover why saving some resources can help later.", "xp": 5, "skill": "Saving"}]}, {"id": "QO-002", "title": "The Market District", "scene": "At the Market District, BitBot finds food, a new game, and a backpack. You have limited Spark Coins.", "character": "BitBot", "choices": [{"text": "Buy the backpack you need", "consequence": "You identified a need before a want.", "xp": 10, "skill": "Needs vs. Wants"}, {"text": "Buy the game because it looks fun", "consequence": "Fun can matter too, but now you have fewer coins for your goal.", "xp": 5, "skill": "Needs vs. Wants"}]}, {"id": "QO-003", "title": "The Quantum Budget", "scene": "The Quantum Lab needs your help. You have 30 Spark Coins. Choose how to spend, save, and protect your future goal.", "character": "BitBot", "choices": [{"text": "Save 15, spend 10, keep 5 for your goal", "consequence": "Excellent! You created a balanced plan.", "xp": 20, "skill": "Budgeting"}, {"text": "Spend all 30 immediately", "consequence": "You learned that planning ahead gives you more choices later.", "xp": 5, "skill": "Budgeting"}]}]};
+const API="/api/money-munchkins";
+const playerId="demo-001";
 
-  fetch('/api/payments/status').then(r=>r.json()).then(d=>{
-    document.getElementById('paymentsVal').textContent = d.configured ? 'configured' : 'manual mode';
-    document.getElementById('providerVal').textContent = d.provider || '—';
-  }).catch(()=>{ document.getElementById('paymentsVal').textContent = 'unavailable'; });
+let missions=[];
+let current=0;
+let mission2Index=0;
+let mission2Score=0;
+let budget={spend:0,save:0,goal:0};
 
-  // --- Crew flip cards ---
-  document.querySelectorAll('[data-crew]').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('flipped'));
-  });
+const needsWants=[
+  {item:"🥪 Lunch",answer:"need",explain:"Food is a basic need. We need food to stay healthy."},
+  {item:"🎮 New Video Game",answer:"want",explain:"A video game can be fun, but it is usually something we want rather than something we need."},
+  {item:"📚 School Supplies",answer:"need",explain:"School supplies help you learn and complete schoolwork."},
+  {item:"🧸 Collectible Toy",answer:"want",explain:"A collectible toy can be enjoyable, but it is a want."},
+  {item:"👟 Shoes That Fit",answer:"need",explain:"Shoes can be a basic need, especially when your current shoes no longer fit or protect your feet."}
+];
 
-  // --- Mission simulator (earn -> save -> spend) ---
-  let stardust = 0;
-  let choresLogged = 0;
-  const DAILY_LIMIT = 3;
-  const stardustEl = document.getElementById('stardustCount');
-  const simBody = document.getElementById('simBody');
-  const simNote = document.getElementById('simNote');
-  const steps = {
-    earn: document.getElementById('stepEarn'),
-    save: document.getElementById('stepSave'),
-    spend: document.getElementById('stepSpend'),
+async function api(url,options={}) {
+  const response=await fetch(API+url,options);
+  if(!response.ok) throw new Error("API_ERROR");
+  return response.json();
+}
+
+
+function handleCardLink(){
+  const cardId=new URLSearchParams(location.search).get("card");
+  if(!cardId) return;
+
+  const cardMap={
+    "CHAR-001":{
+      title:"BitBot",
+      message:"BitBot says: Smart money choices start with smart questions.",
+      mission:"MMQ-001"
+    },
+    "CHAR-002":{
+      title:"Nova",
+      message:"Nova reminds you that saving works best when you have a goal.",
+      mission:"MMQ-003"
+    },
+    "NEED-001":{
+      title:"🥪 Lunch",
+      message:"Food is usually a basic need.",
+      mission:"MMQ-002"
+    },
+    "NEED-002":{
+      title:"📚 School Supplies",
+      message:"School supplies can support learning and are commonly a need.",
+      mission:"MMQ-002"
+    },
+    "WANT-001":{
+      title:"🎮 Video Game",
+      message:"A video game is usually a want rather than a basic need.",
+      mission:"MMQ-002"
+    },
+    "WANT-002":{
+      title:"🧸 Collectible Toy",
+      message:"A collectible toy is generally a want.",
+      mission:"MMQ-002"
+    },
+    "BUDGET-001":{
+      title:"🪙 Thirty Coin Challenge",
+      message:"Use a limited amount of money to make a plan.",
+      mission:"MMQ-003"
+    },
+    "BUDGET-002":{
+      title:"🪙 Five More Coins",
+      message:"Extra money creates new choices. What would you do?",
+      mission:"MMQ-003"
+    },
+    "GOAL-001":{
+      title:"🎯 Dream Goal",
+      message:"Saving becomes more powerful when you know what you're saving for.",
+      mission:"MMQ-003"
+    },
+    "CHOICE-001":{
+      title:"🧠 Think Before You Spend",
+      message:"Pause, consider your options, then decide.",
+      mission:"MMQ-001"
+    }
   };
 
-  function setStep(name){
-    Object.entries(steps).forEach(([key, el]) => {
-      el.classList.remove('active');
-      if (key === name) el.classList.add('active');
+  const card=cardMap[cardId];
+  if(!card) return;
+
+  document.getElementById("welcome").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+    document.getElementById("dailyQuest").classList.remove("hidden");
+
+  const choices=document.getElementById("choices");
+  choices.innerHTML=`
+    <div style="text-align:center;font-size:42px">🃏</div>
+    <h3 style="text-align:center">${card.title}</h3>
+    <p style="text-align:center">${card.message}</p>
+    <button class="primary" onclick="startGame()">Start Related Mission</button>
+  `;
+
+  document.getElementById("missionNumber").textContent="CARD LINK";
+  document.getElementById("missionTitle").textContent=card.title;
+  document.getElementById("missionDescription").textContent=card.message;
+  document.getElementById("missionChallenge").textContent=
+    "This card connects to mission "+card.mission+".";
+}
+
+window.addEventListener("load",handleCardLink);
+
+
+const cityHubs=[
+ {id:"market",icon:"🛒",name:"Market District",skill:"Needs vs. Wants",xp:10},
+ {id:"bank",icon:"🏦",name:"Savings Station",skill:"Saving & Goals",xp:15},
+ {id:"workshop",icon:"🔧",name:"Builder's Workshop",skill:"Budgeting",xp:15},
+ {id:"lab",icon:"🧪",name:"Quantum Lab",skill:"STEM Problem Solving",xp:20},
+ {id:"cityhall",icon:"🏛️",name:"Spark City Hall",skill:"Decision Making",xp:20}
+];
+
+
+function playCityQuest(h){
+  const message=document.getElementById("message");
+  const choices=document.getElementById("choices");
+
+  document.getElementById("game").classList.remove("hidden");
+    document.getElementById("dailyQuest").classList.remove("hidden");
+
+  document.getElementById("missionNumber").textContent="🌆 SPARK CITY QUEST";
+  document.getElementById("missionTitle").textContent=h.name;
+  document.getElementById("missionDescription").textContent=
+    "Help Spark City solve a real-world challenge involving "+h.skill+".";
+  document.getElementById("missionChallenge").textContent=
+    "What should an Explorer do first?";
+
+  message.textContent="";
+  choices.innerHTML="";
+
+  const options=[
+    ["Spend everything immediately",false],
+    ["Make a plan before acting",true],
+    ["Ignore the goal",false]
+  ];
+
+  options.forEach(([text,correct])=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.textContent=text;
+
+    b.onclick=()=>{ selectQuest(q[0],q[2],q[4],q[5]);
+      showQuestChallenge(q[0],q[2],q[3],q[5]); }; b.ondblclick=async()=>{
+      if(!correct){
+        message.textContent="💡 Think about the goal first. Try again!";
+        return;
+      }
+
+      try{
+        const result=await api(
+          "/progress/profiles/"+playerId+
+          "/missions/CITY-"+h.id.toUpperCase()+"/complete",
+          {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({reward:h.xp})
+          }
+        );
+
+        message.textContent=
+          "🎉 QUEST COMPLETE! +"+h.xp+" XP";
+
+        const profile=result.profile;
+        document.getElementById("coins").textContent=profile.sparkCoins;
+        document.getElementById("xp").textContent=profile.xp;
+        document.getElementById("completed").textContent=
+          profile.completedMissions.length+"/3";
+
+        updateSeason(profile.xp);
+
+        b.disabled=true;
+        b.classList.add("completed");
+        b.textContent="✅ "+h.name+" — Complete";
+      }catch(e){
+        message.textContent="Quest already completed or unavailable.";
+      }
+    };
+
+    choices.appendChild(b);
+  });
+}
+
+function bitBotCoach(skill,result="success"){
+  const tips={
+    "Needs vs. Wants":"🧠 BitBot says: A need helps you live or learn. A want is something you'd like to have. Sometimes the same item can be both!",
+    "Saving":"🪙 BitBot says: Saving means keeping some coins today so Future You has more choices tomorrow.",
+    "Saving & Goals":"🎯 BitBot says: A goal gives your savings a destination. Every small coin can move you closer.",
+    "Budgeting":"📊 BitBot says: A budget is a plan for your limited resources. Spend some, save some, and protect your goal.",
+    "Decision Making":"⚡ BitBot says: Great explorers explain WHY they made a choice. Smart decisions come from thinking ahead.",
+    "STEM Problem Solving":"🔬 BitBot says: Scientists test ideas, learn from results, and try again. Money decisions work the same way."
+  };
+  const text=tips[skill]||"🚀 BitBot says: Every choice is a chance to learn!";
+  const el=document.getElementById("message");
+  if(el){
+    el.textContent=text;
+    el.style.minHeight="48px";
+  }
+}
+
+async function refreshSparkCity(){
+  const box=document.getElementById("cityHubs");
+  if(!box)return;
+  try{
+    const d=await api("/progress/profiles/"+playerId);
+    const completed=new Set(d.profile.completedMissions||[]);
+    [...box.children].forEach((b,i)=>{
+      const h=cityHubs[i];
+      const id="CITY-"+h.id.toUpperCase();
+      if(completed.has(id)){
+        b.disabled=true;
+        b.innerHTML="✅ "+h.name+"<br><span class='small'>Completed • "+h.skill+"</span>";
+      }
     });
+  }catch(e){}
+}
+
+function renderSparkCity(){
+  const box=document.getElementById("cityHubs");
+  if(!box)return;
+  box.innerHTML="";
+  cityHubs.forEach(h=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.dataset.questId=q[0];
+    b.dataset.questName=q[2];
+    b.innerHTML=h.icon+" "+h.name+"<br><span class='small'>"+h.skill+" • +"+h.xp+" XP</span>";
+    b.onclick=async()=>{
+      try{
+        await api("/progress/profiles/"+playerId+"/missions/CITY-"+h.id.toUpperCase()+"/complete",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({reward:h.xp})
+        });
+        b.disabled=true;
+        b.innerHTML="✅ "+h.name+"<br><span class='small'>Quest Complete • +"+h.xp+" XP</span>";
+        bitBotCoach(h.skill,"success");
+        await refreshSparkCity();
+        const d=await api("/progress/profiles/"+playerId);
+        document.getElementById("coins").textContent=d.profile.sparkCoins;
+        document.getElementById("xp").textContent=d.profile.xp;
+        updateLevelBar(d.profile);
+        renderRewardVault(d.profile);
+        renderRewardInventory(d.profile);
+      }catch(e){
+        b.disabled=true;
+        b.innerHTML="🏆 "+h.name+"<br><span class='small'>Quest already completed</span>";
+      }
+    };
+    box.appendChild(b);
+  });
+}
+
+function loadStoryChapter(){
+  const ch=window.quantumStory.chapters[storyChapter];
+  if(!ch)return;
+  document.getElementById("storyChoicePanel").classList.remove("hidden");
+  document.getElementById("storyTitle").textContent=ch.title;
+  document.getElementById("storyScene").textContent=ch.scene;
+  document.getElementById("storyResult").textContent="";
+  const box=document.getElementById("storyChoices");
+  box.innerHTML="";
+  ch.choices.forEach(choice=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.textContent=choice.text;
+    b.onclick=()=>{
+      document.getElementById("storyResult").textContent=
+        "✨ "+choice.consequence+" +"+choice.xp+" XP";
+      [...box.children].forEach(x=>x.disabled=true);
+      storyChapter++;
+      setTimeout(loadStoryChapter,1200);
+    };
+    box.appendChild(b);
+  });
+}
+
+async function loadDailyQuest(){
+  const today=new Date().toISOString().slice(0,10);
+  const quests=[
+    "Find one thing you need and one thing you want.",
+    "Choose one Spark Coin to save for a future goal.",
+    "Create a plan for spending 5 Spark Coins.",
+    "Name one way to earn money by helping someone.",
+    "Explain why saving can give you more choices later."
+  ];
+  const index=new Date().getDate()%quests.length;
+  document.getElementById("dailyText").textContent=quests[index];
+  document.getElementById("dailyQuest").classList.remove("hidden");
+
+  const key="mm-daily-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
+  if(saved.date===today){
+    document.getElementById("dailyButton").disabled=true;
+    document.getElementById("dailyButton").textContent="✅ Today's Quest Complete";
+    document.getElementById("dailyMessage").textContent="🔥 Keep your streak alive tomorrow!";
   }
-  function markDone(name){ steps[name].classList.remove('active'); steps[name].classList.add('done'); }
+  document.getElementById("streak").textContent=saved.streak||0;
+}
 
-  function logChore(){
-    if (choresLogged >= DAILY_LIMIT) return;
-    choresLogged++;
-    stardust += 10;
-    stardustEl.textContent = stardust;
-    simNote.textContent = choresLogged + ' of ' + DAILY_LIMIT + ' chores logged today.';
+async function completeDailyQuest(){
+  const today=new Date().toISOString().slice(0,10);
+  const key="mm-daily-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
 
-    if (choresLogged >= DAILY_LIMIT) {
-      markDone('earn');
-      setStep('save');
-      renderSaveStep();
-    } else {
-      simBody.querySelector('#logChoreBtn').outerHTML =
-        '<button class="sim-btn" id="logChoreBtn" onclick="logChore()">Log a chore (+10 ✦)</button>';
+  if(saved.date===today)return;
+
+  const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
+  const streak=saved.date===yesterday?(saved.streak||0)+1:1;
+
+  try{
+    await api("/progress/profiles/"+playerId+"/missions/DAILY-"+today.replaceAll("-","")+"/complete",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({reward:10})
+    });
+  }catch(e){}
+
+  localStorage.setItem(key,JSON.stringify({date:today,streak}));
+  document.getElementById("streak").textContent=streak;
+  document.getElementById("dailyButton").disabled=true;
+  document.getElementById("dailyButton").textContent="✅ Today's Quest Complete";
+  document.getElementById("dailyMessage").textContent="🔥 +10 XP! Streak: "+streak+" day"+(streak===1?"":"s")+"!";
+  updateStreakPanel();
+  bitBotCoach("Decision Making","success");
+}
+
+async function completeDailyQuest(){
+  const r=document.getElementById("dailyQuestResult");
+  try{
+    const d=await api("/progress/profiles/"+playerId);
+    if(!d.profile) throw new Error("PROFILE");
+    const questId="DAILY-"+new Date().toISOString().slice(0,10).replace(/-/g,"");
+    const reward=5;
+    await api("/progress/profiles/"+playerId+"/missions/"+questId+"/complete",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({reward})
+    });
+    const updated=await api("/progress/profiles/"+playerId);
+    document.getElementById("coins").textContent=updated.profile.sparkCoins;
+    document.getElementById("xp").textContent=updated.profile.xp;
+    r.textContent="🎉 Daily Quest complete! +5 Spark Coins +5 XP";
+  }catch(e){
+    r.textContent="🏆 Daily Quest already completed today.";
+  }
+}
+
+function updateStreakPanel(){
+  const panel=document.getElementById("streakPanel");
+  if(!panel)return;
+  panel.classList.remove("hidden");
+  const key="mm-daily-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
+  const streak=saved.streak||0;
+  const progress=Math.min(streak,7);
+  document.getElementById("streakText").textContent=
+    streak===0 ? "🔥 Complete today's quest to begin your streak!" :
+    streak>=7 ? "🏆 7-Day Super Streak unlocked!" :
+    streak>=3 ? "⚡ 3-Day Bonus unlocked!" :
+    "🔥 "+streak+" day"+(streak===1?"":"s")+" strong!";
+  document.getElementById("streakBar").style.width=(progress/7*100)+"%";
+}
+
+function updateLevelPanel(profile){
+  const panel=document.getElementById("levelPanel");
+  if(!panel)return;
+  panel.classList.remove("hidden");
+  const xp=profile.xp||0;
+  const level=Math.floor(xp/50)+1;
+  const current=xp%50;
+  const next=50;
+  document.getElementById("levelTitle").textContent=
+    "Money Explorer • Level "+level;
+  document.getElementById("levelXP").textContent=current;
+  document.getElementById("levelNext").textContent=next;
+  document.getElementById("levelBar").style.width=(current/next*100)+"%";
+  document.getElementById("levelMessage").textContent=
+    level>=5 ? "🚀 Quantum Money Master!" :
+    "⭐ "+(next-current)+" XP until Level "+(level+1);
+}
+
+function updateLevelBar(profile){
+  const xp=Number(profile.xp||0);
+  const level=Math.floor(xp/50)+1;
+  const current=xp%50;
+  const pct=Math.min(100,(current/50)*100);
+  const bar=document.getElementById("xpProgress");
+  document.getElementById("playerLevel").textContent=level;
+  document.getElementById("levelXP").textContent=xp;
+  document.getElementById("nextLevelXP").textContent=50-current;
+  if(bar)bar.style.width=pct+"%";
+  const unlocks=["🌟 Starter Explorer","🪙 Coin Collector Badge","🎯 Smart Shopper Badge","🚀 Goal Launcher Badge","🏆 Quantum Money Master"];
+  document.getElementById("unlockMessage").textContent="🔓 "+unlocks[Math.min(level-1,unlocks.length-1)];
+}
+
+function renderRewardVault(profile){
+  const box=document.getElementById("rewardItems");
+  if(!box)return;
+  const level=Math.floor(Number(profile.xp||0)/50)+1;
+  const rewards=[
+    ["🌟","Starter Explorer",1],
+    ["🪙","Coin Collector",2],
+    ["🎯","Smart Shopper",3],
+    ["🚀","Goal Launcher",4],
+    ["🏆","Quantum Money Master",5]
+  ];
+  box.innerHTML=rewards.map(r=>{
+    const unlocked=level>=r[2];
+    return "<div class='choice'>"+(unlocked?"🔓 ":"🔒 ")+r[0]+" <b>"+r[1]+"</b><br><span class='small'>"+(unlocked?"UNLOCKED":"Reach Level "+r[2])+"</span></div>";
+  }).join("");
+}
+
+function renderQuantumBoss(){
+  const box=document.getElementById("bossChoices");
+  if(!box)return;
+  const choices=[
+    ["🪙","Save 8 coins","You keep coins for a future goal.",20],
+    ["🛍️","Spend all 8 coins","You get everything you want now.",5],
+    ["🎯","Spend 3, save 5","You balance today's fun with tomorrow's goal.",25]
+  ];
+  box.innerHTML="";
+  choices.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.innerHTML=c[0]+" <b>"+c[1]+"</b><br><span class='small'>"+c[2]+"</span>";
+    b.onclick=async()=>{
+      try{
+        await api("/progress/profiles/"+playerId+"/missions/QUANTUM-BOSS-1/complete",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({reward:c[3]})
+        });
+        b.disabled=true;
+        document.getElementById("bossResult").textContent="🏆 BOSS DEFEATED! +"+c[3]+" XP";
+        const d=await api("/progress/profiles/"+playerId);
+        document.getElementById("coins").textContent=d.profile.sparkCoins;
+        document.getElementById("xp").textContent=d.profile.xp;
+        updateLevelBar(d.profile);
+        renderRewardVault(d.profile);
+        renderRewardInventory(d.profile);
+      }catch(e){
+        document.getElementById("bossResult").textContent="🔒 Boss already defeated.";
+      }
+    };
+    box.appendChild(b);
+  });
+}
+
+function renderRewardInventory(profile){
+  const box=document.getElementById("inventoryItems");
+  if(!box)return;
+  const xp=Number(profile.xp||0);
+  const missions=profile.completedMissions||[];
+  const rewards=[
+    ["🌟","Explorer Badge","LEVEL-1",xp>=50],
+    ["🪙","Coin Collector","QUEST-COIN-COLLECTOR",missions.includes("QUEST-COIN-COLLECTOR")],
+    ["🎯","Smart Shopper","QUEST-SMART-SHOPPER",missions.includes("QUEST-SMART-SHOPPER")],
+    ["🏗️","Budget Builder","QUEST-BUDGET-BUILDER",missions.includes("QUEST-BUDGET-BUILDER")],
+    ["🚀","Goal Launcher","QUEST-GOAL-LAUNCHER",missions.includes("QUEST-GOAL-LAUNCHER")],
+    ["🧠","Decision Boss","QUEST-DECISION-BOSS",missions.includes("QUEST-DECISION-BOSS")],
+    ["👾","Quantum Boss Slayer","QUANTUM-BOSS-1",missions.includes("QUANTUM-BOSS-1")]
+  ];
+  box.innerHTML=rewards.map(r=>
+    "<div class='choice'>"+(r[3]?"🏆 ":"🔒 ")+r[0]+" <b>"+r[1]+
+    "</b><br><span class='small'>"+(r[3]?"UNLOCKED":"LOCKED")+"</span></div>"
+  ).join("");
+}
+
+function updateBattlePass(profile){
+  const box=document.getElementById("battlePass");
+  if(!box)return;
+  const key="mm-battlepass-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
+  const streak=Number(saved.streak||0);
+  const bonus=Math.min(Math.floor(streak/3)*10,50);
+  document.getElementById("passStreak").textContent=streak;
+  document.getElementById("passReward").textContent=bonus;
+  document.getElementById("passStatus").textContent=
+    streak>=7?"🏆 7-DAY STREAK! Quantum Master bonus unlocked.":
+    streak>=3?"🔥 3-DAY STREAK! Bonus XP unlocked.":
+    "🎯 Complete Daily Quests to build your streak.";
+}
+
+function showQuestChallenge(id,name,challenge,reward){
+  const box=document.getElementById("activeQuest");
+  if(!box)return;
+  box.innerHTML="🔥 <b>"+name+"</b><br><span class='small'>"+challenge+" • +"+reward+" XP</span>"+
+    "<br><button class='primary' onclick=\"completeEquippedQuest('"+id+"','"+name+"',"+reward+")\">⚡ Complete Quest</button>"+
+    "<div id='questResult'></div>";
+}
+async function completeEquippedQuest(id,name,reward){
+  const out=document.getElementById("questResult");
+  try{
+    await api("/progress/profiles/"+playerId+"/missions/"+id+"/complete",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({reward})
+    });
+    const d=await api("/progress/profiles/"+playerId);
+    document.getElementById("coins").textContent=d.profile.sparkCoins;
+    document.getElementById("xp").textContent=d.profile.xp;
+    out.textContent="🎉 "+name+" complete! +"+reward+" XP";
+  }catch(e){
+    out.textContent="🏆 Quest already completed.";
+  }
+}
+function selectQuest(id,name,skill,reward){
+  localStorage.setItem("mm-active-quest-"+playerId,JSON.stringify({id,name,skill,reward}));
+  const box=document.getElementById("activeQuest");
+  if(box) box.innerHTML="🔥 <b>"+name+"</b><br><span class='small'>"+skill+" • +"+reward+" XP</span>";
+  document.getElementById("questLoadout").classList.remove("hidden");
+}
+async function updateQuestBoardStatus(){
+  const d=await api("/progress/profiles/"+playerId);
+  const done=new Set(d.profile.completedMissions||[]);
+  document.querySelectorAll("#questBoardItems button").forEach(b=>{
+    const id=b.dataset.questId;
+    if(id && done.has(id)){
+      b.disabled=true;
+      b.innerHTML="✅ "+b.dataset.questName+"<br><span class='small'>Completed • Reward claimed</span>";
+    }
+  });
+}
+async function loadParentDashboard(){
+  const code=prompt("🔐 Parent Code");
+  if(!code)return;
+
+  try{
+    const gate=await api("/parent/gate",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({parentCode:code})
+    });
+
+    if(!gate.success) throw new Error("DENIED");
+
+    const d=await api("/progress/profiles/"+playerId);
+    const profile=d.profile;
+
+    document.getElementById("parentDashboard").classList.remove("hidden");
+    document.getElementById("parentCoins").textContent=profile.sparkCoins;
+    document.getElementById("parentXP").textContent=profile.xp;
+    document.getElementById("parentMissions").textContent=(profile.completedMissions||[]).length;
+
+    const skills=[
+      "Needs vs. Wants",
+      "Budgeting",
+      "Saving",
+      "Goal-setting",
+      "Decision-making"
+    ];
+
+    document.getElementById("parentSkills").innerHTML=
+      skills.map(x=>"<li>✅ "+x+"</li>").join("");
+  }catch(e){
+    alert("🔒 Parent access denied.");
+  }
+}
+
+function renderQuestBoard(){
+  const box=document.getElementById("questBoardItems");
+  if(!box)return;
+  const quests=[
+    ["QUEST-COIN-COLLECTOR","🪙","Coin Collector","Save 5 Spark Coins","Saving",10],
+    ["QUEST-SMART-SHOPPER","🎯","Smart Shopper","Identify a need and a want","Needs vs. Wants",10],
+    ["QUEST-BUDGET-BUILDER","🏗️","Budget Builder","Build a 10-coin spending plan","Budgeting",15],
+    ["QUEST-GOAL-LAUNCHER","🚀","Goal Launcher","Choose something worth saving for","Goal-setting",15],
+    ["QUEST-DECISION-BOSS","🧠","Decision Boss","Explain why your choice is smart","Decision-making",20]
+  ];
+  box.innerHTML="";
+  quests.forEach(q=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.innerHTML=q[1]+" <b>"+q[2]+"</b><br><span class='small'>"+q[3]+" • "+q[4]+" • +"+q[5]+" XP</span>";
+    b.onclick=async()=>{
+      try{
+        const r=await api("/progress/profiles/"+playerId+"/missions/"+q[0]+"/complete",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({reward:q[5]})
+        });
+        if(!r.success)throw new Error("QUEST_FAILED");
+        b.disabled=true;
+        b.innerHTML="✅ "+q[2]+"<br><span class='small'>Complete • +"+q[5]+" XP</span>";
+        const d=await api("/progress/profiles/"+playerId);
+        document.getElementById("coins").textContent=d.profile.sparkCoins;
+        document.getElementById("xp").textContent=d.profile.xp;
+      }catch(e){
+        b.disabled=true;
+        b.innerHTML="🏆 "+q[2]+"<br><span class='small'>Already completed</span>";
+      }
+    };
+    box.appendChild(b);
+  });
+}
+
+function coach(character, type){
+  const dialogue={
+    bitbot:{
+      intro:"Explorer! Spark City needs your brain power!",
+      correct:"Excellent thinking! You looked at the goal before making the choice.",
+      retry:"No worries! Great Explorers test another idea.",
+      levelUp:"Whoa! Your knowledge just powered up the Quantum Grid!"
+    },
+    nova:{
+      intro:"Hi Explorer! I'm Nova. Let's turn a small idea into a big goal.",
+      correct:"That's a smart strategy. You connected today's choice to tomorrow's goal.",
+      retry:"Let's slow down and think about what matters most.",
+      levelUp:"Your goal-setting skills are getting stronger!"
+    },
+    vex:{
+      intro:"Hey Explorer, I'm Vex. Let's find a smart way to grow your Spark Coins.",
+      correct:"Nice move — that's exactly how a savings pod fills up over time.",
+      retry:"No rush. Saving is a marathon, not a sprint — try another plan.",
+      levelUp:"Your savings strategy just leveled up!"
+    },
+    pip:{
+      intro:"I'm Pip! Before you spend those Spark Coins, let's think it through.",
+      correct:"Great call — you weighed it before you spent it.",
+      retry:"Careful, Explorer — let's look at that choice one more time.",
+      levelUp:"You just unlocked smarter spending instincts!"
+    },
+    astra:{
+      intro:"I'm Astra. I show up when the whole crew's missions are done for the day.",
+      correct:"The crew's proud of you — that's a full day of smart choices.",
+      retry:"Keep going, Explorer — the crew's still cheering for you.",
+      levelUp:"Crew complete! Astra's Badge is yours."
+    }
+  };
+
+  const c=dialogue[character]||dialogue.bitbot;
+  const names={bitbot:"🤖 BitBot",nova:"🌟 Nova",vex:"🛰️ Vex",pip:"👾 Pip",astra:"🌌 Astra"};
+  document.getElementById("characterName").textContent=
+    names[character]||names.bitbot;
+  document.getElementById("characterDialogue").textContent=
+    c[type]||c.intro;
+}
+
+function updateSeason(xp){
+  const levels=[
+    [0,"BitBot Badge"],
+    [20,"Needs Detective Badge"],
+    [40,"Budget Builder Badge"],
+    [60,"Quantum Money Master Badge"],
+    [100,"Spark City Explorer Badge"]
+  ];
+
+  let level=1;
+  let unlock=levels[0][1];
+
+  for(let i=0;i<levels.length;i++){
+    if(xp>=levels[i][0]){
+      level=i+1;
+      unlock=levels[i][1];
     }
   }
 
-  function renderSaveStep(){
-    simBody.innerHTML = `
-      <p style="color:var(--paper-dim);font-size:14.5px;margin-bottom:10px;">Send stardust toward a savings pod. Goal: a new telescope (60 ✦).</p>
-      <div class="pod-label"><span>Pod progress</span><span id="podPct">0%</span></div>
-      <div class="pod-track"><div class="pod-fill" id="podFill"></div></div>
-      <div class="sim-row" style="margin-top:14px;">
-        <button class="sim-btn" onclick="sendToPod()">Send ${stardust} ✦ to pod</button>
-      </div>
-      <div class="sim-note" id="simNote"></div>
-    `;
+  const next=levels[Math.min(level,levels.length-1)][0];
+  const previous=levels[level-1][0];
+  const pct=next===previous?100:Math.min(100,((xp-previous)/(next-previous))*100);
+
+  const bar=document.getElementById("seasonProgress");
+  const label=document.getElementById("seasonLevel");
+
+  if(bar) bar.style.width=pct+"%";
+  if(label) label.textContent="Level "+level+" • "+unlock;
+}
+
+async function loadMission(){
+  coach("bitbot","intro");
+  const data=await api("/progress/profiles/"+playerId);
+  const profile=data.profile;
+
+  document.getElementById("coins").textContent=profile.sparkCoins;
+  document.getElementById("xp").textContent=profile.xp;
+  updateSeason(profile.xp);
+  document.getElementById("completed").textContent=profile.completedMissions.length+"/3";
+  updateLevelPanel(profile);
+
+  if(profile.completedMissions.length>=3){
+    showFinish(profile);
+    return;
   }
 
-  function sendToPod(){
-    const goal = 60;
-    const pct = Math.min(100, Math.round((stardust / goal) * 100));
-    document.getElementById('podFill').style.width = pct + '%';
-    document.getElementById('podPct').textContent = pct + '%';
-    document.getElementById('simNote').textContent = pct >= 100
-      ? 'Pod is full! Ready to decide what happens next.'
-      : (goal - stardust) + ' more stardust needed — come back tomorrow for more missions.';
-
-    if (pct >= 100) {
-      markDone('save');
-      setStep('spend');
-      setTimeout(renderSpendStep, 500);
-    }
+  while(current<missions.length &&
+        profile.completedMissions.includes(missions[current].id)){
+    current++;
   }
 
-  function renderSpendStep(){
-    simBody.innerHTML = `
-      <p style="color:var(--paper-dim);font-size:14.5px;margin-bottom:14px;">The pod is full. What does the Munchkin do?</p>
-      <div class="sim-row">
-        <button class="sim-btn" onclick="finishSim('Cashed out — the telescope is on its way.')">Cash out</button>
-        <button class="sim-btn alt" onclick="finishSim('Kept growing — rolled into next weeks goal.')">Keep growing</button>
-        <button class="sim-btn alt" onclick="finishSim('Split it — some spent, some saved, some shared.')">Split it</button>
-      </div>
-      <div class="sim-note" id="simNote"></div>
-    `;
+  if(current>=missions.length){
+    showFinish(profile);
+    return;
   }
 
-  function finishSim(message){
-    markDone('spend');
-    document.getElementById('simNote').textContent = message + " That's the whole loop — try it again anytime.";
-    simBody.querySelectorAll('button').forEach(b => b.disabled = true);
+  const mission=missions[current];
+
+  document.getElementById("missionNumber").textContent=
+    "MISSION "+(current+1)+" OF "+missions.length;
+
+  document.getElementById("missionTitle").textContent=mission.title;
+  document.getElementById("missionDescription").textContent=mission.description;
+  document.getElementById("missionChallenge").textContent=mission.challenge;
+
+  if(mission.id==="MMQ-002"){
+    renderNeedsWants();
+  }else if(mission.id==="MMQ-003"){
+    renderBudgetMission();
+  }else{
+    renderGenericMission(mission);
   }
+
+  document.getElementById("progressBar").style.width=
+    (profile.completedMissions.length/3*100)+"%";
+}
+
+function renderGenericMission(mission){
+  const choices=document.getElementById("choices");
+  choices.innerHTML="";
+
+  [
+    "I want to learn more 🤔",
+    "I think this is a smart choice 🧠",
+    "I would save my Spark Coins 🪙"
+  ].forEach(text=>{
+    const button=document.createElement("button");
+    button.className="choice";
+    button.textContent=text;
+    button.onclick=()=>completeMission(mission);
+    choices.appendChild(button);
+  });
+
+  document.getElementById("message").textContent="";
+}
+
+function renderNeedsWants(){
+  const item=needsWants[mission2Index];
+  const choices=document.getElementById("choices");
+
+  choices.innerHTML=
+    '<div style="font-size:48px;text-align:center;margin:15px">'+item.item+'</div>'+
+    '<p style="text-align:center;font-weight:700">Is this a NEED or a WANT?</p>';
+
+  ["need","want"].forEach(answer=>{
+    const button=document.createElement("button");
+    button.className="choice";
+    button.textContent=answer==="need"?"🟢 NEED":"🟡 WANT";
+    button.onclick=()=>answerNeedsWants(answer);
+    choices.appendChild(button);
+  });
+
+  document.getElementById("message").textContent=
+    "Question "+(mission2Index+1)+" of "+needsWants.length;
+}
+
+async function answerNeedsWants(answer){
+  const item=needsWants[mission2Index];
+  const message=document.getElementById("message");
+
+  if(answer===item.answer){
+    mission2Score++;
+    message.textContent="✅ Great thinking! "+item.explain;
+  }else{
+    message.textContent="💡 Think about it: "+item.explain;
+  }
+
+  mission2Index++;
+
+  if(mission2Index<needsWants.length){
+    setTimeout(renderNeedsWants,1200);
+  }else{
+    setTimeout(()=>finishNeedsWants(),1200);
+  }
+}
+
+async function finishNeedsWants(){
+  const mission=missions[current];
+  const reward=mission.sparkCoins;
+
+  try{
+    await api(
+      "/progress/profiles/"+playerId+
+      "/missions/"+mission.id+"/complete",
+      {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({reward})
+      }
+    );
+
+    document.getElementById("message").textContent=
+      "🎉 Mission complete! You got "+
+      mission2Score+" of "+needsWants.length+
+      " correct. +"+reward+" Spark Coins!";
+
+    current++;
+    setTimeout(loadMission,1500);
+  }catch(e){
+    document.getElementById("message").textContent=
+      "Something went wrong. Try again.";
+  }
+}
+
+
+function renderBudgetMission(){
+  budget={spend:0,save:0,goal:0};
+
+  const choices=document.getElementById("choices");
+
+  choices.innerHTML=`
+    <div style="text-align:center;font-size:20px;font-weight:700;margin:15px">
+      You have 🪙 30 Spark Coins
+    </div>
+
+    <p style="text-align:center">
+      Build a plan for your money.
+      Your choices must add up to exactly 30 coins.
+    </p>
+
+    <div style="display:grid;gap:12px">
+      <label>🛍️ Spend:
+        <input id="spend" type="number" min="0" max="30" value="0"
+        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
+      </label>
+
+      <label>🏦 Save:
+        <input id="save" type="number" min="0" max="30" value="0"
+        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
+      </label>
+
+      <label>🎯 Goal:
+        <input id="goal" type="number" min="0" max="30" value="0"
+        style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc">
+      </label>
+    </div>
+
+    <div style="text-align:center;margin:15px;font-size:20px">
+      Total: <strong id="budgetTotal">0</strong> / 30
+    </div>
+
+    <button class="primary" onclick="checkBudget()">Lock In My Budget</button>
+  `;
+
+  ["spend","save","goal"].forEach(id=>{
+    document.getElementById(id).addEventListener("input",updateBudgetTotal);
+  });
+
+  document.getElementById("message").textContent="";
+}
+
+function updateBudgetTotal(){
+  const spend=Number(document.getElementById("spend").value)||0;
+  const save=Number(document.getElementById("save").value)||0;
+  const goal=Number(document.getElementById("goal").value)||0;
+
+  const total=spend+save+goal;
+
+  document.getElementById("budgetTotal").textContent=total;
+
+  if(total===30){
+    document.getElementById("budgetTotal").textContent="30 ✅";
+  }
+}
+
+async function checkBudget(){
+  const spend=Number(document.getElementById("spend").value)||0;
+  const save=Number(document.getElementById("save").value)||0;
+  const goal=Number(document.getElementById("goal").value)||0;
+  const total=spend+save+goal;
+  const message=document.getElementById("message");
+
+  if([spend,save,goal].some(v=>v<0)){
+    message.textContent="💡 Money plans cannot use negative coins.";
+    return;
+  }
+
+  if(total!==30){
+    message.textContent=
+      "🧠 Your budget needs to use exactly 30 coins. You currently planned "+total+".";
+    return;
+  }
+
+  let feedback="";
+
+  if(save===0){
+    feedback="You built a budget, but remember that saving can help with future goals. ";
+  }else if(save>=10){
+    feedback="Great! You gave future-you a strong savings boost. ";
+  }else{
+    feedback="Nice balance! Saving even a little can help. ";
+  }
+
+  if(goal>0){
+    feedback+="You also put coins toward a goal. 🎯";
+  }
+
+  message.textContent="🎉 Budget locked! "+feedback;
+
+  const mission=missions[current];
+
+  try{
+    await api(
+      "/progress/profiles/"+playerId+
+      "/missions/"+mission.id+"/complete",
+      {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({reward:mission.sparkCoins})
+      }
+    );
+
+    current++;
+    setTimeout(loadMission,1800);
+  }catch(e){
+    message.textContent="Something went wrong. Try again.";
+  }
+}
+
+function dailyMissionAllowed(){
+  const raw=localStorage.getItem("mm-parent-controls-"+playerId);
+  const controls=JSON.parse(raw||'{"dailyMissionLimit":3}');
+  const today=new Date().toISOString().slice(0,10);
+  const key="mm-daily-mission-count-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
+  if(saved.date!==today)return true;
+  return Number(saved.count||0)<Number(controls.dailyMissionLimit||3);
+}
+
+function recordDailyMission(){
+  const today=new Date().toISOString().slice(0,10);
+  const key="mm-daily-mission-count-"+playerId;
+  const saved=JSON.parse(localStorage.getItem(key)||"{}");
+  const count=saved.date===today?Number(saved.count||0)+1:1;
+  localStorage.setItem(key,JSON.stringify({date:today,count}));
+}
+
+async function completeMission(mission){
+  try{
+    await api(
+      "/progress/profiles/"+playerId+
+      "/missions/"+mission.id+"/complete",
+      {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({reward:mission.sparkCoins})
+      }
+    );
+
+    document.getElementById("message").textContent=
+      "🎉 Mission complete! +"+mission.sparkCoins+
+      " Spark Coins and +"+mission.xp+" XP";
+
+    current++;
+    setTimeout(loadMission,900);
+  }catch(e){
+    document.getElementById("message").textContent=
+      "Something went wrong. Try again.";
+  }
+}
+
+
+async function showParentReport(){
+  try{
+    const gate=await api("/parent/gate",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({parentCode:"1234"})
+    });
+
+    const reportResponse=await fetch(
+      API+"/learning/report/"+playerId,
+      {
+        headers:{
+          "x-parent-token":gate.parentToken
+        }
+      }
+    );
+
+    if(!reportResponse.ok) throw new Error("REPORT_ERROR");
+
+    const report=await reportResponse.json();
+
+    document.getElementById("game").classList.add("hidden");
+    document.getElementById("finish").classList.add("hidden");
+    document.getElementById("parent").classList.remove("hidden");
+
+    document.getElementById("parentCoins").textContent=
+      report.progress.sparkCoins;
+
+    document.getElementById("parentXP").textContent=
+      report.progress.xp;
+
+    document.getElementById("parentPercent").textContent=
+      report.progress.percentage+"%";
+
+    document.getElementById("nextRecommendation").textContent=
+      report.nextRecommendation;
+
+    const container=document.getElementById("learningReport");
+    container.innerHTML="";
+
+    report.learning.forEach(item=>{
+      const div=document.createElement("div");
+      div.style.padding="14px";
+      div.style.margin="8px 0";
+      div.style.borderRadius="12px";
+      div.style.background=item.completed?"#ecfdf5":"#f9fafb";
+
+      div.innerHTML=`
+        <strong>${item.completed?"✅":"⬜"} ${item.title}</strong>
+        <br>
+        <span class="small">
+          ${item.domain} · ${item.skill}
+        </span>
+        <br>
+        <span>${item.objective}</span>
+      `;
+
+      container.appendChild(div);
+    });
+
+  }catch(e){
+    alert("Parent report unavailable. Make sure the server is running.");
+  }
+}
+
+async function closeParentReport(){
+  document.getElementById("parent").classList.add("hidden");
+
+  if(document.getElementById("finalCoins").textContent==="60"){
+    document.getElementById("finish").classList.remove("hidden");
+  }else{
+    document.getElementById("game").classList.remove("hidden");
+    document.getElementById("questBoard").classList.remove("hidden");
+    document.getElementById("battlePass").classList.remove("hidden");
+    document.getElementById("rewardInventory").classList.remove("hidden");
+    document.getElementById("quantumBoss").classList.remove("hidden");
+    renderQuantumBoss();
+    document.getElementById("rewardVault").classList.remove("hidden");
+    document.getElementById("levelBar").classList.remove("hidden");
+    renderQuestBoard();
+    updateQuestBoardStatus();
+    const aq=JSON.parse(localStorage.getItem("mm-active-quest-"+playerId)||"null");
+    if(aq) selectQuest(aq.id,aq.name,aq.skill,aq.reward);
+    document.getElementById("dailyQuest").classList.remove("hidden");
+    document.getElementById("sparkCityMap").classList.remove("hidden");
+    renderSparkCity();
+    await refreshSparkCity();
+    await loadDailyQuest();
+    updateBattlePass(await api("/progress/profiles/"+playerId));
+    updateStreakPanel();
+    loadStoryChapter();
+  }
+}
+
+function showFinish(profile){
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("finish").classList.remove("hidden");
+  document.getElementById("finalCoins").textContent=profile.sparkCoins;
+  document.getElementById("finalXP").textContent=profile.xp;
+}
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("/money-munchkins/sw.js")
+      .then(()=>console.log("✅ Money Munchkins offline mode ready"))
+      .catch(err=>console.warn("SW:",err));
+  });
+}
 </script>
-
 </body>
 </html>
