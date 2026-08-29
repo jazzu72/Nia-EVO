@@ -21,6 +21,39 @@
       "correct": "That's a smart strategy. You connected today's choice to tomorrow's goal.",
       "retry": "Let's slow down and think about what matters most.",
       "levelUp": "Your goal-setting skills are getting stronger!"
+    },
+    {
+      "id": "vex",
+      "name": "Vex",
+      "role": "Save Strategist",
+      "personality": "steady, clever, patient",
+      "emoji": "\ud83d\udef0\ufe0f",
+      "intro": "Hey Explorer, I'm Vex. Let's find a smart way to grow your Spark Coins.",
+      "correct": "Nice move \u2014 that's exactly how a savings pod fills up over time.",
+      "retry": "No rush. Saving is a marathon, not a sprint \u2014 try another plan.",
+      "levelUp": "Your savings strategy just leveled up!"
+    },
+    {
+      "id": "pip",
+      "name": "Pip",
+      "role": "Spend Advisor",
+      "personality": "playful, honest, practical",
+      "emoji": "\ud83d\udc7e",
+      "intro": "I'm Pip! Before you spend those Spark Coins, let's think it through.",
+      "correct": "Great call \u2014 you weighed it before you spent it.",
+      "retry": "Careful, Explorer \u2014 let's look at that choice one more time.",
+      "levelUp": "You just unlocked smarter spending instincts!"
+    },
+    {
+      "id": "astra",
+      "name": "Astra",
+      "role": "Crew Leader",
+      "personality": "confident, warm, celebratory",
+      "emoji": "\ud83c\udf0c",
+      "intro": "I'm Astra. I show up when the whole crew's missions are done for the day.",
+      "correct": "The crew's proud of you \u2014 that's a full day of smart choices.",
+      "retry": "Keep going, Explorer \u2014 the crew's still cheering for you.",
+      "levelUp": "Crew complete! Astra's Badge is yours."
     }
   ]
 }
