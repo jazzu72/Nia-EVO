@@ -30,13 +30,10 @@ router.post("/profiles", (req, res) => {
 });
 
 router.get("/profiles/:id", (req, res) => {
-  const profile = store.getProfile(req.params.id);
+  let profile = store.getProfile(req.params.id);
 
   if (!profile) {
-    return res.status(404).json({
-      success: false,
-      error: "PROFILE_NOT_FOUND"
-    });
+    profile = store.createProfile({ id: req.params.id, displayName: "Explorer" });
   }
 
   res.json({ success: true, profile });

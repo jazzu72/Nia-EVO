@@ -489,8 +489,8 @@ function renderSparkCity(){
   cityHubs.forEach(h=>{
     const b=document.createElement("button");
     b.className="choice";
-    b.dataset.questId=q[0];
-    b.dataset.questName=q[2];
+    b.dataset.questId=h.id;
+    b.dataset.questName=h.name;
     b.innerHTML=h.icon+" "+h.name+"<br><span class='small'>"+h.skill+" • +"+h.xp+" XP</span>";
     b.onclick=async()=>{
       try{
