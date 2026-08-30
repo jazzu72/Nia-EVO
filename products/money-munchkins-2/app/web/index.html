@@ -861,6 +861,34 @@ function renderQuestBoard(){
   });
 }
 
+async function startGame(){
+  document.getElementById("welcome").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+  document.getElementById("questBoard").classList.remove("hidden");
+  document.getElementById("battlePass").classList.remove("hidden");
+  document.getElementById("rewardInventory").classList.remove("hidden");
+  document.getElementById("quantumBoss").classList.remove("hidden");
+  renderQuantumBoss();
+  document.getElementById("rewardVault").classList.remove("hidden");
+  document.getElementById("levelBar").classList.remove("hidden");
+  renderQuestBoard();
+  updateQuestBoardStatus();
+  const aq=JSON.parse(localStorage.getItem("mm-active-quest-"+playerId)||"null");
+  if(aq) selectQuest(aq.id,aq.name,aq.skill,aq.reward);
+  document.getElementById("dailyQuest").classList.remove("hidden");
+  document.getElementById("sparkCityMap").classList.remove("hidden");
+  renderSparkCity();
+  await refreshSparkCity();
+  await loadDailyQuest();
+  updateBattlePass(await api("/progress/profiles/"+playerId));
+  updateStreakPanel();
+  loadStoryChapter();
+}
+
+function openParentDashboard(){
+  showParentReport();
+}
+
 function coach(character, type){
   const dialogue={
     bitbot:{
