@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+window.__errLog = [];
+function __sendLog(payload){
+  try{
+    fetch("/api/debug/log",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  }catch(e){}
+}
+window.addEventListener("error", function(e){
+  __sendLog({type:"error",message:e.message,source:e.filename,line:e.lineno,col:e.colno,stack:e.error&&e.error.stack});
+});
+window.addEventListener("unhandledrejection", function(e){
+  __sendLog({type:"unhandledrejection",reason:String(e.reason),stack:e.reason&&e.reason.stack});
+});
+document.addEventListener("click", function(e){
+  if(e.target && e.target.tagName === "BUTTON"){
+    __sendLog({type:"click",button:e.target.textContent.trim().slice(0,60)});
+  }
+}, true);
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Money Munchkins 2: Quantum Odyssey - Disney x IBM x House of Jazzu</title>

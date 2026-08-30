@@ -39,6 +39,16 @@ function enforceDailyLimit(req,res,next){
 }
 
 
+const __debugLog=[];
+app.post("/api/debug/log",(req,res)=>{
+  __debugLog.push({...req.body,at:new Date().toISOString()});
+  if(__debugLog.length>200)__debugLog.shift();
+  res.json({ok:true});
+});
+app.get("/api/debug/log",(req,res)=>{
+  res.json({count:__debugLog.length,log:__debugLog});
+});
+
 app.get("/money-munchkins/dashboard", (req,res)=>{
   const required=process.env.MONEY_MUNCHKINS_DASHBOARD_CODE;
   if(required && req.query.code !== required)
