@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use("/api/aios/tools", require("./aios/routes/tool-api"));
+app.get("/api/aios/providers/status",(req,res)=>res.json({ok:true,providers:["public-market"],mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
 app.get("/api/aios/tools/status",(req,res)=>res.json({ok:true,service:"aios-tools",mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
 console.log("✅ /api/aios/tools loaded");
 app.use(express.static(path.join(__dirname, "public")));
