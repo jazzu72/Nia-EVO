@@ -1,0 +1,10 @@
+release=nia-provider-bridge-v1
+commit=4976d5136ac67b4187965263e4bb36ce023cbb31
+remote_main=4976d5136ac67b4187965263e4bb36ce023cbb31
+remote_tag=4976d5136ac67b4187965263e4bb36ce023cbb31
+tool_bridge=READ_ONLY
+integrity=VERIFIED
+execution_allowed=False
+execution_authorized=False
+human_approval_required=True
+external_side_effects=DISABLED
