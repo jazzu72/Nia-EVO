@@ -39,3 +39,7 @@ nia-priority-*
 nia-ranked-grant-opportunities.json
 nia-verified-grant-queue.json
 production-launch-report.json
+funding-engine/state/
+
+# NIA local approval backups
+aios/approvals/*.bak.*
