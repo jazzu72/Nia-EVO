@@ -13,17 +13,25 @@ const { requireOwnerAuth } = require("./owner-auth-middleware");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // ============================================================
 // MIDDLEWARE
 // ============================================================
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/aios/tools", require("./aios/routes/tool-api"));
+app.get("/api/aios/tools/status",(req,res)=>res.json({ok:true,service:"aios-tools",mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
+console.log("✅ /api/aios/tools loaded");
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/owner", requireOwnerAuth);
 app.use("/api/owner/chat", require("./nia-chat-api"));
 
 console.log("🏰 Nia Capital OS Booting...");
+app.use("/api/aios/approvals", require("./aios/approvals/approval-api"));
+console.log("🛡️ /api/aios/approvals loaded");
+app.use("/api/aios/decision", require("./aios/routes/decision-gate"));
+console.log("🛡️ /api/aios/decision loaded");
 app.use("/api/funding", require("./funding-engine/capital-radar-api"));
 console.log("✅ /api/funding capital radar loaded");
 
