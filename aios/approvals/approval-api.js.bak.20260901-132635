@@ -1,0 +1,691 @@
+'use strict';
+
+const express = require('express');
+const router = express.Router();
+
+const ledger = require('./approval-ledger');
+
+router.use(express.json());
+
+/*
+ * GET /api/aios/approvals
+ * Read-only view of approval history.
+ */
+router.get('/', (req, res) => {
+  try {
+    const events = ledger.readAll();
+
+    return res.json({
+      ok: true,
+      mode: 'APPROVAL_LEDGER',
+      execution_allowed: false,
+      autonomous_execution: false,
+      count: events.length,
+      events
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/request
+ *
+ * Creates a pending approval.
+ * Does NOT execute anything.
+ */
+router.post('/request', (req, res) => {
+  try {
+    const record = ledger.createApproval(req.body || {});
+
+    return res.status(201).json({
+      ok: true,
+      mode: 'APPROVAL_PENDING',
+      approval: record,
+      execution_allowed: false,
+      autonomous_execution: false,
+      human_approval_required: true
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * GET /api/aios/approvals/:id
+ */
+
+/*
+ * COMMAND CENTER APPROVAL QUEUE
+ * READ ONLY — NEVER EXECUTES.
+ */
+
+/*
+ * APPROVAL GOVERNANCE STATUS
+ * Canonical read-only governance state.
+ * NEVER authorizes or performs execution.
+ */
+router.get('/status', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+
+    const ledgerPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.jsonl'
+    );
+
+    const latest = new Map();
+
+    if (fs.existsSync(ledgerPath)) {
+      const lines = fs.readFileSync(ledgerPath, 'utf8')
+        .split('\n')
+        .filter(Boolean);
+
+      for (const line of lines) {
+        try {
+          const r = JSON.parse(line);
+          if (r.approval_id) {
+            latest.set(r.approval_id, r);
+          }
+        } catch (_) {}
+      }
+    }
+
+    const approvals = Array.from(latest.values());
+
+    const pending = approvals.filter(x => x.status === 'PENDING').length;
+    const approved = approvals.filter(x => x.status === 'APPROVED').length;
+    const rejected = approvals.filter(x => x.status === 'REJECTED').length;
+
+    return res.json({
+      ok: true,
+      system: 'NIA_APPROVAL_GOVERNANCE',
+      status: 'ONLINE',
+      mode: 'HUMAN_GOVERNED_READ_ONLY',
+
+      approvals: {
+        total: approvals.length,
+        pending,
+        approved,
+        rejected
+      },
+
+      execution: {
+        allowed: false,
+        authorized: false,
+        performed: false,
+        autonomous: false
+      },
+
+      governance: {
+        human_approval_required: true,
+        approval_recording_only: true,
+        ledger_integrity: 'PASS',
+        explicit_execution_authorizations: 0
+      },
+
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      system: 'NIA_APPROVAL_GOVERNANCE',
+      status: 'ERROR',
+      error: error.message,
+
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      }
+    });
+  }
+});
+
+router.get('/health', (req, res) => {
+  return res.json({
+    ok: true,
+    service: 'approval-governance',
+    mode: 'READ_ONLY',
+    execution_allowed: false,
+    execution_authorized: false,
+    execution_performed: false,
+    autonomous_execution: false,
+    human_approval_required: true,
+    approval_recording_only: true
+  });
+});
+
+
+/*
+ * LEDGER INTEGRITY CHECK
+ * READ ONLY — verifies the persisted ledger anchor.
+ */
+router.get('/integrity', (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const crypto = require('crypto');
+
+    const ledgerPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.jsonl'
+    );
+    const anchorPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.anchor.json'
+    );
+
+    if (!fs.existsSync(ledgerPath) || !fs.existsSync(anchorPath)) {
+      return res.status(503).json({
+        ok: false,
+        integrity: 'UNAVAILABLE',
+        error: 'Ledger or integrity anchor missing',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      });
+    }
+
+    const anchor = JSON.parse(fs.readFileSync(anchorPath, 'utf8'));
+    const lines = fs.readFileSync(ledgerPath, 'utf8')
+      .split('\n')
+      .filter(Boolean);
+
+    let previous = 'GENESIS';
+
+    for (const line of lines) {
+      const record = JSON.parse(line);
+      previous = crypto
+        .createHash('sha256')
+        .update(
+          previous +
+          JSON.stringify(record)
+        )
+        .digest('hex');
+    }
+
+    const match =
+      previous === anchor.final_chain_hash &&
+      lines.length === anchor.ledger_lines;
+
+    return res.status(match ? 200 : 409).json({
+      ok: match,
+      integrity: match ? 'VERIFIED' : 'MISMATCH',
+      ledger_lines: lines.length,
+      anchored_lines: anchor.ledger_lines,
+      computed_hash: previous,
+      anchored_hash: anchor.final_chain_hash,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false,
+      human_approval_required: true,
+      approval_recording_only: true
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      integrity: 'ERROR',
+      error: error.message,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false,
+      human_approval_required: true
+    });
+  }
+});
+
+router.get('/command-center', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const ledgerPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.jsonl'
+    );
+
+    const latest = new Map();
+
+    if (fs.existsSync(ledgerPath)) {
+      for (const line of fs.readFileSync(ledgerPath, 'utf8').split('\n').filter(Boolean)) {
+        try {
+          const r = JSON.parse(line);
+          if (!r.approval_id) continue;
+
+          latest.set(r.approval_id, {
+            approval_id: r.approval_id,
+            timestamp: r.timestamp,
+            type: r.type,
+            objective: r.objective || '',
+            action: r.action || '',
+            action_type: r.action_type || 'review',
+            status: r.status || 'UNKNOWN',
+            reviewer: r.reviewer || null,
+
+            execution_allowed: false,
+            execution_authorized: false,
+            execution_performed: false,
+            autonomous_execution: false,
+            human_approval_required: true
+          });
+        } catch (_) {}
+      }
+    }
+
+    const approvals = Array.from(latest.values());
+
+    return res.json({
+      ok: true,
+      mode: 'COMMAND_CENTER_APPROVAL_READ_ONLY',
+      count: approvals.length,
+      pending: approvals.filter(x => x.status === 'PENDING').length,
+      approved: approvals.filter(x => x.status === 'APPROVED').length,
+      rejected: approvals.filter(x => x.status === 'REJECTED').length,
+      approvals,
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: error.message,
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  }
+});
+
+router.get('/queue', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+
+    const ledgerPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.jsonl'
+    );
+
+    const records = [];
+
+    if (fs.existsSync(ledgerPath)) {
+      const lines = fs.readFileSync(ledgerPath, 'utf8')
+        .split('\n')
+        .filter(Boolean);
+
+      for (const line of lines) {
+        try {
+          const record = JSON.parse(line);
+
+          if (record.approval_id) {
+            records.push({
+              approval_id: record.approval_id,
+              timestamp: record.timestamp,
+              type: record.type,
+              objective: record.objective,
+              action: record.action,
+              action_type: record.action_type,
+              status: record.status,
+              reviewer: record.reviewer || null,
+
+              /* HARD SAFETY INVARIANTS */
+              execution_allowed: false,
+              execution_authorized: false,
+              execution_performed: false,
+              autonomous_execution: false,
+              human_approval_required: true
+            });
+          }
+        } catch (_) {}
+      }
+    }
+
+    const latest = new Map();
+
+    for (const record of records) {
+      latest.set(record.approval_id, record);
+    }
+
+    const approvals = Array.from(latest.values());
+
+    return res.json({
+      ok: true,
+      mode: 'APPROVAL_QUEUE_READ_ONLY',
+      count: approvals.length,
+      approvals,
+
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: error.message,
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  }
+});
+
+router.get('/:id', (req, res) => {
+  try {
+    const approval = ledger.getApprovalState(req.params.id);
+
+    if (!approval) {
+      return res.status(404).json({
+        ok: false,
+        error: 'Approval not found',
+        execution_allowed: false
+      });
+    }
+
+    return res.json({
+      ok: true,
+      approval,
+      execution_allowed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/:id/approve
+ *
+ * Records approval ONLY.
+ * It does not invoke any executor.
+ */
+router.post('/:id/approve', (req, res) => {
+  try {
+    const record = ledger.decide(
+      req.params.id,
+      'APPROVED',
+      req.body?.reviewer || 'human'
+    );
+
+    return res.json({
+      ok: true,
+      message: 'Approval recorded. No execution occurred.',
+      approval: record,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(err.statusCode || 500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/:id/reject
+ */
+router.post('/:id/reject', (req, res) => {
+  try {
+    const record = ledger.decide(
+      req.params.id,
+      'REJECTED',
+      req.body?.reviewer || 'human'
+    );
+
+    return res.json({
+      ok: true,
+      message: 'Rejection recorded. No execution occurred.',
+      approval: record,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(err.statusCode || 500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+
+/*
+ * HARD APPROVAL INVARIANTS
+ * Approval changes ledger state only.
+ * It NEVER authorizes or performs execution.
+ */
+router.use((req, res, next) => {
+  const originalJson = res.json.bind(res);
+
+  res.json = (body) => {
+    if (body && typeof body === 'object') {
+      body.execution_allowed = false;
+      body.execution_authorized = false;
+      body.execution_performed = false;
+      body.autonomous_execution = false;
+      body.human_approval_required = true;
+
+      if (body.approval && typeof body.approval === 'object') {
+        body.approval.execution_allowed = false;
+        body.approval.execution_authorized = false;
+        body.approval.execution_performed = false;
+        body.approval.autonomous_execution = false;
+        body.approval.human_approval_required = true;
+      }
+    }
+
+    return originalJson(body);
+  };
+
+  next();
+});
+
+
+/*
+ * READ-ONLY APPROVAL QUEUE
+ * -------------------------
+ * Lists ledger state only.
+ * Never authorizes or performs execution.
+ */
+
+
+
+/*
+ * EXECUTION DENIAL GATE
+ * Approval API has no execution endpoint.
+ * Any attempted execution request is rejected.
+ */
+router.all('/execute', (req, res) => {
+  return res.status(403).json({
+    ok: false,
+    error: 'Execution is disabled by approval governance',
+    mode: 'READ_ONLY',
+    execution_allowed: false,
+    execution_authorized: false,
+    execution_performed: false,
+    autonomous_execution: false,
+    human_approval_required: true
+  });
+});
+
+
+/*
+ * EXPLICIT EXECUTION AUTHORIZATION PATH
+ * APPROVED does not execute.
+ * A human must explicitly authorize execution.
+ * Autonomous execution remains disabled.
+ */
+router.post('/:id/authorize-execution', (req, res) => {
+  try {
+    const approval = ledger.getApprovalState(req.params.id);
+
+    if (!approval) {
+      return res.status(404).json({
+        ok: false,
+        error: 'Approval not found',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      });
+    }
+
+    if (approval.status !== 'APPROVED') {
+      return res.status(409).json({
+        ok: false,
+        error: 'Execution authorization requires APPROVED status',
+        status: approval.status,
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      });
+    }
+
+    const reviewer = String(req.body?.reviewer || '').trim();
+
+    if (!reviewer) {
+      return res.status(400).json({
+        ok: false,
+        error: 'Explicit human reviewer required',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true
+      });
+    }
+
+    return res.json({
+      ok: true,
+      mode: 'EXPLICIT_HUMAN_EXECUTION_AUTHORIZATION',
+      approval_id: req.params.id,
+      status: 'AUTHORIZED',
+      reviewer,
+      execution_allowed: true,
+      execution_authorized: true,
+      execution_performed: false,
+      autonomous_execution: false,
+      human_approval_required: true,
+      message: 'Execution authorized by explicit human request. No execution was performed.'
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: error.message,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false,
+      human_approval_required: true
+    });
+  }
+});
+
+
+/*
+ * EXECUTION AUTHORIZATION PATH — HUMAN APPROVAL REQUIRED
+ * This endpoint authorizes nothing by itself.
+ * It only reports whether a specific approval is eligible for
+ * a future human-authorized execution step.
+ */
+router.post('/authorize', (req, res) => {
+  const approvalId = req.body && req.body.approval_id;
+  if (!approvalId) {
+    return res.status(400).json({
+      ok:false, error:'approval_id required',
+      execution_allowed:false, execution_authorized:false,
+      execution_performed:false, autonomous_execution:false,
+      human_approval_required:true
+    });
+  }
+
+  const approval = ledger.getApprovalState(approvalId);
+
+  if (!approval || approval.status !== 'APPROVED') {
+    return res.status(403).json({
+      ok:false, error:'Human-approved approval record required',
+      execution_allowed:false, execution_authorized:false,
+      execution_performed:false, autonomous_execution:false,
+      human_approval_required:true
+    });
+  }
+
+  return res.status(403).json({
+    ok:false,
+    mode:'HUMAN_AUTHORIZATION_REQUIRED',
+    message:'Approval recorded, but execution remains disabled.',
+    approval_id:approvalId,
+    execution_allowed:false,
+    execution_authorized:false,
+    execution_performed:false,
+    autonomous_execution:false,
+    human_approval_required:true
+  });
+});
+
+module.exports = router;
