@@ -1,11 +1,13 @@
 'use strict';
 
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 
 const fabric = require('../tools/register-business-tools');
 const decision = require('../core/decision-engine');
 const intelligenceHub = require('../providers/intelligence-hub');
+const actionGate = require('../governor/action-gate');
 const aiReasoner = require('../core/ai-reasoner');
 
 router.post('/ai-reason', async (req, res) => {
