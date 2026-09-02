@@ -102,6 +102,19 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/daily-cycle', async (req,res) => {
+  try {
+    const fabric=require('../tools/tool-fabric');
+    const result=await fabric.execute('daily_operating_cycle',{},{
+      source:'api',
+      requested_by:'human'
+    });
+    res.status(200).json({ok:true,...result});
+  } catch(error) {
+    res.status(400).json({ok:false,error:error.message});
+  }
+});
+
 router.post('/execute-approved', async (req,res) => {
   try {
     const { tool, args={}, context={}, approved=false } = req.body || {};

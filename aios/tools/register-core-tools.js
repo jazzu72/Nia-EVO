@@ -1,3 +1,4 @@
+require('./register-business-tools');
 const { registerProviderTools } = require('./register-provider-tools');
 const { createProviderBoundary } = require('../providers/provider-boundary');
 'use strict';
