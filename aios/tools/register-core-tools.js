@@ -38,3 +38,5 @@ require("./register-intelligence-tool");
 
 // Controlled execution coordinator — external side effects remain governed
 require('../core/execution-coordinator');
+
+require('./register-execution-workflows');
