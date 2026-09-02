@@ -28,6 +28,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/owner", requireOwnerAuth);
 app.use("/api/owner/chat", require("./nia-chat-api"));
 
+require('./aios/tools/register-core-tools');
+console.log('🧠 NIA AIOS CORE TOOLS LOADED');
 console.log("🏰 Nia Capital OS Booting...");
 app.use("/api/aios/approvals", require("./aios/approvals/approval-api"));
 console.log("🛡️ /api/aios/approvals loaded");

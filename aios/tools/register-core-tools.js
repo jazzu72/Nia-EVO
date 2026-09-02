@@ -1,9 +1,7 @@
 const { registerProviderTools } = require('./register-provider-tools');
 const { createProviderBoundary } = require('../providers/provider-boundary');
 'use strict';
-
 const fabric = require('./tool-fabric');
-
 fabric.register(
   'system_status',
   async () => ({
@@ -16,7 +14,6 @@ fabric.register(
     description: 'Return Nia runtime status'
   }
 );
-
 fabric.register(
   'list_modules',
   async () => ({
@@ -34,6 +31,7 @@ fabric.register(
     description: 'List registered Nia business modules'
   }
 );
-
 // Provider tools remain read-only and execution-disabled.
 module.exports = fabric;
+require("./register-market-tools");
+require("./register-intelligence-tool");
