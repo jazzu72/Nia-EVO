@@ -35,3 +35,6 @@ fabric.register(
 module.exports = fabric;
 require("./register-market-tools");
 require("./register-intelligence-tool");
+
+// Controlled execution coordinator — external side effects remain governed
+require('../core/execution-coordinator');

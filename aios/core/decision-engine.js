@@ -80,6 +80,13 @@ async function decide(objective, context = {}) {
       fifty_two_week_low: context.market_data.data?.data?.chart?.result?.[0]?.meta?.fiftyTwoWeekLow || null,
       recommendation: 'REVIEW_REQUIRED'
     } : null,
+    execution_plan: {
+      mode: 'CONTROLLED_EXECUTION',
+      status: 'READY_FOR_APPROVAL',
+      autonomous_execution: false,
+      external_side_effects_allowed: false,
+      required_next_step: 'HUMAN_APPROVAL'
+    },
     governance: {
       execution_allowed: false,
       execution_authorized: false,

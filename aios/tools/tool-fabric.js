@@ -1,6 +1,7 @@
 'use strict';
 
 const tools = new Map();
+const EXECUTION_MODE='CONTROLLED_EXECUTION';
 const actionGate = require('../governor/action-gate');
 
 function register(name, handler, options = {}) {

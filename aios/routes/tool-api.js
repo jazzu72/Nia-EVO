@@ -102,6 +102,27 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/execute-approved', async (req,res) => {
+  try {
+    const { tool, args={}, context={}, approved=false } = req.body || {};
+    const coordinator=require('../core/execution-coordinator');
+
+    const result=await coordinator.run({
+      tool,
+      args,
+      context,
+      approved: approved === true
+    });
+
+    res.status(result.status === 'approval_required' ? 202 : 200).json({
+      ok:true,
+      ...result
+    });
+  } catch(error) {
+    res.status(400).json({ok:false,error:error.message});
+  }
+});
+
 router.post('/execute', async (req, res) => {
   try {
     const { tool, args, approved } = req.body;
