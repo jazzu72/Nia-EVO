@@ -10,4 +10,11 @@ register('acquisition_scan',async()=>{
   description:'Run Nia acquisition intelligence workflow using read-only tools'
 });
 
-module.exports={acquisition_scan:true};
+register('daily_operating_cycle',async()=>{
+  return workflows.dailyOperatingCycle();
+},{
+  risk:'low',
+  description:'Run Nia daily internal operating cycle without external side effects'
+});
+
+module.exports={acquisition_scan:true,daily_operating_cycle:true};
