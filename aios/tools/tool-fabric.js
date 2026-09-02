@@ -1,6 +1,7 @@
 'use strict';
 
 const tools = new Map();
+const actionGate = require('../governor/action-gate');
 
 function register(name, handler, options = {}) {
   if (typeof handler !== 'function') throw new Error(`Invalid handler: ${name}`);
