@@ -1,0 +1,18 @@
+{
+  "system": "Nia Zapier Automation Health",
+  "timestamp": "2026-07-29T10:38:17.340Z",
+  "integrations": {
+    "registry": "ONLINE",
+    "inboundWebhook": "ONLINE",
+    "outboundBridge": "ONLINE",
+    "authLayer": "ONLINE"
+  },
+  "revenueSystems": {
+    "leads": "ONLINE",
+    "opportunities": "ONLINE",
+    "offers": "ONLINE",
+    "ledger": "ONLINE"
+  },
+  "status": "OPERATIONAL",
+  "nextAction": "Connect live Zapier workflows and process first external event"
+}

@@ -1,0 +1,12 @@
+{
+  "opportunity": "cd ~/nia-capital-os && cat > runtime/revenue-transaction-capture.js <<'EOF'",
+  "value": 0,
+  "score": 60,
+  "status": "OFFER_READY",
+  "actions": [
+    "Generate proposal",
+    "Schedule contact",
+    "Request agreement",
+    "Await payment"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "system": "Nia Revenue Response Loop",
+  "timestamp": "2026-07-29T10:30:24.624Z",
+  "funnel": {
+    "ready": 3,
+    "contacted": 0,
+    "responses": 0
+  },
+  "decision": "Continue outreach",
+  "nextAction": "Advance highest priority prospect"
+}

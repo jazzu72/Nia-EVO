@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NIA Sovereign Console</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">NIA</div>
+        <div class="brand-text">Sovereign Intelligence Console</div>
+      </div>
+
+      <div class="founder-card">
+        <div class="founder-label">Founder</div>
+        <div class="founder-name">Jason LeSane</div>
+        <div class="founder-location">Norfolk, VA</div>
+        <div class="founder-role">Sole System Authority</div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active">Dashboard</button>
+        <button class="nav-item">Signals</button>
+        <button class="nav-item">Decisions</button>
+        <button class="nav-item">System Status</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-title">NIA Executive Dashboard</div>
+        <div class="top-subtitle">Autonomous governance, strategic intelligence, and real‑time decisions</div>
+      </header>
+
+      <section class="grid">
+        <div class="card kpi">
+          <div class="card-title">Autonomy Status</div>
+          <div class="kpi-value" id="kpi-autonomy">ONLINE</div>
+          <div class="kpi-sub">Self‑governing loop active</div>
+        </div>
+
+        <div class="card kpi">
+          <div class="card-title">Strategic Posture</div>
+          <div class="kpi-value" id="kpi-posture">Neutral</div>
+          <div class="kpi-sub" id="kpi-posture-detail">Awaiting signals</div>
+        </div>
+
+        <div class="card kpi">
+          <div class="card-title">Last Decision</div>
+          <div class="kpi-value" id="kpi-decision">—</div>
+          <div class="kpi-sub" id="kpi-decision-time">No decisions yet</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Direct Channel to NIA</div>
+          <div class="panel-subtitle">Founder‑only communication link (text + voice)</div>
+        </div>
+
+        <div class="chat-shell">
+          <div class="chat-window" id="chat-window"></div>
+
+          <div class="voice-row">
+            <button id="voice-btn">
+              🎙️ Voice
+            </button>
+            <span id="voice-status">Mic idle</span>
+          </div>
+
+          <form class="chat-input-row" id="chat-form">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Speak or type to NIA..."
+              autocomplete="off"
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- Holographic Avatar Panel -->
+<section class="panel">
+  <div class="panel-header">
+    <div class="panel-title">NIA Holographic Avatar</div>
+    <div class="panel-subtitle">Real‑time visual presence</div>
+  </div>
+
+  <div id="nia-avatar"></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

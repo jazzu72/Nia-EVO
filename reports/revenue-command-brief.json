@@ -1,0 +1,32 @@
+{
+  "system": "Nia Revenue Command Brief",
+  "timestamp": "2026-07-28T19:49:40.694Z",
+  "status": "REVENUE MOMENTUM",
+  "score": 80,
+  "decision": {
+    "action": "CONVERT_OFFERS",
+    "reason": "Prioritize active offers and move toward first transaction"
+  },
+  "execution": {
+    "status": "EXECUTION_ACTIVE",
+    "activeTasks": 1,
+    "pending": 1,
+    "completed": 0
+  },
+  "alerts": {
+    "count": 2,
+    "items": [
+      {
+        "type": "conversion",
+        "severity": "HIGH",
+        "message": "Active offers exist with no closed transactions"
+      },
+      {
+        "type": "readiness",
+        "severity": "MEDIUM",
+        "message": "No closed revenue transactions, System readiness below execution threshold"
+      }
+    ]
+  },
+  "nextAction": "Advance active offers toward closing"
+}

@@ -1,0 +1,12 @@
+{
+  "system": "Nia Revenue Dashboard",
+  "timestamp": "2026-07-28T18:32:24.687Z",
+  "metrics": {
+    "leads": 1,
+    "offers": 1,
+    "prospects": 1,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "pipelineStatus": "ACTIVE"
+}

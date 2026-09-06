@@ -1,0 +1,29 @@
+{
+  "system": "Nia Live Operations Check",
+  "timestamp": "2026-07-30T11:35:23.031Z",
+  "readiness": "5/5",
+  "status": "LIVE_READY",
+  "nextAction": "Send first verified external event",
+  "checks": [
+    {
+      "file": "modules/live-events/routes.js",
+      "status": "READY"
+    },
+    {
+      "file": "modules/live-events/event-auth.js",
+      "status": "READY"
+    },
+    {
+      "file": "reports/event-revenue-map.json",
+      "status": "READY"
+    },
+    {
+      "file": "reports/production-operations-dashboard.json",
+      "status": "READY"
+    },
+    {
+      "file": "reports/revenue-feedback-loop.json",
+      "status": "READY"
+    }
+  ]
+}

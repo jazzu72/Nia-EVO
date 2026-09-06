@@ -1,0 +1,12 @@
+{
+  "system": "Nia Customer Response Engine",
+  "timestamp": "2026-07-29T13:14:58.546Z",
+  "responses": {
+    "received": 0,
+    "positive": 0,
+    "negative": 0,
+    "meetingsScheduled": 0
+  },
+  "status": "LISTENING",
+  "nextAction": "Await customer responses"
+}

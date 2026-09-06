@@ -1,0 +1,30 @@
+{
+  "system": "Nia Revenue Mission Controller",
+  "timestamp": "2026-07-29T10:05:00.357Z",
+  "state": "EXECUTE",
+  "mission": "Convert active opportunity into first transaction",
+  "priorities": [
+    {
+      "priority": 1,
+      "action": "Advance highest-value opportunity",
+      "owner": "Nia Revenue Engine"
+    },
+    {
+      "priority": 2,
+      "action": "Complete pending follow-up actions",
+      "owner": "Deal Execution"
+    },
+    {
+      "priority": 3,
+      "action": "Record outcome and revenue event",
+      "owner": "Revenue Ledger"
+    }
+  ],
+  "metrics": {
+    "status": "ACTIVE",
+    "transactions": 0,
+    "revenue": 0
+  },
+  "blocker": "No closed revenue transactions recorded",
+  "command": "Close first transaction"
+}

@@ -1,0 +1,12 @@
+{
+  "system": "Nia Revenue Contact Tracker",
+  "timestamp": "2026-07-29T10:30:03.629Z",
+  "metrics": {
+    "total": 3,
+    "ready": 3,
+    "contacted": 0,
+    "responses": 0
+  },
+  "status": "CONTACTS_READY",
+  "nextAction": "Send first outreach"
+}

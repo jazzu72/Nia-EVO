@@ -1,0 +1,9 @@
+{
+  "system": "Nia Revenue Decision Engine",
+  "timestamp": "2026-07-29T10:06:41.119Z",
+  "decision": "EXECUTE_PRIORITY_DEAL",
+  "reason": "System readiness exists, focus on closing first transaction",
+  "missionState": "EXECUTE",
+  "score": 60,
+  "nextAction": "Advance priority deal toward close"
+}

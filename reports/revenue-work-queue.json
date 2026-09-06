@@ -1,0 +1,16 @@
+{
+  "system": "Nia Revenue Work Queue",
+  "timestamp": "2026-07-29T09:48:50.681Z",
+  "total": 1,
+  "queue": [
+    {
+      "id": 1,
+      "priority": "HIGH",
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "action": "Contact decision maker and schedule follow-up",
+      "status": "READY"
+    }
+  ],
+  "nextAction": "Begin highest-priority follow-up"
+}

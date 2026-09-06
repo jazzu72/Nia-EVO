@@ -1,0 +1,38 @@
+{
+  "system": "Nia Capital OS Master Status",
+  "timestamp": "2026-07-30T11:29:55.982Z",
+  "services": [
+    {
+      "service": "nia",
+      "status": "missing"
+    },
+    {
+      "service": "revenue-loop",
+      "status": "missing"
+    },
+    {
+      "service": "action-queue-loop",
+      "status": "missing"
+    },
+    {
+      "service": "nia-intelligence",
+      "status": "missing"
+    },
+    {
+      "service": "nia-self-healer",
+      "status": "missing"
+    },
+    {
+      "service": "nia-backup",
+      "status": "missing"
+    },
+    {
+      "service": "nia-ops-report",
+      "status": "missing"
+    },
+    {
+      "service": "nia-deployment-check",
+      "status": "missing"
+    }
+  ]
+}

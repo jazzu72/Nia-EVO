@@ -1,0 +1,22 @@
+{
+  "system": "Nia Executive Diagnostic",
+  "timestamp": "2026-07-28T18:13:42.509Z",
+  "status": "ATTENTION",
+  "score": 75,
+  "issues": [
+    {
+      "type": "system_score",
+      "message": "System score below 100: 75"
+    }
+  ],
+  "pendingActions": [
+    {
+      "id": 1785261873230,
+      "action": "System score below 100: 75",
+      "priority": "high",
+      "source": "executive-alert-engine",
+      "status": "pending",
+      "timestamp": "2026-07-28T18:04:33.231Z"
+    }
+  ]
+}

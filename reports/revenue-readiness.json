@@ -1,0 +1,14 @@
+{
+  "system": "Nia Revenue Readiness",
+  "timestamp": "2026-07-28T18:34:48.095Z",
+  "score": 60,
+  "status": "BUILDING",
+  "nextFocus": "Increase qualified leads and conversions",
+  "metrics": {
+    "leads": 1,
+    "offers": 1,
+    "prospects": 1,
+    "transactions": 0,
+    "revenue": 0
+  }
+}

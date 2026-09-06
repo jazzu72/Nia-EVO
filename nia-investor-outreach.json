@@ -1,0 +1,32 @@
+[
+  {
+    "id": "INVESTOR-CONTACT-1785957218271",
+    "packageId": "INVESTOR-PACKAGE-1785957217463",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "targets": [
+      "PRIVATE_INVESTORS",
+      "REAL_ESTATE_FUNDS",
+      "CAPITAL_PARTNERS"
+    ],
+    "subject": "NIA Capital Opportunity: 4110 Reisterstown Rd, Baltimore MD",
+    "message": "Investment opportunity identified by NIA Capital OS. Purchase: $93000 | ARV: $155000 | Projected Spread: $62000",
+    "status": "READY_FOR_REVIEW",
+    "priority": "HIGH",
+    "created": "2026-08-05T19:13:38.271Z"
+  },
+  {
+    "id": "INVESTOR-CONTACT-1785957218272",
+    "packageId": "INVESTOR-PACKAGE-1785957217464",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "targets": [
+      "PRIVATE_INVESTORS",
+      "REAL_ESTATE_FUNDS",
+      "CAPITAL_PARTNERS"
+    ],
+    "subject": "NIA Capital Opportunity: 757 VIRGINIA TARGET PROPERTY",
+    "message": "Investment opportunity identified by NIA Capital OS. Purchase: $150000 | ARV: $250000 | Projected Spread: $100000",
+    "status": "READY_FOR_REVIEW",
+    "priority": "URGENT",
+    "created": "2026-08-05T19:13:38.272Z"
+  }
+]

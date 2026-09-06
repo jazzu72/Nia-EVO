@@ -1,0 +1,64 @@
+=== NIA GRANT EXECUTION ENGINE ===
+{
+  "campaign": "Money Munchkins 2 Grant Campaign",
+  "queue": [
+    {
+      "id": "SKIP-FALL-2026",
+      "name": "Skip Fall Grant",
+      "amount": 10000,
+      "deadline": "2026-09-18T23:59:00-04:00",
+      "priority": 1,
+      "status": "RESEARCH_AND_DRAFT",
+      "nextAction": "VERIFY_ELIGIBILITY",
+      "submissionGate": {
+        "grantId": "SKIP-FALL-2026",
+        "grantName": "Skip Fall Grant",
+        "amount": 10000,
+        "status": "OWNER_APPROVAL_REQUIRED",
+        "submitAllowed": false,
+        "paymentAllowed": false,
+        "legalCertificationAllowed": false,
+        "generatedAt": "2026-08-27T14:19:40.928Z"
+      }
+    },
+    {
+      "id": "OUTTA-EXCUSES-2026-Q3",
+      "name": "Outta Excuses Small Business Empowerment Grant",
+      "amount": 3000,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "priority": 2,
+      "status": "RESEARCH_AND_DRAFT",
+      "nextAction": "VERIFY_ELIGIBILITY",
+      "submissionGate": {
+        "grantId": "OUTTA-EXCUSES-2026-Q3",
+        "grantName": "Outta Excuses Small Business Empowerment Grant",
+        "amount": 3000,
+        "status": "OWNER_APPROVAL_REQUIRED",
+        "submitAllowed": false,
+        "paymentAllowed": false,
+        "legalCertificationAllowed": false,
+        "generatedAt": "2026-08-27T14:19:40.931Z"
+      }
+    },
+    {
+      "id": "SECRETSOS-2026-Q3",
+      "name": "Secretsos Small Business Grant",
+      "amount": 2500,
+      "deadline": "2026-09-30T23:59:00-04:00",
+      "priority": 3,
+      "status": "RESEARCH_AND_DRAFT",
+      "nextAction": "VERIFY_ELIGIBILITY",
+      "submissionGate": {
+        "grantId": "SECRETSOS-2026-Q3",
+        "grantName": "Secretsos Small Business Grant",
+        "amount": 2500,
+        "status": "OWNER_APPROVAL_REQUIRED",
+        "submitAllowed": false,
+        "paymentAllowed": false,
+        "legalCertificationAllowed": false,
+        "generatedAt": "2026-08-27T14:19:40.931Z"
+      }
+    }
+  ]
+}
+==================================

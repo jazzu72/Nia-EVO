@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nia Command Center</title>
+
+<style>
+
+body{
+background:#0b0f14;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+.card{
+background:#151b23;
+padding:20px;
+margin:15px;
+border-radius:10px;
+}
+
+h1{
+color:#00ff99;
+}
+
+.value{
+font-size:30px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>🏰 Nia Command Center</h1>
+
+
+<div class="card">
+<h2>System Status</h2>
+<div id="status" class="value">
+Loading...
+</div>
+</div>
+
+
+
+<div class="card">
+<h2>Revenue Pipeline</h2>
+<div id="revenue" class="value">
+Loading...
+</div>
+</div>
+
+
+
+<div class="card">
+<h2>Proposals</h2>
+<div id="proposals" class="value">
+Loading...
+</div>
+</div>
+
+
+
+<div class="card">
+<h2>Follow-ups</h2>
+<div id="followups" class="value">
+Loading...
+</div>
+</div>
+
+
+
+<div class="card">
+<h2>Nia Recommendations</h2>
+<ul id="actions"></ul>
+</div>
+
+
+
+<script>
+
+async function loadDashboard(){
+
+const response =
+await fetch(
+"http://localhost:3000/api/dashboard/overview"
+);
+
+
+const data =
+await response.json();
+
+
+document.getElementById("status")
+.innerHTML =
+data.status;
+
+
+document.getElementById("revenue")
+.innerHTML =
+"$"+data.revenue.pipelineValue;
+
+
+document.getElementById("proposals")
+.innerHTML =
+data.proposals.total;
+
+
+document.getElementById("followups")
+.innerHTML =
+data.followups.queue;
+
+
+let list="";
+
+data.executive.recommendations
+.forEach(item=>{
+
+list += "<li>"+item+"</li>";
+
+});
+
+
+document.getElementById("actions")
+.innerHTML=list;
+
+
+}
+
+
+loadDashboard();
+
+setInterval(
+loadDashboard,
+30000
+);
+
+
+</script>
+
+
+</body>
+</html>

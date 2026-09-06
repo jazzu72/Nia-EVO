@@ -1,0 +1,22 @@
+{
+  "system": "Nia Revenue Loop Status",
+  "timestamp": "2026-07-28T19:44:05.925Z",
+  "pipeline": {
+    "opportunities": 1,
+    "offers": 1,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "actions": {
+    "generated": 3,
+    "queued": 4,
+    "pending": 4
+  },
+  "execution": {
+    "totalTasks": 3,
+    "pending": 3,
+    "completed": 0
+  },
+  "state": "ACTIVE",
+  "nextAction": "Execute highest priority revenue task"
+}

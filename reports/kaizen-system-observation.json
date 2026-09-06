@@ -1,0 +1,109 @@
+{
+  "system": "Nia Kaizen System Observer",
+  "timestamp": "2026-07-30T12:09:30.186Z",
+  "observation": [
+    {
+      "name": "nia-kaizen-engine",
+      "status": "online",
+      "cpu": 0,
+      "memory": 49217536
+    },
+    {
+      "name": "nia-kaizen-observer",
+      "status": "online",
+      "cpu": 0,
+      "memory": 50499584
+    },
+    {
+      "name": "nia-kaizen-cycle",
+      "status": "online",
+      "cpu": 0,
+      "memory": 50532352
+    },
+    {
+      "name": "nia-kaizen-business",
+      "status": "online",
+      "cpu": 0,
+      "memory": 53886976
+    },
+    {
+      "name": "nia-kaizen-actions",
+      "status": "online",
+      "cpu": 0,
+      "memory": 35602432
+    },
+    {
+      "name": "nia-kaizen-execution",
+      "status": "online",
+      "cpu": 0,
+      "memory": 50049024
+    },
+    {
+      "name": "nia-revenue-dashboard",
+      "status": "online",
+      "cpu": 0,
+      "memory": 46383104
+    },
+    {
+      "name": "nia-proposals",
+      "status": "online",
+      "cpu": 0,
+      "memory": 50184192
+    },
+    {
+      "name": "nia-followups",
+      "status": "online",
+      "cpu": 0,
+      "memory": 50892800
+    },
+    {
+      "name": "nia-lead-qualification",
+      "status": "online",
+      "cpu": 0,
+      "memory": 40853504
+    },
+    {
+      "name": "nia-proposal-queue",
+      "status": "online",
+      "cpu": 0,
+      "memory": 40865792
+    },
+    {
+      "name": "nia-followup-queue",
+      "status": "online",
+      "cpu": 0,
+      "memory": 54087680
+    },
+    {
+      "name": "nia-proposal-sender",
+      "status": "online",
+      "cpu": 0,
+      "memory": 47677440
+    },
+    {
+      "name": "nia-sales-followup",
+      "status": "online",
+      "cpu": 0,
+      "memory": 54272000
+    },
+    {
+      "name": "nia-revenue-score",
+      "status": "online",
+      "cpu": 0,
+      "memory": 43360256
+    },
+    {
+      "name": "nia-unified-inbox",
+      "status": "online",
+      "cpu": 0,
+      "memory": 27635712
+    },
+    {
+      "name": "nia-core",
+      "status": "online",
+      "cpu": 0.4,
+      "memory": 56774656
+    }
+  ],
+  "improvementNeeded": []
+}

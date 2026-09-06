@@ -1,0 +1,30 @@
+{
+  "system": "Nia Revenue Operating Dashboard",
+  "timestamp": "2026-07-29T13:33:57.227Z",
+  "readiness": "5/5",
+  "status": "OPERATIONAL",
+  "mission": "Find opportunities, convert customers, record revenue",
+  "nextAction": "Connect live customer acquisition source",
+  "systems": [
+    {
+      "file": "reports/revenue-command-center.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "reports/customer-scoring.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "reports/deal-closing-tracker.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "reports/daily-revenue-briefing.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "data/revenue-event-ledger.json",
+      "status": "ONLINE"
+    }
+  ]
+}

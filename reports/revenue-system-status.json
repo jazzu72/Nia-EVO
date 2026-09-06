@@ -1,0 +1,16 @@
+{
+  "system": "Nia Revenue System Status",
+  "timestamp": "2026-07-29T10:11:40.746Z",
+  "health": {
+    "api": "ONLINE",
+    "brief": true,
+    "score": 50,
+    "actionState": "ACTIONS_IN_PROGRESS"
+  },
+  "revenue": {
+    "transactions": 0,
+    "totalRevenue": 0
+  },
+  "executiveState": "OPERATIONAL",
+  "nextAction": "Convert first opportunity into revenue transaction"
+}

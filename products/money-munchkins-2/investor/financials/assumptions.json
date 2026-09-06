@@ -1,0 +1,23 @@
+{
+  "currency": "USD",
+  "pricing": {
+    "family_monthly": 0,
+    "family_annual": 0,
+    "school_license_annual": 0
+  },
+  "growth": {
+    "monthly_new_families": 0,
+    "monthly_school_customers": 0,
+    "monthly_churn_rate": 0
+  },
+  "costs": {
+    "hosting_monthly": 0,
+    "software_monthly": 0,
+    "marketing_monthly": 0,
+    "support_monthly": 0
+  },
+  "fundraising": {
+    "target_raise": 0,
+    "runway_months": 0
+  }
+}

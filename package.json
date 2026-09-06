@@ -1,0 +1,25 @@
+{
+  "name": "nia-capital-os",
+  "version": "1.0.0",
+  "description": "NIA Capital OS Production Engine",
+  "main": "server-watson.js",
+  "scripts": {
+    "start": "node server-watson.js",
+    "health": "node nia-production-check.js"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.5",
+    "@langchain/openai": "^1.5.6",
+    "axios": "^1.19.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "node-cron": "^4.6.0",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.19.1",
+    "pg": "^8.23.0",
+    "rss-parser": "^3.13.0",
+    "stripe": "^22.4.0",
+    "telegraf": "^4.16.3",
+    "twilio": "^6.0.2"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "system": "Nia Revenue Activation Status",
+  "timestamp": "2026-07-29T13:36:52.643Z",
+  "readiness": "4/5",
+  "status": "BUILDING",
+  "nextAction": "Send first real customer inquiry",
+  "systems": [
+    {
+      "file": "data/customer-intake.json",
+      "status": "MISSING"
+    },
+    {
+      "file": "data/opportunities.json",
+      "status": "READY"
+    },
+    {
+      "file": "reports/offer-matching.json",
+      "status": "READY"
+    },
+    {
+      "file": "reports/customer-priority-queue.json",
+      "status": "READY"
+    },
+    {
+      "file": "reports/revenue-command-center.json",
+      "status": "READY"
+    }
+  ]
+}

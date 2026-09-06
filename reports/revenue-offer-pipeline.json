@@ -1,0 +1,28 @@
+{
+  "system": "Nia Revenue Offer Pipeline",
+  "timestamp": "2026-07-29T10:29:02.289Z",
+  "offers": [
+    {
+      "leadId": 1785320928468,
+      "source": "Little Guys Recharge & Detailing",
+      "stage": "OFFER_CREATED",
+      "estimatedValue": 0,
+      "nextStep": "Contact prospect"
+    },
+    {
+      "leadId": 1785320928470,
+      "source": "AI Automation Services",
+      "stage": "OFFER_CREATED",
+      "estimatedValue": 0,
+      "nextStep": "Contact prospect"
+    },
+    {
+      "leadId": 1785320928471,
+      "source": "Grant Opportunities",
+      "stage": "OFFER_CREATED",
+      "estimatedValue": 0,
+      "nextStep": "Contact prospect"
+    }
+  ],
+  "activeOffers": 3
+}

@@ -1,0 +1,13 @@
+{
+  "system": "Nia Deal Closing Tracker",
+  "timestamp": "2026-07-29T13:32:17.754Z",
+  "activeDeals": 0,
+  "stages": [
+    "PROPOSAL",
+    "NEGOTIATION",
+    "AGREEMENT",
+    "PAYMENT"
+  ],
+  "status": "ACTIVE",
+  "nextAction": "Advance highest priority deal"
+}

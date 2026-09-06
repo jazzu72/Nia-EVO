@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NIA-EVO 2030 – Investor Dashboard</title>
+    <style>
+        /* ─── Reset & Base ─── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e1a;
+            color: #e8edf5;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* ─── Header ─── */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #1a2640;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f5b342, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .subtitle {
+            color: #7a8ba8;
+            font-size: 0.85rem;
+        }
+        .header .status-badge {
+            background: #0f1a2a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 9999px;
+            border: 1px solid #1a2640;
+            font-size: 0.8rem;
+            color: #4ade80;
+        }
+
+        /* ─── Stats Grid ─── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: #111827;
+            border: 1px solid #1a2640;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            transition: border 0.2s;
+        }
+        .stat-card:hover { border-color: #f5b342; }
+        .stat-card .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #7a8ba8;
+            letter-spacing: 0.04em;
+        }
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0.2rem;
+        }
+        .stat-card .value.gold { color: #f5b342; }
+        .stat-card .value.blue { color: #60a5fa; }
+        .stat-card .value.green { color: #4ade80; }
+        .stat-card .value.purple { color: #c084fc; }
+
+        /* ─── Panels ─── */
+        .panel {
+            background: #111827;
+            border: 1px solid #1a2640;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .panel .panel-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ─── Tables ─── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.6rem 0.5rem;
+            color: #7a8ba8;
+            font-weight: 400;
+            border-bottom: 1px solid #1a2640;
+        }
+        td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #1a2640;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            background: #1a2a3a;
+            color: #60a5fa;
+        }
+        .badge.success { background: #1a3a2a; color: #4ade80; }
+        .badge.warning { background: #3a2a1a; color: #facc15; }
+        .badge.closed { background: #1a2a3a; color: #c084fc; }
+
+        /* ─── Progress ─── */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #1a2640;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.3rem;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #f5b342, #b8860b);
+            transition: width 0.5s;
+        }
+
+        /* ─── Chat ─── */
+        .chat-box {
+            background: #0a0e1a;
+            border-radius: 0.8rem;
+            padding: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #1a2640;
+            margin-top: 0.5rem;
+        }
+        .chat-message {
+            margin-bottom: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            max-width: 85%;
+        }
+        .chat-message.user { background: #1a2a3a; margin-left: auto; text-align: right; }
+        .chat-message.nia { background: #1a3a2a; }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .chat-input input {
+            flex: 1;
+            background: #0a0e1a;
+            border: 1px solid #1a2640;
+            border-radius: 9999px;
+            padding: 0.6rem 1rem;
+            color: #e8edf5;
+        }
+        .chat-input input:focus { outline: none; border-color: #f5b342; }
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 9999px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #1a2640;
+            color: #e8edf5;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #f5b342, #b8860b);
+            color: #0a0e1a;
+        }
+        .btn-primary:hover { opacity: 0.85; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <h1>🏛️ NIA-EVO 2030</h1>
+            <span class="subtitle">Autonomous Capital OS · House of Jazzu</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <span class="status-badge" id="liveStatus">🟢 Live</span>
+            <button class="btn btn-primary" onclick="refreshData()">⟳ Refresh</button>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+            <div class="label">💰 Capital Available</div>
+            <div class="value gold" id="balance">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">🏠 Deals Found</div>
+            <div class="value blue" id="dealCount">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">📋 Grants Targeted</div>
+            <div class="value green" id="grantCount">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">🧠 Memory</div>
+            <div class="value purple" id="memoryCount">—</div>
+        </div>
+    </div>
+
+    <!-- Deals Panel -->
+    <div class="panel">
+        <div class="panel-title">🏠 Deal Pipeline</div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>Address</th><th>Price</th><th>Score</th><th>Status</th></tr></thead>
+                <tbody id="dealsTable">
+                    <tr><td colspan="4" style="text-align:center;color:#7a8ba8;padding:1.5rem;">Loading deals...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Grants Panel -->
+    <div class="panel">
+        <div class="panel-title">📋 Grant Opportunities</div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>Grant</th><th>Amount</th><th>Deadline</th><th>Status</th></tr></thead>
+                <tbody id="grantsTable">
+                    <tr><td colspan="4" style="text-align:center;color:#7a8ba8;padding:1.5rem;">Loading grants...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Legacy Panel -->
+    <div class="panel">
+        <div class="panel-title">📜 Legacy Preservation</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;">
+            <span class="badge success">Systems before hustle</span>
+            <span class="badge success">Autonomy before chaos</span>
+            <span class="badge success">Legacy over ego</span>
+            <span class="badge success">Execution over theory</span>
+        </div>
+        <p style="color:#7a8ba8;font-size:0.85rem;font-style:italic;">
+            "I built NIA-EVO to carry my vision, my values, and my voice into the future."
+        </p>
+        <p style="color:#f5b342;font-size:0.8rem;margin-top:0.3rem;">— Jason LeSane, Founder</p>
+    </div>
+
+    <!-- Chat -->
+    <div class="panel">
+        <div class="panel-title">💬 Talk to NIA-EVO</div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message nia">👋 I am NIA-EVO 2030. Your autonomous CEO. How can I help?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." />
+            <button class="btn btn-primary" onclick="sendChat()">Send</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;color:#4a5a7a;font-size:0.7rem;padding-top:1.5rem;border-top:1px solid #1a2640;margin-top:1.5rem;">
+        NIA-EVO 2030 · House of Jazzu · Autonomous Capital OS
+    </div>
+
+</div>
+
+<script>
+    // ─── API CONFIG ───
+    const API_BASE = window.location.origin;
+    const API_KEY = 'your-secret-api-key';
+
+    // ─── FETCH HELPER ───
+    async function fetchAPI(endpoint) {
+        try {
+            const res = await fetch(`${API_BASE}${endpoint}`, {
+                headers: { 'X-API-Key': API_KEY }
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+        } catch {
+            return null;
+        }
+    }
+
+    // ─── REFRESH ───
+    async function refreshData() {
+        document.getElementById('liveStatus').textContent = '⏳ Loading...';
+
+        // Balance
+        const balance = await fetchAPI('/api/balance');
+        document.getElementById('balance').textContent = balance?.available ? `$${balance.available.toLocaleString()}` : '—';
+
+        // Deals
+        const deals = await fetchAPI('/api/deals');
+        const dealList = deals?.deals || [];
+        document.getElementById('dealCount').textContent = dealList.length;
+        const tableBody = document.getElementById('dealsTable');
+        if (dealList.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#7a8ba8;padding:1.5rem;">No deals yet</td></tr>';
+        } else {
+            tableBody.innerHTML = dealList.slice(0, 8).map(d => `
+                <tr>
+                    <td>${d.address || '—'}</td>
+                    <td>$${d.price?.toLocaleString() || '—'}</td>
+                    <td>${d.score || '—'}</td>
+                    <td><span class="badge ${d.status === 'CLOSED' ? 'closed' : d.status === 'QUALIFIED' ? 'warning' : ''}">${d.status || 'NEW'}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // Grants
+        const grants = await fetchAPI('/api/grants/search');
+        document.getElementById('grantCount').textContent = grants?.total ? `$${grants.total.toLocaleString()}` : '—';
+        const grantsTable = document.getElementById('grantsTable');
+        if (grants?.grants?.length) {
+            grantsTable.innerHTML = grants.grants.slice(0, 5).map(g => `
+                <tr>
+                    <td>${g.name || '—'}</td>
+                    <td>$${g.amount?.toLocaleString() || '—'}</td>
+                    <td>${g.deadline || '—'}</td>
+                    <td><span class="badge">${g.status || 'PENDING'}</span></td>
+                </tr>
+            `).join('');
+        } else {
+            grantsTable.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#7a8ba8;padding:1.5rem;">No grants yet</td></tr>';
+        }
+
+        // Memory
+        try {
+            const mem = await fetch('/data/memory/memory.json').then(r => r.json()).catch(() => ({}));
+            document.getElementById('memoryCount').textContent = mem?.conversations?.length || 0;
+        } catch {
+            document.getElementById('memoryCount').textContent = '0';
+        }
+
+        document.getElementById('liveStatus').textContent = '🟢 Live';
+    }
+
+    // ─── CHAT ───
+    async function sendChat() {
+        const input = document.getElementById('chatInput');
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        const chatBox = document.getElementById('chatBox');
+        chatBox.innerHTML += `<div class="chat-message user">${msg}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        try {
+            const res = await fetch(`${API_BASE}/api/v1/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            });
+            const data = await res.json();
+            chatBox.innerHTML += `<div class="chat-message nia">${data.response || 'I am processing your request.'}</div>`;
+        } catch {
+            chatBox.innerHTML += `<div class="chat-message nia">I am NIA-EVO 2030. I hear you. Let\'s build the future.</div>`;
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Save to memory
+        try {
+            await fetch('/api/v1/memory', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ conversation: msg, context: 'chat' })
+            });
+        } catch {}
+    }
+
+    // ─── ENTER KEY ───
+    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendChat();
+    });
+
+    // ─── AUTO REFRESH ───
+    refreshData();
+    setInterval(refreshData, 30000);
+</script>
+
+</body>
+</html>

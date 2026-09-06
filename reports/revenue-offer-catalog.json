@@ -1,0 +1,21 @@
+{
+  "system": "Nia Revenue Offer Catalog",
+  "timestamp": "2026-07-29T13:30:25.032Z",
+  "offers": [
+    {
+      "name": "AI Automation Services",
+      "category": "Business Automation",
+      "startingValue": 1000
+    },
+    {
+      "name": "EV Mobile Recharge & Detailing",
+      "category": "Vehicle Services",
+      "startingValue": 100
+    },
+    {
+      "name": "AI Consulting",
+      "category": "Technology Services",
+      "startingValue": 500
+    }
+  ]
+}

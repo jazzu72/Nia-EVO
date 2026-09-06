@@ -1,0 +1,2695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nia Executive Command Center</title>
+
+<style>
+:root{
+  --bg:#030712;
+  --panel:#071426;
+  --panel2:#0f172a;
+  --cyan:#6ee7ff;
+  --mint:#9fffd1;
+  --blue:#5865ff;
+  --text:#e8ecff;
+  --muted:#8190ad;
+  --line:rgba(255,255,255,.08);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(88,101,255,.14),transparent 35%),
+    radial-gradient(circle at 10% 20%,rgba(110,231,255,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,sans-serif;
+}
+
+.app{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  min-height:100vh;
+}
+
+.sidebar{
+  background:rgba(7,20,38,.82);
+  border-right:1px solid var(--line);
+  padding:24px 16px;
+  backdrop-filter:blur(18px);
+}
+
+.brand{
+  padding:10px 12px 28px;
+}
+
+.brand-mark{
+  font-size:28px;
+}
+
+.brand-name{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.04em;
+  margin-top:8px;
+}
+
+.brand-sub{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.nav{
+  display:grid;
+  gap:7px;
+}
+
+.nav button{
+  width:100%;
+  text-align:left;
+  border:0;
+  border-radius:12px;
+  padding:12px 14px;
+  color:#aeb9d4;
+  background:transparent;
+  cursor:pointer;
+  font:inherit;
+}
+
+.nav button:hover,
+.nav button.active{
+  color:white;
+  background:linear-gradient(135deg,#101a38,#07101f);
+  box-shadow:inset 0 0 0 1px rgba(110,231,255,.08);
+}
+
+.core{
+  margin-top:30px;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(15,23,42,.6);
+}
+
+.core-title{
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+.core-row{
+  display:flex;
+  justify-content:space-between;
+  margin-top:11px;
+  font-size:12px;
+}
+
+.online{
+  color:var(--mint);
+}
+
+main{
+  padding:28px;
+  max-width:1700px;
+  width:100%;
+  margin:auto;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:28px;
+}
+
+.eyebrow{
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+h1{
+  margin:5px 0 0;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 14px;
+  border:1px solid rgba(159,255,209,.14);
+  border-radius:50px;
+  background:rgba(13,45,34,.55);
+  color:var(--mint);
+  font-size:12px;
+  font-weight:700;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#6dffb2;
+  box-shadow:0 0 14px #6dffb2;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.5fr .8fr;
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.card{
+  background:linear-gradient(145deg,#111827,#0b1220);
+  border:1px solid var(--line);
+  border-radius:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.core-card{
+  padding:28px;
+  border-left:4px solid var(--blue);
+}
+
+.core-label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.core-heading{
+  font-size:26px;
+  margin:10px 0;
+}
+
+.core-message{
+  color:#aeb9d4;
+  line-height:1.6;
+  max-width:700px;
+}
+
+.core-actions{
+  display:flex;
+  gap:10px;
+  margin-top:22px;
+  flex-wrap:wrap;
+}
+
+.action{
+  border:1px solid rgba(110,231,255,.2);
+  background:#071426;
+  color:var(--cyan);
+  border-radius:12px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+
+.action.primary{
+  background:#5865ff;
+  color:white;
+  border-color:#5865ff;
+}
+
+.snapshot{
+  padding:22px;
+}
+
+.snapshot h2,
+.section-title{
+  margin:0 0 16px;
+  font-size:14px;
+}
+
+.metric-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.metric{
+  padding:20px;
+  min-height:120px;
+}
+
+.metric-name{
+  color:var(--muted);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.metric-value{
+  margin-top:12px;
+  font-size:28px;
+  font-weight:800;
+}
+
+.metric-detail{
+  margin-top:6px;
+  color:var(--mint);
+  font-size:11px;
+}
+
+.workspace{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+}
+
+.panel{
+  padding:22px;
+  min-height:260px;
+}
+
+.feed{
+  display:grid;
+  gap:10px;
+}
+
+.feed-item{
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(15,23,42,.55);
+}
+
+.feed-item small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.command textarea{
+  width:100%;
+  min-height:145px;
+  resize:vertical;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#020617;
+  color:var(--text);
+  padding:15px;
+  outline:none;
+  font:inherit;
+}
+
+.command textarea:focus{
+  border-color:rgba(110,231,255,.5);
+}
+
+.command button{
+  margin-top:12px;
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:#5865ff;
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.bottom{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.health{
+  padding:20px;
+}
+
+.health-row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+}
+
+.good{
+  color:var(--mint);
+}
+
+@media(max-width:1000px){
+  .app{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .hero,.workspace{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:repeat(2,1fr)}
+  .bottom{grid-template-columns:1fr}
+  main{padding:18px}
+}
+
+@media(max-width:560px){
+  .metric-grid{grid-template-columns:1fr}
+  h1{font-size:24px}
+}
+</style>
+
+<style id="nia-executive-cockpit">
+:root{
+  --bg:#050816;--panel:rgba(11,18,36,.82);--panel2:rgba(15,23,42,.72);
+  --line:rgba(148,163,184,.14);--text:#eef4ff;--muted:#8fa1bd;
+  --cyan:#6ee7ff;--green:#9fffd1;--violet:#9b8cff;
+}
+body{
+  background:
+    radial-gradient(circle at 75% 0%,rgba(110,231,255,.09),transparent 28%),
+    radial-gradient(circle at 10% 90%,rgba(155,140,255,.08),transparent 30%),
+    var(--bg)!important;
+  color:var(--text);
+}
+.sidebar,.topbar,.card,.metric,.panel,.hero,.command-card{
+  background:linear-gradient(145deg,var(--panel),var(--panel2));
+  border:1px solid var(--line);
+  box-shadow:0 18px 60px rgba(0,0,0,.28);
+  backdrop-filter:blur(18px);
+}
+.sidebar{border-right:1px solid var(--line)}
+.card,.metric,.panel,.hero,.command-card{border-radius:20px}
+h1,h2,h3{letter-spacing:-.025em}
+.metric strong{font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.04em}
+.status-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 16px var(--green);
+  margin-right:8px;
+}
+.live-badge{
+  border:1px solid rgba(159,255,209,.22);
+  background:rgba(159,255,209,.06);
+  color:var(--green);border-radius:999px;padding:6px 10px;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;
+}
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(110,231,255,.14),transparent 28%),
+    linear-gradient(145deg,rgba(13,45,34,.72),rgba(7,20,38,.92));
+}
+.hero:after{
+  content:"";position:absolute;inset:auto -15% -55% 35%;height:260px;
+  background:radial-gradient(circle,rgba(110,231,255,.10),transparent 65%);
+  pointer-events:none;
+}
+.metric:hover,.card:hover,.panel:hover{
+  border-color:rgba(110,231,255,.24);
+  transform:translateY(-2px);
+  transition:.22s ease;
+}
+.metric,.card,.panel{transition:.22s ease}
+.live-action{
+  display:grid;gap:3px;padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+.live-action:last-child{border-bottom:0}
+.live-action strong{color:var(--text)}
+.live-action span,.live-action small{color:var(--muted)}
+.live-action small{text-transform:uppercase;letter-spacing:.08em}
+.live-empty{color:var(--muted);padding:14px 0}
+#opportunity-live{
+  display:grid;gap:7px;margin-top:12px;padding:16px;
+  border-radius:16px;background:rgba(110,231,255,.045);
+  border:1px solid rgba(110,231,255,.12);
+}
+#opportunity-live strong{font-size:1rem;color:var(--text)}
+#opportunity-live span{color:var(--muted)}
+#opportunity-live small{color:#f7d98a}
+textarea{
+  background:rgba(2,6,23,.7)!important;
+  color:var(--text)!important;
+  border:1px solid var(--line)!important;
+  border-radius:16px!important;
+}
+button{
+  border-radius:12px!important;
+  transition:.2s ease!important;
+}
+button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+[data-nia-live="true"] .live-badge:before{content:"LIVE • "}
+@media(max-width:900px){
+  .sidebar{display:none!important}
+  .main,.content{width:100%!important;margin-left:0!important}
+}
+@media(max-width:640px){
+  .metric{min-height:110px}
+  .hero{padding:20px!important}
+  .topbar{gap:10px}
+}
+</style>
+
+<style id="nia-v2-workspace-layer">
+.nia-screen{animation:niaScreenIn .22s ease both;padding-bottom:32px}
+@keyframes niaScreenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.nia-screen h1{font-size:clamp(28px,4vw,44px);margin:6px 0 8px;letter-spacing:-.04em}
+.screen-subtitle{color:rgba(232,236,255,.62);margin:0 0 26px;max-width:720px}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}
+.metric-card{position:relative;overflow:hidden;padding:22px;border:1px solid rgba(110,231,255,.13);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 18px 45px rgba(0,0,0,.18);transition:.2s}
+.metric-card:hover{transform:translateY(-3px);border-color:rgba(110,231,255,.3)}
+.metric-card span{display:block;color:rgba(232,236,255,.56);font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+.metric-card strong{display:block;margin-top:9px;font-size:27px;letter-spacing:-.03em}
+.cockpit-card{margin-top:18px;padding:24px;border:1px solid rgba(110,231,255,.12);border-radius:22px;background:linear-gradient(145deg,rgba(7,20,38,.92),rgba(3,7,18,.88));box-shadow:0 20px 55px rgba(0,0,0,.22)}
+.card-title{font-size:13px;text-transform:uppercase;letter-spacing:.13em;color:#9fffd1;font-weight:700;margin-bottom:14px}
+.live-detail{font-size:15px;line-height:1.7;color:rgba(232,236,255,.76)}
+.governance-note{margin-top:18px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(159,255,209,.1);color:rgba(232,236,255,.58);font-size:12px}
+.nia-workspace-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}
+.nia-tool-chip{border:1px solid rgba(110,231,255,.16);background:rgba(255,255,255,.04);color:rgba(232,236,255,.7);padding:8px 12px;border-radius:999px;font-size:12px}
+.nia-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6ee7ff;box-shadow:0 0 12px #6ee7ff;margin-right:7px}
+.nia-screen[hidden]{display:none!important}
+@media(max-width:760px){
+ .metric-grid{grid-template-columns:1fr}
+ .cockpit-card{padding:18px}
+}
+</style>
+
+<style id="nia-v2-interactive-style">
+.metric-card[data-executive-screen],
+.cockpit-card[data-executive-screen]{
+  cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.metric-card[data-executive-screen]:hover,
+.cockpit-card[data-executive-screen]:hover{
+  transform:translateY(-2px);
+}
+.metric-card[data-executive-screen]:focus-visible,
+.cockpit-card[data-executive-screen]:focus-visible{
+  outline:2px solid #6ee7ff;
+  outline-offset:3px;
+}
+.nia-screen[hidden]{
+  display:none!important;
+}
+</style>
+
+<style id="nia-v2-intelligence-viz">
+.nia-viz-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+.nia-viz-card{
+  position:relative;
+  overflow:hidden;
+  min-height:180px;
+  padding:20px;
+  border:1px solid rgba(148,163,184,.16);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(7,18,35,.82));
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+.nia-viz-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.nia-viz-title{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.nia-viz-value{
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+.nia-viz-sub{
+  margin-top:6px;
+  color:#94a3b8;
+  font-size:12px;
+}
+.nia-bar{
+  height:9px;
+  margin-top:22px;
+  overflow:hidden;
+  border-radius:99px;
+  background:rgba(148,163,184,.12);
+}
+.nia-bar > span{
+  display:block;
+  width:0%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#6ee7ff,#9fffd1);
+  transition:width .5s ease;
+}
+.nia-ring{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at center,#071426 55%,transparent 56%),
+    conic-gradient(#6ee7ff var(--pct,0%),rgba(148,163,184,.12) 0);
+}
+.nia-ring strong{font-size:15px}
+.nia-viz-status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(110,231,255,.08);
+  border:1px solid rgba(110,231,255,.15);
+  font-size:10px;
+  letter-spacing:.08em;
+}
+.nia-viz-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#6ee7ff;
+  box-shadow:0 0 12px rgba(110,231,255,.8);
+}
+.nia-viz-list{
+  display:grid;
+  gap:9px;
+  margin-top:14px;
+}
+.nia-viz-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(148,163,184,.05);
+}
+.nia-viz-row span:first-child{color:#cbd5e1}
+.nia-viz-row span:last-child{font-weight:700}
+@media(max-width:800px){
+  .nia-viz-grid{grid-template-columns:1fr}
+}
+</style>
+
+<style id="nia-v2-overview-command">
+.nia-overview-command{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:18px;
+  margin-top:18px;
+}
+.nia-command-hero{
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+  min-height:230px;
+  border:1px solid rgba(110,231,255,.14);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(110,231,255,.10),transparent 32%),
+    linear-gradient(145deg,rgba(15,23,42,.97),rgba(5,16,31,.94));
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+}
+.nia-command-hero h2{
+  margin:0;
+  font-size:28px;
+  letter-spacing:-.035em;
+}
+.nia-command-hero p{
+  margin:9px 0 0;
+  color:#94a3b8;
+  font-size:13px;
+}
+.nia-command-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:24px;
+}
+.nia-command-stat{
+  padding:14px;
+  border-radius:16px;
+  background:rgba(148,163,184,.055);
+  border:1px solid rgba(148,163,184,.10);
+}
+.nia-command-stat span{
+  display:block;
+  color:#94a3b8;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.nia-command-stat strong{
+  display:block;
+  margin-top:6px;
+  font-size:22px;
+}
+.nia-command-side{
+  display:grid;
+  gap:12px;
+}
+.nia-command-state{
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(159,255,209,.12);
+  background:linear-gradient(145deg,rgba(8,28,28,.86),rgba(7,18,35,.9));
+}
+.nia-command-state .label{
+  color:#94a3b8;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.nia-command-state .value{
+  margin-top:7px;
+  font-size:20px;
+  font-weight:800;
+}
+.nia-command-state .detail{
+  margin-top:5px;
+  color:#94a3b8;
+  font-size:11px;
+}
+.nia-command-pulse{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(110,231,255,.16);
+  background:rgba(110,231,255,.06);
+  font-size:10px;
+  letter-spacing:.08em;
+}
+.nia-command-pulse i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#6ee7ff;
+  box-shadow:0 0 14px rgba(110,231,255,.9);
+}
+@media(max-width:850px){
+  .nia-overview-command{grid-template-columns:1fr}
+  .nia-command-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .nia-command-grid{grid-template-columns:1fr}
+}
+</style>
+
+<style id="nia-v2-command-console">
+.nia-command-console{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.nia-console-panel{
+  padding:18px;
+  border:1px solid rgba(148,163,184,.14);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(7,18,35,.9));
+}
+.nia-console-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.nia-console-label small{
+  color:#64748b;
+  font-size:9px;
+}
+#niaV2CommandInput{
+  width:100%;
+  min-height:118px;
+  resize:vertical;
+  box-sizing:border-box;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(148,163,184,.14);
+  background:rgba(2,6,23,.72);
+  color:#e8ecff;
+  outline:none;
+  font:inherit;
+}
+#niaV2CommandInput:focus{
+  border-color:rgba(110,231,255,.42);
+  box-shadow:0 0 0 3px rgba(110,231,255,.06);
+}
+.nia-console-actions{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+.nia-console-btn{
+  border:1px solid rgba(110,231,255,.2);
+  border-radius:12px;
+  padding:10px 14px;
+  background:rgba(110,231,255,.07);
+  color:#dffaff;
+  cursor:pointer;
+  font-weight:700;
+}
+.nia-console-btn:hover{
+  background:rgba(110,231,255,.13);
+}
+.nia-console-btn:disabled{
+  opacity:.5;
+  cursor:wait;
+}
+.nia-console-output{
+  min-height:118px;
+  max-height:260px;
+  overflow:auto;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(2,6,23,.62);
+  border:1px solid rgba(148,163,184,.10);
+  color:#cbd5e1;
+  white-space:pre-wrap;
+  font-size:12px;
+  line-height:1.6;
+}
+.nia-console-meta{
+  margin-top:9px;
+  color:#64748b;
+  font-size:10px;
+}
+.nia-console-status{
+  color:#9fffd1;
+}
+@media(max-width:800px){
+  .nia-command-console{grid-template-columns:1fr}
+}
+</style>
+
+<style id="nia-v2-activity-feed">
+.nia-activity{
+  margin-top:18px;
+  padding:20px;
+  border:1px solid rgba(148,163,184,.14);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(7,18,35,.9));
+}
+.nia-activity-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.nia-activity-list{
+  display:grid;
+  gap:9px;
+  max-height:330px;
+  overflow:auto;
+}
+.nia-activity-item{
+  display:grid;
+  grid-template-columns:9px 1fr auto;
+  gap:11px;
+  align-items:start;
+  padding:12px;
+  border-radius:14px;
+  background:rgba(148,163,184,.045);
+  border:1px solid rgba(148,163,184,.07);
+}
+.nia-activity-dot{
+  width:8px;
+  height:8px;
+  margin-top:5px;
+  border-radius:50%;
+  background:#6ee7ff;
+  box-shadow:0 0 12px rgba(110,231,255,.65);
+}
+.nia-activity-item strong{
+  display:block;
+  font-size:12px;
+}
+.nia-activity-item span{
+  display:block;
+  margin-top:3px;
+  color:#94a3b8;
+  font-size:10px;
+  line-height:1.45;
+}
+.nia-activity-time{
+  color:#64748b;
+  font-size:9px;
+  white-space:nowrap;
+}
+.nia-activity-empty{
+  padding:18px;
+  text-align:center;
+  color:#64748b;
+  font-size:11px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+
+  <div class="brand">
+    <div class="brand-mark">🏰</div>
+    <div class="brand-name">NIA</div>
+    <div class="brand-sub">CAPITAL OPERATING SYSTEM</div>
+  </div>
+
+  <nav class="nav">
+    <button class="active">◉ Executive Overview</button>
+    <button>◈ Capital Intelligence</button>
+    <button>◆ Revenue</button>
+    <button>◇ Grants</button>
+    <button>⌂ Deal Pipeline</button>
+    <button>⚡ Action Center</button>
+    <button>📝 Audit Trail</button>
+  </nav>
+
+  <div class="core">
+    <div class="core-title">NIA CORE</div>
+    <div class="core-row"><span>Memory</span><span class="online">ACTIVE</span></div>
+    <div class="core-row"><span>Reasoning</span><span class="online">ACTIVE</span></div>
+    <div class="core-row"><span>Revenue</span><span class="online">READY</span></div>
+    <div class="core-row"><span>Acquisition</span><span class="online">READY</span></div>
+  </div>
+
+</aside>
+
+
+<div id="nia-live-strip" style="
+display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+margin:0 0 18px;padding:10px 12px;border:1px solid rgba(148,163,184,.12);
+border-radius:14px;background:rgba(2,6,23,.35);color:#8fa1bd;font-size:.76rem;">
+<span class="live-badge"><span class="status-dot"></span>NIA LIVE</span>
+<span>READ_ONLY</span>
+<span>•</span>
+<span>HUMAN APPROVAL REQUIRED</span>
+<span>•</span>
+<span>NO AUTONOMOUS EXECUTION</span>
+</div>
+<main>
+
+<header class="topbar">
+  <div>
+    <div class="eyebrow">House of Jazzu</div>
+    <h1>Nia Executive Command Center</h1>
+  </div>
+
+  <div class="status">
+    <span class="dot"></span>
+    NIA ONLINE
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="card core-card">
+    <div class="core-label">EXECUTIVE CORE</div>
+    <div class="core-heading">Good morning. Nia is monitoring the business.</div>
+    <div class="core-message">
+      Capital, revenue, opportunities, grants, deals and execution
+      are consolidated into one command surface.
+    </div>
+
+    <div class="core-actions">
+      <button class="action primary">Open CEO Brief</button>
+      <button class="action">Review Priorities</button>
+      <button class="action">Run Intelligence</button>
+    </div>
+  </div>
+
+  <div class="card snapshot">
+    <h2>Executive Snapshot</h2>
+
+    <div class="health-row">
+      <span>Operating Mode</span>
+      <span class="good">CONTROLLED</span>
+    </div>
+
+    <div class="health-row">
+      <span>Decision Engine</span>
+      <span class="good">READY</span>
+    </div>
+
+    <div class="health-row">
+      <span>Execution</span>
+      <span class="good">GOVERNED</span>
+    </div>
+
+    <div class="health-row">
+      <span>Last Sync</span>
+      <span id="sync">LIVE</span>
+    </div>
+  </div>
+
+</section>
+
+<div class="metric-grid">
+
+  <div class="card metric">
+    <div class="metric-name">Capital Intelligence</div>
+    <div class="metric-value" id="capital">—</div>
+    <div class="metric-detail">Monitoring</div>
+  </div>
+
+  <div class="card metric">
+    <div class="metric-name">Revenue Pipeline</div>
+    <div class="metric-value" id="revenue">—</div>
+    <div class="metric-detail">Active opportunities</div>
+  </div>
+
+  <div class="card metric">
+    <div class="metric-name">Grant Radar</div>
+    <div class="metric-value" id="grants">—</div>
+    <div class="metric-detail">Funding intelligence</div>
+  </div>
+
+  <div class="card metric">
+    <div class="metric-name">System Health</div>
+    <div class="metric-value" id="health">CONNECTING</div>
+    <div class="metric-detail">Nia infrastructure</div>
+  </div>
+
+</div>
+
+<section class="workspace">
+
+  <div class="card panel">
+    <div class="section-title">📡 Intelligence Activity</div>
+
+    <div class="feed">
+      <div class="feed-item">
+        Executive Command Center initialized
+        <small>Awaiting live intelligence stream</small>
+      </div>
+
+      <div class="feed-item">
+        AIOS decision layer available
+        <small>Controlled operating mode</small>
+      </div>
+
+      <div class="feed-item">
+        Capital intelligence ready
+        <small>Monitoring opportunities</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="card panel command">
+
+    <div class="section-title">👑 Communicate With Nia</div>
+
+    <textarea id="command"
+      placeholder="Ask Nia...
+
+Analyze today's priorities
+Find new grants
+Review revenue pipeline
+Analyze active deals
+Prepare CEO briefing"></textarea>
+
+    <button onclick="sendCommand()">SEND TO NIA</button>
+
+    <div id="response" style="margin-top:12px;color:#9fffd1;font-size:12px">
+      Nia awaiting instructions.
+    </div>
+
+  </div>
+
+</section>
+
+<section class="bottom">
+
+  <div class="card health">
+    <div class="section-title">⚡ Action Center</div>
+    <div class="health-row"><span>Priority Actions</span><span id="actions">0</span></div>
+    <div class="health-row"><span>Pending Decisions</span><span id="decisions">0</span></div>
+    <div class="health-row"><span>Execution Progress</span><span>READY</span></div>
+  </div>
+
+  <div class="card health">
+    <div class="section-title">🎯 Opportunity Intelligence</div>
+    <div class="health-row"><span>Acquisition</span><span class="good">READY</span></div>
+    <div class="health-row"><span>Grants</span><span class="good">SCANNING</span></div>
+    <div class="health-row"><span>Deals</span><span class="good">MONITORING</span></div>
+  </div>
+
+  <div class="card health">
+    <div class="section-title">🩺 System Health</div>
+    <div class="health-row"><span>AIOS</span><span class="good">ONLINE</span></div>
+    <div class="health-row"><span>Memory</span><span class="good">ACTIVE</span></div>
+    <div class="health-row"><span>Governor</span><span class="good">ENABLED</span></div>
+  </div>
+
+</section>
+
+</main>
+</div>
+
+<script>
+async function sendCommand(){
+  const input=document.getElementById("command");
+  const response=document.getElementById("response");
+  const command=input.value.trim();
+
+  if(!command){
+    response.textContent="Enter an instruction for Nia.";
+    return;
+  }
+
+  response.textContent="Nia is processing your instruction...";
+
+  try{
+    const r=await fetch("/api/aios/tools/reason",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({objective:command})
+    });
+
+    const data=await r.json();
+
+    response.textContent=data.message ||
+      data.reason ||
+      data.objective ||
+      "Nia returned a decision.";
+  }catch(e){
+    response.textContent="Nia command channel unavailable.";
+  }
+}
+
+setInterval(()=>{
+  document.getElementById("sync").textContent=
+    "SYNC "+new Date().toLocaleTimeString();
+},1000);
+</script>
+
+
+<script>
+/* ============================================================
+   NIA EXECUTIVE V2 — LIVE DATA BRIDGE
+   Recovery branch only. Production untouched.
+   ============================================================ */
+
+async function niaFetch(url) {
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error(`${r.status} ${url}`);
+  return r.json();
+}
+
+function money(v) {
+  if (v === null || v === undefined || Number.isNaN(Number(v))) return "—";
+  return "$" + Number(v).toLocaleString("en-US", {
+    maximumFractionDigits: 0
+  });
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+async function refreshNiaExecutive() {
+  try {
+    const [
+      providers,
+      tools,
+      acquisition,
+      automation,
+      grants,
+      health
+    ] = await Promise.allSettled([
+      niaFetch(NIA_API.providers),
+      niaFetch(NIA_API.tools),
+      niaFetch(NIA_API.acquisition),
+      niaFetch(NIA_API.automation),
+      niaFetch(NIA_API.grants),
+      niaFetch(NIA_API.health)
+    ]);
+
+    /* SYSTEM */
+    if (health.status === "fulfilled") {
+      setText("health", String(health.value.status || "ONLINE").toUpperCase());
+    }
+
+    /* ACQUISITION */
+    if (acquisition.status === "fulfilled") {
+      const a = acquisition.value;
+
+      const opportunityCount =
+        Number(a.total || 0);
+
+      const warm =
+        Number(a.warm || 0);
+
+      setText("opportunities", opportunityCount);
+      setText("actions", Number(a.queued || 0));
+
+      const activity = document.getElementById("activity");
+      if (activity) {
+        activity.innerHTML = `
+          <div class="activity-item">
+            <span class="activity-dot"></span>
+            <div>
+              <strong>Acquisition engine online</strong>
+              <small>${opportunityCount} prospects · ${warm} warm</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <span class="activity-dot"></span>
+            <div>
+              <strong>Discovery intelligence</strong>
+              <small>${Number(a.totalDiscoveries || 0)} total discoveries</small>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    /* REVENUE / ACTION CENTER */
+    if (automation.status === "fulfilled") {
+      const queue = Array.isArray(automation.value)
+        ? automation.value
+        : [];
+
+      const pending = queue.filter(x =>
+        ["PENDING", "PENDING_APPROVAL", "QUEUED"].includes(
+          String(x.status || "").toUpperCase()
+        )
+      ).length;
+
+      const completed = queue.filter(x =>
+        String(x.status || "").toUpperCase().includes("COMPLETED")
+      ).length;
+
+      setText("revenue", String(queue.length));
+      setText("actions", pending);
+
+      const actionList = document.getElementById("actionList");
+      if (actionList) {
+        const rows = queue.slice(0, 5).map(x => `
+          <div class="action-row">
+            <div>
+              <strong>${x.company || x.type || "Nia Action"}</strong>
+              <small>${x.instruction || x.type || "Revenue action"}</small>
+            </div>
+            <span>${x.status || "UNKNOWN"}</span>
+          </div>
+        `).join("");
+
+        actionList.innerHTML = rows ||
+          `<div class="muted">No queued actions.</div>`;
+      }
+    }
+
+    /* GRANTS */
+    if (grants.status === "fulfilled") {
+      const g = grants.value;
+
+      let count = 0;
+
+      if (Array.isArray(g)) count = g.length;
+      else if (Array.isArray(g.grants)) count = g.grants.length;
+      else if (Array.isArray(g.results)) count = g.results.length;
+      else if (Array.isArray(g.opportunities)) count = g.opportunities.length;
+      else if (Number.isFinite(Number(g.total))) count = Number(g.total);
+
+      setText("grants", count);
+    }
+
+    /* AIOS STATUS */
+    if (providers.status === "fulfilled") {
+      const x = providers.value;
+
+      const mode =
+        x.mode ||
+        (x.execution_allowed ? "ACTIVE" : "READ_ONLY");
+
+      const core = document.getElementById("coreStatus");
+      if (core) {
+        core.textContent =
+          `${String(mode).toUpperCase()} · HUMAN APPROVAL`;
+      }
+    }
+
+    if (tools.status === "fulfilled") {
+      const x = tools.value;
+      const toolStatus = document.getElementById("toolStatus");
+
+      if (toolStatus) {
+        toolStatus.textContent =
+          String(x.mode || "READ_ONLY").toUpperCase();
+      }
+    }
+
+  } catch (err) {
+    console.error("NIA LIVE DATA BRIDGE:", err);
+  }
+}
+
+refreshNiaExecutive();
+setInterval(refreshNiaExecutive, 15000);
+</script>
+
+<script id="nia-v2-navigation">
+(function(){
+  const navMap={
+    "Executive Overview":"overview",
+    "Capital Intelligence":"capital",
+    "Revenue":"revenue",
+    "Grants":"grants",
+    "Deal Pipeline":"deals",
+    "Action Center":"actions",
+    "Audit Trail":"audit"
+  };
+
+  function items(){
+    return Array.from(document.querySelectorAll(
+      'nav a, nav button, .sidebar a, .sidebar button, [data-nav]'
+    ));
+  }
+
+  function label(el){
+    return (el.textContent||el.getAttribute("aria-label")||"").trim();
+  }
+
+  function screenFor(el){
+    if(!el)return null;
+    if(el.dataset.screen)return el.dataset.screen;
+    if(el.dataset.nav)return el.dataset.nav;
+    const t=label(el);
+    if(t==="Open CEO Brief")return "overview";
+    if(t==="Review Priorities")return "actions";
+    if(t==="Run Intelligence")return "capital";
+    return navMap[t]||null;
+  }
+
+  function activate(screen){
+    items().forEach(el=>{
+      const active=screenFor(el)===screen;
+      el.classList.toggle("active",active);
+      el.classList.toggle("selected",active);
+      el.setAttribute("aria-current",active?"page":"false");
+    });
+
+    document.documentElement.dataset.niaScreen=screen;
+    document.body.dataset.niaScreen=screen;
+
+    document.querySelectorAll(
+      '.nia-screen'
+    ).forEach(el=>{
+      const key=el.dataset.screen||el.id;
+      if(key)el.hidden=key!==screen;
+    });
+
+    window.dispatchEvent(
+      new CustomEvent("nia:navigate",{detail:{screen}})
+    );
+  }
+
+  document.addEventListener("click",e=>{
+    const el=e.target.closest("a,button,[role='button']");
+    if(!el)return;
+    const screen=screenFor(el);
+    if(!screen)return;
+    if(el.tagName==="A")e.preventDefault();
+    activate(screen);
+  });
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    items().forEach(el=>{
+      const screen=screenFor(el);
+      if(screen)el.dataset.nav=screen;
+    });
+    activate("overview");
+  });
+})();
+</script>
+
+<div id="nia-v2-workspace-layer" class="nia-workspace-tools">
+  <span class="nia-tool-chip"><span class="nia-live-dot"></span>LIVE DATA</span>
+  <span class="nia-tool-chip">15s SYNC</span>
+  <span class="nia-tool-chip">READ_ONLY</span>
+  <span class="nia-tool-chip">HUMAN APPROVAL REQUIRED</span>
+</div>
+
+
+
+
+
+<section id="nia-v2-activity-feed" class="cockpit-card nia-activity">
+  <div class="nia-activity-head">
+    <div class="card-title">Intelligence Activity</div>
+    <span class="nia-viz-status">
+      <span class="nia-viz-dot"></span>
+      LIVE
+    </span>
+  </div>
+
+  <div id="niaV2ActivityList" class="nia-activity-list">
+    <div class="nia-activity-empty">
+      Initializing Nia activity stream…
+    </div>
+  </div>
+</section>
+
+<section id="nia-v2-command-console" class="cockpit-card">
+  <div class="card-title">
+    <span>Command Console</span>
+    <span class="nia-viz-status">
+      <span class="nia-viz-dot"></span>
+      CONTROLLED
+    </span>
+  </div>
+
+  <div class="nia-command-console">
+
+    <div class="nia-console-panel">
+      <div class="nia-console-label">
+        <span>Command Nia</span>
+        <small>READ_ONLY</small>
+      </div>
+
+      <textarea
+        id="niaV2CommandInput"
+        placeholder="Ask Nia to analyze capital, revenue, grants, opportunities, or priorities…"
+      ></textarea>
+
+      <div class="nia-console-actions">
+        <button class="nia-console-btn" id="niaV2RunCommand">
+          RUN INTELLIGENCE
+        </button>
+        <button class="nia-console-btn" id="niaV2ClearCommand">
+          CLEAR
+        </button>
+      </div>
+
+      <div class="nia-console-meta">
+        Analysis requests do not authorize execution.
+      </div>
+    </div>
+
+    <div class="nia-console-panel">
+      <div class="nia-console-label">
+        <span>Nia Response</span>
+        <small class="nia-console-status" id="niaV2CommandStatus">
+          READY
+        </small>
+      </div>
+
+      <div class="nia-console-output" id="niaV2CommandOutput">
+        Nia is ready. Submit an intelligence request.
+      </div>
+
+      <div class="nia-console-meta">
+        Human approval remains required for governed actions.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="nia-v2-overview-command" class="cockpit-card">
+  <div class="card-title">
+    <span>Executive Command Layer</span>
+    <span class="nia-viz-status">
+      <span class="nia-viz-dot"></span>
+      SYNCHRONIZED
+    </span>
+  </div>
+
+  <div class="nia-overview-command">
+
+    <div class="nia-command-hero">
+      <h2>Nia Executive Core</h2>
+      <p>
+        One operating view across capital intelligence, revenue,
+        grants, opportunities, and controlled execution.
+      </p>
+
+      <div class="nia-command-pulse">
+        <i></i>
+        <span id="niaCommandPulse">NIA ONLINE</span>
+      </div>
+
+      <div class="nia-command-grid">
+        <div class="nia-command-stat">
+          <span>Opportunities</span>
+          <strong id="niaCommandOpportunities">0</strong>
+        </div>
+        <div class="nia-command-stat">
+          <span>Active Deals</span>
+          <strong id="niaCommandDeals">0</strong>
+        </div>
+        <div class="nia-command-stat">
+          <span>Pipeline</span>
+          <strong id="niaCommandPipeline">$0</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="nia-command-side">
+
+      <div class="nia-command-state">
+        <div class="label">Capital Radar</div>
+        <div class="value" id="niaCommandGrantScore">0</div>
+        <div class="detail" id="niaCommandGrantName">
+          No grant opportunity loaded
+        </div>
+      </div>
+
+      <div class="nia-command-state">
+        <div class="label">Runtime</div>
+        <div class="value" id="niaCommandRuntime">UNKNOWN</div>
+        <div class="detail" id="niaCommandRuntimeDetail">
+          Awaiting health synchronization
+        </div>
+      </div>
+
+      <div class="nia-command-state">
+        <div class="label">Governance</div>
+        <div class="value" id="niaCommandGovernance">
+          READ_ONLY
+        </div>
+        <div class="detail" id="niaCommandGovernanceDetail">
+          Human approval required
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="nia-v2-intelligence-viz" class="cockpit-card">
+  <div class="card-title">
+    <span>Executive Intelligence</span>
+    <span class="nia-viz-status">
+      <span class="nia-viz-dot"></span>
+      LIVE
+    </span>
+  </div>
+
+  <div class="nia-viz-grid">
+
+    <div class="nia-viz-card">
+      <div class="nia-viz-head">
+        <div>
+          <div class="nia-viz-title">Capital Intelligence</div>
+          <div class="nia-viz-sub">Current opportunity environment</div>
+        </div>
+        <div class="nia-ring" id="niaVizCapitalRing">
+          <strong id="niaVizCapitalPct">0%</strong>
+        </div>
+      </div>
+      <div class="nia-viz-value" id="niaVizCapital">0</div>
+      <div class="nia-viz-sub">Tracked opportunities</div>
+      <div class="nia-bar"><span id="niaVizCapitalBar"></span></div>
+    </div>
+
+    <div class="nia-viz-card">
+      <div class="nia-viz-head">
+        <div>
+          <div class="nia-viz-title">Revenue Command</div>
+          <div class="nia-viz-sub">Active deal and automation state</div>
+        </div>
+        <div class="nia-ring" id="niaVizRevenueRing">
+          <strong id="niaVizRevenuePct">0%</strong>
+        </div>
+      </div>
+      <div class="nia-viz-value" id="niaVizRevenue">$0</div>
+      <div class="nia-viz-sub">Pipeline value</div>
+      <div class="nia-bar"><span id="niaVizRevenueBar"></span></div>
+    </div>
+
+    <div class="nia-viz-card">
+      <div class="nia-viz-head">
+        <div>
+          <div class="nia-viz-title">Grant Radar</div>
+          <div class="nia-viz-sub">Highest-scoring scanned opportunity</div>
+        </div>
+        <div class="nia-viz-ring nia-ring" id="niaVizGrantRing">
+          <strong id="niaVizGrantPct">0%</strong>
+        </div>
+      </div>
+      <div class="nia-viz-value" id="niaVizGrant">0</div>
+      <div class="nia-viz-sub" id="niaVizGrantName">No opportunity loaded</div>
+      <div class="nia-bar"><span id="niaVizGrantBar"></span></div>
+    </div>
+
+    <div class="nia-viz-card">
+      <div class="nia-viz-head">
+        <div>
+          <div class="nia-viz-title">Operating State</div>
+          <div class="nia-viz-sub">Governance and runtime health</div>
+        </div>
+        <div class="nia-ring" id="niaVizHealthRing">
+          <strong id="niaVizHealthPct">0%</strong>
+        </div>
+      </div>
+
+      <div class="nia-viz-list">
+        <div class="nia-viz-row">
+          <span>Runtime</span>
+          <span id="niaVizRuntime">UNKNOWN</span>
+        </div>
+        <div class="nia-viz-row">
+          <span>Execution</span>
+          <span id="niaVizExecution">BLOCKED</span>
+        </div>
+        <div class="nia-viz-row">
+          <span>Approval</span>
+          <span id="niaVizApproval">REQUIRED</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="nia-v2-screen-shell" aria-label="Nia Executive Workspaces">
+
+  <!-- NIA V2 OVERVIEW SCREEN -->
+<section class="nia-screen" data-screen="overview" id="nia-v2-overview-screen">
+  <div class="cockpit-card">
+    <div class="card-title">Executive Overview</div>
+    <p class="muted">
+      Nia Executive Command Center — live operating state, capital intelligence,
+      revenue pipeline, opportunities, and governance.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <span>Opportunities</span>
+        <strong id="overviewOpportunities">0</strong>
+      </div>
+      <div class="metric-card">
+        <span>Active Deals</span>
+        <strong id="overviewDeals">0</strong>
+      </div>
+      <div class="metric-card">
+        <span>Pipeline</span>
+        <strong id="overviewPipeline">$0</strong>
+      </div>
+      <div class="metric-card">
+        <span>System</span>
+        <strong id="overviewSystem">ONLINE</strong>
+      </div>
+    </div>
+    <div class="governance-note">
+      READ_ONLY · HUMAN APPROVAL REQUIRED · NO AUTONOMOUS EXECUTION
+    </div>
+  </div>
+</section>
+
+<section class="nia-screen" data-screen="capital" hidden>
+    <div class="eyebrow">CAPITAL INTELLIGENCE</div>
+    <h1>Capital Intelligence</h1>
+    <p class="screen-subtitle">Capital position, opportunity signals, and funding intelligence.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>Capital Intelligence</span><strong id="v2-capital-value">—</strong></article>
+      <article class="metric-card"><span>Opportunities</span><strong id="v2-capital-opportunities">—</strong></article>
+      <article class="metric-card"><span>System Mode</span><strong id="v2-capital-mode">READ_ONLY</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Intelligence Status</div>
+      <div id="v2-capital-detail" class="live-detail">Loading live intelligence…</div>
+    </div>
+  </section>
+
+  <section class="nia-screen" data-screen="revenue" hidden>
+    <div class="eyebrow">REVENUE ENGINE</div>
+    <h1>Revenue Command</h1>
+    <p class="screen-subtitle">Pipeline, automation queue, and revenue execution readiness.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>Active Deals</span><strong id="v2-revenue-deals">—</strong></article>
+      <article class="metric-card"><span>Pipeline Value</span><strong id="v2-revenue-pipeline">—</strong></article>
+      <article class="metric-card"><span>Queued Actions</span><strong id="v2-revenue-actions">—</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Revenue Automation</div>
+      <div id="v2-revenue-detail" class="live-detail">Loading live revenue data…</div>
+    </div>
+  </section>
+
+  <section class="nia-screen" data-screen="grants" hidden>
+    <div class="eyebrow">GRANT RADAR</div>
+    <h1>Grant Intelligence</h1>
+    <p class="screen-subtitle">Funding opportunities ranked for House of Jazzu.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>Opportunities</span><strong id="v2-grant-count">—</strong></article>
+      <article class="metric-card"><span>Top Score</span><strong id="v2-grant-score">—</strong></article>
+      <article class="metric-card"><span>Top Opportunity</span><strong id="v2-grant-top">—</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Grant Radar</div>
+      <div id="v2-grant-detail" class="live-detail">Loading grant intelligence…</div>
+      <div class="governance-note">Eligibility verification required before any submission.</div>
+    </div>
+  </section>
+
+  <section class="nia-screen" data-screen="deals" hidden>
+    <div class="eyebrow">DEAL PIPELINE</div>
+    <h1>Deal Pipeline</h1>
+    <p class="screen-subtitle">Commercial opportunities and acquisition intelligence.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>Active Deals</span><strong id="v2-deal-count">—</strong></article>
+      <article class="metric-card"><span>Opportunities</span><strong id="v2-deal-opportunities">—</strong></article>
+      <article class="metric-card"><span>Pipeline</span><strong id="v2-deal-pipeline">—</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Acquisition Intelligence</div>
+      <div id="v2-deal-detail" class="live-detail">Loading deal intelligence…</div>
+    </div>
+  </section>
+
+  <section class="nia-screen" data-screen="actions" hidden>
+    <div class="eyebrow">ACTION CENTER</div>
+    <h1>Action Center</h1>
+    <p class="screen-subtitle">Review work queued for human authorization.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>Queued Actions</span><strong id="v2-action-count">—</strong></article>
+      <article class="metric-card"><span>Execution</span><strong>BLOCKED</strong></article>
+      <article class="metric-card"><span>Approval</span><strong>REQUIRED</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Human Approval Queue</div>
+      <div id="v2-action-detail" class="live-detail">Loading action queue…</div>
+    </div>
+  </section>
+
+  <section class="nia-screen" data-screen="audit" hidden>
+    <div class="eyebrow">AUDIT TRAIL</div>
+    <h1>Audit Trail</h1>
+    <p class="screen-subtitle">Governance, system state, and operational transparency.</p>
+    <div class="metric-grid">
+      <article class="metric-card"><span>NIA Status</span><strong id="v2-audit-status">—</strong></article>
+      <article class="metric-card"><span>Execution</span><strong>READ_ONLY</strong></article>
+      <article class="metric-card"><span>Approval</span><strong>REQUIRED</strong></article>
+    </div>
+    <div class="cockpit-card">
+      <div class="card-title">Governance State</div>
+      <div id="v2-audit-detail" class="live-detail">Loading audit state…</div>
+    </div>
+  </section>
+
+</section>
+
+<script id="nia-v2-screen-data">
+(async function(){
+  const $=id=>document.getElementById(id);
+  const text=(id,v)=>{if($(id))$(id).textContent=v};
+
+  async function get(url){
+    try{
+      const r=await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return await r.json();
+    }catch(e){return null}
+  }
+
+  async function refresh(){
+    const [command,grants,revenue,health,providers]=await Promise.all([
+      get("/api/command"),
+      get("/api/grants/scan"),
+      get("/api/revenue/automation/queue"),
+      get("/api/system/health"),
+      get("/api/aios/providers/status")
+    ]);
+
+    const deals=command?.revenue?.activeDeals ?? 0;
+    const pipeline=command?.revenue?.pipelineValue ?? 0;
+    const opportunities=command?.intelligence?.opportunities ?? 0;
+    const grantList=Array.isArray(grants?.grants)?grants.grants:[];
+    const top=grantList[0];
+
+    text("v2-capital-value",opportunities);
+    text("v2-capital-opportunities",opportunities);
+    text("v2-capital-mode",providers?.mode||"READ_ONLY");
+    text("v2-capital-detail",`NIA reports ${opportunities} active intelligence opportunities.`);
+
+    text("v2-revenue-deals",deals);
+    text("v2-revenue-pipeline",pipeline);
+    text("v2-revenue-actions",Array.isArray(revenue)?revenue.length:0);
+    text("v2-revenue-detail",`Revenue automation queue contains ${Array.isArray(revenue)?revenue.length:0} item(s).`);
+
+    text("v2-grant-count",grantList.length);
+    text("v2-grant-score",top?.score??"—");
+    text("v2-grant-top",top?.name||"—");
+    text("v2-grant-detail",top?`${top.name} • $${Number(top.amount||0).toLocaleString()} potential funding • score ${top.score}`:"No grant opportunities returned.");
+
+    text("v2-deal-count",deals);
+    text("v2-deal-opportunities",opportunities);
+    text("v2-deal-pipeline",pipeline);
+    text("v2-deal-detail",`Current command center reports ${deals} active deal(s) and ${opportunities} intelligence opportunity(ies).`);
+
+    text("v2-action-count",Array.isArray(revenue)?revenue.length:0);
+    text("v2-action-detail",Array.isArray(revenue)&&revenue.length?`${revenue.length} action(s) require review.`:"No actions currently queued.");
+
+    text("v2-audit-status",health?.status?.toUpperCase()||"UNKNOWN");
+    text("v2-audit-detail",`System: ${health?.system||"Nia Capital OS"} • Last health check: ${health?.timestamp||"unknown"} • Autonomous execution: ${providers?.autonomous_execution?"ENABLED":"DISABLED"}`);
+  }
+
+  refresh();
+  setInterval(refresh,15000);
+})();
+</script>
+
+<script id="nia-v2-hash-router">
+(function(){
+  const screens=["overview","capital","revenue","grants","deals","actions","audit"];
+
+  function current(){
+    const h=(location.hash||"#overview").slice(1).toLowerCase();
+    return screens.includes(h)?h:"overview";
+  }
+
+  function activate(screen){
+    screen=screens.includes(screen)?screen:"overview";
+
+    document.documentElement.dataset.niaScreen=screen;
+    document.body.dataset.niaScreen=screen;
+
+    document.querySelectorAll(".nia-screen").forEach(el=>{
+      el.hidden=(el.dataset.screen!==screen);
+    });
+
+    document.querySelectorAll(
+      'nav a,nav button,.sidebar a,.sidebar button,[data-nav]'
+    ).forEach(el=>{
+      const key=(
+        el.dataset.screen||
+        el.dataset.nav||
+        (el.textContent||"").trim().toLowerCase()
+      );
+
+      const map={
+        "executive overview":"overview",
+        "capital intelligence":"capital",
+        "revenue":"revenue",
+        "grants":"grants",
+        "deal pipeline":"deals",
+        "action center":"actions",
+        "audit trail":"audit"
+      };
+
+      const target=map[key]||key;
+      const active=target===screen;
+
+      el.classList.toggle("active",active);
+      el.classList.toggle("selected",active);
+
+      if(active) el.setAttribute("aria-current","page");
+      else el.removeAttribute("aria-current");
+    });
+
+    window.dispatchEvent(
+      new CustomEvent("nia:v2:navigate",{detail:{screen}})
+    );
+  }
+
+  document.addEventListener("click",e=>{
+    const el=e.target.closest(
+      'nav a,nav button,.sidebar a,.sidebar button,[data-nav]'
+    );
+    if(!el)return;
+
+    const map={
+      "Executive Overview":"overview",
+      "Capital Intelligence":"capital",
+      "Revenue":"revenue",
+      "Grants":"grants",
+      "Deal Pipeline":"deals",
+      "Action Center":"actions",
+      "Audit Trail":"audit"
+    };
+
+    const key=(el.textContent||"").trim();
+    const screen=map[key]||el.dataset.screen||el.dataset.nav;
+
+    if(!screen)return;
+
+    e.preventDefault();
+
+    if(location.hash!=="#"+screen)
+      history.pushState({screen},"","#"+screen);
+
+    activate(screen);
+  });
+
+  window.addEventListener("hashchange",()=>activate(current()));
+  window.addEventListener("popstate",()=>activate(current()));
+
+  document.addEventListener("DOMContentLoaded",()=>activate(current()));
+})();
+
+// NIA V2 routing contract: screens are identified by data-screen attributes.
+const NIA_V2_SCREEN_ATTRIBUTE = "data-screen";
+</script>
+
+<script id="nia-v2-interactive-controller">
+(function(){
+  const screens=["overview","capital","revenue","grants","deals","actions","audit"];
+
+  const aliases={
+    overview:"overview",
+    capital:"capital",
+    revenue:"revenue",
+    grants:"grants",
+    deals:"deals",
+    actions:"actions",
+    audit:"audit"
+  };
+
+  function go(screen){
+    screen=aliases[screen]||"overview";
+    if(location.hash!=="#"+screen){
+      history.pushState({screen},"","#"+screen);
+    }
+    activate(screen);
+  }
+
+  function activate(screen){
+    screen=aliases[screen]||"overview";
+
+    document.documentElement.dataset.niaScreen=screen;
+    document.body.dataset.niaScreen=screen;
+
+    document.querySelectorAll(".nia-screen").forEach(el=>{
+      el.hidden=el.dataset.screen!==screen;
+    });
+
+    document.querySelectorAll("[data-executive-screen]").forEach(el=>{
+      const active=el.dataset.executiveScreen===screen;
+      el.classList.toggle("active",active);
+      el.classList.toggle("selected",active);
+      if(active) el.setAttribute("aria-current","page");
+      else el.removeAttribute("aria-current");
+    });
+
+    window.dispatchEvent(
+      new CustomEvent("nia:v2:screen",{detail:{screen}})
+    );
+  }
+
+  document.addEventListener("click",e=>{
+    const target=e.target.closest(
+      "[data-executive-screen],[data-screen-link],[data-open-screen]"
+    );
+    if(!target)return;
+
+    const screen=
+      target.dataset.executiveScreen||
+      target.dataset.screenLink||
+      target.dataset.openScreen;
+
+    if(!screens.includes(screen))return;
+
+    e.preventDefault();
+    go(screen);
+  });
+
+  /* Make existing metric/action cards clickable when their labels
+     clearly identify an executive workspace. */
+  document.querySelectorAll(".metric-card,.cockpit-card").forEach(card=>{
+    const text=(card.textContent||"").toLowerCase();
+
+    let screen=null;
+    if(text.includes("capital intelligence")) screen="capital";
+    else if(text.includes("revenue pipeline")) screen="revenue";
+    else if(text.includes("grant radar")) screen="grants";
+    else if(text.includes("deal pipeline")) screen="deals";
+    else if(text.includes("action center")) screen="actions";
+    else if(text.includes("audit trail")) screen="audit";
+
+    if(screen && !card.dataset.executiveScreen){
+      card.dataset.executiveScreen=screen;
+      card.setAttribute("role","button");
+      card.setAttribute("tabindex","0");
+      card.setAttribute("aria-label","Open "+screen+" workspace");
+    }
+  });
+
+  document.addEventListener("keydown",e=>{
+    const card=e.target.closest("[data-executive-screen]");
+    if(!card)return;
+
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      go(card.dataset.executiveScreen);
+    }
+  });
+
+  window.addEventListener("hashchange",()=>activate(location.hash.slice(1)));
+  window.addEventListener("popstate",()=>activate(location.hash.slice(1)));
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    const initial=location.hash.slice(1);
+    activate(screens.includes(initial)?initial:"overview");
+  });
+})();
+</script>
+
+<script id="nia-v2-intelligence-viz">
+(function(){
+  const endpoints={
+    command:"/api/command",
+    grants:"/api/grants/scan",
+    health:"/api/system/health",
+    providers:"/api/aios/providers/status"
+  };
+
+  const $=id=>document.getElementById(id);
+
+  function pct(value,max){
+    if(!max)return 0;
+    return Math.max(0,Math.min(100,Math.round((Number(value)||0)/max*100)));
+  }
+
+  function ring(id,p){
+    const el=$(id);
+    if(!el)return;
+    el.style.setProperty("--pct",p+"%");
+  }
+
+  function text(id,value){
+    const el=$(id);
+    if(el)el.textContent=value;
+  }
+
+  async function refresh(){
+    try{
+      const [command,grants,health,providers]=await Promise.all([
+        fetch(endpoints.command).then(r=>r.json()),
+        fetch(endpoints.grants).then(r=>r.json()),
+        fetch(endpoints.health).then(r=>r.json()),
+        fetch(endpoints.providers).then(r=>r.json())
+      ]);
+
+      const opportunities=Number(command?.intelligence?.opportunities||command?.opportunities||0);
+      const pipeline=Number(command?.revenue?.pipelineValue||0);
+      const deals=Number(command?.revenue?.activeDeals||0);
+
+      const grantList=Array.isArray(grants?.grants)?grants.grants:[];
+      const top=grantList.reduce(
+        (a,b)=>(!a||Number(b.score||0)>Number(a.score||0))?b:a,
+        null
+      );
+
+      const grantScore=Number(top?.score||0);
+
+      text("niaVizCapital",opportunities);
+      text("niaVizCapitalPct",pct(opportunities,10)+"%");
+      ring("niaVizCapitalRing",pct(opportunities,10));
+      if($("niaVizCapitalBar"))
+        $("niaVizCapitalBar").style.width=pct(opportunities,10)+"%";
+
+      text(
+        "niaVizRevenue",
+        "$"+pipeline.toLocaleString("en-US")
+      );
+
+      const revenuePct=deals?100:0;
+      text("niaVizRevenuePct",revenuePct+"%");
+      ring("niaVizRevenueRing",revenuePct);
+      if($("niaVizRevenueBar"))
+        $("niaVizRevenueBar").style.width=revenuePct+"%";
+
+      text("niaVizGrant",grantScore);
+      text(
+        "niaVizGrantPct",
+        Math.min(100,grantScore)+"%"
+      );
+      ring("niaVizGrantRing",Math.min(100,grantScore));
+      if($("niaVizGrantBar"))
+        $("niaVizGrantBar").style.width=Math.min(100,grantScore)+"%";
+
+      text(
+        "niaVizGrantName",
+        top?.name||"No opportunity loaded"
+      );
+
+      const online=String(health?.status||"").toLowerCase()==="online";
+      const readOnly=providers?.mode==="READ_ONLY";
+      const approval=providers?.human_approval_required!==false;
+
+      text("niaVizRuntime",online?"ONLINE":"OFFLINE");
+      text(
+        "niaVizExecution",
+        readOnly?"READ_ONLY":"CONTROLLED"
+      );
+      text(
+        "niaVizApproval",
+        approval?"REQUIRED":"AUTHORIZED"
+      );
+
+      const hp=online?100:0;
+      text("niaVizHealthPct",hp+"%");
+      ring("niaVizHealthRing",hp);
+
+      document.documentElement.dataset.niaViz="live";
+      document.documentElement.dataset.niaExecution=readOnly?"read_only":"controlled";
+
+    }catch(err){
+      document.documentElement.dataset.niaViz="degraded";
+      text("niaVizRuntime","DEGRADED");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    refresh();
+    setInterval(refresh,15000);
+  });
+})();
+</script>
+
+<script id="nia-v2-overview-command">
+(function(){
+  const endpoints={
+    command:"/api/command",
+    grants:"/api/grants/scan",
+    health:"/api/system/health",
+    providers:"/api/aios/providers/status"
+  };
+
+  const $=id=>document.getElementById(id);
+
+  function set(id,value){
+    const el=$(id);
+    if(el)el.textContent=value;
+  }
+
+  async function sync(){
+    try{
+      const [command,grants,health,providers]=await Promise.all([
+        fetch(endpoints.command).then(r=>r.json()),
+        fetch(endpoints.grants).then(r=>r.json()),
+        fetch(endpoints.health).then(r=>r.json()),
+        fetch(endpoints.providers).then(r=>r.json())
+      ]);
+
+      const revenue=command?.revenue||{};
+      const intelligence=command?.intelligence||{};
+      const opportunities=Number(
+        intelligence.opportunities ??
+        command?.opportunities ??
+        0
+      );
+      const deals=Number(revenue.activeDeals||0);
+      const pipeline=Number(revenue.pipelineValue||0);
+
+      const grants=Array.isArray(grants?.grants)
+        ? grants.grants : [];
+
+      const top=grants.reduce(
+        (best,item)=>
+          !best || Number(item.score||0)>Number(best.score||0)
+            ? item : best,
+        null
+      );
+
+      const online=
+        String(health?.status||"").toLowerCase()==="online";
+
+      const readOnly=
+        providers?.mode==="READ_ONLY";
+
+      const approval=
+        providers?.human_approval_required!==false;
+
+      set("niaCommandOpportunities",opportunities);
+      set("niaCommandDeals",deals);
+      set("niaCommandPipeline","$"+pipeline.toLocaleString("en-US"));
+
+      set("niaCommandGrantScore",Number(top?.score||0));
+      set(
+        "niaCommandGrantName",
+        top?.name||"No grant opportunity loaded"
+      );
+
+      set("niaCommandRuntime",online?"ONLINE":"OFFLINE");
+      set(
+        "niaCommandRuntimeDetail",
+        online
+          ? "Nia Capital OS runtime responding"
+          : "Runtime health check failed"
+      );
+
+      set(
+        "niaCommandGovernance",
+        readOnly?"READ_ONLY":"CONTROLLED"
+      );
+
+      set(
+        "niaCommandGovernanceDetail",
+        approval
+          ? "Human approval required"
+          : "Execution authorization available"
+      );
+
+      set(
+        "niaCommandPulse",
+        online ? "NIA ONLINE" : "NIA DEGRADED"
+      );
+
+      document.documentElement.dataset.niaOverview="live";
+
+    }catch(err){
+      document.documentElement.dataset.niaOverview="degraded";
+      set("niaCommandPulse","SYNC DEGRADED");
+      set("niaCommandRuntime","DEGRADED");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    sync();
+    setInterval(sync,15000);
+  });
+})();
+</script>
+
+<script id="nia-v2-command-console">
+(function(){
+  const inputId="niaV2CommandInput";
+  const runId="niaV2RunCommand";
+  const clearId="niaV2ClearCommand";
+  const outputId="niaV2CommandOutput";
+  const statusId="niaV2CommandStatus";
+
+  function $(id){return document.getElementById(id)}
+
+  function output(value){
+    const el=$(outputId);
+    if(el)el.textContent=value;
+  }
+
+  function status(value){
+    const el=$(statusId);
+    if(el)el.textContent=value;
+  }
+
+  async function run(){
+    const input=$(inputId);
+    const button=$(runId);
+
+    if(!input || !button)return;
+
+    const objective=input.value.trim();
+
+    if(!objective){
+      output("Enter an intelligence request first.");
+      status("WAITING");
+      input.focus();
+      return;
+    }
+
+    button.disabled=true;
+    status("ANALYZING");
+    output("Nia is analyzing the request…");
+
+    try{
+      const response=await fetch("/api/aios/tools/reason",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({objective})
+      });
+
+      const data=await response.json().catch(()=>({}));
+
+      if(!response.ok){
+        throw new Error(
+          data.message ||
+          data.error ||
+          "Nia intelligence endpoint returned HTTP "+response.status
+        );
+      }
+
+      const result=
+        data.message ??
+        data.reason ??
+        data.objective ??
+        data.result ??
+        JSON.stringify(data,null,2);
+
+      output(
+        typeof result==="string"
+          ? result
+          : JSON.stringify(result,null,2)
+      );
+
+      status("READY");
+
+      window.dispatchEvent(
+        new CustomEvent("nia:v2:command",{detail:{objective,data}})
+      );
+
+    }catch(err){
+      output(
+        "Unable to complete intelligence request.\n\n"+
+        String(err.message||err)
+      );
+      status("ERROR");
+    }finally{
+      button.disabled=false;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    const input=$(inputId);
+    const runButton=$(runId);
+    const clearButton=$(clearId);
+
+    if(runButton)runButton.addEventListener("click",run);
+
+    if(clearButton){
+      clearButton.addEventListener("click",()=>{
+        if(input)input.value="";
+        output("Nia is ready. Submit an intelligence request.");
+        status("READY");
+        if(input)input.focus();
+      });
+    }
+
+    if(input){
+      input.addEventListener("keydown",e=>{
+        if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){
+          e.preventDefault();
+          run();
+        }
+      });
+    }
+  });
+})();
+</script>
+
+<script id="nia-v2-activity-feed">
+(function(){
+  const listId="niaV2ActivityList";
+  const events=[];
+  const maxEvents=12;
+
+  function $(id){return document.getElementById(id)}
+
+  function add(title,detail){
+    events.unshift({
+      title,
+      detail,
+      time:new Date()
+    });
+
+    while(events.length>maxEvents)events.pop();
+    render();
+  }
+
+  function render(){
+    const list=$(listId);
+    if(!list)return;
+
+    if(!events.length){
+      list.innerHTML='<div class="nia-activity-empty">No activity recorded yet.</div>';
+      return;
+    }
+
+    list.innerHTML=events.map(e=>{
+      const time=e.time.toLocaleTimeString([],{
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      });
+
+      return `
+        <div class="nia-activity-item">
+          <i class="nia-activity-dot"></i>
+          <div>
+            <strong>${escapeHtml(e.title)}</strong>
+            <span>${escapeHtml(e.detail)}</span>
+          </div>
+          <div class="nia-activity-time">${time}</div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function escapeHtml(value){
+    return String(value)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+  }
+
+  async function sync(){
+    try{
+      const [health,providers,grants,command]=await Promise.all([
+        fetch("/api/system/health").then(r=>r.json()),
+        fetch("/api/aios/providers/status").then(r=>r.json()),
+        fetch("/api/grants/scan").then(r=>r.json()),
+        fetch("/api/command").then(r=>r.json())
+      ]);
+
+      const runtime=
+        String(health?.status||"").toLowerCase()==="online"
+          ? "ONLINE"
+          : "DEGRADED";
+
+      const grantsCount=
+        Array.isArray(grants?.grants)
+          ? grants.grants.length
+          : 0;
+
+      const opportunities=
+        Number(
+          command?.intelligence?.opportunities||
+          command?.opportunities||
+          0
+        );
+
+      add(
+        "Runtime synchronization",
+        "Nia Capital OS runtime: "+runtime
+      );
+
+      add(
+        "Capital intelligence synchronized",
+        opportunities+" tracked opportunities"
+      );
+
+      add(
+        "Grant radar synchronized",
+        grantsCount+" grant opportunities scanned"
+      );
+
+      add(
+        "Governance state verified",
+        (providers?.mode||"UNKNOWN")+
+        " • human approval "+
+        (providers?.human_approval_required!==false
+          ? "required"
+          : "not required")
+      );
+
+    }catch(err){
+      add(
+        "Synchronization warning",
+        "One or more intelligence endpoints did not respond"
+      );
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    add(
+      "Nia Executive Core initialized",
+      "Executive cockpit activity stream online"
+    );
+
+    sync();
+    setInterval(sync,30000);
+
+    window.addEventListener("nia:v2:command",e=>{
+      const objective=e.detail?.objective||"Intelligence request";
+      add(
+        "Intelligence request",
+        objective
+      );
+    });
+
+    window.addEventListener("nia:v2:navigate",e=>{
+      add(
+        "Workspace navigation",
+        "Opened "+(e.detail?.screen||"overview")
+      );
+    });
+
+    window.addEventListener("nia:v2:screen",e=>{
+      add(
+        "Executive workspace",
+        "Screen: "+(e.detail?.screen||"overview")
+      );
+    });
+  });
+})();
+</script>
+
+<style id="nia-v2-smoke-style">
+#nia-v2-smoke-overlay{position:fixed;right:18px;bottom:18px;z-index:99999;width:min(360px,calc(100vw - 36px));background:rgba(3,7,18,.96);border:1px solid rgba(110,231,255,.35);border-radius:16px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.5);font:13px system-ui;color:#e8ecff}
+#nia-v2-smoke-overlay h3{margin:0 0 10px;color:#6ee7ff}
+.nia-smoke-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.nia-smoke-ok{color:#9fffd1}.nia-smoke-warn{color:#ffd166}
+#nia-v2-smoke-close{float:right;background:none;border:0;color:#94a3b8;font-size:18px}
+</style>
+<div id="nia-v2-smoke-overlay">
+<button id="nia-v2-smoke-close">×</button>
+<h3>🏰 NIA V2 LIVE QA</h3>
+<div id="nia-v2-smoke-results">Running checks…</div>
+</div>
+<script id="nia-v2-smoke-controller">
+(function(){
+const screens=["overview","capital","revenue","grants","deals","actions","audit"];
+const out=document.getElementById("nia-v2-smoke-results");
+const rows=[];
+function row(name,ok,detail){
+ rows.push('<div class="nia-smoke-row"><span>'+name+'</span><span class="'+(ok?'nia-smoke-ok':'nia-smoke-warn')+'">'+(ok?'PASS':'CHECK')+(detail?' · '+detail:'')+'</span></div>');
+}
+function render(){out.innerHTML=rows.join("");}
+document.getElementById("nia-v2-smoke-close").onclick=function(){
+ document.getElementById("nia-v2-smoke-overlay").remove();
+};
+screens.forEach(x=>row("#"+x,document.querySelector('[data-screen="'+x+'"]')!==null));
+row("Command console",!!document.getElementById("niaV2CommandInput"));
+row("Activity feed",!!document.getElementById("nia-v2-activity-feed"));
+row("Governance",document.body.innerText.includes("READ_ONLY") && document.body.innerText.includes("HUMAN APPROVAL REQUIRED"));
+render();
+
+Promise.all([
+ fetch("/api/command").then(r=>r.json()),
+ fetch("/api/grants/scan").then(r=>r.json()),
+ fetch("/api/revenue/automation/queue").then(r=>r.json()),
+ fetch("/api/system/health").then(r=>r.json()),
+ fetch("/api/aios/providers/status").then(r=>r.json())
+]).then(([cmd,grants,queue,health,g])=>{
+ row("API /command",true);
+ row("Grant radar",true,(grants.grants||[]).length+" opportunities");
+ row("Revenue queue",true,Array.isArray(queue)?queue.length+" queued":"live");
+ row("Runtime",health.status==="online"||health.status==="ONLINE",health.status);
+ row("Execution gate",g.execution_allowed===false,"READ_ONLY");
+ render();
+}).catch(e=>{
+ row("Live APIs",false,"unavailable");
+ render();
+});
+})();
+</script>
+</body>
+</html>
+
+<script id="nia-live-bridge">
+(() => {
+  const API = {
+    command: "/api/command",
+    grants: "/api/grants/scan",
+    revenue: "/api/revenue/automation/queue",
+    health: "/api/system/health",
+    providers: "/api/aios/providers/status",
+    tools: "/api/aios/tools/status"
+  };
+
+  const $ = id => document.getElementById(id);
+
+  async function get(url) {
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error(`${url} HTTP ${r.status}`);
+    return r.json();
+  }
+
+  function money(value) {
+    const n = Number(value || 0);
+    if (!Number.isFinite(n) || n === 0) return "$0";
+    return n.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    });
+  }
+
+  function text(id, value) {
+    const el = $(id);
+    if (el) el.textContent = value;
+  }
+
+  function status(value) {
+    return String(value || "").toUpperCase();
+  }
+
+  async function refresh() {
+    const results = await Promise.allSettled([
+      get(API.command),
+      get(API.grants),
+      get(API.revenue),
+      get(API.health),
+      get(API.providers),
+      get(API.tools)
+    ]);
+
+    const [command, grants, revenue, health, providers, tools] = results;
+
+    /* ---------------- SYSTEM ---------------- */
+
+    if (health.status === "fulfilled") {
+      const h = health.value;
+      text("health", status(h.status) || "ONLINE");
+
+      if (h.timestamp) {
+        text("sync", new Date(h.timestamp).toLocaleString());
+      }
+
+      document.documentElement.dataset.niaLive = "true";
+    } else {
+      text("health", "API ERROR");
+      document.documentElement.dataset.niaLive = "false";
+    }
+
+    /* ---------------- COMMAND CENTER ---------------- */
+
+    if (command.status === "fulfilled") {
+      const c = command.value || {};
+      const rev = c.revenue || {};
+      const intel = c.intelligence || {};
+      const learning = c.learning || {};
+
+      text("capital", intel.opportunities ?? 0);
+      text("revenue", money(rev.pipelineValue || 0));
+      text("actions", rev.activeDeals ?? 0);
+
+      const activity = $("activity");
+      if (activity) {
+        activity.textContent =
+          `${intel.opportunities ?? 0} opportunities • ` +
+          `${rev.activeDeals ?? 0} active deals • ` +
+          `${learning.totalEvents ?? 0} learning events`;
+      }
+    }
+
+    /* ---------------- GRANTS ---------------- */
+
+    if (grants.status === "fulfilled") {
+      const g = grants.value || {};
+      const list = Array.isArray(g.grants) ? g.grants : [];
+
+      text("grants", list.length);
+
+      const top = [...list].sort(
+        (a, b) => Number(b.score || 0) - Number(a.score || 0)
+      )[0];
+
+      const opportunity = document.querySelector(
+        "#opportunity-live"
+      );
+
+      if (opportunity) {
+        if (top) {
+          opportunity.innerHTML = `
+            <strong>${top.name || "Grant opportunity"}</strong>
+            <span>${top.fit || "Business fit identified"}</span>
+            <span>Potential amount: ${money(top.amount)}</span>
+            <span>Intelligence score: ${top.score ?? "—"}</span>
+            <small>Eligibility verification required before any submission.</small>
+          `;
+        } else {
+          opportunity.textContent = "No live grant opportunities returned.";
+        }
+      }
+    }
+
+    /* ---------------- REVENUE / ACTIONS ---------------- */
+
+    if (revenue.status === "fulfilled") {
+      const queue = Array.isArray(revenue.value)
+        ? revenue.value
+        : (revenue.value?.queue || []);
+
+      const pending = queue.filter(x =>
+        String(x?.status || "").toUpperCase().includes("PENDING")
+      ).length;
+
+      const dryRun = queue.filter(x =>
+        String(x?.status || "").toUpperCase().includes("DRY_RUN")
+      ).length;
+
+      const actionList = $("actionList");
+
+      if (actionList) {
+        actionList.innerHTML = queue.length
+          ? queue.slice(0, 6).map(x => `
+              <div class="live-action">
+                <strong>${x.action || x.type || "Revenue action"}</strong>
+                <span>${x.prospect || x.company || x.name || "Nia action"}</span>
+                <small>${x.status || "QUEUED"}</small>
+              </div>
+            `).join("")
+          : `<div class="live-empty">No revenue actions currently queued.</div>`;
+      }
+
+      const actionSummary = $("action-summary");
+      if (actionSummary) {
+        actionSummary.textContent =
+          `${queue.length} queued • ${pending} pending approval • ${dryRun} dry-run`;
+      }
+    }
+
+    /* ---------------- AIOS GOVERNANCE ---------------- */
+
+    if (providers.status === "fulfilled") {
+      const p = providers.value || {};
+      text(
+        "coreStatus",
+        p.mode === "READ_ONLY" ? "READ_ONLY" : status(p.mode)
+      );
+    }
+
+    if (tools.status === "fulfilled") {
+      const t = tools.value || {};
+      text(
+        "toolStatus",
+        t.mode === "READ_ONLY" ? "READ_ONLY" : "ONLINE"
+      );
+    }
+
+    /* ---------------- EXECUTIVE MESSAGE ---------------- */
+
+    const hero = document.querySelector("[data-executive-message]");
+    if (hero) {
+      hero.textContent =
+        "Nia is online. Intelligence is live. Execution remains governed by human approval.";
+    }
+  }
+
+  refresh().catch(() => {
+    text("health", "API ERROR");
+    document.documentElement.dataset.niaLive = "false";
+  });
+
+  setInterval(() => {
+    refresh().catch(() => {
+      text("health", "API ERROR");
+      document.documentElement.dataset.niaLive = "false";
+    });
+  }, 15000);
+})();
+</script>
+

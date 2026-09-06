@@ -1,0 +1,45 @@
+{
+  "organization": "House of Jazzu",
+  "entries": [
+    {
+      "id": "funding-1786655848415",
+      "recordedAt": "2026-08-13T21:17:28.415Z",
+      "organization": "House of Jazzu",
+      "mode": "OWNER_REVIEW_ONLY",
+      "searchTermCount": 21,
+      "candidateCount": 1,
+      "evidenceFoundCount": 0,
+      "ownerReviewQueue": [
+        {
+          "name": "Example Official Program",
+          "source": "example.com",
+          "officialUrl": "https://example.com/",
+          "eligibilityEvidence": "",
+          "deadlineEvidence": "",
+          "fundingAmountEvidence": "",
+          "verificationStatus": "INSUFFICIENT_EVIDENCE",
+          "ownerReviewOnly": true,
+          "submissionAllowed": false,
+          "signingAllowed": false,
+          "financialExecutionAllowed": false,
+          "moneyMovementAllowed": false,
+          "automaticApprovalAllowed": false,
+          "ownerApprovalRequired": true,
+          "ownerSignatureRequired": true,
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "reviewPriority": "LOW"
+        }
+      ],
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    }
+  ]
+}

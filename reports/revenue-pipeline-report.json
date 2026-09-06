@@ -1,0 +1,43 @@
+{
+  "system": "Nia Revenue Pipeline Report",
+  "timestamp": "2026-07-29T13:29:12.656Z",
+  "metrics": {
+    "prospects": 3,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "pipeline": [
+    {
+      "id": 1785330738092,
+      "campaign": "Little Guys Recharge Customer Acquisition",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach",
+      "conversionScore": 0,
+      "recommendation": "Continue outreach"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "AI Automation Services",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach",
+      "conversionScore": 0,
+      "recommendation": "Continue outreach"
+    },
+    {
+      "id": 1785330738092,
+      "campaign": "Grant & Funding Pipeline",
+      "status": "PROSPECTING",
+      "touches": 0,
+      "responses": 0,
+      "nextAction": "Begin outreach",
+      "conversionScore": 0,
+      "recommendation": "Continue outreach"
+    }
+  ],
+  "status": "ACTIVE",
+  "nextAction": "Convert highest priority prospect"
+}

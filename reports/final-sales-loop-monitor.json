@@ -1,0 +1,14 @@
+{
+  "system": "Nia Final Sales Loop Monitor",
+  "timestamp": "2026-07-29T13:38:11.084Z",
+  "readiness": "5/5",
+  "status": "SALES_LOOP_READY",
+  "flow": [
+    "Contact",
+    "Proposal",
+    "Pipeline",
+    "Probability",
+    "Close"
+  ],
+  "nextAction": "Process first real customer"
+}

@@ -1,0 +1,21 @@
+{
+  "system": "Nia Event Processing Engine",
+  "timestamp": "2026-07-29T13:29:11.234Z",
+  "processedEvents": 1,
+  "events": [
+    {
+      "id": 1785331668188,
+      "type": "NEW_LEAD",
+      "payload": {
+        "name": "Test Business Prospect",
+        "company": "Demo Client",
+        "service": "AI Automation Service",
+        "value": 5000
+      },
+      "createdAt": "2026-07-29T13:27:48.188Z",
+      "processed": true,
+      "action": "Score opportunity"
+    }
+  ],
+  "status": "ACTIVE"
+}

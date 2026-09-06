@@ -1,0 +1,21 @@
+{
+  "system": "Nia Revenue Command Alert Engine",
+  "timestamp": "2026-07-29T10:15:25.240Z",
+  "status": "ATTENTION",
+  "alertCount": 2,
+  "alerts": [
+    {
+      "level": "HIGH",
+      "type": "conversion",
+      "message": "No closed revenue transactions recorded",
+      "action": "Advance priority opportunity toward close"
+    },
+    {
+      "level": "MEDIUM",
+      "type": "optimization",
+      "message": "Revenue command signal requires improvement",
+      "action": "Review execution priorities"
+    }
+  ],
+  "nextAction": "Advance priority opportunity toward close"
+}

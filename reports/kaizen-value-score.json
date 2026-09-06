@@ -1,0 +1,26 @@
+{
+  "system": "Nia Kaizen Value Scorer",
+  "timestamp": "2026-07-29T18:25:38.700Z",
+  "status": "ACTIVE",
+  "scores": [
+    {
+      "category": "Revenue",
+      "priority": "HIGH",
+      "score": 95,
+      "action": "Improve conversion pipeline"
+    },
+    {
+      "category": "Automation",
+      "priority": "MEDIUM",
+      "score": 80,
+      "action": "Remove manual tasks"
+    },
+    {
+      "category": "Communication",
+      "priority": "MEDIUM",
+      "score": 75,
+      "action": "Improve command reliability"
+    }
+  ],
+  "source": "Nia Kaizen Revenue Bridge"
+}

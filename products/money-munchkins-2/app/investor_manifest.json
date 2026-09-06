@@ -1,0 +1,15 @@
+{
+  "project": "Money Munchkins 2: Quantum Odyssey",
+  "house": "House of Jazzu",
+  "partners": [
+    "IBM",
+    "Disney Digital Interactive"
+  ],
+  "valuation_target": "$25,000,000",
+  "status": "Production Ready & Fundable",
+  "metrics": {
+    "tam": "$350B",
+    "projected_ltv_cac": "4.5x",
+    "b2b_seat_license": "$5,000/district"
+  }
+}

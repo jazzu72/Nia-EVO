@@ -1,0 +1,22 @@
+{
+  "system": "Nia Deal Action Report",
+  "timestamp": "2026-07-28T18:51:00.331Z",
+  "metrics": {
+    "totalActions": 1,
+    "pending": 1,
+    "completed": 0
+  },
+  "actions": [
+    {
+      "id": 1785264608014,
+      "target": "Norfolk VA",
+      "type": "property-review",
+      "action": "complete_deal_analysis",
+      "priority": "HIGH",
+      "stage": "analysis",
+      "status": "pending",
+      "source": "deal-action-engine",
+      "timestamp": "2026-07-28T18:50:08.014Z"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "system": "Nia CEO Execution Health",
+  "timestamp": "2026-07-28T19:32:41.274Z",
+  "status": "ATTENTION",
+  "metrics": {
+    "totalPriorities": 3,
+    "highPriority": 1,
+    "completed": 0,
+    "pending": 3
+  },
+  "blockers": [
+    "Advance top opportunity review",
+    "Increase qualified leads and conversions",
+    "Prepare execution package"
+  ]
+}

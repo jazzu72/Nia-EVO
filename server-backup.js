@@ -1,0 +1,216 @@
+#!/usr/bin/env node
+
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const PropertyManager = require('./property-manager');
+const GovernessDeployment = require('./governess-deployment');
+const MercuryAPI = require('./mercury-api');
+const FacebookDeals = require('./facebook-deals');
+const ClosingEngine = require('./closing-engine');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.static('public'));
+
+const properties = new PropertyManager();
+
+class FinancialLedger {
+  constructor() {
+    this.ledgerPath = path.join(process.env.HOME, '.nia-complete', 'ledger.json');
+    this.ensureLedger();
+  }
+
+  ensureLedger() {
+    if (!fs.existsSync(this.ledgerPath)) {
+      fs.writeFileSync(this.ledgerPath, JSON.stringify({
+        transactions: [],
+        balance: { available: 0, total: 0 }
+      }, null, 2));
+    }
+  }
+
+  loadLedger() {
+    return JSON.parse(fs.readFileSync(this.ledgerPath, 'utf8'));
+  }
+
+  saveLedger(data) {
+    fs.writeFileSync(this.ledgerPath, JSON.stringify(data, null, 2));
+  }
+
+  addRevenue(amount, source) {
+    const ledger = this.loadLedger();
+    ledger.transactions.push({
+      type: 'revenue',
+      amount,
+      source,
+      timestamp: new Date()
+    });
+    ledger.balance.available += amount;
+    ledger.balance.total += amount;
+    this.saveLedger(ledger);
+    return ledger;
+  }
+
+  addExpense(amount, reason) {
+    const ledger = this.loadLedger();
+    if (ledger.balance.available < amount) {
+      throw new Error('Insufficient funds');
+    }
+    ledger.transactions.push({
+      type: 'expense',
+      amount,
+      reason,
+      timestamp: new Date()
+    });
+    ledger.balance.available -= amount;
+    ledger.balance.total -= amount;
+    this.saveLedger(ledger);
+    return ledger;
+  }
+
+  getBalance() {
+    const ledger = this.loadLedger();
+    return ledger.balance;
+  }
+
+  getTransactions(limit = 10) {
+    const ledger = this.loadLedger();
+    return ledger.transactions.slice(-limit);
+  }
+}
+
+const ledger = new FinancialLedger();
+const governess = new GovernessDeployment(ledger, properties);
+
+// Load Mercury credentials
+const mercuryKey = process.env.MERCURY_API_KEY || null;
+const mercuryAccount = process.env.MERCURY_ACCOUNT || null;
+const mercury = new MercuryAPI(mercuryKey, mercuryAccount);
+
+// Load Facebook credentials
+const facebookToken = process.env.FACEBOOK_PAGE_TOKEN || null;
+const facebook = new FacebookDeals(facebookToken);
+
+// Initialize closing engine
+const closing = new ClosingEngine(mercury, governess, properties, ledger);
+
+// Original API routes
+app.get('/api/status', (req, res) => {
+  const balance = ledger.getBalance();
+  const portfolio = properties.getPortfolioSummary();
+  res.json({
+    founder: 'Jason LeSane',
+    company: 'House of Jazzu LLC',
+    location: 'Norfolk, VA',
+    status: 'OPERATIONAL',
+    systemType: 'REAL AUTONOMOUS',
+    mercury: mercuryKey ? 'CONNECTED' : 'NOT_CONFIGURED',
+    facebook: facebookToken ? 'CONNECTED' : 'NOT_CONFIGURED',
+    balance,
+    portfolio
+  });
+});
+
+app.post('/api/revenue', (req, res) => {
+  try {
+    const { amount, source } = req.body;
+    const result = ledger.addRevenue(amount, source);
+    res.json({ success: true, ledger: result });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.post('/api/expense', (req, res) => {
+  try {
+    const { amount, reason } = req.body;
+    const result = ledger.addExpense(amount, reason);
+    res.json({ success: true, ledger: result });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.get('/api/transactions', (req, res) => {
+  const limit = req.query.limit || 10;
+  res.json(ledger.getTransactions(limit));
+});
+
+app.get('/api/portfolio', (req, res) => {
+  const summary = properties.getPortfolioSummary();
+  const props = properties.getAllProperties();
+  res.json({ summary, properties: props });
+});
+
+app.post('/api/property', (req, res) => {
+  try {
+    const { address, purchasePrice, downPayment, monthlyRent, neighborhood } = req.body;
+    const id = properties.addProperty(address, purchasePrice, downPayment, monthlyRent, neighborhood);
+    res.json({ success: true, id });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// REAL AUTONOMOUS ROUTES
+app.post('/api/facebook/post-deal-request', (req, res) => {
+  const { groupId, message } = req.body;
+  facebook.postToGroup(groupId, message).then(result => {
+    res.json(result);
+  });
+});
+
+app.post('/api/facebook/add-deal', (req, res) => {
+  const { address, arv, sellerContact } = req.body;
+  const deal = facebook.addDeal(address, arv, sellerContact);
+  res.json(deal);
+});
+
+app.get('/api/facebook/deals', (req, res) => {
+  const status = req.query.status;
+  res.json(facebook.getDeals(status));
+});
+
+app.post('/api/closing/execute', async (req, res) => {
+  const { dealId, titleCompanyEmail } = req.body;
+  const deals = facebook.getDeals();
+  const deal = deals.find(d => d.id === dealId);
+  
+  if (!deal) {
+    return res.status(404).json({ error: 'Deal not found' });
+  }
+
+  const closingResult = await closing.closeDeal(deal, titleCompanyEmail);
+  res.json(closingResult);
+});
+
+app.get('/api/closing/history', (req, res) => {
+  res.json(closing.getClosings());
+});
+
+app.get('/api/governess/decisions', (req, res) => {
+  res.json(governess.getDecisions());
+});
+
+app.get('/api/mercury/transactions', (req, res) => {
+  res.json(mercury.getTransactions());
+});
+
+app.listen(PORT, () => {
+  console.log(`\n🚀 NIA-EVO REAL AUTONOMOUS API running on http://localhost:${PORT}\n`);
+  console.log('Real Autonomous Features Active:');
+  console.log(`  • Mercury: ${mercuryKey ? '✅ CONNECTED' : '❌ NOT CONFIGURED'}`);
+  console.log(`  • Facebook: ${facebookToken ? '✅ CONNECTED' : '❌ NOT CONFIGURED'}`);
+  console.log('  • Governess Deployment Engine');
+  console.log('  • Deal Sourcing & Closing');
+  console.log('  • Real Capital Movement\n');
+  console.log('To configure credentials:');
+  console.log('  export MERCURY_API_KEY="your_key"');
+  console.log('  export MERCURY_ACCOUNT="your_account"');
+  console.log('  export FACEBOOK_PAGE_TOKEN="your_token"\n');
+});
+
+module.exports = app;

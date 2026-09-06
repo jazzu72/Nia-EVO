@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "algorithm": "SHA-256",
+  "chain_start": "GENESIS",
+  "ledger_lines": 21,
+  "final_chain_hash": "e641088ad525aa57a262bfb04299aebb9bbe83d31a8ace578c67ce04f5858564",
+  "created_at": "2026-09-01T16:46:08.101017+00:00",
+  "execution_allowed": false,
+  "execution_authorized": false,
+  "execution_performed": false,
+  "autonomous_execution": false,
+  "human_approval_required": true,
+  "updated_at": "2026-09-01T17:20:56.828787+00:00"
+}

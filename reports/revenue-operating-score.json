@@ -1,0 +1,13 @@
+{
+  "system": "Nia Revenue Operating Score",
+  "timestamp": "2026-07-29T10:09:07.219Z",
+  "score": 50,
+  "status": "ACTIVE_BUILD",
+  "metrics": {
+    "readiness": 60,
+    "actions": 1,
+    "completed": 0
+  },
+  "decision": "EXECUTE_PRIORITY_DEAL",
+  "nextAction": "Improve conversion execution"
+}

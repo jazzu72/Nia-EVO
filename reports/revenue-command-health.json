@@ -1,0 +1,12 @@
+{
+  "system": "Nia Revenue Command Monitor",
+  "timestamp": "2026-07-29T13:51:22.177Z",
+  "status": "ONLINE",
+  "revenueStatus": "ACTIVE",
+  "readiness": {
+    "score": 60,
+    "status": "BUILDING",
+    "nextFocus": "Increase qualified leads and conversions"
+  },
+  "execution": {}
+}

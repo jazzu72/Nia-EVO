@@ -1,0 +1,16 @@
+{
+  "system": "Nia Deal Activity Log",
+  "timestamp": "2026-07-29T09:56:50.087Z",
+  "totalEvents": 1,
+  "pending": 1,
+  "events": [
+    {
+      "id": 1785319010280,
+      "dealId": 1785255760308,
+      "target": "Norfolk VA",
+      "action": "Follow-up sequence created",
+      "status": "PENDING",
+      "timestamp": "2026-07-29T09:56:50.087Z"
+    }
+  ]
+}

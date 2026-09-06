@@ -1,0 +1,31 @@
+{
+  "system": "Nia Revenue Lead Generator",
+  "timestamp": "2026-07-29T10:39:41.466Z",
+  "totalLeads": 3,
+  "leads": [
+    {
+      "id": 1785321581466,
+      "source": "Little Guys Recharge & Detailing",
+      "type": "service_business",
+      "status": "PROSPECTING",
+      "nextAction": "Generate customer leads",
+      "createdAt": "2026-07-29T10:39:41.466Z"
+    },
+    {
+      "id": 1785321581467,
+      "source": "AI Automation Services",
+      "type": "b2b_service",
+      "status": "PROSPECTING",
+      "nextAction": "Find business clients",
+      "createdAt": "2026-07-29T10:39:41.466Z"
+    },
+    {
+      "id": 1785321581468,
+      "source": "Grant Opportunities",
+      "type": "funding",
+      "status": "PROSPECTING",
+      "nextAction": "Track funding opportunities",
+      "createdAt": "2026-07-29T10:39:41.466Z"
+    }
+  ]
+}

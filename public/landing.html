@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Business OS · Run your business from Telegram</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0b0e14; color: #e8edf5; font-family: system-ui, sans-serif; }
+    .hero { background: linear-gradient(135deg, #6c5ce7, #a78bfa); padding: 4rem 2rem; border-radius: 24px; }
+    .pricing-card { background: #151e2a; border: 1px solid #2a3548; border-radius: 16px; padding: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <nav class="flex justify-between items-center mb-16">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-[#6c5ce7] to-[#a78bfa] bg-clip-text text-transparent">
+        📱 Telegram Business OS
+      </h1>
+      <a href="/client" class="bg-[#6c5ce7] hover:bg-[#5a4bd1] px-6 py-2 rounded-lg">Get Started</a>
+    </nav>
+
+    <div class="hero text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Run your business from Telegram.</h2>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        No dashboard. No apps. No training. Just your business, running in your pocket.
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/client" class="bg-white text-[#6c5ce7] px-8 py-3 rounded-lg font-bold">Start Free Trial</a>
+        <a href="#pricing" class="border border-white/30 px-8 py-3 rounded-lg">View Pricing</a>
+      </div>
+    </div>
+
+    <div id="pricing" class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="pricing-card text-center">
+        <h3 class="text-xl font-bold mb-2">Starter</h3>
+        <p class="text-3xl font-bold mb-4">$499<span class="text-sm text-gray-400">/mo</span></p>
+        <ul class="text-left space-y-2 text-sm text-gray-400">
+          <li>✅ SMS + Telegram</li>
+          <li>✅ Basic invoicing</li>
+          <li>✅ Lead management</li>
+        </ul>
+      </div>
+      <div class="pricing-card text-center border-[#6c5ce7]">
+        <h3 class="text-xl font-bold mb-2">Professional</h3>
+        <p class="text-3xl font-bold mb-4">$2,500<span class="text-sm text-gray-400">/mo</span></p>
+        <ul class="text-left space-y-2 text-sm text-gray-400">
+          <li>✅ Everything in Starter</li>
+          <li>✅ AI negotiation engine</li>
+          <li>✅ Grant automation</li>
+          <li>✅ Career Engine</li>
+        </ul>
+      </div>
+      <div class="pricing-card text-center">
+        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+        <p class="text-3xl font-bold mb-4">$5,000<span class="text-sm text-gray-400">/mo</span></p>
+        <ul class="text-left space-y-2 text-sm text-gray-400">
+          <li>✅ Everything in Professional</li>
+          <li>✅ Multi‑client support</li>
+          <li>✅ Dedicated Telegram bot</li>
+          <li>✅ White‑label option</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <p class="text-gray-400">Already a client? <a href="/client" class="text-[#6c5ce7]">Go to your dashboard</a></p>
+    </div>
+  </div>
+</body>
+</html>

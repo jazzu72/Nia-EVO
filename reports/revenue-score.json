@@ -1,0 +1,9 @@
+[
+  {
+    "client": "Sample Prospect",
+    "company": "Example Company",
+    "value": 2500,
+    "score": 90,
+    "priority": "HIGH"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "leads": {
+    "+17573399245": {
+      "stage": "new",
+      "history": [],
+      "lastContact": "2026-07-18T00:00:00.000Z"
+    }
+  },
+  "stats": {
+    "deals": 0,
+    "revenue": 0,
+    "activeDays": 1
+  },
+  "directive": {
+    "mission": "Run the House of Jazzu as a self‑sustaining revenue engine.",
+    "role": "CEO",
+    "timeline": "Retire in 3 years (by 2029)",
+    "targets": {
+      "year_1": {
+        "deals": 12,
+        "revenue": 360000,
+        "grants": 500000,
+        "total": 860000
+      },
+      "year_2": {
+        "deals": 24,
+        "revenue": 720000,
+        "grants": 1000000,
+        "total": 1720000
+      },
+      "year_3": {
+        "deals": 36,
+        "revenue": 1080000,
+        "grants": 1500000,
+        "total": 2580000
+      }
+    },
+    "operations": {
+      "sms": {
+        "frequency": "daily",
+        "volume": 50,
+        "priority": "reply_within_60_min"
+      },
+      "grants": {
+        "frequency": "weekly",
+        "target": 500000,
+        "pipeline": 1625000
+      },
+      "deals": {
+        "inspection_target": 5,
+        "offer_target": 3,
+        "close_target": 1
+      }
+    },
+    "reporting": {
+      "daily": {
+        "time": "6:00 AM",
+        "format": "SMS",
+        "content": "deals, revenue, grants, pipeline"
+      },
+      "weekly": {
+        "day": "Monday",
+        "format": "Email",
+        "content": "closed deals, revenue, forecast"
+      }
+    },
+    "expansion": {
+      "year_2": "Hire 1 human operator for inspections",
+      "year_3": "Launch SaaS version of Nia for other businesses"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "system": "Nia Calendar Meeting Connector",
+  "timestamp": "2026-07-29T13:17:47.821Z",
+  "meetings": [],
+  "supportedActions": [
+    "Create meeting",
+    "Send invite",
+    "Track attendance",
+    "Update deal stage"
+  ],
+  "status": "READY",
+  "nextAction": "Connect calendar provider"
+}

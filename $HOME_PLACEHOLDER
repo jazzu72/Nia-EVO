@@ -1,0 +1,192 @@
+(() => {
+  const API = {
+    command: "/api/command",
+    grants: "/api/grants/scan",
+    revenue: "/api/revenue/automation/queue",
+    health: "/api/system/health",
+    providers: "/api/aios/providers/status",
+    tools: "/api/aios/tools/status"
+  };
+
+  const $ = id => document.getElementById(id);
+
+  async function get(url) {
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error(`${url} HTTP ${r.status}`);
+    return r.json();
+  }
+
+  function money(value) {
+    const n = Number(value || 0);
+    if (!Number.isFinite(n) || n === 0) return "$0";
+    return n.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    });
+  }
+
+  function text(id, value) {
+    const el = $(id);
+    if (el) el.textContent = value;
+  }
+
+  function status(value) {
+    return String(value || "").toUpperCase();
+  }
+
+  async function refresh() {
+    const results = await Promise.allSettled([
+      get(API.command),
+      get(API.grants),
+      get(API.revenue),
+      get(API.health),
+      get(API.providers),
+      get(API.tools)
+    ]);
+
+    const [command, grants, revenue, health, providers, tools] = results;
+
+    /* ---------------- SYSTEM ---------------- */
+
+    if (health.status === "fulfilled") {
+      const h = health.value;
+      text("health", status(h.status) || "ONLINE");
+
+      if (h.timestamp) {
+        text("sync", new Date(h.timestamp).toLocaleString());
+      }
+
+      document.documentElement.dataset.niaLive = "true";
+    } else {
+      text("health", "API ERROR");
+      document.documentElement.dataset.niaLive = "false";
+    }
+
+    /* ---------------- COMMAND CENTER ---------------- */
+
+    if (command.status === "fulfilled") {
+      const c = command.value || {};
+      const rev = c.revenue || {};
+      const intel = c.intelligence || {};
+      const learning = c.learning || {};
+
+      text("capital", intel.opportunities ?? 0);
+      text("revenue", money(rev.pipelineValue || 0));
+      text("actions", rev.activeDeals ?? 0);
+
+      const activity = $("activity");
+      if (activity) {
+        activity.textContent =
+          `${intel.opportunities ?? 0} opportunities • ` +
+          `${rev.activeDeals ?? 0} active deals • ` +
+          `${learning.totalEvents ?? 0} learning events`;
+      }
+    }
+
+    /* ---------------- GRANTS ---------------- */
+
+    if (grants.status === "fulfilled") {
+      const g = grants.value || {};
+      const list = Array.isArray(g.grants) ? g.grants : [];
+
+      text("grants", list.length);
+
+      const top = [...list].sort(
+        (a, b) => Number(b.score || 0) - Number(a.score || 0)
+      )[0];
+
+      const opportunity = document.querySelector(
+        "#opportunity-live"
+      );
+
+      if (opportunity) {
+        if (top) {
+          opportunity.innerHTML = `
+            <strong>${top.name || "Grant opportunity"}</strong>
+            <span>${top.fit || "Business fit identified"}</span>
+            <span>Potential amount: ${money(top.amount)}</span>
+            <span>Intelligence score: ${top.score ?? "—"}</span>
+            <small>Eligibility verification required before any submission.</small>
+          `;
+        } else {
+          opportunity.textContent = "No live grant opportunities returned.";
+        }
+      }
+    }
+
+    /* ---------------- REVENUE / ACTIONS ---------------- */
+
+    if (revenue.status === "fulfilled") {
+      const queue = Array.isArray(revenue.value)
+        ? revenue.value
+        : (revenue.value?.queue || []);
+
+      const pending = queue.filter(x =>
+        String(x?.status || "").toUpperCase().includes("PENDING")
+      ).length;
+
+      const dryRun = queue.filter(x =>
+        String(x?.status || "").toUpperCase().includes("DRY_RUN")
+      ).length;
+
+      const actionList = $("actionList");
+
+      if (actionList) {
+        actionList.innerHTML = queue.length
+          ? queue.slice(0, 6).map(x => `
+              <div class="live-action">
+                <strong>${x.action || x.type || "Revenue action"}</strong>
+                <span>${x.prospect || x.company || x.name || "Nia action"}</span>
+                <small>${x.status || "QUEUED"}</small>
+              </div>
+            `).join("")
+          : `<div class="live-empty">No revenue actions currently queued.</div>`;
+      }
+
+      const actionSummary = $("action-summary");
+      if (actionSummary) {
+        actionSummary.textContent =
+          `${queue.length} queued • ${pending} pending approval • ${dryRun} dry-run`;
+      }
+    }
+
+    /* ---------------- AIOS GOVERNANCE ---------------- */
+
+    if (providers.status === "fulfilled") {
+      const p = providers.value || {};
+      text(
+        "coreStatus",
+        p.mode === "READ_ONLY" ? "READ_ONLY" : status(p.mode)
+      );
+    }
+
+    if (tools.status === "fulfilled") {
+      const t = tools.value || {};
+      text(
+        "toolStatus",
+        t.mode === "READ_ONLY" ? "READ_ONLY" : "ONLINE"
+      );
+    }
+
+    /* ---------------- EXECUTIVE MESSAGE ---------------- */
+
+    const hero = document.querySelector("[data-executive-message]");
+    if (hero) {
+      hero.textContent =
+        "Nia is online. Intelligence is live. Execution remains governed by human approval.";
+    }
+  }
+
+  refresh().catch(() => {
+    text("health", "API ERROR");
+    document.documentElement.dataset.niaLive = "false";
+  });
+
+  setInterval(() => {
+    refresh().catch(() => {
+      text("health", "API ERROR");
+      document.documentElement.dataset.niaLive = "false";
+    });
+  }, 15000);
+})();

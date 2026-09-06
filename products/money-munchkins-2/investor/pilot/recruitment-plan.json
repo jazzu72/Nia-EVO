@@ -1,0 +1,27 @@
+{
+  "cohort": "pilot-10",
+  "target": 10,
+  "status": "open",
+  "qualification": {
+    "parentGuardian": true,
+    "childGradeBand": "K-3",
+    "consentRequired": true,
+    "pilotFeedbackRequired": true
+  },
+  "funnel": [
+    "lead",
+    "interest",
+    "signup",
+    "pilotCohort",
+    "activation",
+    "missionComplete",
+    "retained7d",
+    "paid"
+  ],
+  "investorRules": {
+    "countOnlyVerifiedEvents": true,
+    "fabricatedCustomers": false,
+    "fabricatedRevenue": false,
+    "piiInInvestorMetrics": false
+  }
+}

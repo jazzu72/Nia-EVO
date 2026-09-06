@@ -1,0 +1,20 @@
+{
+  "system": "Nia Deal Conversion Score",
+  "timestamp": "2026-07-29T09:57:36.733Z",
+  "topDeal": {
+    "id": 1785255760308,
+    "target": "Norfolk VA",
+    "offer": 180000,
+    "conversionScore": 90,
+    "recommendation": "Prioritize closing action"
+  },
+  "deals": [
+    {
+      "id": 1785255760308,
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "conversionScore": 90,
+      "recommendation": "Prioritize closing action"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "system": "Nia Revenue Closing Tracker",
+  "timestamp": "2026-07-29T10:22:42.239Z",
+  "funnel": {
+    "outreach": 1,
+    "ready": 1,
+    "sent": 0,
+    "closed": 0
+  },
+  "revenue": {
+    "transactions": 0,
+    "totalRevenue": 0
+  },
+  "status": "AWAITING_FIRST_CLOSE",
+  "nextAction": "Convert active outreach into first closed transaction"
+}

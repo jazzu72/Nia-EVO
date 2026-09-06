@@ -1,0 +1,11 @@
+{
+  "system": "Nia Capital OS System Scorecard",
+  "timestamp": "2026-07-28T18:07:54.124Z",
+  "score": 75,
+  "grade": "CHECK REQUIRED",
+  "metrics": {
+    "decisions": 0,
+    "auditEvents": 200,
+    "deploymentChecks": 8
+  }
+}

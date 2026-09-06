@@ -1,0 +1,9 @@
+commit=54eb1e973d1a61906c1605fbd66d64c3ad19879e
+tag=nia-governance-v1
+branch=
+node=v26.3.1
+npm=11.17.0
+pid=12339
+integrity=VERIFIED
+execution_allowed=False
+human_approval_required=True

@@ -1,0 +1,22 @@
+{
+  "system": "Nia Revenue Feedback Loop",
+  "timestamp": "2026-07-29T13:20:21.172Z",
+  "intelligence": {
+    "actions": {
+      "actions": 0,
+      "successes": 0,
+      "revenue": 0
+    },
+    "outcomes": {
+      "sent": 0,
+      "delivered": 0,
+      "responses": 0,
+      "conversions": 0
+    }
+  },
+  "learning": {
+    "status": "ACTIVE",
+    "objective": "Improve conversion efficiency"
+  },
+  "nextAction": "Optimize highest-performing revenue path"
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Munchkins Pilot Feedback</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f3f4f6;color:#111827;margin:0}
+main{max-width:680px;margin:auto;padding:24px}
+.card{background:white;padding:24px;margin:14px 0;border-radius:18px;box-shadow:0 5px 20px #0001}
+label{display:block;font-weight:700;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:10px;background:#111827;color:white;font-weight:700;font-size:16px;margin-top:18px}
+h1{text-align:center}
+.small{color:#6b7280;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<h1>🚀 Money Munchkins</h1>
+<p class="small" style="text-align:center">Quantum Odyssey Pilot Feedback</p>
+
+<form id="feedback">
+<div class="card">
+<label>Are you a...</label>
+<select name="role" required>
+<option value="">Choose</option>
+<option>Parent</option>
+<option>Teacher</option>
+<option>After-school educator</option>
+<option>Other</option>
+</select>
+
+<label>How engaged was the child?</label>
+<select name="engagement" required>
+<option value="">Choose</option>
+<option value="1">1 — Not engaged</option>
+<option value="2">2</option>
+<option value="3">3 — Neutral</option>
+<option value="4">4</option>
+<option value="5">5 — Very engaged</option>
+</select>
+
+<label>How easy was the activity to understand?</label>
+<select name="clarity" required>
+<option value="">Choose</option>
+<option value="1">1 — Difficult</option>
+<option value="2">2</option>
+<option value="3">3 — Neutral</option>
+<option value="4">4</option>
+<option value="5">5 — Very clear</option>
+</select>
+
+<label>Did the activity encourage discussion?</label>
+<select name="discussion" required>
+<option value="">Choose</option>
+<option>Yes</option>
+<option>Somewhat</option>
+<option>No</option>
+</select>
+
+<label>Would you use another Money Munchkins mission?</label>
+<select name="repeat" required>
+<option value="">Choose</option>
+<option>Definitely</option>
+<option>Probably</option>
+<option>Not sure</option>
+<option>No</option>
+</select>
+
+<label>What did the child enjoy most?</label>
+<textarea name="enjoyed" rows="3"></textarea>
+
+<label>What was confusing or should be improved?</label>
+<textarea name="improve" rows="3"></textarea>
+
+<label>What should we build next?</label>
+<select name="next">
+<option>More missions</option>
+<option>More cards</option>
+<option>Classroom kit</option>
+<option>Digital game features</option>
+<option>Character/story content</option>
+</select>
+</div>
+
+<button type="submit">Submit Pilot Feedback</button>
+</form>
+
+<div id="done" class="card" style="display:none;text-align:center">
+<h2>✅ Thank You, Explorer!</h2>
+<p>Your feedback will help shape the next version.</p>
+</div>
+</main>
+
+<script>
+document.getElementById("feedback").onsubmit=async e=>{
+e.preventDefault();
+const data=Object.fromEntries(new FormData(e.target));
+data.timestamp=new Date().toISOString();
+data.product="money-munchkins-quantum-odyssey";
+data.version="pilot-0.1";
+
+try{
+await fetch("/api/money-munchkins/pilot-feedback",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(data)
+});
+}catch{}
+
+localStorage.setItem("moneyMunchkinsPilotFeedback",JSON.stringify(data));
+e.target.style.display="none";
+document.getElementById("done").style.display="block";
+};
+</script>
+</body>
+</html>

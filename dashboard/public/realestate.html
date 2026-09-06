@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nia Real Estate Command Center</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:Arial;background:#111;color:white;padding:20px}
+.card{background:#222;padding:20px;margin:10px 0;border-radius:10px}
+h1{color:#00ff99}
+</style>
+</head>
+<body>
+
+<h1>🏰 Nia Real Estate Command Center</h1>
+
+<div class="card" id="data">
+Loading Nia...
+</div>
+
+<script>
+async function load(){
+
+const res=await fetch('/api/realestate/command-center');
+const data=await res.json();
+
+document.getElementById('data').innerHTML=`
+
+<h2>Status: ${data.status}</h2>
+
+<h3>Pipeline</h3>
+<p>Seller Leads: ${data.pipeline.sellerLeads}</p>
+<p>Properties: ${data.pipeline.properties}</p>
+<p>Deals: ${data.pipeline.deals}</p>
+<p>Offers: ${data.pipeline.offers}</p>
+<p>Closings: ${data.pipeline.closings}</p>
+
+<h3>Network</h3>
+<p>Contractors: ${data.network.contractors}</p>
+<p>Lenders: ${data.network.lenders}</p>
+<p>Attorneys: ${data.network.attorneys}</p>
+
+<h3>Financials</h3>
+<p>Closed Profit: $${data.financials.closedProfit}</p>
+
+<h3>Next Actions</h3>
+${data.nextActions.map(x=>"<p>☐ "+x+"</p>").join("")}
+
+`;
+
+}
+
+load();
+</script>
+
+</body>
+</html>

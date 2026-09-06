@@ -1,0 +1,11 @@
+{
+  "system": "Nia Revenue Target Monitor",
+  "timestamp": "2026-07-29T13:39:48.683Z",
+  "targets": {
+    "monthlyGoal": 10000,
+    "expectedPipeline": 0,
+    "gap": 10000
+  },
+  "status": "MONITORING",
+  "nextAction": "Increase qualified opportunities"
+}

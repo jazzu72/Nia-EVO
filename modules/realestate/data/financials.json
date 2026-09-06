@@ -1,0 +1,14 @@
+[
+  {
+    "purchasePrice": 100000,
+    "repairs": 25000,
+    "closingCosts": 5000,
+    "salePrice": 200000,
+    "totalCost": 130000,
+    "profit": 70000,
+    "roi": "53.85%",
+    "status": "PROFITABLE",
+    "id": 1785180240377,
+    "created": "2026-07-27T19:24:00.377Z"
+  }
+]

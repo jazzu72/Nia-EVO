@@ -1,0 +1,25 @@
+{
+  "system": "Nia Sales Pipeline Report",
+  "timestamp": "2026-07-29T09:48:16.627Z",
+  "pipeline": [
+    {
+      "id": 1785255760308,
+      "type": "property-review",
+      "target": "Norfolk VA",
+      "priority": "HIGH",
+      "status": "pending",
+      "offer": 180000,
+      "created": "2026-07-28T16:22:40.308Z"
+    }
+  ],
+  "metrics": {
+    "deals": 1,
+    "offers": 1,
+    "pipelineValue": 180000,
+    "grantValue": 0,
+    "pendingActions": 1,
+    "auditEvents": 200
+  },
+  "recommendation": "Advance active offers toward closing",
+  "readyForRevenue": true
+}

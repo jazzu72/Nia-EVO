@@ -1,0 +1,12 @@
+data/unified-leads.json:4:    "name": "Sample Prospect",
+data/unified-leads.json:5:    "company": "Example Company",
+data/capital-opportunities.json:8:        "address": "123 Main St, Norfolk VA",
+data/prelaunch-backup-20260801/unified-leads.json:4:    "name": "Sample Prospect",
+data/prelaunch-backup-20260801/unified-leads.json:5:    "company": "Example Company",
+data/prelaunch-backup-20260801/capital-opportunities.json:8:        "address": "123 Main St, Norfolk VA",
+data/action-queue.json:5:    "target": "FOLLOW_UP_TARGET COMPANY NAME",
+data/action-queue.json:33:      "source": "FOLLOW_UP_TARGET COMPANY NAME",
+data/lead-memory.json:3:    "target": "FOLLOW_UP_TARGET COMPANY NAME",
+runtime/revenue-lead-engine.js:40: "Sample Revenue Opportunity",
+runtime/deal-activity-log.js:12: id:Date.now()+Math.floor(Math.random()*1000),
+runtime/opportunity-score.js:10:(Math.random()*50)

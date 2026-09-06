@@ -1,0 +1,10 @@
+{
+  "requirements": {
+    "showAIGeneration": true,
+    "showRevenueTracking": true,
+    "showSelfHealing": true,
+    "showDashboard": true
+  },
+  "outputFormat": "mp4",
+  "deadline": "2026-07-20"
+}

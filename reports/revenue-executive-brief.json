@@ -1,0 +1,19 @@
+{
+  "system": "Nia Revenue Executive Brief",
+  "timestamp": "2026-07-29T10:09:49.221Z",
+  "executiveStatus": {
+    "score": 50,
+    "status": "ACTIVE_BUILD",
+    "mission": "EXECUTE"
+  },
+  "financials": {
+    "transactions": 0,
+    "revenue": 0
+  },
+  "decision": {
+    "action": "EXECUTE_PRIORITY_DEAL",
+    "reason": "System readiness exists, focus on closing first transaction",
+    "nextAction": "Advance priority deal toward close"
+  },
+  "priority": "Close first revenue transaction"
+}

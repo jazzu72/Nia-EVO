@@ -1,0 +1,11 @@
+{
+  "system": "Nia Revenue Conversion Monitor",
+  "timestamp": "2026-07-29T10:29:13.567Z",
+  "pipeline": {
+    "offers": 3,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "status": "PIPELINE_BUILDING",
+  "nextAction": "Convert first offer"
+}

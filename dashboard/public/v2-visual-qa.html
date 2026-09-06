@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIA V2 — Visual QA</title>
+<style>
+body{margin:0;background:#030712;color:#e8ecff;font:14px system-ui;padding:24px}
+.wrap{max-width:1100px;margin:auto}
+h1{color:#6ee7ff;margin-bottom:4px}
+.sub{color:#94a3b8;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+a,.status{display:block;padding:18px;border:1px solid #1e293b;border-radius:14px;background:#071426;color:#e8ecff;text-decoration:none}
+a:hover{border-color:#6ee7ff;transform:translateY(-2px)}
+.status{margin-top:20px}
+.ok{color:#9fffd1}.warn{color:#ffd166}
+small{display:block;color:#64748b;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🏰 NIA V2 — VISUAL QA</h1>
+<div class="sub">Executive cockpit verification · Recovery environment only</div>
+
+<div class="grid">
+<a href="/executive-v2.html#overview">Executive Overview<small>#overview</small></a>
+<a href="/executive-v2.html#capital">Capital Intelligence<small>#capital</small></a>
+<a href="/executive-v2.html#revenue">Revenue<small>#revenue</small></a>
+<a href="/executive-v2.html#grants">Grant Radar<small>#grants</small></a>
+<a href="/executive-v2.html#deals">Deal Pipeline<small>#deals</small></a>
+<a href="/executive-v2.html#actions">Action Center<small>#actions</small></a>
+<a href="/executive-v2.html#audit">Audit Trail<small>#audit</small></a>
+</div>
+
+<div class="status">
+<strong>LIVE SYSTEM CHECK</strong>
+<div id="out">Checking…</div>
+</div>
+</div>
+
+<script>
+const out=document.getElementById("out");
+Promise.all([
+ fetch("http://127.0.0.1:3000/api/system/health").then(r=>r.json()),
+ fetch("http://127.0.0.1:3000/api/aios/providers/status").then(r=>r.json()),
+ fetch("http://127.0.0.1:3000/api/command").then(r=>r.json()),
+ fetch("http://127.0.0.1:3000/api/grants/scan").then(r=>r.json())
+]).then(([h,g,c,gr])=>{
+out.innerHTML=
+'<p class="ok">● Runtime: '+h.status+'</p>'+
+'<p class="ok">● Governance: READ_ONLY</p>'+
+'<p class="ok">● Human approval: '+g.human_approval_required+'</p>'+
+'<p class="ok">● Autonomous execution: '+g.autonomous_execution+'</p>'+
+'<p>● Opportunities: '+(c.intelligence?.opportunities ?? 0)+'</p>'+
+'<p>● Active deals: '+(c.revenue?.activeDeals ?? 0)+'</p>'+
+'<p>● Pipeline: $'+(c.revenue?.pipelineValue ?? 0)+'</p>'+
+'<p>● Grant radar: '+(gr.grants||[]).length+' opportunities</p>';
+}).catch(e=>{
+out.innerHTML='<p class="warn">⚠ Live API check failed: '+e+'</p>';
+});
+</script>
+</body>
+</html>

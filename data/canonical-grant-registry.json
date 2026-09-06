@@ -1,0 +1,97 @@
+{
+  "system": "Nia Capital OS",
+  "registryVersion": "1.0",
+  "mode": "OWNER_REVIEW_ONLY",
+  "canonicalOpportunityCount": 3,
+  "verifiedDraftCount": 3,
+  "quarantinedDraftCount": 4,
+  "safety": {
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  },
+  "verified": [
+    {
+      "draftId": "GRANT-DRAFT-1786481008969-0",
+      "title": "Virginia Innovation Partnership Corporation",
+      "canonicalOpportunity": {
+        "name": "Virginia Innovation Partnership Corporation",
+        "category": "technology innovation AI small business",
+        "amount": 250000
+      },
+      "status": "VERIFIED_FOR_OWNER_REVIEW",
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    },
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-1",
+      "title": "NSF America Seed Fund",
+      "canonicalOpportunity": {
+        "name": "NSF America Seed Fund",
+        "category": "AI innovation technology startup",
+        "amount": 256000
+      },
+      "status": "VERIFIED_FOR_OWNER_REVIEW",
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    },
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-2",
+      "title": "Small Business Innovation Research",
+      "canonicalOpportunity": {
+        "name": "Small Business Innovation Research",
+        "category": "technology AI research",
+        "amount": 150000
+      },
+      "status": "VERIFIED_FOR_OWNER_REVIEW",
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    }
+  ],
+  "quarantined": [
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-3",
+      "title": "NSF SBIR Phase I",
+      "status": "QUARANTINED",
+      "reason": "NO_CANONICAL_OPPORTUNITY_RECORD"
+    },
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-4",
+      "title": "SBA SBIR Phase II",
+      "status": "QUARANTINED",
+      "reason": "NO_CANONICAL_OPPORTUNITY_RECORD"
+    },
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-5",
+      "title": "Grants.gov \u2013 AI Research",
+      "status": "QUARANTINED",
+      "reason": "NO_CANONICAL_OPPORTUNITY_RECORD"
+    },
+    {
+      "draftId": "GRANT-DRAFT-1786481008970-6",
+      "title": "Virginia Innovation Grant",
+      "status": "QUARANTINED",
+      "reason": "NO_CANONICAL_OPPORTUNITY_RECORD"
+    }
+  ],
+  "generatedAt": "2026-08-13T15:58:54.510372+00:00"
+}

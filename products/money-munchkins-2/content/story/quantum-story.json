@@ -1,0 +1,35 @@
+{
+  "title": "BitBot and the Spark City Quest",
+  "chapters": [
+    {
+      "id": "QO-001",
+      "title": "The Spark City Signal",
+      "scene": "BitBot discovers a mysterious signal coming from Spark City. The city needs an Explorer who can make smart money decisions.",
+      "character": "BitBot",
+      "choices": [
+        {"text": "Investigate the signal", "consequence": "You learn that good decisions start with asking questions.", "xp": 10, "skill": "Decision-making"},
+        {"text": "Spend all your Spark Coins on gear", "consequence": "You discover why saving some resources can help later.", "xp": 5, "skill": "Saving"}
+      ]
+    },
+    {
+      "id": "QO-002",
+      "title": "The Market District",
+      "scene": "At the Market District, BitBot finds food, a new game, and a backpack. You have limited Spark Coins.",
+      "character": "BitBot",
+      "choices": [
+        {"text": "Buy the backpack you need", "consequence": "You identified a need before a want.", "xp": 10, "skill": "Needs vs. Wants"},
+        {"text": "Buy the game because it looks fun", "consequence": "Fun can matter too, but now you have fewer coins for your goal.", "xp": 5, "skill": "Needs vs. Wants"}
+      ]
+    },
+    {
+      "id": "QO-003",
+      "title": "The Quantum Budget",
+      "scene": "The Quantum Lab needs your help. You have 30 Spark Coins. Choose how to spend, save, and protect your future goal.",
+      "character": "BitBot",
+      "choices": [
+        {"text": "Save 15, spend 10, keep 5 for your goal", "consequence": "Excellent! You created a balanced plan.", "xp": 20, "skill": "Budgeting"},
+        {"text": "Spend all 30 immediately", "consequence": "You learned that planning ahead gives you more choices later.", "xp": 5, "skill": "Budgeting"}
+      ]
+    }
+  ]
+}

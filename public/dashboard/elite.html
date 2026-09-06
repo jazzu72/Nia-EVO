@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nia Dashboard</title>
+  <style>
+    body { background: #0b0e14; color: #e8edf5; font-family: system-ui; padding: 2rem; }
+    h1 { color: #6c5ce7; }
+    .stat { background: #151e2a; padding: 1rem; border-radius: 8px; margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>🏰 Nia Capital OS – Dashboard</h1>
+  <div id="stats">Loading...</div>
+  <script>
+    fetch('/api/revenue/pipeline')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('stats').innerHTML = `
+          <div class="stat">🤖 AI Prospects: ${data.aiProspects}</div>
+          <div class="stat">🏠 Real Estate Leads: ${data.realEstate}</div>
+        `;
+      })
+      .catch(() => {
+        document.getElementById('stats').innerHTML = '⚠️ Could not load data.';
+      });
+  </script>
+</body>
+</html>

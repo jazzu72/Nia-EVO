@@ -1,0 +1,44 @@
+{
+  "system": "Nia Revenue Execution Report",
+  "timestamp": "2026-07-28T19:40:28.458Z",
+  "metrics": {
+    "totalTasks": 3,
+    "pending": 3,
+    "completed": 0
+  },
+  "tasks": [
+    {
+      "id": 1785267601465650200,
+      "priority": "MEDIUM",
+      "action": "Track first revenue transaction",
+      "target": null,
+      "status": "pending",
+      "source": "revenue-execution-plan",
+      "timestamp": "2026-07-28T19:40:01.465657"
+    },
+    {
+      "id": 1785267601465614600,
+      "priority": "MEDIUM",
+      "action": "Convert pipeline activity into customer conversations",
+      "target": null,
+      "status": "pending",
+      "source": "revenue-execution-plan",
+      "timestamp": "2026-07-28T19:40:01.465633"
+    },
+    {
+      "id": 1785267601452802800,
+      "priority": "HIGH",
+      "action": "Advance top ranked opportunity",
+      "target": {
+        "target": "Norfolk VA",
+        "offer": 180000,
+        "priority": "HIGH",
+        "score": 50,
+        "recommendation": "Review and advance deal"
+      },
+      "status": "pending",
+      "source": "revenue-execution-plan",
+      "timestamp": "2026-07-28T19:40:01.465561"
+    }
+  ]
+}

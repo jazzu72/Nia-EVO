@@ -1,0 +1,12 @@
+{
+  "system": "Nia Automation Scheduler",
+  "timestamp": "2026-07-29T10:39:05.924Z",
+  "status": "ACTIVE",
+  "jobs": [
+    "node runtime/revenue-daily-cycle.js",
+    "node runtime/zapier-automation-health.js",
+    "node runtime/ceo-command-snapshot.js"
+  ],
+  "execution": "READY",
+  "nextAction": "Run automated revenue operations cycle"
+}

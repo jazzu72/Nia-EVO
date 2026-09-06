@@ -1,0 +1,12 @@
+{
+  "system": "Nia Action Outcome Capture",
+  "timestamp": "2026-07-29T13:20:09.148Z",
+  "outcomes": {
+    "sent": 0,
+    "delivered": 0,
+    "responses": 0,
+    "conversions": 0
+  },
+  "status": "LISTENING",
+  "nextAction": "Capture external execution results"
+}

@@ -1,0 +1,14 @@
+{
+  "system": "Nia Customer Journey Tracker",
+  "timestamp": "2026-07-29T13:34:57.488Z",
+  "stages": [
+    "LEAD",
+    "QUALIFIED",
+    "CONTACTED",
+    "PROPOSAL",
+    "NEGOTIATION",
+    "CLOSED"
+  ],
+  "activeCustomers": 0,
+  "status": "READY"
+}

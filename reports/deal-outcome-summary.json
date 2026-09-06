@@ -1,0 +1,16 @@
+{
+  "system": "Nia Deal Outcome Tracker",
+  "timestamp": "2026-07-29T10:00:12.526Z",
+  "totalOutcomes": 1,
+  "activeFollowUps": 1,
+  "outcomes": [
+    {
+      "id": 1785319212525,
+      "dealId": 1785255760308,
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "status": "FOLLOW_UP_REQUIRED",
+      "timestamp": "2026-07-29T10:00:12.525Z"
+    }
+  ]
+}

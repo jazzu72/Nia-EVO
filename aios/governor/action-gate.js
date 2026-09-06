@@ -1,0 +1,40 @@
+'use strict';
+
+const path = require('path');
+const fs = require('fs');
+const LEDGER = path.join(process.cwd(), 'data/aios/approval-ledger.jsonl');
+
+const GOVERNANCE = Object.freeze({
+  execution_allowed: false,
+  execution_authorized: false,
+  execution_performed: false,
+  autonomous_execution: false,
+  human_approval_required: true
+});
+
+function recordApprovalRequest(record) {
+  fs.mkdirSync(path.dirname(LEDGER), { recursive: true });
+  fs.appendFileSync(
+    LEDGER,
+    JSON.stringify({
+      timestamp: new Date().toISOString(),
+      ...record
+    }) + '\\n'
+  );
+}
+
+function request(action, context = {}) {
+  if (!action || typeof action !== 'string') {
+    throw new Error('Action required');
+  }
+
+  return {
+    status: 'approval_required',
+    action,
+    context,
+    governance: GOVERNANCE,
+    message: 'Human approval is required before any external side effect.'
+  };
+}
+
+module.exports = { request, GOVERNANCE };

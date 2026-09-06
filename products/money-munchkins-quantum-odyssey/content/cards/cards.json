@@ -1,0 +1,10 @@
+{
+  "types": ["character", "money", "goal", "challenge", "mission"],
+  "starterDeck": [
+    {"id":"CARD-001","type":"character","name":"BitBot"},
+    {"id":"CARD-002","type":"money","name":"10 Spark Coins"},
+    {"id":"CARD-003","type":"goal","name":"Save for Something Special"},
+    {"id":"CARD-004","type":"challenge","name":"Need or Want?"},
+    {"id":"CARD-005","type":"mission","name":"Build Your First Budget"}
+  ]
+}

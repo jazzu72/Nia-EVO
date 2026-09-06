@@ -1,0 +1,12 @@
+{
+  "system": "Nia Live Revenue Trigger Engine",
+  "timestamp": "2026-07-29T13:29:10.885Z",
+  "triggers": [
+    {
+      "eventId": 1785331668188,
+      "type": "NEW_LEAD",
+      "action": "Run qualification",
+      "status": "TRIGGERED"
+    }
+  ]
+}

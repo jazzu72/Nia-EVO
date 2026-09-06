@@ -1,0 +1,20 @@
+{
+  "system": "Nia Executive Revenue Action Board",
+  "timestamp": "2026-07-29T10:28:18.003Z",
+  "focus": {
+    "name": "Little Guys Recharge & Detailing",
+    "type": "service_business",
+    "status": "ACTIVE",
+    "action": "Generate customer leads",
+    "priorityScore": 100,
+    "nextAction": "Generate customer leads"
+  },
+  "actions": [
+    "Generate opportunity",
+    "Create offer",
+    "Contact prospect",
+    "Close transaction",
+    "Record revenue"
+  ],
+  "status": "ACTIVE"
+}

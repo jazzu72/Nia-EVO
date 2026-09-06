@@ -1,0 +1,17 @@
+{
+  "system": "Nia Deal Readiness Score",
+  "timestamp": "2026-07-28T18:52:00.427Z",
+  "score": 90,
+  "status": "READY",
+  "pipeline": {
+    "activeDeals": 1,
+    "pending": 1,
+    "pipelineValue": 180000
+  },
+  "actions": {
+    "totalActions": 1,
+    "pending": 1,
+    "completed": 0
+  },
+  "nextStep": "Prepare execution package"
+}

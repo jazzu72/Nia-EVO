@@ -1,0 +1,12 @@
+{
+  "system": "Nia Production Operations Dashboard",
+  "timestamp": "2026-07-29T13:25:41.729Z",
+  "systems": {
+    "eventReceiver": "ONLINE",
+    "eventInbox": "ONLINE",
+    "revenueTriggers": "ONLINE",
+    "executiveState": "ONLINE"
+  },
+  "status": "OPERATIONAL",
+  "nextAction": "Connect external business source"
+}

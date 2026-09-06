@@ -1,0 +1,17 @@
+{
+  "system": "Nia External Action Dispatcher",
+  "timestamp": "2026-07-29T13:19:55.507Z",
+  "queue": {
+    "outreach": 3,
+    "meetings": 0,
+    "completed": 0
+  },
+  "supportedChannels": [
+    "ZAPIER",
+    "EMAIL",
+    "SMS",
+    "CALENDAR"
+  ],
+  "status": "READY",
+  "nextAction": "Dispatch approved business action"
+}

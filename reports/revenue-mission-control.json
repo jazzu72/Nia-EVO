@@ -1,0 +1,14 @@
+{
+  "system": "Nia Revenue Mission Control",
+  "timestamp": "2026-07-29T13:40:02.496Z",
+  "readiness": "5/5",
+  "status": "READY_FOR_LIVE_REVENUE",
+  "pipeline": [
+    "Generate lead",
+    "Contact customer",
+    "Send proposal",
+    "Track response",
+    "Close deal"
+  ],
+  "nextAction": "Connect real customer channel"
+}

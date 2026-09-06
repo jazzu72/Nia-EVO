@@ -1,0 +1,14 @@
+{
+  "system": "Nia Revenue Command Center",
+  "timestamp": "2026-07-29T13:32:29.474Z",
+  "modules": {
+    "leads": "ONLINE",
+    "scoring": "ONLINE",
+    "proposals": "ONLINE",
+    "closing": "ONLINE",
+    "ledger": "ONLINE"
+  },
+  "mission": "Acquire, convert, and record revenue",
+  "status": "ACTIVE",
+  "nextAction": "Connect first real customer channel"
+}

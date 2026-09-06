@@ -1,0 +1,19 @@
+{
+  "system": "Nia Deal Closing Readiness",
+  "timestamp": "2026-07-29T09:54:58.373Z",
+  "activeDeals": 1,
+  "pendingActions": 11,
+  "deals": [
+    {
+      "id": 1785255760308,
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "priority": "HIGH",
+      "readiness": "READY_FOR_FOLLOW_UP",
+      "blockers": [
+        "Awaiting contact and negotiation progress"
+      ]
+    }
+  ],
+  "nextAction": "Execute highest priority deal follow-up"
+}

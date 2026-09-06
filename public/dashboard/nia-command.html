@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nia Command Center</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:Arial;background:#111;color:#fff;padding:20px}
+.card{background:#222;padding:20px;border-radius:12px;margin:10px 0}
+.online{color:#00ff88}
+</style>
+</head>
+<body>
+
+<h1>🏰 Nia Command Center</h1>
+
+<div class="card">
+<h2>Status</h2>
+<div id="status">Loading...</div>
+</div>
+
+<div class="card">
+<h2>Engines</h2>
+<pre id="engines"></pre>
+</div>
+
+<div class="card">
+<h2>Mission</h2>
+<pre id="mission"></pre>
+</div>
+
+<script>
+fetch('/api/command/dashboard')
+.then(r=>r.json())
+.then(data=>{
+document.getElementById('status').innerHTML=
+`<span class="online">${data.status}</span><br>${data.timestamp}`;
+
+document.getElementById('engines').textContent=
+JSON.stringify(data.engines,null,2);
+
+document.getElementById('mission').textContent=
+data.mission.join("\n");
+});
+</script>
+
+</body>
+</html>

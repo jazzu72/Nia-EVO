@@ -1,0 +1,13 @@
+{
+  "system": "Nia Revenue Performance Score",
+  "timestamp": "2026-07-28T19:48:49.546Z",
+  "score": 80,
+  "status": "REVENUE MOMENTUM",
+  "metrics": {
+    "activeTasks": 1,
+    "offers": 1,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "nextAction": "Scale conversion workflow"
+}

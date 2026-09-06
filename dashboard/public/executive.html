@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Nia Executive Command</title>
+
+<style>
+
+body{
+background:#050505;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+
+.card{
+
+background:#181818;
+border-radius:12px;
+padding:20px;
+margin:15px;
+
+}
+
+.green{
+color:#00ff88;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>🏰 Nia Executive Command Center</h1>
+
+
+<div class="card">
+
+<h2>Status</h2>
+
+<p id="status">
+Loading...
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Business Intelligence</h2>
+
+<p id="stats">
+Loading...
+</p>
+
+</div>
+
+
+
+<script>
+
+fetch("/api/executive/overview")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+
+document
+.getElementById("status")
+.innerHTML =
+"<span class='green'>● "+
+data.status+
+"</span>";
+
+
+
+document
+.getElementById("stats")
+.innerHTML =
+
+`
+Opportunities:
+${data.opportunities}
+<br>
+
+Pipeline:
+${data.pipeline}
+
+<br>
+
+Updated:
+${data.timestamp}
+
+`;
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

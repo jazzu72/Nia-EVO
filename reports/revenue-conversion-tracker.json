@@ -1,0 +1,17 @@
+{
+  "system": "Nia Revenue Conversion Tracker",
+  "timestamp": "2026-07-28T19:41:19.932Z",
+  "funnel": {
+    "opportunities": 1,
+    "offers": 1,
+    "pipelineValue": 180000,
+    "tasks": 3,
+    "transactions": 0,
+    "revenue": 0
+  },
+  "conversion": {
+    "offerRate": 100,
+    "closeRate": 0
+  },
+  "nextAction": "Convert active offers into conversations"
+}

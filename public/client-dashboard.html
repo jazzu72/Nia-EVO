@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Business OS · Client Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { background: #0b0e14; color: #e8edf5; font-family: system-ui, sans-serif; }
+    .card { background: #151e2a; border: 1px solid #2a3548; border-radius: 12px; padding: 1.5rem; }
+    .sidebar { background: #151e2a; border-right: 1px solid #2a3548; }
+    .stat-value { font-size: 2rem; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="flex h-screen bg-[#0b0e14]">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 flex flex-col h-full p-4">
+      <h1 class="text-xl font-bold mb-6 bg-gradient-to-r from-[#6c5ce7] to-[#a78bfa] bg-clip-text text-transparent">
+        📱 Telegram Business OS
+      </h1>
+      <nav class="space-y-2 flex-1">
+        <a href="#" class="flex items-center gap-2 p-2 rounded-lg bg-[#6c5ce7] text-white">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white">
+          <i data-lucide="settings" class="w-5 h-5"></i>
+          Settings
+        </a>
+        <a href="#" class="flex items-center gap-2 p-2 rounded-lg text-gray-400 hover:text-white">
+          <i data-lucide="credit-card" class="w-5 h-5"></i>
+          Billing
+        </a>
+      </nav>
+      <div class="border-t border-[#2a3548] pt-4 mt-auto">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-r from-[#6c5ce7] to-[#a78bfa] flex items-center justify-center text-xs font-bold">C</div>
+          <div><p class="text-sm font-medium">Client Name</p><p class="text-xs text-gray-500">Active</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto p-8">
+      <div class="space-y-6">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-2xl font-bold">Dashboard</h2>
+            <p class="text-gray-400">Your business is running on Telegram.</p>
+          </div>
+          <a href="https://t.me/YOUR_BOT_USERNAME" target="_blank" class="bg-[#6c5ce7] hover:bg-[#5a4bd1] px-4 py-2 rounded-lg flex items-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            Open Telegram
+          </a>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="card"><div class="text-sm text-gray-400">Status</div><div class="text-green-400 font-medium">✅ Active</div></div>
+          <div class="card"><div class="text-sm text-gray-400">Plan</div><div class="font-medium">$2,500/mo</div></div>
+          <div class="card"><div class="text-sm text-gray-400">Next Billing</div><div class="font-medium">Aug 1, 2026</div></div>
+          <div class="card"><div class="text-sm text-gray-400">Support</div><div class="font-medium">24/7 via Telegram</div></div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-lg font-medium mb-4">Active Services</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bg-[#0b0e14] p-3 rounded-lg border border-[#2a3548] flex items-center gap-2">
+              <i data-lucide="message-circle" class="w-4 h-4 text-[#6c5ce7]"></i>
+              <span>SMS + Telegram</span>
+            </div>
+            <div class="bg-[#0b0e14] p-3 rounded-lg border border-[#2a3548] flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-[#6c5ce7]"></i>
+              <span>Invoicing</span>
+            </div>
+            <div class="bg-[#0b0e14] p-3 rounded-lg border border-[#2a3548] flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-[#6c5ce7]"></i>
+              <span>Scheduling</span>
+            </div>
+            <div class="bg-[#0b0e14] p-3 rounded-lg border border-[#2a3548] flex items-center gap-2">
+              <i data-lucide="users" class="w-4 h-4 text-[#6c5ce7]"></i>
+              <span>Lead Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+    <!-- ─── BILLING SECTION ─── -->
+    <div class="mt-8">
+      <h3 class="text-lg font-medium mb-4">Billing & Subscription</h3>
+      <div class="bg-[#151e2a] border border-[#2a3548] rounded-xl p-6 flex items-center justify-between">
+        <div>
+          <p class="text-sm text-gray-400">Current Plan</p>
+          <p class="text-xl font-bold">$2,500/month</p>
+        </div>
+        <div>
+          <button onclick="openCheckout()" class="bg-[#6c5ce7] hover:bg-[#5a4bd1] px-6 py-2 rounded-lg font-medium">
+            Subscribe Now
+          </button>
+        </div>
+      </div>
+      <div id="billing-status" class="mt-4 text-sm text-gray-400"></div>
+    </div>
+
+    <script>
+      async function openCheckout() {
+        const name = prompt('Enter your full name:');
+        const email = prompt('Enter your email:');
+        if (!name || !email) return alert('Name and email required.');
+
+        const res = await fetch('/api/billing/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email }),
+        });
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert('Error creating checkout session.');
+        }
+      }
+    </script>

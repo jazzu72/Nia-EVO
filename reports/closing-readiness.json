@@ -1,0 +1,11 @@
+{
+  "system": "Nia Closing Readiness Tracker",
+  "timestamp": "2026-07-29T13:15:12.145Z",
+  "funnel": {
+    "outreachReady": 3,
+    "responses": 0,
+    "meetings": 0
+  },
+  "status": "READY",
+  "nextAction": "Convert interested prospects into agreements"
+}

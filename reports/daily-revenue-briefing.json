@@ -1,0 +1,11 @@
+{
+  "system": "Nia Daily Revenue Briefing",
+  "timestamp": "2026-07-29T13:33:45.238Z",
+  "status": "ACTIVE",
+  "summary": {
+    "pipeline": "ACTIVE",
+    "events": 0
+  },
+  "priority": "Focus on highest probability customer conversion",
+  "nextAction": "Execute revenue actions"
+}

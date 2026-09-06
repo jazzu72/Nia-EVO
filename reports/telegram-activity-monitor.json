@@ -1,0 +1,10 @@
+{
+  "system": "Nia Telegram Activity Monitor",
+  "timestamp": "2026-07-29T13:53:48.670Z",
+  "metrics": {
+    "commandsReceived": 0,
+    "actionsRequested": 0,
+    "reportsSent": 0
+  },
+  "status": "MONITORING"
+}

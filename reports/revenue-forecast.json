@@ -1,0 +1,14 @@
+{
+  "system": "Nia Revenue Forecast Engine",
+  "timestamp": "2026-07-29T13:35:10.438Z",
+  "forecast": {
+    "pipelineValue": 0,
+    "expectedRevenue": 0,
+    "activeDeals": 0
+  },
+  "assumptions": [
+    "Qualified leads convert into opportunities",
+    "Closed deals update revenue ledger"
+  ],
+  "status": "READY"
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Munchkins — Pilot</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#0b1020;color:#fff}
+main{max-width:760px;margin:auto;padding:48px 24px}
+.card{background:#151d35;border:1px solid #293452;border-radius:20px;padding:28px}
+h1{font-size:38px;margin:0 0 8px}
+p{line-height:1.6;opacity:.85}
+input{width:100%;box-sizing:border-box;padding:14px;margin:8px 0;border-radius:10px;border:1px solid #394665;background:#0d1428;color:#fff}
+button{padding:14px 20px;border:0;border-radius:10px;cursor:pointer;font-weight:700}
+.status{margin-top:18px;padding:14px;border-radius:10px;background:#122b25}
+</style>
+</head>
+<body>
+<main>
+<div class="card">
+<h1>Money Munchkins: Quantum Odyssey</h1>
+<p>Join the pilot and help test a new adventure-based approach to financial literacy.</p>
+<p><strong>Pilot families receive access to the Quantum Odyssey experience and help shape the next generation of missions.</strong></p>
+
+<form id="pilot">
+<input id="name" required placeholder="Parent / Guardian name">
+<input id="email" required type="email" placeholder="Email address">
+<label style="display:block;margin:12px 0;font-size:14px">
+<input id="consent" required type="checkbox" style="width:auto;margin-right:8px">
+I agree to be contacted about the Money Munchkins pilot.
+</label>
+<button type="submit">Join the Pilot</button>
+</form>
+
+<div id="status"></div>
+</div>
+</main>
+
+<script>
+document.getElementById("pilot").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const status=document.getElementById("status");
+  status.textContent="Submitting…";
+
+  try{
+    const r=await fetch("/api/money-munchkins/growth/pilot-signup",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        name:document.getElementById("name").value.trim(),
+        email:document.getElementById("email").value.trim(),
+        consent:document.getElementById("consent").checked
+      })
+    });
+
+    const d=await r.json();
+    if(!d.success) throw new Error(d.error||"SIGNUP_FAILED");
+
+    status.className="status";
+    status.textContent="✅ You're on the pilot list.";
+    e.target.reset();
+  }catch(err){
+    status.textContent="Unable to complete signup. Please try again.";
+  }
+});
+</script>
+</body>
+</html>

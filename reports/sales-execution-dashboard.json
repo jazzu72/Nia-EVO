@@ -1,0 +1,17 @@
+{
+  "system": "Nia Sales Execution Dashboard",
+  "timestamp": "2026-07-29T13:17:04.135Z",
+  "metrics": {
+    "outreachQueued": 3,
+    "meetingsScheduled": 0
+  },
+  "status": "OPERATIONAL",
+  "command": "Execute highest priority revenue action",
+  "workflow": [
+    "Contact prospect",
+    "Capture response",
+    "Schedule meeting",
+    "Send proposal",
+    "Close transaction"
+  ]
+}

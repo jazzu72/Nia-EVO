@@ -1,0 +1,17 @@
+{
+  "system": "Nia Revenue Intelligence",
+  "timestamp": "2026-07-29T10:44:02.247Z",
+  "metrics": {
+    "transactions": 0,
+    "revenue": 0,
+    "pipeline": {
+      "activeDeals": 0,
+      "currentRevenue": 0
+    }
+  },
+  "learning": {
+    "status": "WAITING_FOR_FIRST_TRANSACTION",
+    "objective": "Improve conversion rate"
+  },
+  "nextAction": "Close first verified transaction"
+}

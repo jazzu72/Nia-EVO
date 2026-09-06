@@ -1,0 +1,25 @@
+{
+  "system": "Nia Telegram CEO Snapshot",
+  "timestamp": "2026-07-29T13:56:47.466Z",
+  "readiness": "4/4",
+  "status": "CEO_CONTROL_READY",
+  "nextAction": "Consolidate Telegram command services",
+  "systems": [
+    {
+      "file": "reports/telegram-command-registry.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "reports/telegram-activity-monitor.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "data/telegram-command-audit.json",
+      "status": "ONLINE"
+    },
+    {
+      "file": "reports/revenue-command-center.json",
+      "status": "ONLINE"
+    }
+  ]
+}

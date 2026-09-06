@@ -1,0 +1,50 @@
+{
+  "system": "NIA-CAPITAL-OS",
+  "deployment": "ACTIVE_BUILD",
+  "servicesChecked": 8,
+  "servicesOnline": 4,
+  "health": "REVIEW_REQUIRED",
+  "timestamp": "2026-08-05T16:45:57.678Z",
+  "services": [
+    {
+      "service": "nia-discovery-engine",
+      "online": false,
+      "pid": null
+    },
+    {
+      "service": "nia-market-scanner",
+      "online": false,
+      "pid": null
+    },
+    {
+      "service": "nia-opportunity-ranker",
+      "online": true,
+      "pid": 17547
+    },
+    {
+      "service": "nia-action-generator",
+      "online": true,
+      "pid": 17807
+    },
+    {
+      "service": "nia-action-executor",
+      "online": true,
+      "pid": 18098
+    },
+    {
+      "service": "nia-execution-worker",
+      "online": true,
+      "pid": 18453
+    },
+    {
+      "service": "nia-capital-intelligence",
+      "online": false,
+      "pid": null
+    },
+    {
+      "service": "nia-command-center",
+      "online": false,
+      "pid": null
+    }
+  ]
+}

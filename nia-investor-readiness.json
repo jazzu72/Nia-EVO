@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CAPITAL-PACKAGE-1785948307306",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "arv": 155000,
+    "purchaseOffer": 93000,
+    "estimatedSpread": 62000,
+    "opportunityScore": 100,
+    "packageStatus": "READY_FOR_CAPITAL_REVIEW",
+    "requirements": [
+      "TITLE_REPORT",
+      "PROPERTY_INSPECTION",
+      "EXIT_STRATEGY",
+      "FUNDING_CONFIRMATION"
+    ],
+    "created": "2026-08-05T16:45:07.306Z",
+    "investorScore": 100,
+    "investorGrade": "FUND_READY",
+    "nextStep": "SUBMIT_TO_CAPITAL_PARTNER",
+    "evaluatedAt": "2026-08-05T16:46:01.421Z"
+  },
+  {
+    "id": "CAPITAL-PACKAGE-1785948307308",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "arv": 250000,
+    "purchaseOffer": 150000,
+    "estimatedSpread": 100000,
+    "opportunityScore": 100,
+    "packageStatus": "READY_FOR_CAPITAL_REVIEW",
+    "requirements": [
+      "TITLE_REPORT",
+      "PROPERTY_INSPECTION",
+      "EXIT_STRATEGY",
+      "FUNDING_CONFIRMATION"
+    ],
+    "created": "2026-08-05T16:45:07.308Z",
+    "investorScore": 100,
+    "investorGrade": "FUND_READY",
+    "nextStep": "SUBMIT_TO_CAPITAL_PARTNER",
+    "evaluatedAt": "2026-08-05T16:46:01.421Z"
+  },
+  {
+    "id": "CAPITAL-PACKAGE-1785948307308",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "arv": 180000,
+    "purchaseOffer": 95000,
+    "estimatedSpread": 85000,
+    "opportunityScore": 100,
+    "packageStatus": "READY_FOR_CAPITAL_REVIEW",
+    "requirements": [
+      "TITLE_REPORT",
+      "PROPERTY_INSPECTION",
+      "EXIT_STRATEGY",
+      "FUNDING_CONFIRMATION"
+    ],
+    "created": "2026-08-05T16:45:07.308Z",
+    "investorScore": 100,
+    "investorGrade": "FUND_READY",
+    "nextStep": "SUBMIT_TO_CAPITAL_PARTNER",
+    "evaluatedAt": "2026-08-05T16:46:01.421Z"
+  }
+]

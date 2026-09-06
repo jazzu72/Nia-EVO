@@ -1,0 +1,17 @@
+{
+  "system": "Nia Revenue Mission Pulse",
+  "timestamp": "2026-07-29T10:05:45.231Z",
+  "state": "EXECUTE",
+  "progress": {
+    "transactions": 0,
+    "revenue": 0,
+    "readiness": "READY_FOR_REVENUE_EXECUTION"
+  },
+  "signals": {
+    "missionActive": true,
+    "blocker": "No closed revenue transactions recorded",
+    "command": "Close first transaction"
+  },
+  "score": 60,
+  "nextAction": "Convert priority opportunity into first transaction"
+}

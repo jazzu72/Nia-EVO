@@ -1,0 +1,22 @@
+{
+  "system": "NIA-CAPITAL-OS",
+  "state": "VERIFIED_REVIEW_REQUIRED",
+  "opportunity": {
+    "id": "363121",
+    "title": "Freedom250 Advancing U.S. Artificial Intelligence Leadership in Algeria"
+  },
+  "evidence": {
+    "identifiable_opportunity": "363121",
+    "official_source": "https://www.grants.gov/",
+    "eligibility_evidence": "",
+    "deadline_evidence": "08/10/2026",
+    "application_path": "https://www.grants.gov/"
+  },
+  "controls": {
+    "ownerApprovalRequired": true,
+    "applicationSubmission": false,
+    "financialExecution": false,
+    "moneyMovement": false
+  },
+  "generatedAt": "2026-08-10T22:10:40.543Z"
+}

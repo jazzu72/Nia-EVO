@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nia Capital OS Investor Brief</title>
+<link rel="stylesheet" href="/dashboard/nia.css">
+</head>
+
+<body>
+<div class="app">
+
+<header class="topbar">
+<h1>🏰 House of Jazzu</h1>
+<div class="status">NIA CAPITAL OS</div>
+</header>
+
+<div class="executive-panel">
+<h2>Autonomous Business Command Center</h2>
+<div id="investor-summary">
+Loading intelligence...
+</div>
+</div>
+
+</div>
+
+<script>
+async function load(){
+ const res=await fetch('/api/export/investor-summary');
+ const data=await res.json();
+
+ document.getElementById('investor-summary').innerHTML=`
+ <h3>System Status: ${data.status}</h3>
+ <p>Opportunities: ${data.metrics.opportunities}</p>
+ <p>Active Deals: ${data.metrics.activeDeals}</p>
+ <p>Pipeline Value: $${Number(data.metrics.pipelineValue).toLocaleString()}</p>
+ <p>Pending Actions: ${data.metrics.pendingActions}</p>
+ <hr>
+ ${data.highlights.map(x=>`<p>✅ ${x}</p>`).join("")}
+ `;
+}
+
+load();
+setInterval(load,30000);
+</script>
+
+</body>
+</html>

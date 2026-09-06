@@ -1,0 +1,32 @@
+[
+  {
+    "id": "MMQ-001",
+    "title": "Welcome to Quantum Odyssey",
+    "skill": "money_basics",
+    "difficulty": 1,
+    "sparkCoins": 10,
+    "xp": 10,
+    "description": "Meet BitBot and learn how Spark Coins work.",
+    "challenge": "Choose a smart way to use your first 10 Spark Coins."
+  },
+  {
+    "id": "MMQ-002",
+    "title": "Needs vs. Wants",
+    "skill": "needs_vs_wants",
+    "difficulty": 1,
+    "sparkCoins": 20,
+    "xp": 20,
+    "description": "Learn the difference between things you need and things you want.",
+    "challenge": "Sort purchases into Needs or Wants."
+  },
+  {
+    "id": "MMQ-003",
+    "title": "Build Your First Budget",
+    "skill": "budgeting",
+    "difficulty": 2,
+    "sparkCoins": 30,
+    "xp": 30,
+    "description": "Create a simple budget using a limited number of Spark Coins.",
+    "challenge": "Decide how much to spend, save, and keep for a goal."
+  }
+]

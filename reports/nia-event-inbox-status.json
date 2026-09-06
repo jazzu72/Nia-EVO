@@ -1,0 +1,14 @@
+{
+  "system": "Nia Event Inbox",
+  "timestamp": "2026-07-29T13:24:00.854Z",
+  "events": [],
+  "supportedEvents": [
+    "NEW_LEAD",
+    "CUSTOMER_RESPONSE",
+    "MEETING_BOOKED",
+    "PAYMENT_RECEIVED",
+    "DEAL_CLOSED"
+  ],
+  "status": "LISTENING",
+  "nextAction": "Waiting for external business events"
+}

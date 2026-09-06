@@ -1,0 +1,293 @@
+{
+  "profileVersion": "1.0",
+  "system": "Nia Capital OS",
+  "organization": {
+    "name": "House of Jazzu",
+    "owner": "Jason Lesane",
+    "location": {
+      "city": "Norfolk",
+      "state": "Virginia",
+      "region": "Hampton Roads",
+      "market": "757"
+    },
+    "businessType": "technology innovation company",
+    "fundingPreference": [
+      "grants",
+      "corporate sponsorships",
+      "non-dilutive capital",
+      "innovation competitions",
+      "accelerators",
+      "strategic partnerships",
+      "economic development programs"
+    ],
+    "targetCapital": {
+      "minimum": 235000,
+      "target": 240000,
+      "currency": "USD"
+    }
+  },
+  "technologyThemes": [
+    "artificial intelligence",
+    "quantum technology",
+    "quantum-inspired computing",
+    "financial technology",
+    "education technology",
+    "creative technology",
+    "music technology",
+    "cybersecurity",
+    "responsible AI",
+    "digital inclusion",
+    "software infrastructure",
+    "automation"
+  ],
+  "impactThemes": [
+    "financial literacy",
+    "STEM",
+    "STEAM",
+    "youth education",
+    "economic mobility",
+    "entrepreneurship",
+    "workforce development",
+    "job creation",
+    "community development",
+    "digital inclusion",
+    "creator economy"
+  ],
+  "products": [
+    {
+      "name": "Nia / Nia-EVO",
+      "category": "AI executive operations platform",
+      "themes": [
+        "artificial intelligence",
+        "automation",
+        "business intelligence",
+        "grant discovery",
+        "decision support",
+        "responsible AI"
+      ]
+    },
+    {
+      "name": "Museforge",
+      "category": "AI and quantum-inspired music technology",
+      "themes": [
+        "music technology",
+        "creative technology",
+        "AI",
+        "creator economy",
+        "digital media"
+      ]
+    },
+    {
+      "name": "Money Munchkins: Quantum Odyssey",
+      "category": "children's financial literacy game",
+      "targetAudience": "K-3",
+      "themes": [
+        "financial literacy",
+        "education technology",
+        "STEM",
+        "youth education",
+        "economic mobility",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Polish",
+      "category": "AI-powered social and creative platform",
+      "themes": [
+        "AI",
+        "creator economy",
+        "social technology",
+        "digital media"
+      ]
+    },
+    {
+      "name": "Quantum Vault Bank",
+      "category": "secure technology infrastructure",
+      "themes": [
+        "cybersecurity",
+        "fintech",
+        "data security",
+        "enterprise infrastructure"
+      ]
+    },
+    {
+      "name": "RedCap",
+      "category": "compliance technology",
+      "themes": [
+        "regtech",
+        "governance",
+        "risk",
+        "compliance",
+        "cybersecurity"
+      ]
+    }
+  ],
+  "searchCategories": {
+    "government": [
+      "federal grants",
+      "Virginia grants",
+      "Virginia economic development",
+      "Hampton Roads economic development",
+      "Norfolk business funding",
+      "small business innovation",
+      "SBIR",
+      "STTR",
+      "technology commercialization"
+    ],
+    "corporate": [
+      "corporate grants",
+      "corporate sponsorships",
+      "bank innovation programs",
+      "credit union sponsorships",
+      "technology company grants",
+      "AI innovation challenges",
+      "cloud technology programs",
+      "telecommunications programs",
+      "financial literacy sponsorships",
+      "STEM sponsorships",
+      "community investment programs"
+    ],
+    "institutional": [
+      "university innovation programs",
+      "accelerators",
+      "startup competitions",
+      "innovation challenges",
+      "venture competitions",
+      "foundation funding",
+      "economic development programs",
+      "entrepreneurship programs"
+    ]
+  },
+  "geographicPriority": [
+    {
+      "tier": 1,
+      "regions": [
+        "Norfolk VA",
+        "Virginia Beach VA",
+        "Chesapeake VA",
+        "Portsmouth VA",
+        "Hampton VA",
+        "Newport News VA",
+        "Hampton Roads VA",
+        "757"
+      ]
+    },
+    {
+      "tier": 2,
+      "regions": [
+        "Virginia"
+      ]
+    },
+    {
+      "tier": 3,
+      "regions": [
+        "Northern Virginia",
+        "Washington DC"
+      ]
+    },
+    {
+      "tier": 4,
+      "regions": [
+        "United States"
+      ]
+    },
+    {
+      "tier": 5,
+      "regions": [
+        "national programs open to Virginia companies"
+      ]
+    }
+  ],
+  "corporateTargets": [
+    "banks",
+    "credit unions",
+    "technology companies",
+    "AI companies",
+    "cloud providers",
+    "telecommunications companies",
+    "automotive companies",
+    "EV companies",
+    "music companies",
+    "entertainment companies",
+    "gaming companies",
+    "financial institutions",
+    "insurance companies",
+    "defense companies",
+    "aerospace companies",
+    "Virginia corporations",
+    "Hampton Roads corporations",
+    "corporate foundations"
+  ],
+  "verificationPolicy": {
+    "requiredBeforeActionable": true,
+    "requiredFields": [
+      "officialOrganization",
+      "officialOpportunityName",
+      "officialURL",
+      "fundingType",
+      "maximumAward",
+      "eligibility",
+      "geographicRestrictions",
+      "businessStageRestrictions",
+      "industryRestrictions",
+      "applicationDeadline",
+      "requiredDocuments",
+      "matchingRequirements",
+      "contactInformation",
+      "applicationPortal",
+      "sourceDate",
+      "verificationStatus"
+    ],
+    "statuses": [
+      "DISCOVERED",
+      "UNDER_REVIEW",
+      "VERIFIED",
+      "LIKELY_ELIGIBLE",
+      "OWNER_REVIEW",
+      "QUARANTINED",
+      "REJECTED"
+    ],
+    "quarantineReasons": [
+      "NO_AUTHORITATIVE_SOURCE",
+      "NO_CANONICAL_OPPORTUNITY_RECORD",
+      "ELIGIBILITY_UNCLEAR",
+      "EXPIRED",
+      "DUPLICATE",
+      "INSUFFICIENT_SOURCE_DATA",
+      "POTENTIAL_FRAUD"
+    ]
+  },
+  "scoring": {
+    "enabled": true,
+    "dimensions": {
+      "technologyFit": 25,
+      "eligibilityFit": 20,
+      "geographicFit": 15,
+      "fundingFit": 15,
+      "impactFit": 10,
+      "deadlineFit": 5,
+      "commercializationFit": 5,
+      "sourceConfidence": 5
+    },
+    "priorityBands": {
+      "A": "80-100",
+      "B": "65-79",
+      "C": "50-64",
+      "D": "below-50"
+    }
+  },
+  "capitalDiscoveryObjective": "Continuously discover legitimate non-dilutive and strategically advantageous capital for House of Jazzu across government agencies, corporations, foundations, banks, universities, accelerators, innovation competitions, sponsorship programs, and economic-development organizations. Match each opportunity against actual House of Jazzu products, technology, geography, business stage, funding requirements, and measurable impact. Verify opportunities against authoritative sources before treating them as actionable.",
+  "safety": {
+    "mode": "OWNER_REVIEW_ONLY",
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  },
+  "operatingRule": "Nia may discover, research, verify, score, organize, monitor, and prepare funding opportunities and application drafts. Nia must not submit applications, sign documents, move money, approve funding, or represent owner authorization without explicit owner approval.",
+  "createdBy": "Nia Capital OS",
+  "generatedAt": "2026-08-13T00:00:00Z"
+}

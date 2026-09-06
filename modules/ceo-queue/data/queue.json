@@ -1,0 +1,125 @@
+[
+  {
+    "id": 1785261873230,
+    "action": "System score below 100: 75",
+    "priority": "high",
+    "source": "executive-alert-engine",
+    "status": "pending",
+    "timestamp": "2026-07-28T18:04:33.231Z"
+  },
+  {
+    "id": 1785262478949,
+    "action": "review_and_repair",
+    "issue": "System score below 100: 75",
+    "priority": "high",
+    "source": "auto-remediation",
+    "status": "reviewed",
+    "timestamp": "2026-07-28T18:14:38.949Z",
+    "updatedAt": "2026-07-28T18:15:38.979Z"
+  },
+  {
+    "id": 1785263738880,
+    "action": "Increase qualified revenue opportunities",
+    "priority": "high",
+    "status": "pending",
+    "source": "revenue-action-engine",
+    "timestamp": "2026-07-28T18:35:38.880Z"
+  },
+  {
+    "id": 1785264500625,
+    "type": "property-review",
+    "target": "Norfolk VA",
+    "offer": 180000,
+    "action": "begin_deal_execution",
+    "priority": "HIGH",
+    "stage": "analysis",
+    "status": "pending",
+    "source": "deal-execution-engine",
+    "timestamp": "2026-07-28T18:48:20.626Z"
+  },
+  {
+    "id": 1785264608014,
+    "target": "Norfolk VA",
+    "type": "property-review",
+    "action": "complete_deal_analysis",
+    "priority": "HIGH",
+    "stage": "analysis",
+    "status": "pending",
+    "source": "deal-action-engine",
+    "timestamp": "2026-07-28T18:50:08.014Z"
+  },
+  {
+    "id": 1785267601452802924,
+    "priority": "HIGH",
+    "action": "Advance top ranked opportunity",
+    "target": {
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "priority": "HIGH",
+      "score": 50,
+      "recommendation": "Review and advance deal"
+    },
+    "status": "pending",
+    "source": "revenue-execution-plan",
+    "timestamp": "2026-07-28T19:40:01.465561"
+  },
+  {
+    "id": 1785267601465614610,
+    "priority": "MEDIUM",
+    "action": "Convert pipeline activity into customer conversations",
+    "target": null,
+    "status": "pending",
+    "source": "revenue-execution-plan",
+    "timestamp": "2026-07-28T19:40:01.465633"
+  },
+  {
+    "id": 1785267601465650092,
+    "priority": "MEDIUM",
+    "action": "Track first revenue transaction",
+    "target": null,
+    "status": "pending",
+    "source": "revenue-execution-plan",
+    "timestamp": "2026-07-28T19:40:01.465657"
+  },
+  {
+    "id": 1785267757589308005,
+    "priority": "HIGH",
+    "action": "Follow up on active offers",
+    "target": {
+      "target": "Norfolk VA",
+      "offer": 180000,
+      "priority": "HIGH",
+      "score": 50,
+      "recommendation": "Review and advance deal"
+    },
+    "status": "pending",
+    "source": "revenue-action-engine",
+    "timestamp": "2026-07-28T19:42:37.591715"
+  },
+  {
+    "id": 1785267757591739239,
+    "priority": "HIGH",
+    "action": "Create first transaction pathway",
+    "target": null,
+    "status": "pending",
+    "source": "revenue-action-engine",
+    "timestamp": "2026-07-28T19:42:37.591746"
+  },
+  {
+    "id": 1785267757591755963,
+    "priority": "MEDIUM",
+    "action": "Convert active offers into conversations",
+    "target": null,
+    "status": "pending",
+    "source": "revenue-action-engine",
+    "timestamp": "2026-07-28T19:42:37.591759"
+  },
+  {
+    "id": 1785268036678786698,
+    "priority": "HIGH",
+    "action": "Contact and advance active offers",
+    "status": "pending",
+    "source": "revenue-action-executor",
+    "timestamp": "2026-07-28T19:47:16.681318"
+  }
+]

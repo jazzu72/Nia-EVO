@@ -1,0 +1,18 @@
+{
+  "system": "Nia Revenue Follow-Up Runner",
+  "timestamp": "2026-07-29T10:20:22.476Z",
+  "status": "ACTIVE",
+  "totalTasks": 1,
+  "readyTasks": 1,
+  "tasks": [
+    {
+      "id": 1785319645067,
+      "action": "Prepare customer follow-up",
+      "status": "READY",
+      "priority": "HIGH",
+      "source": "Revenue Opportunity",
+      "createdAt": "2026-07-29T10:20:22.475Z"
+    }
+  ],
+  "nextAction": "Execute highest priority follow-up"
+}

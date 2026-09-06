@@ -1,0 +1,207 @@
+{
+  "profileVersion": "1.0",
+  "organization": {
+    "name": "House of Jazzu",
+    "legalEntity": "House of Jazzu",
+    "location": {
+      "city": "Norfolk",
+      "state": "Virginia",
+      "country": "United States",
+      "region": "Hampton Roads / 757"
+    },
+    "businessType": "Technology and innovation venture",
+    "focus": [
+      "Artificial intelligence",
+      "Quantum technology",
+      "Financial technology",
+      "Education technology",
+      "Creative technology",
+      "Software",
+      "Digital infrastructure",
+      "Entrepreneurship",
+      "Small business innovation"
+    ]
+  },
+  "portfolio": [
+    {
+      "name": "Nia Capital OS",
+      "category": "AI financial and business intelligence",
+      "description": "AI-driven operating system for opportunity discovery, capital intelligence, grant research, business analysis, compliance and owner-controlled decision support."
+    },
+    {
+      "name": "Nia-EVO",
+      "category": "AI executive infrastructure",
+      "description": "Executive AI infrastructure designed to coordinate research, opportunity analysis, workflows, memory, monitoring and business operations."
+    },
+    {
+      "name": "Museforge",
+      "category": "creative technology / quantum music",
+      "description": "Technology platform exploring AI, quantum concepts and music creation."
+    },
+    {
+      "name": "Money Munchkins: Quantum Odyssey",
+      "category": "financial literacy / education technology",
+      "description": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology."
+    },
+    {
+      "name": "Polish",
+      "category": "social technology",
+      "description": "AI-enabled social media technology platform."
+    },
+    {
+      "name": "Quantum Vault Bank",
+      "category": "security / digital infrastructure",
+      "description": "Security and infrastructure initiative incorporating modern secrets management and enterprise infrastructure concepts."
+    },
+    {
+      "name": "Little Guys Recharge and Detailing Service LLC",
+      "category": "EV infrastructure / mobile services",
+      "description": "Mobile EV charging and vehicle detailing concept serving the Hampton Roads market."
+    }
+  ],
+  "fundingMission": {
+    "primaryObjective": "Identify non-dilutive and strategic capital opportunities that can accelerate House of Jazzu technology development, commercialization, workforce development and community impact.",
+    "preferredFunding": [
+      "Corporate grants",
+      "Foundation grants",
+      "Technology grants",
+      "Innovation challenges",
+      "Small business grants",
+      "AI grants",
+      "Quantum technology funding",
+      "Education technology funding",
+      "Financial literacy funding",
+      "Entrepreneurship programs",
+      "Corporate sponsorships",
+      "Strategic partnerships",
+      "Accelerators",
+      "Competitions",
+      "Prize funding",
+      "Pilot programs"
+    ],
+    "secondaryFunding": [
+      "Equity programs",
+      "Low-interest programs",
+      "Community development programs",
+      "Government contracts",
+      "Corporate procurement opportunities"
+    ],
+    "avoidUnlessOwnerApproves": [
+      "High-cost debt",
+      "Predatory financing",
+      "Merchant cash advances",
+      "Unverified funding offers",
+      "Programs requiring unauthorized financial commitments"
+    ]
+  },
+  "targetSponsors": {
+    "industries": [
+      "Banks",
+      "Credit unions",
+      "Technology companies",
+      "Cloud providers",
+      "Telecommunications",
+      "Automotive companies",
+      "EV companies",
+      "Energy companies",
+      "Insurance companies",
+      "Financial services",
+      "Healthcare technology",
+      "Defense technology",
+      "Aerospace",
+      "Media",
+      "Music technology",
+      "Gaming",
+      "Education technology",
+      "Cybersecurity",
+      "AI companies",
+      "Quantum technology companies"
+    ],
+    "geographyPriority": [
+      "Norfolk",
+      "Hampton Roads",
+      "Virginia",
+      "Mid-Atlantic",
+      "United States"
+    ],
+    "corporateProgramKeywords": [
+      "small business grant",
+      "startup grant",
+      "innovation grant",
+      "technology grant",
+      "AI grant",
+      "quantum grant",
+      "education grant",
+      "financial literacy grant",
+      "entrepreneurship grant",
+      "community impact grant",
+      "economic mobility",
+      "workforce development",
+      "minority business",
+      "underserved entrepreneurs",
+      "founder program",
+      "startup challenge",
+      "innovation challenge",
+      "pitch competition",
+      "corporate sponsorship",
+      "technology accelerator",
+      "pilot program"
+    ]
+  },
+  "impactThemes": [
+    "Economic mobility",
+    "Financial literacy",
+    "Youth education",
+    "Entrepreneurship",
+    "AI innovation",
+    "Quantum innovation",
+    "Digital inclusion",
+    "Workforce development",
+    "Small business growth",
+    "EV infrastructure",
+    "Community technology",
+    "Creative technology"
+  ],
+  "matchingRules": {
+    "minimumRelevanceScore": 70,
+    "preferLocalPrograms": true,
+    "preferNonDilutiveCapital": true,
+    "preferCorporatePrograms": true,
+    "preferTechnologyPrograms": true,
+    "requireVerifiedSource": true,
+    "requireEligibilityEvidence": true,
+    "requireDeadlineEvidence": true,
+    "requireFundingAmountEvidence": true,
+    "neverInventEligibility": true,
+    "neverInventDeadlines": true,
+    "neverInventFundingAmounts": true
+  },
+  "ownerControls": {
+    "mode": "OWNER_REVIEW_ONLY",
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  },
+  "niaInstructions": {
+    "role": "House of Jazzu funding intelligence analyst",
+    "objective": "Continuously identify, verify, rank and explain legitimate funding opportunities that match House of Jazzu and its portfolio.",
+    "workflow": [
+      "Discover potential funding source",
+      "Verify the sponsoring organization",
+      "Verify the official program page",
+      "Verify eligibility",
+      "Verify funding amount when published",
+      "Verify deadline when published",
+      "Score relevance to House of Jazzu",
+      "Identify the strongest portfolio product for the opportunity",
+      "Explain why House of Jazzu qualifies or may qualify",
+      "Store source lineage",
+      "Prepare an owner-review funding brief",
+      "Never submit without owner authorization"
+    ]
+  }
+}

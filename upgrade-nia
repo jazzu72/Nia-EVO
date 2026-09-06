@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo ""
+echo "  ╔══════════════════════════════════════════════════════╗"
+echo "  ║     🚀 UPGRADING NIA — CHIEF ENGINEER EDITION       ║"
+echo "  ║     10 upgrades · One command · Autonomous          ║"
+echo "  ╚══════════════════════════════════════════════════════╝"
+echo ""
+
+# ─── 1. Self-Healing Watcher ────────────────────────────────
+echo "🔧 Installing Self-Healing Watcher..."
+cat > watcher.js << 'EOF'
+const http = require('http');
+const { exec } = require('child_process');
+
+const SERVICES = ['ceo', 'cos'];
+const CHECK_INTERVAL = 30000;
+
+function checkService(name) {
+  http.get('http://localhost:3000/health', (res) => {
+    if (res.statusCode !== 200) {
+      console.log(`⚠️  ${name} unhealthy, restarting...`);
+      exec(`pm2 restart ${name}`);
+    }
+  }).on('error', () => {
+    console.log(`⚠️  ${name} down, restarting...`);
+    exec(`pm2 restart ${name}`);
+  });
+}
+
+setInterval(() => SERVICES.forEach(checkService), CHECK_INTERVAL);
+console.log('✅ Watcher running');

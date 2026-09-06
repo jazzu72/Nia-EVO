@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.pid
+*.tmp
+*.bak
+*.backup
+*.pre-*
+NIA-*-pre-*.js
+NIA-*-pre-*.html

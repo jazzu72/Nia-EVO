@@ -1,0 +1,26 @@
+{
+  "founder": {
+    "status": "COMPLETE",
+    "data": {
+      "name": "Jason Lesane",
+      "company": "House of Jazzu",
+      "role": "Founder & CEO",
+      "platform": "Nia Capital OS",
+      "location": "Virginia"
+    }
+  },
+  "financial": {
+    "status": "COMPLETE",
+    "data": {
+      "revenue": 0,
+      "expenses": "startup development",
+      "fundingRequest": 250000,
+      "useOfFunds": {
+        "development": 100000,
+        "infrastructure": 50000,
+        "research": 50000,
+        "operations": 50000
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "system": "Nia Revenue Command Center Pulse",
+  "timestamp": "2026-07-29T10:14:41.154Z",
+  "status": "ACTIVE",
+  "command": {
+    "state": {
+      "executiveState": "OPERATIONAL",
+      "decision": "EXECUTE_PRIORITY_DEAL",
+      "nextAction": "Advance priority deal toward close"
+    },
+    "priority": "Close first revenue transaction"
+  },
+  "metrics": {
+    "score": 50,
+    "revenue": {
+      "transactions": 0,
+      "totalRevenue": 0
+    },
+    "health": {
+      "commandSummary": true,
+      "apiModule": true,
+      "ceoSnapshot": true
+    }
+  },
+  "signal": "CONTINUE_OPTIMIZATION",
+  "nextAction": "Close first revenue transaction"
+}

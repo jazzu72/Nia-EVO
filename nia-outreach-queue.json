@@ -1,0 +1,425 @@
+[
+  {
+    "outreachId": "OUTREACH-1785947759460",
+    "executionId": "EXEC-ACTION-1785947469597",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.460Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759468",
+    "executionId": "EXEC-ACTION-1785947469607",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947469609",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947469610",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947469611",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947529624",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947529633",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759469",
+    "executionId": "EXEC-ACTION-1785947529635",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.469Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947529638",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947589625",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947589631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947589633",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947589634",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947649624",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947649629",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947649630",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759470",
+    "executionId": "EXEC-ACTION-1785947649631",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.470Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759471",
+    "executionId": "EXEC-ACTION-1785947709622",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.471Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947759471",
+    "executionId": "EXEC-ACTION-1785947709623",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:35:59.471Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947819482",
+    "executionId": "EXEC-ACTION-1785947769625",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:36:59.482Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947819490",
+    "executionId": "EXEC-ACTION-1785947769632",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:36:59.490Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947819493",
+    "executionId": "EXEC-ACTION-1785947769633",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:36:59.493Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947879485",
+    "executionId": "EXEC-ACTION-1785947829626",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:37:59.485Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947879487",
+    "executionId": "EXEC-ACTION-1785947829633",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:37:59.487Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947879487",
+    "executionId": "EXEC-ACTION-1785947829635",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:37:59.487Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947879487",
+    "executionId": "EXEC-ACTION-1785947829636",
+    "property": "NORFOLK FORECLOSURE OPPORTUNITY",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:37:59.487Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947939480",
+    "executionId": "EXEC-ACTION-1785947889627",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:38:59.480Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947939480",
+    "executionId": "EXEC-ACTION-1785947889628",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:38:59.480Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947939480",
+    "executionId": "EXEC-ACTION-1785947889630",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:38:59.480Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947939480",
+    "executionId": "EXEC-ACTION-1785947889631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:38:59.480Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947999484",
+    "executionId": "EXEC-ACTION-1785947949630",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:39:59.484Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947999485",
+    "executionId": "EXEC-ACTION-1785947949636",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:39:59.485Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947999485",
+    "executionId": "EXEC-ACTION-1785947949637",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:39:59.485Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785947999485",
+    "executionId": "EXEC-ACTION-1785947949638",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:39:59.486Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948059482",
+    "executionId": "EXEC-ACTION-1785948009629",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:40:59.483Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948059486",
+    "executionId": "EXEC-ACTION-1785948009632",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:40:59.486Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948059488",
+    "executionId": "EXEC-ACTION-1785948009633",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:40:59.488Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948119481",
+    "executionId": "EXEC-ACTION-1785948069630",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:41:59.481Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948119483",
+    "executionId": "EXEC-ACTION-1785948069632",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:41:59.483Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948179492",
+    "executionId": "EXEC-ACTION-1785948129631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:42:59.492Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948179498",
+    "executionId": "EXEC-ACTION-1785948129638",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:42:59.498Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948179499",
+    "executionId": "EXEC-ACTION-1785948129639",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:42:59.500Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948239491",
+    "executionId": "EXEC-ACTION-1785948189629",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:43:59.491Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948239492",
+    "executionId": "EXEC-ACTION-1785948189631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:43:59.492Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948299490",
+    "executionId": "EXEC-ACTION-1785948249631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:44:59.490Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948299492",
+    "executionId": "EXEC-ACTION-1785948249633",
+    "property": "757 VIRGINIA TARGET PROPERTY",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:44:59.492Z"
+  },
+  {
+    "outreachId": "OUTREACH-1785948359491",
+    "executionId": "EXEC-ACTION-1785948309631",
+    "property": "4110 Reisterstown Rd, Baltimore MD",
+    "channel": "PENDING",
+    "action": "SELLER_CONTACT_REQUIRED",
+    "status": "READY",
+    "created": "2026-08-05T16:45:59.491Z"
+  }
+]

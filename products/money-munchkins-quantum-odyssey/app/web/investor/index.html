@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Munchkins — Investor Command Center</title>
+<style>
+body{margin:0;background:#080d1a;color:#fff;font-family:system-ui,sans-serif}
+main{max-width:1100px;margin:auto;padding:32px 20px}
+h1{font-size:34px;margin-bottom:4px}.sub{opacity:.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:25px 0}
+.card{background:#121a2d;border:1px solid #263452;border-radius:18px;padding:22px}
+.label{opacity:.65;font-size:13px;text-transform:uppercase}
+.value{font-size:32px;font-weight:800;margin-top:8px}
+.ok{color:#65e6a8}.bar{height:8px;background:#263452;border-radius:10px;overflow:hidden}
+.fill{height:100%;width:100%;background:#65e6a8}
+ul{padding-left:20px;line-height:1.9}
+</style>
+</head>
+<body>
+<main>
+<h1>Money Munchkins: Quantum Odyssey</h1>
+<div class="sub">Investor Command Center • Live Pilot Intelligence</div>
+
+<div class="grid">
+<div class="card"><div class="label">Pilot Profiles</div><div id="profiles" class="value">—</div></div>
+<div class="card"><div class="label">Missions Completed</div><div id="missions" class="value">—</div></div>
+<div class="card"><div class="label">Paid Customers</div><div id="customers" class="value">—</div></div>
+<div class="card"><div class="label">Revenue</div><div id="revenue" class="value">—</div></div>
+<div class="card"><div class="label">ARPC</div><div id="arpc" class="value">—</div></div>
+<div class="card"><div class="label">Platform Status</div><div id="health" class="value ok">—</div></div>
+</div>
+
+<div class="card">
+<h2>Investor Readiness</h2>
+<div class="bar"><div class="fill"></div></div>
+<ul id="readiness"></ul>
+</div>
+
+<div class="card">
+<h2>Investment Thesis</h2>
+<p>Money Munchkins is being developed as an experiential financial-literacy platform combining game mechanics, adaptive missions, parent visibility and measurable learning outcomes.</p>
+<p><strong>Strategic ambition:</strong> build a scalable family financial-literacy ecosystem with defensible educational content, engagement telemetry and a recurring revenue model.</p>
+</div>
+
+<div class="sub" id="updated">Loading live data…</div>
+</main>
+
+<script>
+async function load(){
+ const [m,r]=await Promise.all([
+   fetch("/api/money-munchkins/investor/metrics").then(x=>x.json()),
+   fetch("/api/money-munchkins/investor/readiness").then(x=>x.json())
+ ]);
+ const d=m.investorMetrics;
+ document.getElementById("profiles").textContent=d.pilotProfiles;
+ document.getElementById("missions").textContent=d.missionsCompleted;
+ document.getElementById("customers").textContent=d.paidCustomers;
+ document.getElementById("revenue").textContent="$"+Number(d.revenueUSD).toFixed(2);
+ document.getElementById("arpc").textContent="$"+Number(d.averageRevenuePerCustomer).toFixed(2);
+ document.getElementById("health").textContent=d.health.toUpperCase();
+
+ document.getElementById("readiness").innerHTML=
+   Object.entries(r.investorReadiness)
+   .map(([k,v])=>`<li>${v?"✅":"⚠️"} ${k.replaceAll("_"," ")}</li>`)
+   .join("");
+
+ document.getElementById("updated").textContent=
+   "Updated "+new Date(m.generatedAt).toLocaleString();
+}
+load();
+setInterval(load,30000);
+</script>
+</body>
+</html>
