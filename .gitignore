@@ -12,3 +12,6 @@ NIA-*-pre-*.js
 NIA-*-pre-*.html
 
 commercial/data/
+
+logs/
+*.log
