@@ -1,0 +1,82 @@
+'use strict';
+
+const store=require('./rss-store');
+const acquisition=require('../../revenue/acquisition/acquisition-engine');
+
+function score(item){
+  const text=(item.title+' '+(item.description||'')).toLowerCase();
+  let score=50;
+
+  if(/grant|funding|award|sbir|sttr|seed fund|innovation/.test(text)) score+=25;
+  if(/ai|artificial intelligence|technology|software|startup/.test(text)) score+=15;
+  if(/virginia|small business|entrepreneur/.test(text)) score+=10;
+
+  return Math.min(100,score);
+}
+
+function classify(item){
+  const text=(item.title+' '+(item.description||'')).toLowerCase();
+
+  if(/grant|funding|award|sbir|sttr|seed fund|innovation/.test(text))
+    return 'funding_opportunity';
+
+  if(/contract|procurement|solicitation|bid|rfp/.test(text))
+    return 'contract_opportunity';
+
+  return 'business_opportunity';
+}
+
+async function discover(limit=100){
+  const items=store.list(limit);
+  const opportunities=[];
+
+  for(const item of items){
+    const opportunity={
+      source:'nia_rss',
+      source_id:item.id||item.guid||item.link,
+      name:item.title,
+      description:item.description||'',
+      url:item.link||null,
+      category:classify(item),
+      score:score(item),
+      discovered_at:new Date().toISOString()
+    };
+
+    opportunities.push(opportunity);
+  }
+
+  return opportunities;
+}
+
+async function sync(limit=100){
+  const opportunities=await discover(limit);
+  let added=0;
+
+  for(const o of opportunities){
+    try{
+      await acquisition.addProspect({
+        name:o.name,
+        source:o.source,
+        source_id:o.source_id,
+        description:o.description,
+        url:o.url,
+        category:o.category,
+        score:o.score
+      });
+      added++;
+    }catch(err){
+      if(!/duplicate|exists|already/i.test(err.message||'')) throw err;
+    }
+  }
+
+  return {
+    status:'completed',
+    discovered:opportunities.length,
+    added,
+    mode:'BOUNDED_READ_ONLY_AUTONOMY',
+    external_side_effects_allowed:false,
+    human_approval_required:true
+  };
+}
+
+module.exports={discover,sync};

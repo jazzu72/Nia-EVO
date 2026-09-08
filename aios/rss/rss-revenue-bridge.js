@@ -1,0 +1,141 @@
+'use strict';
+
+const store=require('./rss-store');
+const acquisition=require('../../revenue/acquisition/acquisition-engine');
+
+function score(item){
+  const text=(item.title+' '+(item.description||'')).toLowerCase();
+  let score=50;
+
+  if(/grant|funding|award|sbir|sttr|seed fund|innovation/.test(text)) score+=25;
+  if(/ai|artificial intelligence|technology|software|startup/.test(text)) score+=15;
+  if(/virginia|small business|entrepreneur/.test(text)) score+=10;
+
+  return Math.min(100,score);
+}
+
+function classify(item){
+  const title=String(item.title||'').toLowerCase();
+  const text=(title+' '+String(item.description||'')).toLowerCase();
+  const url=String(item.link||'').toLowerCase();
+
+  // Source/page semantics take priority over generic keywords.
+  if(
+    url.includes('/events/') ||
+    /webinar|office hour|committee meeting|meeting|workshop|conference|symposium/.test(title)
+  ){
+    return 'event';
+  }
+
+  if(
+    url.includes('/news/') ||
+    /podcast|press release|announces|announced|launches|investment|research institutes|science and technology centers/.test(title)
+  ){
+    return 'news_intelligence';
+  }
+
+  if(
+    url.includes('usajobs.gov') ||
+    url.includes('/careers/') ||
+    /job|career|vacancy|vacancies|gs-\d+/.test(text)
+  ){
+    return 'career_opportunity';
+  }
+
+  // Official NSF funding pages are funding opportunities even when
+  // their titles use program/solicitation terminology.
+  if(
+    url.includes('/funding/') ||
+    /grant|funding opportunity|award|sbir|sttr|seed fund/.test(text)
+  ){
+    return 'funding_opportunity';
+  }
+
+  if(/contract|procurement|bid|rfp|request for proposal|request for quote|indefinite delivery|task order/.test(text))
+    return 'contract_opportunity';
+
+  if(/funding|innovation|small business|entrepreneur|startup/.test(text))
+    return 'business_opportunity';
+
+  return 'business_opportunity';
+}
+
+async function discover(limit=100){
+  const items=store.list(limit);
+  const opportunities=[];
+
+  for(const item of items){
+    const opportunity={
+      source:'nia_rss',
+      source_id:item.id||item.guid||item.link,
+      name:item.title,
+      description:item.description||'',
+      url:item.link||null,
+      category:classify(item),
+      score:score(item),
+      discovered_at:new Date().toISOString()
+    };
+
+    opportunities.push(opportunity);
+  }
+
+  return opportunities;
+}
+
+async function sync(limit=100){
+  const opportunities=await discover(limit);
+
+  const PIPELINE_ELIGIBLE=new Set([
+    'funding_opportunity',
+    'contract_opportunity',
+    'business_opportunity'
+  ]);
+
+  const eligible=opportunities.filter(o =>
+    PIPELINE_ELIGIBLE.has(String(o.category||''))
+  );
+
+  const skipped=opportunities.filter(o =>
+    !PIPELINE_ELIGIBLE.has(String(o.category||''))
+  );
+
+  const skipped_by_category={};
+
+  for(const o of skipped){
+    const category=String(o.category||'unknown');
+    skipped_by_category[category]=(skipped_by_category[category]||0)+1;
+  }
+
+  let added=0;
+
+  for(const o of eligible){
+    try{
+      await acquisition.addProspect({
+        name:o.name,
+        source:o.source,
+        source_id:o.source_id,
+        description:o.description,
+        url:o.url,
+        category:o.category,
+        score:o.score
+      });
+      added++;
+    }catch(err){
+      if(!/duplicate|exists|already/i.test(err.message||'')) throw err;
+    }
+  }
+
+  return {
+    status:'completed',
+    discovered:opportunities.length,
+    pipeline_eligible:eligible.length,
+    skipped_intelligence:skipped.length,
+    skipped_by_category,
+    added,
+    mode:'BOUNDED_READ_ONLY_AUTONOMY',
+    external_side_effects_allowed:false,
+    human_approval_required:true
+  };
+}
+
+module.exports={discover,sync};

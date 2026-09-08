@@ -21,6 +21,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 const niaCommercialRouter = require("./commercial");
 app.use("/api/commercial", niaCommercialRouter);
+const niaRssRouter = require("./aios/rss/rss-api");
+app.use("/api/rss", niaRssRouter);
 app.use("/commercial", express.static(path.join(__dirname, "commercial/public")));
 app.use(express.json());
 app.use("/api/aios/tools", require("./aios/routes/tool-api"));
