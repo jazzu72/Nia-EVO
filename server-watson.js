@@ -19,6 +19,9 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 app.use(cors());
+const niaCommercialRouter = require("./commercial");
+app.use("/api/commercial", niaCommercialRouter);
+app.use("/commercial", express.static(path.join(__dirname, "commercial/public")));
 app.use(express.json());
 app.use("/api/aios/tools", require("./aios/routes/tool-api"));
 app.get("/api/aios/providers/status",(req,res)=>res.json({ok:true,providers:["public-market"],mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));

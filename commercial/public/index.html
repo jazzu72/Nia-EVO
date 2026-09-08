@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nia Executive OS — Opportunity Intelligence</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#070b12;color:#f5f7fb}
+body{margin:0;background:radial-gradient(circle at 50% 0,#172238 0,#070b12 48%);min-height:100vh}
+main{max-width:1180px;margin:auto;padding:70px 22px}
+.hero{text-align:center;max-width:850px;margin:auto}
+.badge{display:inline-block;padding:8px 13px;border:1px solid #33415c;border-radius:999px;font-size:12px;letter-spacing:.12em}
+h1{font-size:clamp(42px,7vw,78px);line-height:.95;margin:25px 0}
+.hero p{font-size:20px;color:#aeb8ca;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:55px}
+.card{background:rgba(16,23,37,.82);border:1px solid #26334b;border-radius:22px;padding:27px;box-shadow:0 20px 60px #0005}
+.card.featured{border-color:#7388b3;transform:translateY(-8px)}
+.price{font-size:38px;font-weight:800;margin:15px 0}
+.price span{font-size:14px;color:#8793a8}
+.card p{color:#9da8bb;min-height:58px}
+button{width:100%;border:0;border-radius:12px;padding:14px;background:#f5f7fb;color:#08101c;font-weight:800;cursor:pointer}
+button:hover{opacity:.9}
+.small{text-align:center;color:#77839a;margin-top:40px;font-size:13px}
+#msg{text-align:center;margin-top:25px;color:#9facc0}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<div class="badge">HOUSE OF JAZZU · NIA EXECUTIVE OS</div>
+<h1>Turn opportunity into operating leverage.</h1>
+<p>Nia finds funding, revenue and business opportunities, prioritizes what matters, prepares the work, and keeps every action inside a visible approval and audit boundary.</p>
+</section>
+<section id="plans" class="grid"></section>
+<div id="msg"></div>
+<div class="small">Secure hosted checkout · No card data stored by Nia · Human approval remains required for external actions.</div>
+</main>
+
+<script>
+(async()=>{
+  const r=await fetch('/api/commercial/plans');
+  const d=await r.json();
+  const root=document.getElementById('plans');
+
+  root.innerHTML=d.plans.map(p=>`
+    <article class="card ${p.id==='growth'?'featured':''}">
+      <h2>${p.name}</h2>
+      <div class="price">$${p.monthly}<span>/month</span></div>
+      <p>${p.description}</p>
+      <button onclick="buy('${p.id}')">
+        ${p.id==='enterprise'?'Contact Nia':'Start with Nia'}
+      </button>
+    </article>
+  `).join('');
+})();
+
+async function buy(plan){
+  if(plan==='enterprise'){
+    document.getElementById('msg').textContent =
+      'Enterprise onboarding is handled through Nia sales.';
+    return;
+  }
+
+  const email=prompt('Business email:');
+  if(!email)return;
+
+  document.getElementById('msg').textContent='Preparing secure checkout…';
+
+  const r=await fetch('/api/commercial/checkout',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({plan,email})
+  });
+
+  const d=await r.json();
+
+  if(d.checkout_url){
+    location.href=d.checkout_url;
+  }else{
+    document.getElementById('msg').textContent =
+      d.message||d.error||'Checkout unavailable.';
+  }
+}
+</script>
+</body>
+</html>
