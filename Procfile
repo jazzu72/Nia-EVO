@@ -1,1 +1,1 @@
-web: node revenue-api.js
+web: node server-watson.js
