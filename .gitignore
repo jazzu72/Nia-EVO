@@ -10,3 +10,5 @@ node_modules/
 *.pre-*
 NIA-*-pre-*.js
 NIA-*-pre-*.html
+
+commercial/data/
