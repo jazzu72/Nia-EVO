@@ -1,5 +1,7 @@
 'use strict';
 
+const autonomyPolicy = require('../governor/autonomy-policy');
+
 const fabric = require('../tools/tool-fabric');
 const ledger = require('../approvals/approval-ledger');
 
@@ -95,4 +97,34 @@ async function run({ tool, args = {}, context = {}, approval_id } = {}) {
   };
 }
 
-module.exports = { run };
+module.exports = { evaluateAutonomy, run };
+
+
+function evaluateAutonomy(domain) {
+  const value = String(domain || '').trim();
+  if (autonomyPolicy.POLICY.prohibited_autonomous_domains.includes(value)) {
+    return {
+      autonomous: false,
+      status: 'BLOCKED',
+      reason: 'Prohibited autonomous domain',
+      domain: value,
+      policy: autonomyPolicy.POLICY.mode
+    };
+  }
+  if (autonomyPolicy.canOperateAutonomously(value)) {
+    return {
+      autonomous: true,
+      status: 'AUTONOMOUS_ALLOWED',
+      reason: 'Permitted bounded-autonomy domain',
+      domain: value,
+      policy: autonomyPolicy.POLICY.mode
+    };
+  }
+  return {
+    autonomous: false,
+    status: 'APPROVAL_REQUIRED',
+    reason: 'Domain requires explicit approval',
+    domain: value,
+    policy: autonomyPolicy.POLICY.mode
+  };
+}
