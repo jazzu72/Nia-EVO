@@ -127,13 +127,13 @@ async function buy(plan){
   const email=prompt('Business email:');
   if(!email)return;
   document.getElementById('msg').textContent='Preparing secure checkout…';
-  const r=await fetch('/api/commercial/checkout',{
+  const r=await fetch('/api/commercial/create-checkout-session',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({plan,email})
+    body:JSON.stringify({planId:plan,email})
   });
   const d=await r.json();
-  if(d.checkout_url)location.href=d.checkout_url;
+  if(d.url)location.href=d.url;
   else document.getElementById('msg').textContent=d.message||d.error||'Checkout unavailable.';
 }
 
