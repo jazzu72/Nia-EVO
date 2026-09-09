@@ -3,84 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nia Executive OS — Opportunity Intelligence</title>
+<title>Nia Executive OS — Command Center</title>
 <style>
-:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#070b12;color:#f5f7fb}
-body{margin:0;background:radial-gradient(circle at 50% 0,#172238 0,#070b12 48%);min-height:100vh}
-main{max-width:1180px;margin:auto;padding:70px 22px}
-.hero{text-align:center;max-width:850px;margin:auto}
-.badge{display:inline-block;padding:8px 13px;border:1px solid #33415c;border-radius:999px;font-size:12px;letter-spacing:.12em}
-h1{font-size:clamp(42px,7vw,78px);line-height:.95;margin:25px 0}
-.hero p{font-size:20px;color:#aeb8ca;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:55px}
-.card{background:rgba(16,23,37,.82);border:1px solid #26334b;border-radius:22px;padding:27px;box-shadow:0 20px 60px #0005}
-.card.featured{border-color:#7388b3;transform:translateY(-8px)}
-.price{font-size:38px;font-weight:800;margin:15px 0}
-.price span{font-size:14px;color:#8793a8}
-.card p{color:#9da8bb;min-height:58px}
-button{width:100%;border:0;border-radius:12px;padding:14px;background:#f5f7fb;color:#08101c;font-weight:800;cursor:pointer}
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,sans-serif;background:#070b12;color:#f5f7fb}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 70% 0,#17233b 0,#070b12 45%);min-height:100vh}
+main{max-width:1280px;margin:auto;padding:28px 22px 70px}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #202b40;padding-bottom:22px}
+.brand{font-weight:900;letter-spacing:.08em;font-size:14px}
+.status{display:flex;align-items:center;gap:8px;color:#9eabc0;font-size:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:#66e3a4;box-shadow:0 0 14px #66e3a4}
+.hero{padding:55px 0 35px}
+.kicker{color:#8fa3c7;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,72px);line-height:.96;margin:12px 0 18px;max-width:850px}
+.sub{color:#9da9bc;font-size:18px;line-height:1.6;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:rgba(13,20,33,.86);border:1px solid #25324a;border-radius:18px;padding:22px;box-shadow:0 18px 50px #0005}
+.label{color:#8290a8;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.value{font-size:38px;font-weight:900;margin-top:10px}
+.value small{font-size:13px;color:#7e8ba2;font-weight:500}
+.section{margin-top:28px}
+.section h2{font-size:18px;margin:0 0 14px}
+.intel{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.rows{display:grid;gap:9px}
+.row{display:flex;justify-content:space-between;padding:12px 14px;background:#101827;border:1px solid #202c41;border-radius:11px;color:#b8c2d3}
+.row strong{color:#f5f7fb}
+.governance{display:flex;flex-wrap:wrap;gap:9px}
+.pill{padding:9px 12px;border-radius:999px;border:1px solid #293752;color:#aebbd0;font-size:12px}
+.pill.safe{border-color:#315a49;color:#8ee0b5}
+.plans{margin-top:60px}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plan h3{margin:0 0 8px}.price{font-size:30px;font-weight:900}.price span{font-size:12px;color:#7e8ba2}
+.plan p{color:#8995aa;min-height:48px;line-height:1.45}
+button{width:100%;border:0;border-radius:10px;padding:13px;background:#f5f7fb;color:#08101c;font-weight:800;cursor:pointer}
 button:hover{opacity:.9}
-.small{text-align:center;color:#77839a;margin-top:40px;font-size:13px}
-#msg{text-align:center;margin-top:25px;color:#9facc0}
+#msg{text-align:center;color:#9da9bc;margin-top:18px;font-size:13px}
+@media(max-width:850px){.grid,.plan-grid,.intel{grid-template-columns:1fr 1fr}.intel{display:grid}}
+@media(max-width:560px){.grid,.plan-grid,.intel{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <main>
+<header>
+<div class="brand">HOUSE OF JAZZU · NIA EXECUTIVE OS</div>
+<div class="status"><span class="dot"></span><span id="status">LIVE · READ ONLY</span></div>
+</header>
+
 <section class="hero">
-<div class="badge">HOUSE OF JAZZU · NIA EXECUTIVE OS</div>
-<h1>Turn opportunity into operating leverage.</h1>
-<p>Nia finds funding, revenue and business opportunities, prioritizes what matters, prepares the work, and keeps every action inside a visible approval and audit boundary.</p>
+<div class="kicker">Executive Command Center</div>
+<h1>Know where the money is.</h1>
+<p class="sub">Nia continuously organizes funding, business intelligence, events and opportunities into one operating view — while keeping consequential actions behind human approval.</p>
 </section>
-<section id="plans" class="grid"></section>
+
+<section class="grid">
+<article class="card"><div class="label">Intelligence</div><div class="value" id="total">—</div><div class="label">live records</div></article>
+<article class="card"><div class="label">Funding</div><div class="value" id="funding">—</div><div class="label">opportunities</div></article>
+<article class="card"><div class="label">Pipeline</div><div class="value" id="pipeline">—</div><div class="label">revenue eligible</div></article>
+<article class="card"><div class="label">Events</div><div class="value" id="events">—</div><div class="label">tracked</div></article>
+</section>
+
+<section class="section intel">
+<article class="card">
+<h2>Intelligence Mix</h2>
+<div class="rows" id="categories"></div>
+</article>
+<article class="card">
+<h2>Governance</h2>
+<div class="governance">
+<span class="pill safe">READ ONLY</span>
+<span class="pill safe">External execution OFF</span>
+<span class="pill safe">Autonomous execution OFF</span>
+<span class="pill">Human approval REQUIRED</span>
+</div>
+<p class="sub" style="font-size:14px;margin-top:20px">Nia can discover, analyze and prioritize. Consequential external actions remain explicitly controlled.</p>
+</article>
+</section>
+
+<section class="plans">
+<h2>Start with Nia</h2>
+<div id="plans" class="plan-grid"></div>
 <div id="msg"></div>
-<div class="small">Secure hosted checkout · No card data stored by Nia · Human approval remains required for external actions.</div>
+</section>
 </main>
 
 <script>
-(async()=>{
+async function loadDashboard(){
+  try{
+    const r=await fetch('/api/executive/dashboard');
+    const d=await r.json();
+    if(!d.ok)throw new Error(d.error||'Unavailable');
+
+    document.getElementById('total').textContent=d.intelligence.total;
+    document.getElementById('funding').textContent=d.intelligence.categories.funding_opportunity||0;
+    document.getElementById('pipeline').textContent=d.revenue_pipeline.eligible;
+    document.getElementById('events').textContent=d.intelligence.categories.event||0;
+
+    document.getElementById('categories').innerHTML=
+      Object.entries(d.intelligence.categories)
+      .map(([k,v])=>'<div class="row"><span>'+k.replaceAll('_',' ')+'</span><strong>'+v+'</strong></div>')
+      .join('');
+  }catch(e){
+    document.getElementById('status').textContent='LIVE · DATA UNAVAILABLE';
+  }
+}
+
+async function loadPlans(){
   const r=await fetch('/api/commercial/plans');
   const d=await r.json();
-  const root=document.getElementById('plans');
-
-  root.innerHTML=d.plans.map(p=>`
-    <article class="card ${p.id==='growth'?'featured':''}">
-      <h2>${p.name}</h2>
+  document.getElementById('plans').innerHTML=d.plans.map(p=>`
+    <article class="card plan">
+      <h3>${p.name}</h3>
       <div class="price">$${p.monthly}<span>/month</span></div>
       <p>${p.description}</p>
-      <button onclick="buy('${p.id}')">
-        ${p.id==='enterprise'?'Contact Nia':'Start with Nia'}
-      </button>
-    </article>
-  `).join('');
-})();
+      <button onclick="buy('${p.id}')">${p.id==='enterprise'?'Contact Nia':'Start with Nia'}</button>
+    </article>`).join('');
+}
 
 async function buy(plan){
   if(plan==='enterprise'){
-    document.getElementById('msg').textContent =
-      'Enterprise onboarding is handled through Nia sales.';
+    document.getElementById('msg').textContent='Enterprise onboarding is handled through Nia sales.';
     return;
   }
-
   const email=prompt('Business email:');
   if(!email)return;
-
   document.getElementById('msg').textContent='Preparing secure checkout…';
-
   const r=await fetch('/api/commercial/checkout',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({plan,email})
   });
-
   const d=await r.json();
-
-  if(d.checkout_url){
-    location.href=d.checkout_url;
-  }else{
-    document.getElementById('msg').textContent =
-      d.message||d.error||'Checkout unavailable.';
-  }
+  if(d.checkout_url)location.href=d.checkout_url;
+  else document.getElementById('msg').textContent=d.message||d.error||'Checkout unavailable.';
 }
+
+loadDashboard();
+loadPlans();
+setInterval(loadDashboard,30000);
 </script>
 </body>
 </html>
