@@ -23,6 +23,38 @@ const niaCommercialRouter = require("./commercial");
 app.use("/api/commercial", niaCommercialRouter);
 const niaRssRouter = require("./aios/rss/rss-api");
 app.use("/api/rss", niaRssRouter);
+app.get("/api/executive/dashboard", async (req,res)=>{
+  try{
+    const bridge=require("./aios/rss/rss-revenue-bridge");
+    const items=await bridge.discover(100);
+    const eligible=new Set(["funding_opportunity","contract_opportunity","business_opportunity"]);
+    const counts={};
+    for(const x of items) counts[x.category]=(counts[x.category]||0)+1;
+    const pipeline=items.filter(x=>eligible.has(x.category));
+
+    res.json({
+      ok:true,
+      product:"Nia Executive OS",
+      intelligence:{
+        total:items.length,
+        categories:counts
+      },
+      revenue_pipeline:{
+        eligible:pipeline.length
+      },
+      governance:{
+        mode:"READ_ONLY",
+        external_execution:false,
+        autonomous_execution:false,
+        human_approval_required:true
+      },
+      generated_at:new Date().toISOString()
+    });
+  }catch(err){
+    res.status(500).json({ok:false,error:err.message});
+  }
+});
+
 app.use("/commercial", express.static(path.join(__dirname, "commercial/public")));
 app.use(express.json());
 app.use("/api/aios/tools", require("./aios/routes/tool-api"));
