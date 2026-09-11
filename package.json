@@ -2,10 +2,11 @@
   "name": "nia-capital-os",
   "version": "1.0.0",
   "description": "NIA Capital OS Production Engine",
-  "main": "server-watson.js",
+  "main": "start.js",
   "scripts": {
-    "start": "node server-watson.js",
-    "health": "node nia-production-check.js"
+    "start": "node start.js",
+    "health": "node nia-production-check.js",
+    "start-legacy": "node server-watson.js"
   },
   "dependencies": {
     "@langchain/core": "^1.2.5",
