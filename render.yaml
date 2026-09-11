@@ -3,19 +3,16 @@ services:
     name: nia-evo-3
     runtime: node
     plan: free
+    region: virginia
     buildCommand: npm install
-    startCommand: node server-watson.js
-    autoDeploy: true
+    startCommand: node start.js
+    healthCheckPath: /api/capital/health
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: nia-evo-db
-          property: connectionString
-
-databases:
-  - name: nia-evo-db
-    databaseName: nia_evo
-    user: nia_evo
-    plan: free
+      - key: NIA_MASTER_PASSWORD
+        sync: false
+      - key: NIA_OWNER_AUTH_TOKEN
+        sync: false
+      - key: SECRETS_PATH
+        value: /etc/secrets/secrets.enc
