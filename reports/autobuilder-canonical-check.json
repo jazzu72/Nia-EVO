@@ -1,0 +1,102 @@
+{
+  "startedAt": "2026-08-17T09:50:34.645Z",
+  "engines": [
+    {
+      "name": "acquisition",
+      "canonical": "acquisition/lead-acquisition-engine.js",
+      "exports": [
+        "acquire",
+        "generateTargets",
+        "stats",
+        "topProspects"
+      ]
+    },
+    {
+      "name": "funding-review-decision",
+      "canonical": "funding-engine/funding-review-decision-engine.js",
+      "exports": [
+        "decide",
+        "buildDecisionQueue",
+        "discover",
+        "analyze"
+      ]
+    },
+    {
+      "name": "followup",
+      "canonical": "followup/followup-engine.js",
+      "exports": [
+        "create",
+        "queue"
+      ]
+    },
+    {
+      "name": "outreach",
+      "canonical": "outreach/outreach-engine.js",
+      "exports": [
+        "createDraft",
+        "queue",
+        "pendingApproval",
+        "approveDraft"
+      ]
+    },
+    {
+      "name": "outreach-execution",
+      "canonical": "outreach/outreach-execution-engine.js",
+      "exports": [
+        "prepare",
+        "queue",
+        "ready",
+        "markDryRunSent"
+      ]
+    },
+    {
+      "name": "proposal",
+      "canonical": "proposals/proposal-engine.js",
+      "exports": [
+        "createProposal",
+        "list"
+      ]
+    },
+    {
+      "name": "automation",
+      "canonical": "revenue/automation/automation-engine.js",
+      "exports": [
+        "run",
+        "queue"
+      ]
+    },
+    {
+      "name": "revenue",
+      "canonical": "revenue/revenue-engine.js",
+      "exports": [
+        "addDeal",
+        "pipeline",
+        "dashboard"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "engine": "followup",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "followup/followup-engine.js",
+      "method": "addFollowup",
+      "exports": [
+        "create",
+        "queue"
+      ]
+    },
+    {
+      "engine": "followup",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "followup/followup-engine.js",
+      "method": "pending",
+      "exports": [
+        "create",
+        "queue"
+      ]
+    }
+  ],
+  "warnings": [],
+  "finishedAt": "2026-08-17T09:50:35.837Z"
+}

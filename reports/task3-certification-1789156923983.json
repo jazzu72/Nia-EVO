@@ -1,0 +1,126 @@
+{
+  "task": "Task 3 — End-to-end certification",
+  "timestamp": "2026-09-11T20:02:03.981Z",
+  "summary": {
+    "total": 19,
+    "passed": 10,
+    "failed": 9,
+    "exitCode": 1
+  },
+  "results": [
+    {
+      "stage": "SCAN",
+      "name": "/api/capital/hunt reachable",
+      "pass": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "stage": "SCAN",
+      "name": "Engine returns opportunities array",
+      "pass": true,
+      "detail": "28 opportunities"
+    },
+    {
+      "stage": "SCAN",
+      "name": "Summary populated",
+      "pass": true,
+      "detail": "total=28"
+    },
+    {
+      "stage": "SCAN",
+      "name": "Lanes enumerated",
+      "pass": true,
+      "detail": "10 lanes"
+    },
+    {
+      "stage": "SCAN",
+      "name": "Engine identity confirmed",
+      "pass": true,
+      "detail": "NIA_PARALLEL_CAPITAL_ENGINE"
+    },
+    {
+      "stage": "REPAIR",
+      "name": "Opportunities have lane classified",
+      "pass": true,
+      "detail": "28/28 classified"
+    },
+    {
+      "stage": "REPAIR",
+      "name": "Lane breakdown present",
+      "pass": true,
+      "detail": "{\"customer_revenue\":3,\"grants\":25}"
+    },
+    {
+      "stage": "TEST",
+      "name": "Owner queue reachable",
+      "pass": false,
+      "detail": "HTTP 401"
+    },
+    {
+      "stage": "TEST",
+      "name": "Owner queue has drafts",
+      "pass": false,
+      "detail": "0 drafts"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock submissionAllowed=false",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock signingAllowed=false",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock financialExecutionAllowed=false",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock moneyMovementAllowed=false",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock automaticApprovalAllowed=false",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock ownerApprovalRequired=true",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Lock ownerSignatureRequired=true",
+      "pass": false,
+      "detail": "undefined"
+    },
+    {
+      "stage": "TEST",
+      "name": "Unauthorized submission blocked",
+      "pass": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "stage": "OPERATIONS",
+      "name": "Financial write blocked",
+      "pass": true,
+      "detail": "HTTP 404 modified=undefined"
+    },
+    {
+      "stage": "OPERATIONS",
+      "name": "databaseModified is false",
+      "pass": true,
+      "detail": "undefined"
+    }
+  ]
+}

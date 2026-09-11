@@ -1,0 +1,166 @@
+{
+  "task": "Task 4 — Restart/recovery certification",
+  "timestamp": "2026-09-11T20:07:11.506Z",
+  "preRestart": {
+    "pid": "7620",
+    "opportunities": 28,
+    "drafts": 7
+  },
+  "postRestart": {
+    "pid": "7877",
+    "opportunities": 28,
+    "drafts": 7
+  },
+  "summary": {
+    "total": 24,
+    "passed": 24,
+    "failed": 0,
+    "exitCode": 0
+  },
+  "results": [
+    {
+      "stage": "BASELINE",
+      "name": "Engine online before restart",
+      "pass": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "stage": "BASELINE",
+      "name": "Opportunities before restart",
+      "pass": true,
+      "detail": "total=28"
+    },
+    {
+      "stage": "BASELINE",
+      "name": "Owner queue reachable before restart",
+      "pass": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "stage": "BASELINE",
+      "name": "Drafts before restart",
+      "pass": true,
+      "detail": "count=7"
+    },
+    {
+      "stage": "BASELINE",
+      "name": "PM2 PID captured",
+      "pass": true,
+      "detail": "PID 7620"
+    },
+    {
+      "stage": "RESTART",
+      "name": "Process killed (unreachable after delete)",
+      "pass": true,
+      "detail": "down"
+    },
+    {
+      "stage": "RESTART",
+      "name": "PM2 start executed",
+      "pass": true,
+      "detail": "pm2 start start.js"
+    },
+    {
+      "stage": "RESTART",
+      "name": "Server responsive after restart",
+      "pass": true,
+      "detail": "within 30s"
+    },
+    {
+      "stage": "RESTART",
+      "name": "New PM2 PID captured",
+      "pass": true,
+      "detail": "PID 7877"
+    },
+    {
+      "stage": "RESTART",
+      "name": "PID changed after restart",
+      "pass": true,
+      "detail": "7620 → 7877"
+    },
+    {
+      "stage": "RECOVERY",
+      "name": "Engine back online",
+      "pass": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "stage": "RECOVERY",
+      "name": "Same opportunity count",
+      "pass": true,
+      "detail": "28 → 28"
+    },
+    {
+      "stage": "RECOVERY",
+      "name": "Owner queue still reachable",
+      "pass": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "stage": "RECOVERY",
+      "name": "Draft count unchanged",
+      "pass": true,
+      "detail": "7 → 7"
+    },
+    {
+      "stage": "RECOVERY",
+      "name": "Engine identity preserved",
+      "pass": true,
+      "detail": "10 lanes"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock submissionAllowed=false after restart",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock signingAllowed=false after restart",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock financialExecutionAllowed=false after restart",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock moneyMovementAllowed=false after restart",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock automaticApprovalAllowed=false after restart",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock ownerApprovalRequired=true after restart",
+      "pass": true,
+      "detail": "true"
+    },
+    {
+      "stage": "LOCKS",
+      "name": "Lock ownerSignatureRequired=true after restart",
+      "pass": true,
+      "detail": "true"
+    },
+    {
+      "stage": "SECRETS",
+      "name": "secrets.enc loaded on fresh boot",
+      "pass": true,
+      "detail": "confirmed in log"
+    },
+    {
+      "stage": "PROCESS",
+      "name": "Only PM2-managed process running",
+      "pass": true,
+      "detail": "0 server-watson processes"
+    }
+  ]
+}

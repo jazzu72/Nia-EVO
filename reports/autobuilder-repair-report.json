@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-08-15T04:29:31.603Z",
+  "root": "/data/data/com.termux/files/home/nia-capital-os",
+  "backup": "/data/data/com.termux/files/home/nia-capital-os/audit-backups/autobuilder-repair-2026-08-15T04-29-31-595Z",
+  "repairs": [],
+  "tests": [
+    {
+      "name": "Acquisition engine loads",
+      "status": "PASS"
+    },
+    {
+      "name": "Funding engine loads",
+      "status": "PASS"
+    },
+    {
+      "name": "Follow-up engine loads",
+      "status": "PASS"
+    },
+    {
+      "name": "Outreach engine contract",
+      "status": "PASS"
+    },
+    {
+      "name": "Outreach execution engine contract",
+      "status": "PASS"
+    },
+    {
+      "name": "Critical live modules compile",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "status": "REPAIRED",
+  "finishedAt": "2026-08-15T04:29:32.828Z"
+}

@@ -1,0 +1,114 @@
+{
+  "certification": "NIA-CAPITAL-OS",
+  "version": "controlled-autonomous-v1",
+  "timestamp": "2026-09-11T20:10:50.937Z",
+  "status": "PASS",
+  "mode": "CONTROLLED",
+  "unrestricted_autonomous_execution": false,
+  "financial_execution": "BLOCKED",
+  "money_movement": "BLOCKED",
+  "owner_approval_required": true,
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "results": [
+    {
+      "stage": "TASK1",
+      "name": "Boot path has no direct legacy imports",
+      "pass": true,
+      "detail": "clean"
+    },
+    {
+      "stage": "TASK1",
+      "name": "Wrapper start.js exists",
+      "pass": true,
+      "detail": "yes"
+    },
+    {
+      "stage": "TASK1",
+      "name": "PM2 running the wrapper (not server-watson.js)",
+      "pass": true,
+      "detail": "/data/data/com.termux/files/home/nia-capital-os/start.js"
+    },
+    {
+      "stage": "TASK1",
+      "name": "secrets.enc mode 600",
+      "pass": true,
+      "detail": "0600"
+    },
+    {
+      "stage": "TASK1",
+      "name": "No plaintext .env in repo root",
+      "pass": true,
+      "detail": ".env absent"
+    },
+    {
+      "stage": "TASK2",
+      "name": "No external calls in execution bridges",
+      "pass": true,
+      "detail": "grants-engine/grant-execution-bridge.js: safe | grants-engine/grant-submission-engine.js: safe | grants-engine/submission-engine.js: safe"
+    },
+    {
+      "stage": "TASK2",
+      "name": "Financial write endpoint blocked",
+      "pass": true,
+      "detail": "HTTP 404 modified=undefined"
+    },
+    {
+      "stage": "TASK3",
+      "name": "End-to-end test passed",
+      "pass": true,
+      "detail": "19/19"
+    },
+    {
+      "stage": "TASK4",
+      "name": "Restart/recovery test passed",
+      "pass": true,
+      "detail": "24/24"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock submissionAllowed=false",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock signingAllowed=false",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock financialExecutionAllowed=false",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock moneyMovementAllowed=false",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock automaticApprovalAllowed=false",
+      "pass": true,
+      "detail": "false"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock ownerApprovalRequired=true",
+      "pass": true,
+      "detail": "true"
+    },
+    {
+      "stage": "INVARIANT",
+      "name": "Lock ownerSignatureRequired=true",
+      "pass": true,
+      "detail": "true"
+    }
+  ]
+}
