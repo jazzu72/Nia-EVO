@@ -4,7 +4,14 @@ router.use((req,res,next)=>{
   if(req.path === '/webhook') return next();
   express.json()(req,res,next);
 });
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const __stripeKey = process.env.STRIPE_SECRET_KEY;
+let stripe = null;
+if (__stripeKey && __stripeKey.length > 10 && !/XXXXX|PLACEHOLDER|PASTE/i.test(__stripeKey)) {
+  try { stripe = require('stripe')(__stripeKey); }
+  catch (e) { console.warn("⚠️  commercial: Stripe init failed:", e.message); }
+} else {
+  console.warn("⚠️  commercial: STRIPE_SECRET_KEY missing or placeholder — Stripe disabled");
+}
 const entitlements = require('./customer-entitlements');
 
 const PLANS = {

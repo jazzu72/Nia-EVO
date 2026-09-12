@@ -713,6 +713,8 @@ app.get("/", (req, res) => {
 // 404 HANDLER
 // ============================================================
 
+// Capital engine mount
+app.use("/api/capital", require("./aios/routes/capital-api"));
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",

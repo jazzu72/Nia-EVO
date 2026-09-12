@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIA Capital OS</title>
+<link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-name">NIA EVO</div>
+      <div class="brand-sub">Capital OS · v1</div>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Operations</div>
+      <a href="#" class="active">Overview</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#funding">Funding</a>
+      <a href="#grants">Grants</a>
+      <div class="nav-section">Review</div>
+      <a href="#owner">Owner Queue</a>
+      <a href="#audit">Audit Log</a>
+      <div class="nav-section">System</div>
+      <a href="#status">Status</a>
+      <a href="#settings">Settings</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="crumb">NIA <span class="sep">/</span> <strong>Overview</strong></div>
+      <div class="topbar-right">
+        <span class="status"><span class="dot"></span><span data-sync-status>Live</span></span>
+        <span class="crumb" data-clock>--:--:-- UTC</span>
+        <button class="btn" onclick="refreshDashboard()">Refresh</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-label">Total Capital</div>
+          <div class="metric-value" data-kpi="available-capital">—</div>
+          <div class="metric-sub">Certified engine</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Grant Pipeline</div>
+          <div class="metric-value" data-kpi="grant-pipeline">—</div>
+          <div class="metric-sub">Lane: grants</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Opportunities</div>
+          <div class="metric-value" data-kpi="opportunities">—</div>
+          <div class="metric-sub">All lanes</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Owner Queue</div>
+          <div class="metric-value" data-kpi="active-deals">—</div>
+          <div class="metric-sub">Pending review</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="panel" id="pipeline">
+          <div class="panel-header">
+            <div class="panel-title">Pipeline by Lane</div>
+            <div class="panel-meta" data-pipeline-meta>—</div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Lane</th>
+                <th class="num">Count</th>
+                <th class="num">Value</th>
+              </tr>
+            </thead>
+            <tbody data-pipeline>
+              <tr><td colspan="3" class="muted">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel" id="owner">
+          <div class="panel-header">
+            <div class="panel-title">Owner Queue</div>
+            <div class="panel-meta" data-owner-meta>—</div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Opportunity</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody data-drafts>
+              <tr><td colspan="2" class="muted">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">System Integrity</div>
+          <div class="panel-meta">Evidence gate · owner approval · kill switch</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Control</th>
+              <th class="num">State</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="muted">Evidence gate</td><td class="num">enforced</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Owner approval</td><td class="num">required</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Owner signature</td><td class="num">required</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Financial writes</td><td class="num">blocked</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Money movement</td><td class="num">blocked</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Automatic approval</td><td class="num">disabled</td><td><span class="tag ok">Active</span></td></tr>
+            <tr><td class="muted">Secrets at rest</td><td class="num">AES-256-GCM</td><td><span class="tag ok">Encrypted</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/dashboard/nia-api.js"></script>
+</body>
+</html>
