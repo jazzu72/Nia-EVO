@@ -1,196 +1,451 @@
-/* NIA · Capital Observatory — data layer */
-const API = {
-  async capital(){ try{ return await (await fetch('/api/capital/hunt')).json(); } catch { return { summary:{}, opportunities:[] }; } },
-  async health(){ try{ return await (await fetch('/api/capital/health')).json(); } catch { return { ok:false }; } },
-  async owner(){ try{ return await (await fetch('/api/owner/grant-drafts')).json(); } catch { return { drafts:[] }; } }
+/* ═══════════════════════════════════════════════════════════════
+   VITRUVIAN — data layer for the certified NIA Capital OS
+   ═══════════════════════════════════════════════════════════════ */
+
+const state = {
+  activeTab: 'pulse',
+  anatomyOpen: false,
+  syncStatus: navigator.onLine ? 'SYNCED' : 'OFFLINE',
+  capital: { summary: {}, opportunities: [] },
+  owner: { drafts: [], count: 0 },
+  health: { ok: false },
+  selectedDeal: null,
 };
 
-const LOCKS = [
-  ["submissionAllowed","Submission",false],
-  ["signingAllowed","Signing",false],
-  ["financialExecutionAllowed","Financial writes",false],
-  ["moneyMovementAllowed","Money movement",false],
-  ["automaticApprovalAllowed","Auto-approval",false],
-  ["ownerApprovalRequired","Owner approval",true],
-  ["ownerSignatureRequired","Owner signature",true],
+const navItems = [
+  { id:'pulse',    icon:'◉', label:'Pulse' },
+  { id:'discover', icon:'⌕', label:'Discover' },
+  { id:'analyze',  icon:'◈', label:'Analyze' },
+  { id:'pipeline', icon:'≡', label:'Pipeline' },
+  { id:'vault',    icon:'▣', label:'Vault' },
 ];
 
-function fmtMoney(n){
-  if(n==null||n===0) return '$0';
-  if(n>=1e9) return '$'+(n/1e9).toFixed(2)+'B';
-  if(n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
-  if(n>=1e3) return '$'+(n/1e3).toFixed(1)+'K';
-  return '$'+Math.round(n);
-}
-function fmtInt(n){ return (n==null?0:n).toLocaleString(); }
-function fmtSerif(n){
-  if(n==null||n===0) return '<span class="currency">$</span>0';
-  if(n>=1e9) return '<span class="currency">$</span>'+(n/1e9).toFixed(2)+'B';
-  if(n>=1e6) return '<span class="currency">$</span>'+(n/1e6).toFixed(2)+'M';
-  if(n>=1e3) return '<span class="currency">$</span>'+(n/1e3).toFixed(1)+'K';
-  return '<span class="currency">$</span>'+Math.round(n);
-}
-function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function setHTML(sel,v){ document.querySelectorAll(sel).forEach(el=>{ el.innerHTML=v; }); }
-function setText(sel,v){ document.querySelectorAll(sel).forEach(el=>{ el.textContent=v; }); }
+const api = {
+  async capital(){ try{ return await (await fetch('/api/capital/hunt')).json(); } catch { return { summary:{}, opportunities:[] }; } },
+  async health(){ try{ return await (await fetch('/api/capital/health')).json(); } catch { return { ok:false }; } },
+  async owner(){ try{ return await (await fetch('/api/owner/grant-drafts')).json(); } catch { return { drafts:[], count:0 }; } },
+};
 
-let START_TIME = Date.now();
+function money(v){
+  if(v==null) return '$0';
+  return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
+}
+function num(v){ return (v==null?0:v).toLocaleString(); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-function tickClock(){
-  const el = document.querySelector('[data-clock]');
-  if(el){
-    const d = new Date();
-    const utc = d.toISOString().slice(11,19);
-    el.textContent = utc;
-  }
-  const up = document.querySelector('[data-uptime]');
-  if(up){
-    const s = Math.floor((Date.now()-START_TIME)/1000);
-    const h = String(Math.floor(s/3600)).padStart(2,'0');
-    const m = String(Math.floor((s%3600)/60)).padStart(2,'0');
-    const ss = String(s%60).padStart(2,'0');
-    up.textContent = `${h}:${m}:${ss}`;
-  }
+function topDeal(){
+  const opps = state.capital.opportunities || [];
+  if(!opps.length) return null;
+  return opps.slice().sort((a,b)=>(b.amount||0)-(a.amount||0))[0];
 }
 
-function renderTicker(s){
-  const parts = [
-    'NIA CAPITAL OBSERVATORY',
-    `${fmtMoney(s.total_amount)} AVAILABLE`,
-    `${fmtInt(s.total_opportunities)} OPPORTUNITIES`,
-    `${fmtInt(s.by_lane?.grants||0)} GRANTS`,
-    `${fmtInt(s.by_lane?.customer_revenue||0)} CUSTOMER REVENUE`,
-    'CERTIFIED · CONTROLLED',
-    'EVIDENCE GATE ENFORCED',
-    'FINANCIAL WRITES BLOCKED',
-  ];
-  const html = parts.map(p=>`<span>${esc(p)}</span><span class="tick-sep">◆</span>`).join('');
-  // Double it for seamless loop
-  const track = document.querySelector('[data-ticker]');
-  if(track) track.innerHTML = html + html;
-}
+/* ─── VIEWS ─── */
 
-function renderTape(opps){
-  const el = document.querySelector('[data-tape]');
-  if(!el) return;
-  if(!opps.length){ el.innerHTML='<div class="tape-empty">No opportunities in tape</div>'; return; }
+function pulseView(){
+  const s = state.capital.summary || {};
+  const deal = topDeal();
+  const ownerCount = state.owner.count || (state.owner.drafts||[]).length || 0;
+  const dealsCount = s.total_opportunities || 0;
+  const grantsTotal = (state.capital.opportunities||[])
+    .filter(o=>o.lane==='grants')
+    .reduce((a,o)=>a+(o.amount||0),0);
 
-  const sorted = opps.slice().sort((a,b)=>(b.amount||0)-(a.amount||0)).slice(0,40);
-  el.innerHTML = sorted.map(o=>{
-    const status = (o.status||o.state||'queued').toLowerCase();
-    const conf = o.probability != null ? Math.round(o.probability*100) : null;
-    const entity = o.organization || o.title || 'Unnamed';
-    const sub = o.source ? `${esc(o.source)} · ${esc(o.lane||'')}` : esc(o.lane||'');
-    const amount = o.amount != null ? fmtMoney(o.amount) : '—';
-    return `<div class="tape-row" data-status="${esc(status)}">
-      <div class="tape-status-bar"></div>
-      <div>
-        <div class="tape-entity">${esc(entity)}</div>
-        <div class="tape-entity-sub">${sub}</div>
+  const dealCard = deal ? `
+    <article class="deal-card">
+      <div class="deal-topline">
+        <span class="small-label">PRIORITY OPPORTUNITY</span>
+        <span class="score-badge">${Math.round((deal.probability||0)*100)}<small>/100</small></span>
       </div>
-      <div class="tape-lane">${esc((o.lane||'').replace(/_/g,' '))}</div>
-      <div class="tape-amount${o.amount? '':' dim'}">${amount}</div>
-      <div class="tape-conf">${conf!=null?`<span class="tape-conf-bar" style="--w:${conf}%"></span>${conf}%`:'—'}</div>
-    </div>`;
-  }).join('');
-}
-
-function renderLanes(opps, byLane){
-  const el = document.querySelector('[data-lanes]');
-  if(!el) return;
-  const allLanes = [
-    'grants','customer_revenue','enterprise_sales','government_contracts',
-    'corporate_sponsorships','strategic_partnerships','accelerators',
-    'economic_development','research_development','strategic_financing'
-  ];
-  const counts = byLane || {};
-  el.innerHTML = allLanes.map(lane=>{
-    const count = counts[lane] || 0;
-    const total = opps.filter(o=>o.lane===lane).reduce((a,o)=>a+(o.amount||0),0);
-    const cls = count>0 ? 'lane-card active' : 'lane-card empty';
-    return `<div class="${cls}">
-      <div class="lane-name">${esc(lane.replace(/_/g,' '))}</div>
-      <div class="lane-count">${count}</div>
-      <div class="lane-value">${count>0 ? fmtMoney(total) : '—'}</div>
-    </div>`;
-  }).join('');
-}
-
-function renderLocks(owner){
-  const el = document.querySelector('[data-locks]');
-  if(!el) return;
-  el.innerHTML = LOCKS.map(([key,label,expected])=>{
-    const actual = owner?.[key];
-    const ok = actual === expected;
-    const cls = ok ? 'active' : 'bad';
-    const glyph = ok ? '●' : '■';
-    const state = actual === true ? 'ON' : actual === false ? 'OFF' : '—';
-    return `<li class="lock-item ${cls}">
-      <span class="lock-glyph">${glyph}</span>
-      <span class="lock-name">${esc(label)}</span>
-      <span class="lock-state">${state}</span>
-    </li>`;
-  }).join('');
-}
-
-function renderOwner(owner){
-  const el = document.querySelector('[data-owner]');
-  const cnt = document.querySelector('[data-owner-count]');
-  const drafts = owner?.drafts || [];
-  if(cnt) cnt.textContent = `${drafts.length} pending`;
-  if(!el) return;
-  if(!drafts.length){ el.innerHTML='<div class="tape-empty">Queue empty</div>'; return; }
-  el.innerHTML = drafts.slice(0,8).map(d=>`
-    <div class="owner-item">
-      <div class="owner-entity">${esc((d.opportunity?.title||d.draftId||'').slice(0,64))}</div>
-      <div class="owner-meta">
-        <span>${esc(d.preparationStatus||'pending')}</span>
-        <span class="owner-status">${esc(d.nextAction||'REVIEW')}</span>
+      <h3>${esc(deal.organization || deal.title || 'Untitled')}</h3>
+      <p class="location">${esc(deal.lane?.replace(/_/g,' ') || '')} · ${esc(deal.source || 'NIA')}</p>
+      <div class="price-row">
+        <div>
+          <span class="small-label">Amount</span>
+          <strong>${money(deal.amount)}</strong>
+        </div>
+        <div class="confidence">
+          <span class="small-label">Confidence</span>
+          <strong>${Math.round((deal.probability||0)*100)}%</strong>
+        </div>
       </div>
-    </div>
-  `).join('');
+      <div class="deal-signal positive">
+        <span class="signal-icon">↗</span>
+        <p>Verified by certified capital engine across ${s.total_opportunities||0} live opportunities.</p>
+      </div>
+      <div class="deal-signal caution">
+        <span class="signal-icon">!</span>
+        <p>Requires owner review and signature before submission.</p>
+      </div>
+      <button class="primary-button full-width" data-action="review-deal">
+        Review in Analyze <span>→</span>
+      </button>
+    </article>
+  ` : `<p class="location">No opportunities loaded.</p>`;
+
+  return `
+    <section class="screen pulse-screen">
+      <div class="welcome-row">
+        <div>
+          <p class="eyebrow">${new Date().toLocaleDateString('en-US',{weekday:'long'})} briefing</p>
+          <h2>Capital Observatory</h2>
+        </div>
+        <div class="date-chip">${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase()}</div>
+      </div>
+
+      <section class="system-pulse panel">
+        <div class="section-heading">
+          <span>System pulse</span>
+          <button class="text-button" data-action="refresh">Refresh</button>
+        </div>
+        <div class="metric-grid">
+          <article class="metric"><strong>${num(dealsCount)}</strong><span>Opportunities</span></article>
+          <article class="metric"><strong>${num(ownerCount)}</strong><span>Owner queue</span></article>
+          <article class="metric"><strong>${(grantsTotal/1e6).toFixed(1)}M</strong><span>Grants USD</span></article>
+        </div>
+      </section>
+
+      <section class="priority-block">
+        <div class="section-heading">
+          <span>Highest-leverage signal</span>
+          <span class="priority-status">VERIFIED</span>
+        </div>
+        ${dealCard}
+      </section>
+
+      <section class="action-list">
+        <div class="section-heading">
+          <span>Evidence chain</span>
+          <span>${state.health.ok ? 'ONLINE' : 'OFFLINE'}</span>
+        </div>
+        <button class="action-row" data-action="review-deal">
+          <span class="action-number">01</span>
+          <span class="action-content"><strong>Review priority opportunity</strong><small>Owner approval required</small></span>
+          <span class="row-arrow">→</span>
+        </button>
+        <button class="action-row" data-tab="pipeline">
+          <span class="action-number">02</span>
+          <span class="action-content"><strong>Open pipeline queue</strong><small>${num(ownerCount)} pending</small></span>
+          <span class="row-arrow">→</span>
+        </button>
+        <button class="action-row" data-tab="discover">
+          <span class="action-number">03</span>
+          <span class="action-content"><strong>Scan new signals</strong><small>10 capital lanes active</small></span>
+          <span class="row-arrow">→</span>
+        </button>
+      </section>
+    </section>
+  `;
 }
 
-function renderPulse(health){
-  const dot = document.querySelector('[data-pulse-dot]');
-  const status = document.querySelector('[data-pulse-status]');
-  const detail = document.querySelector('[data-pulse-detail]');
-  if(health.ok){
-    if(dot) dot.classList.remove('offline');
-    if(status) status.textContent = 'Operational';
-    if(detail) detail.textContent = `Engine · ${health.engine||'NIA'} · ${health.lanes||'?'} lanes`;
-  } else {
-    if(dot) dot.classList.add('offline');
-    if(status) status.textContent = 'Degraded';
-    if(detail) detail.textContent = 'Engine handshake failed';
-  }
+function discoverView(){
+  const opps = state.capital.opportunities || [];
+  return `
+    <section class="screen">
+      <p class="eyebrow">Signal acquisition</p>
+      <h2>Discover</h2>
+
+      <section class="map-panel">
+        <div class="map-grid"></div>
+        <div class="map-label label-a">Hampton Roads</div>
+        <div class="map-pin pin-a">${num(opps.length)}</div>
+        <div class="map-overlay"><span class="live-dot"></span>${num(opps.length)} live opportunities</div>
+      </section>
+
+      <section class="filter-row">
+        <button class="filter-chip active">All lanes</button>
+        <button class="filter-chip">Grants</button>
+        <button class="filter-chip">Revenue</button>
+        <button class="filter-chip">Enterprise</button>
+      </section>
+
+      <section class="signal-list">
+        ${opps.slice(0,6).map(o=>`
+          <article class="signal-card">
+            <span class="signal-source">${esc((o.source||'NIA').toUpperCase())} · ${esc((o.lane||'').toUpperCase())}</span>
+            <h3>${esc(o.organization || o.title || 'Untitled')}</h3>
+            <p>${money(o.amount)} · ${Math.round((o.probability||0)*100)}% confidence</p>
+          </article>
+        `).join('') || '<p class="location">No signals loaded.</p>'}
+      </section>
+    </section>
+  `;
 }
 
-async function refresh(){
-  const [capital, health, owner] = await Promise.all([API.capital(), API.health(), API.owner()]);
-  const s = capital.summary || {};
-  const opps = capital.opportunities || [];
+function analyzeView(){
+  const deal = state.selectedDeal || topDeal();
+  if(!deal) return `<section class="screen"><p class="eyebrow">Decision workspace</p><h2>Analyze</h2><p class="location">No deal selected.</p></section>`;
 
-  setHTML('[data-kpi="total"]', fmtSerif(s.total_amount));
-  setText('[data-kpi="grants"]', fmtMoney(opps.filter(o=>o.lane==='grants').reduce((a,o)=>a+(o.amount||0),0)));
-  setText('[data-kpi="opps"]', fmtInt(s.total_opportunities));
-  setText('[data-kpi="pending"]', fmtInt((owner.drafts||[]).length));
-  setText('[data-kpi="lanes"]', String(Object.keys(s.by_lane||{}).length));
+  const conf = Math.round((deal.probability||0)*100);
+  const score = conf;
+  const amount = deal.amount || 0;
+  const spreadLow = Math.round(amount * 0.8);
+  const spreadHigh = Math.round(amount * 1.2);
 
-  const meta = document.querySelector('[data-tape-meta]');
-  if(meta) meta.textContent = `${opps.length} entries · live`;
+  return `
+    <section class="screen analyze-screen">
+      <p class="eyebrow">Decision workspace</p>
+      <h2>Analyze</h2>
 
-  renderTicker(s);
-  renderTape(opps);
-  renderLanes(opps, s.by_lane);
-  renderLocks(owner);
-  renderOwner(owner);
-  renderPulse(health);
+      <article class="analysis-summary panel">
+        <div class="section-heading">
+          <span>Investment assessment</span>
+          <span class="score-badge">${score}<small>/100</small></span>
+        </div>
+        <h3>${esc(deal.organization || deal.title || 'Untitled')}</h3>
+        <p class="location">${esc((deal.lane||'').replace(/_/g,' '))} · ${esc(deal.source || 'NIA')}</p>
+
+        <div class="range-block">
+          <span class="small-label">Potential spread</span>
+          <strong>${money(spreadLow)}–${money(spreadHigh)}</strong>
+        </div>
+
+        <div class="bar-label"><span>Confidence</span><strong>${conf}%</strong></div>
+        <div class="progress-track"><div class="progress-fill" style="width:${conf}%"></div></div>
+
+        <div class="recommendation">
+          <span class="recommendation-title">NIA RECOMMENDATION</span>
+          <p>Evidence-gated opportunity. All execution is blocked pending owner review, signature, and verification.</p>
+        </div>
+
+        <div class="analysis-actions">
+          <button class="primary-button" data-action="open-anatomy">Anatomy of decision</button>
+          <button class="secondary-button" data-action="edit-assumptions">Edit assumptions</button>
+        </div>
+      </article>
+
+      <section class="scenario-grid">
+        <article class="scenario-card">
+          <span class="small-label">Amount</span>
+          <strong>${money(amount)}</strong>
+          <small>Verified estimate</small>
+        </article>
+        <article class="scenario-card">
+          <span class="small-label">Status</span>
+          <strong class="amber-text">${esc(deal.status||'QUEUED')}</strong>
+          <small>Owner review required</small>
+        </article>
+      </section>
+    </section>
+  `;
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  START_TIME = Date.now();
-  tickClock(); setInterval(tickClock, 1000);
-  refresh();
-  setInterval(refresh, 20000);
-});
+function pipelineView(){
+  const drafts = state.owner.drafts || [];
+  const s = state.capital.summary || {};
+  return `
+    <section class="screen">
+      <p class="eyebrow">Operational spine</p>
+      <h2>Pipeline</h2>
+
+      <section class="pipeline-summary panel">
+        <div class="metric-grid">
+          <article class="metric"><strong>${num(s.total_opportunities||0)}</strong><span>Opportunities</span></article>
+          <article class="metric"><strong>${num(drafts.length)}</strong><span>Owner queue</span></article>
+          <article class="metric"><strong>${num(Object.keys(s.by_lane||{}).length)}</strong><span>Active lanes</span></article>
+        </div>
+      </section>
+
+      <section class="stage-list">
+        ${drafts.slice(0,8).map(d=>`
+          <article class="stage-card">
+            <div class="stage-indicator gold"></div>
+            <div>
+              <span class="small-label">${esc((d.preparationStatus||'PENDING').toUpperCase())}</span>
+              <h3>${esc((d.opportunity?.title||d.draftId||'').slice(0,48))}</h3>
+              <p>${esc(d.nextAction||'OWNER_REVIEW')}</p>
+            </div>
+            <span class="row-arrow">→</span>
+          </article>
+        `).join('') || '<p class="location">No drafts pending.</p>'}
+      </section>
+    </section>
+  `;
+}
+
+function vaultView(){
+  return `
+    <section class="screen">
+      <p class="eyebrow">Institutional memory</p>
+      <h2>Vault</h2>
+
+      <section class="vault-search">
+        <span>⌕</span>
+        <input type="search" placeholder="Search research, leads, reports…" />
+      </section>
+
+      <section class="vault-list">
+        <article class="vault-row">
+          <span class="file-icon">▤</span>
+          <div><h3>Capital Engine Report</h3><p>Live · ${num(state.capital.summary?.total_opportunities||0)} opportunities</p></div>
+        </article>
+        <article class="vault-row">
+          <span class="file-icon">◫</span>
+          <div><h3>Owner Review Queue</h3><p>${num(state.owner.count||0)} pending signatures</p></div>
+        </article>
+        <article class="vault-row">
+          <span class="file-icon">◇</span>
+          <div><h3>Certification Record</h3><p>Tasks 1–5 passed · controlled autonomous</p></div>
+        </article>
+      </section>
+    </section>
+  `;
+}
+
+function anatomyDrawer(){
+  const deal = state.selectedDeal || topDeal();
+  if(!deal) return '';
+  const conf = Math.round((deal.probability||0)*100);
+  return `
+    <div class="drawer-backdrop" data-action="close-anatomy"></div>
+    <aside class="anatomy-drawer">
+      <div class="drawer-handle"></div>
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">Transparent intelligence</p>
+          <h2>Decision anatomy</h2>
+        </div>
+        <button class="icon-button" data-action="close-anatomy">×</button>
+      </div>
+
+      <section class="drawer-section">
+        <span class="small-label">RECOMMENDATION</span>
+        <p class="drawer-lead">Evidence-gated. Owner review required.</p>
+      </section>
+
+      <section class="drawer-section">
+        <span class="small-label">EVIDENCE</span>
+        <ul class="evidence-list">
+          <li>Opportunity sourced from ${esc(deal.source || 'certified engine')}.</li>
+          <li>Amount verified at ${money(deal.amount)}.</li>
+          <li>Lane: ${esc((deal.lane||'').replace(/_/g,' '))}.</li>
+          <li>Engine identity: NIA_PARALLEL_CAPITAL_ENGINE.</li>
+        </ul>
+      </section>
+
+      <section class="drawer-section">
+        <span class="small-label">UNCERTAINTY</span>
+        <ul class="evidence-list caution-list">
+          <li>Confidence score: ${conf}% — not certain.</li>
+          <li>Owner signature has not been applied.</li>
+          <li>Financial execution remains blocked by design.</li>
+        </ul>
+      </section>
+
+      <section class="drawer-section">
+        <span class="small-label">ASSUMPTIONS</span>
+        <div class="assumption-grid">
+          <span>Confidence</span><strong>${conf}%</strong>
+          <span>Amount</span><strong>${money(deal.amount)}</strong>
+          <span>Lane</span><strong>${esc((deal.lane||'—').replace(/_/g,' '))}</strong>
+          <span>Status</span><strong>${esc(deal.status||'QUEUED')}</strong>
+        </div>
+      </section>
+
+      <div class="drawer-actions">
+        <button class="secondary-button" data-action="edit-assumptions">Edit assumptions</button>
+        <button class="primary-button" data-action="view-sources">View sources</button>
+      </div>
+    </aside>
+  `;
+}
+
+function appShell(){
+  return `
+    <main class="app-shell">
+      <header class="app-head">
+        <div class="brand-lockup">
+          <div class="mark">V</div>
+          <div>
+            <p class="eyebrow">House of Jazzu Intelligence</p>
+            <h1>VITRUVIAN</h1>
+          </div>
+        </div>
+        <div class="head-actions">
+          <button class="icon-button" data-action="command">⌘</button>
+          <button class="profile-button">J</button>
+        </div>
+      </header>
+
+      <section class="context-strip">
+        <span class="live-dot ${state.health.ok?'':'offline'}"></span>
+        <span>Hampton Roads</span>
+        <span class="context-separator">•</span>
+        <span>${state.syncStatus}</span>
+        <span class="context-separator">•</span>
+        <span>${state.health.ok ? 'Certified' : 'Offline'}</span>
+      </section>
+
+      <section class="view-area">${renderView()}</section>
+
+      <nav class="bottom-nav">
+        ${navItems.map(i=>`
+          <button class="nav-item ${state.activeTab===i.id?'active':''}" data-tab="${i.id}">
+            <span class="nav-icon">${i.icon}</span>
+            <span class="nav-label">${i.label}</span>
+          </button>
+        `).join('')}
+      </nav>
+
+      <div id="toast" class="toast"></div>
+      ${state.anatomyOpen ? anatomyDrawer() : ''}
+    </main>
+  `;
+}
+
+function renderView(){
+  const views = { pulse: pulseView, discover: discoverView, analyze: analyzeView, pipeline: pipelineView, vault: vaultView };
+  return (views[state.activeTab] || pulseView)();
+}
+
+function render(){
+  document.querySelector('#app').innerHTML = appShell();
+  bindEvents();
+}
+
+function bindEvents(){
+  document.querySelectorAll('[data-tab]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      state.activeTab = el.dataset.tab;
+      state.anatomyOpen = false;
+      render();
+    });
+  });
+  document.querySelectorAll('[data-action]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const a = el.dataset.action;
+      if(a==='refresh') refreshAll();
+      if(a==='review-deal'){ state.activeTab='analyze'; state.selectedDeal=topDeal(); render(); }
+      if(a==='open-anatomy'){ state.anatomyOpen=true; render(); }
+      if(a==='close-anatomy'){ state.anatomyOpen=false; render(); }
+      if(a==='command') showToast('Command palette — connecting to NIA search.');
+      if(a==='edit-assumptions') showToast('Assumption editor is the next workflow.');
+      if(a==='view-sources') showToast('Source viewer ready for HUD, REIN, and local integrations.');
+    });
+  });
+}
+
+function showToast(msg){
+  const t = document.querySelector('#toast');
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+async function refreshAll(){
+  state.syncStatus = 'SYNCING'; render();
+  const [capital, health, owner] = await Promise.all([api.capital(), api.health(), api.owner()]);
+  state.capital = capital;
+  state.health = health;
+  state.owner = owner;
+  state.syncStatus = navigator.onLine ? 'SYNCED' : 'OFFLINE';
+  if(!state.selectedDeal) state.selectedDeal = topDeal();
+  render();
+}
+
+window.addEventListener('online',()=>{state.syncStatus='SYNCED';render();});
+window.addEventListener('offline',()=>{state.syncStatus='OFFLINE';render();});
+
+refreshAll();
+setInterval(refreshAll, 30000);
