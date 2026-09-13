@@ -715,6 +715,8 @@ app.get("/", (req, res) => {
 
 // Capital engine mount
 app.use("/api/capital", require("./aios/routes/capital-api"));
+// Autonomy gate — T1/T2 unlocked, T4 permanently blocked
+app.use("/api/autonomy", require("./aios/routes/autonomy-api"));
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
