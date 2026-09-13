@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "mode": "TIER_1_AND_2",
+  "unlockedAt": "2026-09-13",
+  "tiers": {
+    "T1_internal_prep": {
+      "enabled": true,
+      "actions": [
+        "draft_proposal",
+        "draft_grant_application",
+        "draft_outreach_email",
+        "score_opportunity",
+        "rank_pipeline",
+        "enrich_lead",
+        "research_entity",
+        "classify_opportunity"
+      ],
+      "external_side_effects": false,
+      "audit_required": true
+    },
+    "T2_draft_and_queue": {
+      "enabled": true,
+      "actions": [
+        "queue_outbound_for_owner_review",
+        "prepare_submission_package",
+        "generate_proposal_pdf",
+        "generate_application_pdf"
+      ],
+      "requires_owner_click_to_send": true,
+      "max_queue_per_day": 50,
+      "audit_required": true
+    },
+    "T3_auto_outbound_low_value": {
+      "enabled": false,
+      "reason": "Unlock after investor close and legal review",
+      "value_threshold_usd": 5000,
+      "rate_limit_per_hour": 20
+    },
+    "T4_financial_execution": {
+      "enabled": false,
+      "reason": "Permanent lock — regulatory requirement",
+      "blocked_actions": [
+        "move_money",
+        "sign_contract",
+        "commit_obligation",
+        "submit_without_signature",
+        "execute_payment",
+        "approve_grant",
+        "accept_terms"
+      ]
+    }
+  },
+  "evidence_gate": {
+    "enforced": true,
+    "requires_citation": true,
+    "block_unsupported_claims": true
+  },
+  "kill_switch": {
+    "active": true,
+    "endpoint": "/api/owner/kill-switch",
+    "owner_token_required": true
+  }
+}
