@@ -1,11 +1,10 @@
-// Wrapper: load encrypted secrets, then boot server-watson.js
+// Wrapper: attempt to load encrypted secrets, then boot the server.
+// If secrets fail, fall back to environment variables set on Render.
 (async () => {
   try {
     await require("./tools/load-secrets").loadSecrets();
   } catch (e) {
-    console.error("❌ Secret load failed:", e.message);
-    process.exit(1);
+    console.warn("⚠️  Secret load failed — continuing with env vars:", e.message);
   }
-  // Secrets now in process.env — safe to require the real server
   require("./server-watson.js");
 })().catch(e => { console.error("❌ Fatal:", e); process.exit(1); });
