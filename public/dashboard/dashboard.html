@@ -3,130 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NIA Capital OS</title>
+<title>NIA · Capital Observatory</title>
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-name">NIA EVO</div>
-      <div class="brand-sub">Capital OS · v1</div>
-    </div>
-    <nav class="nav">
-      <div class="nav-section">Operations</div>
-      <a href="#" class="active">Overview</a>
-      <a href="#pipeline">Pipeline</a>
-      <a href="#funding">Funding</a>
-      <a href="#grants">Grants</a>
-      <div class="nav-section">Review</div>
-      <a href="#owner">Owner Queue</a>
-      <a href="#audit">Audit Log</a>
-      <div class="nav-section">System</div>
-      <a href="#status">Status</a>
-      <a href="#settings">Settings</a>
-    </nav>
-  </aside>
-  <main class="main">
-    <header class="topbar">
-      <div class="crumb">NIA <span class="sep">/</span> <strong>Overview</strong></div>
-      <div class="topbar-right">
-        <span class="status"><span class="dot"></span><span data-sync-status>Live</span></span>
-        <span class="crumb" data-clock>--:--:-- UTC</span>
-        <button class="btn" onclick="refreshDashboard()">Refresh</button>
-      </div>
-    </header>
 
-    <div class="content">
-      <div class="metrics">
-        <div class="metric">
-          <div class="metric-label">Total Capital</div>
-          <div class="metric-value" data-kpi="available-capital">—</div>
-          <div class="metric-sub">Certified engine</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Grant Pipeline</div>
-          <div class="metric-value" data-kpi="grant-pipeline">—</div>
-          <div class="metric-sub">Lane: grants</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Opportunities</div>
-          <div class="metric-value" data-kpi="opportunities">—</div>
-          <div class="metric-sub">All lanes</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Owner Queue</div>
-          <div class="metric-value" data-kpi="active-deals">—</div>
-          <div class="metric-sub">Pending review</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="panel" id="pipeline">
-          <div class="panel-header">
-            <div class="panel-title">Pipeline by Lane</div>
-            <div class="panel-meta" data-pipeline-meta>—</div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Lane</th>
-                <th class="num">Count</th>
-                <th class="num">Value</th>
-              </tr>
-            </thead>
-            <tbody data-pipeline>
-              <tr><td colspan="3" class="muted">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="panel" id="owner">
-          <div class="panel-header">
-            <div class="panel-title">Owner Queue</div>
-            <div class="panel-meta" data-owner-meta>—</div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Opportunity</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody data-drafts>
-              <tr><td colspan="2" class="muted">Loading…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">System Integrity</div>
-          <div class="panel-meta">Evidence gate · owner approval · kill switch</div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Control</th>
-              <th class="num">State</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="muted">Evidence gate</td><td class="num">enforced</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Owner approval</td><td class="num">required</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Owner signature</td><td class="num">required</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Financial writes</td><td class="num">blocked</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Money movement</td><td class="num">blocked</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Automatic approval</td><td class="num">disabled</td><td><span class="tag ok">Active</span></td></tr>
-            <tr><td class="muted">Secrets at rest</td><td class="num">AES-256-GCM</td><td><span class="tag ok">Encrypted</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+<!-- ─── MARQUEE TICKER ─── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" data-ticker>
+    <span>NIA CAPITAL OBSERVATORY</span><span class="tick-sep">◆</span>
+    <span>SYSTEM CERTIFIED · CONTROLLED</span><span class="tick-sep">◆</span>
+    <span>EVIDENCE GATE ENFORCED</span><span class="tick-sep">◆</span>
+    <span>FINANCIAL WRITES BLOCKED</span><span class="tick-sep">◆</span>
+    <span>LOADING…</span>
+  </div>
 </div>
+
+<div class="shell">
+
+  <!-- ─── LEFT RAIL ─── -->
+  <aside class="rail rail-left">
+    <div class="brand">
+      <div class="brand-mark">◈</div>
+      <div class="brand-text">
+        <div class="brand-name">NIA</div>
+        <div class="brand-sub">Capital Observatory</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group">Observe</div>
+      <a href="#overview" class="nav-link active"><span class="nav-glyph">◆</span> Overview</a>
+      <a href="#tape"     class="nav-link"><span class="nav-glyph">▲</span> Capital Tape</a>
+      <a href="#lanes"    class="nav-link"><span class="nav-glyph">◇</span> Lanes</a>
+      <div class="nav-group">Govern</div>
+      <a href="#owner"    class="nav-link"><span class="nav-glyph">◼</span> Owner Queue</a>
+      <a href="#locks"    class="nav-link"><span class="nav-glyph">●</span> Safety Locks</a>
+      <a href="#audit"    class="nav-link"><span class="nav-glyph">▪</span> Audit</a>
+      <div class="nav-group">System</div>
+      <a href="#status"   class="nav-link"><span class="nav-glyph">○</span> Status</a>
+      <a href="#settings" class="nav-link"><span class="nav-glyph">□</span> Settings</a>
+    </nav>
+
+    <div class="rail-footer">
+      <div class="footer-label">LOCAL TIME</div>
+      <div class="footer-clock" data-clock>--:--:--</div>
+      <div class="footer-label">UPTIME</div>
+      <div class="footer-uptime" data-uptime>—</div>
+    </div>
+  </aside>
+
+  <!-- ─── CENTER STAGE ─── -->
+  <main class="stage">
+
+    <!-- HERO NUMBERS -->
+    <section class="hero" id="overview">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Available Capital · Live</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-primary">
+          <div class="hero-number" data-kpi="total">—</div>
+          <div class="hero-unit">USD · verified opportunities</div>
+        </div>
+        <div class="hero-secondary">
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-kpi="grants">—</div>
+            <div class="hero-stat-label">Grants pipeline</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-kpi="opps">—</div>
+            <div class="hero-stat-label">Opportunities</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-kpi="pending">—</div>
+            <div class="hero-stat-label">Awaiting owner</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-kpi="lanes">—</div>
+            <div class="hero-stat-label">Active lanes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPITAL TAPE -->
+    <section class="tape-section" id="tape">
+      <header class="section-head">
+        <div class="section-title">
+          <span class="section-glyph">▲</span>
+          <h2>The Capital Tape</h2>
+        </div>
+        <div class="section-meta" data-tape-meta>—</div>
+      </header>
+      <div class="tape-head">
+        <div class="col-status"></div>
+        <div class="col-entity">Entity</div>
+        <div class="col-lane">Lane</div>
+        <div class="col-amount">Amount</div>
+        <div class="col-conf">Conf.</div>
+      </div>
+      <div class="tape" data-tape>
+        <div class="tape-empty">Loading…</div>
+      </div>
+    </section>
+
+    <!-- LANES -->
+    <section class="lanes-section" id="lanes">
+      <header class="section-head">
+        <div class="section-title">
+          <span class="section-glyph">◇</span>
+          <h2>Capital Lanes</h2>
+        </div>
+        <div class="section-meta">10 lanes · parallel discovery engine</div>
+      </header>
+      <div class="lanes-grid" data-lanes>
+        <div class="tape-empty">Loading…</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── RIGHT RAIL ─── -->
+  <aside class="rail rail-right">
+
+    <section class="pulse">
+      <div class="pulse-head">
+        <div class="pulse-dot" data-pulse-dot></div>
+        <div class="pulse-text">System Pulse</div>
+      </div>
+      <div class="pulse-status" data-pulse-status>Connecting…</div>
+      <div class="pulse-detail" data-pulse-detail>Awaiting engine handshake</div>
+    </section>
+
+    <section class="locks" id="locks">
+      <header class="rail-head">
+        <div class="rail-title">Safety Locks</div>
+        <div class="rail-meta">7 gates</div>
+      </header>
+      <ul class="lock-list" data-locks>
+        <li class="lock pending"><span class="lock-glyph">○</span><span class="lock-name">Loading…</span></li>
+      </ul>
+    </section>
+
+    <section class="owner" id="owner">
+      <header class="rail-head">
+        <div class="rail-title">Owner Queue</div>
+        <div class="rail-meta" data-owner-count>—</div>
+      </header>
+      <div class="owner-list" data-owner>
+        <div class="tape-empty">Loading…</div>
+      </div>
+    </section>
+
+  </aside>
+</div>
+
 <script src="/dashboard/nia-api.js"></script>
 </body>
 </html>
