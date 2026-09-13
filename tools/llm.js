@@ -9,36 +9,46 @@ function hasRealKey(k){ return k && k.length > 20 && !/XXXXX|PLACEHOLDER|PASTE|_
 // ─── GEMINI ─────────────────────────────────────────────────
 async function discoverGeminiModel(key) {
   if (cachedGeminiModel) return cachedGeminiModel;
-  cachedGeminiModel = "gemini-2.5-flash";
-  console.log("[llm] Vertex AI model:", cachedGeminiModel);
+  const r = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + key, { signal: AbortSignal.timeout(8000) });
+  if (!r.ok) throw new Error("Gemini list " + r.status);
+  const j = await r.json();
+  const models = (j.models || []).filter(m => m.supportedGenerationMethods?.includes("generateContent") && m.name?.startsWith("models/gemini"));
+  const pick =
+    models.find(m => /^models\/gemini-flash-latest$/.test(m.name)) ||
+    models.find(m => /^models\/gemini-flash-lite-latest$/.test(m.name)) ||
+    models.find(m => /^models\/gemini-3\.5-flash$/.test(m.name)) ||
+    models.find(m => /^models\/gemini-3\.6-flash$/.test(m.name)) ||
+    models.find(m => /flash-latest/.test(m.name)) ||
+    models.find(m => /gemini.*flash/i.test(m.name) && !/2\.5-flash/.test(m.name) && !/preview/.test(m.name) && !/tts/.test(m.name) && !/image/.test(m.name)) ||
+    models[0];
+  if (!pick) throw new Error("Gemini: no models");
+  cachedGeminiModel = pick.name.replace(/^models\//, "");
+  console.log("[llm] Gemini classic model:", cachedGeminiModel);
   return cachedGeminiModel;
 }
 
 async function tryGemini(prompt) {
   const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_STUDIO_API_KEY || process.env.GOOGLE_API_KEY;
   if (!hasRealKey(key)) throw new Error("Gemini key not configured");
-  const project = process.env.GOOGLE_CLOUD_PROJECT || "784459762073";
   const model = await discoverGeminiModel(key);
-  const url = `https://aiplatform.googleapis.com/v1/projects/${project}/locations/global/publishers/google/models/${model}:generateContent?key=${key}`;
+  const url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + key;
   const r = await fetch(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.3, maxOutputTokens: 500 },
-    }),
+    signal: AbortSignal.timeout(8000),
+    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } }),
   });
-  if (!r.ok) throw new Error(`Vertex ${r.status}: ${(await r.text()).slice(0,200)}`);
+  if (!r.ok) { const err = await r.text(); cachedGeminiModel = null; throw new Error("Gemini " + r.status + ": " + err.slice(0,150)); }
   const j = await r.json();
   const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error("Vertex returned no text");
+  if (!text) throw new Error("Gemini returned no text");
   return text.trim();
 }
 
 // ─── OPENROUTER ─────────────────────────────────────────────
 async function discoverOpenRouterModel(key) {
   if (cachedOpenRouterModel) return cachedOpenRouterModel;
-  const r = await fetch("https://openrouter.ai/api/v1/models");
+  const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(8000) });
   if (!r.ok) throw new Error(`OpenRouter list ${r.status}`);
   const j = await r.json();
   const freeModels = (j.data || []).filter(m => {
@@ -57,7 +67,7 @@ async function tryOpenRouter(prompt) {
   const key = process.env.OPENROUTER_API_KEY;
   if (!hasRealKey(key)) throw new Error("OPENROUTER_API_KEY not configured");
   const model = await discoverOpenRouterModel(key);
-  const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+  const r = await fetch("https://openrouter.ai/api/v1/chat/completions", { signal: AbortSignal.timeout(8000),
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -82,7 +92,7 @@ async function tryOpenRouter(prompt) {
 async function tryHuggingFace(prompt) {
   const key = process.env.HF_TOKEN || process.env.HUGGINGFACE_TOKEN;
   if (!hasRealKey(key)) throw new Error("HF_TOKEN not configured");
-  const r = await fetch("https://router.huggingface.co/v1/chat/completions", {
+  const r = await fetch("https://router.huggingface.co/v1/chat/completions", { signal: AbortSignal.timeout(8000),
     method: "POST",
     headers: { "content-type": "application/json", "authorization": `Bearer ${key}` },
     body: JSON.stringify({ model: "Qwen/Qwen2.5-72B-Instruct", messages: [{ role: "user", content: prompt }], max_tokens: 500, temperature: 0.3 }),
