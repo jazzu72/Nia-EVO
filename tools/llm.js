@@ -9,44 +9,29 @@ function hasRealKey(k){ return k && k.length > 20 && !/XXXXX|PLACEHOLDER|PASTE|_
 // ─── GEMINI ─────────────────────────────────────────────────
 async function discoverGeminiModel(key) {
   if (cachedGeminiModel) return cachedGeminiModel;
-  const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${key}`;
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`Gemini list ${r.status}: ${(await r.text()).slice(0,120)}`);
-  const j = await r.json();
-  const models = (j.models || []).filter(m =>
-    m.supportedGenerationMethods?.includes("generateContent") &&
-    m.name?.startsWith("models/gemini")
-  );
-  // Prefer flash > pro > any
-  const pick =
-    models.find(m => /gemini-2\.5-flash$/i.test(m.name)) ||
-    models.find(m => /gemini.*flash/i.test(m.name)) ||
-    models.find(m => /gemini.*pro/i.test(m.name)) ||
-    models[0];
-  if (!pick) throw new Error("Gemini: no generateContent model available");
-  cachedGeminiModel = pick.name.replace(/^models\//, "");
-  console.log("[llm] Gemini model discovered:", cachedGeminiModel);
+  cachedGeminiModel = "gemini-2.5-flash";
+  console.log("[llm] Vertex AI model:", cachedGeminiModel);
   return cachedGeminiModel;
 }
 
 async function tryGemini(prompt) {
   const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_STUDIO_API_KEY || process.env.GOOGLE_API_KEY;
   if (!hasRealKey(key)) throw new Error("Gemini key not configured");
+  const project = process.env.GOOGLE_CLOUD_PROJECT || "784459762073";
   const model = await discoverGeminiModel(key);
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+  const url = `https://aiplatform.googleapis.com/v1/projects/${project}/locations/global/publishers/google/models/${model}:generateContent?key=${key}`;
   const r = await fetch(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } }),
+    body: JSON.stringify({
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.3, maxOutputTokens: 500 },
+    }),
   });
-  if (!r.ok) {
-    const err = await r.text();
-    cachedGeminiModel = null; // try a different model next time
-    throw new Error(`Gemini ${r.status}: ${err.slice(0,150)}`);
-  }
+  if (!r.ok) throw new Error(`Vertex ${r.status}: ${(await r.text()).slice(0,200)}`);
   const j = await r.json();
   const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error("Gemini returned no text");
+  if (!text) throw new Error("Vertex returned no text");
   return text.trim();
 }
 
