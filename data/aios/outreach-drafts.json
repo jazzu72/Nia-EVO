@@ -1,0 +1,29 @@
+[
+  {
+    "prospectId": "PROS-41195b82-5f53-49fd-87dd-9a72cfc6302d",
+    "company": "Norfolk Restaurant",
+    "industry": "Food Service",
+    "estimatedValue": 5000,
+    "subject": "A quick opportunity for Norfolk Restaurant",
+    "body": "Hi, I’m reaching out because Norfolk Restaurant may have an opportunity to improve operations and revenue. I’d like to share a brief value assessment and discuss whether it makes sense for your business.",
+    "status": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "prospectId": "PROS-1deb9557-2ecd-48c9-b50c-f1a2b9446809",
+    "company": "Hampton Roads Contractor",
+    "industry": "Construction",
+    "estimatedValue": 7500,
+    "subject": "A quick opportunity for Hampton Roads Contractor",
+    "body": "Hi, I’m reaching out because Hampton Roads Contractor may have an opportunity to improve operations and revenue. I’d like to share a brief value assessment and discuss whether it makes sense for your business.",
+    "status": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "prospectId": "PROS-412d46b3-7744-4968-a476-45b48bcc4f83",
+    "company": "Local Medical Practice",
+    "industry": "Healthcare",
+    "estimatedValue": 5000,
+    "subject": "A quick opportunity for Local Medical Practice",
+    "body": "Hi, I’m reaching out because Local Medical Practice may have an opportunity to improve operations and revenue. I’d like to share a brief value assessment and discuss whether it makes sense for your business.",
+    "status": "PENDING_HUMAN_REVIEW"
+  }
+]

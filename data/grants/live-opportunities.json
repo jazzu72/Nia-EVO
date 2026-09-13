@@ -1,0 +1,2003 @@
+[
+  {
+    "opportunityId": "362551",
+    "opportunityNumber": "26-511",
+    "title": "NSF Small Business Innovation Research / Small Business Technology Transfer Phase I, Phase II, Fast-Track Programs: A Pilot Emphasis on Scientific Instrumentation",
+    "agencyCode": "NSF",
+    "agency": "U.S. National Science Foundation",
+    "openDate": "05/22/2026",
+    "closeDate": "11/04/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "47.084"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/362551",
+    "niaScore": 80,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.011Z",
+    "opportunityTitle": "NSF Small Business Innovation Research / Small Business Technology Transfer Phase I, Phase II, Fast-Track Programs: A Pilot Emphasis on Scientific Instrumentation",
+    "owningAgencyCode": "NSF",
+    "synopsis": {
+      "agencyCode": "NSF",
+      "agencyName": "U.S. National Science Foundation",
+      "synopsisDesc": "<p>NSF invests in scientific discoveries, technological breakthroughs, and transformative innovations that strengthen economic growth, enhance security, and improve the lives of Americans and people around the world. Our ability to support that mission requires a robust scientific and engineering (S&amp;E) enterprise in the United States that allows scientists to innovate at the frontier. In addition to funding scientists, America needs next-generation scientific instrumentation that allows scientists to pursue new innovations. In many fields, it is critical that this new scientific instrumentation is developed in the United States.</p>\n<p>In support of this mission, NSF is initiating a pilot emphasis area for its<a href=\"https://seedfund.nsf.gov/our-program/\">&nbsp;SBIR/STTR programs</a> to invest in startups and small businesses that are specifically developing enabling technologies that include next-generation instrumentation, novel experimental platforms, and other scientific equipment to advance the frontiers of scientific discovery and strengthen the American scientific and engineering enterprise. This encompasses novel instrumentation necessary for the coming era of AI-driven discoveries. This pilot will prioritize investing in the necessary infrastructure to support entirely new fields of scientific discovery, making new technological breakthroughs and transformative applications possible. Through this approach, NSF will continue to lead in propelling the scientific enterprise to new frontiers.</p>\n<p>This pilot emphasis area for the NSF SBIR/STTR programs funds across enabling technology areas and market sectors in alignment with the above goals; the programs do not solicit specific technologies for the purpose of procuring goods and services for the agency from startups and small businesses.</p>\n<p>NSF will continue to invest in other deep-tech ventures through the historic NSF SBIR/STTR programs available here.</p>\n<p>Funding opportunities are available through the NSF SBIR/STTR programs: Phase I, Phase II, Fast-Track, and Supplements. Each company can receive up to $2.0 million for R&amp;D. Separately, NSF welcomes Strategic Breakthrough proposals, upon recommendation from the Program Officer, for Phase II awardees. NSF takes no equity and awardees keep full ownership of their company and intellectual property.</p>\n<p><strong>Expanding Participation</strong><strong> in STEM and Gold Standard Science:</strong></p>\n<p>NSF prioritizes cutting-edge discovery science and engineering research, advancing technology and innovation, and creating opportunities for all Americans. NSF also expects the highest standards of scientific rigor, integrity and adherence to tenets of&nbsp;<a href=\"https://www.nsf.gov/policies/gold-standard-science\">Gold Standard Science</a>&nbsp;in proposals, as appropriate for the field of science and research modality.</p>",
+      "postingDate": "May 22, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "U.S. National Science Foundation",
+        "email": "grantsgovsupport@nsf.gov",
+        "phone": "703-292-4203"
+      }
+    },
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ]
+  },
+  {
+    "opportunityId": "363179",
+    "opportunityNumber": "NTIA-PWSCIF-26-01",
+    "title": "Public Wireless Supply Chain Innovation Fund Grant Program &ndash; Solutions for AI-Native RAN",
+    "agencyCode": "DOC-NTIA",
+    "agency": "National Telecommunications and Information Admini",
+    "openDate": "07/14/2026",
+    "closeDate": "09/09/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "11.038"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/363179",
+    "niaScore": 65,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.123Z",
+    "opportunityTitle": "Public Wireless Supply Chain Innovation Fund Grant Program &ndash; Solutions for AI-Native RAN",
+    "owningAgencyCode": "DOC-NTIA",
+    "synopsis": {
+      "agencyCode": "DOC-NTIA",
+      "agencyName": "Misty L Roosa\nGrantor",
+      "synopsisDesc": "<p>This NOFO is the fourth issued under NTIA’s Public Wireless Supply Chain Innovation Fund (PWSCIF or Innovation Fund). Titled “Solutions for AI-Native RAN,” the goal of this NOFO is to support the development of a secure compute environment to enable or leverage native artificial intelligence (“AI”) capabilities in the Radio Access Network (RAN) that generate revenue for operators, cost savings, and innovative third-party services, and demonstrate a business case for one or more services that leverage these capabilities, accelerating commercial deployments and the export of open, interoperable, and secure equipment.&nbsp;</p>",
+      "postingDate": "Jul 14, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": true,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "Misty L Roosa\nGrantor",
+        "email": "Shanell.williams@nist.gov",
+        "phone": "301-975-3007"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 293661,
+        "topportunityId": 363179,
+        "familyId": 15,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "NTIA-PWSCIF-26-01",
+        "opportunityTitle": "Public Wireless Supply Chain Innovation Fund Grant Program – Solutions for AI-Native RAN",
+        "cfdaNumber": "11.038",
+        "openingDate": "2026-07-14",
+        "closingDate": "2026-09-09",
+        "owningAgencyCode": "DOC-NTIA",
+        "agencyDetails": {
+          "code": "NTIA",
+          "seed": "DOC-NTIA",
+          "agencyName": "National Telecommunications and Information Admini",
+          "agencyCode": "DOC-NTIA",
+          "topAgencyCode": "DOC"
+        },
+        "topAgencyDetails": {
+          "code": "DOC",
+          "seed": "DOC",
+          "agencyName": "Department of Commerce",
+          "agencyCode": "DOC",
+          "topAgencyCode": "DOC"
+        },
+        "programTitle": "Public Wireless Supply Chain Innovation Fund Grant Program",
+        "contactInfo": "Shanell Williams\r\nshanell.williams@nist.gov",
+        "gracePeriod": 0,
+        "competitionId": "NTIA-PWSCIF-26-01",
+        "competitionTitle": "Public Wireless Supply Chain Innovation Fund Grant Program – Solutions for AI-Native RAN",
+        "electronicRequired": "Y",
+        "expectedApplicationCount": 100,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Jul 14, 2026 03:43:27 PM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00293661",
+        "openingDateStr": "2026-07-14-00-00-00",
+        "closingDateStr": "2026-09-09-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ]
+  },
+  {
+    "opportunityId": "361238",
+    "opportunityNumber": "26-503",
+    "title": "Artificial Intelligence and Cybersecurity Education Innovation and Scholarship for Service (CyberAI SFS)",
+    "agencyCode": "NSF",
+    "agency": "U.S. National Science Foundation",
+    "openDate": "02/04/2026",
+    "closeDate": "04/05/2027",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "47.076"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/361238",
+    "niaScore": 65,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.284Z",
+    "opportunityTitle": "Artificial Intelligence and Cybersecurity Education Innovation and Scholarship for Service (CyberAI SFS)",
+    "owningAgencyCode": "NSF",
+    "synopsis": {
+      "agencyCode": "NSF",
+      "agencyName": "U.S. National Science Foundation",
+      "synopsisDesc": "<p>Government and the nation face a talent shortfall in artificial intelligence (AI) and cybersecurity. The CyberAICorps Scholarship for Service (<strong>CyberAI SFS</strong>) program welcomes proposals that address AI and cybersecurity education and workforce development. CyberAI refers to using AI in cybersecurity as well as providing security and resilience for AI systems.</p>\n<ul>\n<li>The <strong>Scholarship Track</strong> provides funding to establish, or to continue, scholarship for service programs with integrated AI and cybersecurity components (CyberAI). Scholarship recipients <strong>must</strong> be U.S. citizens or lawful permanent residents and work after graduation in the AI or cybersecurity mission of a government organization for a period of at least the length of the scholarship.</li>\n<li>The<strong> Innovation Track</strong>&nbsp;supports projects that enhance preparation of AI and/or cybersecurity professionals. Projects may expand existing educational opportunities, curricula, degree programs, educational pathways, methods and interventions, and partnerships among institutions of higher education, government, and employers.</li>\n</ul>\n<p>Two statutes&nbsp;authorize this program:&nbsp; <a href=\"https://uscodeweb1.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section7442&amp;edition=prelim\">15 USC &sect;7442</a>&nbsp;(cybersecurity) and&nbsp;<a href=\"https://uscodeweb1.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section18993&amp;edition=prelim\">42 USC &sect;18993</a>&nbsp;(AI). CyberAI SFS aligns with the <a href=\"https://www.govinfo.gov/content/pkg/FR-2025-04-28/pdf/2025-07368.pdf\">Executive Order 14277</a> to prioritize AI within scholarship for service programs. CyberAI is managed by NSF&rsquo;s Directorate for STEM Education in collaboration with the <a href=\"https://sfs.opm.gov/\">U.S. Office of Personnel Management (OPM)</a> and <a href=\"https://niccs.cisa.gov/resources/cybersecurity-scholarships\">U.S. Department of Homeland Security (DHS).</a></p>",
+      "postingDate": "Feb 04, 2026 12:00:00 AM EST",
+      "responseDate": "Innovation Track",
+      "costSharing": false,
+      "awardCeiling": "2500000",
+      "awardFloor": "300000",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "U.S. National Science Foundation",
+        "email": "grantsgovsupport@nsf.gov",
+        "phone": "703-292-4203"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 291922,
+        "topportunityId": 361238,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "26-503",
+        "opportunityTitle": "Artificial Intelligence and Cybersecurity Education Innovation and Scholarship for Service (CyberAI SFS)",
+        "openingDate": "2026-02-04",
+        "closingDate": "2027-04-05",
+        "owningAgencyCode": "NSF",
+        "agencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "topAgencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "contactInfo": "CyberAI SFS Program\nE-mail: sfs@nsf.gov",
+        "gracePeriod": 15,
+        "electronicRequired": "N",
+        "expectedApplicationCount": 60,
+        "expectedApplicationSize": 50,
+        "openToApplicantType": 3,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Aug 06, 2026 05:00:55 AM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00291922",
+        "openingDateStr": "2026-02-04-00-00-00",
+        "closingDateStr": "2027-04-05-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ]
+  },
+  {
+    "opportunityId": "359671",
+    "opportunityNumber": "PA-27-100",
+    "title": "NIH, CDC and FDA Small Business Innovation Research Grant (Parent SBIR [R43/R44] Clinical Trial Optional)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "05/28/2026",
+    "closeDate": "04/05/2027",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "93.143",
+      "93.286",
+      "93.394",
+      "93.865",
+      "93.350",
+      "93.068",
+      "93.853",
+      "93.361",
+      "93.307",
+      "93.103",
+      "93.395",
+      "93.273",
+      "93.846",
+      "93.855",
+      "93.142",
+      "93.213",
+      "93.073",
+      "93.233",
+      "93.866",
+      "93.351",
+      "93.837",
+      "93.847",
+      "93.840",
+      "93.313",
+      "93.242",
+      "93.879",
+      "93.393",
+      "93.859",
+      "93.172",
+      "93.173",
+      "93.839",
+      "93.083",
+      "93.136",
+      "93.070",
+      "93.084",
+      "93.326",
+      "93.838",
+      "93.867",
+      "93.279",
+      "93.121",
+      "93.113"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359671",
+    "niaScore": 60,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.497Z",
+    "opportunityTitle": "NIH, CDC and FDA Small Business Innovation Research Grant (Parent SBIR [R43/R44] Clinical Trial Optional)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": "HHS-NIH11",
+      "agencyName": "National Institutes of Health",
+      "synopsisDesc": "The Small Business Innovation Research (SBIR) program helps United States small business concerns (SBCs) bring scientific innovations to the marketplace. The SBIR program supports feasibility studies to later research and development (R&D) needed to develop a commercial product.",
+      "postingDate": "May 28, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "23",
+          "description": "Small businesses"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "HL",
+          "description": "Health"
+        }
+      ],
+      "contact": {
+        "name": "National Institutes of Health",
+        "email": "SEEDinfo@nih.gov",
+        "phone": "301-402-2541"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 292976,
+        "topportunityId": 359671,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "PA-27-100",
+        "opportunityTitle": "NIH, CDC and FDA Small Business Innovation Research Grant (Parent SBIR [R43/R44] Clinical Trial Optional)",
+        "openingDate": "2026-08-05",
+        "closingDate": "2027-04-05",
+        "owningAgencyCode": "HHS-NIH11",
+        "agencyDetails": {
+          "code": "NIH",
+          "seed": "HHS-NIH11",
+          "agencyName": "National Institutes of Health",
+          "agencyCode": "HHS-NIH11",
+          "topAgencyCode": "HHS"
+        },
+        "topAgencyDetails": {
+          "code": "HHS",
+          "seed": "HHS",
+          "agencyName": "Department of Health and Human Services",
+          "agencyCode": "HHS",
+          "topAgencyCode": "HHS"
+        },
+        "contactInfo": "<p>eRA Service Desk</p><p><a href=\"https://www.era.nih.gov/need-help \">https://www.era.nih.gov/need-help&nbsp;</a></p>",
+        "gracePeriod": 60,
+        "competitionId": "FORMS-I",
+        "competitionTitle": "Use for due date on or after January 25, 2025.",
+        "electronicRequired": "Y",
+        "expectedApplicationCount": 100,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "May 28, 2026 03:04:10 PM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00292976",
+        "openingDateStr": "2026-08-05-00-00-00",
+        "closingDateStr": "2027-04-05-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "HL",
+        "description": "Health"
+      }
+    ]
+  },
+  {
+    "opportunityId": "359758",
+    "opportunityNumber": "PA-27-101",
+    "title": "NIH Small Business Innovation Research (SBIR) Phase IIB Strategic Breakthrough Award (Parent [R44] Clinical Trial Optional)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "05/28/2026",
+    "closeDate": "04/05/2029",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "93.853",
+      "93.838",
+      "93.839",
+      "93.866",
+      "93.307",
+      "93.847",
+      "93.394",
+      "93.837",
+      "93.855",
+      "93.313",
+      "93.393",
+      "93.865",
+      "93.350",
+      "93.242",
+      "93.867",
+      "93.233",
+      "93.351",
+      "93.840",
+      "93.859",
+      "93.273",
+      "93.395"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359758",
+    "niaScore": 60,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.683Z",
+    "opportunityTitle": "NIH Small Business Innovation Research (SBIR) Phase IIB Strategic Breakthrough Award (Parent [R44] Clinical Trial Optional)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": "HHS-NIH11",
+      "agencyName": "National Institutes of Health",
+      "synopsisDesc": "The NIH Phase IIB Strategic Breakthrough award bridges the funding gap between the end of a Small Business Innovation Research (SBIR) and Small Business Technology Transfer (STTR) Phase II award and commercialization. The Phase IIB Strategic Breakthrough provides previously funded NIH SBIR or STTR projects additional support for later-stage research and development (R&D).",
+      "postingDate": "May 28, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": true,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "23",
+          "description": "Small businesses"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "HL",
+          "description": "Health"
+        }
+      ],
+      "contact": {
+        "name": "National Institutes of Health",
+        "email": "SEEDinfo@nih.gov",
+        "phone": "301-402-2541"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 292977,
+        "topportunityId": 359758,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "PA-27-101",
+        "opportunityTitle": "NIH Small Business Innovation Research (SBIR) Phase IIB Strategic Breakthrough Award (Parent [R44] Clinical Trial Optional)",
+        "openingDate": "2026-08-05",
+        "closingDate": "2029-04-05",
+        "owningAgencyCode": "HHS-NIH11",
+        "agencyDetails": {
+          "code": "NIH",
+          "seed": "HHS-NIH11",
+          "agencyName": "National Institutes of Health",
+          "agencyCode": "HHS-NIH11",
+          "topAgencyCode": "HHS"
+        },
+        "topAgencyDetails": {
+          "code": "HHS",
+          "seed": "HHS",
+          "agencyName": "Department of Health and Human Services",
+          "agencyCode": "HHS",
+          "topAgencyCode": "HHS"
+        },
+        "contactInfo": "<p>eRA Service Desk</p><p><a href=\"https://www.era.nih.gov/need-help \">https://www.era.nih.gov/need-help&nbsp;</a></p>",
+        "gracePeriod": 60,
+        "competitionId": "FORMS-I",
+        "competitionTitle": "Use for due date on or after January 25, 2025.",
+        "electronicRequired": "Y",
+        "expectedApplicationCount": 100,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "May 28, 2026 03:04:13 PM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00292977",
+        "openingDateStr": "2026-08-05-00-00-00",
+        "closingDateStr": "2029-04-05-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "HL",
+        "description": "Health"
+      }
+    ]
+  },
+  {
+    "opportunityId": "300997",
+    "opportunityNumber": "NNH18ZHA002N-MUSIC",
+    "title": "EONS 2018: Appendix E Minority University Research and Education Project (MUREP) for Sustainability and Innovation Collaborative &ndash; (MUSIC) ",
+    "agencyCode": "NASA",
+    "agency": "National Aeronautics and Space Administration",
+    "openDate": "02/22/2018",
+    "closeDate": null,
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "43.008"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/300997",
+    "niaScore": 60,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.793Z",
+    "opportunityTitle": "EONS 2018: Appendix E Minority University Research and Education Project (MUREP) for Sustainability and Innovation Collaborative &ndash; (MUSIC) ",
+    "owningAgencyCode": "NASA",
+    "synopsis": {
+      "agencyCode": "NASA",
+      "agencyName": null,
+      "synopsisDesc": "Awards will be made as cooperative agreements to accredited Minority Serving Institutions (MSIs) partnered with non-profit organizations in the United States that are eligible to apply for this NASA Research Announcement (NRA). The period of performance for an award is up to 2 years. Prospective proposers are requested to submit any questions in writing to NASAMUSIC@nasaprs.com no later than 10 business days before the proposal due date so that NASA will have sufficient time to respond. Proposers to this NRA are required to have the following, no later than the due date: 1) a Data Universal Numbering System (DUNS) number, \r\n2) a valid registration with the System for Award Management (SAM) [formerly known as the Central Contractor Registry (CCR)], 3) a valid Commercial And Government Entity (CAGE) Code, 4) a valid registration with NASA Solicitation and Proposal Integrated Review and Evaluation System (NSPIRES) (this also applies to any entities proposed for sub-awards or subcontracts.) Consult Appendix H Section H.3.1 for more eligibility information. \r\nConsult Appendix H Section 2.2 regarding teaming requirements and partnership guidelines.\r\nThe goal of NASA MUSIC is: to provide strategic effort that will leverage research and contract relationships of MSIs and NASA through relationships developed by non-profit organizations that may include collaboration of subject matter experts and access to NASA research facilities; An effort to improve STEM education and research at MSIs; A funded activity that seeks to build institutional capacity of MSIs; An activity to support long-term sustainability of STEM research at MSIs. MUSIC seeks to address the agency goals and objectives through:  Increasing the institutional awareness of NASA competitive resources that can build the capacity of MSIs to offer and conduct STEM undergraduate and graduate research with a focus on NASA opportunities. Assembling MSIs and their stakeholders with common interests, and challenges then provide common tools for MSIs to increase efficiency and optimize resources including opportunities to develop formal and informal partnerships. Connecting MSI administrators and university STEM leaders to cutting-edge initiatives at NASA that can increase interest in securing research and contracting opportunities while supporting NASA’s policy to achieve an Agency-wide goal of providing one percent of total contract value of prime and subcontracting awards to MSIs.     https://www.hq.nasa.gov/office/procurement/regs/1826.htm\r\nTo achieve these goals, MUSIC seeks to increase university program capacity about practical uses of research to drive institution sustainability through the following targets:  Advance the understanding of MSIs on how to effectively develop institutional administrative support by competing at the university level for funding opportunities, which will result in successful application to, and management of these funding opportunities (including those at NASA).  Extend MSI’s capabilities by: A.   Leveraging the MSIs research capabilities with NASA research to develop Small Business Innovation Research (SBIR) and Small Business Technology Transfer (STTR) projects that develop and demonstrate innovative technologies that fulfill NASA needs and have significant potential for successful commercialization. B.  Increasing the preparation of undergraduate and graduate science, technology, engineering, and mathematics faculty with opportunities to participate with NASA researchers and missions through grants and contracts. To achieve these goals and objectives, NASA solicits proposals from MSIs to implement the NASA MUSIC; to engage MSIs in authentic STEM experiences related to NASA missions; and to inspire and captivate learners utilizing NASA’s unique assets to develop a keen interest in STEM. Every institution that intends to submit a proposal to this NRA, including the proposed prime award or any partner whether an education institution, other non-profit institutions, and other organizations that will serve as sub-awardees or contractors, must be registered in NSPIRES. Electronic submission of proposals is required by the due date and must be submitted by an authorized official of the proposing organization. Such registration must identify the authorized organizational representative(s) who will submit the electronic proposal. All principal investigators and other participants (e.g. co-investigators) must be registered in NSPIRES regardless of submission system. Potential proposers and proposing organizations are urged to access the system(s) well in advance of the proposal due date(s) of interest to familiarize themselves with its structure and enter the requested information. Electronic proposals may be submitted via the NASA proposal data system NSPIRES or via Grants.gov. Organizations that intend to submit proposals via Grants.gov must be registered 1) with Grants.gov and 2) with NSPIRES.  Additional programmatic information for this NRA may develop before the proposal due date. If so, such information will be added as a Frequently Asked Question (FAQ) or formal amendment to this NRA and posted on http://nspires.nasaprs.com. It is the proposer’s responsibility to regularly check NSPIRES for updates to this NRA. \r\n",
+      "postingDate": "Feb 22, 2018 12:00:00 AM EST",
+      "responseDate": "Notice of Intent Due:  March 23, 2018; Proposals Due: May 22, 2018 11:59 PM EST",
+      "costSharing": false,
+      "awardCeiling": "450000",
+      "awardFloor": "0",
+      "applicantTypes": [
+        {
+          "id": "99",
+          "description": "Unrestricted (i.e., open to any type of entity above), subject to any clarification in text field entitled \"Additional Information on Eligibility\""
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "CA",
+          "description": "Cooperative Agreement"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ED",
+          "description": "Education"
+        }
+      ],
+      "contact": {
+        "name": null,
+        "email": "NASAMUSIC@nasaprs.com",
+        "phone": null
+      }
+    },
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "CA",
+        "description": "Cooperative Agreement"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ED",
+        "description": "Education"
+      }
+    ]
+  },
+  {
+    "opportunityId": "359757",
+    "opportunityNumber": "PA-27-102",
+    "title": "NIH Small Business Technology Transfer Grant (Parent STTR [R41/R42] Clinical Trial Optional)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "05/28/2026",
+    "closeDate": "04/05/2027",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "93.837",
+      "93.859",
+      "93.840",
+      "93.313",
+      "93.242",
+      "93.279",
+      "93.286",
+      "93.847",
+      "93.879",
+      "93.846",
+      "93.361",
+      "93.173",
+      "93.394",
+      "93.853",
+      "93.213",
+      "93.307",
+      "93.838",
+      "93.351",
+      "93.393",
+      "93.395",
+      "93.866",
+      "93.273",
+      "93.865",
+      "93.350",
+      "93.172",
+      "93.839",
+      "93.233",
+      "93.121",
+      "93.867",
+      "93.113",
+      "93.855"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359757",
+    "niaScore": 60,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:25.931Z",
+    "opportunityTitle": "NIH Small Business Technology Transfer Grant (Parent STTR [R41/R42] Clinical Trial Optional)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": "HHS-NIH11",
+      "agencyName": "National Institutes of Health",
+      "synopsisDesc": "The Small Business Technology Transfer (STTR) grant program helps United States small business concerns (SBCs) that partner with a nonprofit research institution bring scientific innovations to the marketplace. The STTR program supports feasibility studies to later stage research and development (R&D) needed to develop a commercial product.",
+      "postingDate": "May 28, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "23",
+          "description": "Small businesses"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "HL",
+          "description": "Health"
+        }
+      ],
+      "contact": {
+        "name": "National Institutes of Health",
+        "email": "SEEDinfo@nih.gov",
+        "phone": "301-402-2541"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 292978,
+        "topportunityId": 359757,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "PA-27-102",
+        "opportunityTitle": "NIH Small Business Technology Transfer Grant (Parent STTR [R41/R42] Clinical Trial Optional)",
+        "openingDate": "2026-08-05",
+        "closingDate": "2027-04-05",
+        "owningAgencyCode": "HHS-NIH11",
+        "agencyDetails": {
+          "code": "NIH",
+          "seed": "HHS-NIH11",
+          "agencyName": "National Institutes of Health",
+          "agencyCode": "HHS-NIH11",
+          "topAgencyCode": "HHS"
+        },
+        "topAgencyDetails": {
+          "code": "HHS",
+          "seed": "HHS",
+          "agencyName": "Department of Health and Human Services",
+          "agencyCode": "HHS",
+          "topAgencyCode": "HHS"
+        },
+        "contactInfo": "<p>eRA Service Desk</p><p><a href=\"https://www.era.nih.gov/need-help \">https://www.era.nih.gov/need-help&nbsp;</a></p>",
+        "gracePeriod": 60,
+        "competitionId": "FORMS-I",
+        "competitionTitle": "Use for due date on or after January 25, 2025.",
+        "electronicRequired": "Y",
+        "expectedApplicationCount": 100,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "May 28, 2026 03:04:16 PM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00292978",
+        "openingDateStr": "2026-08-05-00-00-00",
+        "closingDateStr": "2027-04-05-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "HL",
+        "description": "Health"
+      }
+    ]
+  },
+  {
+    "opportunityId": "358912",
+    "opportunityNumber": "TEMP-30794",
+    "title": "NIEHS Worker Training Program&rsquo;s SBIR E-Learning for HAZMAT and Emergency Response (R43/R44 Clinical Trial Not Allowed)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "05/21/2025",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "93.142"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/358912",
+    "niaScore": 55,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.061Z",
+    "opportunityTitle": "NIEHS Worker Training Program&rsquo;s SBIR E-Learning for HAZMAT and Emergency Response (R43/R44 Clinical Trial Not Allowed)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": []
+  },
+  {
+    "opportunityId": "361526",
+    "opportunityNumber": "DE-FOA-0003612",
+    "title": "The Genesis Mission:  Transforming Science and Energy with AI",
+    "agencyCode": "PAMS-SC",
+    "agency": "Office of Science",
+    "openDate": "03/17/2026",
+    "closeDate": "12/17/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "81.049"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/361526",
+    "niaScore": 45,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.215Z",
+    "opportunityTitle": "The Genesis Mission:  Transforming Science and Energy with AI",
+    "owningAgencyCode": "PAMS-SC",
+    "synopsis": {
+      "agencyCode": "PAMS-SC",
+      "agencyName": "Michael S Zarkin\nGrants Management Specialist",
+      "synopsisDesc": "<p><span style=\"color: black;\">The DOE Office of Science (SC), Office of Critical Minerals and Energy Innovation (CMEI), Office of Environmental Management (EM), Office of Nuclear Energy (NE), Office of Electricity (OE), and Hydrocarbons and Geothermal Office (HGEO) hereby announce interest in receiving applications from interdisciplinary teams addressing the </span><a href=\"https://www.energy.gov/documents/genesis-mission-science-and-technology-challenges?utm_medium=email&amp;utm_source=govdelivery\" target=\"_blank\">Genesis Mission National Science and Technology Challenges</a><span style=\"color: black;\"> to accelerate scientific discovery and research and development (R&amp;D) workflows using novel artificial intelligence (AI) models and frameworks.&nbsp;By achieving AI advantage, these teams will advance the DOE's mission and ensure America’s security and prosperity by addressing energy, environmental, and nuclear challenges through science and technology.&nbsp;Teams are encouraged to leverage the extensive scientific and data resources of the DOE/National Nuclear Security Administration (NNSA), the National Laboratories, U.S. industry, and academia.&nbsp;The resulting AI models and workflows, if successful, may be integrated into the American Science Cloud.</span></p> \n<p><span style=\"color: black;\">&nbsp;</span></p> \n<p><span style=\"color: black;\">DOE is soliciting new FY26 Phase I small team and Phase II large team applications in the following topic areas:&nbsp;advanced manufacturing, biotechnology, critical materials, nuclear fission, nuclear fusion, quantum information science, semiconductors and microelectronics, discovery science, and energy (see specific focus areas in </span>Section III<span style=\"color: black;\"> Program Descriptions).</span></p> \n<p><span style=\"color: black;\">&nbsp;</span></p> \n<p><span style=\"color: black;\">In addition, this RFA will remain available to allow the recipients of FY26 Phase I awards to apply for larger team Phase II awards.&nbsp;In a few weeks, DOE plans to amend the RFA to clarify the LOI and application guidelines for FY26 Phase II awards.&nbsp;In FY27, DOE plans to amend the RFA or to issue an alternative funding opportunity to update the topic and focus areas to allow a second competition of Phase I small team applications and Phase II large team applications.</span></p>",
+      "postingDate": "Mar 17, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": true,
+      "awardCeiling": "16000000",
+      "awardFloor": "500000",
+      "applicantTypes": [
+        {
+          "id": "99",
+          "description": "Unrestricted (i.e., open to any type of entity above), subject to any clarification in text field entitled \"Additional Information on Eligibility\""
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "O",
+          "description": "Other"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "Michael S Zarkin\nGrants Management Specialist",
+        "email": "GenesisMissionNOFO@science.doe.gov",
+        "phone": "301-903-4946"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 292132,
+        "topportunityId": 361526,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "DE-FOA-0003612",
+        "opportunityTitle": "The Genesis Mission:  Transforming Science and Energy with AI",
+        "cfdaNumber": "81.049",
+        "openingDate": "2026-03-17",
+        "closingDate": "2026-12-17",
+        "owningAgencyCode": "PAMS-SC",
+        "agencyDetails": {
+          "code": "SC",
+          "seed": "PAMS-SC",
+          "agencyName": "Office of Science",
+          "agencyCode": "PAMS-SC",
+          "topAgencyCode": "PAMS"
+        },
+        "topAgencyDetails": {
+          "code": "PAMS",
+          "seed": "PAMS",
+          "agencyName": "Department of Energy - Office of Science",
+          "agencyCode": "PAMS",
+          "topAgencyCode": "PAMS"
+        },
+        "programTitle": "Office of Science Financial Assistance Program",
+        "contactInfo": "GenesisMissionNOFO@science.doe.gov",
+        "competitionId": "DE-FOA-0003612",
+        "competitionTitle": "The Genesis Mission: Transforming Science and Energy with AI",
+        "electronicRequired": "Y",
+        "expectedApplicationCount": 5000,
+        "openToApplicantType": 3,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Apr 20, 2026 05:29:55 PM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00292132",
+        "openingDateStr": "2026-03-17-00-00-00",
+        "closingDateStr": "2026-12-17-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "O",
+        "description": "Other"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ]
+  },
+  {
+    "opportunityId": "363315",
+    "opportunityNumber": "DOS-SAU-2602",
+    "title": "AI Partnership & Exchange for Tech Leaders (APEX)",
+    "agencyCode": "DOS-SAU",
+    "agency": "U.S. Mission to Saudi Arabia",
+    "openDate": "07/26/2026",
+    "closeDate": "09/08/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/363315",
+    "niaScore": 45,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.332Z",
+    "opportunityTitle": "AI Partnership &amp; Exchange for Tech Leaders (APEX)",
+    "owningAgencyCode": "DOS-SAU",
+    "synopsis": {
+      "agencyCode": "DOS-SAU",
+      "agencyName": "Abdulelah Alawi\nGrantor",
+      "synopsisDesc": "<p><strong>Program Purpose</strong></p><p>The U.S. Embassy Riyadh Public Diplomacy Section is accepting applications for a cooperative agreement to run the AI Partnership &amp; Exchange for Tech Leaders. The goal of this program is to connect rising Saudi Artificial Intelligence (AI) leaders with American experts in business, tech, and academia. This initiative helps participants build professional networks, study U.S. technology standards, and create lasting partnerships between American and Saudi institutions.</p><p><strong>&nbsp;</strong></p><p><strong>Target Audience and Participants</strong></p><p>The program should be designed for Saudi nationals aged 20 to 30. Participants must be undergraduate, graduate, or post-doctoral students, or recent graduates who are studying or working in AI-related fields (such as data science, robotics, or machine learning). They must also speak fluent English and show strong leadership potential. Provide three complete budget scenarios for 12 participants, 16 participants (primary), and 20 participants.</p><p>Applicants must provide budget scenarios for three participant cohort sizes:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12 participants</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16 participants (primary scenario)</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20 participants</p><p>Each budget scenario should maintain program quality while demonstrating cost-effectiveness at different scales.</p><p><strong>&nbsp;</strong></p><p><strong>Program Components</strong></p><p>In addition to the planning and preparation with the Embassy and partner organizations, the selected partner will plan and run three mandatory participant-focused phases:&nbsp;</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phase 1: Preparation (Virtual and In-Person) around April 1, 2027: The partner will create an online application portal and launch a recruiting campaign. They will host a virtual hackathon to help short-listed candidates design an AI project idea. Top project ideas will determine who wins a spot on the exchange trip. The partner will also train the group in leadership, project management, and cross-cultural communication before they travel.&nbsp;</p><p>&nbsp;</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phase 2: U.S. Exchange (Two Weeks) in July 2027: The partner will lead a two-week summer trip to two or three U.S. cities. The trip will include visits to American tech hubs and universities, networking events, workshops at a major AI summit, and cultural activities. The partner will also match each participant with a professional mentor for three months of bi-weekly virtual career coaching after the exchange program component.&nbsp;</p><p>&nbsp;</p><p>Phase 3: Follow-On Summit (Saudi Arabia) on/around January 2028: Within three to six months after the trip, the partner will organize a showcase event in Saudi Arabia. Participants will present their follow-on capstone AI projects to local tech communities, government leaders, and investors.&nbsp;This could be adjacent to major Saudi AI summits or a USG-related event.&nbsp;</p>",
+      "postingDate": "Jul 26, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "250000",
+      "awardFloor": "150000",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "CA",
+          "description": "Cooperative Agreement"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "O",
+          "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+        }
+      ],
+      "contact": {
+        "name": "Abdulelah Alawi\nGrantor",
+        "email": "RiyadhGrants@state.gov",
+        "phone": "00966118354860"
+      }
+    },
+    "alns": [],
+    "packages": [
+      {
+        "id": 293761,
+        "topportunityId": 363315,
+        "familyId": 15,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "DOS-SAU-2602",
+        "opportunityTitle": "AI Partnership & Exchange for Tech Leaders (APEX)",
+        "cfdaNumber": "19.040",
+        "openingDate": "2026-07-26",
+        "closingDate": "2026-09-08",
+        "owningAgencyCode": "DOS-SAU",
+        "agencyDetails": {
+          "code": "SAU",
+          "seed": "DOS-SAU",
+          "agencyName": "U.S. Mission to Saudi Arabia",
+          "agencyCode": "DOS-SAU",
+          "topAgencyCode": "DOS"
+        },
+        "topAgencyDetails": {
+          "code": "DOS",
+          "seed": "DOS",
+          "agencyName": "Department of State",
+          "agencyCode": "DOS",
+          "topAgencyCode": "DOS"
+        },
+        "programTitle": "Public Diplomacy Programs",
+        "contactInfo": "Grantor\r\nE-mail: RiyadhGrants@state.gov\r\nPhone: 00966118354860",
+        "electronicRequired": "N",
+        "expectedApplicationCount": 75,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Jul 26, 2026 02:59:45 AM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00293761",
+        "openingDateStr": "2026-07-26-00-00-00",
+        "closingDateStr": "2026-09-08-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY",
+    "fundingInstruments": [
+      {
+        "id": "CA",
+        "description": "Cooperative Agreement"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "O",
+        "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+      }
+    ]
+  },
+  {
+    "opportunityId": "363744",
+    "opportunityNumber": "DOS-SAU-2605-PD",
+    "title": "U.S-Saudi AI Research Commercialization Accelerator Program (ReCAP)",
+    "agencyCode": "DOS-SAU",
+    "agency": "U.S. Mission to Saudi Arabia",
+    "openDate": "08/31/2026",
+    "closeDate": "09/14/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/363744",
+    "niaScore": 45,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.430Z",
+    "opportunityTitle": "U.S-Saudi AI Research Commercialization Accelerator Program (ReCAP)",
+    "owningAgencyCode": "DOS-SAU",
+    "synopsis": {
+      "agencyCode": "DOS-SAU",
+      "agencyName": "Abdulelah Alawi\nGrantor",
+      "synopsisDesc": "<p><span style=\"color: black;\">The U.S. Embassy Riyadh Public Diplomacy Section announces an open competition for organizations to design and implement the U.S.–Saudi AI Research Commercialization Accelerator (ReCAP), a 12-month initiative connecting Saudi Arabia's expanding artificial intelligence innovation ecosystem with the United States' world-leading technology, investment, and commercialization ecosystem. The program will source and evaluate 20–30 Saudi-developed AI technologies, advance approximately 10 of the most promising through applied, U.S.-led commercialization programming and Innovation Labs, connect participants to the American AI ecosystem through an intensive U.S. study tour, and culminate in a high-level U.S.–Saudi AI Research Commercialization Summit. The program advances U.S. foreign policy priorities by positioning the United States as Saudi Arabia's preferred partner for AI innovation and commercialization, strengthening durable relationships between Saudi innovators and American technology, investment, and commercialization networks.</span></p>",
+      "postingDate": "Aug 31, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "900000",
+      "awardFloor": "600000",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "CA",
+          "description": "Cooperative Agreement"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "O",
+          "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+        }
+      ],
+      "contact": {
+        "name": "Abdulelah Alawi\nGrantor",
+        "email": "RiyadhGrants@state.gov",
+        "phone": "00966118354860"
+      }
+    },
+    "fundingInstruments": [
+      {
+        "id": "CA",
+        "description": "Cooperative Agreement"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "O",
+        "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+      }
+    ],
+    "alns": [],
+    "packages": [
+      {
+        "id": 294079,
+        "topportunityId": 363744,
+        "familyId": 15,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "DOS-SAU-2605-PD",
+        "opportunityTitle": "U.S-Saudi AI Research Commercialization Accelerator Program (ReCAP)",
+        "cfdaNumber": "19.040",
+        "openingDate": "2026-08-31",
+        "closingDate": "2026-09-14",
+        "owningAgencyCode": "DOS-SAU",
+        "agencyDetails": {
+          "code": "SAU",
+          "seed": "DOS-SAU",
+          "agencyName": "U.S. Mission to Saudi Arabia",
+          "agencyCode": "DOS-SAU",
+          "topAgencyCode": "DOS"
+        },
+        "topAgencyDetails": {
+          "code": "DOS",
+          "seed": "DOS",
+          "agencyName": "Department of State",
+          "agencyCode": "DOS",
+          "topAgencyCode": "DOS"
+        },
+        "programTitle": "Public Diplomacy Programs",
+        "contactInfo": "Public Diplomacy Section\r\nU.S. Embassy, Riyadh\r\nE-mail: RiyadhGrnats@state.gov\r\nPhone: 00966118354000",
+        "competitionId": "DOS-SAU-2605-PD",
+        "competitionTitle": "U.S.–Saudi AI Commercialization Accelerator Program (ReCAP)",
+        "electronicRequired": "N",
+        "expectedApplicationCount": 35,
+        "openToApplicantType": 1,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Aug 31, 2026 08:54:40 AM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00294079",
+        "openingDateStr": "2026-08-31-00-00-00",
+        "closingDateStr": "2026-09-14-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "363268",
+    "opportunityNumber": "26-512",
+    "title": "Unlocking Dataset Value for AI-Enabled Scientific Discovery (AI Datasets)",
+    "agencyCode": "NSF",
+    "agency": "U.S. National Science Foundation",
+    "openDate": "07/21/2026",
+    "closeDate": "11/04/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "47.074",
+      "47.050",
+      "47.084",
+      "47.041",
+      "47.049",
+      "47.070"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/363268",
+    "niaScore": 45,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.587Z",
+    "opportunityTitle": "Unlocking Dataset Value for AI-Enabled Scientific Discovery (AI Datasets)",
+    "owningAgencyCode": "NSF",
+    "synopsis": {
+      "agencyCode": "NSF",
+      "agencyName": "U.S. National Science Foundation",
+      "synopsisDesc": "<p>This program will advance scientific community datasets to enable scientific discovery and innovation using artificial intelligence (AI) and other methods. Its goal is to increase the value that can be derived from existing scientific datasets by leveraging novel methods and artificial intelligence (AI).&nbsp; This will unlock new AI-driven insights. It can enable interdisciplinary research. It also enables investigations outside of the original motivation for data collection and analysis.</p><p>The program seeks to 1) apply AI-based capabilities to feature extraction and metadata generation, and the integration of multiple datasets. &nbsp;2) Develop robust data pipelines necessary for automated analysis of existing datasets and similar use-cases by AI tools and systems. 3) Augment and/or harmonize existing datasets to better enable use by AI data pipelines and automated analysis.&nbsp;</p><p>Proposals should address dataset security and integrity. &nbsp;Governance and the process for scientific communities to contribute to the datasets should also be addressed. Proposals are encouraged to leverage existing resources. These may include&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/digital/data\">NSF data platforms</a>, the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/funding/opportunities/idss-integrated-data-systems-services\">NSF Integrated Data Systems and Services program</a>, the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/focus-areas/ai/nairr\">NSF-led National AI Research Resource</a>, the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.energy.gov/undersecretaryforscience/genesis-mission/genesis-mission\">Genesis Mission platform</a>, or other national infrastructure.</p><p>NSF is open to exploring partnerships with philanthropy, private industry, or the non-profit sector to support additional proposals or collaborative opportunities&nbsp;that will advance AI-driven scientific discovery through unlocking the value of high-impact scientific datasets.</p><p><strong>Expanding Participation in STEM, NSF Priorities, and Gold Standard Science:</strong></p><p>NSF prioritizes cutting-edge discovery science and engineering research, advancing technology and innovation, and creating opportunities for all Americans. NSF has established priorities set forth by Congress, the administration and the NSF director to promote&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/cgi-bin/good-bye?https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.nsf.gov%2Fabout&amp;data=05%7C02%7Cemisawa%40nsf.gov%7C38dc961290314e9e186d08dee74bb115%7C4939bd9435634244904d6e68ffc9b8cf%7C0%7C0%7C639202509498479654%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=%2FCCCSIR%2BbxoiV5%2B1TB7cvpsSDEm3xbBHiUwSHLExJao%3D&amp;reserved=0\">NSF's mission</a>. Proposers should review the list of&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/cgi-bin/good-bye?https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.nsf.gov%2Fupdates-on-priorities&amp;data=05%7C02%7Cemisawa%40nsf.gov%7C38dc961290314e9e186d08dee74bb115%7C4939bd9435634244904d6e68ffc9b8cf%7C0%7C0%7C639202509498507194%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=Q3GoODxs9MLDgKGJnSQEuvlBfoGApbPEekdS%2FoUtMoc%3D&amp;reserved=0\">NSF priorities</a>&nbsp;and are encouraged to align their proposals with them, where appropriate. NSF also expects the highest standards of scientific rigor, integrity and adherence tenets of&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/cgi-bin/good-bye?https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.nsf.gov%2Fpolicies%2Fgold-standard-science&amp;data=05%7C02%7Cemisawa%40nsf.gov%7C38dc961290314e9e186d08dee74bb115%7C4939bd9435634244904d6e68ffc9b8cf%7C0%7C0%7C639202509498529191%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=FKjMYWT2h2O3dQGRYwuPLJiVjDlXeHhb4tlBf2W3DkE%3D&amp;reserved=0\">Gold</a>&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/cgi-bin/good-bye?https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.nsf.gov%2Fpolicies%2Fgold-standard-science&amp;data=05%7C02%7Cemisawa%40nsf.gov%7C38dc961290314e9e186d08dee74bb115%7C4939bd9435634244904d6e68ffc9b8cf%7C0%7C0%7C639202509498548690%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=RbRtZB5wPjwz0gNaK8ypiBhqGbpAVBY2Agh5z7BpQTQ%3D&amp;reserved=0\">Standard Science</a>&nbsp;in proposals, as appropriate for the field of science and research modality.</p>",
+      "postingDate": "Jul 21, 2026 12:00:00 AM EDT",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "none",
+      "awardFloor": "none",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "U.S. National Science Foundation",
+        "email": "grantsgovsupport@nsf.gov",
+        "phone": "703-292-4203"
+      }
+    },
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ],
+    "alns": [],
+    "packages": [
+      {
+        "id": 293720,
+        "topportunityId": 363268,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "26-512",
+        "opportunityTitle": "Unlocking Dataset Value for AI-Enabled Scientific Discovery (AI Datasets)",
+        "openingDate": "2026-07-21",
+        "closingDate": "2026-11-04",
+        "owningAgencyCode": "NSF",
+        "agencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "topAgencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "contactInfo": "AI Datasets Program Officers\nE-mail: aidatasets@nsf.gov",
+        "gracePeriod": 7,
+        "electronicRequired": "N",
+        "expectedApplicationCount": 400,
+        "expectedApplicationSize": 50,
+        "openToApplicantType": 3,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Aug 01, 2026 05:21:01 AM EDT",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00293720",
+        "openingDateStr": "2026-07-21-00-00-00",
+        "closingDateStr": "2026-11-04-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "359726",
+    "opportunityNumber": "FOR-CA-25-086",
+    "title": "Forecast to Publish a Notice of Funding Opportunity for SBIR Phase IIB Bridge Awards to Accelerate the Development of Cancer-Relevant Technologies Toward Commercialization (R44 Clinical Trial Optional)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "06/16/2025",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "93.395",
+      "93.394"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359726",
+    "niaScore": 45,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:26.680Z",
+    "opportunityTitle": "Forecast to Publish a Notice of Funding Opportunity for SBIR Phase IIB Bridge Awards to Accelerate the Development of Cancer-Relevant Technologies Toward Commercialization (R44 Clinical Trial Optional)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "325599",
+    "opportunityNumber": "AFPRA-20-04",
+    "title": "U.S. Embassy Praia Ambassador&rsquo;s Special Self-Help (SSH) Program",
+    "agencyCode": "DOS-CPV",
+    "agency": "U.S. Mission to Cape Verde",
+    "openDate": "03/19/2020",
+    "closeDate": null,
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "19.220"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/325599",
+    "niaScore": 40,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.074Z",
+    "opportunityTitle": "U.S. Embassy Praia Ambassador&rsquo;s Special Self-Help (SSH) Program",
+    "owningAgencyCode": "DOS-CPV",
+    "synopsis": {
+      "agencyCode": "DOS-CPV",
+      "agencyName": "Sonia S Henriques\nGrantor",
+      "synopsisDesc": "<p><span style=\"color: rgb(51, 51, 51);\">U.S. Embassy Praia welcomes the submission of project applications for funding through the Ambassador’s Special Self-Help Program (SSH). If interested, please carefully review the instructions below.</span></p> \n<p><br></p> \n<p><span style=\"color: rgb(51, 51, 51);\">The SSH is a grass-roots grant assistance program that allows U.S. Ambassadors to support local requests for small community-based development projects.&nbsp;The purpose of the Special Self-Help Program is to support communities through modest grants that will positively impact local communities.&nbsp;The SSH philosophy is to help communities help themselves. </span><strong style=\"color: rgb(51, 51, 51);\">Projects submitted for SSH must align with one or more U.S. Embassy priorities:&nbsp;</strong></p> \n<p><em style=\"color: rgb(51, 51, 51);\">Economic diversification, including small business creation and income generation&nbsp;</em></p> \n<p><span style=\"color: rgb(51, 51, 51);\">Projects must aim to 1) generate sustainable income and employment opportunities in local communities, 2) advance economic diversification and encourage use of local natural resources or income generation, 3) promote a culture of entrepreneurship, and/or 4) improve economic or living conditions of a community.</span></p> \n<p><em style=\"color: rgb(51, 51, 51);\">Women start-ups and women entrepreneurs</em></p> \n<p><span style=\"color: rgb(51, 51, 51);\">Eligible projects assist women who are launching a business or who are overseeing the early stages of business development (between one to two years). Such projects must promote a culture of women-led entrepreneurship and innovation that can be replicated in the community. Projects must also promote profitable businesses that generate revenue and benefit the community.</span></p> \n<p><em style=\"color: rgb(51, 51, 51);\">Social and economic inclusion and creation of opportunities</em></p> \n<p><span style=\"color: rgb(51, 51, 51);\">Projects in this category must assist youth, children, women (particularly female heads of household), and other vulnerable groups to gain access to basic services (for example water, sanitation, and primary/pre-K education). They can also assist the creation of opportunities for vulnerable groups, particularly employment for youth.</span></p> \n<p><em style=\"color: rgb(51, 51, 51);\">Environmental protection, sustainability, resilience to environmental vulnerabilities, and adaptation to environmental change</em></p> \n<p><span style=\"color: rgb(51, 51, 51);\">Eligible projects will increase the capacity of communities to cope with vulnerability to drought and other environmental changes by building resilience, increasing capacity to adapt, and promoting income-generating activities. For example, projects may involve activities to improve water management, diversify agricultural practices, or provide benefits to the environment.</span></p> \n<p><br></p> \n<p><strong style=\"color: rgb(51, 51, 51);\">&nbsp;Local Community Involvement:&nbsp;</strong></p> \n<p><span style=\"color: rgb(51, 51, 51);\">&nbsp;Local involvement of the organization or group must be at least 10% in cash or in kind of the total project costs.&nbsp;The community contribution of funding may be crucial to make a choice between two viable requestors.&nbsp;In-kind contributions could be:&nbsp;labor (wages of masons and workers), food, accommodation for qualified labor, carts of sand or gravel, bricks for construction, sand, fence, water supply, transportation costs, donations of materials etc.</span></p> \n<p><span style=\"color: rgb(51, 51, 51);\">Additionally, community leaders can sign a statement of interest.&nbsp;Community leaders include local municipal leaders, religious leaders, civil society leaders, or any governing body that has oversight over where the project will be implemented.&nbsp;One community leader can sign the statement of interest; however, multiple signatures are strongly encouraged.&nbsp;Community leaders may also submit letters of support for the project.</span></p> \n<p><br></p> \n<p><strong style=\"color: rgb(51, 51, 51);\">&nbsp;</strong><strong>Elements of a Successful Project</strong></p> \n<ul> \n <li>The project is initiated by the community.</li> \n <li>The project plan contains pre-established long-term goals and a coherent plan to keep the project running in the future.</li> \n <li>A capable project manager who is a long-term resident in the community is responsible for the project.</li> \n <li>There is strong coordination and communication among the grant recipient, local leaders, and local government representatives.</li> \n <li>The project makes use of materials and supplies that can be maintained by the community, and the materials that will not harm the environment.</li> \n <li>The project has a high beneficiary to budget ratio, benefiting a significant number of community members</li> \n <li>The project budget is clear, complete, and well defined.</li> \n <li>The project responds to a community need and is based on a well-developed proposal that is responsive to the priorities and criteria explained in this NOFO.</li> \n <li>Project activities and results show long-term sustainability.</li> \n</ul> \n<p><strong style=\"color: rgb(68, 114, 196);\">Application Documents and Procedures</strong></p> \n<p>1. Applications for Special Self-Help Funds should include the following:</p> \n<p><span style=\"color: black;\">a. Completed </span><span style=\"color: rgb(51, 51, 51);\">SSH form, which can be downloaded&nbsp;</span><a href=\"https://cv.usembassy.gov/wp-content/uploads/sites/265/SSH_Informacoes-e-Formulario-copy.pdf\" target=\"_blank\" style=\"color: rgb(0, 56, 117);\">here</a><span style=\"color: rgb(51, 51, 51);\">.</span></p> \n<p>b.&nbsp;Detailed building plan with dimensions (if necessary/ if small-scale construction envisioned in the project proposal).</p> \n<p>c.&nbsp;Project location (include map if available).</p> \n<p>d.&nbsp;Any additional information/literature you have about your organization and/or project.</p> \n<p>&nbsp;<span style=\"color: black;\">2. The following documents are </span><strong style=\"color: black;\"><u>required</u></strong><span style=\"color: black;\">:&nbsp;</span></p> \n<p><strong>&nbsp;</strong><span style=\"color: black;\">Mandatory application forms</span></p> \n<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: black;\">SF-424&nbsp;(Application for Federal Assistance&nbsp;– organizations)&nbsp;</span></p> \n<p><span style=\"color: rgb(51, 51, 51);\">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=\"color: black;\">SF-424A&nbsp;(Budget Information for Non-Construction programs)</span></p> \n<p><strong>&nbsp;</strong>The forms can be downloaded from <a href=\"https://www.grants.gov/web/grants/forms.html\" target=\"_blank\">grants.gov</a>.&nbsp;Instructions are available on the Embassy website at the <a href=\"https://cv.usembassy.gov/embassy/praia/grants-program/\" target=\"_blank\">&nbsp;grant support resources toolkit</a></p> \n<p><span style=\"color: black;\">3. Make sure that the below is addressed in your SSH form, </span><strong style=\"color: black;\"><u>or</u></strong><span style=\"color: black;\"> submit the following: </span><strong style=\"color: black;\">Summary Page:&nbsp;</strong><span style=\"color: black;\">Cover sheet stating the applicant’s name and organization, proposal date, program title, program period proposed start and end date, and brief purpose of the program.</span>&nbsp;<strong style=\"color: black;\">Proposal </strong><strong style=\"color: rgb(51, 51, 51);\">(</strong><strong style=\"color: black;\">3 pages maximum):&nbsp;</strong><span style=\"color: black;\">The proposal should contain sufficient information that anyone not familiar with it would understand exactly what the applicant wants to do. You may use your own proposal format, but it must include.&nbsp;</span><em style=\"color: black;\">Proposal Summary</em><strong style=\"color: black;\">: </strong><span style=\"color: black;\">Short narrative that outlines the proposed program, including program objectives and anticipated impact. </span><em style=\"color: black;\">Introduction to the Organization or Individual applying</em><span style=\"color: black;\">: A description of past and present operations, showing ability to carry out the program, including information on all previous grants from the U.S. Embassy and/or U.S. government agencies. </span><strong style=\"color: black;\">Problem Statement: </strong><span style=\"color: black;\">Clear, concise and well-supported statement of the problem to be addressed and why the proposed program is needed. </span><strong style=\"color: black;\">Program Goals and Objectives:&nbsp;</strong><span style=\"color: black;\">The “goals” describe what the program is intended to achieve.&nbsp;The “objectives” refer to the intermediate accomplishments on the way to the goals. These should be achievable and measurable. </span><strong style=\"color: black;\">Program Activities</strong><span style=\"color: black;\">: Describe the program activities and how they will help achieve the objectives. </span><strong style=\"color: black;\">Program Methods and Design</strong><span style=\"color: black;\">: A description of how the program is expected to work to solve the stated problem and achieve the goal.&nbsp;Include a logic model as appropriate. </span><strong style=\"color: black;\">Proposed Program Schedule and Timeline:&nbsp;</strong><span style=\"color: black;\">The proposed timeline for the program activities.&nbsp;Include the dates, times, and locations of planned activities and events. </span><strong style=\"color: black;\">Key Personnel:&nbsp;</strong><span style=\"color: black;\">Names, titles, roles and experience/qualifications of key personnel involved in the program.&nbsp;What proportion of their time will be used in support of this program?&nbsp;</span><strong style=\"color: black;\">Program Partners:</strong><span style=\"color: black;\">&nbsp;List the names and type of involvement of key partner organizations and sub-awardees. </span><strong style=\"color: black;\">Program Monitoring and Evaluation Plan:</strong><span style=\"color: black;\">&nbsp;This is an important part of successful grants. Throughout the time-frame of the grant, how will the activities be monitored to ensure they are happening in a timely manner, and how will the program be evaluated to make sure it is meeting the goals of the grant? </span><strong style=\"color: black;\">Future Funding or Sustainability</strong><span style=\"color: black;\">&nbsp;Applicant’s plan for continuing the program beyond the grant period, or the availability of other resources, if applicable.</span></p> \n<p>&nbsp;<strong style=\"color: black;\">4. Budget Justification Narrative</strong><span style=\"color: black;\">:&nbsp;After filling out the SF-424A Budget (above), use a separate sheet of paper to describe each of the budget expenses in detail.</span></p> \n<p>&nbsp;Proposals can be submitted in English or Portuguese languages.&nbsp;</p> \n<p>Submit the complete application package to the U.S. Self-Help Coordinator/ Praia Grants.&nbsp;Applications will be accepted in electronic format, on a rolling basis.&nbsp;Email all required information to <strong>praiagrants@state.gov</strong></p> \n<p><strong style=\"color: rgb(51, 51, 51);\">&nbsp;Application Deadline: </strong><span style=\"color: rgb(51, 51, 51);\">Applications received after&nbsp;</span><strong style=\"color: rgb(51, 51, 51);\">June</strong><span style=\"color: rgb(51, 51, 51);\">&nbsp;will be considered with the next application period or will not be considered.&nbsp;Project selections will be announced&nbsp;</span><strong style=\"color: rgb(51, 51, 51);\">by October.</strong></p> \n<p><strong style=\"color: rgb(51, 51, 51);\">Applications will be evaluated on the following factors: </strong><span style=\"color: rgb(51, 51, 51);\">&nbsp;</span><strong>Completeness:&nbsp;&nbsp;</strong>Did the applicant submit all of the materials requested, including but not limited to requirements in the SSH forms found on U.S. Embassy Praia’s website. <strong>Embassy priorities:&nbsp;</strong>Does the application describe how the project’s goals are related to the Embassy priorities stated in this document? <strong>Sustainability:</strong>&nbsp;Is the project sustainable in the long term?&nbsp;Will the project be able to continue without additional investment?&nbsp;Are the suggested measurements of success adequate? <strong>Need:</strong>&nbsp;Does the project adequately fulfill a stated need within a community? <strong>Budget:</strong>&nbsp;Is the budget complete, and well defined? Is the budget reasonable? <strong>Completion within one year:</strong>&nbsp;Can the project be completed in a single year? <strong>Community support:</strong>&nbsp;Does the project show strong community support? <strong>Impact:</strong>&nbsp;Does the project benefit the broadest numbers of beneficiaries possible?&nbsp;Is there a substantial impact on the affected community? <strong>Contribution and Group Capabilities:</strong>&nbsp;Does the group provide adequate resources and show commitment to the project?&nbsp;Is the group capable of administering the project as designed?</p> \n<p>&nbsp;<strong style=\"color: rgb(68, 114, 196);\">Review and Selection Process: </strong>A review committee will evaluate all eligible applications.&nbsp;</p> \n<p><strong style=\"color: rgb(68, 114, 196);\">Other Required Documentation/ Reporting: </strong><span style=\"color: rgb(51, 51, 51);\">Groups selected for funding will subsequently need to submit several required forms, including U.S. Standard Form 424, a grants award document, and any other terms and conditions required by U.S. Embassy Praia. Performance and financial reports will be required throughout the duration of the award.</span></p> \n<p><strong style=\"color: rgb(68, 114, 196);\">Publicity Campaign: </strong><span style=\"color: rgb(51, 51, 51);\">It is expected that publicity will be given to the Ambassador’s Special Self-Help program and its projects, including press and radio releases, photographs, and project site plaques that acknowledge the shared efforts of Cabo Verde and the United States.&nbsp;Publicity costs should be considered in the proposed budget.</span></p> \n<p><strong style=\"color: rgb(68, 114, 196);\">Funding: </strong><span style=\"color: rgb(51, 51, 51);\">U.S. Embassy Praia is not required to fund any applications.&nbsp;Submitting an application does not guarantee selection.</span></p>",
+      "postingDate": "Mar 19, 2020 12:00:00 AM EDT",
+      "responseDate": "Rolling Applications",
+      "costSharing": false,
+      "awardCeiling": "10000",
+      "awardFloor": "3000",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "O",
+          "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+        }
+      ],
+      "contact": {
+        "name": "Sonia S Henriques\nGrantor",
+        "email": "PRAIAGRANTS@state.gov",
+        "phone": "00238 9912642"
+      }
+    },
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "O",
+        "description": "Other (see text field entitled \"Explanation of Other Category of Funding Activity\" for clarification)"
+      }
+    ],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "362576",
+    "opportunityNumber": "PAR-27-039",
+    "title": "Small Business Transition Grant for New Entrepreneurs (Parent R43/R44 Clinical Trial Optional)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "05/27/2026",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "93.879",
+      "93.361",
+      "93.840",
+      "93.121",
+      "93.350",
+      "93.846",
+      "93.113",
+      "93.213",
+      "93.837",
+      "93.838",
+      "93.859",
+      "93.233",
+      "93.279",
+      "93.866",
+      "93.173",
+      "93.273",
+      "93.839",
+      "93.143",
+      "93.172",
+      "93.847",
+      "93.865",
+      "93.867"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/362576",
+    "niaScore": 25,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.172Z",
+    "opportunityTitle": "Small Business Transition Grant for New Entrepreneurs (Parent R43/R44 Clinical Trial Optional)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "359724",
+    "opportunityNumber": "FOR-CA-25-087",
+    "title": "Forecast to Publish a Notice of Funding Opportunity for Small Business Transition Grant For Early Career Scientists (R41/R42 Clinical Trial Not Allowed)",
+    "agencyCode": "HHS-NIH11",
+    "agency": "National Institutes of Health",
+    "openDate": "06/16/2025",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "93.394",
+      "93.172",
+      "93.286"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359724",
+    "niaScore": 25,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.283Z",
+    "opportunityTitle": "Forecast to Publish a Notice of Funding Opportunity for Small Business Transition Grant For Early Career Scientists (R41/R42 Clinical Trial Not Allowed)",
+    "owningAgencyCode": "HHS-NIH11",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "334905",
+    "opportunityNumber": "RANDENDEPSTEMFY22RFI",
+    "title": "National Defense Education Program (NDEP) Science, Technology, Engineering, and Mathematics (STEM) Consortia Request for Information (RFI) for the Office of the Under Secretary of Defense (Research & Engineering)",
+    "agencyCode": "DOD",
+    "agency": "Department of Defense",
+    "openDate": "07/27/2021",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "12.006"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/334905",
+    "niaScore": 20,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.435Z",
+    "opportunityTitle": "National Defense Education Program (NDEP) Science, Technology, Engineering, and Mathematics (STEM) Consortia Request for Information (RFI) for the Office of the Under Secretary of Defense (Research &amp; Engineering)",
+    "owningAgencyCode": "DOD",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "350831",
+    "opportunityNumber": "2024-01",
+    "title": "Alumni Engagement Innovation Fund 2024",
+    "agencyCode": "DOS-LVA",
+    "agency": "U.S. Mission to Latvia",
+    "openDate": "11/02/2023",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "19.022"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/350831",
+    "niaScore": 20,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.541Z",
+    "opportunityTitle": "Alumni Engagement Innovation Fund 2024",
+    "owningAgencyCode": "DOS-LVA",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "361249",
+    "opportunityNumber": "26-504",
+    "title": "Postdoctoral Research Fellowships in Biology",
+    "agencyCode": "NSF",
+    "agency": "U.S. National Science Foundation",
+    "openDate": "02/05/2026",
+    "closeDate": "09/29/2026",
+    "status": "posted",
+    "documentType": "synopsis",
+    "cfdaList": [
+      "47.074"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/361249",
+    "niaScore": 15,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.644Z",
+    "opportunityTitle": "Postdoctoral Research Fellowships in Biology",
+    "owningAgencyCode": "NSF",
+    "synopsis": {
+      "agencyCode": "NSF",
+      "agencyName": "U.S. National Science Foundation",
+      "synopsisDesc": "The integration of Artificial Intelligence (AI) and Biological Research has the potential to pave the way for breakthroughs in biotechnology and bio-system design that will create innovations, new industries, and jobs. To capitalize on this promise, the Directorate for Biological Sciences (BIO) will make awards for Postdoctoral Research Fellowships in Biology (PRFB) to recent doctoral degree recipients, for proposals with a research and training focus at the Intersection of Artificial Intelligence and Biological Sciences to Strengthen and Safeguard Biotechnology Innovations. Applying AI to highly complex biological systems will reveal unknown mechanisms in the natural world that hold promise for technological developments.\n\n\nCandidates with AI and/or biology experience will develop deep expertise in both by proposing additional training in both areas. These combinations of current expertise and new cross-training will produce scientists who work seamlessly at the intersection of AI and biology. The fellows are expected to become field leaders who use AI capabilities to extrapolate from biological data to technological advances.\n\n\nProposers are encouraged to consider how to leverage the nation&rsquo;s diversity of existing biological data, and biological infrastructure, such as Biofoundries, Programmable Cloud Labs, Manufacturing USA Institutes, and NEON, to accelerate discovery, innovation and the biotechnology that improves human lives, promotes the U.S. economy, and benefits the nation.",
+      "postingDate": "Feb 05, 2026 12:00:00 AM EST",
+      "responseDate": null,
+      "costSharing": false,
+      "awardCeiling": "none",
+      "awardFloor": "220000",
+      "applicantTypes": [
+        {
+          "id": "25",
+          "description": "Others (see text field entitled \"Additional Information on Eligibility\" for clarification)"
+        }
+      ],
+      "fundingInstruments": [
+        {
+          "id": "G",
+          "description": "Grant"
+        }
+      ],
+      "fundingCategories": [
+        {
+          "id": "ST",
+          "description": "Science and Technology and other Research and Development"
+        }
+      ],
+      "contact": {
+        "name": "U.S. National Science Foundation",
+        "email": "grantsgovsupport@nsf.gov",
+        "phone": "703-292-4203"
+      }
+    },
+    "fundingInstruments": [
+      {
+        "id": "G",
+        "description": "Grant"
+      }
+    ],
+    "fundingCategories": [
+      {
+        "id": "ST",
+        "description": "Science and Technology and other Research and Development"
+      }
+    ],
+    "alns": [],
+    "packages": [
+      {
+        "id": 291931,
+        "topportunityId": 361249,
+        "familyId": 14,
+        "dialect": "XFDL2.2",
+        "opportunityNumber": "26-504",
+        "opportunityTitle": "Postdoctoral Research Fellowships in Biology",
+        "openingDate": "2026-02-05",
+        "closingDate": "2026-09-29",
+        "owningAgencyCode": "NSF",
+        "agencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "topAgencyDetails": {
+          "code": "NSF",
+          "seed": "NSF",
+          "agencyName": "U.S. National Science Foundation",
+          "agencyCode": "NSF",
+          "topAgencyCode": "NSF"
+        },
+        "contactInfo": "Postdoctoral Research Fellowships in Biology\nE-mail: bio-dbi-prfb@nsf.gov",
+        "gracePeriod": 7,
+        "electronicRequired": "N",
+        "expectedApplicationCount": 400,
+        "openToApplicantType": 3,
+        "listed": "L",
+        "isMultiProject": "N",
+        "extension": "pdf",
+        "mimetype": "application/pdf",
+        "lastUpdate": "Feb 05, 2026 11:25:17 PM EST",
+        "workspaceCompatibleFlag": "Y",
+        "packageId": "PKG00291931",
+        "openingDateStr": "2026-02-05-00-00-00",
+        "closingDateStr": "2026-09-29-00-00-00"
+      }
+    ],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "362086",
+    "opportunityNumber": "PAS-TUNIS- APS FY2026",
+    "title": "Annual Program Statement (APS) For Fiscal Year 2026",
+    "agencyCode": "DOS-TUN",
+    "agency": "U.S. Mission to Tunisia",
+    "openDate": "05/06/2026",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/362086",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.464Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.737Z",
+    "opportunityTitle": "Annual Program Statement (APS) For Fiscal Year 2026",
+    "owningAgencyCode": "DOS-TUN",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "359120",
+    "opportunityNumber": "PAS-TUNIS-FY2025",
+    "title": "Annual Program Statement (APS) for Fiscal Year 2025",
+    "agencyCode": "DOS-TUN",
+    "agency": "U.S. Mission to Tunisia",
+    "openDate": "06/02/2025",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/359120",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:27.910Z",
+    "opportunityTitle": "Annual Program Statement (APS) for Fiscal Year 2025",
+    "owningAgencyCode": "DOS-TUN",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "358783",
+    "opportunityNumber": "DOS-PAS-ANG-FY25-01",
+    "title": "U.S. Embassy Luanda Public Diplomacy Section Request for a Full Proposal Application",
+    "agencyCode": "DOS-AGO",
+    "agency": "U.S. Mission to Angola",
+    "openDate": "04/30/2025",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/358783",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:28.017Z",
+    "opportunityTitle": "U.S. Embassy Luanda Public Diplomacy Section Request for a Full Proposal Application",
+    "owningAgencyCode": "DOS-AGO",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "336962",
+    "opportunityNumber": "FA8651-22-S0021",
+    "title": "Partnership Intermediary Agreement (PIA)",
+    "agencyCode": "DOD-AFRL-RW",
+    "agency": "Munitions Directorate",
+    "openDate": "12/14/2021",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "12.630"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/336962",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:28.127Z",
+    "opportunityTitle": "Partnership Intermediary Agreement (PIA)",
+    "owningAgencyCode": "DOD-AFRL-RW",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "363369",
+    "opportunityNumber": "RFA-OH-27-049",
+    "title": "NIOSH Centers of Excellence for Total Worker Health&reg; (U19)",
+    "agencyCode": "HHS-CDC-HHSCDCERA",
+    "agency": "Centers for Disease Control and Prevention - ERA",
+    "openDate": "07/28/2026",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "93.262"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/363369",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.467Z",
+    "detailFetchedAt": "2026-09-03T21:06:28.215Z",
+    "opportunityTitle": "NIOSH Centers of Excellence for Total Worker Health&reg; (U19)",
+    "owningAgencyCode": "HHS-CDC-HHSCDCERA",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  },
+  {
+    "opportunityId": "352290",
+    "opportunityNumber": "PDS-24-01",
+    "title": "U.S. Embassy Djibouti PDS Annual Program Statement",
+    "agencyCode": "DOS-DJI",
+    "agency": "U.S. Mission to Djibouti",
+    "openDate": "02/11/2024",
+    "closeDate": null,
+    "status": "forecasted",
+    "documentType": "forecast",
+    "cfdaList": [
+      "19.022",
+      "19.040"
+    ],
+    "source": "GRANTS_GOV",
+    "sourceUrl": "https://www.grants.gov/search-results-detail/352290",
+    "niaScore": 0,
+    "discoveredAt": "2026-09-03T13:16:01.468Z",
+    "detailFetchedAt": "2026-09-03T21:06:28.326Z",
+    "opportunityTitle": "U.S. Embassy Djibouti PDS Annual Program Statement",
+    "owningAgencyCode": "DOS-DJI",
+    "synopsis": {
+      "agencyCode": null,
+      "agencyName": null,
+      "synopsisDesc": null,
+      "postingDate": null,
+      "responseDate": null,
+      "costSharing": null,
+      "awardCeiling": null,
+      "awardFloor": null,
+      "applicantTypes": [],
+      "fundingInstruments": [],
+      "fundingCategories": [],
+      "contact": {
+        "name": null,
+        "email": null,
+        "phone": null
+      }
+    },
+    "applicantTypes": [],
+    "fundingInstruments": [],
+    "fundingCategories": [],
+    "alns": [],
+    "packages": [],
+    "relatedOpportunities": [],
+    "detailSource": "GRANTS_GOV_FETCH_OPPORTUNITY"
+  }
+]

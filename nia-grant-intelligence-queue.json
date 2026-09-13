@@ -1,0 +1,91 @@
+{
+  "system": "NIA GRANT INTELLIGENCE ENGINE",
+  "mode": "FUNDING_FIRST",
+  "topTarget": {
+    "id": "GRANT-INTEL-1789134674871-1",
+    "source": "NSF SBIR",
+    "mission": "GRANTS",
+    "priority": 1,
+    "score": 95,
+    "recommendedActions": [
+      "VERIFY_CURRENT_OPENINGS",
+      "CHECK_ELIGIBILITY_RULES",
+      "MATCH_NIA_CAPITAL_OS_PROFILE",
+      "GENERATE_FINAL_APPLICATION",
+      "QUEUE_FOR_APPROVAL"
+    ],
+    "executionStatus": "READY",
+    "ownerApprovalRequired": true,
+    "created": "2026-09-11T13:51:14.871Z"
+  },
+  "queue": [
+    {
+      "id": "GRANT-INTEL-1789134674871-1",
+      "source": "NSF SBIR",
+      "mission": "GRANTS",
+      "priority": 1,
+      "score": 95,
+      "recommendedActions": [
+        "VERIFY_CURRENT_OPENINGS",
+        "CHECK_ELIGIBILITY_RULES",
+        "MATCH_NIA_CAPITAL_OS_PROFILE",
+        "GENERATE_FINAL_APPLICATION",
+        "QUEUE_FOR_APPROVAL"
+      ],
+      "executionStatus": "READY",
+      "ownerApprovalRequired": true,
+      "created": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "id": "GRANT-INTEL-1789134674871-2",
+      "source": "SBA SBIR",
+      "mission": "GRANTS",
+      "priority": 1,
+      "score": 92,
+      "recommendedActions": [
+        "VERIFY_CURRENT_OPENINGS",
+        "CHECK_ELIGIBILITY_RULES",
+        "MATCH_NIA_CAPITAL_OS_PROFILE",
+        "GENERATE_FINAL_APPLICATION",
+        "QUEUE_FOR_APPROVAL"
+      ],
+      "executionStatus": "READY",
+      "ownerApprovalRequired": true,
+      "created": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "id": "GRANT-INTEL-1789134674871-0",
+      "source": "Grants.gov",
+      "mission": "GRANTS",
+      "priority": 1,
+      "score": 90,
+      "recommendedActions": [
+        "VERIFY_CURRENT_OPENINGS",
+        "CHECK_ELIGIBILITY_RULES",
+        "MATCH_NIA_CAPITAL_OS_PROFILE",
+        "GENERATE_FINAL_APPLICATION",
+        "QUEUE_FOR_APPROVAL"
+      ],
+      "executionStatus": "READY",
+      "ownerApprovalRequired": true,
+      "created": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "id": "GRANT-INTEL-1789134674871-3",
+      "source": "Virginia Innovation Funding",
+      "mission": "GRANTS",
+      "priority": 2,
+      "score": 88,
+      "recommendedActions": [
+        "VERIFY_CURRENT_OPENINGS",
+        "CHECK_ELIGIBILITY_RULES",
+        "MATCH_NIA_CAPITAL_OS_PROFILE",
+        "GENERATE_FINAL_APPLICATION",
+        "QUEUE_FOR_APPROVAL"
+      ],
+      "executionStatus": "READY",
+      "ownerApprovalRequired": true,
+      "created": "2026-09-11T13:51:14.871Z"
+    }
+  ]
+}

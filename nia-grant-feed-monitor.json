@@ -1,0 +1,63 @@
+{
+  "system": "NIA GRANT FEED MONITOR",
+  "mode": "FUNDING_FIRST",
+  "monitoringActive": true,
+  "feeds": [
+    {
+      "source": "Grants.gov",
+      "connectionStatus": "READY",
+      "feedType": "FEDERAL_GRANTS",
+      "monitoring": true,
+      "actions": [
+        "CHECK_NEW_OPPORTUNITIES",
+        "COMPARE_COMPANY_FIT",
+        "UPDATE_GRANT_QUEUE",
+        "ALERT_DEADLINES"
+      ],
+      "priority": 1,
+      "lastChecked": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "source": "NSF SBIR",
+      "connectionStatus": "READY",
+      "feedType": "INNOVATION_GRANTS",
+      "monitoring": true,
+      "actions": [
+        "CHECK_NEW_OPPORTUNITIES",
+        "COMPARE_COMPANY_FIT",
+        "UPDATE_GRANT_QUEUE",
+        "ALERT_DEADLINES"
+      ],
+      "priority": 1,
+      "lastChecked": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "source": "SBA SBIR",
+      "connectionStatus": "READY",
+      "feedType": "SMALL_BUSINESS_GRANTS",
+      "monitoring": true,
+      "actions": [
+        "CHECK_NEW_OPPORTUNITIES",
+        "COMPARE_COMPANY_FIT",
+        "UPDATE_GRANT_QUEUE",
+        "ALERT_DEADLINES"
+      ],
+      "priority": 1,
+      "lastChecked": "2026-09-11T13:51:14.871Z"
+    },
+    {
+      "source": "Virginia Innovation Funding",
+      "connectionStatus": "READY",
+      "feedType": "STATE_PROGRAMS",
+      "monitoring": true,
+      "actions": [
+        "CHECK_NEW_OPPORTUNITIES",
+        "COMPARE_COMPANY_FIT",
+        "UPDATE_GRANT_QUEUE",
+        "ALERT_DEADLINES"
+      ],
+      "priority": 2,
+      "lastChecked": "2026-09-11T13:51:14.871Z"
+    }
+  ]
+}

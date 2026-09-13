@@ -1,0 +1,11 @@
+{
+  "system": "NIA-CAPITAL-OS",
+  "time": "2026-08-07T15:56:46.065Z",
+  "deals": 14,
+  "proposals": 1,
+  "invoices": 1,
+  "closedDeals": 1,
+  "revenue": 5000,
+  "pipelineValue": 0,
+  "status": "READY_FOR_CLOUD_DEPLOYMENT"
+}

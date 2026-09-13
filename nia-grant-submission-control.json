@@ -1,0 +1,95 @@
+{
+  "system": "NIA GRANT SUBMISSION CONTROL",
+  "mode": "FUNDING_FIRST",
+  "activeSubmissions": 4,
+  "submissions": [
+    {
+      "submissionId": "SUBMISSION-1789134674886-0",
+      "grant": "NSF SBIR",
+      "status": "READY_FOR_REVIEW",
+      "checklist": {
+        "eligibilityVerified": false,
+        "narrativeComplete": true,
+        "budgetPrepared": false,
+        "documentsAttached": false,
+        "finalApproval": false
+      },
+      "priority": "HIGH",
+      "deadlineStatus": "TRACKING",
+      "requiredActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "FINAL_HUMAN_APPROVAL",
+        "SUBMIT_APPLICATION"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "submissionId": "SUBMISSION-1789134674886-1",
+      "grant": "SBA SBIR",
+      "status": "READY_FOR_REVIEW",
+      "checklist": {
+        "eligibilityVerified": false,
+        "narrativeComplete": true,
+        "budgetPrepared": false,
+        "documentsAttached": false,
+        "finalApproval": false
+      },
+      "priority": "HIGH",
+      "deadlineStatus": "TRACKING",
+      "requiredActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "FINAL_HUMAN_APPROVAL",
+        "SUBMIT_APPLICATION"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "submissionId": "SUBMISSION-1789134674886-2",
+      "grant": "Grants.gov",
+      "status": "READY_FOR_REVIEW",
+      "checklist": {
+        "eligibilityVerified": false,
+        "narrativeComplete": true,
+        "budgetPrepared": false,
+        "documentsAttached": false,
+        "finalApproval": false
+      },
+      "priority": "HIGH",
+      "deadlineStatus": "TRACKING",
+      "requiredActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "FINAL_HUMAN_APPROVAL",
+        "SUBMIT_APPLICATION"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "submissionId": "SUBMISSION-1789134674886-3",
+      "grant": "Virginia Innovation Funding",
+      "status": "READY_FOR_REVIEW",
+      "checklist": {
+        "eligibilityVerified": false,
+        "narrativeComplete": true,
+        "budgetPrepared": false,
+        "documentsAttached": false,
+        "finalApproval": false
+      },
+      "priority": "HIGH",
+      "deadlineStatus": "TRACKING",
+      "requiredActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "FINAL_HUMAN_APPROVAL",
+        "SUBMIT_APPLICATION"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    }
+  ]
+}

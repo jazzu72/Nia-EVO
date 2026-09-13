@@ -1,0 +1,284 @@
+'use strict';
+
+const express = require('express');
+const router = express.Router();
+
+const ledger = require('./approval-ledger');
+
+router.use(express.json());
+
+/*
+ * GET /api/aios/approvals
+ * Read-only view of approval history.
+ */
+router.get('/', (req, res) => {
+  try {
+    const events = ledger.readAll();
+
+    return res.json({
+      ok: true,
+      mode: 'APPROVAL_LEDGER',
+      execution_allowed: false,
+      autonomous_execution: false,
+      count: events.length,
+      events
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/request
+ *
+ * Creates a pending approval.
+ * Does NOT execute anything.
+ */
+router.post('/request', (req, res) => {
+  try {
+    const record = ledger.createApproval(req.body || {});
+
+    return res.status(201).json({
+      ok: true,
+      mode: 'APPROVAL_PENDING',
+      approval: record,
+      execution_allowed: false,
+      autonomous_execution: false,
+      human_approval_required: true
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * GET /api/aios/approvals/:id
+ */
+router.get('/queue', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+
+    const ledgerPath = path.resolve(
+      process.cwd(),
+      'data/aios/approval-ledger.jsonl'
+    );
+
+    const records = [];
+
+    if (fs.existsSync(ledgerPath)) {
+      const lines = fs.readFileSync(ledgerPath, 'utf8')
+        .split('\n')
+        .filter(Boolean);
+
+      for (const line of lines) {
+        try {
+          const record = JSON.parse(line);
+
+          if (record.approval_id) {
+            records.push({
+              approval_id: record.approval_id,
+              timestamp: record.timestamp,
+              type: record.type,
+              objective: record.objective,
+              action: record.action,
+              action_type: record.action_type,
+              status: record.status,
+              reviewer: record.reviewer || null,
+
+              /* HARD SAFETY INVARIANTS */
+              execution_allowed: false,
+              execution_authorized: false,
+              execution_performed: false,
+              autonomous_execution: false,
+              human_approval_required: true
+            });
+          }
+        } catch (_) {}
+      }
+    }
+
+    const latest = new Map();
+
+    for (const record of records) {
+      latest.set(record.approval_id, record);
+    }
+
+    const approvals = Array.from(latest.values());
+
+    return res.json({
+      ok: true,
+      mode: 'APPROVAL_QUEUE_READ_ONLY',
+      count: approvals.length,
+      approvals,
+
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: error.message,
+      safety: {
+        mode: 'READ_ONLY',
+        execution_allowed: false,
+        execution_authorized: false,
+        execution_performed: false,
+        autonomous_execution: false,
+        human_approval_required: true,
+        approval_recording_only: true
+      }
+    });
+  }
+});
+
+router.get('/:id', (req, res) => {
+  try {
+    const approval = ledger.getApprovalState(req.params.id);
+
+    if (!approval) {
+      return res.status(404).json({
+        ok: false,
+        error: 'Approval not found',
+        execution_allowed: false
+      });
+    }
+
+    return res.json({
+      ok: true,
+      approval,
+      execution_allowed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/:id/approve
+ *
+ * Records approval ONLY.
+ * It does not invoke any executor.
+ */
+router.post('/:id/approve', (req, res) => {
+  try {
+    const record = ledger.decide(
+      req.params.id,
+      'APPROVED',
+      req.body?.reviewer || 'human'
+    );
+
+    return res.json({
+      ok: true,
+      message: 'Approval recorded. No execution occurred.',
+      approval: record,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(err.statusCode || 500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+/*
+ * POST /api/aios/approvals/:id/reject
+ */
+router.post('/:id/reject', (req, res) => {
+  try {
+    const record = ledger.decide(
+      req.params.id,
+      'REJECTED',
+      req.body?.reviewer || 'human'
+    );
+
+    return res.json({
+      ok: true,
+      message: 'Rejection recorded. No execution occurred.',
+      approval: record,
+      execution_allowed: false,
+      execution_authorized: false,
+      execution_performed: false,
+      autonomous_execution: false
+    });
+  } catch (err) {
+    return res.status(err.statusCode || 500).json({
+      ok: false,
+      execution_allowed: false,
+      autonomous_execution: false,
+      error: err.message
+    });
+  }
+});
+
+
+/*
+ * HARD APPROVAL INVARIANTS
+ * Approval changes ledger state only.
+ * It NEVER authorizes or performs execution.
+ */
+router.use((req, res, next) => {
+  const originalJson = res.json.bind(res);
+
+  res.json = (body) => {
+    if (body && typeof body === 'object') {
+      body.execution_allowed = false;
+      body.execution_authorized = false;
+      body.execution_performed = false;
+      body.autonomous_execution = false;
+      body.human_approval_required = true;
+
+      if (body.approval && typeof body.approval === 'object') {
+        body.approval.execution_allowed = false;
+        body.approval.execution_authorized = false;
+        body.approval.execution_performed = false;
+        body.approval.autonomous_execution = false;
+        body.approval.human_approval_required = true;
+      }
+    }
+
+    return originalJson(body);
+  };
+
+  next();
+});
+
+
+/*
+ * READ-ONLY APPROVAL QUEUE
+ * -------------------------
+ * Lists ledger state only.
+ * Never authorizes or performs execution.
+ */
+
+
+module.exports = router;

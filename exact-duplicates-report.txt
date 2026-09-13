@@ -1,0 +1,102 @@
+--- hash 0b05c00fbbc760786b7331b9955a8b74 ---
+./public/dashboard/deployment-status.js
+./dashboard/public/deployment-status.js
+--- hash 1625eb252e00b32aa7f98f5a1d47bc41 ---
+./public/dashboard/live-sync.js
+./dashboard/public/live-sync.js
+--- hash 323f66ebb49cb4d8c5f285c0171c7d45 ---
+./public/dashboard/action-progress.js
+./dashboard/public/action-progress.js
+--- hash 39abbed1ed0fa39d5b6d8508eaf7ac64 ---
+./public/dashboard/followup-sync.js
+./dashboard/public/followup-sync.js
+--- hash 3f8c633376b9c6f729949a2707c5c821 ---
+./public/dashboard/ceo-briefing.js
+./dashboard/public/ceo-briefing.js
+--- hash 447d5dca39163ad7e732de4cfc6400a2 ---
+./public/dashboard/executive-memory.js
+./dashboard/public/executive-memory.js
+--- hash 4a5974b6839888c4e297ab7033de22d8 ---
+./public/dashboard/action-queue.js
+./dashboard/public/action-queue.js
+--- hash 512927f20ac34042a51f2d18f28b201a ---
+./public/dashboard/executive-health.js
+./dashboard/public/executive-health.js
+--- hash 59a9ab4a27044411a21be6eb88655391 ---
+./public/dashboard/report-sync.js
+./dashboard/public/report-sync.js
+--- hash 66971ae20442adea3db6c40bcbb162f0 ---
+./public/dashboard/kpi-sync.js
+./dashboard/public/kpi-sync.js
+--- hash 67ea8318739e14e5f3b4c2997464f70b ---
+./public/dashboard/priority-sync.js
+./dashboard/public/priority-sync.js
+--- hash 6ad21d8e2c2bd37e2ed99b7087ec852b ---
+./public/dashboard/pipeline-sync.js
+./dashboard/public/pipeline-sync.js
+--- hash 70559b44dc6c622634206837ac125517 ---
+./public/dashboard/grant-intelligence.js
+./dashboard/public/grant-intelligence.js
+--- hash 7cbb833ae2b16ef1bb4896e59b46bc32 ---
+./public/dashboard/nia-command.js
+./dashboard/public/nia-command.js
+--- hash 7ed50fcb1e3bee3b9c7a07267cc9580f ---
+./public/dashboard/deals-sync.js
+./dashboard/public/deals-sync.js
+--- hash 82880a3cd26148fd4404a078b3f143f8 ---
+./public/dashboard/executive-sync.js
+./dashboard/public/executive-sync.js
+--- hash 952e1a114782648e9b89c359e8f21dc4 ---
+./public/dashboard/intelligence-snapshot.js
+./dashboard/public/intelligence-snapshot.js
+--- hash 954a28db0cb1376e1ce97a0ee3d1dc0b ---
+./public/dashboard/activity-feed.js
+./dashboard/public/activity-feed.js
+--- hash 9f261ed382dd0f55d1a3a29d4ef4df20 ---
+./public/dashboard/launch-gate.js
+./dashboard/public/launch-gate.js
+--- hash ac253c40aac3dc05fe40601d7daab32a ---
+./public/dashboard/ceo-command.js
+./dashboard/public/ceo-command.js
+--- hash ae6814bc15f3f520e6947d173872c85d ---
+./public/dashboard/command-memory.js
+./dashboard/public/command-memory.js
+--- hash b6c5b797917118b33ce93ebc0b849af5 ---
+./public/dashboard/system-health.js
+./dashboard/public/system-health.js
+--- hash b8989848e6203b1608f5a657ed8521ee ---
+./public/dashboard/ceo-brief.js
+./dashboard/public/ceo-brief.js
+--- hash c00e07ff7932f07ee7d3b8780db70d3c ---
+./public/dashboard/audit-log.js
+./dashboard/public/audit-log.js
+--- hash cca943a4b4b06badf53b95baff2dc418 ---
+./public/dashboard/opportunity-score.js
+./dashboard/public/opportunity-score.js
+--- hash d41d8cd98f00b204e9800998ecf8427e ---
+./src/fundraising/classifier.js
+./src/fundraising/scraper.js
+./src/fundraising/sequencer.js
+./modules/business/services/crm.js
+./modules/realestate/realestate-engine.js
+--- hash db68bf1d22b54e2d25b018f3a2f10db7 ---
+./public/dashboard/ceo-queue.js
+./dashboard/public/ceo-queue.js
+--- hash db7f5b604c77e1c3322172ca0915e3af ---
+./public/dashboard/nia-intelligence.js
+./dashboard/public/nia-intelligence.js
+--- hash e136fc13150d57df14c906bbcfbd7a09 ---
+./public/dashboard/revenue-board.js
+./dashboard/public/revenue-board.js
+--- hash eae56b67c4b57f382178f739cf84ab61 ---
+./public/dashboard/deal-actions.js
+./dashboard/public/deal-actions.js
+--- hash ef7246cbff1598bb294f97a8dda8e883 ---
+./public/dashboard/command-center-refresh.js
+./dashboard/public/command-center-refresh.js
+--- hash f13b01144541aadbaba9cda7d84cd38d ---
+./public/dashboard/nia.js
+./dashboard/public/nia.js
+--- hash f5421cb6a87d116257d907218b71e5b4 ---
+./public/dashboard/master-status.js
+./dashboard/public/master-status.js

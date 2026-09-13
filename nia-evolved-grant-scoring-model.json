@@ -1,0 +1,11 @@
+{
+  "modelVersion": "2.0",
+  "models": [
+    {"grant": "NSF", "evolvedScore": 95},
+    {"grant": "Energy", "evolvedScore": 85},
+    {"grant": "NIH", "evolvedScore": 90}
+  ],
+  "topTarget": "NSF",
+  "learningCycle": 1,
+  "lastUpdated": "2026-08-05T23:00:00Z"
+}

@@ -1,0 +1,68 @@
+{
+  "system": "NIA GRANT COMPLIANCE CHECKER",
+  "mode": "FUNDING_FIRST",
+  "checked": 4,
+  "reports": [
+    {
+      "grant": "NSF SBIR",
+      "draftId": "DRAFT-1789134674854-0",
+      "complianceScore": 100,
+      "status": "COMPLIANCE_READY",
+      "checks": {
+        "companyProfile": true,
+        "innovationSummary": true,
+        "problemStatement": true,
+        "solutionDescription": true,
+        "impactStatement": true,
+        "ownerReviewRequired": true
+      },
+      "nextAction": "QUEUE_FOR_FINAL_REVIEW"
+    },
+    {
+      "grant": "Virginia Innovation Funding",
+      "draftId": "DRAFT-1789134674854-1",
+      "complianceScore": 100,
+      "status": "COMPLIANCE_READY",
+      "checks": {
+        "companyProfile": true,
+        "innovationSummary": true,
+        "problemStatement": true,
+        "solutionDescription": true,
+        "impactStatement": true,
+        "ownerReviewRequired": true
+      },
+      "nextAction": "QUEUE_FOR_FINAL_REVIEW"
+    },
+    {
+      "grant": "SBA SBIR",
+      "draftId": "DRAFT-1789134674854-2",
+      "complianceScore": 100,
+      "status": "COMPLIANCE_READY",
+      "checks": {
+        "companyProfile": true,
+        "innovationSummary": true,
+        "problemStatement": true,
+        "solutionDescription": true,
+        "impactStatement": true,
+        "ownerReviewRequired": true
+      },
+      "nextAction": "QUEUE_FOR_FINAL_REVIEW"
+    },
+    {
+      "grant": "Grants.gov",
+      "draftId": "DRAFT-1789134674854-3",
+      "complianceScore": 100,
+      "status": "COMPLIANCE_READY",
+      "checks": {
+        "companyProfile": true,
+        "innovationSummary": true,
+        "problemStatement": true,
+        "solutionDescription": true,
+        "impactStatement": true,
+        "ownerReviewRequired": true
+      },
+      "nextAction": "QUEUE_FOR_FINAL_REVIEW"
+    }
+  ],
+  "timestamp": "2026-09-11T13:51:14.855Z"
+}

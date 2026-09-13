@@ -1,0 +1,268 @@
+{
+  "system": "NIA GRANT EVIDENCE FILLER",
+  "mode": "PREPARATION_ONLY",
+  "policy": "EVIDENCE_REQUIRED",
+  "count": 7,
+  "drafts": [
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-0",
+      "opportunity": {
+        "id": null,
+        "title": "Virginia Innovation Partnership Corporation",
+        "agency": null,
+        "source": "data/grants/opportunities.json"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "data/grants/opportunities.json",
+        "suppliedOpportunityData": "title: Virginia Innovation Partnership Corporation",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-1",
+      "opportunity": {
+        "id": null,
+        "title": "NSF America Seed Fund",
+        "agency": null,
+        "source": "data/grants/opportunities.json"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "data/grants/opportunities.json",
+        "suppliedOpportunityData": "title: NSF America Seed Fund",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-2",
+      "opportunity": {
+        "id": null,
+        "title": "Small Business Innovation Research",
+        "agency": null,
+        "source": "data/grants/opportunities.json"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "data/grants/opportunities.json",
+        "suppliedOpportunityData": "title: Small Business Innovation Research",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-3",
+      "opportunity": {
+        "id": null,
+        "title": "NSF SBIR Phase I",
+        "agency": null,
+        "source": "nsf.gov"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "nsf.gov",
+        "suppliedOpportunityData": "title: NSF SBIR Phase I",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-4",
+      "opportunity": {
+        "id": null,
+        "title": "SBA SBIR Phase II",
+        "agency": null,
+        "source": "sba.gov"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "sba.gov",
+        "suppliedOpportunityData": "title: SBA SBIR Phase II",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-5",
+      "opportunity": {
+        "id": null,
+        "title": "Grants.gov – AI Research",
+        "agency": null,
+        "source": "grants.gov"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "grants.gov",
+        "suppliedOpportunityData": "title: Grants.gov – AI Research",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    },
+    {
+      "draftId": "GRANT-DRAFT-1789134674857-6",
+      "opportunity": {
+        "id": null,
+        "title": "Virginia Innovation Grant",
+        "agency": null,
+        "source": "virginia.gov"
+      },
+      "preparationStatus": "DRAFT_READY_FOR_OWNER",
+      "application": {
+        "executiveSummary": "",
+        "projectDescription": "",
+        "innovation": "",
+        "businessNeed": "",
+        "commercializationPlan": "",
+        "milestones": "",
+        "budgetNarrative": "",
+        "supportingDocuments": []
+      },
+      "controls": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      },
+      "nextAction": "OWNER_REVIEW_AND_SIGN",
+      "createdAt": "2026-09-11T13:51:14.857Z",
+      "evidence": {
+        "source": "virginia.gov",
+        "suppliedOpportunityData": "title: Virginia Innovation Grant",
+        "evidenceOnly": true,
+        "unsupportedClaimsGenerated": false
+      }
+    }
+  ],
+  "generatedAt": "2026-09-11T13:51:14.858Z"
+}

@@ -1,0 +1,111 @@
+{
+  "system": "NIA FINAL SUBMISSION PACKAGE GENERATOR",
+  "mode": "FUNDING_FIRST",
+  "packagesCreated": 4,
+  "packages": [
+    {
+      "packageId": "PACKAGE-1789134674886-0",
+      "grant": "NSF SBIR",
+      "status": "SUBMISSION_READY",
+      "submissionChecklist": {
+        "applicationComplete": true,
+        "narrativeIncluded": true,
+        "budgetIncluded": true,
+        "financialsIncluded": true,
+        "complianceVerified": true,
+        "ownerApproval": false
+      },
+      "documents": [
+        "Executive Summary",
+        "Technical Innovation Narrative",
+        "Business Plan",
+        "Budget Justification",
+        "Financial Documents"
+      ],
+      "nextAction": [
+        "OWNER_FINAL_CONFIRMATION",
+        "SUBMIT_TO_AGENCY",
+        "TRACK_RESPONSE"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "packageId": "PACKAGE-1789134674886-1",
+      "grant": "SBA SBIR",
+      "status": "SUBMISSION_READY",
+      "submissionChecklist": {
+        "applicationComplete": true,
+        "narrativeIncluded": true,
+        "budgetIncluded": true,
+        "financialsIncluded": true,
+        "complianceVerified": true,
+        "ownerApproval": false
+      },
+      "documents": [
+        "Executive Summary",
+        "Technical Innovation Narrative",
+        "Business Plan",
+        "Budget Justification",
+        "Financial Documents"
+      ],
+      "nextAction": [
+        "OWNER_FINAL_CONFIRMATION",
+        "SUBMIT_TO_AGENCY",
+        "TRACK_RESPONSE"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "packageId": "PACKAGE-1789134674886-2",
+      "grant": "Corporate AI For Good Programs",
+      "status": "SUBMISSION_READY",
+      "submissionChecklist": {
+        "applicationComplete": true,
+        "narrativeIncluded": true,
+        "budgetIncluded": true,
+        "financialsIncluded": true,
+        "complianceVerified": true,
+        "ownerApproval": false
+      },
+      "documents": [
+        "Executive Summary",
+        "Technical Innovation Narrative",
+        "Business Plan",
+        "Budget Justification",
+        "Financial Documents"
+      ],
+      "nextAction": [
+        "OWNER_FINAL_CONFIRMATION",
+        "SUBMIT_TO_AGENCY",
+        "TRACK_RESPONSE"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    },
+    {
+      "packageId": "PACKAGE-1789134674886-3",
+      "grant": "Virginia Innovation Funding",
+      "status": "SUBMISSION_READY",
+      "submissionChecklist": {
+        "applicationComplete": true,
+        "narrativeIncluded": true,
+        "budgetIncluded": true,
+        "financialsIncluded": true,
+        "complianceVerified": true,
+        "ownerApproval": false
+      },
+      "documents": [
+        "Executive Summary",
+        "Technical Innovation Narrative",
+        "Business Plan",
+        "Budget Justification",
+        "Financial Documents"
+      ],
+      "nextAction": [
+        "OWNER_FINAL_CONFIRMATION",
+        "SUBMIT_TO_AGENCY",
+        "TRACK_RESPONSE"
+      ],
+      "created": "2026-09-11T13:51:14.886Z"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+DIAG_START Mon Aug 17 06:21:24 EDT 2026
+/data/data/com.termux/files/home/nia-capital-os
+v24.17.0

@@ -1,0 +1,16 @@
+./funding-engine/funding-decision-ledger
+./funding-engine/funding-decision-state-machine
+./funding-engine/funding-discovery-engine
+./funding-engine/funding-lifecycle-store
+./funding-engine/funding-opportunity-registry
+./funding-engine/funding-pipeline
+./funding-engine/funding-registry-sync
+./funding-engine/funding-review-decision-engine
+./funding-engine/funding-review-ledger
+./funding-engine/funding-review-prioritizer
+./funding-engine/funding-source-collector
+./funding-engine/funding-transition-ledger
+./funding-engine/house-of-jazzu-funding-engine
+./funding-engine/verified-funding-intake
+./nia-chat-api
+./owner-auth-middleware

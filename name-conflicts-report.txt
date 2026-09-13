@@ -1,0 +1,249 @@
+--- acquisition-api.js (2 different versions) ---
+c5cb28d9330b49901d8e39dd85ca4981  ./acquisition/acquisition-api.js
+83cf3d85bf237d6ca6c53a709b2ee18c  ./revenue/acquisition/acquisition-api.js
+--- acquisition-engine.js (3 different versions) ---
+04b6d9d6a136d0e4843b13f48146b57d  ./acquisition/acquisition-engine.js
+13b1a9f0a3fb98d60812b222dee71744  ./revenue/acquisition/acquisition-engine.js
+421d3923f0d7e6b9800741985935f3da  ./modules/acquisition/services/acquisition-engine.js
+--- action-engine.js (2 different versions) ---
+5a47683348c8643a3b43cdcfd8ec0188  ./action/action-engine.js
+34753ae12caa0bb394679ca2eb1f7630  ./modules/actions/services/action-engine.js
+--- actions.js (2 different versions) ---
+dd25c4076be95216fd493e57f2a248f9  ./modules/deal-pipeline/actions.js
+056c7d7c2fee9ee080f142bc6521f13f  ./modules/ceo/routes/actions.js
+--- al-davis.js (2 different versions) ---
+164d51d46fb6bfdcf3a67872a783e56b  ./core/council/al-davis.js
+bfe7a59627d648cac079b8970023edab  ./legacy-isolated/core/al-davis.js
+--- automation-engine.js (2 different versions) ---
+bbabef29cc4664b60b70a56796f7148e  ./revenue/automation-engine.js
+0495cb6d0fb34b7766796da3d2586075  ./revenue/automation/automation-engine.js
+--- closing-engine.js (2 different versions) ---
+43e7419829095a146c05b8c9421de056  ./closing-engine.js
+6467a0324c7b4cc2d3d9326889e92e0d  ./modules/closings/services/closing-engine.js
+--- command-center.js (2 different versions) ---
+965559b59af0ffc3ddc1be09c84c8e42  ./modules/notifications/command-center.js
+9dd7a220a444d650a6ccaba8946095b0  ./modules/realestate/routes/command-center.js
+--- conversation-memory.js (2 different versions) ---
+f9aedb729e778bacee98928821ae175c  ./NIA-CEO/conversation-memory.js
+f9a59b60a7fe27650e75bf3501d17c99  ./memory/conversation-memory.js
+--- crm.js (2 different versions) ---
+3806807831ef336cb07c1e9d128889ac  ./crm/crm.js
+d41d8cd98f00b204e9800998ecf8427e  ./modules/business/services/crm.js
+--- dashboard-api.js (2 different versions) ---
+01120f74cd5daa82c4188ded7a5e6aef  ./ceo/dashboard-api.js
+787b11d8d3634c0cc655fe4f7b5c55c8  ./dashboard/dashboard-api.js
+--- dashboard.js (2 different versions) ---
+129a5d5ed5b4d69f6655ad81c4797e99  ./src/fundraising/dashboard.js
+8e39bb960329df92e2d610772866a74a  ./modules/realestate/routes/dashboard.js
+--- deal-intake.js (2 different versions) ---
+dee2e37ea3acd17cff3bef24f8527229  ./deal-intake.js
+d2ee67261d2ffb792d832d11a28aae81  ./modules/notifications/deal-intake.js
+--- decision-engine.js (3 different versions) ---
+f68637c3f710646dc7671452ecfb7a90  ./core/decision-engine.js
+c4d96fcbbd71dcec4096ece38463b7d7  ./decision/decision-engine.js
+19edf045834b1a2ffd82c725f0aa1738  ./strategy/decision-engine.js
+--- followup-engine.js (2 different versions) ---
+15b8be40a0716b2316f7204c9ae78f92  ./followup/followup-engine.js
+1cd9d7474e77331bda84316e68f11dc0  ./revenue/followup/followup-engine.js
+--- freud.js (2 different versions) ---
+57d34beca37569a3633301c65f083b7f  ./core/council/freud.js
+dfaebb6a11bd1a9abb1b7b0f0408fd31  ./legacy-isolated/core/freud.js
+--- grant-intelligence.js (2 different versions) ---
+70559b44dc6c622634206837ac125517  ./public/dashboard/grant-intelligence.js
+70559b44dc6c622634206837ac125517  ./dashboard/public/grant-intelligence.js
+b2cb17d7a15d59a615714279056febd2  ./intelligence/grant-intelligence.js
+--- hunter-api.js (2 different versions) ---
+7b2097c42a2c89f3b2757a792df59023  ./hunter/hunter-api.js
+d06ce265a75c9e12a652d3353718e48a  ./intelligence/hunter-api.js
+--- index.js (39 different versions) ---
+c77d41f9fbbce76b5fe408bb48d9305a  ./modules/scoring/routes/index.js
+b507a013b758b82d965615034a6511d3  ./modules/business/routes/index.js
+74f08f00acf7177d5983526bc6565fc0  ./modules/followup/routes/index.js
+bb44ca0fde31771b78a0c870b48fa260  ./modules/activity/routes/index.js
+bd49c9246a9aba9e7644b8e52dbe62d6  ./modules/revenue-engine/routes/index.js
+7848f9cf431f9dc7d51eaa35ce80aac0  ./modules/actions/routes/index.js
+c009a296bbf620bece6b86476aea9dd6  ./modules/buyer-crm/routes/index.js
+36a25cb68238ca1f942563da98f78ba8  ./modules/buyer-matching/index.js
+08c30ac48b2eb6871c60c803133b952e  ./modules/career/routes/index.js
+cc1b69581a85e78492ecbfeabb45cd2f  ./modules/command-center/routes/index.js
+d7d401b7a02618ebc61eb4f006c46a28  ./modules/ceo/routes/index.js
+c7cfe0a33cf60caf7d78cb0f944d196a  ./modules/closing-tracker/routes/index.js
+793f9ba5926e78fac6f5d59496270d6b  ./modules/closings/routes/index.js
+138750da21dd3a98f808373413bce29e  ./modules/control/routes/index.js
+99592486decff8ee7098ef142e580b71  ./modules/crm/routes/index.js
+e2fe1a0d104a6435487aea48392768ab  ./modules/dashboard/routes/index.js
+3aa4abefc6777620d87be7c565184997  ./modules/deal-packets/routes/index.js
+26ece8113d7cd3ee3ae69ab89821a6eb  ./modules/decision/routes/index.js
+f5332d3d395be4d042c2ab7d0114fd52  ./modules/investor-crm/routes/index.js
+d2406218b8c3244c91a040357e4304e0  ./modules/investor-packages/routes/index.js
+d19512d72aae5d81d2823d19b8ddcb66  ./modules/lead-scanner/routes/index.js
+2e1893ace7a1ebdf85f480fc22bbbfa2  ./modules/leads/routes/index.js
+11b1a49d117eef8cc9fad1643f57d177  ./modules/matching/routes/index.js
+1896818c8b02666a7496afe28056a3e3  ./modules/memory/routes/index.js
+7cb67d458dc1b8b3fcecdbf32167097b  ./modules/motivation-engine/index.js
+f12d3eb2b492a7ccc26475f6aa6e3ffb  ./modules/nia-chat/routes/index.js
+d1a42857a0b68f1386bb74130ff49898  ./modules/offer-engine/index.js
+96fa35c110dffdedb3fb568f8299b020  ./modules/offers/routes/index.js
+ca43df238e57010a4e743dd0b0ee55b5  ./modules/opportunities/routes/index.js
+c3cf29994e0a91ef62dc283d72415118  ./modules/pipeline/routes/index.js
+65c63d564cd09c43bb009edeb8a0f315  ./modules/property-data/routes/index.js
+6b05805006e4aa0d16c75ce66e42e863  ./modules/realestate/routes/index.js
+2d83937c88d667ed67db224135927047  ./modules/reinvestment-engine/routes/index.js
+0622ed0f460cf66e08caf8d4fa2156ab  ./modules/reports/routes/index.js
+df1055eb7839e4bcbea56578ad0ad71a  ./modules/revenue/routes/index.js
+4f18f3fa8df816a292c8edbdbb3e396d  ./modules/runtime-supervisor/routes/index.js
+a48bcbb50b0d5f3d43cf183d93841313  ./modules/scanner/routes/index.js
+2c3353172d913f6cdc84452c806a5485  ./modules/scheduler/index.js
+6c10ab7d4d22cade04892bb5a7be9132  ./modules/system/routes/index.js
+--- intelligence-api.js (3 different versions) ---
+5e0bf043f6572254a4f84ae755bfe722  ./intelligence/intelligence-api.js
+377e4b42036702c162f749548f2129d9  ./revenue/intelligence-api.js
+dcf546d36a86901fdd4ee92caec383b5  ./revenue/intelligence/intelligence-api.js
+--- logger.js (2 different versions) ---
+ec34a58c4d19a8cf6059ac63f13063ef  ./modules/activity/services/logger.js
+c2ee3fb88fb437e629ee1a583dd02392  ./modules/audit/logger.js
+--- machiavelli.js (2 different versions) ---
+8c7cae15d38b11390f313dd1ffe0d497  ./core/council/machiavelli.js
+342acf782e0592808d7a3358b1b705d4  ./legacy-isolated/core/machiavelli.js
+--- offer-engine.js (2 different versions) ---
+f9acd0507fb21c1a29ec8ac7a727bd58  ./modules/offers/services/offer-engine.js
+6ecc8e24b7b0cf9b5a7a31ecc483a631  ./modules/realestate/services/offer-engine.js
+--- opportunity-engine.js (2 different versions) ---
+2a53c7d1d9be2db35787ddc0f4c50093  ./opportunities/opportunity-engine.js
+2c8b1adc647ca312eee46ff176ca5fb3  ./modules/opportunities/services/opportunity-engine.js
+--- opportunity-hunter.js (2 different versions) ---
+f1ba2cc4b8d11da61eda8960c391d960  ./hunter/opportunity-hunter.js
+4a8c160bae986a8c129b64cf2a661ef3  ./intelligence/opportunity-hunter.js
+--- orchestrator.js (2 different versions) ---
+51f98431ec95f55b7f3d53467e535952  ./NIA-CEO/orchestrator.js
+54404016e3b68853087089dbb80e19bb  ./orchestrator.js
+--- outreach-api.js (2 different versions) ---
+7bf58d515c89dd326593dfeb721b0d0b  ./outreach/outreach-api.js
+c01a546d560e912dc79449c25b889f8b  ./revenue/outreach/outreach-api.js
+--- outreach-engine.js (4 different versions) ---
+4ffd35ed8c31abb8056f961c2bba8462  ./integrations/outreach-engine.js
+6192a04342d12daa7a204211d3bebcc1  ./outreach/outreach-engine.js
+b472f6ade1e6887bc3ad1feb22816098  ./revenue/outreach/outreach-engine.js
+afac55cf0267dea31210629ab3138358  ./outreach-engine.js
+--- outreach-execution-engine.js (2 different versions) ---
+03c0518f4a37952cd86e65007a2289ab  ./outreach/outreach-execution-engine.js
+df91c2b5cc6032d0500c279523abea6f  ./outreach-execution-engine.js
+--- pipeline.js (2 different versions) ---
+38de5652ae3455b9ac507cc996d8f3dc  ./modules/pipeline/services/pipeline.js
+f5eff0d684433bc1214fb22447191975  ./modules/realestate/routes/pipeline.js
+--- proposal-api.js (2 different versions) ---
+346f2a05c1effb5cc18d94f1e54d4ba2  ./proposals/proposal-api.js
+8693cd66fc4a8fc782ba76bb43c9238d  ./revenue/proposals/proposal-api.js
+--- proposal-engine.js (2 different versions) ---
+1687f8e4150ca86446a6c8dd0d89a9af  ./proposals/proposal-engine.js
+b3de487cc08750e533d95eba7823234b  ./revenue/proposals/proposal-engine.js
+--- report-engine.js (2 different versions) ---
+72907bac89301d57eced8bbfe3db6c3a  ./modules/realestate/services/report-engine.js
+2a73d21256a745831add15b447b1734a  ./modules/reports/services/report-engine.js
+--- revenue-api.js (2 different versions) ---
+fb4696749de0640ca353d6ac3f3eacce  ./revenue-api.js
+ad4b782e7e34d3be163879c2ed6b584c  ./revenue/revenue-api.js
+--- revenue-dashboard.js (2 different versions) ---
+2934017551a4564d47e6421d9cda561a  ./command-center/revenue-dashboard.js
+4fb5c619d0afe1f1ff5efc5866643ee1  ./revenue-dashboard.js
+--- revenue-engine.js (5 different versions) ---
+08d65ba018c51eb7ccb692518bee99d6  ./conversion/revenue-engine.js
+c997838b5449f0cbbde9b79e5506f8ae  ./intelligence/revenue-engine.js
+fbcfc698e3f0827ab226936359b23362  ./revenue/revenue-engine.js
+3e5dcf2cd542ec9da9753f695b563005  ./modules/revenue/services/revenue-engine.js
+da16f3c1a2410d84f8b02f65c82b222d  ./revenue-engine.js
+--- routes.js (63 different versions) ---
+c5bcd7817d9cd3f795ddde379ace48f0  ./src/api/routes.js
+11674069c9ae5aff60baee64e96531ca  ./src/vault/api/routes.js
+05dd81d2bc1ce917a4f6b691f645081b  ./modules/action-queue/routes.js
+8dde1749659bd2d3ffbfe742ec765c3b  ./modules/ceo-queue/routes.js
+12e27060c03adff2d736b403f0284ffd  ./modules/business/routes.js
+f1c7282e9b228645af2d4084ad051549  ./modules/audit-log/routes.js
+8594f4e0c36118daad856dea5f6a4e86  ./modules/deal-pipeline/routes.js
+77cf255e7acb8ea1ca1dbc37747f24ac  ./modules/followup/routes.js
+d882ef2702ff9eb6e4e7f747ebb350b5  ./modules/activity/routes.js
+33650e5a90938ab7aaafb438fba5c55c  ./modules/revenue-engine/routes.js
+d62e58111b4250e1d927b0fb40f1c6fb  ./modules/acquisition/routes.js
+9d078bf92cd0308e19bc3bdbcf88dafb  ./modules/action-center/routes.js
+f385d2933a5ec55c89f7d307e4674936  ./modules/activity-feed/routes.js
+b3f66f2dd6cde2c7b5a352b616e98f71  ./modules/buyer-matching/routes.js
+57966a3d372e81e27bf9d969df48dfe1  ./modules/ceo-brief/routes.js
+205fdee8e6a9ec47be0599527681ea40  ./modules/ceo-briefing/routes.js
+aaa8680e174d2275c35faaf4a7abdbb2  ./modules/ceo-command/routes.js
+c0f1991a24aa71cc6bd86d4097b27d85  ./modules/ceo-dashboard/routes.js
+53411c95d1d977fc263930f4ff3f1469  ./modules/command-center/routes.js
+3d18ac8f933c12aaaa997172fdfa1cf7  ./modules/ceo-live-feed/routes.js
+e8e0bd906337c5b7de43e3f9239652ed  ./modules/ceo-queue-api/routes.js
+c9f92c109e4b887ac293fc282553f087  ./modules/ceo-snapshot/routes.js
+fd5a7a71161459fa7464cfc8db87693f  ./modules/control-center/routes.js
+016633c07e1368610f36cfd809552354  ./modules/customer-intake/routes.js
+de410d9e7f79a01bd9cae9af97f4ad8b  ./modules/decision-review/routes.js
+cef80b35bb9a32665ff280a17d08b421  ./modules/deployment/routes.js
+eaad3c2bd88838426afb50cb40884925  ./modules/executive-alerts/routes.js
+eb5a2441e30821fa8c7e10760ee3cc17  ./modules/executive-health/routes.js
+f7b83b6d023d7b678cc68691022c7e66  ./modules/executive-memory/routes.js
+5a427a0fbfd0bde764747dc719cfe303  ./modules/executive-metrics/routes.js
+86878908e759e307bde79585030c0ffd  ./modules/executive/routes.js
+e9da0d72c1169d17c6cb0f18efed5ccc  ./modules/export-center/routes.js
+3ec207e8a71a564d20e4abf8ad81528f  ./modules/grant-intelligence/routes.js
+3b720407fda5686cf8becd888787f162  ./modules/heartbeat/routes.js
+180d52772611bfa7f6d9bc0639b52e0b  ./modules/intelligence/routes.js
+ce68462c729e5ef4df040ad1cfe385a8  ./modules/launch-gate/routes.js
+eddc7e878774d076262b0f547bccfeb1  ./modules/live-events/routes.js
+a47e0fb2181a3dade193abd4269a28a5  ./modules/grants/routes.js
+7029cc20f159d7c11f74f752b3f5eca0  ./modules/master-status/routes.js
+53ba798c96eaeb406797fa26c053a380  ./modules/motivation-engine/routes.js
+559bb654d10d75ebfc1abf2e500971aa  ./modules/action-tracker/routes.js
+8100493a141a6e0fae1410c142767087  ./modules/offer-engine/routes.js
+4bf3691e5fe7f0fad6353e88e2e08d93  ./modules/onboarding/routes.js
+bd9ad49cda80dab97d7bc1860ee4adc2  ./modules/opportunity-intake/routes.js
+b8511e54231200ba9170dab3660c9a27  ./modules/opportunity-score/routes.js
+41b91355c3385aee4e31533263a53832  ./modules/priority-engine/routes.js
+c2716da31ff47dc5325ecd2aaaea0c25  ./modules/public-status/routes.js
+0dfa94d088549bb011ae16d37bc1e415  ./modules/decision-log/routes.js
+ce2a3059b96586cd7d62f9e46898e9f9  ./modules/revenue-alerts/routes.js
+11bc97bc8d9bb9858aee8f0886924991  ./modules/revenue-board/routes.js
+37581243e76801bc8014416e23800a90  ./modules/revenue-command-api/routes.js
+dd36e3b88258f17183ec0ec363c1311a  ./modules/revenue-command-center/routes.js
+5537dad18c7655ead8fcf7e4b0251402  ./modules/revenue-command/routes.js
+bbf99b6babda5ff34ec17c951a693ff6  ./modules/revenue-dashboard/routes.js
+ebe89bc3f3a283ee57fadf88b85a1741  ./modules/revenue-followup/routes.js
+83cf76210788b176957812c2fbd59c3e  ./modules/revenue-leads/routes.js
+6fac125deffc5124952fa3b3d2db3f78  ./modules/revenue-ledger/routes.js
+9588a2cb02cdf77828e1ecf4f8a2871c  ./modules/revenue-live/routes.js
+5e230603ca500091bf276b204bf12942  ./modules/revenue-work-queue/routes.js
+6f78553711fbf5788fd682d9fd3e501e  ./modules/system-health/routes.js
+6b9fa23d4c965225e02356f78ed926b6  ./modules/system-scorecard/routes.js
+4b946ee40a592f123656b32fc156071c  ./modules/zapier-outbound/routes.js
+1b5ead3a423a179a58d1993b2b21fea4  ./modules/zapier-webhook/routes.js
+--- rss-engine.js (2 different versions) ---
+846f7cd405990c6bc0ca084535674d4d  ./core/rss-engine.js
+294697ad6d24a1e58a088b241056af33  ./rss-engine.js
+--- scorer.js (2 different versions) ---
+901ea691ecb4f654409adde2cf26b0b6  ./crm/scorer.js
+a1c1ad5168dc5970623b1fdcb9a70392  ./modules/leads/services/scorer.js
+--- scoring.js (2 different versions) ---
+4375db6c7e40e54d42b306e9719b7afb  ./crm/scoring.js
+e66ff563b84ef7f3c7cc5b36abac58ba  ./modules/realestate/routes/scoring.js
+--- server.js (2 different versions) ---
+ea53c556d0e4f4c056445ad5e2a896f4  ./api/server.js
+5dac9af2ab9b431aea2141a158838e11  ./src/api/server.js
+--- sun-tzu.js (2 different versions) ---
+7fed28ef538dfe9a137809387dbe143e  ./core/council/sun-tzu.js
+7364d464ce59dd70626a4b095f12cd46  ./legacy-isolated/core/sun-tzu.js
+--- sw.js (2 different versions) ---
+a3a757ebc76ed1709d12676d1cf74d6e  ./public/sw.js
+fed21709f1f3c6b3510f23f5253c3c83  ./ui/public/sw.js
+--- task-engine.js (3 different versions) ---
+ba9ded52d903e9b6887569be84076c5e  ./scheduler/task-engine.js
+684d81714b6d2d917917968832810a48  ./modules/realestate/services/task-engine.js
+56dcf456ee82749e749f619947d22063  ./tasks/task-engine.js
+--- tasks.js (2 different versions) ---
+0b28e0a3c7b8b56392ac64c4351bdc4d  ./core/tasks.js
+af419f7ebb9adee584918aa73a7965af  ./modules/realestate/routes/tasks.js
+--- telegram-bot.js (2 different versions) ---
+d39da21216569dc143727c3fc7a187ba  ./legacy-isolated/src/telegram-bot.js
+32721058e1f9a70f891873b0426dc427  ./modules/notifications/telegram-bot.js
+--- watchdog.js (2 different versions) ---
+ac33e043c2a6cd993e75de338941608b  ./system/watchdog.js
+cf0cc889b9768bde2e21133345732b67  ./sentinel/watchdog.js

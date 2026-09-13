@@ -1,0 +1,95 @@
+[
+  {
+    "id": "DRAFT-85e72dfa-5055-428f-baab-03c4d23d60b7",
+    "actionId": "ACTION-2127aafb-4bcc-4a5c-a00e-45ed291877cc",
+    "actionKey": "f59ef93edeaa9a575240",
+    "prospectId": "PROS-41195b82-5f53-49fd-87dd-9a72cfc6302d",
+    "prospectKey": "be5b1aaa8f9eddf8",
+    "company": "Norfolk Restaurant",
+    "priority": "WARM",
+    "status": "APPROVED",
+    "channelStatus": {
+      "email": "DRAFT",
+      "sms": "DRAFT",
+      "call": "DRAFT"
+    },
+    "content": {
+      "email": {
+        "subject": "A simple automation opportunity for Norfolk Restaurant",
+        "body": "Hello,\n\nI'm reaching out because Norfolk Restaurant may have an opportunity to reduce repetitive administrative work and improve customer follow-up.\n\nNia Capital OS helps businesses identify practical AI automation opportunities across operations, customer communication, and workflow management.\n\nI'd like to show you a simple, customized automation plan for Norfolk Restaurant.\n\nWould you be open to a brief 15-minute conversation?\n\nThank you,\nNia Capital OS"
+      },
+      "sms": "Hi, this is Nia Capital OS. We help businesses reduce repetitive work and improve customer follow-up with practical AI automation. Would you be open to a quick 15-minute conversation?",
+      "callScript": "Hello, I'm reaching out because we help businesses reduce repetitive administrative work through practical AI automation.\n\nI'd like to understand how Norfolk Restaurant currently handles customer follow-up and daily operations.\n\nWould a short 15-minute conversation be useful?",
+      "proposal": {
+        "title": "AI Automation Opportunity Assessment",
+        "estimatedValue": null,
+        "nextStep": "Schedule discovery call"
+      }
+    },
+    "createdAt": "2026-08-14T22:09:31.670Z",
+    "approvedAt": "2026-08-14T22:19:12.247Z",
+    "sentAt": null
+  },
+  {
+    "id": "DRAFT-4c35c4ad-e1cb-4429-972b-da5f219e97be",
+    "actionId": "ACTION-38791144-0415-415e-bcaa-b840fb3c05fc",
+    "actionKey": "74b82b7b82064cf1c3f1",
+    "prospectId": "PROS-1deb9557-2ecd-48c9-b50c-f1a2b9446809",
+    "prospectKey": "5e9608d2a7f16e46",
+    "company": "Hampton Roads Contractor",
+    "priority": "WARM",
+    "status": "APPROVED",
+    "channelStatus": {
+      "email": "DRAFT",
+      "sms": "DRAFT",
+      "call": "DRAFT"
+    },
+    "content": {
+      "email": {
+        "subject": "A simple automation opportunity for Hampton Roads Contractor",
+        "body": "Hello,\n\nI'm reaching out because Hampton Roads Contractor may have an opportunity to reduce repetitive administrative work and improve customer follow-up.\n\nNia Capital OS helps businesses identify practical AI automation opportunities across operations, customer communication, and workflow management.\n\nI'd like to show you a simple, customized automation plan for Hampton Roads Contractor.\n\nWould you be open to a brief 15-minute conversation?\n\nThank you,\nNia Capital OS"
+      },
+      "sms": "Hi, this is Nia Capital OS. We help businesses reduce repetitive work and improve customer follow-up with practical AI automation. Would you be open to a quick 15-minute conversation?",
+      "callScript": "Hello, I'm reaching out because we help businesses reduce repetitive administrative work through practical AI automation.\n\nI'd like to understand how Hampton Roads Contractor currently handles customer follow-up and daily operations.\n\nWould a short 15-minute conversation be useful?",
+      "proposal": {
+        "title": "AI Automation Opportunity Assessment",
+        "estimatedValue": null,
+        "nextStep": "Schedule discovery call"
+      }
+    },
+    "createdAt": "2026-08-14T22:09:31.671Z",
+    "approvedAt": "2026-08-14T22:20:21.377Z",
+    "sentAt": null
+  },
+  {
+    "id": "DRAFT-9cee3267-3136-4270-b1da-a7e34f45b8b0",
+    "actionId": "ACTION-97424376-2a2a-4161-aaea-27beea429d2c",
+    "actionKey": "923df3087cd011f344eb",
+    "prospectId": "PROS-412d46b3-7744-4968-a476-45b48bcc4f83",
+    "prospectKey": "2e8f09d492c447da",
+    "company": "Local Medical Practice",
+    "priority": "WARM",
+    "status": "APPROVED",
+    "channelStatus": {
+      "email": "DRAFT",
+      "sms": "DRAFT",
+      "call": "DRAFT"
+    },
+    "content": {
+      "email": {
+        "subject": "A simple automation opportunity for Local Medical Practice",
+        "body": "Hello,\n\nI'm reaching out because Local Medical Practice may have an opportunity to reduce repetitive administrative work and improve customer follow-up.\n\nNia Capital OS helps businesses identify practical AI automation opportunities across operations, customer communication, and workflow management.\n\nI'd like to show you a simple, customized automation plan for Local Medical Practice.\n\nWould you be open to a brief 15-minute conversation?\n\nThank you,\nNia Capital OS"
+      },
+      "sms": "Hi, this is Nia Capital OS. We help businesses reduce repetitive work and improve customer follow-up with practical AI automation. Would you be open to a quick 15-minute conversation?",
+      "callScript": "Hello, I'm reaching out because we help businesses reduce repetitive administrative work through practical AI automation.\n\nI'd like to understand how Local Medical Practice currently handles customer follow-up and daily operations.\n\nWould a short 15-minute conversation be useful?",
+      "proposal": {
+        "title": "AI Automation Opportunity Assessment",
+        "estimatedValue": null,
+        "nextStep": "Schedule discovery call"
+      }
+    },
+    "createdAt": "2026-08-14T22:09:31.671Z",
+    "approvedAt": "2026-08-14T22:20:33.891Z",
+    "sentAt": null
+  }
+]

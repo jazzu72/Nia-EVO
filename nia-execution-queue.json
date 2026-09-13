@@ -1,0 +1,84 @@
+{
+  "system": "NIA EXECUTION QUEUE",
+  "mode": "FUNDING_FIRST",
+  "grantIntegration": true,
+  "taskCount": 4,
+  "tasks": [
+    {
+      "id": "GRANT-TASK-1789134674851-0",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "NSF SBIR",
+      "priority": 95,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "id": "GRANT-TASK-1789134674851-1",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "SBA SBIR",
+      "priority": 92,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "id": "GRANT-TASK-1789134674851-2",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "Grants.gov",
+      "priority": 90,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "id": "GRANT-TASK-1789134674851-3",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "Virginia Innovation Funding",
+      "priority": 88,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    }
+  ]
+}

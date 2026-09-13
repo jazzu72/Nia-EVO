@@ -1,0 +1,63 @@
+{
+  "system": "NIA GRANT APPROVAL QUEUE",
+  "mode": "HUMAN_IN_THE_LOOP",
+  "pendingApprovals": 4,
+  "queue": [
+    {
+      "approvalId": "APPROVAL-1789134674853-0",
+      "grant": "NSF SBIR",
+      "complianceScore": 100,
+      "status": "AWAITING_OWNER_APPROVAL",
+      "approvalSteps": [
+        "VERIFY_GRANT_REQUIREMENTS",
+        "REVIEW_APPLICATION_CONTENT",
+        "CONFIRM_BUDGET",
+        "AUTHORIZE_SUBMISSION"
+      ],
+      "ownerDecision": "PENDING",
+      "created": "2026-09-11T13:51:14.853Z"
+    },
+    {
+      "approvalId": "APPROVAL-1789134674853-1",
+      "grant": "SBA SBIR",
+      "complianceScore": 100,
+      "status": "AWAITING_OWNER_APPROVAL",
+      "approvalSteps": [
+        "VERIFY_GRANT_REQUIREMENTS",
+        "REVIEW_APPLICATION_CONTENT",
+        "CONFIRM_BUDGET",
+        "AUTHORIZE_SUBMISSION"
+      ],
+      "ownerDecision": "PENDING",
+      "created": "2026-09-11T13:51:14.853Z"
+    },
+    {
+      "approvalId": "APPROVAL-1789134674853-2",
+      "grant": "Corporate AI For Good Programs",
+      "complianceScore": 100,
+      "status": "AWAITING_OWNER_APPROVAL",
+      "approvalSteps": [
+        "VERIFY_GRANT_REQUIREMENTS",
+        "REVIEW_APPLICATION_CONTENT",
+        "CONFIRM_BUDGET",
+        "AUTHORIZE_SUBMISSION"
+      ],
+      "ownerDecision": "PENDING",
+      "created": "2026-09-11T13:51:14.853Z"
+    },
+    {
+      "approvalId": "APPROVAL-1789134674853-3",
+      "grant": "Virginia Innovation Funding",
+      "complianceScore": 100,
+      "status": "AWAITING_OWNER_APPROVAL",
+      "approvalSteps": [
+        "VERIFY_GRANT_REQUIREMENTS",
+        "REVIEW_APPLICATION_CONTENT",
+        "CONFIRM_BUDGET",
+        "AUTHORIZE_SUBMISSION"
+      ],
+      "ownerDecision": "PENDING",
+      "created": "2026-09-11T13:51:14.853Z"
+    }
+  ]
+}

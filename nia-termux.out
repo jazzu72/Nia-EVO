@@ -1,0 +1,59 @@
+nohup: ignoring input
+◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+✅ NIA BUSINESS + CORE TOOLS REGISTERED
+✅ /api/aios/tools loaded
+🧠 NIA AIOS CORE TOOLS LOADED
+🏰 Nia Capital OS Booting...
+🛡️ /api/aios/approvals loaded
+🛡️ /api/aios/decision loaded
+✅ /api/funding capital radar loaded
+✅ /api/grants loaded
+✅ /api/funding loaded
+✅ /api/owner loaded
+✅ /api/ceo/dashboard loaded
+✅ /api/ceo/autopilot loaded
+✅ /api/ceo/decision loaded
+✅ /api/ceo loaded
+✅ /api/realestate loaded
+✅ /api/sales loaded
+✅ /api/sales-dashboard loaded
+✅ /api/sales loaded
+✅ /api/acquisition loaded
+✅ /api/acquisition/leads loaded
+✅ /api/conversion loaded
+✅ /api/autonomous-sales loaded
+✅ /api/autonomous loaded
+✅ /api/autopilot loaded
+✅ /api/revenue-brain loaded
+✅ /api/intelligence loaded
+✅ /api/intelligence loaded
+✅ /api/briefing loaded
+✅ /api/revenue/intelligence loaded
+✅ /api/executive loaded
+✅ /api/command loaded
+✅ /api/command loaded
+✅ /api/chief loaded
+🔎 OUTREACH ENGINE: /data/data/com.termux/files/home/nia-capital-os/outreach/outreach-engine.js
+🔎 OUTREACH EXPORTS: [ 'createDraft', 'queue', 'pendingApproval', 'approveDraft' ]
+🔎 approveDraft TYPE: function
+✅ /api/outreach loaded
+✅ /api/outreach/execution loaded
+✅ /api/cashflow loaded
+✅ /api/revenue loaded
+✅ /api/prospects loaded
+✅ /api/revenue/automation loaded
+✅ /api/conversion loaded
+✅ /api/proposals loaded
+✅ /api/operator loaded
+✅ /api/followup loaded
+✅ /api/opportunities loaded
+✅ /api/router loaded
+✅ /api/memory loaded
+✅ /api/dashboard loaded
+✅ /api/proposals loaded
+
+🚀 Nia Capital OS ONLINE
+📍 Listening on port 3000
+🌍 http://0.0.0.0:3000
+⏰ Started at 2026-09-02T00:39:26.795Z
+

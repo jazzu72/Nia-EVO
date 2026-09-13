@@ -1,0 +1,38 @@
+[
+  {
+    "title": "NSF SBIR Phase I",
+    "source": "nsf.gov",
+    "url": "https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505222",
+    "amount": 275000,
+    "deadline": "2026-12-15",
+    "status": "MANUAL",
+    "queuedAt": "2026-08-07T11:01:16.635Z"
+  },
+  {
+    "title": "SBA SBIR Phase II",
+    "source": "sba.gov",
+    "url": "https://www.sbir.gov/solicitation",
+    "amount": 500000,
+    "deadline": "2026-11-30",
+    "status": "MANUAL",
+    "queuedAt": "2026-08-07T11:01:16.640Z"
+  },
+  {
+    "title": "Grants.gov – AI Research",
+    "source": "grants.gov",
+    "url": "https://www.grants.gov/opportunity",
+    "amount": 350000,
+    "deadline": "2026-10-01",
+    "status": "MANUAL",
+    "queuedAt": "2026-08-07T11:01:16.640Z"
+  },
+  {
+    "title": "Virginia Innovation Grant",
+    "source": "virginia.gov",
+    "url": "https://www.virginia.gov/grants",
+    "amount": 150000,
+    "deadline": "2026-09-15",
+    "status": "MANUAL",
+    "queuedAt": "2026-08-07T11:01:16.640Z"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "system": "NIA GRANT ACQUISITION ENGINE",
+  "mode": "FUNDING_FIRST",
+  "mission": "NON_DILUTIVE_CAPITAL",
+  "targets": [
+    {
+      "id": "GRANT-001",
+      "source": "NSF",
+      "category": "TECHNOLOGY_INNOVATION",
+      "priority": 1,
+      "status": "TARGET",
+      "requirements": [
+        "COMPANY_PROFILE",
+        "INNOVATION_SUMMARY",
+        "COMMERCIALIZATION_PLAN",
+        "TEAM_INFORMATION"
+      ]
+    },
+    {
+      "id": "GRANT-002",
+      "source": "SBIR",
+      "category": "SMALL_BUSINESS_RESEARCH",
+      "priority": 1,
+      "status": "TARGET",
+      "requirements": [
+        "TECHNICAL_PROPOSAL",
+        "BUDGET",
+        "MARKET_PLAN"
+      ]
+    },
+    {
+      "id": "GRANT-003",
+      "source": "FEDERAL_SMALL_BUSINESS",
+      "category": "CAPITAL_SUPPORT",
+      "priority": 2,
+      "status": "TARGET",
+      "requirements": [
+        "BUSINESS_PLAN",
+        "USE_OF_FUNDS",
+        "IMPACT_STATEMENT"
+      ]
+    }
+  ],
+  "nextActions": [
+    "SCAN_ACTIVE_GRANTS",
+    "SCORE_ELIGIBILITY",
+    "GENERATE_APPLICATION_PACKETS",
+    "TRACK_DEADLINES",
+    "SUBMISSION_READY_REVIEW"
+  ],
+  "timestamp": "2026-09-11T13:51:14.850Z"
+}

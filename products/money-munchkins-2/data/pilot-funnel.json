@@ -1,0 +1,30 @@
+{
+  "pilot@example.com": {
+    "events": [
+      {
+        "stage": "interest",
+        "timestamp": "2026-08-23T14:24:04.876Z"
+      },
+      {
+        "stage": "signup",
+        "timestamp": "2026-08-23T14:24:04.877Z"
+      },
+      {
+        "stage": "interest",
+        "timestamp": "2026-08-23T14:24:04.950Z"
+      },
+      {
+        "stage": "signup",
+        "timestamp": "2026-08-23T14:24:04.950Z"
+      }
+    ]
+  },
+  "smoke@example.com": {
+    "events": [
+      {
+        "stage": "signup",
+        "timestamp": "2026-08-23T15:11:38.349Z"
+      }
+    ]
+  }
+}

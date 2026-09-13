@@ -1,0 +1,105 @@
+'use strict';
+
+/*
+ * NIA AIOS DECISION GATE
+ * -----------------------
+ * Hermes may REASON.
+ * Hermes may RECOMMEND.
+ * Hermes may NEVER execute side effects through this layer.
+ */
+
+const FORBIDDEN = [
+  'send_email',
+  'send_outreach',
+  'send_message',
+  'contact_prospect',
+  'purchase',
+  'buy',
+  'sell',
+  'invest',
+  'transfer_money',
+  'withdraw',
+  'charge_card',
+  'create_payment',
+  'execute_trade',
+  'deploy',
+  'delete',
+  'modify',
+  'write',
+  'shell',
+  'exec'
+];
+
+function stripFences(text) {
+  return String(text || '')
+    .trim()
+    .replace(/^```(?:json)?\s*/i, '')
+    .replace(/\s*```$/i, '')
+    .trim();
+}
+
+function parseHermesDecision(raw) {
+  const cleaned = stripFences(raw);
+
+  let parsed;
+  try {
+    parsed = JSON.parse(cleaned);
+  } catch {
+    parsed = {
+      decision: 'RECOMMEND',
+      summary: cleaned,
+      next_actions: [],
+      approval_required: true,
+      execution_allowed: false,
+      parse_error: true
+    };
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    parsed = {
+      decision: 'RECOMMEND',
+      summary: String(cleaned),
+      next_actions: [],
+      approval_required: true,
+      execution_allowed: false
+    };
+  }
+
+  const text = JSON.stringify(parsed).toLowerCase();
+  const dangerous = FORBIDDEN.filter(x => text.includes(x));
+
+  /*
+   * HARD SAFETY RULE:
+   * Anything ambiguous or potentially executable becomes
+   * approval-required and execution-disabled.
+   */
+  parsed.execution_allowed = false;
+  parsed.autonomous_execution = false;
+  parsed.approval_required = true;
+
+  if (!['OBSERVE', 'RECOMMEND', 'APPROVAL_REQUIRED'].includes(parsed.decision)) {
+    parsed.decision = 'RECOMMEND';
+  }
+
+  if (dangerous.length) {
+    parsed.decision = 'APPROVAL_REQUIRED';
+    parsed.safety_flags = [
+      ...(Array.isArray(parsed.safety_flags) ? parsed.safety_flags : []),
+      ...dangerous.map(x => `SIDE_EFFECT_BLOCKED:${x}`)
+    ];
+  }
+
+  parsed.guardrail = {
+    mode: 'READ_ONLY',
+    execution_allowed: false,
+    autonomous_execution: false,
+    human_approval_required: true,
+    blocked_operations: FORBIDDEN
+  };
+
+  return parsed;
+}
+
+module.exports = {
+  parseHermesDecision
+};

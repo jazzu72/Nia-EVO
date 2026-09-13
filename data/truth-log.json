@@ -1,0 +1,5202 @@
+[
+  {
+    "timestamp": "2026-08-06T12:20:31.745Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:20:31.748Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:20:31.748Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:20:31.749Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:35:31.763Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:35:31.766Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:35:31.769Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:35:31.770Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:50:31.765Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:50:31.769Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:50:31.770Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T12:50:31.771Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:05:31.760Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:05:31.762Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:05:31.764Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:05:31.767Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:20:31.764Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:20:31.766Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:20:31.770Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:20:31.771Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:35:31.770Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:35:31.773Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:35:31.775Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:35:31.777Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:50:31.778Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:50:31.783Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:50:31.785Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T13:50:31.788Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:05:31.768Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:05:31.771Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:05:31.773Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:05:31.775Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:20:31.766Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:20:31.770Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:20:31.772Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:20:31.775Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:35:31.772Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:35:31.776Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:35:31.779Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:35:31.781Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:50:31.772Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:50:31.775Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:50:31.778Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T14:50:31.780Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:05:31.775Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:05:31.780Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:05:31.784Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:05:31.787Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:20:31.778Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:20:31.791Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:20:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:20:31.796Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:35:31.776Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:35:31.781Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:35:31.786Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:35:31.789Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:50:31.781Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:50:31.787Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:50:31.790Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T15:50:31.793Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:05:31.776Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:05:31.781Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:05:31.785Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:05:31.788Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:20:31.777Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:20:31.782Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:20:31.786Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:20:31.789Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:35:31.783Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:35:31.790Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:35:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:35:31.797Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:50:31.788Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:50:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:50:31.798Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T16:50:31.802Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:05:31.784Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:05:31.790Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:05:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:05:31.798Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:20:31.783Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:20:31.788Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:20:31.792Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:20:31.797Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:35:31.784Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:35:31.792Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:35:31.796Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:35:31.801Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:50:31.784Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:50:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:50:31.798Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T17:50:31.801Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:05:31.787Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:05:31.794Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:05:31.799Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:05:31.804Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:20:31.805Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:20:31.815Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:20:31.820Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:20:31.825Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:35:31.797Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:35:31.807Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:35:31.812Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:35:31.817Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:50:31.793Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:50:31.799Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:50:31.803Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T18:50:31.807Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:05:31.792Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:05:31.799Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:05:31.805Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:05:31.810Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:20:31.798Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:20:31.806Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:20:31.812Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:20:31.818Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:35:31.795Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:35:31.802Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:35:31.808Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:35:31.814Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:50:31.809Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:50:31.819Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:50:31.825Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T19:50:31.832Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:05:31.795Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:05:31.805Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:05:31.812Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:05:31.818Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:20:31.801Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:20:31.810Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:20:31.817Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:20:31.824Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:35:31.807Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:35:31.815Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:35:31.822Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:35:31.829Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:50:31.807Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:50:31.816Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:50:31.823Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T20:50:31.829Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:05:31.810Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:05:31.820Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:05:31.827Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:05:31.835Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:20:31.807Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:20:31.816Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:20:31.823Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:20:31.831Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:35:31.809Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:35:31.818Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:35:31.826Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:35:31.834Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:50:31.808Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:50:31.816Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:50:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T21:50:31.832Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:05:31.814Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:05:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:05:31.832Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:05:31.840Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:20:31.815Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:20:31.831Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:20:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:20:31.846Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:35:31.819Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:35:31.832Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:35:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:35:31.845Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:50:31.811Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:50:31.821Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:50:31.829Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T22:50:31.838Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:05:31.812Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:05:31.822Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:05:31.831Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:05:31.840Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:20:31.813Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:20:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:20:31.833Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:20:31.842Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:35:31.816Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:35:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:35:31.849Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:35:31.859Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:50:31.830Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:50:31.859Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:50:31.868Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-06T23:50:31.876Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:05:31.826Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:05:31.841Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:05:31.851Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:05:31.861Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:20:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:20:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:20:31.849Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:20:31.859Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:35:31.818Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:35:31.830Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:35:31.840Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:35:31.850Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:50:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:50:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:50:31.851Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T00:50:31.863Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:05:31.819Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:05:31.823Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:05:31.827Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:05:31.830Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:20:31.827Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:20:31.839Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:20:31.850Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:20:31.864Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:35:31.821Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:35:31.835Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:35:31.844Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:35:31.854Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:50:31.821Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:50:31.835Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:50:31.850Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T01:50:31.865Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:05:31.836Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:05:31.855Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:05:31.867Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:05:31.877Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:20:31.826Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:20:31.841Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:20:31.853Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:20:31.865Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:35:31.828Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:35:31.843Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:35:31.853Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:35:31.867Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:50:31.829Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:50:31.842Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:50:31.855Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T02:50:31.867Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:05:31.829Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:05:31.847Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:05:31.857Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:05:31.869Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:20:31.824Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:20:31.833Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:20:31.841Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T03:20:31.851Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T08:35:06.925Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T08:35:06.935Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T08:35:06.942Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T08:35:06.947Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T09:41:26.035Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T09:41:26.047Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T09:41:26.056Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T09:41:26.058Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T10:59:24.335Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T10:59:24.347Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T10:59:24.360Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T10:59:24.367Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:14:24.329Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:14:24.344Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:14:24.360Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:14:24.373Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:29:24.330Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:29:24.346Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:29:24.357Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:29:24.368Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:44:24.331Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:44:24.343Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:44:24.351Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:44:24.356Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:59:24.335Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:59:24.350Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:59:24.361Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T11:59:24.373Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:14:24.352Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:14:24.376Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:14:24.391Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:14:24.404Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:29:24.349Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:29:24.369Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:29:24.383Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:29:24.395Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:44:24.352Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:44:24.372Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:44:24.387Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:44:24.400Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:59:24.347Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:59:24.366Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:59:24.381Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T12:59:24.396Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:14:24.337Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:14:24.347Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:14:24.351Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:14:24.355Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:29:24.344Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:29:24.362Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:29:24.369Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:29:24.377Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:33:45.499Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:33:45.508Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:33:45.515Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:33:45.521Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:34:51.850Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:34:51.859Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:34:51.867Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:34:51.874Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:49:51.913Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:49:51.937Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:49:51.955Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T13:49:51.974Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:04:51.904Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:04:51.929Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:04:51.946Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:04:51.962Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:19:51.902Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:19:51.916Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:19:51.927Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:19:51.941Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:34:51.899Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:34:51.919Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:34:51.935Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:34:51.949Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:49:51.904Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:49:51.921Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:49:51.929Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T14:49:51.935Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:04:51.901Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:04:51.919Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:04:51.941Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:04:51.959Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:19:57.568Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:19:57.583Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:19:57.589Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:19:57.594Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:00.260Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:00.275Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:00.283Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:00.291Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:57.249Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:57.342Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:57.403Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:22:57.425Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:37:57.469Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:37:57.549Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:37:57.658Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:37:57.697Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:52:57.484Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:52:57.592Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:52:57.643Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T15:52:57.663Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:07:57.490Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:07:57.551Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:07:57.574Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:07:57.599Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:22:57.480Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:22:57.497Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:22:57.514Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:22:57.530Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:37:57.478Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:37:57.557Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:37:57.646Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:37:57.689Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:52:57.481Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:52:57.594Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:52:57.644Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T16:52:57.710Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:07:57.496Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:07:57.539Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:07:57.571Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:07:57.636Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:22:57.502Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:22:57.531Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:22:57.545Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:22:57.569Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:37:57.500Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:37:57.521Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:37:57.540Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:37:57.562Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:52:57.509Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:52:57.533Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:52:57.558Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T17:52:57.590Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:07:57.515Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:07:57.570Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:07:57.622Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:07:57.654Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:22:57.506Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:22:57.542Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:22:57.596Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:22:57.659Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:37:57.681Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:37:57.790Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:37:57.832Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:37:57.961Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:52:57.505Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:52:57.539Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:52:57.578Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T18:52:57.617Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:07:57.505Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:07:57.587Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:07:57.692Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:07:57.803Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:22:57.507Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:22:57.612Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:22:57.703Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:22:57.776Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:37:57.504Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:37:57.561Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:37:57.643Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:37:57.670Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:52:57.506Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:52:57.633Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:52:57.749Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T19:52:57.825Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-08-07T20:05:19.455Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Thompson Construction",
+        "industry": "contractor",
+        "contact": "Mike Thompson",
+        "phone": "757-555-0101",
+        "score": 95
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T20:05:19.465Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "address": "1621 Colonial Ave, Norfolk, VA",
+        "price": 220000,
+        "status": "new",
+        "score": 92
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T20:05:19.472Z",
+    "action": "NO_CONTACT_METHOD",
+    "details": {
+      "lead": {
+        "company": "Norfolk Realty Group",
+        "industry": "real estate",
+        "contact": "Sarah Chen",
+        "phone": "757-555-0202",
+        "score": 88
+      }
+    }
+  },
+  {
+    "timestamp": "2026-08-07T20:05:19.480Z",
+    "action": "OUTREACH_ATTEMPTED",
+    "details": {
+      "count": 3,
+      "leads": [
+        null,
+        null,
+        null
+      ]
+    }
+  }
+]

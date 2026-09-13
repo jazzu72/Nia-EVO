@@ -1,0 +1,91 @@
+{
+  "system": "NIA GRANT SCORING ENGINE",
+  "mode": "FUNDING_FIRST",
+  "topOpportunity": {
+    "rank": 2,
+    "source": "NSF SBIR",
+    "type": "INNOVATION_GRANTS",
+    "fitScore": 95,
+    "priority": 1,
+    "companyFit": [
+      "AI",
+      "SOFTWARE",
+      "FINTECH",
+      "SMALL_BUSINESS",
+      "INNOVATION"
+    ],
+    "status": "QUALIFIED",
+    "nextAction": "BUILD_APPLICATION_PACKAGE",
+    "timestamp": "2026-09-11T13:51:14.882Z"
+  },
+  "opportunities": [
+    {
+      "rank": 2,
+      "source": "NSF SBIR",
+      "type": "INNOVATION_GRANTS",
+      "fitScore": 95,
+      "priority": 1,
+      "companyFit": [
+        "AI",
+        "SOFTWARE",
+        "FINTECH",
+        "SMALL_BUSINESS",
+        "INNOVATION"
+      ],
+      "status": "QUALIFIED",
+      "nextAction": "BUILD_APPLICATION_PACKAGE",
+      "timestamp": "2026-09-11T13:51:14.882Z"
+    },
+    {
+      "rank": 3,
+      "source": "SBA SBIR",
+      "type": "SMALL_BUSINESS_GRANTS",
+      "fitScore": 92,
+      "priority": 1,
+      "companyFit": [
+        "AI",
+        "SOFTWARE",
+        "FINTECH",
+        "SMALL_BUSINESS",
+        "INNOVATION"
+      ],
+      "status": "QUALIFIED",
+      "nextAction": "BUILD_APPLICATION_PACKAGE",
+      "timestamp": "2026-09-11T13:51:14.882Z"
+    },
+    {
+      "rank": 1,
+      "source": "Grants.gov",
+      "type": "FEDERAL_GRANTS",
+      "fitScore": 90,
+      "priority": 1,
+      "companyFit": [
+        "AI",
+        "SOFTWARE",
+        "FINTECH",
+        "SMALL_BUSINESS",
+        "INNOVATION"
+      ],
+      "status": "QUALIFIED",
+      "nextAction": "BUILD_APPLICATION_PACKAGE",
+      "timestamp": "2026-09-11T13:51:14.882Z"
+    },
+    {
+      "rank": 4,
+      "source": "Virginia Innovation Funding",
+      "type": "STATE_PROGRAMS",
+      "fitScore": 88,
+      "priority": 2,
+      "companyFit": [
+        "AI",
+        "SOFTWARE",
+        "FINTECH",
+        "SMALL_BUSINESS",
+        "INNOVATION"
+      ],
+      "status": "QUALIFIED",
+      "nextAction": "BUILD_APPLICATION_PACKAGE",
+      "timestamp": "2026-09-11T13:51:14.882Z"
+    }
+  ]
+}

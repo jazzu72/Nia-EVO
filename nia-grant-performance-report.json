@@ -1,0 +1,38 @@
+{
+  "system": "NIA GRANT PERFORMANCE ANALYZER",
+  "mode": "LEARNING_OPTIMIZATION",
+  "totalAnalyzed": 4,
+  "topGrant": {
+    "grant": "NSF SBIR",
+    "mentions": 3,
+    "priorityScore": 30,
+    "recommendation": "INCREASE_PRIORITY"
+  },
+  "results": [
+    {
+      "grant": "NSF SBIR",
+      "mentions": 3,
+      "priorityScore": 30,
+      "recommendation": "INCREASE_PRIORITY"
+    },
+    {
+      "grant": "SBA SBIR",
+      "mentions": 3,
+      "priorityScore": 30,
+      "recommendation": "INCREASE_PRIORITY"
+    },
+    {
+      "grant": "Virginia Innovation Funding",
+      "mentions": 3,
+      "priorityScore": 30,
+      "recommendation": "INCREASE_PRIORITY"
+    },
+    {
+      "grant": "Grants.gov",
+      "mentions": 2,
+      "priorityScore": 20,
+      "recommendation": "CONTINUE_MONITORING"
+    }
+  ],
+  "updated": "2026-09-11T13:51:14.878Z"
+}

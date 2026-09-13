@@ -1,0 +1,51 @@
+{
+  "system": "NIA GRANT EXECUTION BRIDGE",
+  "mode": "FUNDING_FIRST",
+  "queue": [
+    {
+      "executionId": "GRANT-EXEC-1785957167359-0",
+      "grantId": "NSF-SBIR",
+      "source": "NSF",
+      "mission": "GRANTS",
+      "priority": 1,
+      "status": "READY",
+      "tasks": [
+        "VERIFY_ELIGIBILITY",
+        "BUILD_GRANT_NARRATIVE",
+        "GENERATE_APPLICATION_PACKET",
+        "SUBMISSION_REVIEW"
+      ],
+      "created": "2026-08-05T19:12:47.359Z"
+    },
+    {
+      "executionId": "GRANT-EXEC-1785957167359-1",
+      "grantId": "SBA-SBIR",
+      "source": "SBA",
+      "mission": "GRANTS",
+      "priority": 1,
+      "status": "READY",
+      "tasks": [
+        "VERIFY_ELIGIBILITY",
+        "BUILD_GRANT_NARRATIVE",
+        "GENERATE_APPLICATION_PACKET",
+        "SUBMISSION_REVIEW"
+      ],
+      "created": "2026-08-05T19:12:47.359Z"
+    },
+    {
+      "executionId": "GRANT-EXEC-1785957167359-2",
+      "grantId": "VIRGINIA-INNOVATION",
+      "source": "VIRGINIA_PROGRAMS",
+      "mission": "GRANTS",
+      "priority": 1,
+      "status": "READY",
+      "tasks": [
+        "VERIFY_ELIGIBILITY",
+        "BUILD_GRANT_NARRATIVE",
+        "GENERATE_APPLICATION_PACKET",
+        "SUBMISSION_REVIEW"
+      ],
+      "created": "2026-08-05T19:12:47.359Z"
+    }
+  ]
+}

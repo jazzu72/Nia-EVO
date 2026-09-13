@@ -1,0 +1,56 @@
+{
+  "system": "NIA FUNDING ALERT ENGINE",
+  "mode": "FUNDING_FIRST",
+  "alertCount": 8,
+  "alerts": [
+    {
+      "type": "GRANT_REVIEW_PENDING",
+      "grant": "NSF SBIR",
+      "priority": "HIGH",
+      "action": "MONITOR_RESPONSE"
+    },
+    {
+      "type": "GRANT_REVIEW_PENDING",
+      "grant": "SBA SBIR",
+      "priority": "HIGH",
+      "action": "MONITOR_RESPONSE"
+    },
+    {
+      "type": "GRANT_REVIEW_PENDING",
+      "grant": "Grants.gov",
+      "priority": "HIGH",
+      "action": "MONITOR_RESPONSE"
+    },
+    {
+      "type": "GRANT_REVIEW_PENDING",
+      "grant": "Virginia Innovation Funding",
+      "priority": "HIGH",
+      "action": "MONITOR_RESPONSE"
+    },
+    {
+      "type": "SUBMISSION_PENDING",
+      "grant": "NSF SBIR",
+      "priority": "HIGH",
+      "action": "OWNER_CONFIRM_SUBMISSION"
+    },
+    {
+      "type": "SUBMISSION_PENDING",
+      "grant": "SBA SBIR",
+      "priority": "HIGH",
+      "action": "OWNER_CONFIRM_SUBMISSION"
+    },
+    {
+      "type": "SUBMISSION_PENDING",
+      "grant": "Corporate AI For Good Programs",
+      "priority": "HIGH",
+      "action": "OWNER_CONFIRM_SUBMISSION"
+    },
+    {
+      "type": "SUBMISSION_PENDING",
+      "grant": "Virginia Innovation Funding",
+      "priority": "HIGH",
+      "action": "OWNER_CONFIRM_SUBMISSION"
+    }
+  ],
+  "updated": "2026-09-11T13:51:14.842Z"
+}

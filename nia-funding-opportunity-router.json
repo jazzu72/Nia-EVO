@@ -1,0 +1,24 @@
+{
+  "opportunities": [
+    {
+      "source": "NSF SBIR",
+      "fitScore": 92,
+      "learningEnhanced": true
+    },
+    {
+      "source": "Virginia Innovation Funding",
+      "fitScore": 88,
+      "learningEnhanced": true
+    },
+    {
+      "source": "SBA SBIR",
+      "fitScore": 85,
+      "learningEnhanced": true
+    },
+    {
+      "source": "Grants.gov",
+      "fitScore": 78,
+      "learningEnhanced": true
+    }
+  ]
+}

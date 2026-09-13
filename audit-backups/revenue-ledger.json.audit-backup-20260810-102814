@@ -1,0 +1,12 @@
+{
+  "revenue": 100,
+  "deals": 1,
+  "entries": [
+    {
+      "id": "REV-1786364690016",
+      "amount": 100,
+      "description": "NIA test deal",
+      "timestamp": "2026-08-10T12:24:50.016Z"
+    }
+  ]
+}

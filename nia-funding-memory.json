@@ -1,0 +1,288 @@
+{
+  "system": "NIA FUNDING MEMORY ENGINE",
+  "mode": "LEARNING_HISTORY",
+  "records": 3,
+  "memory": [
+    {
+      "source": "nia-grant-submission-tracker.json",
+      "snapshot": {
+        "system": "NIA GRANT SUBMISSION TRACKER",
+        "mode": "FUNDING_FIRST",
+        "trackedGrants": 4,
+        "tracked": [
+          {
+            "trackingId": "TRACK-1785957316729-0",
+            "grant": "NSF SBIR",
+            "packageId": "PACKAGE-1785957254916-0",
+            "status": "READY_FOR_SUBMISSION",
+            "timeline": {
+              "created": "2026-08-05T19:14:14.916Z",
+              "submitted": null,
+              "lastChecked": "2026-08-05T19:15:16.729Z",
+              "nextFollowUp": "30_DAYS"
+            },
+            "monitoring": {
+              "responseCheck": true,
+              "deadlineTracking": true,
+              "agencyUpdates": true
+            },
+            "actions": [
+              "OWNER_SUBMIT",
+              "CONFIRM_RECEIPT",
+              "MONITOR_AGENCY_RESPONSE",
+              "SEND_FOLLOW_UP_IF_NEEDED"
+            ],
+            "created": "2026-08-05T19:15:16.730Z"
+          },
+          {
+            "trackingId": "TRACK-1785957316730-1",
+            "grant": "SBA SBIR",
+            "packageId": "PACKAGE-1785957254918-1",
+            "status": "READY_FOR_SUBMISSION",
+            "timeline": {
+              "created": "2026-08-05T19:14:14.918Z",
+              "submitted": null,
+              "lastChecked": "2026-08-05T19:15:16.730Z",
+              "nextFollowUp": "30_DAYS"
+            },
+            "monitoring": {
+              "responseCheck": true,
+              "deadlineTracking": true,
+              "agencyUpdates": true
+            },
+            "actions": [
+              "OWNER_SUBMIT",
+              "CONFIRM_RECEIPT",
+              "MONITOR_AGENCY_RESPONSE",
+              "SEND_FOLLOW_UP_IF_NEEDED"
+            ],
+            "created": "2026-08-05T19:15:16.730Z"
+          },
+          {
+            "trackingId": "TRACK-1785957316730-2",
+            "grant": "Corporate AI For Good Programs",
+            "packageId": "PACKAGE-1785957254918-2",
+            "status": "READY_FOR_SUBMISSION",
+            "timeline": {
+              "created": "2026-08-05T19:14:14.918Z",
+              "submitted": null,
+              "lastChecked": "2026-08-05T19:15:16.730Z",
+              "nextFollowUp": "30_DAYS"
+            },
+            "monitoring": {
+              "responseCheck": true,
+              "deadlineTracking": true,
+              "agencyUpdates": true
+            },
+            "actions": [
+              "OWNER_SUBMIT",
+              "CONFIRM_RECEIPT",
+              "MONITOR_AGENCY_RESPONSE",
+              "SEND_FOLLOW_UP_IF_NEEDED"
+            ],
+            "created": "2026-08-05T19:15:16.730Z"
+          },
+          {
+            "trackingId": "TRACK-1785957316730-3",
+            "grant": "Virginia Innovation Funding",
+            "packageId": "PACKAGE-1785957254918-3",
+            "status": "READY_FOR_SUBMISSION",
+            "timeline": {
+              "created": "2026-08-05T19:14:14.918Z",
+              "submitted": null,
+              "lastChecked": "2026-08-05T19:15:16.730Z",
+              "nextFollowUp": "30_DAYS"
+            },
+            "monitoring": {
+              "responseCheck": true,
+              "deadlineTracking": true,
+              "agencyUpdates": true
+            },
+            "actions": [
+              "OWNER_SUBMIT",
+              "CONFIRM_RECEIPT",
+              "MONITOR_AGENCY_RESPONSE",
+              "SEND_FOLLOW_UP_IF_NEEDED"
+            ],
+            "created": "2026-08-05T19:15:16.730Z"
+          }
+        ]
+      },
+      "captured": "2026-09-11T13:51:14.847Z"
+    },
+    {
+      "source": "nia-funding-alert-queue.json",
+      "snapshot": {
+        "system": "NIA FUNDING ALERT ENGINE",
+        "mode": "FUNDING_FIRST",
+        "alertCount": 8,
+        "alerts": [
+          {
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "NSF SBIR",
+            "priority": "HIGH",
+            "action": "MONITOR_RESPONSE"
+          },
+          {
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "SBA SBIR",
+            "priority": "HIGH",
+            "action": "MONITOR_RESPONSE"
+          },
+          {
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "Grants.gov",
+            "priority": "HIGH",
+            "action": "MONITOR_RESPONSE"
+          },
+          {
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "Virginia Innovation Funding",
+            "priority": "HIGH",
+            "action": "MONITOR_RESPONSE"
+          },
+          {
+            "type": "SUBMISSION_PENDING",
+            "grant": "NSF SBIR",
+            "priority": "HIGH",
+            "action": "OWNER_CONFIRM_SUBMISSION"
+          },
+          {
+            "type": "SUBMISSION_PENDING",
+            "grant": "SBA SBIR",
+            "priority": "HIGH",
+            "action": "OWNER_CONFIRM_SUBMISSION"
+          },
+          {
+            "type": "SUBMISSION_PENDING",
+            "grant": "Corporate AI For Good Programs",
+            "priority": "HIGH",
+            "action": "OWNER_CONFIRM_SUBMISSION"
+          },
+          {
+            "type": "SUBMISSION_PENDING",
+            "grant": "Virginia Innovation Funding",
+            "priority": "HIGH",
+            "action": "OWNER_CONFIRM_SUBMISSION"
+          }
+        ],
+        "updated": "2026-09-11T13:51:14.842Z"
+      },
+      "captured": "2026-09-11T13:51:14.848Z"
+    },
+    {
+      "source": "nia-owner-notifications.json",
+      "snapshot": {
+        "system": "NIA OWNER NOTIFICATION ENGINE",
+        "mode": "FUNDING_FIRST",
+        "notifications": [
+          {
+            "notificationId": "NOTICE-1785957757249-0",
+            "priority": "HIGH",
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "NSF SBIR",
+            "message": "NIA Funding Alert: NSF SBIR requires action: MONITOR_RESPONSE",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.249Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757250-1",
+            "priority": "HIGH",
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "SBA SBIR",
+            "message": "NIA Funding Alert: SBA SBIR requires action: MONITOR_RESPONSE",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-2",
+            "priority": "HIGH",
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "Grants.gov",
+            "message": "NIA Funding Alert: Grants.gov requires action: MONITOR_RESPONSE",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-3",
+            "priority": "HIGH",
+            "type": "GRANT_REVIEW_PENDING",
+            "grant": "Virginia Innovation Funding",
+            "message": "NIA Funding Alert: Virginia Innovation Funding requires action: MONITOR_RESPONSE",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-4",
+            "priority": "HIGH",
+            "type": "SUBMISSION_PENDING",
+            "grant": "NSF SBIR",
+            "message": "NIA Funding Alert: NSF SBIR requires action: OWNER_CONFIRM_SUBMISSION",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-5",
+            "priority": "HIGH",
+            "type": "SUBMISSION_PENDING",
+            "grant": "SBA SBIR",
+            "message": "NIA Funding Alert: SBA SBIR requires action: OWNER_CONFIRM_SUBMISSION",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-6",
+            "priority": "HIGH",
+            "type": "SUBMISSION_PENDING",
+            "grant": "Corporate AI For Good Programs",
+            "message": "NIA Funding Alert: Corporate AI For Good Programs requires action: OWNER_CONFIRM_SUBMISSION",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          },
+          {
+            "notificationId": "NOTICE-1785957757251-7",
+            "priority": "HIGH",
+            "type": "SUBMISSION_PENDING",
+            "grant": "Virginia Innovation Funding",
+            "message": "NIA Funding Alert: Virginia Innovation Funding requires action: OWNER_CONFIRM_SUBMISSION",
+            "delivery": [
+              "DASHBOARD",
+              "OWNER_LOG"
+            ],
+            "status": "PENDING_REVIEW",
+            "created": "2026-08-05T19:22:37.251Z"
+          }
+        ]
+      },
+      "captured": "2026-09-11T13:51:14.848Z"
+    }
+  ]
+}

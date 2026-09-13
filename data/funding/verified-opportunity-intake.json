@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-08-13T21:08:39.357Z",
+  "organization": "House of Jazzu",
+  "mode": "OWNER_REVIEW_ONLY",
+  "candidateCount": 3,
+  "verifiedCount": 1,
+  "rejectedCount": 2,
+  "results": [
+    {
+      "name": "Verified Corporate AI Program",
+      "source": "Example Corporation",
+      "officialUrl": "https://example.com/program",
+      "verification": {
+        "verified": true,
+        "missing": [],
+        "sourceVerified": true,
+        "eligibilityVerified": true,
+        "deadlineVerified": true,
+        "amountVerified": true
+      },
+      "ownerReviewOnly": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    },
+    {
+      "name": "HTTP Unsafe Program",
+      "source": "Example Corporation",
+      "officialUrl": "http://example.com/program",
+      "verification": {
+        "verified": false,
+        "missing": [],
+        "sourceVerified": false,
+        "eligibilityVerified": true,
+        "deadlineVerified": true,
+        "amountVerified": true
+      },
+      "ownerReviewOnly": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    },
+    {
+      "name": "Incomplete Program",
+      "source": "Example Corporation",
+      "officialUrl": null,
+      "verification": {
+        "verified": false,
+        "missing": [
+          "officialUrl",
+          "eligibilityEvidence",
+          "deadlineEvidence",
+          "fundingAmountEvidence"
+        ],
+        "sourceVerified": false,
+        "eligibilityVerified": false,
+        "deadlineVerified": false,
+        "amountVerified": false
+      },
+      "ownerReviewOnly": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "ownerApprovalRequired": true,
+      "ownerSignatureRequired": true
+    }
+  ]
+}

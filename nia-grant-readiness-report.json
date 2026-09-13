@@ -1,0 +1,104 @@
+{
+  "system": "NIA GRANT READINESS ENGINE",
+  "mode": "FUNDING_FIRST",
+  "readyForSubmission": false,
+  "grantCount": 4,
+  "reports": [
+    {
+      "grant": "NSF SBIR",
+      "status": "UNDER_REVIEW",
+      "eligibility": {
+        "companyProfile": "READY",
+        "technologyFit": "READY",
+        "commercializationPlan": "READY",
+        "registration": "VERIFY"
+      },
+      "documents": {
+        "innovationSummary": "READY",
+        "businessPlan": "READY",
+        "budget": "READY",
+        "financials": "READY"
+      },
+      "nextActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "OWNER_APPROVAL"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "SBA SBIR",
+      "status": "UNDER_REVIEW",
+      "eligibility": {
+        "companyProfile": "READY",
+        "technologyFit": "READY",
+        "commercializationPlan": "READY",
+        "registration": "VERIFY"
+      },
+      "documents": {
+        "innovationSummary": "READY",
+        "businessPlan": "READY",
+        "budget": "READY",
+        "financials": "READY"
+      },
+      "nextActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "OWNER_APPROVAL"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "Grants.gov",
+      "status": "UNDER_REVIEW",
+      "eligibility": {
+        "companyProfile": "READY",
+        "technologyFit": "READY",
+        "commercializationPlan": "READY",
+        "registration": "VERIFY"
+      },
+      "documents": {
+        "innovationSummary": "READY",
+        "businessPlan": "READY",
+        "budget": "READY",
+        "financials": "READY"
+      },
+      "nextActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "OWNER_APPROVAL"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "Virginia Innovation Funding",
+      "status": "UNDER_REVIEW",
+      "eligibility": {
+        "companyProfile": "READY",
+        "technologyFit": "READY",
+        "commercializationPlan": "READY",
+        "registration": "VERIFY"
+      },
+      "documents": {
+        "innovationSummary": "READY",
+        "businessPlan": "READY",
+        "budget": "READY",
+        "financials": "READY"
+      },
+      "nextActions": [
+        "VERIFY_ELIGIBILITY",
+        "PREPARE_BUDGET",
+        "ATTACH_DOCUMENTS",
+        "OWNER_APPROVAL"
+      ],
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.881Z"
+    }
+  ]
+}

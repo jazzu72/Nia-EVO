@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "policy": "canonical-engine-authority",
+
+  "engines": {
+
+    "acquisition": {
+      "canonical": "acquisition/lead-acquisition-engine.js",
+      "contract": [
+        "acquire",
+        "generateTargets",
+        "stats",
+        "topProspects"
+      ]
+    },
+
+    "funding-review-decision": {
+      "canonical": "funding-engine/funding-review-decision-engine.js",
+      "contract": [
+        "decide",
+        "buildDecisionQueue",
+        "discover",
+        "analyze"
+      ]
+    },
+
+    "followup": {
+      "canonical": "followup/followup-engine.js",
+      "contract": [
+        "addFollowup",
+        "create",
+        "queue",
+        "pending"
+      ]
+    },
+
+    "outreach": {
+      "canonical": "outreach/outreach-engine.js",
+      "contract": [
+        "createDraft",
+        "queue",
+        "pendingApproval",
+        "approveDraft"
+      ]
+    },
+
+    "outreach-execution": {
+      "canonical": "outreach/outreach-execution-engine.js"
+    },
+
+    "proposal": {
+      "canonical": "proposals/proposal-engine.js"
+    },
+
+    "automation": {
+      "canonical": "revenue/automation/automation-engine.js"
+    },
+
+    "revenue": {
+      "canonical": "revenue/revenue-engine.js"
+    }
+  }
+}

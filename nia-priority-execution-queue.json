@@ -1,0 +1,89 @@
+{
+  "system": "NIA FUNDING PRIORITY GUARD",
+  "mode": "GRANTS_FIRST",
+  "rule": "NON_DILUTIVE_CAPITAL_BEFORE_ASSET_DEPLOYMENT",
+  "queueSize": 4,
+  "queue": [
+    {
+      "id": "GRANT-TASK-1785956920222-0",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "NSF SBIR",
+      "priority": 95,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-08-05T19:08:40.222Z",
+      "executionPriority": 1
+    },
+    {
+      "id": "GRANT-TASK-1785956920222-1",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "SBA SBIR",
+      "priority": 92,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-08-05T19:08:40.222Z",
+      "executionPriority": 1
+    },
+    {
+      "id": "GRANT-TASK-1785956920222-2",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "Grants.gov",
+      "priority": 90,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-08-05T19:08:40.222Z",
+      "executionPriority": 1
+    },
+    {
+      "id": "GRANT-TASK-1785956920222-3",
+      "type": "GRANTS",
+      "mission": "FUNDING_FIRST",
+      "action": "VERIFY_OPEN_GRANT",
+      "source": "Virginia Innovation Funding",
+      "priority": 88,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "approvalRequired": true,
+      "created": "2026-08-05T19:08:40.222Z",
+      "executionPriority": 1
+    }
+  ],
+  "timestamp": "2026-09-11T13:51:14.849Z"
+}

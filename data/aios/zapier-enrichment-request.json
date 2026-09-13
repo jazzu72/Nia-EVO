@@ -1,0 +1,43 @@
+{
+  "source": "Nia-EVO",
+  "workflow": "prospect_enrichment",
+  "status": "PENDING_ZAPIER",
+  "external_action": false,
+  "human_approval_required": true,
+  "requestedAt": "2026-09-02T11:23:34.949Z",
+  "prospects": [
+    {
+      "prospectId": "PROS-41195b82-5f53-49fd-87dd-9a72cfc6302d",
+      "company": "Norfolk Restaurant",
+      "industry": "Food Service",
+      "targets": [
+        "website",
+        "business_phone",
+        "business_email",
+        "public_address"
+      ]
+    },
+    {
+      "prospectId": "PROS-1deb9557-2ecd-48c9-b50c-f1a2b9446809",
+      "company": "Hampton Roads Contractor",
+      "industry": "Construction",
+      "targets": [
+        "website",
+        "business_phone",
+        "business_email",
+        "public_address"
+      ]
+    },
+    {
+      "prospectId": "PROS-412d46b3-7744-4968-a476-45b48bcc4f83",
+      "company": "Local Medical Practice",
+      "industry": "Healthcare",
+      "targets": [
+        "website",
+        "business_phone",
+        "business_email",
+        "public_address"
+      ]
+    }
+  ]
+}

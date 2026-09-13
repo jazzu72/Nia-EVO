@@ -1,0 +1,83 @@
+{
+  "system": "NIA GRANT NOTIFICATION AGENT",
+  "mode": "FUNDING_FIRST",
+  "alertsActive": 4,
+  "alerts": [
+    {
+      "alertId": "GRANT-ALERT-1789134674878-0",
+      "grant": "NSF SBIR",
+      "type": "FUNDING_UPDATE",
+      "priority": "HIGH",
+      "message": "NSF SBIR requires review. Status: READY_FOR_REVIEW. Next follow-up: 2026-09-04T18:08:42.439Z",
+      "actions": [
+        "OWNER_REVIEW",
+        "CHECK_PROGRAM_STATUS",
+        "GENERATE_RESPONSE",
+        "UPDATE_PIPELINE"
+      ],
+      "delivery": [
+        "LOCAL_DASHBOARD",
+        "SMS_READY",
+        "EMAIL_READY"
+      ],
+      "created": "2026-09-11T13:51:14.878Z"
+    },
+    {
+      "alertId": "GRANT-ALERT-1789134674878-1",
+      "grant": "SBA SBIR",
+      "type": "FUNDING_UPDATE",
+      "priority": "HIGH",
+      "message": "SBA SBIR requires review. Status: READY_FOR_REVIEW. Next follow-up: 2026-09-04T18:08:42.439Z",
+      "actions": [
+        "OWNER_REVIEW",
+        "CHECK_PROGRAM_STATUS",
+        "GENERATE_RESPONSE",
+        "UPDATE_PIPELINE"
+      ],
+      "delivery": [
+        "LOCAL_DASHBOARD",
+        "SMS_READY",
+        "EMAIL_READY"
+      ],
+      "created": "2026-09-11T13:51:14.878Z"
+    },
+    {
+      "alertId": "GRANT-ALERT-1789134674878-2",
+      "grant": "Grants.gov",
+      "type": "FUNDING_UPDATE",
+      "priority": "HIGH",
+      "message": "Grants.gov requires review. Status: READY_FOR_REVIEW. Next follow-up: 2026-09-04T18:08:42.439Z",
+      "actions": [
+        "OWNER_REVIEW",
+        "CHECK_PROGRAM_STATUS",
+        "GENERATE_RESPONSE",
+        "UPDATE_PIPELINE"
+      ],
+      "delivery": [
+        "LOCAL_DASHBOARD",
+        "SMS_READY",
+        "EMAIL_READY"
+      ],
+      "created": "2026-09-11T13:51:14.878Z"
+    },
+    {
+      "alertId": "GRANT-ALERT-1789134674878-3",
+      "grant": "Virginia Innovation Funding",
+      "type": "FUNDING_UPDATE",
+      "priority": "HIGH",
+      "message": "Virginia Innovation Funding requires review. Status: READY_FOR_REVIEW. Next follow-up: 2026-09-04T18:08:42.439Z",
+      "actions": [
+        "OWNER_REVIEW",
+        "CHECK_PROGRAM_STATUS",
+        "GENERATE_RESPONSE",
+        "UPDATE_PIPELINE"
+      ],
+      "delivery": [
+        "LOCAL_DASHBOARD",
+        "SMS_READY",
+        "EMAIL_READY"
+      ],
+      "created": "2026-09-11T13:51:14.878Z"
+    }
+  ]
+}

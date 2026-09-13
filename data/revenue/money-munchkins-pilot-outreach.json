@@ -1,0 +1,19 @@
+{
+  "product": "money-munchkins-quantum-odyssey",
+  "cohort": "pilot-10",
+  "target": 10,
+  "mode": "APPROVAL_REQUIRED",
+  "autoSend": false,
+  "drafts": [],
+  "rules": {
+    "parentGuardianRequired": true,
+    "consentRequired": true,
+    "noChildPII": true,
+    "noFabricatedClaims": true,
+    "noAutomaticSending": true
+  },
+  "template": {
+    "subject": "Invitation: Money Munchkins Quantum Odyssey Pilot",
+    "body": "We are inviting a small group of families to help test Money Munchkins: Quantum Odyssey, an adventure-based financial literacy experience for children. The pilot is designed to gather parent feedback and improve the missions before broader release. Participation is voluntary and requires parent/guardian consent."
+  }
+}

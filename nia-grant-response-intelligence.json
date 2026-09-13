@@ -1,0 +1,63 @@
+{
+  "system": "NIA GRANT RESPONSE INTELLIGENCE",
+  "mode": "FUNDING_FIRST",
+  "tracked": 4,
+  "intelligence": [
+    {
+      "grant": "NSF SBIR",
+      "status": "UNDER_REVIEW",
+      "responsePrediction": "AWAITING_AGENCY_DECISION",
+      "confidenceScore": 95,
+      "nextActions": [
+        "MONITOR_RESPONSE",
+        "PREPARE_FOLLOW_UP",
+        "UPDATE_DOCUMENTS_IF_REQUESTED",
+        "OWNER_NOTIFICATION"
+      ],
+      "ownerAlert": true,
+      "checked": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "SBA SBIR",
+      "status": "UNDER_REVIEW",
+      "responsePrediction": "AWAITING_AGENCY_DECISION",
+      "confidenceScore": 90,
+      "nextActions": [
+        "MONITOR_RESPONSE",
+        "PREPARE_FOLLOW_UP",
+        "UPDATE_DOCUMENTS_IF_REQUESTED",
+        "OWNER_NOTIFICATION"
+      ],
+      "ownerAlert": true,
+      "checked": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "Grants.gov",
+      "status": "UNDER_REVIEW",
+      "responsePrediction": "AWAITING_AGENCY_DECISION",
+      "confidenceScore": 85,
+      "nextActions": [
+        "MONITOR_RESPONSE",
+        "PREPARE_FOLLOW_UP",
+        "UPDATE_DOCUMENTS_IF_REQUESTED",
+        "OWNER_NOTIFICATION"
+      ],
+      "ownerAlert": true,
+      "checked": "2026-09-11T13:51:14.881Z"
+    },
+    {
+      "grant": "Virginia Innovation Funding",
+      "status": "UNDER_REVIEW",
+      "responsePrediction": "AWAITING_AGENCY_DECISION",
+      "confidenceScore": 85,
+      "nextActions": [
+        "MONITOR_RESPONSE",
+        "PREPARE_FOLLOW_UP",
+        "UPDATE_DOCUMENTS_IF_REQUESTED",
+        "OWNER_NOTIFICATION"
+      ],
+      "ownerAlert": true,
+      "checked": "2026-09-11T13:51:14.881Z"
+    }
+  ]
+}

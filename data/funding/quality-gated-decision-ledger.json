@@ -1,0 +1,47 @@
+{
+  "organization": "House of Jazzu",
+  "entries": [
+    {
+      "id": "decision-1786657445788",
+      "recordedAt": "2026-08-13T21:44:05.788Z",
+      "organization": "House of Jazzu",
+      "mode": "OWNER_REVIEW_ONLY",
+      "searchTermCount": 21,
+      "candidateCount": 1,
+      "evidenceFoundCount": 0,
+      "needsReviewCount": 0,
+      "rejectedCount": 1,
+      "ownerReviewQueue": [
+        {
+          "name": "Example Official Program",
+          "officialUrl": "https://example.com/",
+          "verificationStatus": "REJECTED",
+          "passedChecks": 1,
+          "reviewPriority": "REJECTED",
+          "ownerReviewOnly": true,
+          "submissionAllowed": false,
+          "signingAllowed": false,
+          "financialExecutionAllowed": false,
+          "moneyMovementAllowed": false,
+          "automaticApprovalAllowed": false,
+          "ownerApprovalRequired": true,
+          "ownerSignatureRequired": true
+        }
+      ],
+      "qualityGate": {
+        "verifiedCount": 0,
+        "needsReviewCount": 0,
+        "rejectedCount": 1
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    }
+  ]
+}

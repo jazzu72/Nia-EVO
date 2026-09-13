@@ -1,0 +1,26 @@
+{
+  "system": "NIA GRANT APPLICATION PREPARATION",
+  "mode": "PREPARATION_ONLY",
+  "policy": {
+    "status": "DRAFT_READY_FOR_OWNER",
+    "submissionAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false,
+    "ownerSignatureRequired": true,
+    "ownerApprovalRequired": true
+  },
+  "source": "nia-grant-application-builder.js",
+  "generatedAt": "2026-09-11T13:51:14.879Z",
+  "draft": {
+    "sourceModulePresent": true,
+    "applicationPreparationEnabled": true,
+    "submissionEnabled": false,
+    "signingEnabled": false,
+    "financialExecutionEnabled": false
+  },
+  "ownerAction": "REVIEW_AND_SIGN_MANUALLY",
+  "sourceAudit": {
+    "builderLoaded": true
+  }
+}

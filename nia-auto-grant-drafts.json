@@ -1,0 +1,95 @@
+{
+  "system": "NIA GRANT AUTO-WRITER",
+  "mode": "FUNDING_FIRST",
+  "draftCount": 4,
+  "drafts": [
+    {
+      "draftId": "DRAFT-1789134674854-0",
+      "grant": "NSF SBIR",
+      "fitScore": 92,
+      "status": "DRAFT_GENERATED",
+      "application": {
+        "company": "House of Jazzu",
+        "platform": "NIA Capital OS",
+        "executiveSummary": "House of Jazzu is developing NIA Capital OS, an AI-powered business operating platform that helps organizations discover funding opportunities, automate workflows, and accelerate growth.",
+        "innovation": "An intelligent capital operating system combining AI automation, opportunity discovery, business intelligence, and execution workflows.",
+        "problem": "Small businesses and innovators struggle to identify, prepare, and manage funding opportunities efficiently.",
+        "solution": "NIA provides an AI-driven workflow for finding capital opportunities, preparing applications, and managing execution.",
+        "impact": "Reduce barriers to capital access and improve startup growth outcomes."
+      },
+      "reviewRequired": true,
+      "nextAction": [
+        "OWNER_REVIEW",
+        "ADD_GRANT_SPECIFIC_REQUIREMENTS",
+        "PREPARE_FINAL_SUBMISSION"
+      ],
+      "created": "2026-09-11T13:51:14.854Z"
+    },
+    {
+      "draftId": "DRAFT-1789134674854-1",
+      "grant": "Virginia Innovation Funding",
+      "fitScore": 88,
+      "status": "DRAFT_GENERATED",
+      "application": {
+        "company": "House of Jazzu",
+        "platform": "NIA Capital OS",
+        "executiveSummary": "House of Jazzu is developing NIA Capital OS, an AI-powered business operating platform that helps organizations discover funding opportunities, automate workflows, and accelerate growth.",
+        "innovation": "An intelligent capital operating system combining AI automation, opportunity discovery, business intelligence, and execution workflows.",
+        "problem": "Small businesses and innovators struggle to identify, prepare, and manage funding opportunities efficiently.",
+        "solution": "NIA provides an AI-driven workflow for finding capital opportunities, preparing applications, and managing execution.",
+        "impact": "Reduce barriers to capital access and improve startup growth outcomes."
+      },
+      "reviewRequired": true,
+      "nextAction": [
+        "OWNER_REVIEW",
+        "ADD_GRANT_SPECIFIC_REQUIREMENTS",
+        "PREPARE_FINAL_SUBMISSION"
+      ],
+      "created": "2026-09-11T13:51:14.854Z"
+    },
+    {
+      "draftId": "DRAFT-1789134674854-2",
+      "grant": "SBA SBIR",
+      "fitScore": 85,
+      "status": "DRAFT_GENERATED",
+      "application": {
+        "company": "House of Jazzu",
+        "platform": "NIA Capital OS",
+        "executiveSummary": "House of Jazzu is developing NIA Capital OS, an AI-powered business operating platform that helps organizations discover funding opportunities, automate workflows, and accelerate growth.",
+        "innovation": "An intelligent capital operating system combining AI automation, opportunity discovery, business intelligence, and execution workflows.",
+        "problem": "Small businesses and innovators struggle to identify, prepare, and manage funding opportunities efficiently.",
+        "solution": "NIA provides an AI-driven workflow for finding capital opportunities, preparing applications, and managing execution.",
+        "impact": "Reduce barriers to capital access and improve startup growth outcomes."
+      },
+      "reviewRequired": true,
+      "nextAction": [
+        "OWNER_REVIEW",
+        "ADD_GRANT_SPECIFIC_REQUIREMENTS",
+        "PREPARE_FINAL_SUBMISSION"
+      ],
+      "created": "2026-09-11T13:51:14.854Z"
+    },
+    {
+      "draftId": "DRAFT-1789134674854-3",
+      "grant": "Grants.gov",
+      "fitScore": 78,
+      "status": "DRAFT_GENERATED",
+      "application": {
+        "company": "House of Jazzu",
+        "platform": "NIA Capital OS",
+        "executiveSummary": "House of Jazzu is developing NIA Capital OS, an AI-powered business operating platform that helps organizations discover funding opportunities, automate workflows, and accelerate growth.",
+        "innovation": "An intelligent capital operating system combining AI automation, opportunity discovery, business intelligence, and execution workflows.",
+        "problem": "Small businesses and innovators struggle to identify, prepare, and manage funding opportunities efficiently.",
+        "solution": "NIA provides an AI-driven workflow for finding capital opportunities, preparing applications, and managing execution.",
+        "impact": "Reduce barriers to capital access and improve startup growth outcomes."
+      },
+      "reviewRequired": true,
+      "nextAction": [
+        "OWNER_REVIEW",
+        "ADD_GRANT_SPECIFIC_REQUIREMENTS",
+        "PREPARE_FINAL_SUBMISSION"
+      ],
+      "created": "2026-09-11T13:51:14.854Z"
+    }
+  ]
+}

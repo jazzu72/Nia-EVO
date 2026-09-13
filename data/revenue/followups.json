@@ -1,0 +1,19 @@
+[
+  {
+    "id": "FOLLOW-32367d6b-5903-47a2-b0f4-d31c8eb15ce9",
+    "prospectId": "PROS-1deb9557-2ecd-48c9-b50c-f1a2b9446809",
+    "prospect": "Unknown",
+    "prospectKey": "5e9608d2a7f16e46",
+    "company": "Hampton Roads Contractor",
+    "actionId": "ACTION-38791144-0415-415e-bcaa-b840fb3c05fc",
+    "executionId": "EXEC-824aa92b-372a-42d3-ab96-6692357f5e9b",
+    "channel": "email",
+    "action": "Follow up after initial value message",
+    "priority": "WARM",
+    "status": "PENDING",
+    "dueAt": null,
+    "attempts": 0,
+    "createdAt": "2026-08-15T00:55:35.642Z",
+    "completedAt": null
+  }
+]

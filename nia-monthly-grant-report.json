@@ -1,0 +1,14 @@
+{
+  "system": "NIA MONTHLY GRANT REPORT",
+  "period": "2026-09",
+  "summary": {
+    "tracked": 4,
+    "pendingResponses": 4,
+    "awardedFunds": 0
+  },
+  "nextActions": [
+    "REVIEW_PENDING_GRANTS",
+    "FOLLOW_UP_WITH_PROGRAMS",
+    "UPDATE_PIPELINE"
+  ]
+}

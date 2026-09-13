@@ -1,0 +1,79 @@
+{
+  "system": "NIA GRANT ACQUISITION WORKER",
+  "mode": "FUNDING_FIRST",
+  "activeTasks": 4,
+  "tasks": [
+    {
+      "taskId": "GRANT-TASK-1789134674851-0",
+      "source": "NSF SBIR",
+      "mission": "GRANTS",
+      "priority": 95,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "assigned": "NIA-CAPITAL-OS",
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "taskId": "GRANT-TASK-1789134674851-1",
+      "source": "SBA SBIR",
+      "mission": "GRANTS",
+      "priority": 92,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "assigned": "NIA-CAPITAL-OS",
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "taskId": "GRANT-TASK-1789134674851-2",
+      "source": "Grants.gov",
+      "mission": "GRANTS",
+      "priority": 90,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "assigned": "NIA-CAPITAL-OS",
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    },
+    {
+      "taskId": "GRANT-TASK-1789134674851-3",
+      "source": "Virginia Innovation Funding",
+      "mission": "GRANTS",
+      "priority": 88,
+      "status": "READY_FOR_EXECUTION",
+      "workflow": [
+        "VERIFY_OPEN_GRANT",
+        "CHECK_COMPANY_ELIGIBILITY",
+        "PREPARE_APPLICATION_DOCUMENTS",
+        "GENERATE_BUDGET",
+        "OWNER_APPROVAL",
+        "SUBMISSION_READY"
+      ],
+      "assigned": "NIA-CAPITAL-OS",
+      "approvalRequired": true,
+      "created": "2026-09-11T13:51:14.851Z"
+    }
+  ]
+}
