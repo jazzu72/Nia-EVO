@@ -11,18 +11,18 @@ function hasRealKey(k) {
 }
 
 const PROVIDERS = {
-  gemini: process.env.NIA_ENABLE_GEMINI === "true",
-  openrouter: process.env.NIA_ENABLE_OPENROUTER !== "false",
+  gemini: process.env.NIA_ENABLE_GEMINI === "true" || (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.length > 20),
+  openrouter: process.env.NIA_ENABLE_OPENROUTER !== "false" && !!process.env.OPENROUTER_API_KEY,
   huggingface: process.env.NIA_ENABLE_HUGGINGFACE === "true",
   openai: process.env.NIA_ENABLE_OPENAI === "true",
 };
 
 function enabledProviderOrder() {
   const order = [];
+  if (PROVIDERS.gemini) order.push("gemini");
   if (PROVIDERS.openrouter) order.push("openrouter");
   if (PROVIDERS.huggingface) order.push("huggingface");
   if (PROVIDERS.openai) order.push("openai");
-  if (PROVIDERS.gemini) order.push("gemini");
   order.push("template");
   return order;
 }
