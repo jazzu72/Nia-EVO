@@ -44,7 +44,7 @@ async function loadSecrets() {
     console.warn("⚠️  secrets file not found at", ENC_FILE, "— falling back to shell env");
     return;
   }
-  const password = process.env.NIA_MASTER_PASSWORD || await askPassword("🔑 Master password: ");
+  const password = process.env.NIA_MASTER_PASSWORD || (fs.existsSync(process.env.HOME + "/.nia-master") ? fs.readFileSync(process.env.HOME + "/.nia-master", "utf8").trim() : null) || await askPassword("🔑 Master password: ");
   if (!password) throw new Error("No master password");
 
   const payload = loadPayload(ENC_FILE);
