@@ -135,3 +135,56 @@ module.exports = {
   listLenses,
   buildReviewPrompt,
 };
+
+/*
+  buildVitruvianPrompt(prompt, options)
+  Assembles a full Vitruvian design brief for a specific screen / product.
+  options:
+    product      — product name (e.g. "Nia Capital OS")
+    screen       — surface name (e.g. "Opportunity detail")
+    platform     — form factor (e.g. "Mobile-first PWA")
+    knownData    — array of known facts the design must respect
+*/
+function buildVitruvianPrompt(prompt, options) {
+  options = options || {};
+  const known = Array.isArray(options.knownData) ? options.knownData : [];
+
+  const lensBlock = Object.entries(DESIGN_LENSES)
+    .map(([key, lens]) => {
+      return "[" + key.toUpperCase() + "] " + lens.name + " — " + lens.focus +
+        "\n" + lens.rules.map(function (r) { return "  - " + r; }).join("\n");
+    })
+    .join("\n\n");
+
+  return [
+    VITRUVIAN_SYSTEM_PROMPT,
+    "",
+    "PRODUCT CONTEXT",
+    "  Product:  " + (options.product || "(unspecified)"),
+    "  Screen:   " + (options.screen || "(unspecified)"),
+    "  Platform: " + (options.platform || "mobile-first"),
+    "",
+    "KNOWN DATA (respect these as constraints, do not invent)",
+    known.length
+      ? known.map(function (d) { return "  - " + d; }).join("\n")
+      : "  (none provided)",
+    "",
+    "DESIGN LENSES",
+    lensBlock,
+    "",
+    "REQUEST",
+    prompt,
+    "",
+    "OUTPUT FORMAT",
+    "1. Primary decision on this screen",
+    "2. Evidence layer (what the user must see)",
+    "3. Uncertainty layer (missing or unverified data)",
+    "4. Owner action (one sentence)",
+    "5. Brand cue (optional, brief)",
+    "",
+    "Rules: mobile-first. Preserve architecture. No execution paths.",
+    "No invented numbers. Cite what's missing.",
+  ].join("\n");
+}
+
+module.exports.buildVitruvianPrompt = buildVitruvianPrompt;
