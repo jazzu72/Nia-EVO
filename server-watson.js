@@ -719,6 +719,8 @@ app.use("/api/capital", require("./aios/routes/capital-api"));
 app.use("/api/autonomy", require("./aios/routes/autonomy-api"));
 app.use("/api/nia", requireOwnerAuth);
 app.use("/api/nia", require("./aios/routes/nia-chat"));
+app.use("/api/nia/design", requireOwnerAuth);
+app.use("/api/nia/design", require("./aios/routes/nia-design"));
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
