@@ -25,3 +25,5 @@ backups/
 .archive/
 secrets.enc
 secrets.enc
+config/envelopes.json
+runtime/envelope-audit.log
