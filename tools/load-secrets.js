@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const readline = require("readline");
 
 const ENC_FILE = process.env.SECRETS_PATH || "secrets.enc";
+const FORCE_OVERRIDE_KEYS = new Set(["GEMINI_API_KEY","GOOGLE_API_KEY","GOOGLE_AI_STUDIO_API_KEY","OPENAI_API_KEY","OPENROUTER_API_KEY","HF_TOKEN","HUGGINGFACE_TOKEN","RENDER_API_KEY","RESEND_API_KEY","GH_TOKEN","HF_AWS_ACCESS_KEY_ID","HF_AWS_SECRET_ACCESS_KEY","NIA_OWNER_AUTH_TOKEN"]);
 const SALT = Buffer.from("nia-capital-os-v1");
 
 function askPassword(prompt) {
@@ -60,7 +61,7 @@ async function loadSecrets() {
   let count = 0;
   for (const line of plaintext.split("\n")) {
     const m = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
-    if (m && !process.env[m[1]]) { process.env[m[1]] = m[2].replace(/^["']|["']$/g, ""); count++; }
+    if (m) { if (FORCE_OVERRIDE_KEYS.has(m[1]) || process.env[m[1]] === undefined) { process.env[m[1]] = m[2].replace(/^["\']|["\']$/g, ""); count++; } }
   }
   console.log("🔓 Secrets loaded from", ENC_FILE, "—", count, "keys");
 }
