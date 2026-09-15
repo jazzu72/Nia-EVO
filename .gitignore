@@ -23,3 +23,5 @@ revenue/acquisition/*.bak-*
 aios/rss/*.bak-*
 backups/
 .archive/
+secrets.enc
+secrets.enc
