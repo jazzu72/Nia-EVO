@@ -65,7 +65,7 @@ async function tryGemini(prompt) {
   const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } });
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, signal: AbortSignal.timeout(15000), body });
+    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, signal: AbortSignal.timeout(45000), body });
     if (r.ok) {
       const j = await r.json();
       const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -99,9 +99,9 @@ async function discoverOpenRouterModel(key) {
     const m = id.match(/(\d+(?:\.\d+)?)b/i);
     return m ? parseFloat(m[1]) : 999;
   };
-  const tiny = freeModels.filter(m => sizeOf(m.id) <= 15);
-  const small = freeModels.filter(m => sizeOf(m.id) > 15 && sizeOf(m.id) <= 70);
-  cachedOpenRouterModel = (tiny[0] || small[0] || freeModels[0]).id;
+  const usable = freeModels.filter(m => sizeOf(m.id) >= 7 && sizeOf(m.id) <= 70);
+  const anyUsable = usable.length ? usable : freeModels.filter(m => sizeOf(m.id) >= 7);
+  cachedOpenRouterModel = (anyUsable[0] || freeModels[0]).id;
   console.log("[llm] OpenRouter model selected:", cachedOpenRouterModel, "(size " + sizeOf(cachedOpenRouterModel) + "B)");
   return cachedOpenRouterModel;
 }
