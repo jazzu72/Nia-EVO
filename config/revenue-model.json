@@ -1,0 +1,40 @@
+{
+  "target": {
+    "amount": 1000000,
+    "currency": "USD",
+    "deadline": "2027-09-15",
+    "hard_floor": 250000
+  },
+  "paths": [
+    {
+      "lane": "strategic_financing",
+      "weight": 0.35,
+      "velocity_days": 90
+    },
+    {
+      "lane": "enterprise_sales",
+      "weight": 0.3,
+      "velocity_days": 120
+    },
+    {
+      "lane": "customer_revenue",
+      "weight": 0.25,
+      "velocity_days": 45
+    },
+    {
+      "lane": "grants",
+      "weight": 0.1,
+      "velocity_days": 240
+    }
+  ],
+  "constraints": {
+    "min_confidence": 0.6,
+    "max_per_opportunity_hours": 40,
+    "owner_review_required": true
+  },
+  "feedback": {
+    "track_submissions": true,
+    "track_wins_losses": true,
+    "retrain_weekly": true
+  }
+}
