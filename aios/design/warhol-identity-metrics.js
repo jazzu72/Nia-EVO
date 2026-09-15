@@ -4,6 +4,8 @@
   Evaluates supplied artifacts only. No scraping, no publishing, no external changes.
 */
 
+const NL = String.fromCharCode(10);
+
 const METRIC_DEFINITIONS = {
   recognizability: {
     label: "Recognizability",
