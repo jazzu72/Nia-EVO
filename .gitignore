@@ -21,3 +21,5 @@ aios/rss/data/
 # Local runtime backups
 revenue/acquisition/*.bak-*
 aios/rss/*.bak-*
+backups/
+.archive/
