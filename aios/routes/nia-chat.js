@@ -3,69 +3,91 @@ const path = require("path");
 const router = express.Router();
 const llm = require("../../tools/llm");
 const gate = require("../../tools/autonomy-gate");
+const warhol = require("../design/warhol-identity-metrics");
 
 let engine = null;
-let design = null;
 try { engine = require(path.join(__dirname, "..", "capital", "parallel-capital-engine")); } catch (e) {}
-try { design = require(path.join(__dirname, "..", "design", "vitruvian-ui-ux")); } catch (e) {}
 
 const NL = String.fromCharCode(10);
-const BASE_SYSTEM = "You are NIA, the autonomous capital intelligence for House of Jazzu. Be direct and concise. Only cite data given. Never claim capabilities you don't have. Financial execution is permanently blocked; owner signature is required for submission.";
+const MAX_LEN = 2000;
 
-const DESIGN_TRIGGERS = /design|ui|ux|interface|screen|layout|mockup|wireframe|dashboard|visual|component|css/i;
+const SYSTEM = "You are NIA, the governed capital-intelligence assistant for House of Jazzu. Be direct and concise. Use only LIVE CONTEXT for numbers. Never invent facts. Financial execution is permanently blocked. Owner signature is required for submission. If WARHOL IDENTITY METRICS are supplied, use them to critique the pitch: cite strengths and gaps, propose specific improvements. Do not claim audience or conversion data.";
 
-router.post("/chat", async (req, res) => {
-  const message = (req.body || {}).message || "";
-  if (!message) return res.status(400).json({ ok: false, error: "message required" });
-
-  // Capital context
-  let capital = null;
+async function buildContext() {
+  const ctx = { capital: null, autonomy: "unknown" };
   try {
     if (engine) {
       const sources = await engine.getLiveCapitalSources();
       const result = await engine.discover(sources);
-      capital = {
+      ctx.capital = {
         opportunities: result.summary.total_opportunities,
         total: result.summary.total_amount,
-        by_lane: result.summary.by_lane,
+        byLane: result.summary.by_lane,
+        top: (result.opportunities || []).slice(0, 5).map(function (o) {
+          return { id: o.id, name: o.organization || o.title, lane: o.lane, amount: o.amount, confidence: Math.round((o.probability || 0) * 100) };
+        }),
       };
     }
   } catch (e) {}
+  try { ctx.autonomy = gate.loadConfig().mode; } catch (e) {}
+  return ctx;
+}
 
-  let autonomy = "unknown";
-  try { autonomy = gate.loadConfig().mode; } catch (e) {}
+function ctxBlock(ctx) {
+  if (!ctx.capital) return "Live capital: unavailable. Autonomy: " + ctx.autonomy;
+  const lines = [
+    "Live capital: " + ctx.capital.opportunities + " opportunities, $" + ctx.capital.total.toLocaleString(),
+    "By lane: " + JSON.stringify(ctx.capital.byLane),
+  ];
+  if (ctx.capital.top.length) {
+    lines.push("Top opportunities:");
+    ctx.capital.top.forEach(function (o) {
+      lines.push("- " + o.id + " | " + o.name + " | " + o.lane + " | $" + o.amount + " | " + o.confidence + "%");
+    });
+  }
+  lines.push("Autonomy: " + ctx.autonomy + ". Financial execution: BLOCKED. Owner signature: REQUIRED.");
+  return lines.join(NL);
+}
 
-  // Build context block
-  const context = capital
-    ? "Live capital: " + capital.opportunities + " opportunities, $" + capital.total.toLocaleString() + ", by lane: " + JSON.stringify(capital.by_lane) + ". Autonomy mode: " + autonomy + ". Financial execution: BLOCKED (T4 permanent lock). Owner signature: REQUIRED."
-    : "Live capital: unavailable. Autonomy mode: " + autonomy + ".";
+router.post("/chat", async function (req, res) {
+  const message = String((req.body || {}).message || "").trim();
+  if (!message) return res.status(400).json({ ok: false, error: "message_required" });
+  if (message.length > MAX_LEN) return res.status(413).json({ ok: false, error: "message_too_long", maxLength: MAX_LEN });
 
-  // Design lens trigger
-  const isDesign = DESIGN_TRIGGERS.test(message) && design;
-  const systemPrompt = isDesign
-    ? design.VITRUVIAN_SYSTEM_PROMPT + NL + NL + "CONTEXT: " + context
-    : BASE_SYSTEM;
+  const ctx = await buildContext();
 
-  const prompt = systemPrompt + NL + NL + "Owner: " + message;
+  const identityArtifact = (req.body || {}).identityArtifact && typeof req.body.identityArtifact === "object" ? req.body.identityArtifact : null;
+  const identityMetrics = identityArtifact ? warhol.evaluateIdentityArtifact(identityArtifact) : null;
+  const identityBlock = identityMetrics ? NL + NL + "WARHOL IDENTITY METRICS (owner-supplied):" + NL + warhol.summarizeForPrompt(identityMetrics) : "";
+
+  const prompt = [SYSTEM, "", ctxBlock(ctx), identityBlock, "", "OWNER MESSAGE:", message].join(NL);
 
   const result = await llm.generate(prompt, function () {
-    return "You asked: " + message.slice(0, 100) + ". " +
-      "Live pipeline: " + (capital ? capital.opportunities : 0) + " opportunities, $" + ((capital ? capital.total : 0)).toLocaleString() + ". " +
-      "(LLM unavailable; template response.)";
+    const total = ctx.capital ? ctx.capital.total : 0;
+    const opps = ctx.capital ? ctx.capital.opportunities : 0;
+    return "Request: " + message.slice(0, 150) + ". Pipeline: " + opps + " opps, $" + total.toLocaleString() + ". " + (identityMetrics ? "Warhol score: " + identityMetrics.overall + "/100. " : "") + "(LLM unavailable; template response.)";
   });
+
+  console.log(JSON.stringify({ component: "nia-chat", event: "chat_completed", generator: result.generator || "template", identityUsed: Boolean(identityMetrics) }));
 
   res.json({
     ok: true,
     reply: result.text,
-    generator: result.generator,
-    mode: isDesign ? "design" : "capital",
-    context: capital,
+    generator: result.generator || "template",
+    provider: result.provider || null,
+    model: result.model || null,
+    fallback: Boolean(result.fallback),
+    errorCategory: result.errorCategory || null,
+    context: ctx.capital ? { opportunities: ctx.capital.opportunities, total: ctx.capital.total } : null,
+    identityMetrics: identityMetrics ? {
+      framework: identityMetrics.framework,
+      overall: identityMetrics.overall,
+      scores: identityMetrics.scores,
+      strengths: identityMetrics.strengths,
+      gaps: identityMetrics.gaps,
+    } : null,
     timestamp: new Date().toISOString(),
   });
-});
-
-router.get("/chat/health", function (req, res) {
-  res.json({ ok: true, service: "nia-chat", mode: "capital+design" });
 });
 
 module.exports = router;
