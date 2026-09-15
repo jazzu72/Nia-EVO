@@ -183,6 +183,7 @@ function summarizeForChat(metrics) {
 }
 
 module.exports = {
+  summarizeForPrompt: summarizeForChat,
   METRIC_DEFINITIONS: METRIC_DEFINITIONS,
   evaluateIdentityArtifact: evaluateIdentityArtifact,
   summarizeForChat: summarizeForChat,
