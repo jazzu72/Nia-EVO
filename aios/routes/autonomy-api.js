@@ -3,6 +3,7 @@ const path = require("path");
 const router = express.Router();
 
 const gate = require("../../tools/autonomy-gate");
+const refusals = require("../design/refusal-letters");
 const llm = require("../../tools/llm");
 
 const CAPITAL_ENGINE = path.join(__dirname, "..", "capital", "parallel-capital-engine");
@@ -42,6 +43,9 @@ router.post("/check", (req, res) => {
   if (!action) return res.status(400).json({ ok: false, error: "action required" });
   const decision = gate.isAllowed(action);
   gate.auditLog(action, decision, req.get("x-actor") || "api");
+  if (!decision.allowed && refusals.isBlockedAction(action)) {
+    decision.letter = refusals.letter(action, req.body && req.body.amount, decision.reason);
+  }
   res.json({ ok: true, action, ...decision });
 });
 
