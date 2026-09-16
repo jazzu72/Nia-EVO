@@ -9,6 +9,7 @@ const path = require("path");
 const llm = require("../../tools/llm");
 const envelopes = require("./t2-envelopes");
 const gate = require("../../tools/autonomy-gate");
+const learning = require("./learning");
 
 const QUEUE_DIR = "runtime/auto-drafts";
 const QUEUE_FILE = path.join(QUEUE_DIR, "queue.json");
@@ -100,7 +101,12 @@ async function runAutoDraft(options) {
     if (lanes.length && lanes.indexOf(o.lane) === -1) return false;
     return true;
   }).sort(function (a, b) {
-    return (b.amount || 0) * (b.probability || 0) - (a.amount || 0) * (a.probability || 0);
+    const weights = learning.loadWeights().weights || {};
+    const scoreOf = function (o) {
+      const w = weights[o.lane] || 0.10;
+      return (Number(o.amount) || 0) * (Number(o.probability) || 0) * w;
+    };
+    return scoreOf(b) - scoreOf(a);
   });
 
   // Check envelope allows auto-drafting

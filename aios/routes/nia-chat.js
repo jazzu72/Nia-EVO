@@ -5,6 +5,7 @@ const llm = require("../../tools/llm");
 const gate = require("../../tools/autonomy-gate");
 const warhol = require("../design/warhol-identity-metrics");
 const memory = require("../design/nia-memory");
+const learning = require("../design/learning");
 const relationships = require("../design/relationships");
 
 let engine = null;
@@ -69,6 +70,7 @@ router.post("/chat", async function (req, res) {
 
   const ctx = await buildContext();
   const memoryBlock = memory.buildMemoryBlock(90);
+  const learningBlock = learning.buildLearningBlock();
   const relationshipsBlock = ctx.capital ? relationships.buildRelationshipBlock([]) : "";
 
   const identityArtifact = (req.body || {}).identityArtifact && typeof req.body.identityArtifact === "object" ? req.body.identityArtifact : null;
@@ -114,6 +116,7 @@ router.get("/status", async function (req, res) {
   const fs = require("fs");
   const path = require("path");
   const memory = require("../design/nia-memory");
+const learning = require("../design/learning");
 
   const status = {
     ok: true,

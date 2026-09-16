@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const router = express.Router();
+const learning = require("../design/learning");
 
 const OUTCOMES_FILE = "runtime/memory/outcomes.jsonl";
 
@@ -54,11 +55,17 @@ router.post("/:draftId", (req, res) => {
     reason: String(body.reason || "").slice(0, 500),
   };
   appendOutcome(outcome);
-  res.json({ ok: true, outcome: outcome, stats: stats() });
+  const learned = learning.computeWeights();
+  res.json({ ok: true, outcome: outcome, stats: stats(), learning: { status: learned.status, samples: learned.samples, best_lane: learned.best_lane } });
 });
 
 router.get("/stats", (req, res) => {
   res.json({ ok: true, stats: stats() });
+});
+
+router.get("/weights", function (req, res) {
+  const w = learning.computeWeights();
+  res.json({ ok: true, learning: w });
 });
 
 module.exports = router;
