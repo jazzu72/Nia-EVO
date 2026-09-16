@@ -1,7 +1,8 @@
-// NIA LLM layer — feature-flagged provider chain with structured errors
-// Provider order: openrouter → huggingface → openai → gemini → template
-// Enable providers via env vars: NIA_ENABLE_GEMINI, NIA_ENABLE_HUGGINGFACE, NIA_ENABLE_OPENAI
-// OpenRouter is enabled by default unless NIA_ENABLE_OPENROUTER=false
+/*
+  NIA LLM — parallel provider race
+  Fires all enabled providers simultaneously, returns first successful response.
+  Falls back to template only if ALL providers fail.
+*/
 
 let cachedGeminiModel = null;
 let cachedOpenRouterModel = null;
@@ -17,31 +18,20 @@ const PROVIDERS = {
   openai: process.env.NIA_ENABLE_OPENAI === "true",
 };
 
-function enabledProviderOrder() {
-  const order = [];
-  if (PROVIDERS.gemini) order.push("gemini");
-  if (PROVIDERS.openrouter) order.push("openrouter");
-  if (PROVIDERS.huggingface) order.push("huggingface");
-  if (PROVIDERS.openai) order.push("openai");
-  order.push("template");
-  return order;
-}
-
-function errorCategory(message = "") {
-  const value = String(message).toLowerCase();
-  if (value.includes("not configured")) return "credential_missing";
-  if (value.includes("401") || value.includes("403")) return "unauthorized";
-  if (value.includes("404")) return "model_not_found";
-  if (value.includes("429")) return "rate_limited";
-  if (value.includes("503")) return "upstream_unavailable";
-  if (value.includes("timeout") || value.includes("aborted")) return "timeout";
+function errorCategory(message) {
+  const v = String(message || "").toLowerCase();
+  if (v.includes("not configured")) return "credential_missing";
+  if (v.includes("401") || v.includes("403")) return "unauthorized";
+  if (v.includes("404")) return "model_not_found";
+  if (v.includes("429")) return "rate_limited";
+  if (v.includes("503")) return "upstream_unavailable";
+  if (v.includes("timeout") || v.includes("aborted")) return "timeout";
   return "provider_error";
 }
 
-// ─── GEMINI ─────────────────────────────────────────────────
 async function discoverGeminiModel(key) {
   if (cachedGeminiModel) return cachedGeminiModel;
-  const r = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + key, { signal: AbortSignal.timeout(8000) });
+  const r = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + key, { signal: AbortSignal.timeout(6000) });
   if (!r.ok) throw new Error("Gemini list " + r.status);
   const j = await r.json();
   const models = (j.models || []).filter(m => m.supportedGenerationMethods?.includes("generateContent"));
@@ -51,64 +41,48 @@ async function discoverGeminiModel(key) {
     models.find(m => /flash-latest/.test(m.name)) ||
     models.find(m => /gemini.*flash/i.test(m.name) && !/2\.5-flash/.test(m.name) && !/preview/.test(m.name) && !/tts/.test(m.name) && !/image/.test(m.name)) ||
     models[0];
-  if (!pick) throw new Error("Gemini: no generateContent model available");
+  if (!pick) throw new Error("Gemini: no model");
   cachedGeminiModel = pick.name.replace(/^models\//, "");
-  console.log("[llm] Gemini model selected:", cachedGeminiModel);
   return cachedGeminiModel;
 }
 
 async function tryGemini(prompt) {
-  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_STUDIO_API_KEY || process.env.GOOGLE_API_KEY;
+  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!hasRealKey(key)) throw new Error("Gemini key not configured");
   const model = await discoverGeminiModel(key);
   const url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + key;
-  const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } });
-
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, signal: AbortSignal.timeout(45000), body });
-    if (r.ok) {
-      const j = await r.json();
-      const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (text) return text.trim();
-    }
-    const errText = await r.text();
-    if (r.status === 503 && attempt < 3) {
-      const wait = attempt * 2000;
-      console.log("[llm] Gemini 503, retrying in " + wait + "ms (attempt " + attempt + "/3)");
-      await new Promise(rs => setTimeout(rs, wait));
-      continue;
-    }
-    throw new Error("Gemini " + r.status + " (attempt " + attempt + "): " + errText.slice(0, 150));
-  }
-  throw new Error("Gemini: all retries failed");
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    signal: AbortSignal.timeout(12000),
+    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } }),
+  });
+  if (!r.ok) throw new Error("Gemini " + r.status + ": " + (await r.text()).slice(0, 100));
+  const j = await r.json();
+  const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error("Gemini no text");
+  return { text: text.trim(), provider: "gemini", model: model };
 }
 
-// ─── OPENROUTER ─────────────────────────────────────────────
 async function discoverOpenRouterModel(key) {
   if (cachedOpenRouterModel) return cachedOpenRouterModel;
-  const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(8000) });
+  const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(6000) });
   if (!r.ok) throw new Error("OpenRouter list " + r.status);
   const j = await r.json();
-  const freeModels = (j.data || []).filter(m => {
+  const free = (j.data || []).filter(m => {
     const p = m.pricing || {};
     return parseFloat(p.prompt || "1") === 0 && parseFloat(p.completion || "1") === 0;
   });
-  if (!freeModels.length) throw new Error("OpenRouter: no free models");
-
-  const sizeOf = (id) => {
-    const m = id.match(/(\d+(?:\.\d+)?)b/i);
-    return m ? parseFloat(m[1]) : 999;
-  };
-  const usable = freeModels.filter(m => sizeOf(m.id) >= 7 && sizeOf(m.id) <= 70);
-  const anyUsable = usable.length ? usable : freeModels.filter(m => sizeOf(m.id) >= 7);
-  cachedOpenRouterModel = (anyUsable[0] || freeModels[0]).id;
-  console.log("[llm] OpenRouter model selected:", cachedOpenRouterModel, "(size " + sizeOf(cachedOpenRouterModel) + "B)");
+  const size = (id) => { const m = id.match(/(\d+(?:\.\d+)?)b/i); return m ? parseFloat(m[1]) : 999; };
+  const usable = free.filter(m => size(m.id) >= 7 && size(m.id) <= 70);
+  cachedOpenRouterModel = (usable[0] || free[0] || {}).id;
+  if (!cachedOpenRouterModel) throw new Error("OpenRouter: no free models");
   return cachedOpenRouterModel;
 }
 
 async function tryOpenRouter(prompt) {
   const key = process.env.OPENROUTER_API_KEY;
-  if (!hasRealKey(key)) throw new Error("OPENROUTER_API_KEY not configured");
+  if (!hasRealKey(key)) throw new Error("OpenRouter key not configured");
   const model = await discoverOpenRouterModel(key);
   const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
@@ -118,38 +92,32 @@ async function tryOpenRouter(prompt) {
       "http-referer": "https://nia-capital-os.onrender.com",
       "x-title": "NIA Capital OS",
     },
-    signal: AbortSignal.timeout(25000),
+    signal: AbortSignal.timeout(12000),
     body: JSON.stringify({ model, messages: [{ role: "user", content: prompt }], max_tokens: 500, temperature: 0.3 }),
   });
-  if (!r.ok) {
-    const err = await r.text();
-    cachedOpenRouterModel = null;
-    throw new Error("OpenRouter[" + model + "] " + r.status + ": " + err.slice(0, 150));
-  }
+  if (!r.ok) throw new Error("OpenRouter " + r.status + ": " + (await r.text()).slice(0, 100));
   const j = await r.json();
   const text = j.choices?.[0]?.message?.content;
-  if (!text) throw new Error("OpenRouter returned no text");
-  return "[" + model + "]\n" + text.trim();
+  if (!text) throw new Error("OpenRouter no text");
+  return { text: text.trim(), provider: "openrouter", model };
 }
 
-// ─── HUGGINGFACE ────────────────────────────────────────────
 async function tryHuggingFace(prompt) {
-  const key = process.env.HF_TOKEN || process.env.HUGGINGFACE_TOKEN;
+  const key = process.env.HF_TOKEN;
   if (!hasRealKey(key)) throw new Error("HF_TOKEN not configured");
   const r = await fetch("https://router.huggingface.co/v1/chat/completions", {
     method: "POST",
     headers: { "content-type": "application/json", "authorization": "Bearer " + key },
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(12000),
     body: JSON.stringify({ model: "Qwen/Qwen2.5-72B-Instruct", messages: [{ role: "user", content: prompt }], max_tokens: 500, temperature: 0.3 }),
   });
-  if (!r.ok) throw new Error("HF " + r.status + ": " + (await r.text()).slice(0, 150));
+  if (!r.ok) throw new Error("HF " + r.status);
   const j = await r.json();
   const text = j.choices?.[0]?.message?.content;
-  if (!text) throw new Error("HF returned no text");
-  return text.trim();
+  if (!text) throw new Error("HF no text");
+  return { text: text.trim(), provider: "huggingface", model: "Qwen2.5-72B" };
 }
 
-// ─── OPENAI ─────────────────────────────────────────────────
 async function tryOpenAI(prompt) {
   const key = process.env.OPENAI_API_KEY;
   if (!hasRealKey(key)) throw new Error("OpenAI key not configured");
@@ -161,50 +129,34 @@ async function tryOpenAI(prompt) {
     max_tokens: 500,
     temperature: 0.3,
   });
-  return r.choices[0].message.content.trim();
+  return { text: r.choices[0].message.content.trim(), provider: "openai", model: "gpt-4o-mini" };
 }
 
-// ─── ORCHESTRATOR ───────────────────────────────────────────
+function withTimeout(promise, ms, label) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(label + " timeout")), ms)),
+  ]);
+}
+
 async function generate(prompt, fallbackFn) {
   const errors = [];
+  const attempts = [];
 
-  for (const provider of enabledProviderOrder()) {
-    try {
-      if (provider === "openrouter") {
-        const text = await tryOpenRouter(prompt);
-        return { text, generator: "openrouter", provider: "openrouter", model: cachedOpenRouterModel || null, fallback: false, errorCategory: null, errors };
-      }
-      if (provider === "huggingface") {
-        const text = await tryHuggingFace(prompt);
-        return { text, generator: "huggingface", provider: "huggingface", model: "Qwen/Qwen2.5-72B-Instruct", fallback: false, errorCategory: null, errors };
-      }
-      if (provider === "openai") {
-        const text = await tryOpenAI(prompt);
-        return { text, generator: "openai", provider: "openai", model: "gpt-4o-mini", fallback: false, errorCategory: null, errors };
-      }
-      if (provider === "gemini") {
-        const text = await tryGemini(prompt);
-        return { text, generator: "gemini", provider: "gemini", model: cachedGeminiModel || null, fallback: false, errorCategory: null, errors };
-      }
-      return {
-        text: fallbackFn(),
-        generator: "template",
-        provider: null,
-        model: null,
-        fallback: true,
-        errorCategory: errors.length ? errorCategory(errors[0]) : "template_selected",
-        errors,
-      };
-    } catch (error) {
-      const message = provider + ": " + (error?.message || "unknown error");
-      errors.push(message);
-      console.log(JSON.stringify({
-        component: "nia-llm",
-        event: "provider_failed",
-        provider,
-        errorCategory: errorCategory(error?.message),
-      }));
-    }
+  if (PROVIDERS.gemini) attempts.push(withTimeout(tryGemini(prompt), 12000, "gemini").catch(e => { errors.push("gemini: " + e.message); return null; }));
+  if (PROVIDERS.openrouter) attempts.push(withTimeout(tryOpenRouter(prompt), 12000, "openrouter").catch(e => { errors.push("openrouter: " + e.message); return null; }));
+  if (PROVIDERS.huggingface) attempts.push(withTimeout(tryHuggingFace(prompt), 12000, "huggingface").catch(e => { errors.push("huggingface: " + e.message); return null; }));
+  if (PROVIDERS.openai) attempts.push(withTimeout(tryOpenAI(prompt), 12000, "openai").catch(e => { errors.push("openai: " + e.message); return null; }));
+
+  if (!attempts.length) {
+    return { text: fallbackFn(), generator: "template", provider: null, model: null, fallback: true, errorCategory: "no_providers", errors };
+  }
+
+  const settled = await Promise.all(attempts);
+  const winner = settled.find(r => r && r.text);
+
+  if (winner) {
+    return { text: winner.text, generator: winner.provider, provider: winner.provider, model: winner.model, fallback: false, errorCategory: null, errors };
   }
 
   return { text: fallbackFn(), generator: "template", provider: null, model: null, fallback: true, errorCategory: "all_providers_unavailable", errors };

@@ -9,11 +9,22 @@ let engine = null;
 try { engine = require(path.join(__dirname, "..", "capital", "parallel-capital-engine")); } catch (e) {}
 
 const NL = String.fromCharCode(10);
+let __ctxCache = null;
+let __ctxCacheAt = 0;
+const CTX_TTL = 60000;
 const MAX_LEN = 2000;
 
 const SYSTEM = "You are NIA, the governed capital-intelligence assistant for House of Jazzu. Be direct and concise. Use only LIVE CONTEXT for numbers. Never invent facts. Financial execution is permanently blocked. Owner signature is required for submission. If WARHOL IDENTITY METRICS are supplied, use them to critique the pitch: cite strengths and gaps, propose specific improvements. Do not claim audience or conversion data.";
 
 async function buildContext() {
+  if (__ctxCache && (Date.now() - __ctxCacheAt) < CTX_TTL) return __ctxCache;
+  const result = await _buildContextInner();
+  __ctxCache = result;
+  __ctxCacheAt = Date.now();
+  return result;
+}
+
+async function _buildContextInner() {
   const ctx = { capital: null, autonomy: "unknown" };
   try {
     if (engine) {
