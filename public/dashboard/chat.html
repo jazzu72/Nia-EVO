@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d10">
+<title>NIA · Chat</title>
+<link rel="icon" type="image/svg+xml" href="/dashboard/vitruvian.svg">
+<link rel="stylesheet" href="/dashboard/chat.css">
+</head>
+<body>
+<div class="chat-shell">
+  <header class="chat-head">
+    <a href="/dashboard/dashboard.html" class="back">←</a>
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <div>
+        <div class="brand-name">NIA</div>
+        <div class="brand-sub" id="status">connecting…</div>
+      </div>
+    </div>
+    <button class="clear-btn" id="clear">Clear</button>
+  </header>
+
+  <main class="chat-body" id="messages">
+    <div class="welcome">
+      <div class="welcome-eyebrow">HOUSE OF JAZZU INTELLIGENCE</div>
+      <h1>Talk to Nia</h1>
+      <p>Capital intelligence · Design review · Brand scoring · Drafting</p>
+      <div class="suggestions">
+        <button class="suggestion" data-msg="What are my top opportunities right now?">Top opportunities</button>
+        <button class="suggestion" data-msg="Am I on track for my revenue target?">Revenue target status</button>
+        <button class="suggestion" data-msg="Review the opportunity detail screen using the Vitruvian lenses">Design review</button>
+        <button class="suggestion" data-msg="How much capital is in my pipeline?">Pipeline summary</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="chat-input-bar">
+    <textarea id="input" rows="1" placeholder="Ask Nia anything…" autocomplete="off"></textarea>
+    <button id="send" aria-label="Send">→</button>
+  </footer>
+</div>
+<script src="/dashboard/chat.js"></script>
+</body>
+</html>
