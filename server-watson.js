@@ -718,6 +718,9 @@ app.use("/api/owner/outcome", require("./aios/routes/outcome-api"));
 
 app.use("/api/owner/brief", require("./aios/routes/brief-api"));
 
+app.use("/api/owner/auto-draft", requireOwnerAuth);
+app.use("/api/owner/auto-draft", require("./aios/routes/auto-draft-api"));
+
 // 404 HANDLER
 // ============================================================
 
@@ -756,6 +759,8 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`\n🚀 Nia Capital OS ONLINE`);
+
+try { require("./aios/design/scheduler").start(); } catch (e) { console.warn("[scheduler] failed:", e.message); }
   console.log(`📍 Listening on port ${PORT}`);
   console.log(`🌍 http://0.0.0.0:${PORT}`);
   console.log(`⏰ Started at ${new Date().toISOString()}\n`);
