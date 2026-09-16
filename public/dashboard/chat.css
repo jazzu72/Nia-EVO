@@ -240,3 +240,60 @@ body { font-family: var(--sans); color: var(--ink); font-size: 15px; line-height
   .suggestions { grid-template-columns: 1fr; }
   .welcome h1 { font-size: 24px; }
 }
+
+
+/* Token prompt */
+.token-prompt {
+  align-self: stretch;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--gold-dim);
+  border-left: 3px solid var(--gold);
+  border-radius: 2px;
+}
+.token-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.token-hint {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.token-hint code {
+  font-family: var(--mono);
+  background: var(--surface-2);
+  padding: 1px 6px;
+  font-size: 11px;
+  color: var(--cream);
+}
+#token-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  outline: none;
+}
+#token-input:focus { border-color: var(--gold); }
+#token-save {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+#token-save:hover { background: var(--cream); }

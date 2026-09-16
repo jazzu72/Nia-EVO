@@ -1,4 +1,4 @@
-/* NIA CHAT — frontend */
+/* NIA CHAT — frontend with inline token input */
 (function () {
   const TOKEN_KEY = "nia-owner-token";
   const messagesEl = document.getElementById("messages");
@@ -7,14 +7,45 @@
   const statusEl = document.getElementById("status");
   const clearEl = document.getElementById("clear");
 
-  // Try to get token: prompt once, save to sessionStorage
-  function getToken() {
-    let t = sessionStorage.getItem(TOKEN_KEY);
-    if (!t) {
-      t = prompt("Enter your owner token (NIA_OWNER_...):");
-      if (t) sessionStorage.setItem(TOKEN_KEY, t.trim());
-    }
-    return t ? t.trim() : null;
+  // Use localStorage (persists between sessions) instead of sessionStorage
+  function getToken() { return localStorage.getItem(TOKEN_KEY); }
+  function setToken(t) { localStorage.setItem(TOKEN_KEY, t.trim()); }
+  function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+  // Show a token prompt inside the messages area if no token
+  function showTokenPrompt() {
+    const existing = document.querySelector(".token-prompt");
+    if (existing) return;
+
+    const wrap = document.createElement("div");
+    wrap.className = "token-prompt";
+    wrap.innerHTML = `
+      <div class="token-label">Owner token required</div>
+      <div class="token-hint">Paste your NIA_OWNER_... token (from <code>cat ~/.nia-owner-token</code>)</div>
+      <input type="password" id="token-input" placeholder="NIA_OWNER_..." autocomplete="off">
+      <button id="token-save">Save</button>
+    `;
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    document.getElementById("token-save").addEventListener("click", function () {
+      const v = document.getElementById("token-input").value.trim();
+      if (v && v.startsWith("NIA_OWNER_")) {
+        setToken(v);
+        wrap.remove();
+        addMsg("Token saved. You can chat now.", "nia", "SYSTEM");
+        inputEl.focus();
+      } else {
+        alert("Invalid format. Should start with NIA_OWNER_");
+      }
+    });
+
+    document.getElementById("token-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("token-save").click();
+      }
+    });
   }
 
   async function healthCheck() {
@@ -56,7 +87,7 @@
   async function send(message) {
     const token = getToken();
     if (!token) {
-      addMsg("Owner token required. Refresh and enter it when prompted.", "error");
+      showTokenPrompt();
       return;
     }
 
@@ -81,7 +112,13 @@
       thinking.remove();
 
       if (!data.ok) {
-        addMsg("Error: " + (data.error || "unknown"), "nia error");
+        if (data.error === "OWNER_AUTH_REQUIRED" || data.error === "OWNER_AUTH_NOT_CONFIGURED") {
+          clearToken();
+          addMsg("Your token was rejected. Please paste it again below.", "nia error");
+          showTokenPrompt();
+        } else {
+          addMsg("Error: " + (data.error || "unknown"), "nia error");
+        }
       } else {
         const meta = (data.generator || "template").toUpperCase();
         addMsg(data.reply || "(empty reply)", "nia", meta);
@@ -95,13 +132,11 @@
     }
   }
 
-  // Auto-grow textarea
   inputEl.addEventListener("input", function () {
     inputEl.style.height = "auto";
     inputEl.style.height = Math.min(140, inputEl.scrollHeight) + "px";
   });
 
-  // Enter to send (Shift+Enter for newline)
   inputEl.addEventListener("keydown", function (e) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -122,11 +157,14 @@
   });
 
   clearEl.addEventListener("click", function () {
-    messagesEl.innerHTML = "";
+    clearToken();
     location.reload();
   });
 
   // Init
+  if (!getToken()) {
+    showTokenPrompt();
+  }
   healthCheck();
   setInterval(healthCheck, 30000);
   inputEl.focus();
