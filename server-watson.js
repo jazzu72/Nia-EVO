@@ -714,6 +714,8 @@ app.use("/api/owner/envelope", require("./aios/routes/envelope-api"));
 
 app.use("/api/capital/plan", require("./aios/routes/plan-api"));
 
+app.use("/api/owner/outcome", require("./aios/routes/outcome-api"));
+
 // 404 HANDLER
 // ============================================================
 
