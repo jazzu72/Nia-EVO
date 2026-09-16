@@ -1,0 +1,18 @@
+{
+  "schema": "NIA_RELATIONSHIP_GRAPH_V1",
+  "updated": "2026-09-16",
+  "people": [],
+  "organizations": [
+    {
+      "name": "NSF",
+      "type": "funder",
+      "notes": "Applied 3x, won 1x. Program officer rotated 2026-06."
+    },
+    {
+      "name": "Virginia Innovation Partnership",
+      "type": "funder",
+      "notes": "Local, faster review cycles."
+    }
+  ],
+  "relationships": []
+}

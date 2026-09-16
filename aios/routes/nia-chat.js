@@ -4,6 +4,8 @@ const router = express.Router();
 const llm = require("../../tools/llm");
 const gate = require("../../tools/autonomy-gate");
 const warhol = require("../design/warhol-identity-metrics");
+const memory = require("../design/nia-memory");
+const relationships = require("../design/relationships");
 
 let engine = null;
 try { engine = require(path.join(__dirname, "..", "capital", "parallel-capital-engine")); } catch (e) {}
@@ -66,12 +68,14 @@ router.post("/chat", async function (req, res) {
   if (message.length > MAX_LEN) return res.status(413).json({ ok: false, error: "message_too_long", maxLength: MAX_LEN });
 
   const ctx = await buildContext();
+  const memoryBlock = memory.buildMemoryBlock(90);
+  const relationshipsBlock = ctx.capital ? relationships.buildRelationshipBlock([]) : "";
 
   const identityArtifact = (req.body || {}).identityArtifact && typeof req.body.identityArtifact === "object" ? req.body.identityArtifact : null;
   const identityMetrics = identityArtifact ? warhol.evaluateIdentityArtifact(identityArtifact) : null;
   const identityBlock = identityMetrics ? NL + NL + "WARHOL IDENTITY METRICS (owner-supplied):" + NL + warhol.summarizeForPrompt(identityMetrics) : "";
 
-  const prompt = [SYSTEM, "", ctxBlock(ctx), identityBlock, "", "OWNER MESSAGE:", message].join(NL);
+  const prompt = [SYSTEM, "", ctxBlock(ctx), memoryBlock ? ("PRIOR CONTEXT:\n" + memoryBlock) : "", relationshipsBlock, identityBlock, "", "OWNER MESSAGE:", message].join(NL);
 
   const result = await llm.generate(prompt, function () {
     const total = ctx.capital ? ctx.capital.total : 0;
@@ -79,6 +83,8 @@ router.post("/chat", async function (req, res) {
     return "Request: " + message.slice(0, 150) + ". Pipeline: " + opps + " opps, $" + total.toLocaleString() + ". " + (identityMetrics ? "Warhol score: " + identityMetrics.overall + "/100. " : "") + "(LLM unavailable; template response.)";
   });
 
+  memory.recordTurn("user", message);
+  memory.recordTurn("nia", (result.text || "").slice(0, 500), { generator: result.generator });
   console.log(JSON.stringify({ component: "nia-chat", event: "chat_completed", generator: result.generator || "template", identityUsed: Boolean(identityMetrics) }));
 
   res.json({
