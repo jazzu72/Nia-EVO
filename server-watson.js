@@ -718,6 +718,8 @@ app.use("/api/owner/outcome", require("./aios/routes/outcome-api"));
 
 app.use("/api/owner/brief", require("./aios/routes/brief-api"));
 
+app.use("/api/nia/status", require("./aios/routes/nia-status-api"));
+
 // 404 HANDLER
 // ============================================================
 
