@@ -144,8 +144,7 @@ function contextBlock(context) {
     "External submission: requires a separate human-approved workflow",
   );
 
-  return lines.join("
-");
+  return lines.join(String.fromCharCode(10));
 }
 
 router.post("/chat", async (req, res) => {
@@ -193,8 +192,7 @@ ${warhol.summarizeForPrompt(identityMetrics)}`
     "",
     "OWNER MESSAGE:",
     message,
-  ].join("
-");
+  ].join(String.fromCharCode(10));
 
   const result = await llm.generate(
     prompt,
