@@ -1,0 +1,43 @@
+{
+  "nodeId": "node-002",
+  "missionId": "mission-bike-savings",
+  "version": 1,
+  "narrative": "You have made your first money decision. Your bike goal is 100 Spark Coins. What will you do next?",
+  "learningObjective": "GOAL_SETTING",
+  "choices": [
+    {
+      "choiceId": "choice-plan",
+      "description": "Create a savings goal and track your progress toward the bike.",
+      "conditions": [],
+      "outcomeId": "outcome-plan"
+    },
+    {
+      "choiceId": "choice-buy",
+      "description": "Use your current Spark Coins on something you want now.",
+      "conditions": [],
+      "outcomeId": "outcome-buy"
+    }
+  ],
+  "conditions": [],
+  "outcomes": [
+    {
+      "outcomeId": "outcome-plan",
+      "description": "You created a savings goal. Planning makes it easier to see how close you are to your target.",
+      "rewards": 10,
+      "penalties": 0,
+      "nextNodeId": "node-003"
+    },
+    {
+      "outcomeId": "outcome-buy",
+      "description": "You chose an immediate reward. You can still continue working toward your bike goal.",
+      "rewards": 0,
+      "penalties": 5,
+      "nextNodeId": "node-003"
+    }
+  ],
+  "rewards": 0,
+  "penalties": 0,
+  "nextNodes": [
+    "node-003"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "nodeId": "start-001",
+  "missionId": "mission-bike-savings",
+  "version": 1,
+  "narrative": "You want to buy a bike that costs 100 Spark Coins. You currently have 20 Spark Coins.",
+  "learningObjective": "SAVING",
+  "choices": [
+    {
+      "choiceId": "choice-save",
+      "description": "Save 10 Spark Coins from your weekly allowance.",
+      "conditions": [],
+      "outcomeId": "outcome-save"
+    },
+    {
+      "choiceId": "choice-spend",
+      "description": "Spend your allowance on snacks.",
+      "conditions": [],
+      "outcomeId": "outcome-spend"
+    }
+  ],
+  "conditions": [],
+  "outcomes": [
+    {
+      "outcomeId": "outcome-save",
+      "description": "You saved 10 Spark Coins. Your balance is now 30.",
+      "rewards": 10,
+      "penalties": 0,
+      "nextNodeId": "node-002"
+    },
+    {
+      "outcomeId": "outcome-spend",
+      "description": "You spent your allowance. Your balance stays at 20.",
+      "rewards": 0,
+      "penalties": 5,
+      "nextNodeId": "node-002"
+    }
+  ],
+  "rewards": 0,
+  "penalties": 0,
+  "nextNodes": [
+    "node-002"
+  ]
+}
