@@ -721,6 +721,9 @@ app.use("/api/owner/brief", require("./aios/routes/brief-api"));
 app.use("/api/owner/auto-draft", requireOwnerAuth);
 app.use("/api/owner/auto-draft", require("./aios/routes/auto-draft-api"));
 
+app.use("/api/owner/application", requireOwnerAuth);
+app.use("/api/owner/application", require("./aios/routes/application-api"));
+
 // 404 HANDLER
 // ============================================================
 
@@ -728,6 +731,7 @@ app.use("/api/owner/auto-draft", require("./aios/routes/auto-draft-api"));
 app.use("/api/capital", require("./aios/routes/capital-api"));
 // Autonomy gate — T1/T2 unlocked, T4 permanently blocked
 app.use("/api/autonomy", require("./aios/routes/autonomy-api"));
+app.use("/api/quantum/dashboard", require("./aios/routes/quantum-dashboard-api"));
 app.use("/api/nia", requireOwnerAuth);
 app.use("/api/nia", require("./aios/routes/nia-chat"));
 app.use("/api/nia/design", requireOwnerAuth);

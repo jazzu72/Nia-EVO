@@ -1,0 +1,15 @@
+name: nia_capital_os
+description: NIA Capital OS with Quantum Branching and Spark Coin systems.
+publish_to: "none"
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  path: ^1.9.0
+
+dev_dependencies:
+  test: ^1.24.0
+
+flutter:
+  uses-material-design: true

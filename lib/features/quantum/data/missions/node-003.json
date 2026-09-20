@@ -1,0 +1,43 @@
+{
+  "nodeId": "node-003",
+  "missionId": "mission-bike-savings",
+  "version": 1,
+  "narrative": "Your bike costs 100 Spark Coins. You now understand that reaching a goal takes consistent decisions over time. Choose your next strategy.",
+  "learningObjective": "BUDGETING",
+  "choices": [
+    {
+      "choiceId": "choice-budget",
+      "description": "Create a weekly budget that includes saving for your bike.",
+      "conditions": [],
+      "outcomeId": "outcome-budget"
+    },
+    {
+      "choiceId": "choice-flexible",
+      "description": "Keep your spending flexible and save whenever you can.",
+      "conditions": [],
+      "outcomeId": "outcome-flexible"
+    }
+  ],
+  "conditions": [],
+  "outcomes": [
+    {
+      "outcomeId": "outcome-budget",
+      "description": "You created a budget. A plan helps you control spending and consistently move toward your goal.",
+      "rewards": 15,
+      "penalties": 0,
+      "nextNodeId": "mission-complete"
+    },
+    {
+      "outcomeId": "outcome-flexible",
+      "description": "You chose flexibility. You can still save, but reaching your goal may require more discipline.",
+      "rewards": 5,
+      "penalties": 0,
+      "nextNodeId": "mission-complete"
+    }
+  ],
+  "rewards": 0,
+  "penalties": 0,
+  "nextNodes": [
+    "mission-complete"
+  ]
+}
