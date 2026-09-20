@@ -20,31 +20,22 @@ Loading Nia...
 <script>
 async function load(){
 
-const res=await fetch('/api/realestate/command-center');
+const res=await fetch('/api/realestate/list');
+if(!res.ok) throw new Error('Real Estate API HTTP '+res.status);
 const data=await res.json();
-
+const list=Array.isArray(data)?data:(data.properties||data.brokerages||data.items||data.data||[]);
 document.getElementById('data').innerHTML=`
-
-<h2>Status: ${data.status}</h2>
-
-<h3>Pipeline</h3>
-<p>Seller Leads: ${data.pipeline.sellerLeads}</p>
-<p>Properties: ${data.pipeline.properties}</p>
-<p>Deals: ${data.pipeline.deals}</p>
-<p>Offers: ${data.pipeline.offers}</p>
-<p>Closings: ${data.pipeline.closings}</p>
-
-<h3>Network</h3>
-<p>Contractors: ${data.network.contractors}</p>
-<p>Lenders: ${data.network.lenders}</p>
-<p>Attorneys: ${data.network.attorneys}</p>
-
-<h3>Financials</h3>
-<p>Closed Profit: $${data.financials.closedProfit}</p>
-
-<h3>Next Actions</h3>
-${data.nextActions.map(x=>"<p>☐ "+x+"</p>").join("")}
-
+<h2>Status: ONLINE</h2>
+<h3>Real Estate Network</h3>
+<p>Records: ${list.length}</p>
+${list.length ? list.map((x,i)=>`
+<div class="card">
+<strong>${String(x.name||x.address||x.property||x.id||'Record '+(i+1)).replace(/</g,'&lt;')}</strong>
+<p>${String(x.status||x.type||'Active').replace(/</g,'&lt;')}</p>
+</div>`).join('') : '<p>No real estate records currently registered.</p>'}
+<h3>Available Operations</h3>
+<p>✓ Brokerage / property records can be added through the Nia Real Estate API.</p>
+<p>✓ Live records are loaded from /api/realestate/list.</p>
 `;
 
 }

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIA Grants Command</title>
+<style>
+:root{--bg:#06100c;--panel:#0b1812;--line:#183025;--text:#e9f2ec;--muted:#8ea398;--green:#39d98a;--gold:#d7b86a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#10291d 0,#06100c 42%,#030806 100%);color:var(--text);font:14px Arial,sans-serif}.shell{display:flex;min-height:100vh}.side{width:230px;border-right:1px solid var(--line);padding:28px 18px;background:#07130e}.brand{font-size:28px;font-weight:800;letter-spacing:3px;color:var(--gold)}.brand small{display:block;font-size:8px;letter-spacing:1.5px;color:var(--muted);margin-top:5px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:35px}.nav a{display:block;padding:11px 12px;border-radius:8px;color:var(--muted);text-decoration:none}.nav a:hover,.nav a.active{background:#102219;color:var(--text)}.main{flex:1;padding:34px;max-width:1400px}.eyebrow,.label,.cardtitle{letter-spacing:1.5px;color:var(--muted);font-size:11px}.top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}.top h1{margin:7px 0;font-size:34px}.sub{color:var(--muted)}.status,.badge{border:1px solid #23543c;border-radius:20px;padding:8px 12px;color:var(--green);font-size:11px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(145deg,#0c1b14,#08130e);border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:0 15px 40px #0005}.value{font-size:32px;font-weight:700;margin-top:12px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.cardhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.rows{display:grid;gap:10px}.row{padding:14px;border:1px solid var(--line);border-radius:9px;background:#09150f}.row strong{color:var(--text)}.meta{color:var(--muted);font-size:12px;margin-top:5px}.btn{margin-top:14px;border:1px solid #315f47;background:#10291c;color:var(--text);padding:10px 15px;border-radius:7px;cursor:pointer}.btn:hover{border-color:var(--green)}.log{max-height:360px;overflow:auto}.empty{color:var(--muted);padding:18px 0}@media(max-width:850px){.side{width:180px}.layout,.grid{grid-template-columns:1fr}.main{padding:20px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side">
+<div class="brand">NIA<small>QUANTUM EXECUTIVE ENGINE</small></div>
+<nav class="nav">
+<a href="/dashboard/index.html">Command Center</a>
+<a href="/dashboard/chat.html">NIA Chat</a>
+<a href="/dashboard/dashboard.html">Capital</a>
+<a href="/dashboard/dashboard.html">Revenue</a>
+<a class="active" href="/dashboard/grants.html">Grants</a>
+<a href="/dashboard/dashboard.html">Acquisition</a>
+<a href="/dashboard/realestate.html">Real Estate</a>
+<a href="/dashboard/dashboard.html">Intelligence</a>
+<a href="/status.html">Settings</a>
+</nav>
+</aside>
+<main class="main">
+<header class="top">
+<div><div class="eyebrow">HOUSE OF JAZZU · NODE 23505</div><h1>Grant Command Center</h1><div class="sub">Opportunity discovery, submissions, and owner review.</div></div>
+<div class="status">● NIA ONLINE</div>
+</header>
+
+<section class="grid">
+<div class="card"><div class="label">OPPORTUNITIES</div><div class="value" id="opportunities">—</div></div>
+<div class="card"><div class="label">SUBMISSIONS</div><div class="value" id="submissions">—</div></div>
+<div class="card"><div class="label">OWNER DRAFTS</div><div class="value" id="drafts">—</div></div>
+</section>
+
+<section class="layout">
+<div class="card">
+<div class="cardhead"><div class="cardtitle">GRANT DISCOVERY</div><div class="badge">LIVE API</div></div>
+<div id="opportunityList" class="rows"><div class="empty">Loading grant opportunities...</div></div>
+<button class="btn" onclick="scan()">SCAN FOR NEW OPPORTUNITIES</button>
+</div>
+
+<div class="card">
+<div class="cardhead"><div class="cardtitle">SUBMISSION PIPELINE</div><div class="badge">LIVE API</div></div>
+<div id="submissionList" class="rows"><div class="empty">Loading submissions...</div></div>
+</div>
+</section>
+</main>
+</div>
+
+<script>
+async function json(url,options){
+ const r=await fetch(url,options);
+ if(!r.ok) throw new Error('HTTP '+r.status);
+ return r.json();
+}
+function items(data){
+ if(Array.isArray(data)) return data;
+ return data.opportunities||data.grants||data.submissions||data.items||data.data||[];
+}
+function render(id,list,label){
+ const el=document.getElementById(id);
+ if(!list.length){el.innerHTML='<div class="empty">No '+label+' returned.</div>';return}
+ el.innerHTML=list.slice(0,12).map(x=>{
+   const title=x.title||x.name||x.opportunityTitle||x.id||'Unnamed opportunity';
+   const status=x.status||x.state||'Available';
+   return '<div class="row"><strong>'+String(title).replace(/</g,'&lt;')+'</strong><div class="meta">'+String(status).replace(/</g,'&lt;')+'</div></div>';
+ }).join('');
+}
+async function load(){
+ try{
+  const [g,s,d]=await Promise.all([
+   json('/api/grants/scan'),
+   json('/api/grants/submissions'),
+   json('/api/owner/grant-drafts')
+  ]);
+  const grants=items(g),subs=items(s),drafts=items(d);
+  document.getElementById('opportunities').textContent=grants.length;
+  document.getElementById('submissions').textContent=subs.length;
+  document.getElementById('drafts').textContent=drafts.length;
+  render('opportunityList',grants,'opportunities');
+  render('submissionList',subs,'submissions');
+ }catch(e){
+  document.getElementById('opportunityList').innerHTML='<div class="empty">Grant API unavailable: '+e.message+'</div>';
+  document.getElementById('submissionList').innerHTML='<div class="empty">Grant API unavailable.</div>';
+ }
+}
+async function scan(){
+ const b=event.target;b.disabled=true;b.textContent='SCANNING...';
+ await load();b.disabled=false;b.textContent='SCAN FOR NEW OPPORTUNITIES';
+}
+load();
+setInterval(load,30000);
+</script>
+</body>
+</html>
