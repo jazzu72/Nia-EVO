@@ -63,6 +63,7 @@ app.get("/api/aios/tools/status",(req,res)=>res.json({ok:true,service:"aios-tool
 console.log("✅ /api/aios/tools loaded");
 app.get("/executive-v2.html", (req, res) => res.sendFile(path.join(__dirname, "dashboard/public/executive-v2.html")));
 app.use(express.static(path.join(__dirname, "public")));
+app.get("/", (_req, res) => res.sendFile(path.join(__dirname, "public/dashboard/index.html")));
 app.use("/api/owner", requireOwnerAuth);
 app.use("/api/owner/chat", require("./nia-chat-api"));
 
