@@ -701,14 +701,6 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.json({
-    system: "Nia Capital OS",
-    status: "running",
-    version: "1.0",
-    timestamp: new Date().toISOString()
-  });
-});
 
 // ============================================================
 app.use("/api/owner/envelope", require("./aios/routes/envelope-api"));
