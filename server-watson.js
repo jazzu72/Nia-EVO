@@ -62,7 +62,7 @@ app.get("/api/aios/providers/status",(req,res)=>res.json({ok:true,providers:["pu
 app.get("/api/aios/tools/status",(req,res)=>res.json({ok:true,service:"aios-tools",mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
 console.log("✅ /api/aios/tools loaded");
 app.get("/executive-v2.html", (req, res) => res.sendFile(path.join(__dirname, "dashboard/public/executive-v2.html")));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), { index: false }));
 app.get("/", (_req, res) => res.redirect("/dashboard/index.html"));
 app.use("/api/owner", requireOwnerAuth);
 app.use("/api/owner/chat", require("./nia-chat-api"));
