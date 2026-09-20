@@ -52,14 +52,14 @@ router.post('/choose', (req, res) => {
     if (!choiceId) return res.status(400).json({ ok: false, error: 'choiceId is required' });
 
     const node = loadNode(state.currentNodeId);
-    const choice = (node.choices || []).find(c => c.id === choiceId);
+    const choice = (node.choices || []).find(c => c.choiceId === choiceId);
     if (!choice) return res.status(400).json({ ok: false, error: `Choice not found: ${choiceId}` });
 
-    const outcomeId = choice.outcomeId || choice.outcome;
-    const outcome = (node.outcomes || []).find(o => o.id === outcomeId);
+    const outcomeId = choice.outcomeId;
+    const outcome = (node.outcomes || []).find(o => o.outcomeId === outcomeId);
     if (!outcome) return res.status(400).json({ ok: false, error: `Outcome not found: ${outcomeId}` });
 
-    const delta = Number(outcome.sparkCoinDelta || 0);
+    const delta = Number(outcome.rewards || 0) - Number(outcome.penalties || 0);
     state.sparkCoins += delta;
     state.xp += Number(outcome.xpDelta || 0);
 
