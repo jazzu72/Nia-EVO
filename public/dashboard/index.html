@@ -55,7 +55,10 @@
 <div class="card wide"><div class="cardhead"><div class="cardtitle">NIA OPERATING TELEMETRY</div><div class="badge">LIVE</div></div><div class="log" id="telemetry"><div class="logrow"><strong>System initialized</strong><br>Waiting for live telemetry...</div></div></div>
 </section>
 <div class="footer">NIA-EVO · Quantum Executive Engine · House of Jazzu</div>
-</main></div>
+<section class="panel" id="nia-live-chat" style="margin-top:24px"><div class="panel-head"><span>NIA EXECUTIVE LINK</span><span id="nia-status">ONLINE</span></div><div id="nia-messages" style="min-height:90px;margin:12px 0">NIA is ready for your command.</div><div style="display:flex;gap:10px"><input id="nia-input" placeholder="Command NIA..." style="flex:1"><button id="nia-send">SEND</button></div></section>
+<script>
+(()=>{const i=document.getElementById('nia-input'),b=document.getElementById('nia-send'),m=document.getElementById('nia-messages');async function send(){const x=i.value.trim();if(!x)return;m.textContent='NIA is processing...';try{const r=await fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:x})});const j=await r.json();m.textContent=j.reply||j.error||'No response';}catch(e){m.textContent='NIA connection error: '+e.message}}b.onclick=send;i.addEventListener('keydown',e=>{if(e.key==='Enter')send()})})();
+</script></main></div>
 
 <script>
 async function quantum(){
