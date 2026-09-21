@@ -61,6 +61,19 @@
 </script></main></div>
 
 <script>
+async function liveCapital(){
+ try{
+  const r=await fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:'Return current pipeline count and total pipeline value as JSON only.'})});
+  const d=await r.json();
+  const m=(d.context||{});
+  if(m.opportunities!==undefined) document.getElementById('opportunities').textContent=m.opportunities;
+  if(m.total!==undefined) document.getElementById('pipeline').textContent='$'+Number(m.total).toLocaleString();
+  document.getElementById('capital').textContent='$'+Number(m.total||0).toLocaleString();
+ }catch(e){}
+}
+liveCapital(); setInterval(liveCapital,30000);
+</script>
+<script>
 async function quantum(){
  try{
   const r=await fetch('/api/quantum/dashboard/snapshot',{cache:'no-store'}),d=await r.json();
