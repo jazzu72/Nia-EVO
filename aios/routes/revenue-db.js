@@ -1,0 +1,7 @@
+const express=require("express");
+const {Pool}=require("pg");
+const router=express.Router();
+const pool=new Pool({connectionString:process.env.DATABASE_URL,ssl:process.env.NODE_ENV==="production"?{rejectUnauthorized:false}:false});
+router.get("/pipeline",async(req,res)=>{try{const r=await pool.query("SELECT id,name,type,value,cash_collected AS \"cashCollected\",stage,created_at AS created FROM revenue_pipeline ORDER BY created_at DESC");const x=r.rows;res.json({ok:true,metrics:{leads:x.length,qualified:x.filter(a=>a.stage==="qualified").length,proposals:x.filter(a=>a.stage==="proposal").length,closed:x.filter(a=>a.stage==="closed").length,cashCollected:x.reduce((n,a)=>n+Number(a.cashCollected||0),0),pipelineValue:x.reduce((n,a)=>n+Number(a.value||0),0)},records:x})}catch(e){res.status(500).json({ok:false,error:"DATABASE_NOT_CONFIGURED_OR_UNAVAILABLE"})}});
+router.post("/pipeline",async(req,res)=>{try{const r=await pool.query("INSERT INTO revenue_pipeline(id,name,type,value,cash_collected,stage) VALUES($1,$2,$3,$4,$5,$6) RETURNING id,name,type,value,cash_collected AS \"cashCollected\",stage,created_at AS created",["REV-"+Date.now(),req.body.name||"Unnamed Opportunity",req.body.type||"AI Automation",Number(req.body.value||0),Number(req.body.cashCollected||0),req.body.stage||"lead"]);res.status(201).json({ok:true,record:r.rows[0]})}catch(e){res.status(500).json({ok:false,error:"DATABASE_NOT_CONFIGURED_OR_UNAVAILABLE"})}});
+module.exports=router;
