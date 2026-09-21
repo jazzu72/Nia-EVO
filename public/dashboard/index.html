@@ -1,98 +1,1035 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NIA — Quantum Executive Command Center</title>
-<style>
-:root{--bg:#06110d;--panel:#0b1913;--panel2:#0f2119;--line:#1c382b;--gold:#d8b45a;--green:#38d39f;--muted:#81958c;--text:#edf6f1;--danger:#ff6b6b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% -10%,#163a2a 0,#06110d 42%);color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh}
-.shell{display:flex;min-height:100vh}.side{width:245px;background:rgba(4,12,9,.92);border-right:1px solid var(--line);padding:24px 16px;position:fixed;inset:0 auto 0 0}
-.brand{font-size:22px;font-weight:800;letter-spacing:2px;color:var(--gold);padding:8px 12px 30px}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.5px;margin-top:7px}
-.nav{display:grid;gap:7px}.nav div{padding:12px;border-radius:9px;color:var(--muted);font-size:13px}.nav div.active{background:#10251b;color:var(--gold);border:1px solid #254936}
-.main{margin-left:245px;width:calc(100% - 245px);padding:28px;max-width:1500px}.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--green)}h1{margin:6px 0;font-size:30px}.sub{color:var(--muted);font-size:13px}.status{display:flex;gap:9px;align-items:center;color:var(--green);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.card{background:linear-gradient(145deg,rgba(15,33,25,.96),rgba(7,19,14,.96));border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:0 15px 45px rgba(0,0,0,.2)}.label{font-size:10px;color:var(--muted);letter-spacing:1.4px}.value{font-size:26px;font-weight:750;margin-top:10px;color:var(--gold)}
-.layout{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;margin-top:16px}.wide{min-height:300px}.cardhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.cardtitle{font-size:13px;font-weight:700;letter-spacing:.7px}.badge{font-size:9px;color:var(--green);border:1px solid #24533e;padding:5px 8px;border-radius:20px}
-.quantum{border-color:#365d47;background:radial-gradient(circle at 80% 20%,#153d2b 0,#0a1913 48%)}.qnode{font-size:30px;color:var(--gold);font-weight:800}.qobjective{color:var(--green);font-size:11px;letter-spacing:1.5px;margin-top:4px}.qstats{display:flex;gap:25px;margin:25px 0}.qstat b{display:block;font-size:22px}.qstat span{font-size:10px;color:var(--muted)}button{background:#cda94f;color:#08110d;border:0;border-radius:8px;padding:10px 15px;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.1)}.actions{display:flex;gap:8px;flex-wrap:wrap}.log{display:grid;gap:8px}.logrow{padding:11px;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}.logrow strong{color:var(--text)}.footer{margin-top:18px;color:#53675f;font-size:10px}
-@media(max-width:900px){.side{width:70px}.brand{font-size:0}.brand:after{content:'N';font-size:25px}.nav div{font-size:0;text-align:center}.main{margin-left:70px;width:calc(100% - 70px);padding:18px}.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;gap:12px;flex-direction:column}h1{font-size:24px}}
-</style>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="theme-color" content="#07100d">
+  <meta
+    name="description"
+    content="NIA Executive Command Center for House of Jazzu"
+  >
+  <title>NIA — Executive Command Center</title>
+
+  <style>
+    :root {
+      --bg: #07100d;
+      --bg-deep: #040907;
+      --panel: #0c1713;
+      --panel-elevated: #101f19;
+      --line: #1b2a24;
+      --line-strong: #294437;
+      --text: #eef5f1;
+      --muted: #7f9189;
+      --muted-strong: #aebcb5;
+      --gold: #d4b46a;
+      --gold-soft: rgba(212, 180, 106, 0.12);
+      --green: #54c78a;
+      --green-soft: rgba(84, 199, 138, 0.12);
+      --amber: #e6a84d;
+      --red: #e17070;
+      --radius: 18px;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--bg);
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(212, 180, 106, 0.09), transparent 31rem),
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, 24px 24px, 24px 24px, auto;
+      font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 28px 24px 44px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(212, 180, 106, 0.75);
+      border-radius: 50%;
+      color: var(--gold);
+      background: var(--gold-soft);
+      box-shadow: inset 0 0 0 5px rgba(212, 180, 106, 0.045);
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand {
+      overflow: hidden;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      margin-top: 2px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .status-cluster {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(84, 199, 138, 0.1);
+    }
+
+    .status.is-offline {
+      color: var(--red);
+    }
+
+    .status.is-offline .status-dot {
+      background: var(--red);
+      box-shadow: 0 0 0 4px rgba(225, 112, 112, 0.1);
+    }
+
+    .ghost-button {
+      min-height: 36px;
+      padding: 0 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--muted-strong);
+      background: rgba(12, 23, 19, 0.72);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .ghost-button:hover {
+      border-color: rgba(212, 180, 106, 0.55);
+      color: var(--gold);
+    }
+
+    main {
+      padding-top: 43px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(34px, 5.2vw, 56px);
+      font-weight: 750;
+      letter-spacing: -0.055em;
+      line-height: 1.02;
+    }
+
+    .sub {
+      max-width: 650px;
+      margin: 14px 0 34px;
+      color: var(--muted-strong);
+      font-size: 16px;
+    }
+
+    .command-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(250px, 0.7fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 17px;
+    }
+
+    .chat,
+    .side-panel,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(212, 180, 106, 0.07), transparent 15rem),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .chat {
+      display: flex;
+      min-height: 372px;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 19px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chat-title,
+    .mini-title {
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .chat-meta {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+    }
+
+    #nia-messages {
+      display: flex;
+      min-height: 210px;
+      flex: 1;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      max-width: 92%;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: #d6e0da;
+      background: rgba(5, 13, 9, 0.54);
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message.nia {
+      align-self: flex-start;
+      border-top-left-radius: 4px;
+    }
+
+    .message.owner {
+      align-self: flex-end;
+      border-color: rgba(212, 180, 106, 0.25);
+      border-top-right-radius: 4px;
+      color: #f4ead0;
+      background: rgba(212, 180, 106, 0.095);
+    }
+
+    .message.system {
+      max-width: 100%;
+      align-self: stretch;
+      color: var(--muted-strong);
+      background: transparent;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+    }
+
+    .chat-compose {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      padding: 15px 18px 18px;
+      border-top: 1px solid var(--line);
+      background: rgba(4, 9, 7, 0.24);
+    }
+
+    input {
+      min-width: 0;
+      min-height: 48px;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      padding: 0 14px;
+      color: var(--text);
+      background: var(--bg-deep);
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #65776e;
+    }
+
+    input:focus {
+      border-color: rgba(212, 180, 106, 0.65);
+      box-shadow: 0 0 0 3px rgba(212, 180, 106, 0.09);
+    }
+
+    .send-button {
+      min-width: 98px;
+      min-height: 48px;
+      border: 0;
+      border-radius: 12px;
+      padding: 0 18px;
+      color: #161207;
+      background: linear-gradient(135deg, #e4c779, #b99549);
+      box-shadow: 0 10px 22px rgba(185, 149, 73, 0.15);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .send-button:hover {
+      filter: brightness(1.06);
+    }
+
+    .send-button:disabled {
+      cursor: wait;
+      opacity: 0.62;
+    }
+
+    .side-panel {
+      padding: 19px;
+    }
+
+    .side-panel p {
+      margin: 10px 0 18px;
+      color: var(--muted-strong);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .command-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .command-chip {
+      width: 100%;
+      min-height: 41px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0 11px;
+      color: #c3d1ca;
+      background: rgba(5, 13, 9, 0.5);
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .command-chip:hover {
+      border-color: rgba(212, 180, 106, 0.48);
+      color: var(--gold);
+    }
+
+    .command-chip code {
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 145px;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .card::after {
+      position: absolute;
+      right: -32px;
+      bottom: -46px;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(212, 180, 106, 0.1);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .label {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .value {
+      margin-top: 14px;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 3vw, 36px);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .card-note {
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .operating-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 16px;
+      padding: 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: var(--muted-strong);
+      background: rgba(12, 23, 19, 0.67);
+      font-size: 12px;
+    }
+
+    .operating-strip strong {
+      color: #e4e1d8;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    nav a {
+      min-height: 39px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 0 12px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: 140ms ease;
+    }
+
+    nav a:hover {
+      border-color: var(--line-strong);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    footer {
+      margin-top: 48px;
+      color: #52635c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .command-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 16px;
+      }
+
+      .side-panel p {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .shell {
+        padding: 20px 16px 32px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .status-cluster {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .ghost-button {
+        min-height: 31px;
+      }
+
+      main {
+        padding-top: 34px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .sub {
+        margin-bottom: 26px;
+        font-size: 15px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-compose {
+        grid-template-columns: 1fr;
+      }
+
+      .send-button {
+        min-height: 50px;
+      }
+
+      .side-panel {
+        display: block;
+      }
+
+      .side-panel p {
+        margin-bottom: 16px;
+      }
+
+      .message {
+        max-width: 96%;
+      }
+
+      .operating-strip {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="shell">
-<aside class="side">
-<div class="brand">NIA<small>QUANTUM EXECUTIVE ENGINE</small></div>
-<nav class="nav">
-<a class="active" href="/dashboard/index.html">Command Center</a>
-<a href="/dashboard/chat.html">NIA Chat</a>
-<a href="/dashboard/dashboard.html">Capital</a>
-<a href="/dashboard/dashboard.html">Revenue</a>
-<a href="/dashboard/grants.html">Grants</a>
-<a href="/dashboard/dashboard.html">Acquisition</a>
-<a href="/dashboard/realestate.html">Real Estate</a>
-<a href="/dashboard/dashboard.html">Intelligence</a>
-<a href="/status.html">Settings</a>
-</nav>
-</aside>
-<main class="main">
-<header class="top"><div><div class="eyebrow">HOUSE OF JAZZU · NODE 23505</div><h1>Executive Command Center</h1><div class="sub">Autonomous capital intelligence and operating control.</div></div><div class="status"><i class="dot"></i>NIA ONLINE</div></header>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">N</div>
+        <div>
+          <div class="brand">House of Jazzu · Nia Node 23505</div>
+          <div class="brand-sub">Executive Intelligence Layer</div>
+        </div>
+      </div>
 
-<section class="grid">
-<div class="card"><div class="label">CAPITAL</div><div class="value" id="capital">$0</div></div>
-<div class="card"><div class="label">PIPELINE</div><div class="value" id="pipeline">$0</div></div><script>async function liveRevenue(){try{const r=await fetch("/api/revenue-engine/pipeline");const d=await r.json();if(d.ok&&d.metrics){const e=document.getElementById("pipeline");if(e)e.textContent="$"+Number(d.metrics.pipelineValue||0).toLocaleString();const o=document.getElementById("opportunities");if(o)o.textContent=Number(d.metrics.leads||0);}}catch(e){console.error("Revenue telemetry:",e)}}liveRevenue();setInterval(liveRevenue,30000);</script>
-<div class="card"><div class="label">OPPORTUNITIES</div><div class="value" id="opportunities">0</div></div>
-<div class="card"><div class="label">SYSTEM STATUS</div><div class="value" style="color:var(--green)">ONLINE</div></div>
-</section>
+      <div class="status-cluster">
+        <div id="system-status" class="status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="status-label">CHECKING SYSTEM</span>
+        </div>
+        <button id="clear-session" class="ghost-button" type="button">
+          Clear session
+        </button>
+      </div>
+    </header>
 
-<section class="layout">
-<div class="card quantum">
-<div class="cardhead"><div class="cardtitle">QUANTUM BRANCHING ENGINE</div><div class="badge" id="missionStatus">AVAILABLE</div></div>
-<div class="qnode" id="node">START-001</div><div class="qobjective" id="objective">SAVING</div>
-<div class="qstats"><div class="qstat"><b id="coins">20</b><span>SPARK COINS</span></div><div class="qstat"><b id="xp">0</b><span>XP</span></div><div class="qstat"><b id="history">0</b><span>BRANCHES</span></div></div>
-<div class="actions"><button onclick="choose('choice-save')">SAVE</button><button onclick="choose('choice-spend')">SPEND</button><button onclick="resetQuantum()">RESET</button></div>
-</div>
+    <main>
+      <p class="eyebrow">Human-governed operating console</p>
+      <h1>Executive Command Center</h1>
+      <p class="sub">
+        One interface. One intelligence layer. Clear evidence before action.
+      </p>
 
-<div class="card wide"><div class="cardhead"><div class="cardtitle">NIA OPERATING TELEMETRY</div><div class="badge">LIVE</div></div><div class="log" id="telemetry"><div class="logrow"><strong>System initialized</strong><br>Waiting for live telemetry...</div></div></div>
-</section>
-<div class="footer">NIA-EVO · Quantum Executive Engine · House of Jazzu</div>
-<section class="panel" id="nia-live-chat" style="margin-top:24px"><div class="panel-head"><span>NIA EXECUTIVE LINK</span><span id="nia-status">ONLINE</span></div><div id="nia-messages" style="min-height:90px;margin:12px 0">NIA is ready for your command.</div><div style="display:flex;gap:10px"><input id="nia-input" placeholder="Command NIA..." style="flex:1"><button id="nia-send">SEND</button></div></section>
-<script>
-(()=>{const i=document.getElementById('nia-input'),b=document.getElementById('nia-send'),m=document.getElementById('nia-messages');async function send(){const x=i.value.trim();if(!x)return;m.textContent='NIA is processing...';try{const r=await fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:x})});const j=await r.json();m.textContent=j.reply||j.error||'No response';}catch(e){m.textContent='NIA connection error: '+e.message}}b.onclick=send;i.addEventListener('keydown',e=>{if(e.key==='Enter')send()})})();
-</script></main></div>
+      <section class="command-layout" aria-label="Nia command interface">
+        <section class="chat" aria-label="Chat with Nia">
+          <div class="panel-head">
+            <div class="chat-title">Ask Nia</div>
+            <div id="chat-meta" class="chat-meta">OWNER SESSION NOT CONNECTED</div>
+          </div>
 
-<script>
-async function liveCapital(){
- try{
-  const [h,c]=await Promise.all([
-   fetch('/api/capital/health',{cache:'no-store'}),
-   fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:'Return current pipeline count and total pipeline value as JSON only.'})})
-  ]);
-  const health=await h.json(), d=await c.json(), m=d.context||{};
-  if(m.opportunities!==undefined) document.getElementById('opportunities').textContent=m.opportunities;
-  if(m.total!==undefined) document.getElementById('pipeline').textContent='$'+Number(m.total).toLocaleString();
-  document.getElementById('capital').textContent=health.status==='ONLINE'?'ONLINE':'OFFLINE';
- }catch(e){document.getElementById('capital').textContent='OFFLINE'}
-}
-liveCapital(); setInterval(liveCapital,30000);
-</script>
-<script>
-async function quantum(){
- try{
-  const r=await fetch('/api/quantum/dashboard/snapshot',{cache:'no-store'}),d=await r.json();
-  document.getElementById('node').textContent=(d.currentNodeId||'—').toUpperCase();
-  document.getElementById('coins').textContent=d.sparkCoins??0;
-  document.getElementById('xp').textContent=d.xp??0;
-  document.getElementById('history').textContent=(d.history||[]).length;
-  const m=d.currentMission?.mission||d.missions?.[0]?.mission;
-  document.getElementById('objective').textContent=m?.learningObjective||'QUANTUM';
-  document.getElementById('missionStatus').textContent=(d.currentMission?.status||'AVAILABLE').toUpperCase();
-  const log=(d.history||[]).slice(-5).reverse();
-  document.getElementById('telemetry').innerHTML=log.length?log.map(x=>`<div class="logrow"><strong>${x.choiceId}</strong> → ${x.nextNodeId}<br>Spark Coins: ${x.sparkCoinDelta>=0?'+':''}${x.sparkCoinDelta}</div>`).join(''):'<div class="logrow"><strong>Quantum engine ready</strong><br>No branch decisions recorded.</div>';
- }catch(e){document.getElementById('missionStatus').textContent='OFFLINE'}
-}
-async function choose(choiceId){const r=await fetch('/api/quantum/dashboard/choose',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({choiceId})});const d=await r.json();if(!d.ok)alert(d.error);await quantum()}
-async function resetQuantum(){await fetch('/api/quantum/dashboard/reset',{method:'POST'});await quantum()}
-quantum();setInterval(quantum,10000);
-</script>
+          <div id="nia-messages" role="log" aria-live="polite" aria-relevant="additions">
+            <div class="message nia">
+              I’m ready. I can analyze the operating picture, explain evidence,
+              draft materials, and identify next steps. External execution remains
+              subject to human approval.
+            </div>
+          </div>
+
+          <div class="chat-compose">
+            <input
+              id="nia-input"
+              type="text"
+              maxlength="2000"
+              placeholder="Ask about capital, opportunities, grants, or strategy…"
+              autocomplete="off"
+              aria-label="Message Nia"
+            >
+            <button id="nia-send" class="send-button" type="button">SEND</button>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Suggested Nia commands">
+          <div>
+            <div class="mini-title">Suggested owner prompts</div>
+            <p>
+              Nia can analyze and draft. It cannot move funds, submit applications,
+              change credentials, or bypass approval controls.
+            </p>
+          </div>
+
+          <div class="command-list">
+            <button class="command-chip" type="button" data-prompt="What is my highest-confidence opportunity and what should I verify first?">
+              <code>01</code> Highest-confidence opportunity
+            </button>
+            <button class="command-chip" type="button" data-prompt="Summarize my current capital pipeline. Separate verified facts from estimates.">
+              <code>02</code> Capital pipeline summary
+            </button>
+            <button class="command-chip" type="button" data-prompt="What requires my approval today? Do not take external action.">
+              <code>03</code> Owner approval queue
+            </button>
+            <button class="command-chip" type="button" data-prompt="Give me the next three highest-leverage actions for House of Jazzu.">
+              <code>04</code> Highest-leverage actions
+            </button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid" aria-label="Executive metrics">
+        <article class="card">
+          <div class="label">Capital engine</div>
+          <div class="value" id="capital">—</div>
+          <div id="capital-note" class="card-note">Checking live engine state</div>
+        </article>
+
+        <article class="card">
+          <div class="label">Opportunities</div>
+          <div class="value" id="opportunities">—</div>
+          <div id="opportunities-note" class="card-note">Scanning capital intelligence</div>
+        </article>
+
+        <article class="card">
+          <div class="label">Revenue pipeline</div>
+          <div class="value" id="pipeline">—</div>
+          <div id="pipeline-note" class="card-note">Checking revenue engine</div>
+        </article>
+      </section>
+
+      <section class="operating-strip" aria-label="Operating safeguards">
+        <span><strong id="approval-state">Human approval required</strong> for external execution.</span>
+        <span id="last-sync">Live data refreshes every 30 seconds</span>
+      </section>
+
+      <nav aria-label="Nia operating areas">
+        <a href="/dashboard/grants.html">Grants</a>
+        <a href="/dashboard/realestate.html">Real Estate</a>
+        <a href="/dashboard/dashboard.html">Capital</a>
+        <a href="/dashboard/chat.html">Nia Chat</a>
+        <a href="/status.html">Settings</a>
+      </nav>
+    </main>
+
+    <footer>
+      QUANTUM EXECUTIVE ENGINE · HUMAN APPROVAL REQUIRED FOR EXTERNAL EXECUTION
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = (id) => document.getElementById(id);
+
+      /*
+        Intentionally memory-only. Do not save owner bearer tokens to localStorage
+        or sessionStorage. A real production upgrade should use an HttpOnly,
+        Secure, SameSite cookie issued by an authenticated backend session.
+      */
+      let ownerToken = "";
+      let sending = false;
+
+      const elements = {
+        capital: $("capital"),
+        capitalNote: $("capital-note"),
+        opportunities: $("opportunities"),
+        opportunitiesNote: $("opportunities-note"),
+        pipeline: $("pipeline"),
+        pipelineNote: $("pipeline-note"),
+        status: $("system-status"),
+        statusLabel: $("status-label"),
+        approvalState: $("approval-state"),
+        lastSync: $("last-sync"),
+        messages: $("nia-messages"),
+        input: $("nia-input"),
+        send: $("nia-send"),
+        meta: $("chat-meta"),
+        clearSession: $("clear-session"),
+      };
+
+      function formatMoney(value) {
+        const amount = Number(value);
+
+        if (!Number.isFinite(amount)) {
+          return "—";
+        }
+
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        }).format(amount);
+      }
+
+      function nowLabel() {
+        return new Intl.DateTimeFormat("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        }).format(new Date());
+      }
+
+      function setSystemState(online, text) {
+        elements.status.classList.toggle("is-offline", !online);
+        elements.statusLabel.textContent = text;
+      }
+
+      function appendMessage(kind, text) {
+        const item = document.createElement("div");
+        item.className = `message ${kind}`;
+        item.textContent = String(text || "");
+        elements.messages.appendChild(item);
+        elements.messages.scrollTop = elements.messages.scrollHeight;
+        return item;
+      }
+
+      function setChatMeta(text) {
+        elements.meta.textContent = text;
+      }
+
+      function clearOwnerSession() {
+        ownerToken = "";
+        setChatMeta("OWNER SESSION NOT CONNECTED");
+        appendMessage(
+          "system",
+          "Owner session cleared from this browser tab."
+        );
+      }
+
+      async function getOwnerToken() {
+        if (ownerToken) {
+          return ownerToken;
+        }
+
+        const token = window.prompt(
+          "Enter your short-lived NIA owner token for this browser tab. It will not be saved to browser storage."
+        );
+
+        if (!token || !token.trim()) {
+          return "";
+        }
+
+        ownerToken = token.trim();
+        setChatMeta("OWNER SESSION CONNECTED");
+        return ownerToken;
+      }
+
+      async function jsonFetch(url, options = {}) {
+        const response = await fetch(url, {
+          cache: "no-store",
+          ...options,
+        });
+
+        const raw = await response.text();
+        let data = null;
+
+        try {
+          data = raw ? JSON.parse(raw) : {};
+        } catch {
+          throw new Error(`Non-JSON response from ${url}`);
+        }
+
+        if (!response.ok) {
+          throw new Error(data?.error || `Request failed: HTTP ${response.status}`);
+        }
+
+        return data;
+      }
+
+      async function telemetry() {
+        try {
+          const [healthResult, huntResult, revenueResult] = await Promise.allSettled([
+            jsonFetch("/api/capital/health"),
+            jsonFetch("/api/capital/hunt"),
+            jsonFetch("/api/revenue-engine/pipeline"),
+          ]);
+
+          let healthOnline = false;
+          let approvalRequired = true;
+
+          if (healthResult.status === "fulfilled") {
+            const health = healthResult.value;
+            healthOnline = health.status === "ONLINE" || health.ok === true;
+
+            elements.capital.textContent = healthOnline ? "ONLINE" : "OFFLINE";
+            elements.capitalNote.textContent =
+              health.engine || "Capital engine status received";
+
+            approvalRequired = health.human_approval_required !== false;
+
+            if (health.external_execution_allowed === true) {
+              elements.approvalState.textContent =
+                "Execution enabled — review controls";
+            } else {
+              elements.approvalState.textContent = approvalRequired
+                ? "Human approval required"
+                : "External execution blocked";
+            }
+          } else {
+            elements.capital.textContent = "OFFLINE";
+            elements.capitalNote.textContent = "Capital health unavailable";
+          }
+
+          if (huntResult.status === "fulfilled") {
+            const hunt = huntResult.value;
+            const summary = hunt.summary || {};
+            const total =
+              summary.total_opportunities ??
+              hunt.opportunities?.length ??
+              0;
+
+            elements.opportunities.textContent =
+              Number(total).toLocaleString("en-US");
+
+            const totalAmount =
+              summary.total_amount ??
+              summary.totalValue ??
+              null;
+
+            elements.opportunitiesNote.textContent =
+              totalAmount !== null
+                ? `${formatMoney(totalAmount)} identified`
+                : "Live opportunity intelligence";
+          } else {
+            elements.opportunities.textContent = "—";
+            elements.opportunitiesNote.textContent =
+              "Opportunity scan unavailable";
+          }
+
+          if (revenueResult.status === "fulfilled") {
+            const revenue = revenueResult.value;
+            const metrics = revenue.metrics || revenue.data?.metrics || {};
+            const pipelineValue =
+              metrics.pipelineValue ??
+              metrics.pipeline_value ??
+              revenue.pipelineValue ??
+              0;
+
+            const leadCount =
+              metrics.leads ??
+              metrics.leadCount ??
+              revenue.leads ??
+              null;
+
+            elements.pipeline.textContent = formatMoney(pipelineValue);
+            elements.pipelineNote.textContent =
+              leadCount !== null
+                ? `${Number(leadCount).toLocaleString("en-US")} tracked leads`
+                : "Revenue intelligence connected";
+          } else {
+            elements.pipeline.textContent = "—";
+            elements.pipelineNote.textContent =
+              "Revenue endpoint unavailable";
+          }
+
+          setSystemState(
+            healthOnline,
+            healthOnline ? "NIA ONLINE" : "SYSTEM DEGRADED"
+          );
+
+          elements.lastSync.textContent = `Last live refresh: ${nowLabel()}`;
+        } catch {
+          elements.capital.textContent = "OFFLINE";
+          elements.capitalNote.textContent = "Telemetry unavailable";
+          setSystemState(false, "SYSTEM DEGRADED");
+          elements.lastSync.textContent = `Refresh failed: ${nowLabel()}`;
+        }
+      }
+
+      async function sendMessage(prefilledMessage = "") {
+        if (sending) {
+          return;
+        }
+
+        const message = String(prefilledMessage || elements.input.value || "").trim();
+
+        if (!message) {
+          elements.input.focus();
+          return;
+        }
+
+        const token = await getOwnerToken();
+
+        if (!token) {
+          appendMessage("system", "Owner authorization is required for Nia chat.");
+          return;
+        }
+
+        sending = true;
+        elements.send.disabled = true;
+        elements.send.textContent = "THINKING";
+
+        appendMessage("owner", message);
+        elements.input.value = "";
+
+        const pending = appendMessage("nia", "Nia is reviewing live context…");
+
+        try {
+          const result = await jsonFetch("/api/nia/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ message }),
+          });
+
+          pending.textContent = result.reply || "Nia returned no written response.";
+
+          const modelLabel = [
+            result.generator || "unknown",
+            result.model || result.provider || "",
+            result.fallback ? "fallback" : "",
+          ]
+            .filter(Boolean)
+            .join(" · ");
+
+          setChatMeta(`NIA · ${modelLabel || "CONNECTED"}`);
+
+          if (result.identityMetrics?.overall !== undefined) {
+            appendMessage(
+              "system",
+              `Warhol identity score: ${result.identityMetrics.overall}/100.`
+            );
+          }
+
+          if (result.context?.ageSeconds !== undefined) {
+            elements.lastSync.textContent =
+              `Nia context age: ${result.context.ageSeconds}s · ${nowLabel()}`;
+          }
+        } catch (error) {
+          pending.textContent =
+            error.message === "Unauthorized" ||
+            /401|403|authorization/i.test(error.message)
+              ? "Owner authorization was rejected. Clear the session and enter a current token."
+              : "Nia connection error. No external action was taken.";
+
+          if (/401|403|authorization/i.test(error.message)) {
+            ownerToken = "";
+            setChatMeta("OWNER SESSION NOT CONNECTED");
+          }
+        } finally {
+          sending = false;
+          elements.send.disabled = false;
+          elements.send.textContent = "SEND";
+          elements.input.focus();
+        }
+      }
+
+      elements.send.addEventListener("click", () => sendMessage());
+
+      elements.input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+
+      elements.clearSession.addEventListener("click", clearOwnerSession);
+
+      document.querySelectorAll("[data-prompt]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const prompt = button.dataset.prompt || "";
+          elements.input.value = prompt;
+          elements.input.focus();
+        });
+      });
+
+      window.addEventListener("online", telemetry);
+      window.addEventListener("offline", () => {
+        setSystemState(false, "OFFLINE");
+        elements.lastSync.textContent = "Browser is offline";
+      });
+
+      telemetry();
+      window.setInterval(telemetry, 30_000);
+    })();
+  </script>
 </body>
 </html>
