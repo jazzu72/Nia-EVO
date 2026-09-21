@@ -65,41 +65,78 @@ async function tryGemini(prompt) {
 }
 
 async function discoverOpenRouterModel(key) {
-  if (cachedOpenRouterModel) return cachedOpenRouterModel;
-  const r = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(6000) });
+  const r = await fetch("https://openrouter.ai/api/v1/models", {
+    headers: { authorization: "Bearer " + key },
+    signal: AbortSignal.timeout(6000),
+  });
   if (!r.ok) throw new Error("OpenRouter list " + r.status);
   const j = await r.json();
-  const free = (j.data || []).filter(m => {
-    const p = m.pricing || {};
-    return parseFloat(p.prompt || "1") === 0 && parseFloat(p.completion || "1") === 0;
-  });
-  const size = (id) => { const m = id.match(/(\d+(?:\.\d+)?)b/i); return m ? parseFloat(m[1]) : 999; };
-  const usable = free.filter(m => size(m.id) >= 7 && size(m.id) <= 70);
-  cachedOpenRouterModel = (usable[0] || free[0] || {}).id;
-  if (!cachedOpenRouterModel) throw new Error("OpenRouter: no free models");
-  return cachedOpenRouterModel;
+  const free = (j.data || [])
+    .filter(m => parseFloat(m.pricing?.prompt || "1") === 0 && parseFloat(m.pricing?.completion || "1") === 0)
+    .filter(m => !/(image|audio|embed|tts|whisper)/i.test(m.id))
+    .sort((a, b) => {
+      const score = id => /qwen|llama|mistral|gemma/i.test(id) ? 0 : 1;
+      return score(a.id) - score(b.id);
+    });
+  if (!free.length) throw new Error("OpenRouter: no free models");
+  return free;
 }
 
 async function tryOpenRouter(prompt) {
   const key = process.env.OPENROUTER_API_KEY;
   if (!hasRealKey(key)) throw new Error("OpenRouter key not configured");
-  const model = await discoverOpenRouterModel(key);
-  const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "authorization": "Bearer " + key,
-      "http-referer": "https://nia-capital-os.onrender.com",
-      "x-title": "NIA Capital OS",
-    },
-    signal: AbortSignal.timeout(12000),
-    body: JSON.stringify({ model, messages: [{ role: "user", content: prompt }], max_tokens: 500, temperature: 0.3 }),
-  });
-  if (!r.ok) throw new Error("OpenRouter " + r.status + ": " + (await r.text()).slice(0, 100));
-  const j = await r.json();
-  const text = j.choices?.[0]?.message?.content;
-  if (!text) throw new Error("OpenRouter no text");
-  return { text: text.trim(), provider: "openrouter", model };
+
+  const models = await discoverOpenRouterModel(key);
+  let lastError = "no usable model";
+
+  for (const model of models.slice(0, 12)) {
+    try {
+      const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "authorization": "Bearer " + key,
+          "http-referer": "https://nia-evo-3-0.onrender.com",
+          "x-title": "NIA Capital OS",
+        },
+        signal: AbortSignal.timeout(12000),
+        body: JSON.stringify({
+          model: model.id,
+          messages: [{ role: "user", content: prompt }],
+          max_tokens: 500,
+          temperature: 0.3,
+        }),
+      });
+
+      const body = await r.text();
+
+      if (!r.ok) {
+        lastError = model.id + " HTTP " + r.status;
+        continue;
+      }
+
+      let j;
+      try { j = JSON.parse(body); } catch {
+        lastError = model.id + " invalid JSON";
+        continue;
+      }
+
+      const text = j.choices?.[0]?.message?.content;
+      if (typeof text === "string" && text.trim()) {
+        return {
+          text: text.trim(),
+          provider: "openrouter",
+          model: model.id,
+        };
+      }
+
+      lastError = model.id + " returned no text";
+    } catch (e) {
+      lastError = model.id + ": " + e.message;
+    }
+  }
+
+  throw new Error("OpenRouter exhausted: " + lastError);
 }
 
 async function tryHuggingFace(prompt) {
