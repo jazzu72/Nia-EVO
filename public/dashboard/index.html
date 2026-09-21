@@ -39,7 +39,7 @@
 
 <section class="grid">
 <div class="card"><div class="label">CAPITAL</div><div class="value" id="capital">$0</div></div>
-<div class="card"><div class="label">PIPELINE</div><div class="value" id="pipeline">$0</div></div>
+<div class="card"><div class="label">PIPELINE</div><div class="value" id="pipeline">$0</div></div><script>async function liveRevenue(){try{const r=await fetch("/api/revenue-engine/pipeline");const d=await r.json();if(d.ok&&d.metrics){const e=document.getElementById("pipeline");if(e)e.textContent="$"+Number(d.metrics.pipelineValue||0).toLocaleString();const o=document.getElementById("opportunities");if(o)o.textContent=Number(d.metrics.leads||0);}}catch(e){console.error("Revenue telemetry:",e)}}liveRevenue();setInterval(liveRevenue,30000);</script>
 <div class="card"><div class="label">OPPORTUNITIES</div><div class="value" id="opportunities">0</div></div>
 <div class="card"><div class="label">SYSTEM STATUS</div><div class="value" style="color:var(--green)">ONLINE</div></div>
 </section>
