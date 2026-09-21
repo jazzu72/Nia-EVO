@@ -13,9 +13,19 @@ h1{color:#00ff99}
 
 <h1>🏰 Nia Real Estate Command Center</h1>
 
-<div class="card" id="data">
-Loading Nia...
+<div class="card">
+<h2>Add Real Estate Record</h2>
+<form id="addForm">
+<input id="name" placeholder="Property / Brokerage Name" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+<input id="address" placeholder="Address" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+<input id="type" placeholder="Type (Property, Brokerage, Lead)" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+<input id="value" type="number" placeholder="Estimated Value" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+<button style="padding:12px 20px;margin-top:8px;cursor:pointer">ADD TO NIA</button>
+</form>
+<div id="formStatus"></div>
 </div>
+
+<div class="card" id="data">Loading Nia...</div>
 
 <script>
 async function load(){
@@ -43,5 +53,30 @@ ${list.length ? list.map((x,i)=>`
 load();
 </script>
 
+<script>
+document.getElementById('addForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const status=document.getElementById('formStatus');
+ status.textContent='NIA is registering record...';
+ try{
+  const payload={
+   name:document.getElementById('name').value.trim(),
+   address:document.getElementById('address').value.trim(),
+   type:document.getElementById('type').value.trim()||'Property',
+   value:Number(document.getElementById('value').value)||0
+  };
+  const r=await fetch('/api/realestate/add',{
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify(payload)
+  });
+  const j=await r.json();
+  if(!r.ok) throw new Error(j.error||'HTTP '+r.status);
+  status.textContent='✓ Record registered with NIA.';
+  e.target.reset();
+  load();
+ }catch(err){status.textContent='✗ '+err.message}
+});
+</script>
 </body>
 </html>
