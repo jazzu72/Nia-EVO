@@ -149,6 +149,7 @@ loadRoute("./cashflow/cashflow-api", "/api/cashflow");
 // Revenue & Operations
 loadRoute("./revenue/revenue-api", "/api/revenue");
 loadRoute("./aios/routes/revenue-engine", "/api/revenue-engine");
+loadRoute("./aios/routes/revenue-db", "/api/revenue-db");
 loadRoute("./revenue/prospects/prospect-api", "/api/prospects");
 loadRoute("./revenue/automation/automation-api", "/api/revenue/automation");
 loadRoute("./revenue/conversion/conversion-api", "/api/conversion");
