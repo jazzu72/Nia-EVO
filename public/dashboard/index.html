@@ -63,13 +63,15 @@
 <script>
 async function liveCapital(){
  try{
-  const r=await fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:'Return current pipeline count and total pipeline value as JSON only.'})});
-  const d=await r.json();
-  const m=(d.context||{});
+  const [h,c]=await Promise.all([
+   fetch('/api/capital/health',{cache:'no-store'}),
+   fetch('/api/nia/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(localStorage.getItem('nia-owner-token')||prompt('Paste your NIA owner token:'))},body:JSON.stringify({message:'Return current pipeline count and total pipeline value as JSON only.'})})
+  ]);
+  const health=await h.json(), d=await c.json(), m=d.context||{};
   if(m.opportunities!==undefined) document.getElementById('opportunities').textContent=m.opportunities;
   if(m.total!==undefined) document.getElementById('pipeline').textContent='$'+Number(m.total).toLocaleString();
-  document.getElementById('capital').textContent='$'+Number(m.total||0).toLocaleString();
- }catch(e){}
+  document.getElementById('capital').textContent=health.status==='ONLINE'?'ONLINE':'OFFLINE';
+ }catch(e){document.getElementById('capital').textContent='OFFLINE'}
 }
 liveCapital(); setInterval(liveCapital,30000);
 </script>
