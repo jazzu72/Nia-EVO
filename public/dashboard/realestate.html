@@ -40,8 +40,11 @@ document.getElementById('data').innerHTML=`
 <p>Records: ${list.length}</p>
 ${list.length ? list.map((x,i)=>`
 <div class="card">
-<strong>${String(x.name||x.address||x.property||x.id||'Record '+(i+1)).replace(/</g,'&lt;')}</strong>
-<p>${String(x.status||x.type||'Active').replace(/</g,'&lt;')}</p>
+<strong>${String(x.name||x.company||x.address||x.id||'Record '+(i+1)).replace(/</g,'&lt;')}</strong>
+<p>📍 ${String(x.address||x.city||'Location not provided').replace(/</g,'&lt;')}</p>
+<p>🏷️ ${String(x.type||x.service||'Property').replace(/</g,'&lt;')}</p>
+<p>💰 $${Number(x.value||0).toLocaleString()}</p>
+<p>Status: ${String(x.status||'Active').replace(/</g,'&lt;')}</p>
 </div>`).join('') : '<p>No real estate records currently registered.</p>'}
 <h3>Available Operations</h3>
 <p>✓ Brokerage / property records can be added through the Nia Real Estate API.</p>
