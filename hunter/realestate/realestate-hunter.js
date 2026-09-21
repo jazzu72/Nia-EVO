@@ -51,13 +51,22 @@ function addBrokerage(data){
         "RE-" + Date.now(),
 
         company:
-        data.company,
+        data.company || data.name || "Unknown",
+
+        name:
+        data.name || data.company || "Unknown",
+
+        address:
+        data.address || "",
 
         contact:
         data.contact || "Owner",
 
         city:
         data.city || "Virginia",
+
+        type:
+        data.type || "Property",
 
         website:
         data.website || "",
