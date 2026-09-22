@@ -29,3 +29,13 @@ config/envelopes.json
 runtime/envelope-audit.log
 runtime/
 runtime
+
+# Backups and artifacts
+.dart_tool/
+secrets.enc.backup.*
+tools/*.backup.*
+tools/llm.js.backup.*
+public/dashboard/index.backup.html
+public/dashboard/index.before-*.html
+Available
+Your
