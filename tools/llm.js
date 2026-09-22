@@ -12,10 +12,10 @@ function hasRealKey(k) {
 }
 
 const PROVIDERS = {
-  gemini: hasRealKey(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY) && process.env.NIA_ENABLE_GEMINI !== "false",
+  gemini: false,
   openrouter: hasRealKey(process.env.OPENROUTER_API_KEY) && process.env.NIA_ENABLE_OPENROUTER !== "false",
-  huggingface: hasRealKey(process.env.HF_TOKEN || process.env.HUGGINGFACE_TOKEN) && process.env.NIA_ENABLE_HUGGINGFACE !== "false",
-  openai: hasRealKey(process.env.OPENAI_API_KEY) && process.env.NIA_ENABLE_OPENAI !== "false",
+  huggingface: false,
+  openai: false,
 };
 
 function errorCategory(message) {
