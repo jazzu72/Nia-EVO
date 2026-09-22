@@ -719,6 +719,9 @@ app.use("/api/owner/auto-draft", require("./aios/routes/auto-draft-api"));
 app.use("/api/owner/application", requireOwnerAuth);
 app.use("/api/owner/application", require("./aios/routes/application-api"));
 
+app.use("/api/owner/voice", requireOwnerAuth);
+app.use("/api/owner/voice", require("./aios/routes/voice-api"));
+
 // 404 HANDLER
 // ============================================================
 
