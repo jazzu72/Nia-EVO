@@ -168,4 +168,5 @@
   healthCheck();
   setInterval(healthCheck, 30000);
   inputEl.focus();
+  window.addMsg = addMsg;
 })();

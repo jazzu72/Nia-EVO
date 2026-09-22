@@ -38,9 +38,12 @@
 
   <footer class="chat-input-bar">
     <textarea id="input" rows="1" placeholder="Ask Nia anything…" autocomplete="off"></textarea>
-    <button id="send" aria-label="Send">→</button>
+    <button id="voice-btn" aria-label="Voice" style="background:transparent;color:var(--gold);border:1px solid var(--gold-dim);width:48px;cursor:pointer;font-size:18px;">🎙</button>
+      <button id="send" aria-label="Send">→</button>
   </footer>
 </div>
 <script src="/dashboard/chat.js"></script>
+<script src="/dashboard/voice.js"></script>
+<script>document.getElementById("voice-btn")?.addEventListener("click", function(){ window.niaVoice.start(); });</script>
 </body>
 </html>
