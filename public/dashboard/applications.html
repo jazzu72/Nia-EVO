@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NIA — Applications</title>
+<link rel="stylesheet" href="/dashboard/dashboard.css">
+<style>
+body{{background:#07100d;color:#eef5f1;font:14px/1.5 Inter,system-ui,sans-serif;margin:0;padding:0}}
+.shell{{max-width:960px;margin:0 auto;padding:24px}}
+h1{{font-size:22px;margin:0 0 6px}}
+.sub{{color:#7f9189;font-size:12px;margin-bottom:24px}}
+.card{{background:#0c1713;border:1px solid #1b2a24;border-radius:12px;padding:18px;margin-bottom:12px}}
+.card h2{{font-size:14px;margin:0 0 8px;color:#d4b46a}}
+pre{{background:#040907;border:1px solid #1b2a24;border-radius:8px;padding:12px;font-size:12px;overflow-x:auto;color:#aebcb5}}
+a.back{{color:#d4b46a;text-decoration:none;font-size:12px;display:inline-block;margin-bottom:16px}}
+#content{{white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:12px;color:#aebcb5;background:#040907;border:1px solid #1b2a24;border-radius:8px;padding:12px;max-height:600px;overflow:auto}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <a class="back" href="/dashboard/index.html">← Command Center</a>
+  <h1>Applications</h1>
+  <div class="sub">Full grant applications ready for owner signature</div>
+
+  <div class="card">
+    <h2>Endpoint: <code>/api/owner/application/list</code></h2>
+    <div id="content">loading…</div>
+  </div>
+</div>
+<script>
+(async function() {{
+  const t = localStorage.getItem("nia-owner-token");
+  if (!t) {{ document.getElementById("content").textContent = "Set token in Chat first, then return here."; return; }}
+  try {{
+    const r = await fetch("/api/owner/application/list", {{ headers: {{ "authorization": "Bearer " + t }} }});
+    const d = await r.json();
+    document.getElementById("content").textContent = JSON.stringify(d, null, 2);
+  }} catch (e) {{
+    document.getElementById("content").textContent = "Error: " + e.message;
+  }}
+}})();
+</script>
+</body>
+</html>
