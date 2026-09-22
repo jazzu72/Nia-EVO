@@ -24,7 +24,7 @@ a.back{{color:#d4b46a;text-decoration:none;font-size:12px;display:inline-block;m
   <div class="sub">ElevenLabs voice agent config and status</div>
 
   <div class="card">
-    <h2>Endpoint: <code>/api/owner/voice/status</code></h2>
+    <h2>Endpoint: <code>/api/owner/voice/info</code></h2>
     <div id="content">loading…</div>
   </div>
 </div>
@@ -33,7 +33,7 @@ a.back{{color:#d4b46a;text-decoration:none;font-size:12px;display:inline-block;m
   const t = localStorage.getItem("nia-owner-token");
   if (!t) {{ document.getElementById("content").textContent = "Set token in Chat first, then return here."; return; }}
   try {{
-    const r = await fetch("/api/owner/voice/status", {{ headers: {{ "authorization": "Bearer " + t }} }});
+    const r = await fetch("/api/owner/voice/info", {{ headers: {{ "authorization": "Bearer " + t }} }});
     const d = await r.json();
     document.getElementById("content").textContent = JSON.stringify(d, null, 2);
   }} catch (e) {{
