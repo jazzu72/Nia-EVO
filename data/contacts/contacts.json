@@ -1,0 +1,62 @@
+{
+  "grants": [
+    {
+      "name": "VIPC General",
+      "org": "Virginia Innovation Partnership Corporation",
+      "email": "info@vipc.org",
+      "lane": "grants",
+      "note": "Launch Grant, CCF contact"
+    },
+    {
+      "name": "VIPC Communications",
+      "org": "VIPC",
+      "email": "communications@vipc.org",
+      "lane": "grants",
+      "note": "Alternative contact"
+    },
+    {
+      "name": "GO Virginia Region 2",
+      "org": "GO Virginia",
+      "email": "gova2@cece.vt.edu",
+      "lane": "grants",
+      "note": "Region 2 program contact"
+    },
+    {
+      "name": "Norfolk Economic Development",
+      "org": "City of Norfolk",
+      "email": "econdev@norfolk.gov",
+      "lane": "grants",
+      "note": "Capital Access Program"
+    },
+    {
+      "name": "Virginia SBDC",
+      "org": "Virginia SBDC",
+      "email": "info@virsbdc.org",
+      "lane": "grants",
+      "note": "Statewide small biz"
+    },
+    {
+      "name": "Virginia Catalyst",
+      "org": "Virginia Catalyst",
+      "email": "info@virginiacatalyst.org",
+      "lane": "grants",
+      "note": "Life sciences, high value"
+    },
+    {
+      "name": "Hampton Roads Community Foundation",
+      "org": "HRCF",
+      "email": "info@hamptonroadscf.org",
+      "lane": "grants",
+      "note": "Community grants"
+    },
+    {
+      "name": "Toshiba America Foundation",
+      "org": "Toshiba",
+      "email": "taf@toshiba.com",
+      "lane": "grants",
+      "note": "STEM education grants"
+    }
+  ],
+  "businesses": [],
+  "realestate": []
+}
