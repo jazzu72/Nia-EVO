@@ -725,6 +725,9 @@ app.use("/api/owner/voice", require("./aios/routes/voice-api"));
 app.use("/api/owner/executive", requireOwnerAuth);
 app.use("/api/owner/executive", require("./aios/routes/executive-api"));
 
+app.use("/api/owner/realestate", requireOwnerAuth);
+app.use("/api/owner/realestate", require("./aios/routes/realestate-api"));
+
 // 404 HANDLER
 // ============================================================
 
