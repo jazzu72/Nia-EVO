@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NIA — Voice (Direct)</title>
+<style>
+body{margin:0;background:#0b0d10;color:#f4f1ea;font:14px/1.5 system-ui,-apple-system,sans-serif;padding:24px;min-height:100vh}
+a.back{color:#c7a661;text-decoration:none;font-size:12px;margin-bottom:24px;display:inline-block}
+h1{font-family:Georgia,serif;font-weight:400;font-size:22px;margin:0 0 6px}
+.sub{color:#8a9099;font-size:12px;margin-bottom:24px}
+.shell{border:1px solid #252a32;background:#12151a;border-radius:12px;padding:20px;max-width:520px}
+.controls{display:flex;gap:8px;margin-bottom:20px}
+button{flex:1;background:#c7a661;color:#0b0d10;border:none;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:14px;cursor:pointer;border-radius:4px;font-weight:600}
+button:hover{background:#f4e6bb}
+button.stop{background:#e17070;color:#0b0d10}
+button:disabled{opacity:.4;cursor:not-allowed}
+.status{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#c7a661;margin-bottom:12px}
+.log{background:#040907;border:1px solid #1c1f24;border-radius:6px;padding:12px;font-family:ui-monospace,monospace;font-size:12px;line-height:1.6;max-height:400px;overflow-y:auto}
+.msg-user{color:#8a9099}
+.msg-nia{color:#f4f1ea}
+.msg-sys{color:#6a655d;font-size:11px}
+</style>
+</head>
+<body>
+<a class="back" href="/dashboard/index.html">← Command Center</a>
+<h1>Talk to Nia</h1>
+<div class="sub">Direct WebSocket · works with public agents</div>
+
+<div class="shell">
+  <div class="controls">
+    <button id="btn">Start Voice</button>
+  </div>
+  <div class="status" id="status">Idle</div>
+  <div class="log" id="log">Ready. Tap Start Voice. Allow mic when prompted. Speak.<br><br>If nothing happens, the agent may need to be public in ElevenLabs.</div>
+</div>
+
+<script>
+(function(){
+  const AGENT = "agent_5801k3vc89hqenaszpyprrc7k53q";
+  const log = document.getElementById("log");
+  const status = document.getElementById("status");
+  const btn = document.getElementById("btn");
+  let ws = null, mediaStream = null, audioCtx = null, processor = null, active = false;
+
+  function addLine(text, cls){
+    const div = document.createElement("div");
+    div.className = cls || "msg-nia";
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function setStatus(s){ status.textContent = s; }
+
+  async function start(){
+    log.innerHTML = "";
+    setStatus("Requesting mic…");
+    try {
+      mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch(e){ addLine("Mic denied: " + e.message, "msg-sys"); setStatus("Error"); return; }
+
+    setStatus("Connecting…");
+    ws = new WebSocket("wss://api.elevenlabs.io/v1/convai/conversation?agent_id=" + AGENT);
+
+    ws.onopen = () => {
+      addLine("[connected to Nia]", "msg-sys");
+      setStatus("Live");
+      active = true;
+      btn.textContent = "Stop Voice";
+      btn.classList.add("stop");
+      ws.send(JSON.stringify({ type: "conversation_initiation_client_data" }));
+      startAudioStream();
+    };
+
+    ws.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === "user_transcript") addLine("You: " + data.user_transcription_event.user_transcript, "msg-user");
+        else if (data.type === "agent_response") addLine("Nia: " + data.agent_response_event.agent_response, "msg-nia");
+        else if (data.type === "audio") playAudio(data.audio_event.audio_base_64);
+        else if (data.type === "ping") {
+          setTimeout(() => {
+            if (ws && ws.readyState === 1) ws.send(JSON.stringify({ type: "pong", event_id: data.ping_event.event_id }));
+          }, data.ping_event.ping_ms || 0);
+        }
+      } catch(e){}
+    };
+
+    ws.onerror = (e) => { addLine("[socket error — agent may not be public]", "msg-sys"); setStatus("Error"); };
+    ws.onclose = () => { addLine("[disconnected]", "msg-sys"); stop(); };
+  }
+
+  function startAudioStream(){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+    const src = audioCtx.createMediaStreamSource(mediaStream);
+    processor = audioCtx.createScriptProcessor(4096, 1, 1);
+    processor.onaudioprocess = (e) => {
+      if (!ws || ws.readyState !== 1) return;
+      const input = e.inputBuffer.getChannelData(0);
+      const pcm16 = new Int16Array(input.length);
+      for (let i = 0; i < input.length; i++) {
+        const s = Math.max(-1, Math.min(1, input[i]));
+        pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+      }
+      const b64 = btoa(String.fromCharCode.apply(null, new Uint8Array(pcm16.buffer)));
+      ws.send(JSON.stringify({ user_audio_chunk: b64 }));
+    };
+    src.connect(processor);
+    processor.connect(audioCtx.destination);
+  }
+
+  function playAudio(b64){
+    if (!audioCtx || !b64) return;
+    try {
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      const buf = bytes.buffer;
+      audioCtx.decodeAudioData(buf.slice(0), (audioBuf) => {
+        const src = audioCtx.createBufferSource();
+        src.buffer = audioBuf;
+        src.connect(audioCtx.destination);
+        src.start();
+      }, () => {});
+    } catch(e){}
+  }
+
+  function stop(){
+    active = false;
+    btn.textContent = "Start Voice";
+    btn.classList.remove("stop");
+    setStatus("Idle");
+    if (ws) { try { ws.close(); } catch(e){} ws = null; }
+    if (processor) { try { processor.disconnect(); } catch(e){} processor = null; }
+    if (mediaStream) { mediaStream.getTracks().forEach(t => t.stop()); mediaStream = null; }
+  }
+
+  btn.addEventListener("click", () => { if (active) stop(); else start(); });
+})();
+</script>
+</body>
+</html>

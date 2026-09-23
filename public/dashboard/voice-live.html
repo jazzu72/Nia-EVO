@@ -3,44 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>NIA — Voice</title>
+<title>NIA — Voice (Widget)</title>
 <style>
-body{margin:0;background:#0b0d10;color:#f4f1ea;font:14px/1.5 system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px}
-a.back{color:#c7a661;text-decoration:none;font-size:12px;align-self:flex-start;margin-bottom:24px}
-h1{font-family:Georgia,serif;font-size:24px;font-weight:400;margin:0 0 8px}
-.sub{color:#8a9099;font-size:12px;margin-bottom:32px}
-.shell{border:1px solid #252a32;background:#12151a;padding:32px 24px;border-radius:12px;width:100%;max-width:480px;text-align:center}
-.status{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#c7a661;margin-bottom:24px}
-#convai-widget{min-height:80px;display:flex;align-items:center;justify-content:center}
-.hint{color:#6a655d;font-size:11px;margin-top:24px;line-height:1.6}
+body{margin:0;background:#0b0d10;color:#f4f1ea;font:14px/1.5 system-ui,-apple-system,sans-serif;min-height:100vh;padding:24px;display:flex;flex-direction:column}
+a.back{color:#c7a661;text-decoration:none;font-size:12px;margin-bottom:24px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:22px;margin:0 0 6px}
+.sub{color:#8a9099;font-size:12px;margin-bottom:28px}
+.shell{border:1px solid #252a32;background:#12151a;border-radius:12px;padding:24px;max-width:480px;width:100%;align-self:center}
+.shell h2{font-size:14px;margin:0 0 12px;color:#c7a661;font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.14em}
+#convai-widget{min-height:80px}
+.alt{margin-top:24px;padding-top:20px;border-top:1px solid #1c1f24}
+.alt a{color:#c7a661;font-size:12px;text-decoration:none}
 </style>
 </head>
 <body>
 <a class="back" href="/dashboard/index.html">← Command Center</a>
 <h1>Talk to Nia</h1>
-<div class="sub">Voice interface · ElevenLabs Conversational AI</div>
+<div class="sub">ElevenLabs Conversational AI · Widget</div>
 
 <div class="shell">
-  <div class="status">● Live Agent</div>
+  <h2>● Live Agent</h2>
   <div id="convai-widget"></div>
-  <div class="hint">
-    If the mic button doesn't appear, the agent isn't set to public yet.<br>
-    Go to <strong>ElevenLabs → Agents → Nia → Share</strong> and enable public access.
+  <div class="alt">
+    Widget not appearing? <a href="/dashboard/voice-direct.html">Use direct WebSocket instead →</a><br>
+    <span style="color:#6a655d;font-size:11px;display:inline-block;margin-top:8px">
+      Agent must be public in ElevenLabs → Agents → Nia → Share
+    </span>
   </div>
 </div>
 
-<!-- ElevenLabs public widget — no API key needed -->
-<elevenlabs-convai
-  agent-id="agent_5801k3vc89hqenaszpyprrc7k53q"
-  variant="compact"
-  action-text="Talk to Nia"
-  start-call-text="Start voice"
-  end-call-text="End"
-  expand-text="Expand"
-  listening-text="Listening..."
-  speaking-text="Nia is speaking..."
-></elevenlabs-convai>
-
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed@latest" async type="text/javascript"></script>
+<!-- Correct widget CDN per ElevenLabs docs -->
+<script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+<elevenlabs-convai agent-id="agent_5801k3vc89hqenaszpyprrc7k53q"></elevenlabs-convai>
 </body>
 </html>
