@@ -1,0 +1,115 @@
+{
+  "deals": [
+    {
+      "address": "1234 Ocean View Ave, Norfolk, VA 23503",
+      "price": 245000,
+      "rent": 2100,
+      "repairs": 15000,
+      "type": "single_family",
+      "market": "Norfolk",
+      "id": "RE-1790184833962-jp4b",
+      "added_at": "2026-09-23T17:33:53.962Z",
+      "score": 59,
+      "verdict": "BUY",
+      "metrics": {
+        "one_percent_rule": 0.0086,
+        "cap_rate": 0.0514,
+        "cash_on_cash": -0.0584,
+        "monthly_cash_flow": -298,
+        "flip_spread": 46250,
+        "flip_pct": 0.1888,
+        "arv": 306250
+      },
+      "status": "NEW"
+    },
+    {
+      "address": "567 Colonial Ave, Norfolk, VA 23507",
+      "price": 385000,
+      "rent": 2800,
+      "repairs": 25000,
+      "type": "duplex",
+      "market": "Norfolk",
+      "id": "RE-1790184833964-mkee",
+      "added_at": "2026-09-23T17:33:53.964Z",
+      "score": 49,
+      "verdict": "REVIEW",
+      "metrics": {
+        "one_percent_rule": 0.0073,
+        "cap_rate": 0.0436,
+        "cash_on_cash": -0.0896,
+        "monthly_cash_flow": -719,
+        "flip_spread": 71250,
+        "flip_pct": 0.1851,
+        "arv": 481250
+      },
+      "status": "NEW"
+    },
+    {
+      "address": "890 Portsmouth Blvd, Portsmouth, VA 23704",
+      "price": 165000,
+      "rent": 1450,
+      "repairs": 20000,
+      "type": "single_family",
+      "market": "Portsmouth",
+      "id": "RE-1790184833964-y0hf",
+      "added_at": "2026-09-23T17:33:53.964Z",
+      "score": 55,
+      "verdict": "BUY",
+      "metrics": {
+        "one_percent_rule": 0.0088,
+        "cap_rate": 0.0527,
+        "cash_on_cash": -0.0532,
+        "monthly_cash_flow": -183,
+        "flip_spread": 21250,
+        "flip_pct": 0.1288,
+        "arv": 206250
+      },
+      "status": "NEW"
+    },
+    {
+      "address": "210 Hampton Roads Ave, Hampton, VA 23669",
+      "price": 195000,
+      "rent": 1700,
+      "repairs": 10000,
+      "type": "single_family",
+      "market": "Hampton",
+      "id": "RE-1790184833964-ev8g",
+      "added_at": "2026-09-23T17:33:53.964Z",
+      "score": 61,
+      "verdict": "BUY",
+      "metrics": {
+        "one_percent_rule": 0.0087,
+        "cap_rate": 0.0523,
+        "cash_on_cash": -0.0549,
+        "monthly_cash_flow": -223,
+        "flip_spread": 38750,
+        "flip_pct": 0.1987,
+        "arv": 243750
+      },
+      "status": "NEW"
+    },
+    {
+      "address": "3400 Virginia Beach Blvd, Virginia Beach, VA 23452",
+      "price": 425000,
+      "rent": 3200,
+      "repairs": 30000,
+      "type": "triplex",
+      "market": "Virginia Beach",
+      "id": "RE-1790184833964-o3oo",
+      "added_at": "2026-09-23T17:33:53.964Z",
+      "score": 50,
+      "verdict": "REVIEW",
+      "metrics": {
+        "one_percent_rule": 0.0075,
+        "cap_rate": 0.0452,
+        "cash_on_cash": -0.0834,
+        "monthly_cash_flow": -739,
+        "flip_spread": 76250,
+        "flip_pct": 0.1794,
+        "arv": 531250
+      },
+      "status": "NEW"
+    }
+  ],
+  "updated_at": "2026-09-23T17:33:53.964Z"
+}
