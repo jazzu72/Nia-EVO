@@ -10,6 +10,7 @@ const llm = require("../../tools/llm");
 const envelopes = require("./t2-envelopes");
 const gate = require("../../tools/autonomy-gate");
 const learning = require("./learning");
+const qualifier = require("../grants/qualification-engine");
 
 const QUEUE_DIR = "runtime/auto-drafts";
 const QUEUE_FILE = path.join(QUEUE_DIR, "queue.json");
@@ -116,6 +117,22 @@ async function runAutoDraft(options) {
     return { ok: false, error: "NO_ENVELOPE", message: "Sign an envelope authorizing draft_proposal before running autonomous drafting." };
   }
 
+  // ─── Qualification gate ────────────────────────────────
+  // Only draft for grants that pass the qualification engine.
+  const qResult = qualifier.filterQualified();
+  const qualifiedIds = new Set(qResult.qualified.map(function (g) { return g.id; }));
+
+  // Also check grants currently in our opportunity list against the engine
+  const beforeFilter = eligible.length;
+  const qualifiedEligible = eligible.filter(function (o) {
+    // If opportunity has a matching grant id in the engine, require QUALIFIED
+    if (o.grant_id && !qualifiedIds.has(o.grant_id)) return false;
+    // Otherwise, allow (opportunity came from a source we haven't classified)
+    return true;
+  });
+
+  console.log("[auto-drafter] qualification gate: " + beforeFilter + " eligible → " + qualifiedEligible.length + " qualified");
+
   // Daily cap check
   const queue = loadQueue();
   const today = new Date().toISOString().slice(0, 10);
@@ -128,7 +145,7 @@ async function runAutoDraft(options) {
   }
 
   // Draft up to `remaining` eligible opportunities
-  const toDraft = eligible.slice(0, remaining);
+  const toDraft = qualifiedEligible.slice(0, remaining);
   const drafted = [];
 
   for (const opp of toDraft) {
