@@ -47,21 +47,63 @@ async function discoverGeminiModel(key) {
 }
 
 async function tryGemini(prompt) {
-  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+  const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_STUDIO_API_KEY || process.env.GOOGLE_API_KEY;
   if (!hasRealKey(key)) throw new Error("Gemini key not configured");
-  const model = await discoverGeminiModel(key);
-  const url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + key;
-  const r = await fetch(url, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    signal: AbortSignal.timeout(12000),
-    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 500 } }),
-  });
-  if (!r.ok) throw new Error("Gemini " + r.status + ": " + (await r.text()).slice(0, 100));
-  const j = await r.json();
-  const text = j.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error("Gemini no text");
-  return { text: text.trim(), provider: "gemini", model: model };
+
+  // Try multiple models + retry on 503/429
+  const models = [
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-flash-lite-latest"
+  ];
+
+  let lastError = null;
+
+  for (const model of models) {
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const url = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + key;
+        const r = await fetch(url, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          signal: AbortSignal.timeout(30000),
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 0.3, maxOutputTokens: 800 }
+          })
+        });
+
+        if (r.ok) {
+          const j = await r.json();
+          const text = j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts && j.candidates[0].content.parts[0] && j.candidates[0].content.parts[0].text;
+          if (text) return { text: text.trim(), provider: "gemini", model: model };
+          lastError = new Error(model + " returned no text");
+          break;
+        }
+
+        const errText = await r.text();
+        lastError = new Error("Gemini " + model + " " + r.status + ": " + errText.slice(0, 100));
+
+        // 503 = transient, retry. 429 = rate limit, retry once. 404 = model retired, skip
+        if (r.status === 503 || r.status === 429) {
+          await new Promise(function (rs) { setTimeout(rs, 1500 * attempt); });
+          continue;
+        }
+        if (r.status === 404) break;
+        throw lastError;
+      } catch (e) {
+        lastError = e;
+        if (e.message && e.message.indexOf("timeout") !== -1 && attempt < 2) {
+          await new Promise(function (rs) { setTimeout(rs, 1000); });
+          continue;
+        }
+        break;
+      }
+    }
+  }
+
+  throw lastError || new Error("Gemini: all models failed");
 }
 
 async function discoverOpenRouterModel(key) {
