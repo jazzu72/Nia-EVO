@@ -39,3 +39,8 @@ public/dashboard/index.backup.html
 public/dashboard/index.before-*.html
 Available
 Your
+.env
+.env.*
+*.secret
+*.secrets
+secrets.enc
