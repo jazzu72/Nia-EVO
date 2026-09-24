@@ -178,22 +178,28 @@ function withTimeout(promise, ms, label) {
 
 async function generate(prompt, fallbackFn) {
   const errors = [];
-  const attempts = [];
 
-  if (PROVIDERS.gemini) attempts.push(withTimeout(tryGemini(prompt), 12000, "gemini").catch(e => { errors.push("gemini: " + e.message); return null; }));
-  if (PROVIDERS.openrouter) attempts.push(withTimeout(tryOpenRouter(prompt), 12000, "openrouter").catch(e => { errors.push("openrouter: " + e.message); return null; }));
-  if (PROVIDERS.huggingface) attempts.push(withTimeout(tryHuggingFace(prompt), 12000, "huggingface").catch(e => { errors.push("huggingface: " + e.message); return null; }));
-  if (PROVIDERS.openai) attempts.push(withTimeout(tryOpenAI(prompt), 12000, "openai").catch(e => { errors.push("openai: " + e.message); return null; }));
+  // Priority order: Gemini first, then OpenRouter, then HF, then OpenAI, then template
+  const order = [];
+  if (PROVIDERS.gemini) order.push("gemini");
+  if (PROVIDERS.openrouter) order.push("openrouter");
+  if (PROVIDERS.huggingface) order.push("huggingface");
+  if (PROVIDERS.openai) order.push("openai");
 
-  if (!attempts.length) {
-    return { text: fallbackFn(), generator: "template", provider: null, model: null, fallback: true, errorCategory: "no_providers", errors };
-  }
+  for (const provider of order) {
+    try {
+      let result;
+      if (provider === "gemini") result = await tryGemini(prompt);
+      else if (provider === "openrouter") result = await tryOpenRouter(prompt);
+      else if (provider === "huggingface") result = await tryHuggingFace(prompt);
+      else if (provider === "openai") result = await tryOpenAI(prompt);
 
-  const settled = await Promise.all(attempts);
-  const winner = settled.find(r => r && r.text);
-
-  if (winner) {
-    return { text: winner.text, generator: winner.provider, provider: winner.provider, model: winner.model, fallback: false, errorCategory: null, errors };
+      if (result && result.text) {
+        return { text: result.text, generator: result.provider, provider: result.provider, model: result.model, fallback: false, errorCategory: null, errors };
+      }
+    } catch (e) {
+      errors.push(provider + ": " + e.message);
+    }
   }
 
   return { text: fallbackFn(), generator: "template", provider: null, model: null, fallback: true, errorCategory: "all_providers_unavailable", errors };
