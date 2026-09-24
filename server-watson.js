@@ -739,6 +739,8 @@ app.use("/api/quantum/dashboard", require("./aios/routes/quantum-dashboard-api")
 app.use("/api/nia", requireOwnerAuth);
 app.use("/api/nia", require("./aios/routes/nia-chat"));
 app.use("/api/nia/design", requireOwnerAuth);
+app.use("/api/owner/slack", requireOwnerAuth);
+app.use("/api/owner/slack", require("./aios/routes/slack-api"));
 app.use("/api/nia/design", require("./aios/routes/nia-design"));
 app.use((req, res) => {
   res.status(404).json({
