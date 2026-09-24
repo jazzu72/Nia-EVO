@@ -6,6 +6,7 @@
 const cron = require("node-cron");
 const autoDrafter = require("./auto-drafter");
 const weeklyBrief = require("./weekly-brief");
+const ceoLoop = require("./ceo-loop");
 
 let started = false;
 
@@ -21,6 +22,17 @@ function start() {
       console.log("[scheduler] auto-draft complete:", JSON.stringify(result));
     } catch (e) {
       console.error("[scheduler] auto-draft failed:", e.message);
+    }
+  });
+
+  // CEO daily loop — 6 AM
+  cron.schedule("0 6 * * *", async function () {
+    console.log("[scheduler] CEO daily loop starting");
+    try {
+      const result = await ceoLoop.runFullDay();
+      console.log("[scheduler] CEO day complete:", JSON.stringify(result));
+    } catch (e) {
+      console.error("[scheduler] CEO loop failed:", e.message);
     }
   });
 
