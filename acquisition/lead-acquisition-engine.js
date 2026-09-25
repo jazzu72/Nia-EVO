@@ -21,6 +21,7 @@ function generateTargets() {
   if (process.env.NIA_ENABLE_FAKE_DISCOVERY !== "true") return [];
   if (process.env.NIA_ENABLE_FAKE_DISCOVERY !== "true") return [];
   if (process.env.NIA_ENABLE_FAKE_DISCOVERY !== "true") return [];
+  if (process.env.NIA_ENABLE_FAKE_DISCOVERY !== "true") return [];
   return [
     {
       company: "Norfolk Restaurant",
