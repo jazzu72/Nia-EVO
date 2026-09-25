@@ -1,0 +1,10 @@
+const fs=require("fs"),crypto=require("crypto");
+const S=Buffer.from("nia-capital-os-v1");
+const r=fs.readFileSync("secrets.enc");
+const b=!r.includes(0)&&/^[A-Za-z0-9+/=\s]+$/.test(r.toString("ascii"));
+const p=b?Buffer.from(r.toString("ascii").replace(/\s/g,""),"base64"):r;
+const k=crypto.scryptSync(process.env.NIA_MASTER_PASSWORD,S,32);
+const d=crypto.createDecipheriv("aes-256-gcm",k,p.slice(0,12));
+d.setAuthTag(p.slice(12,28));
+const t=Buffer.concat([d.update(p.slice(28)),d.final()]).toString("utf8");
+console.log(t.split("\n").filter(Boolean).map(l=>l.split("=")[0]).join("\n"));
