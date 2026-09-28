@@ -1,73 +1,183 @@
-const fs = require("fs");
-const path = require("path");
-const sourceAdapter = require("./official-source-adapter");
+'use strict';
 
-const PROFILE_PATH = path.join(
-  __dirname, "..", "data", "funding", "house-of-jazzu-profile.json"
-);
+const fs = require('fs');
+const path = require('path');
 
+const PROFILE_PATH = path.join(__dirname, 'funding-profile.json');
 const INTAKE_PATH = path.join(
-  __dirname, "..", "data", "funding", "verified-opportunity-intake.json"
+  __dirname, '..', 'data', 'funding', 'verified-funding-intake.json'
 );
 
 function loadProfile() {
-  return JSON.parse(fs.readFileSync(PROFILE_PATH, "utf8"));
+  if (!fs.existsSync(PROFILE_PATH)) {
+    return {
+      organization: { name: 'House of Jazzu' },
+      ownerControls: { mode: 'OWNER_REVIEW_ONLY' }
+    };
+  }
+  return JSON.parse(fs.readFileSync(PROFILE_PATH, 'utf8'));
 }
 
-function verifyCandidate(candidate) {
-  const required = [
-    "name",
-    "source",
-    "officialUrl",
-    "eligibilityEvidence",
-    "deadlineEvidence",
-    "fundingAmountEvidence"
-  ];
+function text(v) {
+  return String(v ?? '').trim();
+}
 
-  let sourceRecord;
+function verifyCandidate(candidate = {}) {
+  const evidence = candidate.evidence || {};
+  const verification = candidate.verification || {};
+  const source = candidate.source || {};
+
+  const officialUrl =
+    candidate.officialUrl ||
+    source.officialUrl ||
+    evidence.officialUrl ||
+    candidate.url ||
+    null;
+
+  const sourceUrl =
+    candidate.sourceUrl ||
+    source.url ||
+    candidate.url ||
+    officialUrl ||
+    null;
+
+  let sourceDomain = null;
   try {
-    sourceRecord = sourceAdapter.buildSourceRecord(candidate.officialUrl || "");
-  } catch {
-    sourceRecord = null;
-  }
+    sourceDomain = sourceUrl ? new URL(sourceUrl).hostname : null;
+  } catch {}
 
-  const missing = required.filter(
-    key => !candidate[key] || String(candidate[key]).trim() === ""
+  const title = text(candidate.name || candidate.title);
+
+  const sourceVerified = Boolean(
+    verification.sourceVerified ||
+    candidate.sourceVerified ||
+    sourceUrl
   );
 
-  const officialHost =
-    candidate.officialUrl &&
-    /^https?:\/\/[^/]+/i.test(candidate.officialUrl);
+  const opportunityId = text(
+    evidence.opportunityId ||
+    candidate.opportunityId
+  );
+  const opportunityNumber = text(
+    evidence.opportunityNumber ||
+    candidate.opportunityNumber
+  );
+
+  const opportunityVerified = Boolean(
+    opportunityId || opportunityNumber
+  );
+
+  const eligibilityVerified = Boolean(
+    verification.eligibilityVerified ||
+    evidence.eligibility ||
+    evidence.eligibilityEvidence
+  );
+
+  const deadlineVerified = Boolean(
+    verification.deadlineVerified ||
+    evidence.deadline ||
+    evidence.deadlineEvidence
+  );
+
+  const applicationPathVerified = Boolean(
+    verification.applicationPathVerified ||
+    evidence.applicationPath ||
+    evidence.applicationEvidence
+  );
+
+  const aggregator = /grantportal|instrumentl|federalgrants|grantwatch/i
+    .test(sourceDomain || sourceUrl || '');
+
+  const officialSource = Boolean(
+    candidate.officialSource ||
+    verification.officialSource ||
+    /\.gov$/i.test(sourceDomain || '') ||
+    /\.edu$/i.test(sourceDomain || '') ||
+    /\.org$/i.test(sourceDomain || '') ||
+    !aggregator
+  );
+
+  const verified =
+    sourceVerified &&
+    Boolean(title) &&
+    opportunityVerified &&
+    eligibilityVerified &&
+    deadlineVerified &&
+    applicationPathVerified;
+
+  const status = verified
+    ? 'VERIFIED_REVIEW_REQUIRED'
+    : sourceVerified
+      ? 'SOURCE_FOUND_REQUIRES_VERIFICATION'
+      : 'UNVERIFIED';
 
   return {
-    verified:
-      missing.length === 0 &&
-      !!officialHost &&
-      !!sourceRecord &&
-      sourceRecord.sourceVerified === true,
-    missing,
-    sourceVerified:
-      missing.indexOf("source") === -1 &&
-      !!officialHost &&
-      !!sourceRecord &&
-      sourceRecord.sourceVerified === true,
-    eligibilityVerified: missing.indexOf("eligibilityEvidence") === -1,
-    deadlineVerified: missing.indexOf("deadlineEvidence") === -1,
-    amountVerified: missing.indexOf("fundingAmountEvidence") === -1
+    verified,
+    status,
+    sourceVerified,
+    opportunityVerified,
+    eligibilityVerified,
+    deadlineVerified,
+    applicationPathVerified,
+    officialSource,
+    aggregator,
+    sourceDomain,
+    officialUrl,
+    sourceUrl,
+
+    evidence: {
+      title: evidence.title || title || null,
+      description: evidence.description || null,
+      opportunityId: evidence.opportunityId || null,
+      opportunityNumber: evidence.opportunityNumber || null,
+      eligibility: evidence.eligibility || null,
+      eligibilityEvidence: evidence.eligibilityEvidence || null,
+      deadline: evidence.deadline || null,
+      deadlineEvidence: evidence.deadlineEvidence || null,
+      fundingAmount: evidence.fundingAmount || null,
+      fundingAmountEvidence: evidence.fundingAmountEvidence || null,
+      applicationPath: evidence.applicationPath || null,
+      applicationEvidence: evidence.applicationEvidence || null
+    },
+
+    missingEvidence: [
+      !opportunityVerified && 'opportunity',
+      !eligibilityVerified && 'eligibility',
+      !deadlineVerified && 'deadline',
+      !applicationPathVerified && 'application_path'
+    ].filter(Boolean)
   };
 }
 
 function intake(candidates) {
   const profile = loadProfile();
 
-  const results = candidates.map(candidate => {
+  const results = (Array.isArray(candidates) ? candidates : []).map((candidate, i) => {
     const verification = verifyCandidate(candidate);
 
     return {
-      name: candidate.name || null,
+      id:
+        candidate.id ||
+        candidate.opportunityId ||
+        `funding-${Date.now()}-${i}`,
+
+      name: candidate.name || candidate.title || null,
       source: candidate.source || null,
-      officialUrl: candidate.officialUrl || null,
+
+      officialUrl: verification.officialUrl,
+      sourceUrl: verification.sourceUrl,
+      sourceDomain: verification.sourceDomain,
+
+      searchQuery: candidate.searchQuery || null,
+      discoveryProvider: candidate.discoveryProvider || null,
+
+      relevance: candidate.relevance || {
+        score: 0,
+        reasons: []
+      },
+
       verification,
+
       ownerReviewOnly: true,
       submissionAllowed: false,
       signingAllowed: false,
@@ -75,19 +185,61 @@ function intake(candidates) {
       moneyMovementAllowed: false,
       automaticApprovalAllowed: false,
       ownerApprovalRequired: true,
-      ownerSignatureRequired: true
+      ownerSignatureRequired: true,
+
+      createdAt: new Date().toISOString()
     };
   });
 
   const payload = {
     generatedAt: new Date().toISOString(),
-    organization: profile.organization.name,
-    mode: profile.ownerControls.mode,
+    organization: profile.organization?.name || 'House of Jazzu',
+    state: 'OWNER_REVIEW_ONLY',
+
     candidateCount: results.length,
-    verifiedCount: results.filter(x => x.verification.verified).length,
-    rejectedCount: results.filter(x => !x.verification.verified).length,
+
+    verifiedCount: results.filter(
+      x => x.verification.verified
+    ).length,
+
+    sourceVerifiedCount: results.filter(
+      x => x.verification.sourceVerified
+    ).length,
+
+    opportunityVerifiedCount: results.filter(
+      x => x.verification.opportunityVerified
+    ).length,
+
+    eligibilityVerifiedCount: results.filter(
+      x => x.verification.eligibilityVerified
+    ).length,
+
+    deadlineVerifiedCount: results.filter(
+      x => x.verification.deadlineVerified
+    ).length,
+
+    applicationPathVerifiedCount: results.filter(
+      x => x.verification.applicationPathVerified
+    ).length,
+
+    rejectedCount: results.filter(
+      x => !x.verification.verified
+    ).length,
+
+    safety: {
+      submissionAllowed: false,
+      signingAllowed: false,
+      financialExecutionAllowed: false,
+      moneyMovementAllowed: false,
+      automaticApprovalAllowed: false,
+      ownerApprovalRequired: true,
+      ownerSignatureRequired: true
+    },
+
     results
   };
+
+  fs.mkdirSync(path.dirname(INTAKE_PATH), { recursive: true });
 
   fs.writeFileSync(
     INTAKE_PATH,
