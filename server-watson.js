@@ -75,6 +75,7 @@ console.log("🛡️ /api/aios/approvals loaded");
 // Legacy decision-gate route removed: module is not present in the recovery tree.
 // Decision governance remains provided by decision-engine + action-gate + execution-governor + approval-api.
 app.use("/api/funding", require("./funding-engine/capital-radar-api"));
+app.use("/api/acquisition", require("./acquisition/acquisition-api"));
 console.log("✅ /api/funding capital radar loaded");
 
 // ============================================================
@@ -110,7 +111,7 @@ loadRoute("./ceo/ceo-api", "/api/ceo");
 loadRoute("./hunter/realestate/realestate-api", "/api/realestate");
 loadRoute("./sales/sales-api", "/api/sales");
 loadRoute("./sales/sales-dashboard-api", "/api/sales-dashboard");
-loadRoute("./sales/nia-sales-api", "/api/sales");
+// nia-sales endpoints consolidated into ./sales/sales-api
 
 // Acquisition & Conversion
 loadRoute("./acquisition/acquisition-api", "/api/acquisition");
@@ -148,8 +149,6 @@ loadRoute("./cashflow/cashflow-api", "/api/cashflow");
 
 // Revenue & Operations
 loadRoute("./revenue/revenue-api", "/api/revenue");
-loadRoute("./aios/routes/revenue-engine", "/api/revenue-engine");
-loadRoute("./aios/routes/revenue-db", "/api/revenue-db");
 loadRoute("./revenue/prospects/prospect-api", "/api/prospects");
 loadRoute("./revenue/automation/automation-api", "/api/revenue/automation");
 loadRoute("./revenue/conversion/conversion-api", "/api/conversion");
