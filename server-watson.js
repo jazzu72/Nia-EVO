@@ -452,36 +452,43 @@ app.get("/api/owner/funding/lifecycle", (req, res) => {
 
 app.get("/api/owner/funding/opportunities", (req,res) => {
   const fs=require("fs");
+
   try {
-    const file="data/funding/analyzed-opportunities.json";
+    const candidates=[
+      "data/funding/verified-funding-intake.json",
+      "data/funding/funding-discovery-run.json"
+    ];
 
-    if(!fs.existsSync(file)){
-      return res.json({
-        ok:true,
-        organization:"House of Jazzu",
-        opportunityCount:0,
-        opportunities:[],
-        safety:{
-          submissionAllowed:false,
-          signingAllowed:false,
-          financialExecutionAllowed:false,
-          moneyMovementAllowed:false,
-          automaticApprovalAllowed:false,
-          ownerApprovalRequired:true,
-          ownerSignatureRequired:true
+    const opportunities=[];
+
+    for(const file of candidates){
+      if(!fs.existsSync(file)) continue;
+
+      try{
+        const data=JSON.parse(fs.readFileSync(file,"utf8"));
+        const rows=Array.isArray(data)
+          ? data
+          : Array.isArray(data.opportunities)
+            ? data.opportunities
+            : Array.isArray(data.results)
+              ? data.results
+              : [];
+
+        for(const row of rows){
+          if(row && typeof row==="object"){
+            opportunities.push(row);
+          }
         }
-      });
+      }catch(err){
+        console.warn("[FUNDING_OPPORTUNITIES_SKIP]",file,err.message);
+      }
     }
-
-    const data=JSON.parse(fs.readFileSync(file,"utf8"));
-    const opportunities=Array.isArray(data.opportunities)
-      ? data.opportunities
-      : [];
 
     return res.json({
       ok:true,
       organization:"House of Jazzu",
       mode:"OWNER_REVIEW_ONLY",
+      sourceCount:candidates.filter(f=>fs.existsSync(f)).length,
       opportunityCount:opportunities.length,
       opportunities,
       safety:{
