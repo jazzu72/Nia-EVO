@@ -633,41 +633,56 @@ app.post("/api/owner/funding/collect", (req,res) => {
 app.post("/api/owner/funding/analyze", (req,res) => {
   const fs=require("fs");
   try {
-    const input="data/funding/collected-opportunities.json";
-    const outputFile="data/funding/analyzed-opportunities.json";
+    const candidates=[
+      "data/funding/verified-funding-intake.json",
+      "data/funding/funding-discovery-run.json"
+    ];
 
-    if(!fs.existsSync(input)){
-      return res.status(400).json({
-        ok:false,
-        error:"FUNDING_COLLECTION_REQUIRED"
-      });
-    }
+    const opportunities=[];
 
-    const data=JSON.parse(fs.readFileSync(input,"utf8"));
-    const opportunities=Array.isArray(data.opportunities)
-      ? data.opportunities
-      : [];
+    for(const file of candidates){
+      if(!fs.existsSync(file)) continue;
 
-    const analyzed=opportunities.map((o,i)=>({
-      ...o,
-      analysis:{
-        index:i+1,
-        status:"OWNER_REVIEW",
-        fitStatus:"REVIEW_REQUIRED",
-        evidenceStatus:Array.isArray(o.missingEvidence)&&o.missingEvidence.length
-          ? "INCOMPLETE"
-          : "AVAILABLE",
-        recommendedAction:"OWNER_REVIEW"
+      try{
+        const data=JSON.parse(fs.readFileSync(file,"utf8"));
+        const rows=Array.isArray(data)
+          ? data
+          : Array.isArray(data.opportunities)
+            ? data.opportunities
+            : Array.isArray(data.results)
+              ? data.results
+              : [];
+
+        for(const row of rows){
+          if(row && typeof row==="object"){
+            opportunities.push({
+              ...row,
+              sourceFile:file,
+              analysis:{
+                status:"OWNER_REVIEW",
+                fitStatus:"REVIEW_REQUIRED",
+                evidenceStatus:Array.isArray(row.missingEvidence)&&row.missingEvidence.length
+                  ? "INCOMPLETE"
+                  : "AVAILABLE",
+                recommendedAction:"OWNER_REVIEW"
+              },
+              analyzedAt:new Date().toISOString()
+            });
+          }
+        }
+      }catch(err){
+        console.warn("[FUNDING_ANALYZE_SKIP]",file,err.message);
       }
-    }));
+    }
 
     const output={
       ok:true,
       organization:"House of Jazzu",
       mode:"OWNER_REVIEW_ONLY",
       analyzedAt:new Date().toISOString(),
-      opportunityCount:analyzed.length,
-      opportunities:analyzed,
+      sourceCount:candidates.filter(f=>fs.existsSync(f)).length,
+      opportunityCount:opportunities.length,
+      opportunities,
       safety:{
         submissionAllowed:false,
         signingAllowed:false,
@@ -680,7 +695,10 @@ app.post("/api/owner/funding/analyze", (req,res) => {
     };
 
     fs.mkdirSync("data/funding",{recursive:true});
-    fs.writeFileSync(outputFile,JSON.stringify(output,null,2));
+    fs.writeFileSync(
+      "data/funding/analyzed-opportunities.json",
+      JSON.stringify(output,null,2)
+    );
 
     return res.json(output);
   }catch(err){
