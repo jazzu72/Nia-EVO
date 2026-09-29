@@ -552,79 +552,91 @@ app.post("/api/owner/funding/pipeline", async (req, res) => {
   }
 });
 
-app.post("/api/owner/funding/collect", (req,res) => {
-  try {
-    const dir="data/funding";
-    fs.mkdirSync(dir,{recursive:true});
 
-    const sources=[];
-    const candidates=[
-      "data/funding/verified-funding-intake.json",
-      "data/funding/funding-discovery-run.json"
+app.post("/api/owner/funding/collect", (req, res) => {
+  try {
+    const fs = require("fs");
+    const path = require("path");
+
+    const dir = path.join(process.cwd(), "data", "funding");
+    fs.mkdirSync(dir, { recursive: true });
+
+    const candidates = [
+      path.join(dir, "verified-funding-intake.json"),
+      path.join(dir, "funding-discovery-run.json")
     ];
 
-    for(const file of candidates){
-      if(!fs.existsSync(file)) continue;
-      try{
-        const data=JSON.parse(fs.readFileSync(file,"utf8"));
-        sources.push({file,data});
-      }catch(err){
-        console.warn("[FUNDING_COLLECT_SKIP]",file,err.message);
-      }
-    }
+    const sources = [];
+    const opportunities = [];
 
-    const opportunities=[];
-    for(const {file,data} of sources){
-      const rows=Array.isArray(data)
-        ? data
-        : Array.isArray(data.opportunities)
-          ? data.opportunities
-          : Array.isArray(data.results)
-            ? data.results
-            : [];
+    for (const file of candidates) {
+      if (!fs.existsSync(file)) continue;
 
-      for(const row of rows){
-        if(row && typeof row==="object"){
-          opportunities.push({
-            ...row,
-            sourceFile:file,
-            collectedAt:new Date().toISOString()
-          });
+      try {
+        const raw = fs.readFileSync(file, "utf8");
+        const data = JSON.parse(raw);
+
+        sources.push({
+          file: path.relative(process.cwd(), file),
+          loaded: true
+        });
+
+        const rows =
+          Array.isArray(data) ? data :
+          Array.isArray(data.opportunities) ? data.opportunities :
+          Array.isArray(data.results) ? data.results :
+          [];
+
+        for (const row of rows) {
+          if (row && typeof row === "object") {
+            opportunities.push({
+              ...row,
+              sourceFile: path.relative(process.cwd(), file),
+              collectedAt: new Date().toISOString()
+            });
+          }
         }
+      } catch (err) {
+        console.warn(
+          "[FUNDING_COLLECT_SKIP]",
+          file,
+          err.message
+        );
       }
     }
 
-    const output={
-      ok:true,
-      organization:"House of Jazzu",
-      mode:"OWNER_REVIEW_ONLY",
-      collectedAt:new Date().toISOString(),
-      sourceCount:sources.length,
-      opportunityCount:opportunities.length,
+    const output = {
+      ok: true,
+      organization: "House of Jazzu",
+      mode: "OWNER_REVIEW_ONLY",
+      collectedAt: new Date().toISOString(),
+      sourceCount: sources.length,
+      opportunityCount: opportunities.length,
       opportunities,
-      safety:{
-        submissionAllowed:false,
-        signingAllowed:false,
-        financialExecutionAllowed:false,
-        moneyMovementAllowed:false,
-        automaticApprovalAllowed:false,
-        ownerApprovalRequired:true,
-        ownerSignatureRequired:true
+      safety: {
+        submissionAllowed: false,
+        signingAllowed: false,
+        financialExecutionAllowed: false,
+        moneyMovementAllowed: false,
+        automaticApprovalAllowed: false,
+        ownerApprovalRequired: true,
+        ownerSignatureRequired: true
       }
     };
 
     fs.writeFileSync(
-      "data/funding/collected-opportunities.json",
-      JSON.stringify(output,null,2)
+      path.join(dir, "collected-opportunities.json"),
+      JSON.stringify(output, null, 2)
     );
 
-    res.json(output);
-  }catch(err){
-    console.error("[FUNDING_COLLECT_FATAL]",err);
-    res.status(500).json({
-      ok:false,
-      error:"FUNDING_COLLECT_FAILED",
-      message:String(err.message||err)
+    return res.status(200).json(output);
+  } catch (err) {
+    console.error("[FUNDING_COLLECT_FATAL]", err);
+
+    return res.status(500).json({
+      ok: false,
+      error: "FUNDING_COLLECT_FAILED",
+      message: String(err.message || err)
     });
   }
 });
