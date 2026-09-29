@@ -18,6 +18,68 @@ const PORT = process.env.PORT || 3000;
 // MIDDLEWARE
 // ============================================================
 
+
+app.get("/api/owner/funding/verification", (req,res) => {
+  const fs=require("fs");
+
+  try {
+    const file="data/funding/verification-queue.json";
+
+    if(!fs.existsSync(file)){
+      return res.json({
+        ok:true,
+        organization:"House of Jazzu",
+        mode:"OWNER_REVIEW_ONLY",
+        total:0,
+        counts:{},
+        opportunities:[],
+        safety:{
+          submissionAllowed:false,
+          signingAllowed:false,
+          financialExecutionAllowed:false,
+          moneyMovementAllowed:false,
+          automaticApprovalAllowed:false,
+          ownerApprovalRequired:true,
+          ownerSignatureRequired:true
+        }
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      generatedAt:data.generatedAt||null,
+      total:data.total||0,
+      counts:data.counts||{},
+      opportunities:Array.isArray(data.opportunities)
+        ? data.opportunities
+        : [],
+      safety:{
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false,
+        automaticApprovalAllowed:false,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true
+      }
+    });
+
+  }catch(err){
+    console.error("[FUNDING_VERIFICATION_FATAL]",err);
+
+    return res.status(500).json({
+      ok:false,
+      error:"FUNDING_VERIFICATION_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.use(cors());
 const niaCommercialRouter = require("./commercial");
 app.use("/api/commercial", niaCommercialRouter);
