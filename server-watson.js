@@ -451,9 +451,11 @@ app.get("/api/owner/funding/lifecycle", (req, res) => {
 });
 
 app.get("/api/owner/funding/opportunities", (req,res) => {
+  const fs=require("fs");
   try {
     const file="data/funding/analyzed-opportunities.json";
-    if(!fs.existsSync(file)) {
+
+    if(!fs.existsSync(file)){
       return res.json({
         ok:true,
         organization:"House of Jazzu",
@@ -472,12 +474,16 @@ app.get("/api/owner/funding/opportunities", (req,res) => {
     }
 
     const data=JSON.parse(fs.readFileSync(file,"utf8"));
+    const opportunities=Array.isArray(data.opportunities)
+      ? data.opportunities
+      : [];
 
-    res.json({
+    return res.json({
       ok:true,
       organization:"House of Jazzu",
-      opportunityCount:(data.opportunities||[]).length,
-      opportunities:data.opportunities||[],
+      mode:"OWNER_REVIEW_ONLY",
+      opportunityCount:opportunities.length,
+      opportunities,
       safety:{
         submissionAllowed:false,
         signingAllowed:false,
@@ -488,12 +494,12 @@ app.get("/api/owner/funding/opportunities", (req,res) => {
         ownerSignatureRequired:true
       }
     });
-  } catch(err) {
+  }catch(err){
     console.error("[FUNDING_OPPORTUNITIES_FATAL]",err);
-    res.status(500).json({
+    return res.status(500).json({
       ok:false,
       error:"FUNDING_OPPORTUNITIES_FAILED",
-      message:String(err.message || err)
+      message:String(err.message||err)
     });
   }
 });
