@@ -19,6 +19,45 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/business/registry", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/business/house-of-jazzu-business-registry.json";
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"BUSINESS_REGISTRY_NOT_FOUND"
+      });
+    }
+
+    const registry=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      registry,
+      safety:{
+        singleSourceOfTruth:true,
+        neverInventLegalFacts:true,
+        neverInventEligibility:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false,
+        automaticApprovalAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[BUSINESS_REGISTRY_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"BUSINESS_REGISTRY_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/workbench", (req,res) => {
   const fs=require("fs");
   try {

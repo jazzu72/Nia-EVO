@@ -1,0 +1,210 @@
+{
+  "registryVersion": "1.0",
+  "registryId": "HOJ-BIZ-23505",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+
+  "organization": {
+    "brandName": "House of Jazzu",
+    "legalName": "House of Jazzu",
+    "organizationType": "FOR_PROFIT_BUSINESS",
+    "entityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+    "jurisdiction": "Virginia",
+    "country": "United States",
+    "operatingLocation": "Virginia",
+    "naics": [
+      {
+        "code": "711510",
+        "title": "Independent Artists, Writers, and Performers",
+        "status": "USER_DESIGNATED"
+      }
+    ]
+  },
+
+  "identity": {
+    "ein": {
+      "present": true,
+      "status": "DOCUMENTED",
+      "valueStored": false,
+      "source": "IRS_EIN_LETTER"
+    },
+    "duns": {
+      "present": true,
+      "status": "DOCUMENTED",
+      "valueStored": false,
+      "source": "DUNS_RECORD"
+    },
+    "stateRegistration": {
+      "jurisdiction": "Virginia",
+      "status": "PENDING_VERIFICATION",
+      "sccEntityId": null,
+      "entityNumber": null,
+      "formationDate": null
+    }
+  },
+
+  "ownership": {
+    "owner": "Jason LeSane",
+    "ownerRole": "OWNER",
+    "ownershipPercentage": null,
+    "ownershipPercentageStatus": "PENDING_DOCUMENT_VERIFICATION"
+  },
+
+  "banking": {
+    "businessBankAccount": {
+      "present": true,
+      "status": "DOCUMENTED",
+      "institution": null,
+      "accountNumberStored": false
+    },
+    "creditFacilities": [
+      {
+        "type": "BUSINESS_LINE_OF_CREDIT",
+        "institution": "Chartway Credit Union",
+        "reportedLimit": 60000,
+        "currency": "USD",
+        "status": "REPORTED_PENDING_DOCUMENT_VERIFICATION"
+      }
+    ]
+  },
+
+  "fundingProfile": {
+    "fundingPurpose": [
+      "business growth",
+      "technology development",
+      "innovation",
+      "product development",
+      "education technology",
+      "digital infrastructure",
+      "working capital"
+    ],
+    "preferredFundingTypes": [
+      "grants",
+      "sponsorships",
+      "non_dilutive_funding",
+      "strategic_partnerships"
+    ],
+    "loanPreference": "SECONDARY",
+    "ownerApprovalRequired": true
+  },
+
+  "products": [
+    {
+      "name": "Money Munchkins",
+      "category": "FINANCIAL_EDUCATION_TECHNOLOGY",
+      "status": "ACTIVE_DEVELOPMENT",
+      "targetAudience": "CHILDREN_AND_FAMILIES",
+      "ageRange": "8-11"
+    },
+    {
+      "name": "Money Munchkins: Quantum Odyssey",
+      "category": "EDTECH_GAME",
+      "status": "ACTIVE_DEVELOPMENT",
+      "targetAudience": "CHILDREN_AND_FAMILIES",
+      "ageRange": "8-11"
+    }
+  ],
+
+  "technologyProfile": {
+    "focusAreas": [
+      "AI",
+      "financial education",
+      "education technology",
+      "adaptive learning",
+      "digital products",
+      "software",
+      "quantum-inspired learning experiences"
+    ],
+    "platformCapabilities": [
+      "web applications",
+      "AI-assisted workflows",
+      "learning telemetry",
+      "progress tracking",
+      "parent dashboards",
+      "auditable learning logic"
+    ]
+  },
+
+  "fundingEligibility": {
+    "forProfit": true,
+    "smallBusiness": true,
+    "startup": true,
+    "technologyBusiness": true,
+    "educationTechnology": true,
+    "innovationFocused": true,
+    "minorityOwned": "PENDING_VERIFICATION",
+    "womanOwned": "NOT_ASSERTED",
+    "veteranOwned": "PENDING_VERIFICATION",
+    "disabilityOwned": "PENDING_VERIFICATION",
+    "ruralBusiness": "PENDING_VERIFICATION",
+    "stateSpecificEligibility": "REQUIRES_OPPORTUNITY_LEVEL_CHECK"
+  },
+
+  "documents": {
+    "einLetter": {
+      "exists": true,
+      "verificationStatus": "DOCUMENTED"
+    },
+    "dunsRecord": {
+      "exists": true,
+      "verificationStatus": "DOCUMENTED"
+    },
+    "businessBankingEvidence": {
+      "exists": true,
+      "verificationStatus": "DOCUMENTED"
+    },
+    "stateFormationDocuments": {
+      "exists": false,
+      "verificationStatus": "PENDING"
+    },
+    "operatingAgreement": {
+      "exists": false,
+      "verificationStatus": "PENDING"
+    },
+    "businessPlan": {
+      "exists": false,
+      "verificationStatus": "PENDING"
+    },
+    "capabilityStatement": {
+      "exists": false,
+      "verificationStatus": "PENDING"
+    }
+  },
+
+  "registryRules": {
+    "singleSourceOfTruth": true,
+    "neverInventLegalFacts": true,
+    "neverInventEligibility": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  },
+
+  "verification": {
+    "overallStatus": "PARTIALLY_VERIFIED",
+    "lastVerifiedAt": null,
+    "nextVerificationTargets": [
+      "Virginia SCC legal entity record",
+      "legal entity formation date",
+      "registered agent",
+      "business address",
+      "ownership documentation",
+      "NAICS confirmation",
+      "business certifications",
+      "capability statement",
+      "current funding readiness"
+    ]
+  },
+
+  "audit": {
+    "createdBy": "NIA",
+    "createdFor": "House of Jazzu",
+    "ownerReviewRequired": true,
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false
+  }
+}
