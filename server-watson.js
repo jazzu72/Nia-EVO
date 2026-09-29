@@ -631,6 +631,7 @@ app.post("/api/owner/funding/collect", (req,res) => {
 });
 
 app.post("/api/owner/funding/analyze", (req,res) => {
+  const fs=require("fs");
   try {
     const input="data/funding/collected-opportunities.json";
     const outputFile="data/funding/analyzed-opportunities.json";
@@ -643,23 +644,21 @@ app.post("/api/owner/funding/analyze", (req,res) => {
     }
 
     const data=JSON.parse(fs.readFileSync(input,"utf8"));
-    const rows=Array.isArray(data.opportunities)?data.opportunities:[];
+    const opportunities=Array.isArray(data.opportunities)
+      ? data.opportunities
+      : [];
 
-    const analyzed=rows.map((row,i)=>({
-      ...row,
-      analysisStatus:"OWNER_REVIEW_ONLY",
-      verificationStatus:row.verificationStatus||"UNVERIFIED",
-      reviewPriority:row.reviewPriority||"REVIEW",
-      passedChecks:Number(row.passedChecks||0),
-      ownerReviewOnly:true,
-      submissionAllowed:false,
-      signingAllowed:false,
-      financialExecutionAllowed:false,
-      moneyMovementAllowed:false,
-      automaticApprovalAllowed:false,
-      ownerApprovalRequired:true,
-      ownerSignatureRequired:true,
-      analysisIndex:i
+    const analyzed=opportunities.map((o,i)=>({
+      ...o,
+      analysis:{
+        index:i+1,
+        status:"OWNER_REVIEW",
+        fitStatus:"REVIEW_REQUIRED",
+        evidenceStatus:Array.isArray(o.missingEvidence)&&o.missingEvidence.length
+          ? "INCOMPLETE"
+          : "AVAILABLE",
+        recommendedAction:"OWNER_REVIEW"
+      }
     }));
 
     const output={
@@ -680,11 +679,13 @@ app.post("/api/owner/funding/analyze", (req,res) => {
       }
     };
 
+    fs.mkdirSync("data/funding",{recursive:true});
     fs.writeFileSync(outputFile,JSON.stringify(output,null,2));
-    res.json(output);
+
+    return res.json(output);
   }catch(err){
     console.error("[FUNDING_ANALYZE_FATAL]",err);
-    res.status(500).json({
+    return res.status(500).json({
       ok:false,
       error:"FUNDING_ANALYZE_FAILED",
       message:String(err.message||err)
