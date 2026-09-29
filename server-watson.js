@@ -450,38 +450,50 @@ app.get("/api/owner/funding/lifecycle", (req, res) => {
   }
 });
 
-app.get("/api/owner/funding/opportunities", (req, res) => {
+app.get("/api/owner/funding/opportunities", (req,res) => {
   try {
-    const registry = require("./funding-engine/funding-opportunity-registry");
-    const result = registry.loadRegistry();
-
-    if (result.organization !== "House of Jazzu") {
-      return res.status(500).json({
-        ok: false,
-        error: "REGISTRY_ORGANIZATION_MISMATCH"
+    const file="data/funding/analyzed-opportunities.json";
+    if(!fs.existsSync(file)) {
+      return res.json({
+        ok:true,
+        organization:"House of Jazzu",
+        opportunityCount:0,
+        opportunities:[],
+        safety:{
+          submissionAllowed:false,
+          signingAllowed:false,
+          financialExecutionAllowed:false,
+          moneyMovementAllowed:false,
+          automaticApprovalAllowed:false,
+          ownerApprovalRequired:true,
+          ownerSignatureRequired:true
+        }
       });
     }
 
-    return res.status(200).json({
-      ok: true,
-      organization: result.organization,
-      opportunityCount: result.opportunities.length,
-      opportunities: result.opportunities,
-      safety: {
-        submissionAllowed: false,
-        signingAllowed: false,
-        financialExecutionAllowed: false,
-        moneyMovementAllowed: false,
-        automaticApprovalAllowed: false,
-        ownerApprovalRequired: true,
-        ownerSignatureRequired: true
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      opportunityCount:(data.opportunities||[]).length,
+      opportunities:data.opportunities||[],
+      safety:{
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false,
+        automaticApprovalAllowed:false,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true
       }
     });
-  } catch (err) {
-    return res.status(500).json({
-      ok: false,
-      error: "FUNDING_OPPORTUNITY_REGISTRY_FAILED",
-      message: err.message
+  } catch(err) {
+    console.error("[FUNDING_OPPORTUNITIES_FATAL]",err);
+    res.status(500).json({
+      ok:false,
+      error:"FUNDING_OPPORTUNITIES_FAILED",
+      message:String(err.message || err)
     });
   }
 });
@@ -540,41 +552,98 @@ app.post("/api/owner/funding/pipeline", async (req, res) => {
   }
 });
 
-app.post("/api/owner/funding/collect", async (req, res) => {
+app.post("/api/owner/funding/collect", async (req,res) => {
   try {
-    const collector = require("./funding-engine/funding-source-collector");
-    const body = req.body || {};
-    const candidates = Array.isArray(body.candidates) ? body.candidates : [];
+    const queries = [
+      "small business",
+      "startup",
+      "innovation",
+      "technology",
+      "artificial intelligence",
+      "financial literacy",
+      "entrepreneurship",
+      "education"
+    ];
 
-    if (!candidates.length) {
-      return res.status(400).json({
-        ok: false,
-        error: "FUNDING_CANDIDATES_REQUIRED"
+    const results = [];
+    const seen = new Set();
+
+    for (const keyword of queries) {
+      const r = await fetch("https://api.grants.gov/v1/api/search2", {
+        method: "POST",
+        headers: {"content-type":"application/json","accept":"application/json"},
+        body: JSON.stringify({
+          rows: 25,
+          keyword,
+          oppStatuses: "forecasted|posted"
+        })
       });
+
+      if (!r.ok) throw new Error("GRANTS_GOV_HTTP_"+r.status);
+
+      const j = await r.json();
+      if (j.errorcode && j.errorcode !== 0) {
+        throw new Error("GRANTS_GOV_"+String(j.msg || j.errorcode));
+      }
+
+      for (const o of (j.data?.oppHits || [])) {
+        const id = String(o.id || o.number || "");
+        if (!id || seen.has(id)) continue;
+        seen.add(id);
+
+        results.push({
+          id: "grantsgov-"+id,
+          source: "Grants.gov",
+          sourceId: id,
+          opportunityNumber: o.number || null,
+          name: o.title || "Untitled opportunity",
+          agency: o.agencyName || o.agencyCode || null,
+          officialUrl: o.number
+            ? "https://www.grants.gov/search-results-detail/"+encodeURIComponent(o.number)
+            : "https://www.grants.gov/search-results",
+          openDate: o.openDate || null,
+          closeDate: o.closeDate || null,
+          status: o.oppStatus || null,
+          verificationStatus: "UNVERIFIED",
+          ownerReviewOnly: true,
+          submissionAllowed: false,
+          signingAllowed: false,
+          financialExecutionAllowed: false,
+          moneyMovementAllowed: false,
+          automaticApprovalAllowed: false,
+          ownerApprovalRequired: true,
+          ownerSignatureRequired: true,
+          collectedAt: new Date().toISOString()
+        });
+      }
     }
 
-    const invalid = candidates.find(
-      x => !x || !x.name || !x.officialUrl
+    const dir="data/funding";
+    fs.mkdirSync(dir,{recursive:true});
+    fs.writeFileSync(
+      dir+"/collected-opportunities.json",
+      JSON.stringify({
+        ok:true,
+        source:"Grants.gov",
+        collectedAt:new Date().toISOString(),
+        count:results.length,
+        opportunities:results
+      },null,2)
     );
 
-    if (invalid) {
-      return res.status(400).json({
-        ok: false,
-        error: "CANDIDATE_NAME_AND_OFFICIAL_URL_REQUIRED"
-      });
-    }
-
-    const result = await collector.collect(candidates);
-
-    return res.status(200).json({
-      ok: true,
-      ...result
+    res.json({
+      ok:true,
+      source:"Grants.gov",
+      collected:results.length,
+      stored:"data/funding/collected-opportunities.json",
+      mode:"OWNER_REVIEW_ONLY"
     });
-  } catch (err) {
-    return res.status(500).json({
-      ok: false,
-      error: "FUNDING_COLLECTION_FAILED",
-      message: err.message
+  } catch(err) {
+    console.error("[FUNDING_COLLECT_FATAL]",err);
+    res.status(500).json({
+      ok:false,
+      error:"FUNDING_COLLECTION_FAILED",
+      message:String(err.message || err)
     });
   }
 });
@@ -625,29 +694,58 @@ app.post("/api/owner/funding/intake", (req, res) => {
   }
 });
 
-app.post("/api/owner/funding/analyze", (req, res) => {
+app.post("/api/owner/funding/analyze", (req,res) => {
   try {
-    const engine = require("./funding-engine/house-of-jazzu-funding-engine");
-    const opportunity = req.body || {};
-
-    if (!opportunity.name && !opportunity.title) {
-      return res.status(400).json({
-        ok: false,
-        error: "FUNDING_OPPORTUNITY_NAME_REQUIRED"
+    const file="data/funding/collected-opportunities.json";
+    if(!fs.existsSync(file)) {
+      return res.status(409).json({
+        ok:false,
+        error:"NO_COLLECTED_OPPORTUNITIES",
+        message:"Run collection before analysis."
       });
     }
 
-    const result = engine.analyze(opportunity);
+    const input=JSON.parse(fs.readFileSync(file,"utf8"));
+    const opportunities=(input.opportunities||[]).map(o => ({
+      ...o,
+      verificationStatus:
+        o.officialUrl && o.source === "Grants.gov" ? "SOURCE_VERIFIED" : "REJECTED",
+      reviewPriority:
+        o.officialUrl && o.closeDate ? "OWNER_REVIEW" : "REVIEW_REQUIRED",
+      ownerReviewOnly:true,
+      submissionAllowed:false,
+      signingAllowed:false,
+      financialExecutionAllowed:false,
+      moneyMovementAllowed:false,
+      automaticApprovalAllowed:false,
+      ownerApprovalRequired:true,
+      ownerSignatureRequired:true,
+      analyzedAt:new Date().toISOString()
+    }));
 
-    return res.status(200).json({
-      ok: true,
-      ...result
+    fs.mkdirSync("data/funding",{recursive:true});
+    fs.writeFileSync(
+      "data/funding/analyzed-opportunities.json",
+      JSON.stringify({
+        ok:true,
+        analyzedAt:new Date().toISOString(),
+        count:opportunities.length,
+        opportunities
+      },null,2)
+    );
+
+    res.json({
+      ok:true,
+      analyzed:opportunities.length,
+      stored:"data/funding/analyzed-opportunities.json",
+      mode:"OWNER_REVIEW_ONLY"
     });
-  } catch (err) {
-    return res.status(500).json({
-      ok: false,
-      error: "FUNDING_ANALYSIS_FAILED",
-      message: err.message
+  } catch(err) {
+    console.error("[FUNDING_ANALYZE_FATAL]",err);
+    res.status(500).json({
+      ok:false,
+      error:"FUNDING_ANALYSIS_FAILED",
+      message:String(err.message || err)
     });
   }
 });
