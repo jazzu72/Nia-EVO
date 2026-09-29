@@ -19,6 +19,63 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/workbench", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/verification-workbench.json";
+
+    if(!fs.existsSync(file)){
+      return res.json({
+        ok:true,
+        organization:"House of Jazzu",
+        mode:"OWNER_REVIEW_ONLY",
+        total:0,
+        opportunities:[],
+        safety:{
+          submissionAllowed:false,
+          signingAllowed:false,
+          financialExecutionAllowed:false,
+          moneyMovementAllowed:false,
+          automaticApprovalAllowed:false,
+          ownerApprovalRequired:true,
+          ownerSignatureRequired:true
+        }
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      generatedAt:data.generatedAt||null,
+      total:data.total||0,
+      statusCounts:data.statusCounts||{},
+      opportunities:Array.isArray(data.opportunities)
+        ? data.opportunities
+        : [],
+      safety:{
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false,
+        automaticApprovalAllowed:false,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true
+      }
+    });
+  }catch(err){
+    console.error("[FUNDING_WORKBENCH_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"FUNDING_WORKBENCH_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/verification", (req,res) => {
   const fs=require("fs");
 
