@@ -1,0 +1,376 @@
+{
+  "module": "NIA_CAPITAL_REVENUE_CYCLE",
+  "version": "1.0",
+  "generatedAt": "2026-09-30T16:50:59.467Z",
+  "mode": "OWNER_REVIEW_ONLY",
+  "objective": "Convert verified or potentially relevant capital opportunities into concrete owner actions without inventing eligibility, funding, deadlines, or revenue.",
+  "policy": {
+    "organization": "House of Jazzu",
+    "operatingState": "Virginia",
+    "naics": [],
+    "priorities": [],
+    "hardExclusions": []
+  },
+  "pipeline": {
+    "discovered": 15,
+    "consolidated": 15,
+    "actionable": 15,
+    "ownerReviewRequired": 15,
+    "submissionReady": 0,
+    "submitted": 0,
+    "awarded": 0,
+    "revenueRecognized": 0
+  },
+  "opportunities": [
+    {
+      "id": "CAP-0001",
+      "title": "Grants for Small Business in Florida",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://florida.thegrantportal.com/small-business",
+        "sourceUrl": "https://florida.thegrantportal.com/small-business",
+        "sourceDomain": "florida.thegrantportal.com",
+        "officialSource": false
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0002",
+      "title": "Small Business Grants: Funding Grants",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.thegrantportal.com/grants-for-small-business",
+        "sourceUrl": "https://www.thegrantportal.com/grants-for-small-business",
+        "sourceDomain": "www.thegrantportal.com",
+        "officialSource": false
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0003",
+      "title": "Free Grants and Programs for Small Business | CO",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+        "sourceUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+        "sourceDomain": "www.uschamber.com",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0004",
+      "title": "Grants for Technology in Colorado",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://colorado.thegrantportal.com/technology",
+        "sourceUrl": "https://colorado.thegrantportal.com/technology",
+        "sourceDomain": "colorado.thegrantportal.com",
+        "officialSource": false
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0005",
+      "title": "64+ Active Technology Grants in The U.S.",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.instrumentl.com/browse-grants/technology-grants",
+        "sourceUrl": "https://www.instrumentl.com/browse-grants/technology-grants",
+        "sourceDomain": "www.instrumentl.com",
+        "officialSource": false
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0006",
+      "title": "How to Apply for NEFE Grant Funding",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.nefe.org/research/get-funding/apply.aspx",
+        "sourceUrl": "https://www.nefe.org/research/get-funding/apply.aspx",
+        "sourceDomain": "www.nefe.org",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0007",
+      "title": "Community Impact Grants",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+        "sourceUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+        "sourceDomain": "www.aps.com",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0008",
+      "title": "DOR Innovation Grants - Wisconsin Department of Revenue",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.revenue.wi.gov/Pages/SLF/IG.aspx",
+        "sourceUrl": "https://www.revenue.wi.gov/Pages/SLF/IG.aspx",
+        "sourceDomain": "www.revenue.wi.gov",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0009",
+      "title": "Innovation Grants | Missouri Department of Elementary and ...",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://dese.mo.gov/childhood/innovation-grants",
+        "sourceUrl": "https://dese.mo.gov/childhood/innovation-grants",
+        "sourceDomain": "dese.mo.gov",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0010",
+      "title": "Apply for Funding",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.globalinnovation.fund/apply-for-funding",
+        "sourceUrl": "https://www.globalinnovation.fund/apply-for-funding",
+        "sourceDomain": "www.globalinnovation.fund",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0011",
+      "title": "Teaching Innovation Grants",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+        "sourceUrl": "https://cte.ku.edu/teaching-innovation-grants",
+        "sourceDomain": "cte.ku.edu",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0012",
+      "title": "Assistive Technology Funding Sources",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.ucdenver.edu/center-for-innovative-design-and-engineering/community-engagement/colorado-assistive-technology-act-program/assistive-technology-funding-sources",
+        "sourceUrl": "https://www.ucdenver.edu/center-for-innovative-design-and-engineering/community-engagement/colorado-assistive-technology-act-program/assistive-technology-funding-sources",
+        "sourceDomain": "www.ucdenver.edu",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0013",
+      "title": "Quantum Science Seed Grant (QSSG) Program | QFARM",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://qfarm.stanford.edu/opportunities/qssg-program",
+        "sourceUrl": "https://qfarm.stanford.edu/opportunities/qssg-program",
+        "sourceDomain": "qfarm.stanford.edu",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0014",
+      "title": "Financial Education Grants Program",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://dfi.wa.gov/financial-education/financial-education-grants-program",
+        "sourceUrl": "https://dfi.wa.gov/financial-education/financial-education-grants-program",
+        "sourceDomain": "dfi.wa.gov",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "id": "CAP-0015",
+      "title": "Local Impact Grants",
+      "officialUrl": null,
+      "currentStatus": "DISCOVERED",
+      "determination": "NEEDS_OWNER_REVIEW",
+      "source": {
+        "officialUrl": "https://www.localimpactgrants.com",
+        "sourceUrl": "https://www.localimpactgrants.com",
+        "sourceDomain": "www.localimpactgrants.com",
+        "officialSource": true
+      },
+      "action": "OWNER_REVIEW",
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    }
+  ],
+  "nextActions": [
+    {
+      "opportunityId": "CAP-0001",
+      "title": "Grants for Small Business in Florida",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0002",
+      "title": "Small Business Grants: Funding Grants",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0003",
+      "title": "Free Grants and Programs for Small Business | CO",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0004",
+      "title": "Grants for Technology in Colorado",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0005",
+      "title": "64+ Active Technology Grants in The U.S.",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0006",
+      "title": "How to Apply for NEFE Grant Funding",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0007",
+      "title": "Community Impact Grants",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0008",
+      "title": "DOR Innovation Grants - Wisconsin Department of Revenue",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0009",
+      "title": "Innovation Grants | Missouri Department of Elementary and ...",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    },
+    {
+      "opportunityId": "CAP-0010",
+      "title": "Apply for Funding",
+      "action": "OWNER_REVIEW",
+      "requiredNextStep": "Open the official source, verify Virginia and for-profit eligibility, confirm current deadline/funding, then approve or reject.",
+      "ownerApprovalRequired": true
+    }
+  ],
+  "safety": {
+    "neverInventEligibility": true,
+    "neverInventFundingAmounts": true,
+    "neverInventDeadlines": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true
+  }
+}

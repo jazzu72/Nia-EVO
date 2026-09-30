@@ -19,6 +19,19 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/capital-revenue-cycle", (req,res)=>{
+  try{
+    const fs=require("fs");
+    const path=require("path");
+    const file=path.join(process.cwd(),"data/funding/capital-revenue-cycle.json");
+    if(!fs.existsSync(file)) return res.status(404).json({ok:false,error:"CAPITAL_REVENUE_CYCLE_MISSING"});
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+    res.json({ok:true,...data});
+  }catch(e){
+    res.status(500).json({ok:false,error:"CAPITAL_REVENUE_CYCLE_READ_FAILED",message:e.message});
+  }
+});
+
 app.get("/api/owner/funding/discovery-policy", (req,res) => {
   const fs=require("fs");
   try {
