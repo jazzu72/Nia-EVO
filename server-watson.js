@@ -19,6 +19,51 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/decision-queue", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/owner-funding-decision-queue.json";
+
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"OWNER_FUNDING_DECISION_QUEUE_NOT_FOUND"
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      registryId:data.registryId||null,
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      total:data.total||0,
+      queue:Array.isArray(data.queue) ? data.queue : [],
+      safety:{
+        neverInventEligibility:true,
+        neverAutoSubmit:true,
+        neverAutoSign:true,
+        neverMoveMoney:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[OWNER_FUNDING_QUEUE_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"OWNER_FUNDING_QUEUE_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/business-fit", (req,res) => {
   const fs=require("fs");
   try {

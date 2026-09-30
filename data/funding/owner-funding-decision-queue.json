@@ -1,0 +1,223 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T12:35:51.761Z",
+  "organization": "House of Jazzu",
+  "registryId": "HOJ-BIZ-23505",
+  "mode": "OWNER_REVIEW_ONLY",
+  "total": 5,
+  "queue": [
+    {
+      "queuePosition": 1,
+      "id": "funding-3",
+      "name": "Free Grants and Programs for Small Business | CO",
+      "source": {
+        "domain": "www.uschamber.com",
+        "official": true,
+        "url": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs"
+      },
+      "review": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "verification": "PENDING_OWNER_VERIFICATION",
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true
+      },
+      "safety": {
+        "ownerApprovalRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 2,
+      "id": "funding-7",
+      "name": "Community Impact Grants",
+      "source": {
+        "domain": "www.aps.com",
+        "official": true,
+        "url": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants"
+      },
+      "review": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "verification": "PENDING_OWNER_VERIFICATION",
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true
+      },
+      "safety": {
+        "ownerApprovalRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 3,
+      "id": "funding-9",
+      "name": "Innovation Grants | Missouri Department of Elementary and ...",
+      "source": {
+        "domain": "dese.mo.gov",
+        "official": true,
+        "url": "https://dese.mo.gov/childhood/innovation-grants"
+      },
+      "review": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "verification": "PENDING_OWNER_VERIFICATION",
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true
+      },
+      "safety": {
+        "ownerApprovalRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 4,
+      "id": "funding-10",
+      "name": "Apply for Funding",
+      "source": {
+        "domain": "www.globalinnovation.fund",
+        "official": true,
+        "url": "https://www.globalinnovation.fund/apply-for-funding"
+      },
+      "review": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "verification": "PENDING_OWNER_VERIFICATION",
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true
+      },
+      "safety": {
+        "ownerApprovalRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 5,
+      "id": "funding-11",
+      "name": "Teaching Innovation Grants",
+      "source": {
+        "domain": "cte.ku.edu",
+        "official": true,
+        "url": "https://cte.ku.edu/teaching-innovation-grants"
+      },
+      "review": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "verification": "PENDING_OWNER_VERIFICATION",
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true
+      },
+      "safety": {
+        "ownerApprovalRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    }
+  ],
+  "safety": {
+    "neverInventEligibility": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false
+  }
+}
