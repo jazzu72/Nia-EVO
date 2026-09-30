@@ -1,0 +1,794 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T18:10:56.165Z",
+  "module": "NIA_CAPITAL_APPLICATION_PACKAGE_ENGINE",
+  "organization": "House of Jazzu",
+  "operatingState": "Virginia",
+  "mode": "OWNER_REVIEW_ONLY",
+  "summary": {
+    "discovered": 15,
+    "packagesCreated": 15,
+    "verified": 0,
+    "applicationReady": 0,
+    "submissionReady": 0
+  },
+  "packages": [
+    {
+      "queuePosition": 1,
+      "id": "CAP-0001",
+      "name": "Grants for Small Business in Florida",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 2,
+      "id": "CAP-0002",
+      "name": "Small Business Grants: Funding Grants",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 3,
+      "id": "CAP-0003",
+      "name": "Free Grants and Programs for Small Business | CO",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 4,
+      "id": "CAP-0004",
+      "name": "Grants for Technology in Colorado",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 5,
+      "id": "CAP-0005",
+      "name": "64+ Active Technology Grants in The U.S.",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 6,
+      "id": "CAP-0006",
+      "name": "How to Apply for NEFE Grant Funding",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 7,
+      "id": "CAP-0007",
+      "name": "Community Impact Grants",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 8,
+      "id": "CAP-0008",
+      "name": "DOR Innovation Grants - Wisconsin Department of Revenue",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 9,
+      "id": "CAP-0009",
+      "name": "Innovation Grants | Missouri Department of Elementary and ...",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 10,
+      "id": "CAP-0010",
+      "name": "Apply for Funding",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 11,
+      "id": "CAP-0011",
+      "name": "Teaching Innovation Grants",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 12,
+      "id": "CAP-0012",
+      "name": "Assistive Technology Funding Sources",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 13,
+      "id": "CAP-0013",
+      "name": "Quantum Science Seed Grant (QSSG) Program | QFARM",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 14,
+      "id": "CAP-0014",
+      "name": "Financial Education Grants Program",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 15,
+      "id": "CAP-0015",
+      "name": "Local Impact Grants",
+      "source": {
+        "official": false,
+        "url": null,
+        "domain": null
+      },
+      "application": {
+        "status": "PACKAGE_NOT_STARTED",
+        "eligibilityStatus": "REQUIRES_OFFICIAL_VERIFICATION",
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "requiredEvidence": [
+        "official opportunity page",
+        "current open status",
+        "Virginia geographic eligibility",
+        "for-profit eligibility",
+        "small-business eligibility",
+        "industry/sector eligibility",
+        "entity requirements",
+        "revenue/employee limits if applicable",
+        "funding amount",
+        "deadline",
+        "application path"
+      ],
+      "houseOfJazzuInputs": [
+        "legal business name",
+        "business description",
+        "NAICS",
+        "EIN/business registration evidence",
+        "business formation evidence",
+        "owner information",
+        "product description",
+        "technology/innovation description",
+        "financial information if required",
+        "use-of-funds plan"
+      ],
+      "ownerActions": [],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    }
+  ],
+  "nextStage": "OFFICIAL_ELIGIBILITY_VERIFICATION_AND_OWNER_INPUT_COLLECTION",
+  "safety": {
+    "neverInventEligibility": true,
+    "neverInventFundingAmounts": true,
+    "neverInventDeadlines": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  }
+}
