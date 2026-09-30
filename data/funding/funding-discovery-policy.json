@@ -1,0 +1,97 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T16:36:22.147Z",
+  "module": "NIA_FUNDING_DISCOVERY_POLICY",
+  "organization": "House of Jazzu",
+  "operatingState": "Virginia",
+  "targetProfile": {
+    "entityType": "FOR_PROFIT_BUSINESS",
+    "jurisdiction": "Virginia",
+    "naics": [
+      "711510"
+    ],
+    "products": [
+      "Money Munchkins",
+      "Money Munchkins: Quantum Odyssey"
+    ],
+    "sectors": [
+      "financial education",
+      "education technology",
+      "AI",
+      "software",
+      "adaptive learning",
+      "digital products",
+      "innovation"
+    ]
+  },
+  "preferredFundingTypes": [
+    "grants",
+    "sponsorships",
+    "non_dilutive_funding",
+    "strategic_partnerships"
+  ],
+  "discoveryPriority": [
+    "Virginia programs explicitly open to for-profit businesses",
+    "National programs explicitly open to U.S. for-profit small businesses",
+    "Technology and innovation grants",
+    "Education technology opportunities",
+    "Financial literacy and youth education funding",
+    "AI and software innovation funding",
+    "Corporate small-business grant programs",
+    "Foundation or corporate programs allowing for-profit applicants",
+    "Government programs explicitly allowing eligible for-profit applicants"
+  ],
+  "hardExclusions": [
+    "Programs restricted to another state",
+    "Programs restricted to universities or university faculty",
+    "Programs restricted to 501(c)(3) nonprofits when no for-profit pathway exists",
+    "Programs restricted to government entities",
+    "Programs restricted to students only",
+    "Programs restricted to organizations outside the United States",
+    "Closed or expired opportunities",
+    "Opportunities whose official source cannot be established"
+  ],
+  "verificationRequired": [
+    "Official opportunity URL",
+    "Current open/closed status",
+    "Eligible geography",
+    "For-profit eligibility",
+    "Small-business eligibility",
+    "Entity requirements",
+    "Industry/sector requirements",
+    "Revenue or employee limits if applicable",
+    "Funding amount",
+    "Deadline",
+    "Application path",
+    "Evidence capture"
+  ],
+  "dispositionStates": [
+    "POTENTIAL_MATCH",
+    "ELIGIBILITY_VERIFIED",
+    "NEEDS_OWNER_REVIEW",
+    "GEOGRAPHIC_MISMATCH",
+    "ENTITY_MISMATCH",
+    "INDUSTRY_MISMATCH",
+    "CLOSED_OR_EXPIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "ownerControls": {
+    "automatedEligibility": false,
+    "automatedSubmission": false,
+    "automatedSigning": false,
+    "financialExecution": false,
+    "moneyMovement": false,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true
+  },
+  "safety": {
+    "neverInventEligibility": true,
+    "neverInventFundingAmounts": true,
+    "neverInventDeadlines": true,
+    "neverInferVirginiaEligibility": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true
+  }
+}

@@ -19,6 +19,53 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/discovery-policy", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/funding-discovery-policy.json";
+
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"FUNDING_DISCOVERY_POLICY_NOT_FOUND"
+      });
+    }
+
+    const policy=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      operatingState:"Virginia",
+      mode:"OWNER_REVIEW_ONLY",
+      version:policy.version||"1.0",
+      policy,
+      safety:{
+        neverInventEligibility:true,
+        neverInventFundingAmounts:true,
+        neverInventDeadlines:true,
+        neverInferVirginiaEligibility:true,
+        neverAutoSubmit:true,
+        neverAutoSign:true,
+        neverMoveMoney:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[FUNDING_DISCOVERY_POLICY_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"FUNDING_DISCOVERY_POLICY_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/evidence-review", (req,res) => {
   const fs=require("fs");
   try {
