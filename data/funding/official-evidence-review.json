@@ -1,0 +1,157 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T13:07:22.184Z",
+  "module": "NIA_OFFICIAL_FUNDING_EVIDENCE_REVIEW",
+  "organization": "House of Jazzu",
+  "operatingState": "Virginia",
+  "mode": "OWNER_REVIEW_ONLY",
+  "total": 4,
+  "review": [
+    {
+      "queuePosition": 1,
+      "id": "funding-3",
+      "name": "Free Grants and Programs for Small Business | CO",
+      "officialSource": true,
+      "officialUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+      "sourceDomain": "www.uschamber.com",
+      "evidenceReview": {
+        "status": "READY_FOR_OFFICIAL_SOURCE_REVIEW",
+        "sourcePageAccessed": false,
+        "sourcePageDate": null,
+        "geographicRulesFound": false,
+        "virginiaExplicitlyEligible": false,
+        "virginiaExplicitlyExcluded": false,
+        "nationwideEligibility": false,
+        "entityRequirementsFound": false,
+        "businessSizeRequirementsFound": false,
+        "deadlineConfirmed": false,
+        "applicationPathConfirmed": false,
+        "evidenceCaptured": false
+      },
+      "determination": {
+        "status": "UNDETERMINED",
+        "reason": "Official opportunity page must be reviewed before eligibility can be established"
+      },
+      "ownerControl": {
+        "ownerReviewRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 2,
+      "id": "funding-7",
+      "name": "Community Impact Grants",
+      "officialSource": true,
+      "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+      "sourceDomain": "www.aps.com",
+      "evidenceReview": {
+        "status": "READY_FOR_OFFICIAL_SOURCE_REVIEW",
+        "sourcePageAccessed": false,
+        "sourcePageDate": null,
+        "geographicRulesFound": false,
+        "virginiaExplicitlyEligible": false,
+        "virginiaExplicitlyExcluded": false,
+        "nationwideEligibility": false,
+        "entityRequirementsFound": false,
+        "businessSizeRequirementsFound": false,
+        "deadlineConfirmed": false,
+        "applicationPathConfirmed": false,
+        "evidenceCaptured": false
+      },
+      "determination": {
+        "status": "UNDETERMINED",
+        "reason": "Official opportunity page must be reviewed before eligibility can be established"
+      },
+      "ownerControl": {
+        "ownerReviewRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 3,
+      "id": "funding-10",
+      "name": "Apply for Funding",
+      "officialSource": true,
+      "officialUrl": "https://www.globalinnovation.fund/apply-for-funding",
+      "sourceDomain": "www.globalinnovation.fund",
+      "evidenceReview": {
+        "status": "READY_FOR_OFFICIAL_SOURCE_REVIEW",
+        "sourcePageAccessed": false,
+        "sourcePageDate": null,
+        "geographicRulesFound": false,
+        "virginiaExplicitlyEligible": false,
+        "virginiaExplicitlyExcluded": false,
+        "nationwideEligibility": false,
+        "entityRequirementsFound": false,
+        "businessSizeRequirementsFound": false,
+        "deadlineConfirmed": false,
+        "applicationPathConfirmed": false,
+        "evidenceCaptured": false
+      },
+      "determination": {
+        "status": "UNDETERMINED",
+        "reason": "Official opportunity page must be reviewed before eligibility can be established"
+      },
+      "ownerControl": {
+        "ownerReviewRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    },
+    {
+      "queuePosition": 4,
+      "id": "funding-11",
+      "name": "Teaching Innovation Grants",
+      "officialSource": true,
+      "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+      "sourceDomain": "cte.ku.edu",
+      "evidenceReview": {
+        "status": "READY_FOR_OFFICIAL_SOURCE_REVIEW",
+        "sourcePageAccessed": false,
+        "sourcePageDate": null,
+        "geographicRulesFound": false,
+        "virginiaExplicitlyEligible": false,
+        "virginiaExplicitlyExcluded": false,
+        "nationwideEligibility": false,
+        "entityRequirementsFound": false,
+        "businessSizeRequirementsFound": false,
+        "deadlineConfirmed": false,
+        "applicationPathConfirmed": false,
+        "evidenceCaptured": false
+      },
+      "determination": {
+        "status": "UNDETERMINED",
+        "reason": "Official opportunity page must be reviewed before eligibility can be established"
+      },
+      "ownerControl": {
+        "ownerReviewRequired": true,
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false
+      }
+    }
+  ],
+  "safety": {
+    "neverInferEligibility": true,
+    "neverInventEvidence": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false
+  }
+}

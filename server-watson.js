@@ -19,6 +19,52 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/evidence-review", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/official-evidence-review.json";
+
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"OFFICIAL_EVIDENCE_REVIEW_NOT_FOUND"
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      operatingState:"Virginia",
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      total:data.total||0,
+      review:Array.isArray(data.review) ? data.review : [],
+      safety:{
+        neverInferEligibility:true,
+        neverInventEvidence:true,
+        neverAutoSubmit:true,
+        neverAutoSign:true,
+        neverMoveMoney:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[OFFICIAL_EVIDENCE_REVIEW_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"OFFICIAL_EVIDENCE_REVIEW_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/geographic-verification", (req,res) => {
   const fs=require("fs");
   try {
