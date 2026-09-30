@@ -19,6 +19,54 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/geographic-verification", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/geographic-verification-workbench.json";
+
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"GEOGRAPHIC_VERIFICATION_WORKBENCH_NOT_FOUND"
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      operatingState:"Virginia",
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      total:data.total||0,
+      workbench:Array.isArray(data.workbench)
+        ? data.workbench
+        : [],
+      safety:{
+        neverInferEligibility:true,
+        neverInventGeography:true,
+        neverAutoSubmit:true,
+        neverAutoSign:true,
+        neverMoveMoney:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[GEOGRAPHIC_VERIFICATION_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"GEOGRAPHIC_VERIFICATION_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/decision-queue", (req,res) => {
   const fs=require("fs");
   try {

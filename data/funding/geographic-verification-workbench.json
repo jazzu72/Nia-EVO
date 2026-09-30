@@ -1,0 +1,169 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T13:03:07.695Z",
+  "module": "NIA_GEOGRAPHIC_VERIFICATION_WORKBENCH",
+  "organization": "House of Jazzu",
+  "operatingState": "Virginia",
+  "mode": "OWNER_REVIEW_ONLY",
+  "total": 4,
+  "workbench": [
+    {
+      "queuePosition": 1,
+      "id": "funding-3",
+      "name": "Free Grants and Programs for Small Business | CO",
+      "source": {
+        "official": true,
+        "domain": "www.uschamber.com",
+        "url": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs"
+      },
+      "operatingState": "Virginia",
+      "geographicVerification": {
+        "status": "PENDING",
+        "virginiaEligibility": false,
+        "nationwideEligibility": false,
+        "otherStateRestriction": false,
+        "geographicRestrictionFound": false,
+        "sourcePageReviewed": false,
+        "evidenceCaptured": false
+      },
+      "requiredChecks": [
+        "Read official opportunity page",
+        "Identify eligible states/territories",
+        "Determine whether Virginia businesses are eligible",
+        "Check entity-type restrictions",
+        "Check business-size restrictions",
+        "Check deadline",
+        "Check application path",
+        "Preserve supporting evidence"
+      ],
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "queuePosition": 2,
+      "id": "funding-7",
+      "name": "Community Impact Grants",
+      "source": {
+        "official": true,
+        "domain": "www.aps.com",
+        "url": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants"
+      },
+      "operatingState": "Virginia",
+      "geographicVerification": {
+        "status": "PENDING",
+        "virginiaEligibility": false,
+        "nationwideEligibility": false,
+        "otherStateRestriction": false,
+        "geographicRestrictionFound": false,
+        "sourcePageReviewed": false,
+        "evidenceCaptured": false
+      },
+      "requiredChecks": [
+        "Read official opportunity page",
+        "Identify eligible states/territories",
+        "Determine whether Virginia businesses are eligible",
+        "Check entity-type restrictions",
+        "Check business-size restrictions",
+        "Check deadline",
+        "Check application path",
+        "Preserve supporting evidence"
+      ],
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "queuePosition": 3,
+      "id": "funding-10",
+      "name": "Apply for Funding",
+      "source": {
+        "official": true,
+        "domain": "www.globalinnovation.fund",
+        "url": "https://www.globalinnovation.fund/apply-for-funding"
+      },
+      "operatingState": "Virginia",
+      "geographicVerification": {
+        "status": "PENDING",
+        "virginiaEligibility": false,
+        "nationwideEligibility": false,
+        "otherStateRestriction": false,
+        "geographicRestrictionFound": false,
+        "sourcePageReviewed": false,
+        "evidenceCaptured": false
+      },
+      "requiredChecks": [
+        "Read official opportunity page",
+        "Identify eligible states/territories",
+        "Determine whether Virginia businesses are eligible",
+        "Check entity-type restrictions",
+        "Check business-size restrictions",
+        "Check deadline",
+        "Check application path",
+        "Preserve supporting evidence"
+      ],
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    {
+      "queuePosition": 4,
+      "id": "funding-11",
+      "name": "Teaching Innovation Grants",
+      "source": {
+        "official": true,
+        "domain": "cte.ku.edu",
+        "url": "https://cte.ku.edu/teaching-innovation-grants"
+      },
+      "operatingState": "Virginia",
+      "geographicVerification": {
+        "status": "PENDING",
+        "virginiaEligibility": false,
+        "nationwideEligibility": false,
+        "otherStateRestriction": false,
+        "geographicRestrictionFound": false,
+        "sourcePageReviewed": false,
+        "evidenceCaptured": false
+      },
+      "requiredChecks": [
+        "Read official opportunity page",
+        "Identify eligible states/territories",
+        "Determine whether Virginia businesses are eligible",
+        "Check entity-type restrictions",
+        "Check business-size restrictions",
+        "Check deadline",
+        "Check application path",
+        "Preserve supporting evidence"
+      ],
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false
+    }
+  ],
+  "safety": {
+    "neverInferEligibility": true,
+    "neverInventGeography": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false
+  }
+}
