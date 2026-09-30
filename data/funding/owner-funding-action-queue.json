@@ -1,0 +1,282 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T18:23:13.399Z",
+  "module": "NIA_OWNER_FUNDING_ACTION_QUEUE",
+  "organization": "House of Jazzu",
+  "operatingState": "Virginia",
+  "mode": "OWNER_REVIEW_ONLY",
+  "summary": {
+    "candidates": 6,
+    "eligibilityVerified": 0,
+    "applicationReady": 0,
+    "submissionReady": 0
+  },
+  "candidates": [
+    {
+      "queuePosition": 1,
+      "id": "CAP-0002",
+      "name": "Small Business Grants: Funding Grants",
+      "source": {
+        "officialUrl": "https://www.thegrantportal.com/grants-for-small-business",
+        "domain": "www.thegrantportal.com"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": true,
+        "nationalSignal": true,
+        "businessSignal": true,
+        "deadlineSignal": true,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 2,
+      "id": "CAP-0005",
+      "name": "64+ Active Technology Grants in The U.S.",
+      "source": {
+        "officialUrl": "https://www.instrumentl.com/browse-grants/technology-grants",
+        "domain": "www.instrumentl.com"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": true,
+        "nationalSignal": true,
+        "businessSignal": true,
+        "deadlineSignal": true,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 3,
+      "id": "CAP-0006",
+      "name": "How to Apply for NEFE Grant Funding",
+      "source": {
+        "officialUrl": "https://www.nefe.org/research/get-funding/apply.aspx",
+        "domain": "www.nefe.org"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": false,
+        "nationalSignal": true,
+        "businessSignal": true,
+        "deadlineSignal": true,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 4,
+      "id": "CAP-0007",
+      "name": "Community Impact Grants",
+      "source": {
+        "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+        "domain": "www.aps.com"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": false,
+        "nationalSignal": true,
+        "businessSignal": true,
+        "deadlineSignal": false,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 5,
+      "id": "CAP-0011",
+      "name": "Teaching Innovation Grants",
+      "source": {
+        "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+        "domain": "cte.ku.edu"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": false,
+        "nationalSignal": true,
+        "businessSignal": true,
+        "deadlineSignal": true,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    },
+    {
+      "queuePosition": 6,
+      "id": "CAP-0012",
+      "name": "Assistive Technology Funding Sources",
+      "source": {
+        "officialUrl": "https://www.ucdenver.edu/center-for-innovative-design-and-engineering/community-engagement/colorado-assistive-technology-act-program/assistive-technology-funding-sources",
+        "domain": "www.ucdenver.edu"
+      },
+      "evidence": {
+        "pageAccessible": true,
+        "httpStatus": 200,
+        "virginiaSignal": false,
+        "nationalSignal": false,
+        "businessSignal": true,
+        "deadlineSignal": false,
+        "fundingSignal": true
+      },
+      "determination": {
+        "status": "OWNER_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Review official opportunity page",
+        "Confirm for-profit eligibility",
+        "Confirm Virginia eligibility",
+        "Confirm current deadline",
+        "Confirm funding amount",
+        "Confirm application path",
+        "Approve or reject candidate"
+      ],
+      "safety": {
+        "automatedEligibility": false,
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "financialExecution": false,
+        "moneyMovement": false,
+        "ownerApprovalRequired": true,
+        "ownerSignatureRequired": true
+      }
+    }
+  ],
+  "nextStage": "OWNER_REVIEW_AND_APPLICATION_PREPARATION",
+  "safety": {
+    "neverInferEligibility": true,
+    "neverInventFundingAmounts": true,
+    "neverInventDeadlines": true,
+    "neverAutoSubmit": true,
+    "neverAutoSign": true,
+    "neverMoveMoney": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false
+  }
+}

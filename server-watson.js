@@ -19,6 +19,52 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/action-queue",(req,res)=>{
+  const fs=require("fs");
+  try{
+    const file="data/funding/owner-funding-action-queue.json";
+    if(!fs.existsSync(file))
+      return res.status(404).json({
+        ok:false,
+        error:"OWNER_FUNDING_ACTION_QUEUE_NOT_FOUND"
+      });
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      operatingState:"Virginia",
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      summary:data.summary||{},
+      candidates:Array.isArray(data.candidates)?data.candidates:[],
+      nextStage:data.nextStage||null,
+      safety:{
+        neverInferEligibility:true,
+        neverInventFundingAmounts:true,
+        neverInventDeadlines:true,
+        neverAutoSubmit:true,
+        neverAutoSign:true,
+        neverMoveMoney:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false
+      }
+    });
+  }catch(err){
+    console.error("[OWNER_FUNDING_ACTION_QUEUE_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"OWNER_FUNDING_ACTION_QUEUE_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/funding/application-packages",(req,res)=>{
   const fs=require("fs");
   try{
