@@ -1,0 +1,670 @@
+{
+  "ok": true,
+  "version": "1.0",
+  "generatedAt": "2026-09-30T01:11:27.078Z",
+  "organization": "House of Jazzu",
+  "registryId": "HOJ-BIZ-23505",
+  "mode": "OWNER_REVIEW_ONLY",
+  "registryVerification": "PARTIALLY_VERIFIED",
+  "total": 5,
+  "opportunities": [
+    {
+      "id": "funding-3",
+      "name": "Free Grants and Programs for Small Business | CO",
+      "verificationStatus": "PENDING_OWNER_VERIFICATION",
+      "officialSource": true,
+      "sourceDomain": "www.uschamber.com",
+      "officialUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+      "fundingAmount": null,
+      "deadline": null,
+      "verificationChecks": {
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "evidence": {
+        "sourceRecordPreserved": true,
+        "sourceRecord": {
+          "id": "funding-3",
+          "name": "Free Grants and Programs for Small Business | CO",
+          "status": "DISCOVERED",
+          "verificationStatus": "REQUIRED",
+          "source": {
+            "officialUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+            "sourceUrl": "https://www.uschamber.com/co/run/business-financing/small-business-grants-and-programs",
+            "sourceDomain": "www.uschamber.com",
+            "officialSource": true
+          },
+          "fundingAmount": null,
+          "deadline": null,
+          "relevance": {
+            "score": 50,
+            "reasons": [
+              "technology",
+              "innovation",
+              "small business",
+              "startup",
+              "entrepreneur",
+              "geography:United States"
+            ]
+          },
+          "evidence": {
+            "title": "Free Grants and Programs for Small Business | CO",
+            "description": null,
+            "opportunityId": null,
+            "opportunityNumber": null,
+            "solicitationIdentifiers": [],
+            "opportunityIdentityType": null,
+            "eligibility": true,
+            "eligibilityEvidence": "to promote rural business growth. They offer loans, grants, and guarantees , with the goal of enhancing economic opportunities and job creation in rural communities; deadlines and eligibility requirements vary by program.\\n U.S. Department of Commerce Minority Business Development Agency (MBDA). Targeted grants and loans designed to aid minority-owned businesses are offered throughout the year. Minority-owned businesses can find information about local MBDA Business Centers at MBDA.gov .\\n U.S. Small Busin | l Assistance. The Binc Foundation provides emergency financial assistance to bookstore owners, booksellers, and comic store employees and owners facing unforeseen financial needs. Eligibility criteria include specific employment durations and financial hardship resulting from qualifying life events. Binc's assistance process involves a confidential application and documentation verification, aiming to help individuals regain financial stability.\\n Bluegrass Bartenders Fund. The Bluegrass Bartenders Fund pr | program, offered by Walmart and Sam’s Club, provides grants ranging from $250 to $5,000 to organizations addressing the unique needs of local communities. Tax ID status determines eligibility, with 501(c)(3) charities, public entities, and educational institutions qualifying. All organizations must be Deed-verified and have a Spark Good account to apply. Applications for cycle three will be open from August 1 through November 30, 2026.\\n Wells Fargo Grant. Wells Fargo and the Wells Fargo Foundation offer g | by submitting ideas, solutions, or innovations for potential prizes. Since 2010, the U.S. government has run more than 1,600 prize competitions across a wide range of topics, with eligibility, deadlines, and award amounts varying by individual challenge.\\n Business resources for entrepreneurs with disabilities\\n 2Gether International , a nonprofit that works to advance disabled entrepreneurs through networking groups and events, as well as professional cohort programs.\\n Assistive technology business loans | small business owners and 501(c)(3) nonprofit organizations. The program is designed to help applicants start, structure, brand, scale, or fund their businesses or organizations. Eligible applicants must be small business owners or nonprofit organizations, and all applicants are required to attend the live Zoom grant announcement. Applications for the current grant cycle must be submitted by September 30, 2026, at 11:59 p.m. EST.\\n Skip Instant Grants. Skip offers Instant Grants on a rolling basis, providing fund | y It Forward program provides complimentary TV and streaming advertising, an original commercial, mentoring, and educational resources to help locally owned small businesses grow. Eligible applicants include for-profit businesses that have been operating for at least one year and are legally registered in a participating U.S. designated market area. Businesses must not have advertised with Spectrum Reach in the past 13 months and cannot compete with Spectrum or its divisions. The deadline to apply is December 31, | rass Bartenders Fund. The Bluegrass Bartenders Fund provides direct financial relief to Louisville-area bartenders and other restaurant or bar workers facing unexpected hardships. Eligible applicants must work for at least six months at a locally owned, independent restaurant or bar in the Louisville Metro area and apply within six months of the qualifying event. Support can cover essential expenses such as housing, utilities, childcare, or medical bills related to unexpected crises. Applications are accepted on a | & Grant Program. The Community Facilities Direct Loan & Grant Program provides year-round funding to help rural areas develop essential facilities that support community services. Eligible applicants include public bodies, community-based nonprofits, and federally recognized tribes, with projects focused on rural areas with populations under 20,000. Funding can be used for constructing, purchasing, or improving facilities like healthcare centers, public safety buildings, educational services, and local food system | e Grant. Each quarter, the Entreprenista Evolve Grant provides $5,000 in funding to support women founders as they scale their businesses and invest in growth-focused initiatives. Eligible applicants must be women leading U.S.-based businesses that have been operating for at least one year and generated $100,000 or more in annual revenue. Applications for this quarter are due by November 30, 2026, at 11:59 p.m. ET.\\n Foundation for a Just Society grants. Foundation for a Just Society offers grants to local, nation | om entrepreneurs grow their businesses. Awards include a $10,000 grand prize, $5,000 for first runner-up, $2,500 for second runner-up, and $1,000 each for five honorable mentions. Eligible applicants must be mothers or expectant mothers who own at least 50% of a for-profit business, have annual revenue between $10,000 and $500,000, and reside in the U.S. or Canada. Applications are open through September 30, 2026.\\n IFundWomen Universal Grant Application . This is a resource for female entrepreneurs seeking grants",
+            "deadline": true,
+            "deadlineEvidence": "al assistance to promote rural business growth. They offer loans, grants, and guarantees , with the goal of enhancing economic opportunities and job creation in rural communities; deadlines and eligibility requirements vary by program.\\n U.S. Department of Commerce Minority Business Development Agency (MBDA). Targeted grants and loans designed to aid minority-owned businesses are offered throughout the year. Minority-owned businesses can find information about local MBDA Business Centers at MBDA.gov .\\n | on a rolling basis, providing funding opportunities with shorter turnaround windows. These grants are announced a couple of days in advance and generally occur twice a week, with deadlines on Tuesdays and Fridays. Applicants must participate in Skip’s YouTube livestream during the selection process. Visit Skip’s website for more information about the latest Instant Grant opportunities.\\n Small Business Readiness for Resiliency Program. Small businesses often feel the effects of a natural disaster the h | n a participating U.S. designated market area. Businesses must not have advertised with Spectrum Reach in the past 13 months and cannot compete with Spectrum or its divisions. The deadline to apply is December 31, 2026, at 11:59 p.m. PST.\\n Verizon Small Business Digital Ready Program. The Verizon Small Business Digital Ready Program offers free courses, events, networking, and other resources for small business owners, along with opportunities to receive grant funding. In partnership with LISC, Verizon | han $1M in annual revenue. Grants are provided by Visionaries to fuel growth, operations, marketing, or infrastructure. Applications are accepted on a rolling basis, with the next deadline scheduled for September 30, 2026.\\n High Five Grant for Moms. The High Five Grant for Moms , hosted by The Mama Ladder, provides funding to help mom entrepreneurs grow their businesses. Awards include a $10,000 grand prize, $5,000 for first runner-up, $2,500 for second runner-up, and $1,000 each for five honorable men | pport needs such as emergency-related costs, travel and lodging for residencies or trainings, transportation issues, and medical hardships affecting artistic work. The application deadline is 3:00 p.m. MT on the 10th of every month.\\n Additional resources\\n The programs listed above are a good start when it comes to grants and funding. You may find additional resources available by following the links below.\\n General small business resources\\n Capital Klub , powered by Mogul Millennial, a funding disco | quickly discover grants, pitch competitions, and accelerator programs. Members get access to a daily-updated database, curated funding leads, a weekly funding drop newsletter, and deadline reminders to stay on track.\\n Morgan Stanley’s Small Business Academy , a 12-week virtual educational program followed by a yearlong mentorship program that helps small business owners strengthen their business knowledge, navigate the procurement process, and expand their professional networks. Participants who succes | ideas, solutions, or innovations for potential prizes. Since 2010, the U.S. government has run more than 1,600 prize competitions across a wide range of topics, with eligibility, deadlines, and award amounts varying by individual challenge.\\n Business resources for entrepreneurs with disabilities\\n 2Gether International , a nonprofit that works to advance disabled entrepreneurs through networking groups and events, as well as professional cohort programs.\\n Assistive technology business loans and progr | nding can support needs such as emergency-related costs, travel and lodging for residencies or trainings, transportation issues, and medical hardships affecting artistic work. The application deadline is 3:00 p.m. MT on the 10th of every month.\\n Additional resources\\n The programs listed above are a good start when it comes to grants and funding. You may find additional resources available by following the links below.\\n General small business resources\\n Capital Klub , powered by Mogul Millennial, a funding disco",
+            "fundingAmount": true,
+            "fundingAmountEvidence": "or program based in Silicon Valley, along with a $150,000 investment. Applications are accepted on a rolling basis.\\n Awesome Foundation Grants. Each month, the Awesome Foundation awards grants of $1,000 to individuals and groups looking to fund various projects. The Awesome Foundation is made up of dozens of independently run chapters, with members contributing to a microfunding pool that goes towards grant projects. Though funding is not limited to businesses, startups, and small businesses have be | n a rolling basis.\\n Business Freedom Grant: The Business Freedom Grant provides $1,000 in funding to support creators, founders, dreamers, and aspiring business owners worldwide. Awarded twice per year, the grant offers unrestricted funding that can be used to start, grow, or improve a business, creative project, or entrepreneurial venture. The opportunity is open to individuals at all stages, including those just beginning their journey. The mission of the grant is to help creators, founders, and d | ram offers free courses, events, networking, and other resources for small business owners, along with opportunities to receive grant funding. In partnership with LISC, Verizon is awarding $10,000 grants to 10 small businesses each month through December 2026. Owners of for-profit businesses in the United States, Puerto Rico, and the U.S. Virgin Islands can complete any combination of two eligible courses or events to unlock the grant application. Applicants only need to apply once and, if not select | nation of two eligible courses or events to unlock the grant application. Applicants only need to apply once and, if not selected in a given month, will remain eligible for grants awarded throughout the rest of 2026.\\n Industry-specific and diversity small business grants and programs\\n Some small business grant programs are confined to a specific entrepreneur demographic or business profile, and they often have an application process that is easier to navigate. This is a sample list, so be sure to c | a loan can do so here .\\n Amber Grant Foundation. With a simple goal of supporting women entrepreneurs, the Amber Grant Foundation was founded by WomensNet in 1998. The foundation awards a series of grants throughout the year, including the $10,000 monthly Amber grant and three $50,000 annual Amber grants. There are also 12 business category grants — an additional $10,000 each month — with all eligible applications remaining active until the month of their specific category.\\n The Big Idea Grant. The | proving facilities like healthcare centers, public safety buildings, educational services, and local food systems. Grants are prioritized for small, low-income communities and are awarded on a graduated scale, with up to 75% of eligible costs covered for the communities most in need. Applicants must demonstrate financial need, substantial community support, and complete an environmental review to qualify. The current application period is open through September 30, 2026.\\n DoorDash Disaster Relief Fu | s, franchises, direct sellers, authorized resellers, and independent consultants are ineligible to apply.\\n Hey Helen Grant. Each month, the Hey Helen Grant provides $10,000 grant awards to US-based, for-profit businesses with at least 50% women-ownership that generate less than $1M in annual revenue. Grants are provided by Visionaries to fuel growth, operations, marketing, or infrastructure. Applications are accepted on a rolling basis, with the next deadline scheduled for September 30, 2026.\\n High | led for September 30, 2026.\\n High Five Grant for Moms. The High Five Grant for Moms , hosted by The Mama Ladder, provides funding to help mom entrepreneurs grow their businesses. Awards include a $10,000 grand prize, $5,000 for first runner-up, $2,500 for second runner-up, and $1,000 each for five honorable mentions. Eligible applicants must be mothers or expectant mothers who own at least 50% of a for-profit business, have annual revenue between $10,000 and $500,000, and reside in the U.S. or Canad | Corporate Grant Program. Patagonia's corporate grant program offers $30,000 two-year grants to nonprofits with missions to protect and preserve the environment. Though grants are awarded by invitation only, Patagonia accepts recommendations for organizations that meet program criteria.\\n Pave HER Way Disruptor Award. Pave HER Way , a national nonprofit focused on expanding opportunities for women, is opening its Disruptor Award to U.S.-based women with projects or ideas that provide a clear public b | nd preserve the environment. Though grants are awarded by invitation only, Patagonia accepts recommendations for organizations that meet program criteria.\\n Pave HER Way Disruptor Award. Pave HER Way , a national nonprofit focused on expanding opportunities for women, is opening its Disruptor Award to U.S.-based women with projects or ideas that provide a clear public benefit for women and girls. Recipients can receive up to $90,000 and are required to participate in mentorship and a cohort experienc",
+            "applicationPath": null,
+            "applicationEvidence": "dStudio \\n Looking for your local chamber?\\n Chamber Finder \\n Interested in partnering with us?\\n Media Kit \\n \\n \\n \\n \\n \\n 100 businesses. One list. Ready to share your story? Apply today for the CO—100.\\n Apply Now! \\n \\n Run &raquo; Business Financing \\n 100+ Grants, Loans, and Programs to Benefit Your Small Business \\n When you know where to look, help for your small business is there for the taking.\\n Share \\n \\n \\n \\n Save \\n \\n \\n \\n \\n \\n \\n Whether you're starting a new small business or | cal chamber?\\n Chamber Finder \\n Interested in partnering with us?\\n Media Kit \\n \\n \\n \\n \\n \\n 100 businesses. One list. Ready to share your story? Apply today for the CO—100.\\n Apply Now! \\n \\n Run &raquo; Business Financing \\n 100+ Grants, Loans, and Programs to Benefit Your Small Business \\n When you know where to look, help for your small business is there for the taking.\\n Share \\n \\n \\n \\n Save \\n \\n \\n \\n \\n \\n \\n Whether you're starting a new small business or looking to grow the one you al | the federal government at Grants.gov . This government site offers the most comprehensive database of funds the government is going to give away. There are thousands of grants to apply for, with opportunities for companies from all backgrounds.\\n Keep in mind that not all assistance flows directly from the federal government to small businesses. Some funds are distributed to state and local governments and agencies, nonprofits, and institutions of higher learning. These entities in turn distribute t | nority and low-income individuals, strengthen minority-owned enterprises, and boost economic growth in disadvantaged areas. To participate in the program, eligible businesses must apply through certified nonprofit lenders, with the state's department of employment and economic development (DEED) assisting in lender identification if needed, and loans are subject to DEED's approval.\\n Texas Enterprise Fund (TEF). The TEF offers \"deal-closing\" grants to companies competing with out-of-state sites for n | ). The EDA is part of the U.S. Department of Commerce and offers ongoing funding opportunities for projects that support regional and national economic development. Applicants can apply for a variety of rolling-basis EDA investments that fund projects in construction, non-construction, planning, technical assistance, research and evaluation, higher education, and more.\\n As you would expect, acceptance of free money from the government comes with a fair amount of paperwork. Applying for a grant can b | chnical assistance, research and evaluation, higher education, and more.\\n As you would expect, acceptance of free money from the government comes with a fair amount of paperwork. Applying for a grant can be time-consuming and technical. You want to make sure, therefore, that you are eligible before applying. In addition to the legal and administrative prerequisites, there are ongoing reporting and auditing requirements.\\n \\n Government contract assistance\\n The federal government spends billions of | from the government comes with a fair amount of paperwork. Applying for a grant can be time-consuming and technical. You want to make sure, therefore, that you are eligible before applying. In addition to the legal and administrative prerequisites, there are ongoing reporting and auditing requirements.\\n \\n Government contract assistance\\n The federal government spends billions of dollars on goods and services each year. A lot of that money is spent through a competitive bidding process. Programs hav | s, and dreamers turn their ideas into reality while creating greater financial freedom through entrepreneurship.\\n The Freed Fellowship Grant. U.S.-based small business owners can apply for a monthly $500 grant from The Freed Fellowship . Applicants are evaluated based on the 5C Framework, which assesses various aspects of applicants’ businesses. Along with the grant, applicants receive feedback on their business and a two-month free membership in the Freed Studio, a community of ambitious business o | to promising small businesses across the United States, helping them grow their operations. Applications are accepted monthly, and eligible small business owners are encouraged to apply.\\n Outta Excuses Grant: The Outta Excuses Grant provides $10,000 in funding each quarter to support small business owners and 501(c)(3) nonprofit organizations. The program is designed to help applicants start, structure, brand, scale, or fund their businesses or organizations. Eligible applicants must be small busine | ating U.S. designated market area. Businesses must not have advertised with Spectrum Reach in the past 13 months and cannot compete with Spectrum or its divisions. The deadline to apply is December 31, 2026, at 11:59 p.m. PST.\\n Verizon Small Business Digital Ready Program. The Verizon Small Business Digital Ready Program offers free courses, events, networking, and other resources for small business owners, along with opportunities to receive grant funding. In partnership with LISC, Verizon is award"
+          },
+          "ownerReview": {
+            "required": true,
+            "submissionAllowed": false,
+            "signingAllowed": false,
+            "financialExecutionAllowed": false,
+            "moneyMovementAllowed": false
+          }
+        }
+      },
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "legalEntityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+        "jurisdiction": "Virginia",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true,
+        "products": [
+          "Money Munchkins",
+          "Money Munchkins: Quantum Odyssey"
+        ],
+        "focusAreas": [
+          "AI",
+          "financial education",
+          "education technology",
+          "adaptive learning",
+          "digital products",
+          "software",
+          "quantum-inspired learning experiences"
+        ],
+        "fundingPurposes": [
+          "business growth",
+          "technology development",
+          "innovation",
+          "product development",
+          "education technology",
+          "digital infrastructure",
+          "working capital"
+        ],
+        "preferredFundingTypes": [
+          "grants",
+          "sponsorships",
+          "non_dilutive_funding",
+          "strategic_partnerships"
+        ]
+      },
+      "matching": {
+        "status": "NOT_YET_VERIFIED",
+        "automatedEligibilityDecision": false,
+        "opportunitySpecificEligibilityRequired": true,
+        "legalEntityVerificationRequired": true,
+        "ownerReviewRequired": true
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false
+      }
+    },
+    {
+      "id": "funding-7",
+      "name": "Community Impact Grants",
+      "verificationStatus": "PENDING_OWNER_VERIFICATION",
+      "officialSource": true,
+      "sourceDomain": "www.aps.com",
+      "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+      "fundingAmount": null,
+      "deadline": null,
+      "verificationChecks": {
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "evidence": {
+        "sourceRecordPreserved": true,
+        "sourceRecord": {
+          "id": "funding-7",
+          "name": "Community Impact Grants",
+          "status": "DISCOVERED",
+          "verificationStatus": "REQUIRED",
+          "source": {
+            "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+            "sourceUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+            "sourceDomain": "www.aps.com",
+            "officialSource": true
+          },
+          "fundingAmount": null,
+          "deadline": null,
+          "relevance": {
+            "score": 16,
+            "reasons": [
+              "small business",
+              "entrepreneur"
+            ]
+          },
+          "evidence": {
+            "title": "Community Impact Grants",
+            "description": null,
+            "opportunityId": null,
+            "opportunityNumber": null,
+            "solicitationIdentifiers": [],
+            "opportunityIdentityType": null,
+            "eligibility": true,
+            "eligibilityEvidence": "tions, beauty pageants or talent contests \\n \\n \\n \\n \\n \\n \\n \\n \\n \\n \\n Learn more about APS in the Community \\n \\n Arizona's Growth and Prosperity \\n Education & Employment \\n Small Business & Entrepreneurship \\n Arts & Culture \\n \\n \\n \\n Health and Human Services \\n Human Services \\n Environment \\n Community Development \\n \\n \\n \\n \\n \\n \\n\\n \\n \\n \\n \\n Need Help?\\n Contact Us Outage Center\\n Report Outage or View Status \\n \\n Our Company About Us \\n Safety \\n Newsroom \\n Clean Energy \\n Doing Business | s about your grant will come from noreply@yourcause.com . Please add this email address to your safe sender list to receive communications.\\n \\n \\n How We Evaluate Applications \\n Nonprofits within our service territories may apply once annually through an online application process. Organizations may request funding for multiple events or projects by submitting an all-inclusive application, which may include requests for in-kind support such as printing and trash boxes. For more information, e-mail Corp | d trash boxes. For more information, e-mail CorporateGiving@aps.com . \\n \\n \\n\\n \\n \\n \\n \\n What community impact grants will not support: \\n \\n Start-up organizations defined as nonprofits whose ruling year has been granted by the IRS for less than three years\\n Individuals or individual scholarships\\n Religious organizations, churches and programs that are purely denominational in purpose\\n Legislative or lobbying efforts or organizations\\n Animal shelters or agencies\\n Organizations not located or pr | es\\n Organizations not located or providing services within the APS service territory\\n Foundations or organizations which are grant-making entities that distribute funds to other nonprofit organization (pass through)\\n Organizations that discriminate on the basis of race, color, religion, disability, gender, gender identity, age, national origin, sexual orientation, marital status, protected veteran status or any other classification protected by law\\n Sports teams or sporting programs\\n Scouting troops",
+            "deadline": null,
+            "deadlineEvidence": null,
+            "fundingAmount": true,
+            "fundingAmountEvidence": "e submitted a grant request in the past.\\n Community Impact Grant Application &ndash; This application is for any 501c3 that is wanting to apply for our APS Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any organization that is ONLY asking for in-kind printing and/or trash boxes. Please note | unity Impact Grant Application &ndash; This application is for any 501c3 that is wanting to apply for our APS Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any organization that is ONLY asking for in-kind printing and/or trash boxes. Please note that these services are available to groups tha | y. \\n \\n When to Submit a Request? \\n \\n Grant requests are open from February 1 until October 1 annually. All applications must be submitted during this time to be considered for funding. All applications are required to be a onetime all-inclusive annual request for an organization and we respectfully ask that requests seeking event sponsorship be submitted at least 90 days prior to the event date. We are committed to reviewing all grant requests within 60 days of submission. Please note all notificat | cations.\\n \\n \\n How We Evaluate Applications \\n Nonprofits within our service territories may apply once annually through an online application process. Organizations may request funding for multiple events or projects by submitting an all-inclusive application, which may include requests for in-kind support such as printing and trash boxes. For more information, e-mail CorporateGiving@aps.com . \\n \\n \\n\\n \\n \\n \\n \\n What community impact grants will not support: \\n \\n Start-up organizations defined | arital status, protected veteran status or any other classification protected by law\\n Sports teams or sporting programs\\n Scouting troops\\n Organizations whose primary mission is funding medical or scientific research\\n Endowment, debt reduction, capital or building campaigns not part of established relationships\\n Competitions, beauty pageants or talent contests \\n \\n \\n \\n \\n \\n \\n \\n \\n \\n \\n Learn more about APS in the Community \\n \\n Arizona's Growth and Prosperity \\n Education & Employment \\n Sm",
+            "applicationPath": null,
+            "applicationEvidence": "o not have one, regardless if you&rsquo;ve submitted a grant request in the past.\\n Community Impact Grant Application &ndash; This application is for any 501c3 that is wanting to apply for our APS Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any organization that is ONLY asking for in-kin | cause.com . Please add this email address to your safe sender list to receive communications.\\n \\n \\n How We Evaluate Applications \\n Nonprofits within our service territories may apply once annually through an online application process. Organizations may request funding for multiple events or projects by submitting an all-inclusive application, which may include requests for in-kind support such as printing and trash boxes. For more information, e-mail CorporateGiving@aps.com . \\n \\n \\n\\n \\n \\n \\n | ven to programs that serve under-resourced populations.\\n This program is funded by APS shareholders and not included in customer rates.\\n \\n \\n\\n \\n \\n \\n \\n APS Corporate Giving Applications \\n Please note: \\n Effective February 1, 2025. APS is transitioning our Community Impact grantees to the new Blackbaud grantee portal to enhance your application experience. This upgrade will enhance the application process and centralize all grant applications for other foundations or grantors using the Blackbaud Gr | Corporate Giving Applications \\n Please note: \\n Effective February 1, 2025. APS is transitioning our Community Impact grantees to the new Blackbaud grantee portal to enhance your application experience. This upgrade will enhance the application process and centralize all grant applications for other foundations or grantors using the Blackbaud Grantmaking system to a single account login for non-profit organizations. All applicants will need to create a new Blackbaud login if they do not have one, regardle | tive February 1, 2025. APS is transitioning our Community Impact grantees to the new Blackbaud grantee portal to enhance your application experience. This upgrade will enhance the application process and centralize all grant applications for other foundations or grantors using the Blackbaud Grantmaking system to a single account login for non-profit organizations. All applicants will need to create a new Blackbaud login if they do not have one, regardless if you&rsquo;ve submitted a grant request in the pa | ur Community Impact grantees to the new Blackbaud grantee portal to enhance your application experience. This upgrade will enhance the application process and centralize all grant applications for other foundations or grantors using the Blackbaud Grantmaking system to a single account login for non-profit organizations. All applicants will need to create a new Blackbaud login if they do not have one, regardless if you&rsquo;ve submitted a grant request in the past.\\n Community Impact Grant Application &nda | tions. All applicants will need to create a new Blackbaud login if they do not have one, regardless if you&rsquo;ve submitted a grant request in the past.\\n Community Impact Grant Application &ndash; This application is for any 501c3 that is wanting to apply for our APS Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This | l need to create a new Blackbaud login if they do not have one, regardless if you&rsquo;ve submitted a grant request in the past.\\n Community Impact Grant Application &ndash; This application is for any 501c3 that is wanting to apply for our APS Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any o | Community Impact Grant funding. We request that if you are asking for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any organization that is ONLY asking for in-kind printing and/or trash boxes. Please note that these services are available to groups that meet our Community Giving criteria. \\n Cities/Towns/Government &ndash; This application is for any other organi | king for funding and trash boxes and/or in-kind printing that you complete this all-inclusive one time per year grant application. \\n Trash boxes and In-Kind Printing &ndash; This application is for any organization that is ONLY asking for in-kind printing and/or trash boxes. Please note that these services are available to groups that meet our Community Giving criteria. \\n Cities/Towns/Government &ndash; This application is for any other organizations who are not a 501c3, but are specifically a City, Town"
+          },
+          "ownerReview": {
+            "required": true,
+            "submissionAllowed": false,
+            "signingAllowed": false,
+            "financialExecutionAllowed": false,
+            "moneyMovementAllowed": false
+          }
+        }
+      },
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "legalEntityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+        "jurisdiction": "Virginia",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true,
+        "products": [
+          "Money Munchkins",
+          "Money Munchkins: Quantum Odyssey"
+        ],
+        "focusAreas": [
+          "AI",
+          "financial education",
+          "education technology",
+          "adaptive learning",
+          "digital products",
+          "software",
+          "quantum-inspired learning experiences"
+        ],
+        "fundingPurposes": [
+          "business growth",
+          "technology development",
+          "innovation",
+          "product development",
+          "education technology",
+          "digital infrastructure",
+          "working capital"
+        ],
+        "preferredFundingTypes": [
+          "grants",
+          "sponsorships",
+          "non_dilutive_funding",
+          "strategic_partnerships"
+        ]
+      },
+      "matching": {
+        "status": "NOT_YET_VERIFIED",
+        "automatedEligibilityDecision": false,
+        "opportunitySpecificEligibilityRequired": true,
+        "legalEntityVerificationRequired": true,
+        "ownerReviewRequired": true
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false
+      }
+    },
+    {
+      "id": "funding-9",
+      "name": "Innovation Grants | Missouri Department of Elementary and ...",
+      "verificationStatus": "PENDING_OWNER_VERIFICATION",
+      "officialSource": true,
+      "sourceDomain": "dese.mo.gov",
+      "officialUrl": "https://dese.mo.gov/childhood/innovation-grants",
+      "fundingAmount": null,
+      "deadline": null,
+      "verificationChecks": {
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "evidence": {
+        "sourceRecordPreserved": true,
+        "sourceRecord": {
+          "id": "funding-9",
+          "name": "Innovation Grants | Missouri Department of Elementary and ...",
+          "status": "DISCOVERED",
+          "verificationStatus": "REQUIRED",
+          "source": {
+            "officialUrl": "https://dese.mo.gov/childhood/innovation-grants",
+            "sourceUrl": "https://dese.mo.gov/childhood/innovation-grants",
+            "sourceDomain": "dese.mo.gov",
+            "officialSource": true
+          },
+          "fundingAmount": null,
+          "deadline": null,
+          "relevance": {
+            "score": 8,
+            "reasons": [
+              "innovation"
+            ]
+          },
+          "evidence": {
+            "title": "Innovation Grants | Missouri Department of Elementary and ...",
+            "description": null,
+            "opportunityId": null,
+            "opportunityNumber": null,
+            "solicitationIdentifiers": [],
+            "opportunityIdentityType": null,
+            "eligibility": null,
+            "eligibilityEvidence": null,
+            "deadline": null,
+            "deadlineEvidence": null,
+            "fundingAmount": true,
+            "fundingAmountEvidence": "al Year 2027. These grants are available to eligible child care providers in two forms: \\n Innovation Grant to Start-Up a New Child Care Program Extension for child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process. (Available now!)\\n Innovation Grant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the ful | ts are available to eligible child care providers in two forms: \\n Innovation Grant to Start-Up a New Child Care Program Extension for child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process. (Available now!)\\n Innovation Grant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to contin | wo forms: \\n Innovation Grant to Start-Up a New Child Care Program Extension for child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process. (Available now!)\\n Innovation Grant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process of expanding or increasing enrollment. | the full award amount to continue the process. (Available now!)\\n Innovation Grant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process of expanding or increasing enrollment. (Available now!)\\n Innovation Grant funds must be used to implement solutions to reduce the child care shortage in the state, including but not limited to the following:\\n | continue the process. (Available now!)\\n Innovation Grant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process of expanding or increasing enrollment. (Available now!)\\n Innovation Grant funds must be used to implement solutions to reduce the child care shortage in the state, including but not limited to the following:\\n Funding for child care | rant for Child Care Expansion Extension for currently licensed or license-exempt child care providers awarded the FY 26 grant award and who did not request and/or receive the full award amount to continue the process of expanding or increasing enrollment. (Available now!)\\n Innovation Grant funds must be used to implement solutions to reduce the child care shortage in the state, including but not limited to the following:\\n Funding for child care business start-ups or expansion\\n Staff training and p | re facility must complete: All of the above trainings, and \\n Subsidy Orientation training.\\n \\n Grant Information\\n Terms & Conditions \\n Frequently Asked Questions – Start-Up \\n Award Information\\n Innovation Grant Awardees List – Start-Up \\n Payment Information\\n MissouriBuys powered by MOVERS Registration \\n E-Verify \\n Vendor No Tax Due \\n Request for Funds Form \\n Resources\\n Partner Commitment Letter Template \\n Notarized Statement Template \\n \\n The Innovation Grant to Start-Up a New Child Ca | above trainings, and \\n Subsidy Orientation training.\\n \\n Grant Information\\n Terms & Conditions \\n Frequently Asked Questions – Start-Up \\n Award Information\\n Innovation Grant Awardees List – Start-Up \\n Payment Information\\n MissouriBuys powered by MOVERS Registration \\n E-Verify \\n Vendor No Tax Due \\n Request for Funds Form \\n Resources\\n Partner Commitment Letter Template \\n Notarized Statement Template \\n \\n The Innovation Grant to Start-Up a New Child Care Program funding opportunity closed | \\n The facility must have or obtain a subsidy contract with the Child Care Subsidy Program. \\n Grant Information\\n Terms & Conditions \\n Frequently Asked Questions – Expansion \\n Award Information \\n Innovation Grant Awardees List – Expansion \\n Payment Information\\n MissouriBuys powered by MOVERS Registration \\n E-Verify \\n Vendor No Tax Due \\n Request for Funds Form \\n Resources\\n Partner Commitment Letter Template \\n Notarized Statement Template \\n The Innovation Grant to Expand a Child Care Prog | subsidy contract with the Child Care Subsidy Program. \\n Grant Information\\n Terms & Conditions \\n Frequently Asked Questions – Expansion \\n Award Information \\n Innovation Grant Awardees List – Expansion \\n Payment Information\\n MissouriBuys powered by MOVERS Registration \\n E-Verify \\n Vendor No Tax Due \\n Request for Funds Form \\n Resources\\n Partner Commitment Letter Template \\n Notarized Statement Template \\n The Innovation Grant to Expand a Child Care Program funding opportunity closed on Febr",
+            "applicationPath": null,
+            "applicationEvidence": "child care programs to achieve higher standards, and providing consumer education to help parents select child care that meets their family’s needs. For this reason, any facility applying for the grant must be CCDF eligible in order to receive payment(s).\\n A CCDF eligible provider shall be a child care provider who meets all of the health and safety requirements of the state subsidy program. These health and safety requirements require training, which is reported through the Missouri Professional D | Facebook \\n Follow us on Twitter \\n Follow Us On Instagram \\n \\n \\n About Us A-Z Index \\n Administrative Memos \\n Child Care Subsidy \\n Communications/Media \\n Contact Us \\n DESE Application Sign-in (DAS) \\n DESE Organizational Chart \\n DESE Update \\n Educator Certification \\n Executive Orders \\n News Releases \\n School Data \\n School Directory \\n Show Me Success \\n \\n Offices Adult Learning & Rehabilitation Services Independent Living \\n Veterans Education \\n Vocational Rehabilitation \\n Disability Deter | ild care providers in two forms: \\n Innovation Grant to Start-Up a New Child Care Program for prospective child care providers wanting to start a new licensed child care program. (Application closed.)\\n Innovation Grant to Expand a Child Care Program for currently licensed or license-exempt child care providers. (Application closed.)\\n House Bill 2 (2026) allocated funds from Missouri’s Child Care Development Fund (CCDF) to be used towards the extension of innovation grants to increase access to high quali | to start a new licensed child care program. (Application closed.)\\n Innovation Grant to Expand a Child Care Program for currently licensed or license-exempt child care providers. (Application closed.)\\n House Bill 2 (2026) allocated funds from Missouri’s Child Care Development Fund (CCDF) to be used towards the extension of innovation grants to increase access to high quality child care across Missouri during Fiscal Year 2027. These grants are available to eligible child care providers in two forms: \\n Inn | 73-751-4212\\n\\n\\n Mailing Address: \\nP.O. Box 480\\n Jefferson City, MO 65102-0480 \\n\\n Educator Certification: \\n573-751-0051\\n\\n\\n\\n \\n \\n \\n \\n RESOURCES\\n Accessibility \\n DESE Application Sign-In \\n DESE Org Chart \\n Data Portal \\n Employment Opportunities (State Job Portal) \\n Employment Opportunities (Educator Job Board) \\n Missouri Learning Standards \\n Non-Discrimination Statement \\n Employee Email Access \\n\\n \\n \\n \\n \\n \\n \\n Governor\\nMike Kehoe \\n MO.gov State of Missouri \\n Interim Commissione"
+          },
+          "ownerReview": {
+            "required": true,
+            "submissionAllowed": false,
+            "signingAllowed": false,
+            "financialExecutionAllowed": false,
+            "moneyMovementAllowed": false
+          }
+        }
+      },
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "legalEntityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+        "jurisdiction": "Virginia",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true,
+        "products": [
+          "Money Munchkins",
+          "Money Munchkins: Quantum Odyssey"
+        ],
+        "focusAreas": [
+          "AI",
+          "financial education",
+          "education technology",
+          "adaptive learning",
+          "digital products",
+          "software",
+          "quantum-inspired learning experiences"
+        ],
+        "fundingPurposes": [
+          "business growth",
+          "technology development",
+          "innovation",
+          "product development",
+          "education technology",
+          "digital infrastructure",
+          "working capital"
+        ],
+        "preferredFundingTypes": [
+          "grants",
+          "sponsorships",
+          "non_dilutive_funding",
+          "strategic_partnerships"
+        ]
+      },
+      "matching": {
+        "status": "NOT_YET_VERIFIED",
+        "automatedEligibilityDecision": false,
+        "opportunitySpecificEligibilityRequired": true,
+        "legalEntityVerificationRequired": true,
+        "ownerReviewRequired": true
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false
+      }
+    },
+    {
+      "id": "funding-10",
+      "name": "Apply for Funding",
+      "verificationStatus": "PENDING_OWNER_VERIFICATION",
+      "officialSource": true,
+      "sourceDomain": "www.globalinnovation.fund",
+      "officialUrl": "https://www.globalinnovation.fund/apply-for-funding",
+      "fundingAmount": null,
+      "deadline": null,
+      "verificationChecks": {
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "evidence": {
+        "sourceRecordPreserved": true,
+        "sourceRecord": {
+          "id": "funding-10",
+          "name": "Apply for Funding",
+          "status": "DISCOVERED",
+          "verificationStatus": "REQUIRED",
+          "source": {
+            "officialUrl": "https://www.globalinnovation.fund/apply-for-funding",
+            "sourceUrl": "https://www.globalinnovation.fund/apply-for-funding",
+            "sourceDomain": "www.globalinnovation.fund",
+            "officialSource": true
+          },
+          "fundingAmount": null,
+          "deadline": null,
+          "relevance": {
+            "score": 8,
+            "reasons": [
+              "innovation"
+            ]
+          },
+          "evidence": {
+            "title": "Apply for Funding",
+            "description": null,
+            "opportunityId": null,
+            "opportunityNumber": null,
+            "solicitationIdentifiers": [],
+            "opportunityIdentityType": null,
+            "eligibility": null,
+            "eligibilityEvidence": null,
+            "deadline": null,
+            "deadlineEvidence": null,
+            "fundingAmount": true,
+            "fundingAmountEvidence": "Global Innovation Fund | Apply for Funding Our approach What we do \\n Our strategy \\n Our investments \\n \\n Our impact Latest impact report \\n Learning and insights \\n Latest news \\n \\n GIF Growth Growth overview \\n Growth governance \\n \\n Partner with us \\n About us Who we are \\n \\n \\n search \\n \\n search menu \\n Menu\\n \\n Our approach What we do \\n Our strat | GIF Growth Growth overview \\n Growth governance \\n \\n Partner with us \\n About us Who we are \\n \\n \\n \\n \\n © Copyright Global Innovation Fund 2026. \\n \\n \\n \\n \\n \\n \\n Apply for funding \\n \\n \\n \\n \\n \\n \\n edit_note \\n Applying for Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended | artner with us \\n About us Who we are \\n \\n \\n \\n \\n © Copyright Global Innovation Fund 2026. \\n \\n \\n \\n \\n \\n \\n Apply for funding \\n \\n \\n \\n \\n \\n \\n edit_note \\n Applying for Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our | Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before preparing their application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and plannin | lable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before preparing their application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and planning next steps with the most promising applications. After our | d on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before preparing their application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and planning next steps with the most promising applications. After our review of this window has concluded, we will share the details of future calls for pro | will share the details of future calls for proposals. Please check back for further details, which will be published here in due course. \\n\\n \\n \\n \\n \\n \\n \\n \\n \\n info \\n \\n \\n Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n Funding stages \\n \\n \\n Application Process \\n \\n \\n Frequently asked questions \\n \\n \\n Why applications don't always succeed \\n \\n \\n Innovating for Climate Resilience \\n \\n \\n \\n \\n \\n \\n send \\n \\n \\n Subscribe to our Newsletter \\n \\n \\ | ails, which will be published here in due course. \\n\\n \\n \\n \\n \\n \\n \\n \\n \\n info \\n \\n \\n Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n Funding stages \\n \\n \\n Application Process \\n \\n \\n Frequently asked questions \\n \\n \\n Why applications don't always succeed \\n \\n \\n Innovating for Climate Resilience \\n \\n \\n \\n \\n \\n \\n send \\n \\n \\n Subscribe to our Newsletter \\n \\n \\n \\n \\n Email address \\n \\n Subscribe \\n \\n By signing up you agree to our privacy poli",
+            "applicationPath": null,
+            "applicationEvidence": "Global Innovation Fund | Apply for Funding Our approach What we do \\n Our strategy \\n Our investments \\n \\n Our impact Latest impact report \\n Learning and insights \\n Latest news \\n \\n GIF Growth Growth overview \\n Growth governance \\n \\n Partner with us \\n About us Who we are \\n \\n \\n search \\n \\n search menu \\n Menu\\n \\n Our approach What we do | ews \\n \\n GIF Growth Growth overview \\n Growth governance \\n \\n Partner with us \\n About us Who we are \\n \\n \\n \\n \\n © Copyright Global Innovation Fund 2026. \\n \\n \\n \\n \\n \\n \\n Apply for funding \\n \\n \\n \\n \\n \\n \\n edit_note \\n Applying for Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is | nance \\n \\n Partner with us \\n About us Who we are \\n \\n \\n \\n \\n © Copyright Global Innovation Fund 2026. \\n \\n \\n \\n \\n \\n \\n Apply for funding \\n \\n \\n \\n \\n \\n \\n edit_note \\n Applying for Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully rev | us Who we are \\n \\n \\n \\n \\n © Copyright Global Innovation Fund 2026. \\n \\n \\n \\n \\n \\n \\n Apply for funding \\n \\n \\n \\n \\n \\n \\n edit_note \\n Applying for Funding \\n GIF welcomes applications for innovators with scalable solutions to pressing development challenges. What we are looking for is described on the What We Fund page, with funding amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before prep | amounts and requirements explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before preparing their application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and planning next steps with the most promising applications. After our review of this window has concluded, we will share the details of future calls for proposals. Please check back for further detail | explained on the Stages of Funding page. It is recommended that interested applicants carefully review all of our funding guidance before preparing their application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and planning next steps with the most promising applications. After our review of this window has concluded, we will share the details of future calls for proposals. Please check back for further details, which will be publishe | ir application. \\n Our last application window closed on 15 January 2025. Our team is currently reviewing the proposals we received and planning next steps with the most promising applications. After our review of this window has concluded, we will share the details of future calls for proposals. Please check back for further details, which will be published here in due course. \\n\\n \\n \\n \\n \\n \\n \\n \\n \\n info \\n \\n \\n Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n | ished here in due course. \\n\\n \\n \\n \\n \\n \\n \\n \\n \\n info \\n \\n \\n Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n Funding stages \\n \\n \\n Application Process \\n \\n \\n Frequently asked questions \\n \\n \\n Why applications don't always succeed \\n \\n \\n Innovating for Climate Resilience \\n \\n \\n \\n \\n \\n \\n send \\n \\n \\n Subscribe to our Newsletter \\n \\n \\n \\n \\n Email address \\n \\n Subscribe \\n \\n By signing up you agree to our privacy policy. \\n \\n © Copyright Global | Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n Funding stages \\n \\n \\n Application Process \\n \\n \\n Frequently asked questions \\n \\n \\n Why applications don't always succeed \\n \\n \\n Innovating for Climate Resilience \\n \\n \\n \\n \\n \\n \\n send \\n \\n \\n Subscribe to our Newsletter \\n \\n \\n \\n \\n Email address \\n \\n Subscribe \\n \\n By signing up you agree to our privacy policy. \\n \\n © Copyright Global Innovation Fund 2026. GIF and the Global Innovation Fund logo are re | ished here in due course. \\n\\n \\n \\n \\n \\n \\n \\n \\n \\n info \\n \\n \\n Funding Guidelines \\n \\n \\n \\n \\n \\n What we fund \\n \\n \\n What we don't fund \\n \\n \\n Funding stages \\n \\n \\n Application Process \\n \\n \\n Frequently asked questions \\n \\n \\n Why applications don't always succeed \\n \\n \\n Innovating for Climate Resilience \\n \\n \\n \\n \\n \\n \\n send \\n \\n \\n Subscribe to our Newsletter \\n \\n \\n \\n \\n Email address \\n \\n Subscribe \\n \\n By signing up you agree to our privacy policy. \\n \\n © Copyright Global Innovat"
+          },
+          "ownerReview": {
+            "required": true,
+            "submissionAllowed": false,
+            "signingAllowed": false,
+            "financialExecutionAllowed": false,
+            "moneyMovementAllowed": false
+          }
+        }
+      },
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "legalEntityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+        "jurisdiction": "Virginia",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true,
+        "products": [
+          "Money Munchkins",
+          "Money Munchkins: Quantum Odyssey"
+        ],
+        "focusAreas": [
+          "AI",
+          "financial education",
+          "education technology",
+          "adaptive learning",
+          "digital products",
+          "software",
+          "quantum-inspired learning experiences"
+        ],
+        "fundingPurposes": [
+          "business growth",
+          "technology development",
+          "innovation",
+          "product development",
+          "education technology",
+          "digital infrastructure",
+          "working capital"
+        ],
+        "preferredFundingTypes": [
+          "grants",
+          "sponsorships",
+          "non_dilutive_funding",
+          "strategic_partnerships"
+        ]
+      },
+      "matching": {
+        "status": "NOT_YET_VERIFIED",
+        "automatedEligibilityDecision": false,
+        "opportunitySpecificEligibilityRequired": true,
+        "legalEntityVerificationRequired": true,
+        "ownerReviewRequired": true
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false
+      }
+    },
+    {
+      "id": "funding-11",
+      "name": "Teaching Innovation Grants",
+      "verificationStatus": "PENDING_OWNER_VERIFICATION",
+      "officialSource": true,
+      "sourceDomain": "cte.ku.edu",
+      "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+      "fundingAmount": null,
+      "deadline": null,
+      "verificationChecks": {
+        "opportunityIdentity": false,
+        "eligibility": false,
+        "fundingAmount": false,
+        "deadline": false,
+        "geographicEligibility": false,
+        "entityEligibility": false,
+        "applicationPath": false
+      },
+      "evidence": {
+        "sourceRecordPreserved": true,
+        "sourceRecord": {
+          "id": "funding-11",
+          "name": "Teaching Innovation Grants",
+          "status": "DISCOVERED",
+          "verificationStatus": "REQUIRED",
+          "source": {
+            "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+            "sourceUrl": "https://cte.ku.edu/teaching-innovation-grants",
+            "sourceDomain": "cte.ku.edu",
+            "officialSource": true
+          },
+          "fundingAmount": null,
+          "deadline": null,
+          "relevance": {
+            "score": 8,
+            "reasons": [
+              "innovation"
+            ]
+          },
+          "evidence": {
+            "title": "Teaching Innovation Grants",
+            "description": null,
+            "opportunityId": null,
+            "opportunityNumber": null,
+            "solicitationIdentifiers": [],
+            "opportunityIdentityType": null,
+            "eligibility": true,
+            "eligibilityEvidence": "beyond the funding period should be addressed) \\n support for instructor time on project \\n Most funds awarded must be used by June 1, 2027, or they will be forfeited. \\n\\n\\n\\n\\n Eligibility \\n Click to expand Eligible applicants include faculty (including teaching professors, teaching specialists, and lecturers) with ongoing teaching roles at the KU Lawrence or Edwards Campus. Postdoctoral fellows, students, and part-time employees may participate as part of faculty-led teams. \\n Courses and curriculum t | ld be addressed) \\n support for instructor time on project \\n Most funds awarded must be used by June 1, 2027, or they will be forfeited. \\n\\n\\n\\n\\n Eligibility \\n Click to expand Eligible applicants include faculty (including teaching professors, teaching specialists, and lecturers) with ongoing teaching roles at the KU Lawrence or Edwards Campus. Postdoctoral fellows, students, and part-time employees may participate as part of faculty-led teams. \\n Courses and curriculum that are the focus of projects can be La",
+            "deadline": true,
+            "deadlineEvidence": "rants are offered at two levels—based on the scope of work—to fund faculty-defined projects aimed at improving a particular aspect of the student learning experience. The priority deadline for Fall 2026 proposals is Sept. 14, 2026. Applicants will be notified of funding decisions by Sept. 28, 2026. \\n\\n\\n\\n\\n\\n\\n Teaching Innovation Grants are offered at two levels, with funding scaled to the scope of the work: single-course projects are funded at a lower level, and projects spanning multiple courses or",
+            "fundingAmount": true,
+            "fundingAmountEvidence": "findings \\n supplies or software for new learning activities (sustainability beyond the funding period should be addressed) \\n support for instructor time on project \\n Most funds awarded must be used by June 1, 2027, or they will be forfeited. \\n\\n\\n\\n\\n Eligibility \\n Click to expand Eligible applicants include faculty (including teaching professors, teaching specialists, and lecturers) with ongoing teaching roles at the KU Lawrence or Edwards Campus. Postdoctoral fellows, students, and part-time e | , 2026. After this date, proposals may be considered on a rolling basis, contingent upon the availability of funds. \\n\\n\\n\\n\\n Expectations for Grant Recipients \\n Click to expand Awardees are expected to share project outcomes, including student learning impacts, through a poster at CTE’s annual Celebration of Teaching. A CTE Graduate Student Fellow can assist with developing the poster. \\n A brief report (1-2 pages) summarizing the project’s results will be due at the end of the semester when the t | projects aimed at improving a particular aspect of the student learning experience. The priority deadline for Fall 2026 proposals is Sept. 14, 2026. Applicants will be notified of funding decisions by Sept. 28, 2026. \\n\\n\\n\\n\\n\\n\\n Teaching Innovation Grants are offered at two levels, with funding scaled to the scope of the work: single-course projects are funded at a lower level, and projects spanning multiple courses or a program- reflecting their broader reach and complexity- are eligible for more f | all 2026 proposals is Sept. 14, 2026. Applicants will be notified of funding decisions by Sept. 28, 2026. \\n\\n\\n\\n\\n\\n\\n Teaching Innovation Grants are offered at two levels, with funding scaled to the scope of the work: single-course projects are funded at a lower level, and projects spanning multiple courses or a program- reflecting their broader reach and complexity- are eligible for more funding. The amounts below are ceilings, not guaranteed amounts. \\n Level 1: Single Course \\n Funding level: Up | work: single-course projects are funded at a lower level, and projects spanning multiple courses or a program- reflecting their broader reach and complexity- are eligible for more funding. The amounts below are ceilings, not guaranteed amounts. \\n Level 1: Single Course \\n Funding level: Up to $1,500 \\n Level 1 grants support projects that transform or pilot an innovation within a single course. These may be led by one instructor or by a small group of instructors (e.g., who co-teach or teach different | es or a program- reflecting their broader reach and complexity- are eligible for more funding. The amounts below are ceilings, not guaranteed amounts. \\n Level 1: Single Course \\n Funding level: Up to $1,500 \\n Level 1 grants support projects that transform or pilot an innovation within a single course. These may be led by one instructor or by a small group of instructors (e.g., who co-teach or teach different offerings of the same course). \\n Example projects could include but are not limited to: pilo | SoTL journal) \\n aligning expectations and developing shared resources among instructors who teach the same course \\n \\n \\n Level 2: Multiple Courses or Department/Program-Wide \\n Funding level: Up to $5,000 \\n Level 2 grants support projects that improve or innovate student learning across multiple courses. This can range from a small group of instructors collaborating across a couple of courses to a department-wide effort to make changes to an academic program. \\n Applicants pursuing a Level 2 projec | to conferences to learn about successful strategies or to present teaching-related research findings \\n supplies or software for new learning activities (sustainability beyond the funding period should be addressed) \\n support for instructor time on project \\n Most funds awarded must be used by June 1, 2027, or they will be forfeited. \\n\\n\\n\\n\\n Eligibility \\n Click to expand Eligible applicants include faculty (including teaching professors, teaching specialists, and lecturers) with ongoing teaching r | e a clearly identified lead on the project (co-leads are also acceptable). \\n Priority will be given to first-time applicants and those who have not received Course Transformation funding in the last two years. \\n For Fall 2026, priority will be given to proposals submitted by Sept. 14, 2026. After this date, proposals may be considered on a rolling basis, contingent upon the availability of funds. \\n\\n\\n\\n\\n Expectations for Grant Recipients \\n Click to expand Awardees are expected to share project ou | sments) and any indirect measures (e.g., student feedback). \\n For Level 2 projects, outline the roles of each team member and clearly identify the team lead or co-leads. \\n Prior Funding: If applicable, provide a summary of results from prior course transformation grants. If a member of your team, or the proposed course(s), received a prior course transformation grant, please include a short summary of the project and results, and whether/how the proposed work builds on the prior project(s). \\n Budget",
+            "applicationPath": null,
+            "applicationEvidence": "ourses and curriculum that are the focus of projects can be Lawrence or Edwards Campus and for undergraduate or graduate programs. \\n Level 2 (multiple courses or department-wide) applications should include at least 2 faculty members and have a clearly identified lead on the project (co-leads are also acceptable). \\n Priority will be given to first-time applicants and those who have not received Course Transformation funding in the last two years. \\n For Fall 2026, priority will be given to proposals subm"
+          },
+          "ownerReview": {
+            "required": true,
+            "submissionAllowed": false,
+            "signingAllowed": false,
+            "financialExecutionAllowed": false,
+            "moneyMovementAllowed": false
+          }
+        }
+      },
+      "result": "NOT_YET_VERIFIED",
+      "ownerReviewRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialExecutionAllowed": false,
+      "moneyMovementAllowed": false,
+      "automaticApprovalAllowed": false,
+      "businessFit": {
+        "organization": "House of Jazzu",
+        "legalEntityStatus": "PENDING_LEGAL_ENTITY_VERIFICATION",
+        "jurisdiction": "Virginia",
+        "naics": [
+          "711510"
+        ],
+        "forProfit": true,
+        "smallBusiness": true,
+        "startup": true,
+        "technologyBusiness": true,
+        "educationTechnology": true,
+        "innovationFocused": true,
+        "products": [
+          "Money Munchkins",
+          "Money Munchkins: Quantum Odyssey"
+        ],
+        "focusAreas": [
+          "AI",
+          "financial education",
+          "education technology",
+          "adaptive learning",
+          "digital products",
+          "software",
+          "quantum-inspired learning experiences"
+        ],
+        "fundingPurposes": [
+          "business growth",
+          "technology development",
+          "innovation",
+          "product development",
+          "education technology",
+          "digital infrastructure",
+          "working capital"
+        ],
+        "preferredFundingTypes": [
+          "grants",
+          "sponsorships",
+          "non_dilutive_funding",
+          "strategic_partnerships"
+        ]
+      },
+      "matching": {
+        "status": "NOT_YET_VERIFIED",
+        "automatedEligibilityDecision": false,
+        "opportunitySpecificEligibilityRequired": true,
+        "legalEntityVerificationRequired": true,
+        "ownerReviewRequired": true
+      },
+      "safety": {
+        "submissionAllowed": false,
+        "signingAllowed": false,
+        "financialExecutionAllowed": false,
+        "moneyMovementAllowed": false,
+        "automaticApprovalAllowed": false
+      }
+    }
+  ],
+  "safety": {
+    "registryIsAuthoritative": true,
+    "neverInventLegalFacts": true,
+    "neverInventEligibility": true,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "submissionAllowed": false,
+    "signingAllowed": false,
+    "financialExecutionAllowed": false,
+    "moneyMovementAllowed": false,
+    "automaticApprovalAllowed": false
+  }
+}

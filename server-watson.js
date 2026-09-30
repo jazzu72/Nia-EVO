@@ -19,6 +19,57 @@ const PORT = process.env.PORT || 3000;
 // ============================================================
 
 
+app.get("/api/owner/funding/business-fit", (req,res) => {
+  const fs=require("fs");
+  try {
+    const file="data/funding/business-fit-workbench.json";
+
+    if(!fs.existsSync(file)){
+      return res.status(404).json({
+        ok:false,
+        error:"BUSINESS_FIT_WORKBENCH_NOT_FOUND"
+      });
+    }
+
+    const data=JSON.parse(fs.readFileSync(file,"utf8"));
+
+    return res.json({
+      ok:true,
+      organization:"House of Jazzu",
+      registryId:data.registryId||null,
+      mode:"OWNER_REVIEW_ONLY",
+      version:data.version||"1.0",
+      registryVerification:data.registryVerification||"UNKNOWN",
+      total:data.total||0,
+      opportunities:Array.isArray(data.opportunities)
+        ? data.opportunities
+        : [],
+      safety:{
+        registryIsAuthoritative:true,
+        neverInventLegalFacts:true,
+        neverInventEligibility:true,
+        automatedEligibilityDecision:false,
+        opportunitySpecificEligibilityRequired:true,
+        legalEntityVerificationRequired:true,
+        ownerApprovalRequired:true,
+        ownerSignatureRequired:true,
+        submissionAllowed:false,
+        signingAllowed:false,
+        financialExecutionAllowed:false,
+        moneyMovementAllowed:false,
+        automaticApprovalAllowed:false
+      }
+    });
+  } catch(err) {
+    console.error("[BUSINESS_FIT_FATAL]",err);
+    return res.status(500).json({
+      ok:false,
+      error:"BUSINESS_FIT_WORKBENCH_FAILED",
+      message:String(err.message||err)
+    });
+  }
+});
+
 app.get("/api/owner/business/registry", (req,res) => {
   const fs=require("fs");
   try {
