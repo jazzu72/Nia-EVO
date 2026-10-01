@@ -1443,3 +1443,5 @@ try { require("./aios/design/scheduler").start(); } catch (e) { console.warn("[s
 });
 
 module.exports = app;
+
+require('./aios/routes/official-capital-opportunities-api')(app);
