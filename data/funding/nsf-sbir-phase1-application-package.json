@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "module": "NIA_NSF_SBIR_PHASE_I_APPLICATION_PACKAGE",
+  "opportunityId": "NSF-SBIR-26-510",
+  "opportunity": "NSF SBIR/STTR — America’s Seed Fund",
+  "officialSource": "https://www.nsf.gov/funding/opportunities/small-business-innovation-research-small-business-technology/nsf26-510/solicitation",
+  "deadline": "2026-11-04",
+  "proposalPath": "Research.gov",
+  "status": "OWNER_REVIEW_REQUIRED",
+  "eligibilityChecks": {
+    "smallBusinessUnder500Employees": null,
+    "usOwnershipAndControl": null,
+    "usRAndDLocation": null,
+    "piPrimaryEmploymentOver50Percent": null,
+    "officialProjectPitchInvitation": null,
+    "samRegistrationActive": null,
+    "researchGovRegistrationActive": null,
+    "sbaCompanyRegistryActive": null
+  },
+  "requiredWork": {
+    "projectPitch": "Technical objectives, innovation, technical risks and commercial potential",
+    "projectDescription": "Maximum 15 pages for Phase I",
+    "intellectualMerit": "Required",
+    "broaderImpacts": "Required",
+    "commercialPotential": "Required",
+    "budget": "Required",
+    "team": "Required",
+    "commercialization": "Required"
+  },
+  "ownerInputs": [
+    "Confirm House of Jazzu legal entity and small-business status",
+    "Confirm U.S. ownership/control",
+    "Confirm R&D will be performed in the United States",
+    "Confirm Jason's PI employment/effort eligibility",
+    "Confirm SAM/UEI status",
+    "Confirm Research.gov registration",
+    "Confirm SBA Company Registry status",
+    "Develop NSF technical innovation and technical-risk statement for Nia/Money Munchkins",
+    "Approve Project Pitch preparation"
+  ],
+  "gates": {
+    "automatedEligibility": false,
+    "automatedSubmission": false,
+    "automatedSigning": false,
+    "financialExecution": false,
+    "moneyMovement": false,
+    "ownerApprovalRequired": true
+  }
+}
