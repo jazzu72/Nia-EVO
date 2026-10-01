@@ -1408,6 +1408,8 @@ app.use("/api/nia/design", requireOwnerAuth);
 app.use("/api/owner/slack", requireOwnerAuth);
 app.use("/api/owner/slack", require("./aios/routes/slack-api"));
 app.use("/api/nia/design", require("./aios/routes/nia-design"));
+require('./aios/routes/official-capital-opportunities-api')(app);
+
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
@@ -1444,4 +1446,3 @@ try { require("./aios/design/scheduler").start(); } catch (e) { console.warn("[s
 
 module.exports = app;
 
-require('./aios/routes/official-capital-opportunities-api')(app);
