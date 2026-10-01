@@ -1410,6 +1410,8 @@ app.use("/api/owner/slack", require("./aios/routes/slack-api"));
 app.use("/api/nia/design", require("./aios/routes/nia-design"));
 require('./aios/routes/official-capital-opportunities-api')(app);
 
+require("./aios/routes/nsf-sbir-application-api")(app);
+
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
