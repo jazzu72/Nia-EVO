@@ -1,0 +1,72 @@
+{
+  "version":"2.0",
+  "module":"NIA_OFFICIAL_CAPITAL_OPPORTUNITIES",
+  "organization":"House of Jazzu",
+  "operatingState":"Virginia",
+  "mode":"OWNER_REVIEW_ONLY",
+  "opportunities":[
+    {
+      "id":"NSF-SBIR-26-510",
+      "name":"NSF SBIR/STTR — America’s Seed Fund",
+      "source":"SBIR.gov",
+      "officialUrl":"https://www.sbir.gov/apply",
+      "solicitation":"NSF 26-510",
+      "status":"OPEN",
+      "fit":"HIGH_POTENTIAL",
+      "entityType":"FOR_PROFIT_SMALL_BUSINESS",
+      "geography":"UNITED_STATES",
+      "phase1TypicalAward":"$50,000-$275,000",
+      "phase2TypicalAward":"$400,000-$1,800,000",
+      "knownOpenWindow":"2026-11-04",
+      "verificationRequired":true,
+      "applicationReady":false,
+      "submissionReady":false
+    },
+    {
+      "id":"NSF-SBIR-AI5",
+      "name":"NSF SBIR Topic — Novel AI Hardware Technologies",
+      "source":"SBIR.gov",
+      "officialUrl":"https://www.sbir.gov/topics/1012325",
+      "solicitation":"NSF 26-510",
+      "status":"OPEN",
+      "fit":"REQUIRES_TECHNICAL_SCOPE_REVIEW",
+      "entityType":"FOR_PROFIT_SMALL_BUSINESS",
+      "geography":"UNITED_STATES",
+      "knownDueDates":[
+        "2026-11-04",
+        "2027-03-04",
+        "2027-07-07"
+      ],
+      "verificationRequired":true,
+      "applicationReady":false,
+      "submissionReady":false
+    },
+    {
+      "id":"NSF-SBIR-DL",
+      "name":"NSF SBIR Topic — Distributed Ledger",
+      "source":"SBIR.gov",
+      "officialUrl":"https://www.sbir.gov/topics/12939",
+      "solicitation":"NSF 26-510",
+      "status":"OPEN",
+      "fit":"REQUIRES_TECHNICAL_SCOPE_REVIEW",
+      "entityType":"FOR_PROFIT_SMALL_BUSINESS",
+      "geography":"UNITED_STATES",
+      "knownDueDates":[
+        "2026-11-04",
+        "2027-03-04",
+        "2027-07-07"
+      ],
+      "verificationRequired":true,
+      "applicationReady":false,
+      "submissionReady":false
+    }
+  ],
+  "ownerControls":{
+    "automatedEligibility":false,
+    "automatedSubmission":false,
+    "automatedSigning":false,
+    "financialExecution":false,
+    "moneyMovement":false,
+    "ownerApprovalRequired":true
+  }
+}
