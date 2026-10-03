@@ -633,6 +633,7 @@ loadRoute("./revenue/intelligence-api", "/api/revenue/intelligence");
 loadRoute("./command-center/executive-api", "/api/executive");
 loadRoute("./command-center/executive-dashboard-api", "/api/command");
 loadRoute("./command-center/revenue-dashboard-api", "/api/command");
+loadRoute("./command-center/revenue-dashboard-api", "/api/revenue-engine");
 
 // Chief of Staff
 loadRoute("./chief-of-staff/chief-api", "/api/chief");
