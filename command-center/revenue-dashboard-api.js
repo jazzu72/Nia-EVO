@@ -6,6 +6,26 @@ const revenue = require("../revenue/revenue-engine");
 const automation = require("../revenue/automation-engine");
 
 
+// Dashboard compatibility alias
+router.get("/pipeline",(req,res)=>{
+    const deals = revenue.pipeline();
+    const totalValue = deals.reduce((sum,deal)=>sum+(deal.value||0),0);
+    res.json({
+        system:"Nia Revenue Command Center",
+        status:"ONLINE",
+        metrics:{
+            activeDeals:deals.length,
+            pipelineValue:totalValue,
+            timestamp:new Date().toISOString()
+        },
+        recommendations:[
+            "Generate qualified leads",
+            "Contact high priority prospects",
+            "Convert leads into proposals"
+        ]
+    });
+});
+
 // Revenue Command Center Overview
 router.get("/revenue", (req,res)=>{
 
