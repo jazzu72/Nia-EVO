@@ -1,0 +1,139 @@
+'use strict';
+
+/**
+ * NIA CAPITAL EVIDENCE ENGINE
+ *
+ * Separates funding/procurement intelligence from revenue intelligence.
+ *
+ * READ-ONLY:
+ * - no persistence
+ * - no applications
+ * - no bids
+ * - no outreach
+ * - no spending
+ * - no external execution
+ *
+ * Flow:
+ * DISCOVER -> CLASSIFY -> VERIFY -> ELIGIBILITY/FIT -> OWNER REVIEW
+ */
+
+function buildEvidence(opportunity = {}) {
+  const type = String(opportunity.opportunityType || 'UNKNOWN');
+  const title = String(opportunity.title || '');
+  const text = title.toLowerCase();
+
+  const isFunding = type === 'FUNDING_OPPORTUNITY';
+  const isContract = type === 'CONTRACT_OPPORTUNITY';
+
+  const eligibilityStatus =
+    /\b(small business|small businesses|startup|entrepreneur|sbir|sttr)\b/.test(text)
+      ? 'POTENTIAL_MATCH'
+      : 'UNKNOWN';
+
+  return {
+    title,
+    type,
+    score: Number(opportunity.qualificationScore || 0),
+    source: opportunity.source || null,
+    url: opportunity.url || opportunity.link || null,
+
+    evidenceSignals: {
+      titleSignal: title,
+      sourceSignal: opportunity.source || null,
+      categorySignal: opportunity.category || null,
+      descriptionSignal: String(opportunity.description || '').slice(0,1000),
+      qualificationScore: Number(opportunity.qualificationScore || 0)
+    },
+
+    verificationStatus: 'REQUIRED',
+
+    evidenceGaps:
+      isFunding
+        ? [
+            'applicant eligibility',
+            'program eligibility',
+            'eligible technology/business scope',
+            'award amount and structure',
+            'deadline',
+            'required evidence',
+            'authoritative program documentation'
+          ]
+        : isContract
+          ? [
+              'actual open solicitation',
+              'solicitation number',
+              'buyer',
+              'scope of work',
+              'vendor eligibility',
+              'set-aside or size-standard requirements',
+              'response deadline',
+              'authoritative solicitation documentation'
+            ]
+          : [
+              'source verification',
+              'eligibility',
+              'scope',
+              'timing'
+            ],
+
+    eligibilityStatus,
+
+    houseOfJazzuFit:
+      isFunding
+        ? 'REQUIRES_PROGRAM_REVIEW'
+        : isContract
+          ? 'REQUIRES_SOLICITATION_REVIEW'
+          : 'REQUIRES_REVIEW',
+
+    requiredVerification:
+      isFunding
+        ? [
+            'applicant eligibility',
+            'eligible technology/business scope',
+            'award amount and structure',
+            'deadline',
+            'required evidence'
+          ]
+        : isContract
+          ? [
+              'actual solicitation',
+              'buyer',
+              'scope of work',
+              'vendor eligibility',
+              'response deadline'
+            ]
+          : [
+              'source verification',
+              'eligibility',
+              'scope',
+              'timing'
+            ],
+
+    action: 'OWNER_REVIEW_ONLY',
+
+    governance: {
+      persisted: false,
+      mutation: false,
+      outreachSent: false,
+      externalExecution: 'BLOCKED',
+      authorizationRequired: true
+    }
+  };
+}
+
+function screen(opportunities = []) {
+  return opportunities
+    .filter(x =>
+      x &&
+      (
+        x.opportunityType === 'FUNDING_OPPORTUNITY' ||
+        x.opportunityType === 'CONTRACT_OPPORTUNITY'
+      )
+    )
+    .map(buildEvidence);
+}
+
+module.exports = {
+  buildEvidence,
+  screen
+};

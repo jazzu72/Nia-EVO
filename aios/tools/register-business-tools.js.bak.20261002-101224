@@ -118,7 +118,7 @@ fabric.register('rss_revenue_discovery', async (args = {}) =>
 
 fabric.register('rss_revenue_sync', async (args = {}) =>
   rssRevenue.sync(Number(args.limit) || 100), {
-  risk: 'medium',
+  risk: 'low',
   description: 'Synchronize approved RSS intelligence into the acquisition pipeline'
 });
 

@@ -6,7 +6,14 @@ function cycle(){
 
  const state=scheduler.run();
 
- if(state.scan.openTasks>0){
+ let previousOpenTasks = 0;
+
+ try {
+  const existing = JSON.parse(fs.readFileSync("./ceo/autonomous-state.json","utf8"));
+  previousOpenTasks = Number(existing.openTasks || 0);
+ } catch {}
+
+ if(state.scan.openTasks > 0 && state.scan.openTasks !== previousOpenTasks){
 
   notify.send({
    type:"CEO_TASK",
@@ -21,6 +28,7 @@ function cycle(){
   status:"ACTIVE",
   scheduler:state,
   notifications:notify.dashboard(),
+  openTasks:state.scan.openTasks,
   timestamp:new Date().toISOString()
  };
 

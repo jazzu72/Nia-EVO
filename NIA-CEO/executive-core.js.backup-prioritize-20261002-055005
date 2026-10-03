@@ -1,0 +1,279 @@
+const fs = require("fs");
+const path = require("path");
+
+const ROOT = path.join(__dirname, "..");
+const STATE_DIR = path.join(ROOT, "runtime");
+const STATE_FILE = path.join(STATE_DIR, "nia-executive-state.json");
+const AUDIT_FILE = path.join(ROOT, "data", "nia-executive-audit.jsonl");
+
+const IDENTITY = Object.freeze({
+    name: "Nia",
+    role: "Private Executive AI",
+    organization: "House of Jazzu",
+    authority: "OWNER_ONLY",
+    mission: "Increase the capability, revenue, resilience, and long-term value of House of Jazzu.",
+    productRelationship: "Nia manages House of Jazzu products; she is not a product sold by House of Jazzu."
+});
+
+const GOVERNANCE = Object.freeze({
+    autonomous: true,
+    externalSideEffects: false,
+    financialTransactions: false,
+    contracts: false,
+    legallyBindingSubmissions: false,
+    sensitiveCommunications: false,
+    infrastructureDestructiveActions: false,
+    ownerAuthorizationRequired: true
+});
+
+const ENGINES = Object.freeze([
+    "capital",
+    "revenue",
+    "acquisition",
+    "intelligence",
+    "operations",
+    "automation",
+    "real_estate",
+    "ip_assets",
+    "communications",
+    "products",
+    "memory",
+    "governance"
+]);
+
+function ensureStorage() {
+    fs.mkdirSync(STATE_DIR, { recursive: true });
+    fs.mkdirSync(path.dirname(AUDIT_FILE), { recursive: true });
+
+    if (!fs.existsSync(STATE_FILE)) {
+        writeJson(STATE_FILE, {
+            version: 1,
+            cycle: 0,
+            status: "INITIALIZING",
+            priorities: [],
+            decisions: [],
+            pendingApprovals: [],
+            lastCycle: null,
+            created: new Date().toISOString()
+        });
+    }
+
+    if (!fs.existsSync(AUDIT_FILE)) {
+        fs.writeFileSync(AUDIT_FILE, "");
+    }
+}
+
+function readJson(file, fallback = {}) {
+    try {
+        if (!fs.existsSync(file)) return fallback;
+        return JSON.parse(fs.readFileSync(file, "utf8"));
+    } catch (error) {
+        return fallback;
+    }
+}
+
+function writeJson(file, data) {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(data, null, 2));
+}
+
+function loadState() {
+    ensureStorage();
+    return readJson(STATE_FILE, {});
+}
+
+function saveState(state) {
+    writeJson(STATE_FILE, state);
+}
+
+function audit(event, data = {}) {
+    ensureStorage();
+
+    const record = {
+        id: `NIA-AUDIT-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        timestamp: new Date().toISOString(),
+        event,
+        data
+    };
+
+    fs.appendFileSync(
+        AUDIT_FILE,
+        JSON.stringify(record) + "\n"
+    );
+
+    return record;
+}
+
+function safeLoad(modulePath) {
+    try {
+        return require(modulePath);
+    } catch (error) {
+        return {
+            __error: error.message
+        };
+    }
+}
+
+function safeCall(fn, fallback = null) {
+    try {
+        return typeof fn === "function" ? fn() : fallback;
+    } catch (error) {
+        return {
+            __error: error.message
+        };
+    }
+}
+
+function observe() {
+    const state = loadState();
+
+    const revenue = safeLoad("../revenue/revenue-engine");
+    const revenueIntel = safeLoad("../intelligence/revenue-engine");
+    const acquisition = safeLoad("../acquisition/lead-acquisition-engine");
+    const capital = safeLoad("../intelligence/capital-engine");
+    const memory = safeLoad("../memory/memory-engine");
+
+    const revenueDashboard = safeCall(revenue.dashboard, {});
+    const revenuePipeline = safeCall(revenue.pipeline, []);
+    const revenueIntelligence = safeCall(revenueIntel.summary, {});
+    const acquisitionStats = safeCall(acquisition.stats, {});
+    const topProspects = safeCall(acquisition.topProspects, []);
+    const capitalOpportunities = safeCall(capital.top, []);
+    const memoryRecords = safeCall(memory.allMemory, []);
+
+    return {
+        timestamp: new Date().toISOString(),
+
+        executiveState: state,
+
+        evidence: {
+            revenue: {
+                dashboard: revenueDashboard,
+                pipeline: revenuePipeline,
+                intelligence: revenueIntelligence
+            },
+
+            acquisition: {
+                stats: acquisitionStats,
+                topProspects
+            },
+
+            capital: {
+                opportunities: capitalOpportunities
+            },
+
+            memory: {
+                records: Array.isArray(memoryRecords)
+                    ? memoryRecords.length
+                    : 0
+            }
+        },
+
+        engines: ENGINES.map(name => ({
+            name,
+            status: "AVAILABLE"
+        })),
+
+        governance: GOVERNANCE
+    };
+}
+
+function prioritize(observations) {
+    const priorities = [];
+
+    const revenue = observations.executiveState?.revenue || {};
+
+    if (revenue.pipelineValue === 0) {
+        priorities.push({
+            id: "REV-001",
+            area: "revenue",
+            priority: "HIGH",
+            objective: "Create and advance qualified revenue opportunities",
+            reason: "Revenue generation is a primary operating objective."
+        });
+    }
+
+    priorities.push({
+        id: "OPS-001",
+        area: "operations",
+        priority: "HIGH",
+        objective: "Maintain an accurate executive operating state",
+        reason: "Nia needs current evidence before making material recommendations."
+    });
+
+    return priorities;
+}
+
+function decide(priorities) {
+    return priorities.map(item => ({
+        ...item,
+        disposition: "RECOMMEND",
+        execution: "BLOCKED_PENDING_AUTHORIZATION"
+    }));
+}
+
+function cycle() {
+    const state = loadState();
+
+    const observations = observe();
+    const priorities = prioritize(observations);
+    const decisions = decide(priorities);
+
+    const nextState = {
+        ...state,
+        cycle: (state.cycle || 0) + 1,
+        status: "ONLINE",
+        priorities,
+        decisions,
+        governance: GOVERNANCE,
+        lastCycle: new Date().toISOString()
+    };
+
+    saveState(nextState);
+
+    audit("EXECUTIVE_CYCLE", {
+        cycle: nextState.cycle,
+        priorities,
+        decisions
+    });
+
+    return {
+        identity: IDENTITY,
+        governance: GOVERNANCE,
+        cycle: nextState.cycle,
+        observations,
+        priorities,
+        decisions,
+        status: "ONLINE",
+        timestamp: nextState.lastCycle
+    };
+}
+
+function status() {
+    const state = loadState();
+
+    return {
+        identity: IDENTITY,
+        governance: GOVERNANCE,
+        engines: ENGINES,
+        state: {
+            cycle: state.cycle || 0,
+            status: state.status || "INITIALIZING",
+            lastCycle: state.lastCycle || null,
+            priorityCount: (state.priorities || []).length,
+            decisionCount: (state.decisions || []).length
+        }
+    };
+}
+
+module.exports = {
+    IDENTITY,
+    GOVERNANCE,
+    ENGINES,
+    observe,
+    prioritize,
+    decide,
+    cycle,
+    status,
+    audit
+};

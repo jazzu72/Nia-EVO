@@ -13,12 +13,13 @@
       "Monitor grant deadlines",
       "Generate daily executive priorities"
     ],
-    "timestamp": "2026-07-27T18:04:38.894Z"
+    "timestamp": "2026-10-02T06:05:15.265Z",
+    "previousOpenTasks": 4
   },
   "notifications": {
     "system": "NIA NOTIFICATION ENGINE",
     "status": "ACTIVE",
-    "unread": 65,
+    "unread": 346,
     "notifications": [
       {
         "id": "NOTICE-1785171761538",
@@ -539,8 +540,2256 @@
         "message": "NIA detected 4 open executive task(s) requiring review",
         "status": "NEW",
         "created": "2026-07-27T18:04:38.896Z"
+      },
+      {
+        "id": "NOTICE-1790904557285",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:29:17.285Z"
+      },
+      {
+        "id": "NOTICE-1790904617291",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:30:17.291Z"
+      },
+      {
+        "id": "NOTICE-1790904677292",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:31:17.292Z"
+      },
+      {
+        "id": "NOTICE-1790904737292",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:32:17.292Z"
+      },
+      {
+        "id": "NOTICE-1790904779943",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:32:59.943Z"
+      },
+      {
+        "id": "NOTICE-1790904779946",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:32:59.946Z"
+      },
+      {
+        "id": "NOTICE-1790904779946",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:32:59.946Z"
+      },
+      {
+        "id": "NOTICE-1790904797293",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:33:17.293Z"
+      },
+      {
+        "id": "NOTICE-1790904839967",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:33:59.967Z"
+      },
+      {
+        "id": "NOTICE-1790904857331",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:34:17.331Z"
+      },
+      {
+        "id": "NOTICE-1790904881329",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:34:41.329Z"
+      },
+      {
+        "id": "NOTICE-1790904900022",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:35:00.022Z"
+      },
+      {
+        "id": "NOTICE-1790904917392",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:35:17.392Z"
+      },
+      {
+        "id": "NOTICE-1790904941349",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:35:41.349Z"
+      },
+      {
+        "id": "NOTICE-1790904960085",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:36:00.085Z"
+      },
+      {
+        "id": "NOTICE-1790904977451",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:36:17.451Z"
+      },
+      {
+        "id": "NOTICE-1790905001407",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:36:41.407Z"
+      },
+      {
+        "id": "NOTICE-1790905020151",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:37:00.151Z"
+      },
+      {
+        "id": "NOTICE-1790905037508",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:37:17.508Z"
+      },
+      {
+        "id": "NOTICE-1790905061421",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:37:41.422Z"
+      },
+      {
+        "id": "NOTICE-1790905080205",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:38:00.205Z"
+      },
+      {
+        "id": "NOTICE-1790905097575",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:38:17.575Z"
+      },
+      {
+        "id": "NOTICE-1790905121479",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:38:41.479Z"
+      },
+      {
+        "id": "NOTICE-1790905140263",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:39:00.263Z"
+      },
+      {
+        "id": "NOTICE-1790905157637",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:39:17.637Z"
+      },
+      {
+        "id": "NOTICE-1790905200326",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:40:00.327Z"
+      },
+      {
+        "id": "NOTICE-1790905217692",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:40:17.692Z"
+      },
+      {
+        "id": "NOTICE-1790905241578",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:40:41.578Z"
+      },
+      {
+        "id": "NOTICE-1790905260387",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:41:00.387Z"
+      },
+      {
+        "id": "NOTICE-1790905277753",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:41:17.753Z"
+      },
+      {
+        "id": "NOTICE-1790905301634",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:41:41.634Z"
+      },
+      {
+        "id": "NOTICE-1790905320446",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:42:00.447Z"
+      },
+      {
+        "id": "NOTICE-1790905337812",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:42:17.812Z"
+      },
+      {
+        "id": "NOTICE-1790905361683",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:42:41.683Z"
+      },
+      {
+        "id": "NOTICE-1790905380509",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:43:00.509Z"
+      },
+      {
+        "id": "NOTICE-1790905397861",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:43:17.861Z"
+      },
+      {
+        "id": "NOTICE-1790905421747",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:43:41.747Z"
+      },
+      {
+        "id": "NOTICE-1790905440564",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:44:00.564Z"
+      },
+      {
+        "id": "NOTICE-1790905457927",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:44:17.927Z"
+      },
+      {
+        "id": "NOTICE-1790905481810",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:44:41.810Z"
+      },
+      {
+        "id": "NOTICE-1790905500631",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:45:00.631Z"
+      },
+      {
+        "id": "NOTICE-1790905517987",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:45:17.987Z"
+      },
+      {
+        "id": "NOTICE-1790905541864",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:45:41.864Z"
+      },
+      {
+        "id": "NOTICE-1790905560681",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:46:00.682Z"
+      },
+      {
+        "id": "NOTICE-1790905578044",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:46:18.044Z"
+      },
+      {
+        "id": "NOTICE-1790905601925",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:46:41.925Z"
+      },
+      {
+        "id": "NOTICE-1790905620746",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:47:00.746Z"
+      },
+      {
+        "id": "NOTICE-1790905638109",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:47:18.109Z"
+      },
+      {
+        "id": "NOTICE-1790905661974",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:47:41.974Z"
+      },
+      {
+        "id": "NOTICE-1790905680817",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:48:00.817Z"
+      },
+      {
+        "id": "NOTICE-1790905698167",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:48:18.167Z"
+      },
+      {
+        "id": "NOTICE-1790905722032",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:48:42.032Z"
+      },
+      {
+        "id": "NOTICE-1790905740872",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:49:00.872Z"
+      },
+      {
+        "id": "NOTICE-1790905758224",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:49:18.224Z"
+      },
+      {
+        "id": "NOTICE-1790905782093",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:49:42.093Z"
+      },
+      {
+        "id": "NOTICE-1790905800934",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:50:00.934Z"
+      },
+      {
+        "id": "NOTICE-1790905818289",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:50:18.289Z"
+      },
+      {
+        "id": "NOTICE-1790905842146",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:50:42.146Z"
+      },
+      {
+        "id": "NOTICE-1790905860984",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:51:00.984Z"
+      },
+      {
+        "id": "NOTICE-1790905878347",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:51:18.347Z"
+      },
+      {
+        "id": "NOTICE-1790905902211",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:51:42.212Z"
+      },
+      {
+        "id": "NOTICE-1790905921044",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:52:01.044Z"
+      },
+      {
+        "id": "NOTICE-1790905938403",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:52:18.403Z"
+      },
+      {
+        "id": "NOTICE-1790905962274",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:52:42.274Z"
+      },
+      {
+        "id": "NOTICE-1790905981114",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:53:01.114Z"
+      },
+      {
+        "id": "NOTICE-1790905998467",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:53:18.467Z"
+      },
+      {
+        "id": "NOTICE-1790906022327",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:53:42.327Z"
+      },
+      {
+        "id": "NOTICE-1790906041168",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:54:01.168Z"
+      },
+      {
+        "id": "NOTICE-1790906058524",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:54:18.524Z"
+      },
+      {
+        "id": "NOTICE-1790906082395",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:54:42.395Z"
+      },
+      {
+        "id": "NOTICE-1790906101225",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:55:01.225Z"
+      },
+      {
+        "id": "NOTICE-1790906118587",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:55:18.587Z"
+      },
+      {
+        "id": "NOTICE-1790906142454",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:55:42.455Z"
+      },
+      {
+        "id": "NOTICE-1790906161291",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:56:01.291Z"
+      },
+      {
+        "id": "NOTICE-1790906178649",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:56:18.650Z"
+      },
+      {
+        "id": "NOTICE-1790906202513",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:56:42.513Z"
+      },
+      {
+        "id": "NOTICE-1790906221344",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:57:01.344Z"
+      },
+      {
+        "id": "NOTICE-1790906238708",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:57:18.708Z"
+      },
+      {
+        "id": "NOTICE-1790906262573",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:57:42.573Z"
+      },
+      {
+        "id": "NOTICE-1790906281407",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:58:01.407Z"
+      },
+      {
+        "id": "NOTICE-1790906298764",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:58:18.764Z"
+      },
+      {
+        "id": "NOTICE-1790906322630",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:58:42.630Z"
+      },
+      {
+        "id": "NOTICE-1790906341470",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:59:01.470Z"
+      },
+      {
+        "id": "NOTICE-1790906358826",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:59:18.826Z"
+      },
+      {
+        "id": "NOTICE-1790906382697",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T01:59:42.698Z"
+      },
+      {
+        "id": "NOTICE-1790906401524",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:00:01.525Z"
+      },
+      {
+        "id": "NOTICE-1790906418889",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:00:18.889Z"
+      },
+      {
+        "id": "NOTICE-1790906442751",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:00:42.751Z"
+      },
+      {
+        "id": "NOTICE-1790906461580",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:01:01.580Z"
+      },
+      {
+        "id": "NOTICE-1790906478943",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:01:18.943Z"
+      },
+      {
+        "id": "NOTICE-1790906502802",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:01:42.802Z"
+      },
+      {
+        "id": "NOTICE-1790906521646",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:02:01.646Z"
+      },
+      {
+        "id": "NOTICE-1790906539011",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:02:19.011Z"
+      },
+      {
+        "id": "NOTICE-1790906562881",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:02:42.881Z"
+      },
+      {
+        "id": "NOTICE-1790906581706",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:03:01.706Z"
+      },
+      {
+        "id": "NOTICE-1790906599075",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:03:19.075Z"
+      },
+      {
+        "id": "NOTICE-1790906622929",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:03:42.930Z"
+      },
+      {
+        "id": "NOTICE-1790906641762",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:04:01.762Z"
+      },
+      {
+        "id": "NOTICE-1790906659140",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:04:19.140Z"
+      },
+      {
+        "id": "NOTICE-1790906682982",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:04:42.982Z"
+      },
+      {
+        "id": "NOTICE-1790906701822",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:05:01.822Z"
+      },
+      {
+        "id": "NOTICE-1790906719190",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:05:19.190Z"
+      },
+      {
+        "id": "NOTICE-1790906743044",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:05:43.044Z"
+      },
+      {
+        "id": "NOTICE-1790906761894",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:06:01.894Z"
+      },
+      {
+        "id": "NOTICE-1790906779257",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:06:19.257Z"
+      },
+      {
+        "id": "NOTICE-1790906803105",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:06:43.105Z"
+      },
+      {
+        "id": "NOTICE-1790906821943",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:07:01.943Z"
+      },
+      {
+        "id": "NOTICE-1790906839312",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:07:19.312Z"
+      },
+      {
+        "id": "NOTICE-1790906863165",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:07:43.165Z"
+      },
+      {
+        "id": "NOTICE-1790906882002",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:08:02.002Z"
+      },
+      {
+        "id": "NOTICE-1790906899374",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:08:19.374Z"
+      },
+      {
+        "id": "NOTICE-1790906923225",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:08:43.225Z"
+      },
+      {
+        "id": "NOTICE-1790906942065",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:09:02.065Z"
+      },
+      {
+        "id": "NOTICE-1790906959442",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:09:19.442Z"
+      },
+      {
+        "id": "NOTICE-1790906983293",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:09:43.293Z"
+      },
+      {
+        "id": "NOTICE-1790907002121",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:10:02.121Z"
+      },
+      {
+        "id": "NOTICE-1790907019500",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:10:19.500Z"
+      },
+      {
+        "id": "NOTICE-1790907043345",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:10:43.345Z"
+      },
+      {
+        "id": "NOTICE-1790907062189",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:11:02.189Z"
+      },
+      {
+        "id": "NOTICE-1790907079554",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:11:19.554Z"
+      },
+      {
+        "id": "NOTICE-1790907103405",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:11:43.405Z"
+      },
+      {
+        "id": "NOTICE-1790907122241",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:12:02.241Z"
+      },
+      {
+        "id": "NOTICE-1790907139611",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:12:19.611Z"
+      },
+      {
+        "id": "NOTICE-1790907163468",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:12:43.469Z"
+      },
+      {
+        "id": "NOTICE-1790907182300",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:13:02.300Z"
+      },
+      {
+        "id": "NOTICE-1790907199666",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:13:19.666Z"
+      },
+      {
+        "id": "NOTICE-1790907223529",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:13:43.529Z"
+      },
+      {
+        "id": "NOTICE-1790907242359",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:14:02.359Z"
+      },
+      {
+        "id": "NOTICE-1790907259726",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:14:19.726Z"
+      },
+      {
+        "id": "NOTICE-1790907283587",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:14:43.587Z"
+      },
+      {
+        "id": "NOTICE-1790907302423",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:15:02.424Z"
+      },
+      {
+        "id": "NOTICE-1790907319794",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:15:19.795Z"
+      },
+      {
+        "id": "NOTICE-1790907343642",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:15:43.642Z"
+      },
+      {
+        "id": "NOTICE-1790907362482",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:16:02.482Z"
+      },
+      {
+        "id": "NOTICE-1790907379859",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:16:19.859Z"
+      },
+      {
+        "id": "NOTICE-1790907403705",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:16:43.705Z"
+      },
+      {
+        "id": "NOTICE-1790907422545",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:17:02.545Z"
+      },
+      {
+        "id": "NOTICE-1790907439910",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:17:19.910Z"
+      },
+      {
+        "id": "NOTICE-1790907463769",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:17:43.769Z"
+      },
+      {
+        "id": "NOTICE-1790907482604",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:18:02.604Z"
+      },
+      {
+        "id": "NOTICE-1790907499970",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:18:19.970Z"
+      },
+      {
+        "id": "NOTICE-1790907523831",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:18:43.831Z"
+      },
+      {
+        "id": "NOTICE-1790907542668",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:19:02.668Z"
+      },
+      {
+        "id": "NOTICE-1790907560035",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:19:20.035Z"
+      },
+      {
+        "id": "NOTICE-1790907583894",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:19:43.895Z"
+      },
+      {
+        "id": "NOTICE-1790907602724",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:20:02.724Z"
+      },
+      {
+        "id": "NOTICE-1790907620097",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:20:20.097Z"
+      },
+      {
+        "id": "NOTICE-1790907643950",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:20:43.951Z"
+      },
+      {
+        "id": "NOTICE-1790907662796",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:21:02.796Z"
+      },
+      {
+        "id": "NOTICE-1790907680149",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:21:20.149Z"
+      },
+      {
+        "id": "NOTICE-1790907704008",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:21:44.008Z"
+      },
+      {
+        "id": "NOTICE-1790907722851",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:22:02.851Z"
+      },
+      {
+        "id": "NOTICE-1790907740207",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:22:20.207Z"
+      },
+      {
+        "id": "NOTICE-1790907764036",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:22:44.036Z"
+      },
+      {
+        "id": "NOTICE-1790907782905",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:23:02.905Z"
+      },
+      {
+        "id": "NOTICE-1790907800267",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:23:20.267Z"
+      },
+      {
+        "id": "NOTICE-1790907824093",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:23:44.093Z"
+      },
+      {
+        "id": "NOTICE-1790907842962",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:24:02.962Z"
+      },
+      {
+        "id": "NOTICE-1790907860328",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:24:20.328Z"
+      },
+      {
+        "id": "NOTICE-1790907884155",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:24:44.155Z"
+      },
+      {
+        "id": "NOTICE-1790907903024",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:25:03.024Z"
+      },
+      {
+        "id": "NOTICE-1790907920387",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:25:20.387Z"
+      },
+      {
+        "id": "NOTICE-1790907944212",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:25:44.212Z"
+      },
+      {
+        "id": "NOTICE-1790907963081",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:26:03.081Z"
+      },
+      {
+        "id": "NOTICE-1790907980445",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:26:20.445Z"
+      },
+      {
+        "id": "NOTICE-1790908004268",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:26:44.268Z"
+      },
+      {
+        "id": "NOTICE-1790908023141",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:27:03.142Z"
+      },
+      {
+        "id": "NOTICE-1790908040507",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:27:20.507Z"
+      },
+      {
+        "id": "NOTICE-1790908064340",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:27:44.340Z"
+      },
+      {
+        "id": "NOTICE-1790908083209",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:28:03.209Z"
+      },
+      {
+        "id": "NOTICE-1790908100566",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:28:20.566Z"
+      },
+      {
+        "id": "NOTICE-1790908124400",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:28:44.400Z"
+      },
+      {
+        "id": "NOTICE-1790908143264",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:29:03.264Z"
+      },
+      {
+        "id": "NOTICE-1790908160632",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:29:20.632Z"
+      },
+      {
+        "id": "NOTICE-1790908184449",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:29:44.449Z"
+      },
+      {
+        "id": "NOTICE-1790908203322",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:30:03.322Z"
+      },
+      {
+        "id": "NOTICE-1790908220693",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:30:20.693Z"
+      },
+      {
+        "id": "NOTICE-1790908244512",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:30:44.512Z"
+      },
+      {
+        "id": "NOTICE-1790908263390",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:31:03.390Z"
+      },
+      {
+        "id": "NOTICE-1790908280746",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:31:20.746Z"
+      },
+      {
+        "id": "NOTICE-1790908304586",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:31:44.586Z"
+      },
+      {
+        "id": "NOTICE-1790908323449",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:32:03.449Z"
+      },
+      {
+        "id": "NOTICE-1790908340807",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:32:20.807Z"
+      },
+      {
+        "id": "NOTICE-1790908364635",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:32:44.635Z"
+      },
+      {
+        "id": "NOTICE-1790908383505",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:33:03.505Z"
+      },
+      {
+        "id": "NOTICE-1790908400868",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:33:20.868Z"
+      },
+      {
+        "id": "NOTICE-1790908424697",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:33:44.698Z"
+      },
+      {
+        "id": "NOTICE-1790908443567",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:34:03.567Z"
+      },
+      {
+        "id": "NOTICE-1790908460929",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:34:20.929Z"
+      },
+      {
+        "id": "NOTICE-1790908484757",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:34:44.757Z"
+      },
+      {
+        "id": "NOTICE-1790908503624",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:35:03.624Z"
+      },
+      {
+        "id": "NOTICE-1790908520990",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:35:20.990Z"
+      },
+      {
+        "id": "NOTICE-1790908544815",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:35:44.815Z"
+      },
+      {
+        "id": "NOTICE-1790908563690",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:36:03.690Z"
+      },
+      {
+        "id": "NOTICE-1790908581043",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:36:21.044Z"
+      },
+      {
+        "id": "NOTICE-1790908604875",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:36:44.875Z"
+      },
+      {
+        "id": "NOTICE-1790908623740",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:37:03.740Z"
+      },
+      {
+        "id": "NOTICE-1790908641104",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:37:21.104Z"
+      },
+      {
+        "id": "NOTICE-1790908664936",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:37:44.936Z"
+      },
+      {
+        "id": "NOTICE-1790908683800",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:38:03.800Z"
+      },
+      {
+        "id": "NOTICE-1790908701168",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:38:21.168Z"
+      },
+      {
+        "id": "NOTICE-1790908725000",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:38:45.000Z"
+      },
+      {
+        "id": "NOTICE-1790908743860",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:39:03.860Z"
+      },
+      {
+        "id": "NOTICE-1790908761222",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:39:21.222Z"
+      },
+      {
+        "id": "NOTICE-1790908785056",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:39:45.056Z"
+      },
+      {
+        "id": "NOTICE-1790908803932",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:40:03.932Z"
+      },
+      {
+        "id": "NOTICE-1790908821290",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:40:21.290Z"
+      },
+      {
+        "id": "NOTICE-1790908845116",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:40:45.116Z"
+      },
+      {
+        "id": "NOTICE-1790908863984",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:41:03.984Z"
+      },
+      {
+        "id": "NOTICE-1790908881353",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:41:21.353Z"
+      },
+      {
+        "id": "NOTICE-1790908905183",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:41:45.183Z"
+      },
+      {
+        "id": "NOTICE-1790908924043",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:42:04.043Z"
+      },
+      {
+        "id": "NOTICE-1790908941405",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:42:21.405Z"
+      },
+      {
+        "id": "NOTICE-1790908965239",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:42:45.239Z"
+      },
+      {
+        "id": "NOTICE-1790908984105",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:43:04.106Z"
+      },
+      {
+        "id": "NOTICE-1790909001463",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:43:21.463Z"
+      },
+      {
+        "id": "NOTICE-1790909025300",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:43:45.300Z"
+      },
+      {
+        "id": "NOTICE-1790909044169",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:44:04.169Z"
+      },
+      {
+        "id": "NOTICE-1790909061523",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:44:21.523Z"
+      },
+      {
+        "id": "NOTICE-1790909085360",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:44:45.360Z"
+      },
+      {
+        "id": "NOTICE-1790909104229",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:45:04.230Z"
+      },
+      {
+        "id": "NOTICE-1790909121583",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:45:21.583Z"
+      },
+      {
+        "id": "NOTICE-1790909145413",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:45:45.413Z"
+      },
+      {
+        "id": "NOTICE-1790909164287",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:46:04.287Z"
+      },
+      {
+        "id": "NOTICE-1790909181644",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:46:21.644Z"
+      },
+      {
+        "id": "NOTICE-1790909205479",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:46:45.479Z"
+      },
+      {
+        "id": "NOTICE-1790909224343",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:47:04.343Z"
+      },
+      {
+        "id": "NOTICE-1790909241708",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:47:21.708Z"
+      },
+      {
+        "id": "NOTICE-1790909265534",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:47:45.534Z"
+      },
+      {
+        "id": "NOTICE-1790909284408",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:48:04.408Z"
+      },
+      {
+        "id": "NOTICE-1790909301766",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:48:21.766Z"
+      },
+      {
+        "id": "NOTICE-1790909325600",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:48:45.600Z"
+      },
+      {
+        "id": "NOTICE-1790909344463",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:49:04.463Z"
+      },
+      {
+        "id": "NOTICE-1790909361827",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:49:21.827Z"
+      },
+      {
+        "id": "NOTICE-1790909385656",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:49:45.656Z"
+      },
+      {
+        "id": "NOTICE-1790909404524",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:50:04.524Z"
+      },
+      {
+        "id": "NOTICE-1790909421887",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:50:21.888Z"
+      },
+      {
+        "id": "NOTICE-1790909445717",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:50:45.717Z"
+      },
+      {
+        "id": "NOTICE-1790909464585",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:51:04.585Z"
+      },
+      {
+        "id": "NOTICE-1790909481944",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:51:21.944Z"
+      },
+      {
+        "id": "NOTICE-1790909505779",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:51:45.779Z"
+      },
+      {
+        "id": "NOTICE-1790909524643",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:52:04.643Z"
+      },
+      {
+        "id": "NOTICE-1790909542005",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:52:22.005Z"
+      },
+      {
+        "id": "NOTICE-1790909565835",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:52:45.836Z"
+      },
+      {
+        "id": "NOTICE-1790909584705",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:53:04.705Z"
+      },
+      {
+        "id": "NOTICE-1790909602061",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:53:22.061Z"
+      },
+      {
+        "id": "NOTICE-1790909625901",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:53:45.902Z"
+      },
+      {
+        "id": "NOTICE-1790909644767",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:54:04.767Z"
+      },
+      {
+        "id": "NOTICE-1790909795177",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T02:56:35.178Z"
+      },
+      {
+        "id": "NOTICE-1790910334970",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:05:34.970Z"
+      },
+      {
+        "id": "NOTICE-1790910817625",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:13:37.625Z"
+      },
+      {
+        "id": "NOTICE-1790911013881",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:16:53.881Z"
+      },
+      {
+        "id": "NOTICE-1790911573236",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:26:13.236Z"
+      },
+      {
+        "id": "NOTICE-1790911868043",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:31:08.043Z"
+      },
+      {
+        "id": "NOTICE-1790912105140",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:35:05.141Z"
+      },
+      {
+        "id": "NOTICE-1790912249711",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:37:29.711Z"
+      },
+      {
+        "id": "NOTICE-1790912728608",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:45:28.608Z"
+      },
+      {
+        "id": "NOTICE-1790913158232",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:52:38.233Z"
+      },
+      {
+        "id": "NOTICE-1790913377981",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:56:17.981Z"
+      },
+      {
+        "id": "NOTICE-1790913449804",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T03:57:29.804Z"
+      },
+      {
+        "id": "NOTICE-1790913674445",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:01:14.445Z"
+      },
+      {
+        "id": "NOTICE-1790914119339",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:08:39.339Z"
+      },
+      {
+        "id": "NOTICE-1790914548765",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:15:48.765Z"
+      },
+      {
+        "id": "NOTICE-1790914843299",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:20:43.299Z"
+      },
+      {
+        "id": "NOTICE-1790915410391",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:30:10.391Z"
+      },
+      {
+        "id": "NOTICE-1790915864718",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:37:44.718Z"
+      },
+      {
+        "id": "NOTICE-1790916282428",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:44:42.428Z"
+      },
+      {
+        "id": "NOTICE-1790916800515",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T04:53:20.515Z"
+      },
+      {
+        "id": "NOTICE-1790917214367",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:00:14.367Z"
+      },
+      {
+        "id": "NOTICE-1790917264037",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:01:04.037Z"
+      },
+      {
+        "id": "NOTICE-1790917455905",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:04:15.905Z"
+      },
+      {
+        "id": "NOTICE-1790917862182",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:11:02.182Z"
+      },
+      {
+        "id": "NOTICE-1790918264178",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:17:44.178Z"
+      },
+      {
+        "id": "NOTICE-1790918764246",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:26:04.246Z"
+      },
+      {
+        "id": "NOTICE-1790919066011",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:31:06.012Z"
+      },
+      {
+        "id": "NOTICE-1790919541048",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:39:01.048Z"
+      },
+      {
+        "id": "NOTICE-1790920114455",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:48:34.455Z"
+      },
+      {
+        "id": "NOTICE-1790920571810",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:56:11.810Z"
+      },
+      {
+        "id": "NOTICE-1790920611083",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T05:56:51.083Z"
+      },
+      {
+        "id": "NOTICE-1790920826721",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T06:00:26.721Z"
+      },
+      {
+        "id": "NOTICE-1790921115267",
+        "type": "CEO_TASK",
+        "priority": "CRITICAL",
+        "message": "NIA detected 4 open executive task(s) requiring review",
+        "status": "NEW",
+        "created": "2026-10-02T06:05:15.267Z"
       }
     ]
   },
-  "timestamp": "2026-07-27T18:04:38.899Z"
+  "timestamp": "2026-10-02T06:05:15.270Z"
 }

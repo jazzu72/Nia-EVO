@@ -27,11 +27,19 @@ function classify(item){
     return 'event';
   }
 
+  // Funding and contract signals take priority over generic news
+  // language such as "announces" or "launches".
   if(
-    url.includes('/news/') ||
-    /podcast|press release|announces|announced|launches|investment|research institutes|science and technology centers/.test(title)
+    url.includes('/funding/') ||
+    /grant|funding opportunity|award|sbir|sttr|seed fund|commercialization.*pilot|pilot.*commercialization|pilot.*small businesses/.test(text)
   ){
-    return 'news_intelligence';
+    return 'funding_opportunity';
+  }
+
+  if(
+    /contract|procurement|bid|rfp|request for proposal|request for quote|indefinite delivery|task order/.test(text)
+  ){
+    return 'contract_opportunity';
   }
 
   if(
@@ -42,13 +50,11 @@ function classify(item){
     return 'career_opportunity';
   }
 
-  // Official NSF funding pages are funding opportunities even when
-  // their titles use program/solicitation terminology.
   if(
-    url.includes('/funding/') ||
-    /grant|funding opportunity|award|sbir|sttr|seed fund/.test(text)
+    url.includes('/news/') ||
+    /podcast|press release|announces|announced|launches|investment|research institutes|science and technology centers/.test(title)
   ){
-    return 'funding_opportunity';
+    return 'news_intelligence';
   }
 
   if(/contract|procurement|bid|rfp|request for proposal|request for quote|indefinite delivery|task order/.test(text))

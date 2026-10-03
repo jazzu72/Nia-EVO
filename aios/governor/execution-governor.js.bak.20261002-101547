@@ -16,7 +16,7 @@ const EXECUTION_AUTHORIZED =
   String(process.env.EXECUTION_AUTHORIZED || 'false').toLowerCase() === 'true';
 
 const READ_ONLY_AUTONOMOUS_TOOLS=Object.freeze(new Set(['acquisition_stats','top_prospects','revenue_dashboard','automation_queue','outreach_queue','system_status','list_modules','intelligence_snapshot',
-'rss_revenue_discovery']));
+'rss_revenue_discovery','rss_revenue_sync']));
 
 const GOVERNANCE=Object.freeze({
   execution_allowed:EXECUTION_ALLOWED,
