@@ -12,7 +12,7 @@ services:
         value: production
       - key: NIA_MASTER_PASSWORD
         sync: false
-      - key: NIA_OWNER_AUTH_TOKEN
+      - key: NIA_OWNER_TOKEN
         sync: false
       - key: SECRETS_PATH
         value: /etc/secrets/secrets.enc
