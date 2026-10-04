@@ -634,7 +634,7 @@ loadRoute("./command-center/executive-api", "/api/executive");
 loadRoute("./command-center/executive-dashboard-api", "/api/command");
 loadRoute("./command-center/revenue-dashboard-api", "/api/command");
 loadRoute("./command-center/revenue-dashboard-api", "/api/revenue-engine");
-app.use("/api/house", require("./house-of-jazzu/house-dashboard"));
+loadRoute("./house-of-jazzu/house-dashboard", "/api/house");
 
 // Chief of Staff
 loadRoute("./chief-of-staff/chief-api", "/api/chief");
