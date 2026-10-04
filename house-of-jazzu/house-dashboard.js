@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const roadmap = require("../NIA-CEO/strategy/million-dollar-roadmap");
 const revenue = require("./lib/revenue-ledger");
+const operatingPlan = require("../NIA-CEO/strategy/revenue-operating-plan");
 
 function snapshot() {
   const financial = revenue.snapshot();
@@ -46,6 +47,10 @@ router.get("/snapshot", (_req, res) => {
 
 router.get("/revenue", (_req, res) => {
   res.json(revenue.snapshot());
+});
+
+router.get("/operating-plan", (_req, res) => {
+  res.json(operatingPlan.getOperatingPlan());
 });
 
 router.get("/roadmap", (_req, res) => {
