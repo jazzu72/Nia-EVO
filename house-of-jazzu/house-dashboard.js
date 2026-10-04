@@ -78,6 +78,17 @@ router.get("/health", (_req, res) => {
  * This records a payment only after the owner confirms it was actually PAID.
  */
 router.post("/revenue/verify", (req, res) => {
+  const token = req.headers["x-nia-owner-token"];
+  const expected = process.env.NIA_OWNER_TOKEN;
+
+  if (!expected || token !== expected) {
+    return res.status(403).json({
+      ok: false,
+      verified: false,
+      error: "OWNER_AUTHORIZATION_REQUIRED"
+    });
+  }
+
   try {
     const entry = revenue.recordPayment(req.body || {});
     res.status(201).json({
