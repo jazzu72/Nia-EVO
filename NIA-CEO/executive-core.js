@@ -166,6 +166,8 @@ async function safeCall(fn, fallback) {
  */
 async function observe() {
   const revenue = safeLoad('../revenue/revenue-engine');
+  const houseRevenue = safeLoad('../house-of-jazzu/lib/revenue-ledger');
+  const operatingPlan = safeLoad('./strategy/revenue-operating-plan');
   const revenueIntel = safeLoad('../intelligence/revenue-engine');
   const acquisition = safeLoad('../acquisition/lead-acquisition-engine');
   const capital = safeLoad('../intelligence/capital-engine');
@@ -266,6 +268,48 @@ async function observe() {
           []
         )
       : [];
+
+  /*
+   * HOUSE OF JAZZU REVENUE OPERATING STATE
+   *
+   * Verified revenue is the authoritative commercial baseline.
+   * The operating plan supplies strategic product priorities.
+   *
+   * READ-ONLY:
+   * - no payment processing
+   * - no financial execution
+   * - no external side effects
+   * - owner authorization remains required
+   */
+  const houseRevenueSnapshot =
+    houseRevenue &&
+    typeof houseRevenue.snapshot === 'function'
+      ? await safeCall(
+          () => houseRevenue.snapshot(),
+          {
+            verifiedRevenue: 0,
+            annualTarget: 1000000,
+            remaining: 1000000,
+            progressPercent: 0,
+            products: {}
+          }
+        )
+      : {
+          verifiedRevenue: 0,
+          annualTarget: 1000000,
+          remaining: 1000000,
+          progressPercent: 0,
+          products: {}
+        };
+
+  const houseOperatingPlan =
+    operatingPlan &&
+    typeof operatingPlan.getOperatingPlan === 'function'
+      ? await safeCall(
+          () => operatingPlan.getOperatingPlan(),
+          null
+        )
+      : null;
 
   /*
    * EXECUTIVE INTELLIGENCE SNAPSHOT
@@ -396,6 +440,10 @@ async function observe() {
       revenuePipeline,
       revenueIntel: revenueSummary,
 
+      houseRevenue: houseRevenueSnapshot,
+
+      houseOperatingPlan: houseOperatingPlan,
+
       acquisition: {
         stats: acquisitionStats,
         topProspects
@@ -464,6 +512,17 @@ function prioritize(observations) {
   const acquisition =
     evidence.acquisition || {};
 
+  const houseRevenue =
+    evidence.houseRevenue || {};
+
+  const houseOperatingPlan =
+    evidence.houseOperatingPlan || {};
+
+  const houseProducts =
+    Array.isArray(houseOperatingPlan.products)
+      ? houseOperatingPlan.products
+      : [];
+
   const capital =
     evidence.capital || {};
 
@@ -495,6 +554,21 @@ function prioritize(observations) {
     );
 
   const priorities = [];
+
+  const verifiedRevenue =
+    Number(houseRevenue.verifiedRevenue || 0);
+
+  const annualRevenueTarget =
+    Number(houseRevenue.annualTarget || 1000000);
+
+  const revenueRemaining =
+    Number(
+      houseRevenue.remaining ??
+      Math.max(annualRevenueTarget - verifiedRevenue, 0)
+    );
+
+  const revenueProgress =
+    Number(houseRevenue.progressPercent || 0);
 
   const totalDeals =
     Number(revenueDashboard.totalDeals || 0);
@@ -640,6 +714,34 @@ function prioritize(observations) {
             : null
       }
     });
+
+    /*
+     * House-level revenue evidence makes the $1M objective
+     * visible to the executive prioritization layer.
+     */
+    const highestGapProduct =
+      [...houseProducts]
+        .sort(
+          (a, b) =>
+            Number(b.remaining || 0) -
+            Number(a.remaining || 0)
+        )[0] || null;
+
+    priorities[priorities.length - 1].evidence.houseRevenue = {
+      verifiedRevenue,
+      annualTarget: annualRevenueTarget,
+      remaining: revenueRemaining,
+      progressPercent: revenueProgress,
+      highestGapProduct: highestGapProduct
+        ? {
+            id: highestGapProduct.id,
+            target: highestGapProduct.target,
+            verifiedRevenue: highestGapProduct.verifiedRevenue,
+            remaining: highestGapProduct.remaining,
+            priorities: highestGapProduct.priorities
+          }
+        : null
+    };
   }
 
   if (prospects === 0) {
@@ -791,6 +893,12 @@ function buildActionPlan(priorities) {
       const topOpportunity =
         evidence.topOpportunity || null;
 
+      const houseRevenue =
+        evidence.houseRevenue || {};
+
+      const highestGapProduct =
+        houseRevenue.highestGapProduct || null;
+
       if (
         Number(evidence.qualifiedOpportunityBriefs || 0) > 0
       ) {
@@ -826,6 +934,19 @@ function buildActionPlan(priorities) {
           'Score prospects against House of Jazzu criteria',
           'Prepare owner-review opportunity briefs'
         ];
+
+        if (highestGapProduct) {
+          proposedActions.unshift(
+            `Prioritize ${highestGapProduct.id} as the current largest House revenue gap`,
+            ...(
+              Array.isArray(highestGapProduct.priorities)
+                ? highestGapProduct.priorities.map(
+                    priority => `Plan: ${priority}`
+                  )
+                : []
+            )
+          );
+        }
       }
     }
 
