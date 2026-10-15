@@ -44,3 +44,6 @@ Your
 *.secret
 *.secrets
 secrets.enc
+/data/private/owner-sessions.json
+runtime/
+runtime/
