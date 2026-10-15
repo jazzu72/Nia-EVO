@@ -6,5 +6,5 @@ cd ~/nia-capital-os/core
 # Using find to avoid directory errors
 find . -type f -exec sha256sum {} + > ../system/checksums.sha256
 cd ~/nia-capital-os/api
-nohup node server.js > ~/nia-ops.log 2>&1 &
+nohup node start.js > ~/nia-ops.log 2>&1 &
 echo "✅ NIA-EVO System Supervisor: Rebuilt and Operational."

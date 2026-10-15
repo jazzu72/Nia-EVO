@@ -47,3 +47,15 @@ secrets.enc
 /data/private/owner-sessions.json
 runtime/
 runtime/
+*.bak*
+*.backup*
+
+# Backups
+*.bak
+*.bak.*
+*.backup
+*.backup.*
+*.before-*
+*.broken-backup
+*.dup-fix
+*.pre-*
