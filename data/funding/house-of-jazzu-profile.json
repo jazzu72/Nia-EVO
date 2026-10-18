@@ -1,5 +1,5 @@
 {
-  "profileVersion": "1.0",
+  "profileVersion": "1.1",
   "organization": {
     "name": "House of Jazzu",
     "legalEntity": "House of Jazzu",
@@ -20,13 +20,17 @@
       "Digital infrastructure",
       "Entrepreneurship",
       "Small business innovation"
-    ]
+    ],
+    "owner": "Jason LeSane",
+    "legalEntityStatus": "PENDING_VERIFICATION",
+    "entityType": "FOR_PROFIT_TECHNOLOGY_INNOVATION_BUSINESS"
   },
   "portfolio": [
     {
       "name": "Nia Capital OS",
       "category": "AI financial and business intelligence",
-      "description": "AI-driven operating system for opportunity discovery, capital intelligence, grant research, business analysis, compliance and owner-controlled decision support."
+      "description": "Private, owner-only executive intelligence for House of Jazzu. Nia supports grant/non-dilutive funding research and real-estate opportunity screening; she is not a product sold.",
+      "productRelationship": "INTERNAL_PRIVATE_SYSTEM_NOT_FOR_SALE"
     },
     {
       "name": "Nia-EVO",
@@ -41,7 +45,11 @@
     {
       "name": "Money Munchkins: Quantum Odyssey",
       "category": "financial literacy / education technology",
-      "description": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology."
+      "description": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+      "isFlagship": true,
+      "targetAgeRange": "8-11",
+      "status": "ACTIVE_DEVELOPMENT",
+      "revenueStatus": "NOT_VERIFIED"
     },
     {
       "name": "Polish",
@@ -60,7 +68,7 @@
     }
   ],
   "fundingMission": {
-    "primaryObjective": "Identify non-dilutive and strategic capital opportunities that can accelerate House of Jazzu technology development, commercialization, workforce development and community impact.",
+    "primaryObjective": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
     "preferredFunding": [
       "Corporate grants",
       "Foundation grants",
@@ -187,7 +195,7 @@
     "ownerSignatureRequired": true
   },
   "niaInstructions": {
-    "role": "House of Jazzu funding intelligence analyst",
+    "role": "Private Executive AI for House of Jazzu; grants and real-estate intelligence only",
     "objective": "Continuously identify, verify, rank and explain legitimate funding opportunities that match House of Jazzu and its portfolio.",
     "workflow": [
       "Discover potential funding source",
@@ -201,7 +209,61 @@
       "Explain why House of Jazzu qualifies or may qualify",
       "Store source lineage",
       "Prepare an owner-review funding brief",
-      "Never submit without owner authorization"
+      "Never submit without owner authorization",
+      "Verify current program status, official source, deadline, amount, geography and for-profit eligibility",
+      "Check entity, business stage, matching funds, revenue, fundraising and registration requirements",
+      "Separate verified facts from owner-reported history, assumptions and missing evidence",
+      "Prioritize Money Munchkins: Quantum Odyssey as the flagship product",
+      "Never invent revenue, traction, eligibility, deadlines, awards or technical innovation",
+      "Only mark SUBMITTED_VERIFIED when official portal receipt or confirmation evidence is recorded",
+      "Prepare final application packages for owner review; never submit or sign without owner approval"
     ]
+  },
+  "operatingModel": {
+    "company": "House of Jazzu",
+    "owner": "Jason LeSane",
+    "location": "Norfolk, Virginia, United States",
+    "flagship": {
+      "name": "Money Munchkins: Quantum Odyssey",
+      "category": "Children's financial-literacy and education technology",
+      "targetAgeRange": "8-11",
+      "stage": "Active development",
+      "revenueStatus": "NOT_VERIFIED",
+      "rule": "Never invent customers, revenue, pilots, awards, IP status, or validated outcomes."
+    },
+    "nia": {
+      "name": "Nia",
+      "role": "Private Executive AI",
+      "productForSale": false,
+      "permittedScopes": [
+        "Grant and non-dilutive funding intelligence",
+        "Real-estate opportunity research and financial screening"
+      ],
+      "ownerApprovalRequired": true,
+      "submissionAllowed": false,
+      "signingAllowed": false,
+      "financialTransactionsAllowed": false,
+      "moneyMovementAllowed": false
+    },
+    "fundingTarget": {
+      "minimumUsd": 235000,
+      "targetUsd": 240000,
+      "status": "OWNER_PLANNING_TARGET_NOT_AWARD"
+    },
+    "realEstateRules": [
+      "Record source, date, asking price, comparable-value evidence, repairs, financing, closing and holding costs.",
+      "Include an exit strategy and downside sensitivity.",
+      "Clearly label assumptions and never count an unclosed deal as revenue."
+    ]
+  },
+  "evidencePolicy": {
+    "requireOfficialSource": true,
+    "requireEligibilityEvidence": true,
+    "requireDeadlineEvidence": true,
+    "requireAmountEvidence": true,
+    "distinguishOwnerReportedFromVerified": true,
+    "neverInventRevenueOrTraction": true,
+    "neverMarkSubmittedWithoutReceipt": true,
+    "expireOrReverifyStaleOpportunities": true
   }
 }

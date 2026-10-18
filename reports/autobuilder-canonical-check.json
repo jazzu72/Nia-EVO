@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-08-17T09:50:34.645Z",
+  "startedAt": "2026-10-14T17:25:22.940Z",
   "engines": [
     {
       "name": "acquisition",
@@ -8,7 +8,8 @@
         "acquire",
         "generateTargets",
         "stats",
-        "topProspects"
+        "topProspects",
+        "getMoneyMunchkinsPilotTarget"
       ]
     },
     {
@@ -16,9 +17,7 @@
       "canonical": "funding-engine/funding-review-decision-engine.js",
       "exports": [
         "decide",
-        "buildDecisionQueue",
-        "discover",
-        "analyze"
+        "buildDecisionQueue"
       ]
     },
     {
@@ -33,10 +32,7 @@
       "name": "outreach",
       "canonical": "outreach/outreach-engine.js",
       "exports": [
-        "createDraft",
-        "queue",
-        "pendingApproval",
-        "approveDraft"
+        "generate"
       ]
     },
     {
@@ -77,6 +73,26 @@
   ],
   "failures": [
     {
+      "engine": "funding-review-decision",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "funding-engine/funding-review-decision-engine.js",
+      "method": "discover",
+      "exports": [
+        "decide",
+        "buildDecisionQueue"
+      ]
+    },
+    {
+      "engine": "funding-review-decision",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "funding-engine/funding-review-decision-engine.js",
+      "method": "analyze",
+      "exports": [
+        "decide",
+        "buildDecisionQueue"
+      ]
+    },
+    {
       "engine": "followup",
       "type": "CANONICAL_CONTRACT_FAILURE",
       "file": "followup/followup-engine.js",
@@ -95,8 +111,44 @@
         "create",
         "queue"
       ]
+    },
+    {
+      "engine": "outreach",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "outreach/outreach-engine.js",
+      "method": "createDraft",
+      "exports": [
+        "generate"
+      ]
+    },
+    {
+      "engine": "outreach",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "outreach/outreach-engine.js",
+      "method": "queue",
+      "exports": [
+        "generate"
+      ]
+    },
+    {
+      "engine": "outreach",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "outreach/outreach-engine.js",
+      "method": "pendingApproval",
+      "exports": [
+        "generate"
+      ]
+    },
+    {
+      "engine": "outreach",
+      "type": "CANONICAL_CONTRACT_FAILURE",
+      "file": "outreach/outreach-engine.js",
+      "method": "approveDraft",
+      "exports": [
+        "generate"
+      ]
     }
   ],
   "warnings": [],
-  "finishedAt": "2026-08-17T09:50:35.837Z"
+  "finishedAt": "2026-10-14T17:25:25.634Z"
 }

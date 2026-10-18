@@ -1,13 +1,13 @@
 {
   "ok": true,
   "version": "1.0",
-  "generatedAt": "2026-09-30T18:23:13.399Z",
+  "generatedAt": "2026-10-14T17:22:23.273Z",
   "module": "NIA_OWNER_FUNDING_ACTION_QUEUE",
   "organization": "House of Jazzu",
   "operatingState": "Virginia",
   "mode": "OWNER_REVIEW_ONLY",
   "summary": {
-    "candidates": 6,
+    "candidates": 10,
     "eligibilityVerified": 0,
     "applicationReady": 0,
     "submissionReady": 0
@@ -264,6 +264,106 @@
         "ownerApprovalRequired": true,
         "ownerSignatureRequired": true
       }
+    },
+    {
+      "id": "VIPC-LAUNCH-CYCLE-7",
+      "name": "VIPC Launch Grant — Cycle 7",
+      "source": {
+        "officialUrl": "https://vipc.org/funding/virginia-venture-partners/"
+      },
+      "amountUsd": 50000,
+      "deadline": "2026-10-30 noon as listed by VIPC",
+      "determination": {
+        "status": "ELIGIBILITY_REVIEW_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Confirm pre-MVP and pre-product-revenue eligibility",
+        "Verify a documented 1:1 capital or in-kind match",
+        "Confirm legal entity and fundraising history",
+        "If ineligible, archive this cycle rather than force a mismatch"
+      ],
+      "safety": {
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "ownerApprovalRequired": true
+      },
+      "queuePosition": 7
+    },
+    {
+      "id": "NSF-SBIR-26-510",
+      "name": "NSF SBIR/STTR Phase I — America’s Seed Fund",
+      "source": {
+        "officialUrl": "https://www.nsf.gov/funding/opportunities/small-business-innovation-research-small-business-technology/nsf26-510/solicitation"
+      },
+      "deadline": "2026-11-04 5:00 PM submitter local time",
+      "determination": {
+        "status": "OWNER_ACTION_REQUIRED",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Verify the Project Pitch decision and invitation",
+        "Confirm small-business, ownership, PI-effort and U.S. R&D eligibility",
+        "Verify SAM/UEI, Research.gov and SBA Company Registry",
+        "Establish genuine technical R&D novelty and risk",
+        "Complete proposal and budget only if eligible"
+      ],
+      "safety": {
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "ownerApprovalRequired": true
+      },
+      "queuePosition": 8
+    },
+    {
+      "id": "VIPC-FFAP-SBIR-STTR",
+      "name": "VIPC Federal Funding Assistance Program",
+      "source": {
+        "officialUrl": "https://www.virginiaipc.org/funding/startups/"
+      },
+      "determination": {
+        "status": "SUPPORT_PROGRAM_REVIEW",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Ask VIPC to confirm current FFAP intake and eligibility",
+        "Determine whether the program can assist with a suitable federal SBIR/STTR application"
+      ],
+      "safety": {
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "ownerApprovalRequired": true
+      },
+      "queuePosition": 9
+    },
+    {
+      "id": "VA-DSBSD-SSBCI-TA",
+      "name": "Virginia SSBCI 2.0 Technical Assistance",
+      "source": {
+        "officialUrl": "https://sbsd.virginia.gov/virginia-small-business-financing-authority/ssbci-2-0/technical-assistance/"
+      },
+      "determination": {
+        "status": "CONDITIONAL_FIT_REVIEW",
+        "eligibilityVerified": false,
+        "applicationReady": false,
+        "submissionReady": false
+      },
+      "ownerActions": [
+        "Verify very-small-business or SEDI eligibility",
+        "Check current partner intake for legal, accounting or financial advisory assistance"
+      ],
+      "safety": {
+        "automatedSubmission": false,
+        "automatedSigning": false,
+        "ownerApprovalRequired": true
+      },
+      "queuePosition": 10
     }
   ],
   "nextStage": "OWNER_REVIEW_AND_APPLICATION_PREPARATION",

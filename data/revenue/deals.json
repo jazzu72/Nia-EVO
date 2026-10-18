@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "radarId": "8dab81ec",
+    "company": "EXAMPLE GRANT TITLE",
+    "contact": "Owner",
+    "service": "Grant Opportunity",
+    "value": 25000,
+    "stage": "new",
+    "created": "2026-10-15T18:10:31.297Z",
+    "type": "grant",
+    "url": "https://grants.gov/search-results-page",
+    "ownerApprovalRequired": true,
+    "externalExecutionAllowed": false
+  }
+]
