@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum Lab | Money Munchkins</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#02040a;color:#fff;font-family:system-ui}
+body{display:grid;place-items:center;padding:24px}
+.lab{width:min(900px,94vw);padding:42px;border:1px solid #d4b46a;border-radius:30px;background:linear-gradient(145deg,#07111c,#02050a);box-shadow:0 0 100px rgba(255,80,220,.15)}
+.badge{letter-spacing:3px;color:#d4b46a;font-size:12px}
+h1{font-size:clamp(38px,7vw,72px);margin:12px 0}
+p{color:#b9c7d4;font-size:18px;line-height:1.7}
+.core{margin:30px 0;padding:30px;text-align:center;border:1px solid rgba(120,220,255,.3);border-radius:24px;background:rgba(10,30,45,.6)}
+.orb{width:120px;height:120px;margin:auto;border-radius:50%;background:radial-gradient(circle,#fff,#ff66d9 25%,#6ba8ff 55%,transparent 70%);box-shadow:0 0 70px #ff66d9;animation:pulse 2s infinite}
+button{width:100%;padding:18px;margin-top:20px;border:1px solid #d4b46a;border-radius:15px;background:#0b1824;color:#fff;font-size:18px}
+button:hover{background:#172b3d}
+#status{margin-top:20px;color:#d4b46a;font-weight:700}
+@keyframes pulse{50%{transform:scale(1.12);filter:brightness(1.4)}}
+.branch-active .branch-status{
+  color:#ffd34d;
+  text-shadow:0 0 12px rgba(255,211,77,.75);
+  animation:branchPulse 1.8s ease-in-out infinite;
+}
+@keyframes branchPulse{
+  0%,100%{opacity:.72}
+  50%{opacity:1}
+}
+</style>
+</head>
+<body>
+<section class="lab">
+<div class="badge">QUANTUM BRANCH STUDIO • SPARK CITY</div>
+<h1>Quantum Lab</h1>
+<p>
+Nova has completed the first three missions. The choices she made
+have created a new branch of possibility.
+</p>
+
+<div class="core">
+<div class="orb"></div>
+<h2>THE QUANTUM CORE</h2>
+<p id="branch">Analyzing Nova's decisions...</p>
+</div>
+
+<div id="branch-panel" style="margin:24px auto;max-width:620px;padding:20px;border:1px solid rgba(212,180,106,.45);border-radius:18px;background:rgba(8,14,22,.72);text-align:center">
+  <div style="color:#d4b46a;font-weight:700;letter-spacing:.12em;font-size:12px">BRANCH CONSEQUENCE</div>
+  <h2 id="branch-title" style="margin:10px 0;color:#fff"></h2>
+  <p id="branch-description" style="color:#b9c2cc;line-height:1.6"></p>
+  <button id="alternate-branch" style="margin-top:10px;padding:12px 18px;border-radius:12px;border:1px solid #54c78a;background:rgba(84,199,138,.12);color:#fff;font-weight:700">
+    EXPLORE ALTERNATE PATH
+  </button>
+</div>
+
+<button onclick="returnToCity()">ENTER SPARK CITY</button>
+<div id="status"></div>
+</section>
+
+<script>
+localStorage.setItem("quantum_lab_entered","true");
+const choice=localStorage.getItem("mmq003_choice")||"unknown";
+const branchActive=localStorage.getItem("quantum_branch_active")==="true";
+document.body.classList.toggle("branch-active",branchActive);
+
+const branch=document.getElementById("branch");
+const branchTitle=document.getElementById("branch-title");
+const branchDescription=document.getElementById("branch-description");
+const alternate=document.getElementById("alternate-branch");
+
+if(choice==="save"){
+  branch.textContent=
+    "Branch detected: SAVING PATH • Nova strengthened delayed gratification and planning.";
+  branchTitle.textContent="SAVING PATH";
+  branchDescription.textContent="Nova chose to save. This branch reinforces patience, planning, and future-focused decisions.";
+}else if(choice==="spend"){
+  branch.textContent=
+    "Branch detected: SPENDING PATH • Nova strengthened planning through tradeoff awareness.";
+  branchTitle.textContent="SPENDING PATH";
+  branchDescription.textContent="Nova chose to spend. This branch reinforces reflection, tradeoffs, and learning from consequences.";
+}else{
+  branch.textContent="Branch detected: INITIAL PATH • Complete the missions to create a quantum branch.";
+  branchTitle.textContent="QUANTUM PATH";
+  branchDescription.textContent="A new possibility is forming.";
+}
+
+alternate.addEventListener("click",()=>{
+  localStorage.setItem("quantum_alternate_path","true");
+  location.href="/scenes/spark-city.html";
+});
+
+function returnToCity(){
+  document.getElementById("status").textContent=
+    "QUANTUM BRANCH RECORDED";
+  setTimeout(()=>{
+    location.href="/scenes/spark-city.html";
+  },900);
+}
+</script>
+</body>
+</html>

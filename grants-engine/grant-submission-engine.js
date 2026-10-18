@@ -14,7 +14,7 @@ function save(data){
 function createSubmission(grant){
 
  const submission={
-   id:"SUB-"+Date.now(),
+   id:"SUB-"+Date.now()+"-"+Math.random().toString(36).slice(2,8),
    grant:grant.name,
    amount:grant.amount,
    company:"House of Jazzu",

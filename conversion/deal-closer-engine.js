@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const DB =
-"data/deals.json";
+"data/revenue/deals.json";
 
 
 function load(){

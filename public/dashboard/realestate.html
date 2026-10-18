@@ -1,85 +1,355 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Nia Real Estate Command Center</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nia | Real Estate Investment Command</title>
 <style>
-body{font-family:Arial;background:#111;color:white;padding:20px}
-.card{background:#222;padding:20px;margin:10px 0;border-radius:10px}
-h1{color:#00ff99}
+:root{color-scheme:dark;--bg:#0b1110;--panel:#131d19;--line:#293a32;--gold:#d8b56a;--green:#55d6a0;--muted:#9aada3;--red:#ff8888}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#eef5ef;font:15px/1.5 system-ui,Arial,sans-serif}
+header{padding:24px clamp(16px,4vw,42px);border-bottom:1px solid var(--line);background:#101814}
+h1{font-size:clamp(22px,4vw,32px);margin:0;color:var(--gold)}
+.subtitle{color:var(--muted);margin-top:5px}
+main{max-width:1250px;margin:auto;padding:24px 16px 50px}
+.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}
+button,select,input{font:inherit;border-radius:8px;padding:11px 12px;border:1px solid var(--line);background:#0c1410;color:#eef5ef;width:100%}
+button{width:auto;cursor:pointer;background:#234d3a;border-color:#39785a;font-weight:650}
+button:hover{filter:brightness(1.15)}
+button.secondary{background:#19251f;border-color:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.panel,.metric,.deal{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px}
+.metric small,.muted{color:var(--muted)}
+.metric strong{display:block;font-size:25px;margin-top:7px;overflow-wrap:anywhere}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+.section-title{margin:0 0 14px;font-size:19px}
+.deal{margin-bottom:12px}
+.deal-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.deal h3{margin:0 0 5px;font-size:17px;overflow-wrap:anywhere}
+.badge{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:20px;font-size:12px;white-space:nowrap;color:var(--gold)}
+.meta{color:var(--muted);font-size:13px}
+.deal-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.deal-stats div{background:#0c1410;padding:10px;border-radius:8px;min-width:0}
+.deal-stats small{display:block;color:var(--muted);font-size:12px}
+.deal-stats strong{display:block;margin-top:3px;overflow-wrap:anywhere}
+form{display:grid;gap:12px}
+label{display:grid;gap:5px;color:#dce8df;font-size:13px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:13px;color:var(--muted)}
+.status{padding:11px;border-radius:8px;background:#0c1410;margin:12px 0;overflow-wrap:anywhere}
+.error{color:var(--red)}.good{color:var(--green)}
+.empty{text-align:center;padding:32px 14px;color:var(--muted)}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.deal-stats{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<header>
+  <h1>🏰 Nia Real Estate Investment Command</h1>
+  <div class="subtitle">House of Jazzu · Private owner dashboard · Investment deals, not brokerage prospects</div>
+</header>
+<main>
+  <div class="toolbar">
+    <div id="connection" class="muted">Checking owner session…</div>
+    <button class="secondary" id="refreshBtn" type="button">↻ Refresh deals</button>
+  </div>
 
-<h1>🏰 Nia Real Estate Command Center</h1>
+  <div class="grid">
+    <div class="metric"><small>Total deals</small><strong id="total">—</strong></div>
+    <div class="metric"><small>Strong buy scores</small><strong id="strong">—</strong></div>
+    <div class="metric"><small>Needs review</small><strong id="review">—</strong></div>
+    <div class="metric"><small>Unverified records</small><strong id="unverified">—</strong></div>
+  </div>
 
-<div class="card">
-<h2>Add Real Estate Record</h2>
-<form id="addForm">
-<input id="name" placeholder="Property / Brokerage Name" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
-<input id="address" placeholder="Address" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
-<input id="type" placeholder="Type (Property, Brokerage, Lead)" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
-<input id="value" type="number" placeholder="Estimated Value" style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
-<button style="padding:12px 20px;margin-top:8px;cursor:pointer">ADD TO NIA</button>
-</form>
-<div id="formStatus"></div>
-</div>
+  <div class="layout">
+    <section class="panel">
+      <h2 class="section-title">Investment pipeline</h2>
+      <div class="two" style="margin-bottom:14px">
+        <label>Verdict filter
+          <select id="verdictFilter">
+            <option value="">All verdicts</option>
+            <option>STRONG_BUY</option><option>BUY</option><option>REVIEW</option>
+            <option>WATCH</option><option>PASS</option>
+          </select>
+        </label>
+        <label>Verification filter
+          <select id="verificationFilter">
+            <option value="">All records</option>
+            <option value="unverified">Unverified only</option>
+            <option value="verified">Verified only</option>
+          </select>
+        </label>
+      </div>
+      <div id="deals"><div class="empty">Loading investment deals…</div></div>
+    </section>
 
-<div class="card" id="data">Loading Nia...</div>
+    <aside class="panel">
+      <h2 class="section-title">Register an investment deal</h2>
+      <p class="note">Enter known figures only. Leave ARV blank if it has not been independently verified. New entries are marked unverified.</p>
+      <form id="dealForm">
+        <label>Property address
+          <input name="address" required maxlength="300" placeholder="Street, city, state, ZIP">
+        </label>
+        <div class="two">
+          <label>Purchase price ($)
+            <input name="price" type="number" min="1" step="1" required>
+          </label>
+          <label>Expected monthly rent ($)
+            <input name="rent" type="number" min="0" step="1" required>
+          </label>
+        </div>
+        <div class="two">
+          <label>Estimated repairs ($)
+            <input name="repairs" type="number" min="0" step="1" value="0" required>
+          </label>
+          <label>ARV ($), if known
+            <input name="arv" type="number" min="1" step="1" placeholder="Optional">
+          </label>
+        </div>
+        <div class="two">
+          <label>Strategy
+            <select name="strategy"><option value="rental">Rental</option><option value="flip">Flip</option></select>
+          </label>
+          <label>Property type
+            <select name="type">
+              <option value="single_family">Single family</option>
+              <option value="duplex">Duplex</option>
+              <option value="triplex">Triplex</option>
+              <option value="multifamily">Multifamily</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+        </div>
+        <h3>Estimate assumptions</h3>
+        <p class="note">Defaults are estimates, not verified lender terms or actual operating expenses.</p>
+        <div class="two">
+          <label>Operating expenses (% of rent)
+            <input name="operating_expense_pct" type="number" min="0" max="90" step="1" value="50" required>
+          </label>
+          <label>Down payment (%)
+            <input name="down_payment_pct" type="number" min="0" max="100" step="1" value="25" required>
+          </label>
+        </div>
+        <div class="two">
+          <label>Annual interest rate (%)
+            <input name="interest_rate_pct" type="number" min="0" max="30" step="0.125" value="8" required>
+          </label>
+          <label>Loan term (years)
+            <input name="loan_term_years" type="number" min="1" max="40" step="1" value="30" required>
+          </label>
+        </div>
+        <label>Market / city
+          <input name="market" maxlength="120" placeholder="e.g. Norfolk, VA">
+        </label>
+        <label>Listing source or agent email (optional)
+          <input name="agent_email" type="email" maxlength="254" placeholder="For reference only">
+        </label>
+        <button type="submit">Score and save deal</button>
+      </form>
+      <div id="formStatus" class="status" role="status">Owner sign-in is required to load or save deals.</div>
+      <p class="note">Scores are screening estimates, not appraisals or financial advice. Verify listing details, rents, costs, financing, and ARV before making decisions. No inquiries are sent by this form.</p>
+    </aside>
+  </div>
+</main>
 
 <script>
-async function load(){
+'use strict';
+let ownerToken = '';
+let ownerSessionReady = null;
+let ownerPromptDismissed = false;
+let allDeals = [];
 
-const res=await fetch('/api/realestate/list');
-if(!res.ok) throw new Error('Real Estate API HTTP '+res.status);
-const data=await res.json();
-const list=Array.isArray(data)?data:(data.properties||data.brokerages||data.items||data.data||[]);
-document.getElementById('data').innerHTML=`
-<h2>Status: ONLINE</h2>
-<h3>Real Estate Network</h3>
-<p>Records: ${list.length}</p>
-${list.length ? list.map((x,i)=>`
-<div class="card">
-<strong>${String(x.name||x.company||x.address||x.id||'Record '+(i+1)).replace(/</g,'&lt;')}</strong>
-<p>📍 ${String(x.address||x.city||'Location not provided').replace(/</g,'&lt;')}</p>
-<p>🏷️ ${String(x.type||x.service||'Property').replace(/</g,'&lt;')}</p>
-<p>💰 $${Number(x.value||0).toLocaleString()}</p>
-<p>Status: ${String(x.status||'Active').replace(/</g,'&lt;')}</p>
-</div>`).join('') : '<p>No real estate records currently registered.</p>'}
-<h3>Available Operations</h3>
-<p>✓ Brokerage / property records can be added through the Nia Real Estate API.</p>
-<p>✓ Live records are loaded from /api/realestate/list.</p>
-`;
+const $ = id => document.getElementById(id);
+const money = n => Number.isFinite(Number(n)) ? Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}) : '—';
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
+async function ensureOwnerSession(){
+  if(ownerSessionReady) return ownerSessionReady;
+  ownerSessionReady = (async()=>{
+    const check = await fetch('/api/owner/session',{credentials:'same-origin'});
+    if(check.ok && (await check.json()).authenticated) return;
+    if(ownerPromptDismissed) throw new Error('Owner sign-in required. Reload this page to try again.');
+    ownerToken = window.prompt('Enter your Nia owner token to start a private session:') || '';
+    if(!ownerToken){
+      ownerPromptDismissed = true;
+      throw new Error('Sign-in cancelled.');
+    }
+    let login;
+    try {
+      login = await fetch('/api/owner/session',{
+        method:'POST',credentials:'same-origin',
+        headers:{'x-nia-owner-token':ownerToken}
+      });
+    } finally {
+      ownerToken = '';
+    }
+    const result = await login.json().catch(()=>({}));
+    if(!login.ok || result.authenticated !== true) {
+      ownerPromptDismissed = false;
+      throw new Error(result.error || 'Owner sign-in failed. Please try again.');
+    }
+  })();
+  try {
+    await ownerSessionReady;
+  } catch(err) {
+    ownerSessionReady = null;
+    throw err;
+  }
 }
 
-load();
-</script>
+async function api(url, options={}){
+  if(url.startsWith('/api/owner/') && url !== '/api/owner/session') await ensureOwnerSession();
+  const headers = new Headers(options.headers || {});
+  if(url.startsWith('/api/owner/') && ownerToken) headers.set('x-nia-owner-token',ownerToken);
+  const response = await fetch(url,{...options,headers,credentials:'same-origin'});
+  if(response.status===401 && url.startsWith('/api/owner/')){
+    ownerSessionReady=null;
+    ownerPromptDismissed=false;
+    throw new Error('Owner session expired. Refresh and sign in again.');
+  }
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok) throw new Error(data.error || data.message || ('HTTP '+response.status));
+  return data;
+}
 
-<script>
-document.getElementById('addForm').addEventListener('submit',async e=>{
- e.preventDefault();
- const status=document.getElementById('formStatus');
- status.textContent='NIA is registering record...';
- try{
+function verified(deal){
+  return deal.verificationStatus === 'VERIFIED' || deal.dataClassification === 'VERIFIED';
+}
+
+function renderDeals(){
+  const verdict = $('verdictFilter').value;
+  const vf = $('verificationFilter').value;
+  const visible = allDeals.filter(d =>
+    (!verdict || d.verdict===verdict) &&
+    (!vf || (vf==='verified' ? verified(d) : !verified(d)))
+  );
+  $('total').textContent = allDeals.length;
+  $('strong').textContent = allDeals.filter(d=>verified(d) && d.verdict==='STRONG_BUY').length;
+  $('review').textContent = allDeals.filter(d=>verified(d) && d.verdict==='REVIEW').length;
+  $('unverified').textContent = allDeals.filter(d=>!verified(d)).length;
+
+  if(!visible.length){
+    $('deals').innerHTML='<div class="empty">No deals match these filters. Add a deal or change the filters.</div>';
+    return;
+  }
+
+  $('deals').innerHTML=visible.map(d=>{
+    const metrics=d.metrics || {};
+    const address=esc(d.address || d.market || 'Address not provided');
+    const verification = verified(d) ? 'VERIFIED' : (d.dataClassification === 'DEMO_UNVERIFIED' ? 'DEMO DATA · UNVERIFIED' : 'UNVERIFIED');
+    const cash=metrics.monthly_cash_flow;
+    const assumptions=metrics.assumptions || {};
+    const pct=value => Number.isFinite(Number(value)) ? `${(Number(value)*100).toFixed(0)}%` : 'unknown';
+    const financingNote = assumptions.financing_verified === true && assumptions.operating_expenses_verified === true
+      ? 'Financing and operating expenses marked verified.'
+      : `Estimated only: expenses ${pct(assumptions.operating_expense_ratio ?? 0.5)} of rent; down payment ${pct(assumptions.down_payment_ratio ?? 0.25)}; interest ${pct(assumptions.annual_interest_rate ?? 0.08)}; term ${Number(assumptions.loan_term_years ?? 30)} years. Financing and expenses are not verified.`;
+    return `<article class="deal">
+      <div class="deal-head">
+        <div><h3>${address}</h3>
+          <div class="meta">${esc(d.type || 'Property')} · ${esc(d.strategy || 'Strategy not specified')} · ${esc(d.market || 'Market not specified')}</div>
+        </div>
+        <span class="badge">${esc(d.verdict || 'NOT SCORED')}</span>
+      </div>
+      <p class="meta">Score: <strong>${Number.isFinite(Number(d.score))?esc(d.score):'—'}/100</strong>
+        · Record: ${esc(d.status || 'NEW')} · ${verification}</p>
+      <div class="deal-stats">
+        <div><small>Purchase price</small><strong>${money(d.price)}</strong></div>
+        <div><small>Monthly rent</small><strong>${money(d.rent)}</strong></div>
+        <div><small>Estimated monthly cash flow</small><strong class="${Number(cash)<0?'error':'good'}">${cash==null?'—':money(cash)}</strong></div>
+        <div><small>Repairs estimate</small><strong>${money(d.repairs || 0)}</strong></div>
+        <div><small>After-repair value</small><strong>${metrics.arv==null?'Not provided':money(metrics.arv)}</strong></div>
+        <div><small>Cap rate estimate</small><strong>${metrics.cap_rate==null?'—':(Number(metrics.cap_rate)*100).toFixed(2)+'%'}</strong></div>
+      </div>
+      <p class="note">Verification: ${esc(d.verificationStatus || 'UNVERIFIED')}. ${esc(financingNote)} A score is a screening estimate, not a purchase recommendation.</p>
+    </article>`;
+  }).join('');
+}
+
+async function loadDeals(){
+  $('connection').textContent='Authenticating and loading protected investment records…';
+  $('deals').innerHTML='<div class="empty">Loading…</div>';
+  try{
+    const data=await api('/api/owner/realestate/list');
+    allDeals=Array.isArray(data.deals)?data.deals:[];
+    $('connection').innerHTML='<span class="good">● Owner session active</span> · Investment API connected';
+    renderDeals();
+  }catch(err){
+    $('connection').innerHTML='<span class="error">Connection needs attention</span>';
+    $('deals').innerHTML='<div class="empty error">'+esc(err.message)+'</div>';
+    $('formStatus').textContent=err.message;
+    $('formStatus').className='status error';
+  }
+}
+
+$('dealForm').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const form=event.currentTarget;
+  const fd=new FormData(form);
   const payload={
-   name:document.getElementById('name').value.trim(),
-   address:document.getElementById('address').value.trim(),
-   type:document.getElementById('type').value.trim()||'Property',
-   value:Number(document.getElementById('value').value)||0
+    address:String(fd.get('address')||'').trim(),
+    price:Number(fd.get('price')),
+    rent:Number(fd.get('rent')),
+    repairs:Number(fd.get('repairs')||0),
+    strategy:String(fd.get('strategy')),
+    type:String(fd.get('type')),
+    market:String(fd.get('market')||'').trim(),
+    verificationStatus:'UNVERIFIED',
+    dataClassification:'UNVERIFIED_USER_SUBMITTED',
+    assumptions:{
+      operating_expense_ratio:Number(fd.get('operating_expense_pct'))/100,
+      down_payment_ratio:Number(fd.get('down_payment_pct'))/100,
+      annual_interest_rate:Number(fd.get('interest_rate_pct'))/100,
+      loan_term_years:Number(fd.get('loan_term_years'))
+    }
   };
-  const r=await fetch('/api/realestate/add',{
-   method:'POST',
-   headers:{'Content-Type':'application/json'},
-   body:JSON.stringify(payload)
-  });
-  const j=await r.json();
-  if(!r.ok) throw new Error(j.error||'HTTP '+r.status);
-  status.textContent='✓ Record registered with NIA.';
-  e.target.reset();
-  load();
- }catch(err){status.textContent='✗ '+err.message}
+  const arv=String(fd.get('arv')||'').trim();
+  if(arv!=='') payload.arv=Number(arv);
+  const agentEmail=String(fd.get('agent_email')||'').trim();
+  if(agentEmail) payload.agent_email=agentEmail;
+
+  if(!payload.address || !Number.isFinite(payload.price) || payload.price<=0 ||
+     !Number.isFinite(payload.rent) || payload.rent<0 ||
+     !Number.isFinite(payload.repairs) || payload.repairs<0 ||
+     !Number.isFinite(payload.assumptions.operating_expense_ratio) ||
+     payload.assumptions.operating_expense_ratio<0 || payload.assumptions.operating_expense_ratio>0.90 ||
+     !Number.isFinite(payload.assumptions.down_payment_ratio) ||
+     payload.assumptions.down_payment_ratio<0 || payload.assumptions.down_payment_ratio>1 ||
+     !Number.isFinite(payload.assumptions.annual_interest_rate) ||
+     payload.assumptions.annual_interest_rate<0 || payload.assumptions.annual_interest_rate>0.30 ||
+     !Number.isInteger(payload.assumptions.loan_term_years) ||
+     payload.assumptions.loan_term_years<1 || payload.assumptions.loan_term_years>40 ||
+     (payload.arv!==undefined && (!Number.isFinite(payload.arv)||payload.arv<=0))){
+    $('formStatus').textContent='Check the address and numeric fields.';
+    $('formStatus').className='status error';
+    return;
+  }
+
+  const button=form.querySelector('button[type="submit"]');
+  button.disabled=true;
+  $('formStatus').textContent='Scoring and saving the deal…';
+  $('formStatus').className='status';
+  try{
+    const result=await api('/api/owner/realestate/add',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    $('formStatus').textContent='Deal saved. It remains unverified until you independently confirm its details.';
+    $('formStatus').className='status good';
+    form.reset();
+    await loadDeals();
+  }catch(err){
+    $('formStatus').textContent='Could not save deal: '+err.message;
+    $('formStatus').className='status error';
+  }finally{
+    button.disabled=false;
+  }
 });
+
+$('refreshBtn').addEventListener('click',loadDeals);
+$('verdictFilter').addEventListener('change',renderDeals);
+$('verificationFilter').addEventListener('change',renderDeals);
+loadDeals();
 </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ function hasRealKey(k) {
 }
 
 const PROVIDERS = {
-  gemini: false,
+  gemini: true,
   openrouter: hasRealKey(process.env.OPENROUTER_API_KEY) && process.env.NIA_ENABLE_OPENROUTER !== "false",
   huggingface: false,
   openai: false,

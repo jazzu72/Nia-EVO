@@ -1,0 +1,14 @@
+{
+  "adapter": "flutter",
+  "version": "0.1.0",
+  "status": "SCAFFOLDED",
+  "supportedSchema": {
+    "minimum": "1.0.0",
+    "maximum": "1.x"
+  },
+  "capabilities": [
+    "2d",
+    "mobile",
+    "dashboard"
+  ]
+}

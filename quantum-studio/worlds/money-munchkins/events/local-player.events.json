@@ -1,0 +1,139 @@
+[
+  {
+    "eventId": "evt_1791129850047_1",
+    "timestamp": "2026-10-04T16:04:10.047Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791895601216_2",
+    "timestamp": "2026-10-13T12:46:41.216Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791895601223_3",
+    "timestamp": "2026-10-13T12:46:41.223Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  },
+  {
+    "eventId": "evt_1791895852735_4",
+    "timestamp": "2026-10-13T12:50:52.735Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791895852743_5",
+    "timestamp": "2026-10-13T12:50:52.743Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  },
+  {
+    "eventId": "evt_1791895853175_6",
+    "timestamp": "2026-10-13T12:50:53.175Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791895853176_7",
+    "timestamp": "2026-10-13T12:50:53.176Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  },
+  {
+    "eventId": "evt_1791895992718_8",
+    "timestamp": "2026-10-13T12:53:12.718Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791895992720_9",
+    "timestamp": "2026-10-13T12:53:12.720Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  },
+  {
+    "eventId": "evt_1791906078801_10",
+    "timestamp": "2026-10-13T15:41:18.801Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791906078806_11",
+    "timestamp": "2026-10-13T15:41:18.806Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  },
+  {
+    "eventId": "evt_1791906215265_12",
+    "timestamp": "2026-10-13T15:43:35.265Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791906215269_13",
+    "timestamp": "2026-10-13T15:43:35.269Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "playerId": "session-conformance",
+  "schemaVersion": "2.0.0",
+  "savedAt": "2026-10-04T15:58:14.902Z",
+  "state": {
+    "playerResources": {
+      "spark_coins": 40
+    },
+    "skills": {
+      "money_basics": 0,
+      "needs_vs_wants": 0,
+      "saving": 1,
+      "budgeting": 0,
+      "planning": 0
+    },
+    "relationships": {
+      "char_nova_001": 0
+    },
+    "completedMissions": [],
+    "unlockedLocations": [
+      "loc_market_district",
+      "loc_savings_station"
+    ],
+    "decisions": [
+      {
+        "nodeId": "node_budget_choice",
+        "optionId": "opt_save"
+      }
+    ],
+    "currentPath": [
+      "MMQ-003",
+      "node_budget_choice",
+      "node_savings_result"
+    ],
+    "schemaVersion": "2.0.0",
+    "migrationHistory": [
+      {
+        "from": "1.0.0",
+        "to": "2.0.0",
+        "migration": "STATE_V1_TO_V2",
+        "deterministic": true
+      }
+    ]
+  }
+}

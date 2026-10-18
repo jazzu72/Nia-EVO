@@ -1,4 +1,5 @@
 const express=require("express");
+const { requireOwnerAuth } = require("../owner-auth-middleware");
 const router=express.Router();
 
 const submission=require("../grants-engine/grant-submission-engine");
@@ -17,13 +18,13 @@ router.get("/grant-status",(req,res)=>{
    priority:"CRITICAL"
   },
   submissions,
-  execution:bridge.executeFundingDecision(),
+  execution:{status:"NOT_RUN",message:"Status reads do not trigger task creation."},
   generated:new Date().toISOString()
  });
 
 });
 
-router.post("/grant-create",(req,res)=>{
+router.post("/grant-create",requireOwnerAuth,(req,res)=>{
 
  const app=submission.createSubmission({
   name:"Virginia Innovation Partnership Corporation",

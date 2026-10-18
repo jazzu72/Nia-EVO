@@ -1,0 +1,18 @@
+{
+  "worldId": "money-munchkins",
+  "name": "Money Munchkins: Quantum Odyssey",
+  "schemaVersion": "2.0.0",
+  "worldVersion": "4.2.0",
+  "contentVersion": "7.1.5",
+  "canonicalModel": "QUANTUM_WORLD_MODEL",
+  "platforms": [
+    "mobile-game",
+    "web-experience",
+    "classroom-simulator",
+    "board-game-companion",
+    "ai-mentor",
+    "animated-series-data-hub",
+    "xr-experience",
+    "future-platforms"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "QS-1791124912815",
+  "name": "Money Munchkins",
+  "type": "GAME",
+  "objective": "Build a premium financial-learning universe for children ages 8-11.",
+  "targetAudience": "Children ages 8-11 with parent/guardian participation",
+  "technology": "ADAPTER_AUTO_SELECT",
+  "qualityBar": "DISNEY_IBM_PREMIUM",
+  "status": "SPECIFICATION_READY",
+  "owner": "House of Jazzu",
+  "executive": "Nia",
+  "studio": "Quantum Studio",
+  "governance": {
+    "autonomousGeneration": true,
+    "autonomousTesting": true,
+    "externalExecution": false,
+    "productionRelease": "OWNER_AUTHORIZATION_REQUIRED"
+  },
+  "createdAt": "2026-10-04T14:41:52.815Z"
+}

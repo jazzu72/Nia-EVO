@@ -8,9 +8,51 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 
-const { requireOwnerAuth } = require("./owner-auth-middleware");
+const {
+  requireOwnerAuth, timingSafeEqual, getPresentedToken,
+  validateOwnerSession, issueOwnerSession, revokeOwnerSession
+} = require("./owner-auth-middleware");
 
 const app = express();
+
+app.get("/api/owner/session", (req, res) => {
+  try {
+    return res.json({ ok: true, authenticated: validateOwnerSession(req) });
+  } catch (err) {
+    console.error("[OWNER_SESSION] Read failed:", err.message);
+    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+  }
+});
+
+app.post("/api/owner/session", (req, res) => {
+  const expected = process.env.NIA_OWNER_AUTH_TOKEN;
+  const presented = getPresentedToken(req);
+  if (!expected || !presented || !timingSafeEqual(presented, expected)) {
+    return res.status(401).json({ ok: false, error: "OWNER_AUTH_REQUIRED" });
+  }
+  try {
+    issueOwnerSession(req, res);
+    return res.json({ ok: true, authenticated: true });
+  } catch (err) {
+    console.error("[OWNER_SESSION] Create failed:", err.message);
+    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+  }
+});
+
+app.delete("/api/owner/session", (req, res) => {
+  try {
+    revokeOwnerSession(req, res);
+    return res.json({ ok: true, authenticated: false });
+  } catch (err) {
+    console.error("[OWNER_SESSION] Revoke failed:", err.message);
+    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+  }
+});
+
+app.use("/api/owner", (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
 const PORT = process.env.PORT || 3000;
 
 
@@ -561,7 +603,7 @@ console.log("✅ /api/aios/tools loaded");
 app.get("/executive-v2.html", (req, res) => res.sendFile(path.join(__dirname, "dashboard/public/executive-v2.html")));
 app.use(express.static(path.join(__dirname, "public"), { index: false }));
 app.get("/", (_req, res) => res.redirect("/dashboard/index.html"));
-app.use("/api/owner", requireOwnerAuth);
+
 app.use("/api/owner/chat", require("./nia-chat-api"));
 
 require('./aios/tools/register-core-tools');
@@ -572,6 +614,11 @@ console.log("🛡️ /api/aios/approvals loaded");
 // Legacy decision-gate route removed: module is not present in the recovery tree.
 // Decision governance remains provided by decision-engine + action-gate + execution-governor + approval-api.
 app.use("/api/funding", require("./funding-engine/capital-radar-api"));
+// OWNER_AUTH_GUARD: acquisition
+app.use("/api/acquisition", (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
 app.use("/api/acquisition", require("./acquisition/acquisition-api"));
 console.log("✅ /api/funding capital radar loaded");
 
@@ -604,14 +651,15 @@ loadRoute("./ceo/grant-autopilot-api", "/api/ceo/autopilot");
 loadRoute("./ceo/decision-api", "/api/ceo/decision");
 loadRoute("./ceo/ceo-api", "/api/ceo");
 
-// Real Estate & Sales
+// Real Estate & Sales — brokerage lead creation writes data and creates opportunities.
+// Keep the legacy alias owner-protected like the canonical owner real-estate API.
+app.use("/api/realestate", requireOwnerAuth);
 loadRoute("./hunter/realestate/realestate-api", "/api/realestate");
 loadRoute("./sales/sales-api", "/api/sales");
 loadRoute("./sales/sales-dashboard-api", "/api/sales-dashboard");
 // nia-sales endpoints consolidated into ./sales/sales-api
 
 // Acquisition & Conversion
-loadRoute("./acquisition/acquisition-api", "/api/acquisition");
 loadRoute("./acquisition/acquisition-leads-api", "/api/acquisition/leads");
 loadRoute("./conversion/deal-closer-api", "/api/conversion");
 
@@ -647,6 +695,11 @@ loadRoute("./outreach/outreach-execution-api", "/api/outreach/execution");
 loadRoute("./cashflow/cashflow-api", "/api/cashflow");
 
 // Revenue & Operations
+// OWNER_AUTH_GUARD: revenue
+app.use("/api/revenue", (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
 loadRoute("./revenue/revenue-api", "/api/revenue");
 loadRoute("./revenue/prospects/prospect-api", "/api/prospects");
 loadRoute("./revenue/automation/automation-api", "/api/revenue/automation");
@@ -663,6 +716,7 @@ loadRoute("./router/opportunity-router-api", "/api/router");
 loadRoute("./memory/memory-api", "/api/memory");
 loadRoute("./dashboard/dashboard-api", "/api/dashboard");
 loadRoute("./proposals/proposal-api", "/api/proposals");
+loadRoute("./nia-dashboard/routes/dashboard", "/nia");
 
 // ============================================================
 // HEALTH CHECK ENDPOINTS
@@ -1400,9 +1454,18 @@ app.use("/api/owner/contacts", requireOwnerAuth);
 // ============================================================
 
 // Capital engine mount
+// OWNER_AUTH_GUARD: capital-sensitive-routes
+app.use("/api/capital/hunt", (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
+app.use("/api/capital/summary", (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
 app.use("/api/capital", require("./aios/routes/capital-api"));
 // Autonomy gate — T1/T2 unlocked, T4 permanently blocked
-app.use("/api/autonomy", require("./aios/routes/autonomy-api"));
+app.use("/api/autonomy", requireOwnerAuth, require("./aios/routes/autonomy-api"));
 app.use("/api/quantum/dashboard", require("./aios/routes/quantum-dashboard-api"));
 app.use("/api/nia", requireOwnerAuth);
 app.use("/api/nia", require("./aios/routes/nia-chat"));

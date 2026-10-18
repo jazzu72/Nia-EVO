@@ -56,6 +56,33 @@ async function chat({
     throw new Error('NIA_AI_MODEL is not configured');
   }
 
+  if (provider === 'gemini') {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) throw new Error('GEMINI_API_KEY is not configured');
+
+    const result = await requestJSON(
+      'generativelanguage.googleapis.com',
+      `/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+      { 'X-goog-api-key': apiKey },
+      {
+        systemInstruction: { parts: [{ text: system || 'You are Nia, the private executive AI for House of Jazzu.' }] },
+        contents: [{ role: 'user', parts: [{ text: user || '' }] }]
+      }
+    );
+
+    const text = (result.candidates?.[0]?.content?.parts || [])
+      .map(part => part.text || '')
+      .join('');
+
+    if (!text) throw new Error('Gemini returned no response text');
+
+    return {
+      provider: 'gemini',
+      model: result.modelVersion || model,
+      choices: [{ message: { role: 'assistant', content: text } }]
+    };
+  }
+
   if (provider === 'hermes') {
     const { spawn } = require('child_process');
 

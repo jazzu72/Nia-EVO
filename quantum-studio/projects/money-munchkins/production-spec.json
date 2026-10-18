@@ -1,0 +1,74 @@
+{
+  "project": "Money Munchkins: Quantum Odyssey",
+  "status": "PRODUCTION_READY",
+  "sourceOfTruth": "quantum-studio/worlds/money-munchkins/world.json",
+  "architecture": "ONE_UNIVERSE_MANY_EXPRESSIONS",
+  "targetAudience": "Children ages 8-11 with parent/guardian participation",
+  "experience": {
+    "child": [
+      "welcome",
+      "world-map",
+      "mission",
+      "decision",
+      "reward",
+      "progress"
+    ],
+    "parent": [
+      "parent-gate",
+      "child-profile",
+      "progress-dashboard",
+      "learning-insights"
+    ]
+  },
+  "world": {
+    "locations": [
+      "loc_market_district",
+      "loc_savings_station",
+      "loc_builders_workshop",
+      "loc_quantum_lab"
+    ],
+    "missions": [
+      "MMQ-001",
+      "MMQ-002",
+      "MMQ-003"
+    ]
+  },
+  "runtime": {
+    "state": "CANONICAL_WORLD_STATE",
+    "persistence": true,
+    "eventJournal": true,
+    "deterministic": true,
+    "replayable": true
+  },
+  "adapters": [
+    {
+      "id": "adapter_web",
+      "platform": "web",
+      "status": "READY"
+    },
+    {
+      "id": "adapter_flutter",
+      "platform": "mobile",
+      "status": "READY"
+    },
+    {
+      "id": "adapter_unity",
+      "platform": "3D/XR",
+      "status": "READY"
+    }
+  ],
+  "qualityBar": {
+    "visual": "PREMIUM",
+    "experience": "CINEMATIC_EDUCATIONAL",
+    "accessibility": true,
+    "reducedMotion": true,
+    "noDarkPatterns": true,
+    "noAds": true,
+    "noPublicChat": true,
+    "noRealMoneyMechanics": true
+  },
+  "release": {
+    "externalExecution": false,
+    "productionRelease": "OWNER_AUTHORIZATION_REQUIRED"
+  }
+}

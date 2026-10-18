@@ -98,17 +98,31 @@ router.post('/create-checkout-session', async (req, res) => {
 });
 
 router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+  if (!stripe) return res.status(503).send('Stripe is not configured');
+
   const sig = req.headers['stripe-signature'];
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  if (!webhookSecret) {
-    return res.status(400).send('Webhook secret not configured');
-  }
+  if (!webhookSecret) return res.status(503).send('Webhook secret not configured');
+
   try {
     const event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
     console.log(`Webhook received: ${event.type}`);
-    if (event.type === 'checkout.session.completed') {
-      entitlements.upsertFromCheckout(event.data.object);
-      console.log('[COMMERCIAL] Customer entitlement activated');
+
+    if (
+      event.type === 'checkout.session.completed' ||
+      event.type === 'checkout.session.async_payment_succeeded'
+    ) {
+      const session = event.data.object;
+      const paymentReady =
+        session.status === 'complete' &&
+        ['paid', 'no_payment_required'].includes(session.payment_status);
+
+      if (session.mode === 'subscription' && paymentReady) {
+        entitlements.upsertFromCheckout(session);
+        console.log('[COMMERCIAL] Eligible subscription checkout synchronized');
+      } else {
+        console.log('[COMMERCIAL] Entitlement not activated: checkout not eligible');
+      }
     } else if (
       event.type === 'customer.subscription.created' ||
       event.type === 'customer.subscription.updated' ||
@@ -117,10 +131,11 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
       entitlements.updateSubscription(event.data.object);
       console.log('[COMMERCIAL] Subscription entitlement synchronized');
     }
-    res.json({ received: true });
+
+    return res.json({ received: true });
   } catch (err) {
     console.error('Webhook error:', err.message);
-    res.status(400).send(`Webhook Error: ${err.message}`);
+    return res.status(400).send('Webhook verification or processing failed');
   }
 });
 

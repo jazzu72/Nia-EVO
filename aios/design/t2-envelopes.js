@@ -119,6 +119,9 @@ function checkEnvelope(action, amount, context) {
     if (e.status !== "ACTIVE") return false;
     if (new Date(e.expires_at).getTime() < now) return false;
     if (e.actions.indexOf(action) === -1) return false;
+    if (e.criteria && e.criteria.to &&
+        String(e.criteria.to).trim().toLowerCase() !==
+        String(context.to || "").trim().toLowerCase()) return false;
     if (amount > 0 && amount > Number(e.max_per_transaction || 0)) return false;
     if (e.criteria && e.criteria.lane && context.lane && e.criteria.lane !== context.lane) return false;
     if (e.criteria && typeof e.criteria.min_confidence === "number" && typeof context.confidence === "number") {

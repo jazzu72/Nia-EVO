@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": "1.0.0",
+  "worldVersion": "1.0.0",
+  "worldId": "money-munchkins",
+  "name": "Money Munchkins: Quantum Odyssey",
+  "studio": "Quantum Branch Studio",
+  "owner": "House of Jazzu",
+  "status": "DEVELOPMENT",
+  "defaultLocale": "en-US",
+  "createdAt": "2026-10-04T00:00:00Z",
+  "updatedAt": "2026-10-04T00:00:00Z",
+  "contentVersions": {
+    "characterVersion": "1.0.0",
+    "assetVersion": "1.0.0",
+    "missionVersion": "1.0.0",
+    "dialogueVersion": "1.0.0"
+  }
+}

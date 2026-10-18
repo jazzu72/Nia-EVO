@@ -3,76 +3,51 @@ const fs = require("fs");
 const path = require("path");
 
 const router = express.Router();
+const ROOT = path.join(__dirname, "..");
 
-
-function readJSON(file){
-
-    try {
-
-        return JSON.parse(
-            fs.readFileSync(file)
-        );
-
-    } catch {
-
-        return [];
-
-    }
-
+function readJSON(file, fallback = []) {
+try {
+return JSON.parse(fs.readFileSync(file, "utf8"));
+} catch {
+return fallback;
+}
 }
 
+function countRecords(value) {
+return Array.isArray(value) ? value.length : 0;
+}
 
-// Executive overview
+router.get("/overview", (req, res) => {
+const opportunities = readJSON(path.join(ROOT, "data/opportunities.json"));
+const revenue = readJSON(path.join(ROOT, "data/revenue.json"));
+const deals = readJSON(path.join(ROOT, "nia-deal-pipeline.json"));
+const investorPackages = readJSON(path.join(ROOT, "nia-investor-packages.json"));
 
-router.get("/overview",(req,res)=>{
-
-
-const opportunities =
-readJSON(
-path.join(__dirname,"../data/opportunities.json")
+const acquisitionLeads = readJSON(
+path.join(ROOT, "data/revenue/prospects.json")
+);
+const realEstateLeads = readJSON(
+path.join(ROOT, "data/real-estate-leads.json")
+);
+const aiProspects = readJSON(
+path.join(ROOT, "data/ai-prospects.json")
 );
 
-
-const pipeline =
-readJSON(
-path.join(__dirname,"../data/pipeline.json")
-);
-
-
-const revenue =
-readJSON(
-path.join(__dirname,"../data/revenue.json")
-);
-
-
+const validDeals = Array.isArray(deals) ? deals : [];
+const validOpportunities = Array.isArray(opportunities) ? opportunities : [];
 
 res.json({
-
-    system:
-    "Nia Capital OS Online",
-
-
-    opportunities:
-    opportunities.length,
-
-
-    leads:
-    pipeline.leads ?
-    pipeline.leads.length : 0,
-
-
-    deals:
-    revenue.length,
-
-
-    timestamp:
-    new Date().toISOString()
-
+system: "Nia Capital OS Online",
+opportunities: validOpportunities.length +
+validDeals.filter(d => d && typeof d.property === "string" && d.property.trim()).length,
+leads: countRecords(acquisitionLeads),
+realEstateLeadRecords: countRecords(realEstateLeads),
+aiProspectRecords: countRecords(aiProspects),
+dealsInPipeline: validDeals.length,
+investorPackages: countRecords(investorPackages),
+recordedRevenueEntries: countRecords(revenue),
+timestamp: new Date().toISOString()
 });
-
-
 });
-
 
 module.exports = router;
-

@@ -49,14 +49,80 @@
 <div id="submissionList" class="rows"><div class="empty">Loading submissions...</div></div>
 </div>
 </section>
+
+<section class="layout">
+  <div class="card">
+    <div class="cardhead">
+      <div class="cardtitle">OWNER DRAFT REVIEW</div>
+      <div class="badge">PRIVATE</div>
+    </div>
+    <div id="draftList" class="rows">
+      <div class="empty">Owner authentication required to view private drafts.</div>
+    </div>
+  </div>
+</section>
 </main>
 </div>
 
 <script>
-async function json(url,options){
- const r=await fetch(url,options);
- if(!r.ok) throw new Error('HTTP '+r.status);
- return r.json();
+let ownerToken = '';
+let ownerPromptDismissed = false;
+let ownerSessionReady = null;
+
+async function ensureOwnerSession() {
+  if (ownerSessionReady) return ownerSessionReady;
+  ownerSessionReady = (async () => {
+    let check = await fetch('/api/owner/session', { credentials: 'same-origin' });
+    if (check.ok && (await check.json()).authenticated) return;
+    if (ownerPromptDismissed) throw new Error('Owner sign-in required.');
+    ownerToken = window.prompt('Enter Nia owner token to start a 14-day private session:') || '';
+    if (!ownerToken) {
+      ownerPromptDismissed = true;
+      throw new Error('Owner sign-in cancelled.');
+    }
+    const login = await fetch('/api/owner/session', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'x-nia-owner-token': ownerToken }
+    });
+    ownerToken = '';
+    if (!login.ok) throw new Error('Owner token rejected. Reload to try again.');
+  })();
+  try { await ownerSessionReady; }
+  catch (err) { ownerSessionReady = null; throw err; }
+}
+
+async function json(url, options = {}) {
+  if (url.startsWith('/api/owner/') && url !== '/api/owner/session') {
+    await ensureOwnerSession();
+  }
+  const headers = new Headers(options.headers || {});
+  if (url.startsWith('/api/owner/') && ownerToken) {
+    headers.set('x-nia-owner-token', ownerToken);
+  }
+  const r = await fetch(url, {
+    ...options, headers, credentials: 'same-origin'
+  });
+  if (r.status === 401 && url.startsWith('/api/owner/')) {
+    ownerSessionReady = null;
+    ownerPromptDismissed = false;
+    throw new Error('Owner session expired. Reload to sign in again.');
+  }
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+
+async function signOut() {
+  try {
+    await fetch('/api/owner/session', {
+      method: 'DELETE', credentials: 'same-origin'
+    });
+  } finally {
+    ownerSessionReady = null;
+    ownerPromptDismissed = true;
+    const drafts = document.getElementById('drafts');
+    if (drafts) drafts.textContent = 'Signed out. Reload this page to sign in again.';
+  }
 }
 function items(data){
  if(Array.isArray(data)) return data;
@@ -72,22 +138,39 @@ function render(id,list,label){
  }).join('');
 }
 async function load(){
- try{
-  const [g,s,d]=await Promise.all([
-   json('/api/grants/scan'),
-   json('/api/grants/submissions'),
-   json('/api/owner/grant-drafts')
-  ]);
-  const grants=items(g),subs=items(s),drafts=items(d);
-  document.getElementById('opportunities').textContent=grants.length;
-  document.getElementById('submissions').textContent=subs.length;
-  document.getElementById('drafts').textContent=drafts.length;
-  render('opportunityList',grants,'opportunities');
-  render('submissionList',subs,'submissions');
- }catch(e){
-  document.getElementById('opportunityList').innerHTML='<div class="empty">Grant API unavailable: '+e.message+'</div>';
-  document.getElementById('submissionList').innerHTML='<div class="empty">Grant API unavailable.</div>';
- }
+  const opportunityList = document.getElementById('opportunityList');
+  const submissionList = document.getElementById('submissionList');
+  const draftCount = document.getElementById('drafts');
+
+  try {
+    const g = await json('/api/grants/scan');
+    const grants = items(g);
+    document.getElementById('opportunities').textContent = grants.length;
+    render('opportunityList', grants, 'opportunities');
+  } catch (e) {
+    opportunityList.innerHTML = '<div class="empty">Grant API unavailable: ' + e.message + '</div>';
+  }
+
+  try {
+    const sData = await json('/api/grants/submissions');
+    const subs = items(sData);
+    document.getElementById('submissions').textContent = subs.length;
+    render('submissionList', subs, 'submissions');
+  } catch (e) {
+    submissionList.innerHTML = '<div class="empty">Submission API unavailable: ' + e.message + '</div>';
+  }
+
+  try {
+    const dData = await json('/api/owner/grant-drafts');
+    const drafts = items(dData);
+    draftCount.textContent = drafts.length;
+    const draftList = document.getElementById('draftList');
+    if (draftList) render('draftList', drafts, 'drafts');
+    draftCount.title = 'Owner drafts loaded';
+  } catch (e) {
+    draftCount.textContent = '—';
+    draftCount.title = e.message;
+  }
 }
 async function scan(){
  const b=event.target;b.disabled=true;b.textContent='SCANNING...';

@@ -14,7 +14,7 @@ const CONFIG = {
   },
   dataDir: './data',
   grantsFile: './data/grants.json',
-  autoSubmit: true
+  autoSubmit: false
 };
 
 // ============================================================
@@ -125,7 +125,7 @@ async function runAutomation() {
     console.log('⚠️  Grants approaching deadline (within 7 days):');
     for (const g of approaching) {
       console.log(`   - ${g.name} (deadline: ${g.deadline})`);
-      await updateStatus(g.id, 'SUBMITTED');
+      console.log('     REMINDER ONLY: submission status unchanged; verify portal receipt after owner submits.');
     }
   } else {
     console.log('✅ No grants approaching deadline');
@@ -136,7 +136,7 @@ async function runAutomation() {
 
 function generateReport() {
   const grants = loadGrants();
-  const submitted = grants.filter(g => g.status === 'SUBMITTED');
+  const submitted = grants.filter(g => g.status === 'SUBMITTED' && g.submissionEvidence && g.submissionEvidence.verified === true && g.submissionEvidence.confirmationId && g.submissionEvidence.portalUrl);
   const total = submitted.reduce((sum, g) => sum + g.amount, 0);
 
   console.log('\n💰 TOTAL GRANTS SUBMITTED: $' + total.toLocaleString());

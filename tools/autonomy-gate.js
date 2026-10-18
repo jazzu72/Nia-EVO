@@ -28,6 +28,17 @@ function findTierForAction(action){
 }
 
 function isAllowed(action){
+  const config = loadConfig();
+
+  // Fail closed while the configured kill switch is active.
+  if (config.kill_switch && config.kill_switch.active === true) {
+    return {
+      allowed: false,
+      reason: "KILL_SWITCH_ACTIVE",
+      action
+    };
+  }
+
   const tier = findTierForAction(action);
   if (!tier) return { allowed: false, reason: "action not recognized", action };
   if (tier.blocked) return { allowed: false, reason: tier.reason || "blocked by policy", action, tier: tier.tier };

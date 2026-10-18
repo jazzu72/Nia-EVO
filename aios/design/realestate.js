@@ -31,35 +31,84 @@ function saveDeals(data) {
 // ─── SCORING ────────────────────────────────────────────────
 // Cash-flow / flip scoring model
 function scoreDeal(deal) {
-  const price = Number(deal.price) || 0;
-  const rent = Number(deal.rent) || 0;
-  const repairs = Number(deal.repairs) || 0;
-  const arv = Number(deal.arv) || price * 1.25;  // after-repair value
+  if (!deal || typeof deal !== "object" || Array.isArray(deal)) {
+    throw new TypeError("Deal input must be an object.");
+  }
+  for (const key of ["price", "rent", "repairs"]) {
+    const value = deal[key];
+    if (value === undefined || value === null || value === "" ||
+        !Number.isFinite(Number(value))) {
+      throw new TypeError(key + " must be a valid number.");
+    }
+    if (key === "price" ? Number(value) <= 0 : Number(value) < 0) {
+      throw new RangeError(key + (key === "price"
+        ? " must be greater than zero."
+        : " cannot be negative."));
+    }
+  }
+  for (const key of ["arv", "ARV"]) {
+    const value = deal[key];
+    if (value !== undefined && value !== null && value !== "" &&
+        (!Number.isFinite(Number(value)) || Number(value) <= 0)) {
+      throw new RangeError("ARV, when supplied, must be greater than zero.");
+    }
+  }
+  const price = Number(deal.price);
+  const rent = Number(deal.rent);
+  const repairs = Number(deal.repairs);
+  // Never assume an after-repair value for an unverified deal.
+  const hasArv = Number.isFinite(Number(deal.arv)) &&
+                 deal.arv !== null && deal.arv !== "" && Number(deal.arv) > 0;
+  const arv = hasArv ? Number(deal.arv) : 0;
+
+  // User-configurable assumptions; invalid values fall back to conservative defaults.
+  const supplied = deal.assumptions && typeof deal.assumptions === "object"
+    ? deal.assumptions : {};
+  function assumption(key, fallback, min, max) {
+    const value = Number(supplied[key]);
+    return supplied[key] !== null && supplied[key] !== "" &&
+      Number.isFinite(value) && value >= min && value <= max ? value : fallback;
+  }
+  const operatingExpenseRatio = assumption("operating_expense_ratio", 0.50, 0, 0.90);
+  const downPaymentRatio = assumption("down_payment_ratio", 0.25, 0, 1);
+  const annualInterestRate = assumption("annual_interest_rate", 0.08, 0, 0.30);
+  const loanTermYears = assumption("loan_term_years", 30, 1, 40);
 
   // 1% rule — monthly rent / price
   const onePercent = price > 0 ? (rent / price) : 0;
-  // 50% rule — NOI estimate
-  const noi = rent * 0.5 * 12;
-  // Cap rate
+  // NOI, cap rate, and cash flow are estimates based on the selected expense ratio.
+  const noi = rent * (1 - operatingExpenseRatio) * 12;
   const capRate = price > 0 ? (noi / price) : 0;
-  // Cash-on-cash at 25% down, 8% interest, 30y
-  const downPayment = price * 0.25;
+  const downPayment = price * downPaymentRatio;
   const loan = price - downPayment;
-  const monthlyRate = 0.08 / 12;
-  const n = 30 * 12;
-  const mortgage = loan > 0 ? (loan * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n)) : 0;
-  const monthlyCashFlow = rent * 0.5 - mortgage;
+  const monthlyRate = annualInterestRate / 12;
+  const n = loanTermYears * 12;
+  const mortgage = loan > 0
+    ? (monthlyRate === 0 ? loan / n :
+       (loan * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n)))
+    : 0;
+  const monthlyCashFlow = rent * (1 - operatingExpenseRatio) - mortgage;
   const cashOnCash = downPayment > 0 ? (monthlyCashFlow * 12 / downPayment) : 0;
   // Flip spread
-  const flipSpread = arv - price - repairs;
-  const flipPct = price > 0 ? (flipSpread / price) : 0;
+  const flipSpread = hasArv ? arv - price - repairs : 0;
+  const flipPct = hasArv && price > 0 ? (flipSpread / price) : 0;
 
   // Weighted score 0-100
   let score = 0;
   score += Math.min(30, onePercent * 3000);        // 1% rule up to 30 pts
   score += Math.min(25, capRate * 400);            // cap rate up to 25 pts
   score += Math.min(25, cashOnCash * 100);         // CoC up to 25 pts
-  score += Math.min(20, flipPct * 100);            // flip spread up to 20 pts
+  if (hasArv) {
+    score += Math.min(20, flipPct * 100);            // verified-input ARV only
+  }
+
+  // Negative-cash-flow rentals cannot receive BUY recommendations.
+  const isExplicitFlip = String(deal.strategy || "").toLowerCase() === "flip" && hasArv;
+  if (monthlyCashFlow <= 0 && !isExplicitFlip) {
+    score = Math.min(score, 49);
+  }
+
+  score = Math.max(0, Math.min(100, score));
 
   const verdict = score >= 70 ? "STRONG_BUY" :
                   score >= 55 ? "BUY" :
@@ -74,9 +123,18 @@ function scoreDeal(deal) {
       cap_rate: Number(capRate.toFixed(4)),
       cash_on_cash: Number(cashOnCash.toFixed(4)),
       monthly_cash_flow: Math.round(monthlyCashFlow),
-      flip_spread: Math.round(flipSpread),
+      cash_flow_classification: "ESTIMATED",
+      assumptions: {
+        operating_expense_ratio: operatingExpenseRatio,
+        down_payment_ratio: downPaymentRatio,
+        annual_interest_rate: annualInterestRate,
+        loan_term_years: loanTermYears,
+        financing_verified: false,
+        operating_expenses_verified: false
+      },
+      flip_spread: hasArv ? Math.round(flipSpread) : null,
       flip_pct: Number(flipPct.toFixed(4)),
-      arv: Math.round(arv)
+      arv: hasArv ? Math.round(arv) : null
     }
   };
 }

@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
-const DB = path.join(__dirname, "../runtime/revenue-pipeline.json");
+const DB = path.resolve(process.env.NIA_REVENUE_PIPELINE_DB || path.join(__dirname, "../runtime/revenue-pipeline.json"));
 const stages = ["prospect","contacted","interested","pilot_offered","won","lost"];
 
 function today() {
