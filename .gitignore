@@ -44,3 +44,8 @@ Your
 *.secret
 *.secrets
 secrets.enc
+
+# Re-include nia-dashboard code (data/state stays ignored)
+!nia-dashboard/
+!nia-dashboard/**
+nia-dashboard/data/*.pre-test
