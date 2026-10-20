@@ -7,6 +7,7 @@ const path    = require('path');
 const ROOT  = path.resolve(__dirname, '..', '..');
 const store = require('../lib/ticketStore');
 const grants = require('../lib/grantsAdapter');
+const dossier = require('../../grants-engine/dossier-engine');
 
 let executiveCore = null;
 try { executiveCore = require(path.join(ROOT, 'NIA-CEO', 'executive-core')); } catch {}
@@ -102,6 +103,20 @@ router.post('/api/tickets/:id/decline', async (req, res) => {
     const ticket = await store.setStage(id, 'declined');
     res.json({ ticket });
   } catch (err) { res.status(statusFor(err)).json({ error: err.message, code: err.code }); }
+});
+
+router.get('/api/tickets/:id/dossier', (req, res) => {
+  const { id } = req.params;
+  if (!id.startsWith('grant-')) {
+    return res.status(400).json({ error: 'Dossier only applies to grant tickets' });
+  }
+  try {
+    const result = dossier.generateDossier(id.slice('grant-'.length));
+    res.json({ dossier: result });
+  } catch (err) {
+    const status = err.code === 'NOT_FOUND' ? 404 : 500;
+    res.status(status).json({ error: err.message });
+  }
 });
 
 router.post('/api/run', async (_req, res) => {

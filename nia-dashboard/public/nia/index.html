@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nia — Executive Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Charter', serif;
+    background: #0a0a0a; color: #e5e5e5;
+    padding: 2.5rem 1.5rem; max-width: 1100px; margin: 0 auto;
+    line-height: 1.5; font-size: 15px;
+  }
+  header { display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid #222; padding-bottom: 1.2rem; margin-bottom: 2rem; }
+  h1 { font-size: 2.2rem; color: #d4af37; letter-spacing: 0.06em; font-weight: 400; }
+  h1 small { font-size: 0.85rem; color: #666; letter-spacing: 0.15em;
+    margin-left: 1rem; text-transform: uppercase; }
+  #clock { color: #888; font-size: 0.9rem; font-style: italic; }
+  h2 { color: #d4af37; font-size: 1rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin: 2rem 0 1rem; font-weight: 400;
+    display: flex; justify-content: space-between; align-items: center; }
+  h2 button { background: transparent; border: 1px solid #333; color: #888;
+    padding: 0.3rem 0.7rem; cursor: pointer; font-size: 0.9rem; border-radius: 3px; }
+  h2 button:hover { color: #d4af37; border-color: #d4af37; }
+
+  #attention { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .attn-card { background: #111; border: 1px solid #222; padding: 1.5rem; border-radius: 6px; }
+  .attn-label { color: #888; font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.5rem; }
+  #attn-count, #attn-value { font-size: 2.2rem; color: #d4af37; font-weight: 300; }
+  .unit { display: block; font-size: 0.75rem; color: #666;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+  #attn-meta { color: #888; font-size: 0.85rem; margin-top: 0.8rem;
+    line-height: 1.6; font-style: italic; }
+
+  #pipeline-strip { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
+  .stage-tab { flex: 1; min-width: 140px; background: #111; border: 1px solid #222;
+    padding: 1rem; border-radius: 6px; cursor: pointer; color: inherit;
+    text-align: left; font-family: inherit; transition: all 0.15s; }
+  .stage-tab:hover { border-color: #444; background: #161616; }
+  .stage-tab.active { border-color: #d4af37; background: #1a1610; }
+  .stage-node { width: 8px; height: 8px; border-radius: 50%;
+    background: #555; margin-bottom: 0.8rem; }
+  .stage-tab.active .stage-node { background: #d4af37; box-shadow: 0 0 8px #d4af37; }
+  .stage-numeral { color: #d4af37; font-size: 1.5rem; font-weight: 300;
+    letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .stage-name { color: #aaa; font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.6rem; }
+  .stage-count { color: #d4af37; font-size: 1.3rem; }
+
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .metric { background: #111; border: 1px solid #222; padding: 1.3rem; border-radius: 6px; }
+  .metric-label { color: #888; font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.5rem; }
+  .metric-value { color: #d4af37; font-size: 1.8rem; font-weight: 300; }
+  .metric-sub { color: #666; font-size: 0.8rem; margin-top: 0.3rem; font-style: italic; }
+
+  .tier-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem;
+    align-items: center; padding: 0.9rem 1rem; background: #111;
+    border: 1px solid #222; border-radius: 5px; margin-bottom: 0.5rem; }
+  .tier-name { color: #d4af37; font-size: 0.95rem; letter-spacing: 0.1em; }
+  .tier-sub { color: #888; font-size: 0.85rem; }
+  .tier-count { color: #aaa; font-size: 0.85rem; }
+  .tier-count b { color: #d4af37; font-size: 1rem; }
+
+  .ticket { background: #111; border: 1px solid #222; padding: 1.2rem;
+    border-radius: 6px; margin-bottom: 0.8rem; transition: all 0.2s; }
+  .ticket.settle { animation: settle 0.8s ease-out; border-color: #2a5a2a; }
+  @keyframes settle { 0% { background: #1a2a1a; } 100% { background: #111; } }
+  .ticket-top { display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .ticket-title { color: #e5e5e5; font-size: 1.05rem; margin-bottom: 0.2rem; }
+  .ticket-sub { color: #888; font-size: 0.8rem; letter-spacing: 0.05em; }
+  .ticket-value { color: #d4af37; font-size: 1.2rem; text-align: right; white-space: nowrap; }
+
+  .stepper { display: flex; gap: 6px; margin: 0.8rem 0 0.4rem; }
+  .step { flex: 1; height: 4px; background: #222; border-radius: 2px; }
+  .step.done { background: #555; }
+  .step.current { background: #d4af37; box-shadow: 0 0 6px #d4af37; }
+  .step-labels { display: flex; gap: 6px; font-size: 0.7rem;
+    color: #555; text-transform: uppercase; letter-spacing: 0.05em; }
+  .step-labels span { flex: 1; text-align: center; }
+  .step-labels span.on { color: #d4af37; }
+
+  .ticket-footer { display: flex; justify-content: space-between;
+    align-items: center; gap: 1rem; margin-top: 1rem;
+    padding-top: 1rem; border-top: 1px solid #1a1a1a; }
+  .next-action { color: #888; font-size: 0.85rem; flex: 1; }
+  .next-action b { color: #e5e5e5; }
+  .ticket-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .btn { background: transparent; border: 1px solid #333; color: #e5e5e5;
+    padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;
+    font-family: inherit; font-size: 0.85rem; transition: all 0.15s; }
+  .btn:hover:not(:disabled) { border-color: #666; background: #1a1a1a; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn.small { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+  .btn.primary { background: #d4af37; color: #0a0a0a; border-color: #d4af37; font-weight: 500; }
+  .btn.primary:hover:not(:disabled) { background: #e8c255; border-color: #e8c255; }
+  .confirm-input { background: #0a0a0a; border: 1px solid #333; color: #e5e5e5;
+    padding: 0.5rem 0.8rem; border-radius: 4px; font-family: inherit;
+    font-size: 0.85rem; min-width: 200px; }
+  .confirm-input:focus { outline: none; border-color: #d4af37; }
+
+  .badge { padding: 0.3rem 0.7rem; border-radius: 3px; font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge.discovered { background: #1a1a2a; color: #8888ff; }
+  .badge.analyzed { background: #2a1a2a; color: #ff88ff; }
+  .badge.recommended { background: #2a2a1a; color: #ffff88; }
+  .badge.approval_required { background: #2a1a1a; color: #ff8888; }
+  .badge.executed { background: #1a2a1a; color: #88ff88; }
+  .badge.declined { background: #1a1a1a; color: #666; }
+
+  .empty-state { color: #555; font-style: italic; text-align: center;
+    padding: 2rem; background: #0d0d0d; border: 1px dashed #222; border-radius: 6px; }
+
+  @media (max-width: 700px) {
+    body { padding: 1.5rem 1rem; }
+    #attention, .metrics { grid-template-columns: 1fr; }
+    .stage-tab { min-width: 120px; }
+    .tier-row { grid-template-columns: 1fr; }
+    .ticket-footer { flex-direction: column; align-items: stretch; }
+    .confirm-input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Nia<small>Executive Dashboard</small></h1>
+  <div id="clock">—</div>
+</header>
+
+<section id="attention">
+  <div class="attn-card">
+    <div class="attn-label">Awaiting Your Approval</div>
+    <div id="attn-count">0<span class="unit">Tickets</span></div>
+    <div id="attn-meta">Loading…</div>
+  </div>
+  <div class="attn-card">
+    <div class="attn-label">At Stake</div>
+    <div id="attn-value">$0<span class="unit">Value</span></div>
+  </div>
+</section>
+
+<h2>Pipeline</h2>
+<div id="pipeline-strip"></div>
+
+<h2>Metrics</h2>
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">Revenue This Month</div>
+    <div id="metric-revenue" class="metric-value">$0</div>
+    <div id="metric-revenue-sub" class="metric-sub"></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Grant Pipeline Value</div>
+    <div id="metric-pipeline" class="metric-value">$0</div>
+  </div>
+</div>
+
+<h2>By Tier</h2>
+<div id="tier-summary"></div>
+
+<h2 id="queue-sec">Awaiting Approval <button id="open-queue-btn" title="Scroll here">↓</button></h2>
+<div id="queue"></div>
+
+<h2 id="activity-sec">Activity <button id="open-activity-btn" title="Scroll here">↓</button></h2>
+<div id="activity"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
