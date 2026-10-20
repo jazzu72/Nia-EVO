@@ -1414,6 +1414,7 @@ require('./aios/routes/official-capital-opportunities-api')(app);
 
 require("./aios/routes/nsf-sbir-application-api")(app);
 
+app.use('/nia', require('./nia-dashboard/routes/dashboard'));
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
