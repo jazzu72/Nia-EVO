@@ -290,9 +290,16 @@ router.post('/api/run', async (_req, res) => {
 
 router.get('/api/owner', (_req, res) => {
   try {
-    const file = path.join(ROOT, 'data', 'owner-identity.json');
-    res.json({ ok: true, owner: JSON.parse(fs.readFileSync(file, 'utf8')) });
-  } catch (e) { res.status(500).json({ error: e.message }); }
+    const helper = require(path.join(ROOT, 'tools', 'vault-helpers'));
+    res.json({ ok: true, owner: helper.readVaultJSON(path.join(ROOT, 'data', 'owner-identity.json')) });
+  } catch (e) { res.status(500).json({ error: e.message, code: e.code }); }
+});
+
+router.get('/api/owner/funding-profile', (_req, res) => {
+  try {
+    const helper = require(path.join(ROOT, 'tools', 'vault-helpers'));
+    res.json({ ok: true, profile: helper.readVaultJSON(path.join(ROOT, 'data', 'funding', 'house-of-jazzu-profile.json')) });
+  } catch (e) { res.status(500).json({ error: e.message, code: e.code }); }
 });
 
 router.get('/', (_req, res) => {
