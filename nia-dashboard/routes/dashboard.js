@@ -296,9 +296,10 @@ router.get('/api/owner', (_req, res) => {
 });
 
 router.get('/', (_req, res) => {
-  const html = path.join(PUBLIC_DIR, 'index.html');
-  if (fs.existsSync(html)) return res.sendFile(html);
-  res.type('html').send('<h1>Nia</h1><p>Dashboard HTML missing. APIs: <a href="api/summary">summary</a> · <a href="api/tickets">tickets</a> · <a href="api/health">health</a></p>');
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'), (err) => {
+    if (!err) return;
+    res.type('html').send('<h1>Nia</h1><p>Dashboard HTML missing at ' + PUBLIC_DIR + '/index.html</p><p><a href="api/summary">summary</a> · <a href="api/tickets">tickets</a> · <a href="api/health">health</a></p>');
+  });
 });
 
 module.exports = router;
