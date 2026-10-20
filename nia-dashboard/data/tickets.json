@@ -1,0 +1,80 @@
+{
+  "tickets": [
+    {
+      "id": "tk_001",
+      "title": "Strategic Ops Retainer — Tidewater Holdings",
+      "tier": "tier1",
+      "tierLabel": "Tier I · Client Services",
+      "value": 12500,
+      "valueUnit": "/mo",
+      "stage": "executed",
+      "nextAction": "Send engagement letter",
+      "awaitingManualConfirmation": false,
+      "updatedAt": "2026-10-20T00:02:30.604Z",
+      "history": [
+        {
+          "stage": "executed",
+          "at": "2026-10-20T00:02:30.604Z",
+          "via": "approve"
+        }
+      ]
+    },
+    {
+      "id": "tk_002",
+      "title": "SBIR Phase I — NSF submission package",
+      "tier": "tier2",
+      "tierLabel": "Tier II · Grant Pipeline",
+      "value": 275000,
+      "valueUnit": null,
+      "stage": "executed",
+      "nextAction": "Submit to NSF portal",
+      "awaitingManualConfirmation": true,
+      "updatedAt": "2026-10-20T00:02:30.681Z",
+      "confirmationId": "NSF-2026-12345",
+      "history": [
+        {
+          "stage": "executed",
+          "at": "2026-10-20T00:02:30.681Z",
+          "via": "confirm",
+          "confirmationId": "NSF-2026-12345"
+        }
+      ]
+    },
+    {
+      "id": "tk_003",
+      "title": "Virginia Innovation Partnership — Phase I",
+      "tier": "tier2",
+      "tierLabel": "Tier II · Grant Pipeline",
+      "value": 50000,
+      "valueUnit": null,
+      "stage": "analyzed",
+      "nextAction": "Eligibility review",
+      "awaitingManualConfirmation": false,
+      "updatedAt": "2026-10-19T11:45:00Z"
+    },
+    {
+      "id": "tk_004",
+      "title": "Retainer renewal — Hampton Roads Logistics",
+      "tier": "tier1",
+      "tierLabel": "Tier I · Client Services",
+      "value": 8000,
+      "valueUnit": "/mo",
+      "stage": "executed",
+      "nextAction": "Invoice sent",
+      "awaitingManualConfirmation": false,
+      "updatedAt": "2026-10-12T16:00:00Z"
+    },
+    {
+      "id": "tk_005",
+      "title": "Outreach: 12 qualified prospects — CRM industry",
+      "tier": "tier3",
+      "tierLabel": "Tier III · Acquisition",
+      "value": 0,
+      "valueUnit": null,
+      "stage": "recommended",
+      "nextAction": "Begin outreach",
+      "awaitingManualConfirmation": false,
+      "updatedAt": "2026-10-19T08:30:00Z"
+    }
+  ]
+}
