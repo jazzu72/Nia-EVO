@@ -278,6 +278,87 @@ router.get('/api/tickets/:id/dossier', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+router.get('/api/grants/:id/fill-plan', (req, res) => {
+  const id = req.params.id;
+  try {
+    if (!id.startsWith('grant-')) return res.status(400).json({ error: 'Fill-plan only for grants' });
+    const eng = require(path.join(ROOT, 'grants-engine', 'assisted-submit'));
+    res.json({ plan: eng.buildFillPlan(id.slice(6)) });
+  } catch (e) { res.status(e.code === 'NOT_FOUND' ? 404 : 500).json({ error: e.message }); }
+});
+
+router.get('/api/grants/:id/bookmarklet', (req, res) => {
+  try {
+    const eng = require(path.join(ROOT, 'grants-engine', 'assisted-submit'));
+    res.type('text/plain; charset=utf-8').send(eng.buildBookmarklet());
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/api/grants/:id/fill-report', (req, res) => {
+  try {
+    const id = req.params.id;
+    const report = Object.assign({ grantId: id, receivedAt: new Date().toISOString() }, req.body || {});
+    const file = path.join(ROOT, 'runtime', 'assist-reports.jsonl');
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.appendFileSync(file, JSON.stringify(report) + '\n');
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/api/grants/:id/fill-plan', (req, res) => {
+  const id = req.params.id;
+  try {
+    if (!id.startsWith('grant-')) return res.status(400).json({ error: 'only for grants' });
+    const browser = require(path.join(ROOT, 'browser', 'session'));
+    res.json({ plan: browser.buildFillPlan(id.slice(6)) });
+  } catch (e) { res.status(e.code === 'NOT_FOUND' ? 404 : 500).json({ error: e.message }); }
+});
+
+router.get('/api/grants/:id/bookmarklet', (req, res) => {
+  try {
+    const t = require(path.join(ROOT, 'browser', 'transport-bookmarklet'));
+    res.type('text/plain; charset=utf-8').send(t.buildBookmarklet());
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/api/grants/:id/fill-page', (req, res) => {
+  try {
+    const t = require(path.join(ROOT, 'browser', 'transport-bookmarklet'));
+    res.type('html').send(t.buildPage());
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.post('/api/grants/:id/session', (req, res) => {
+  const id = req.params.id;
+  try {
+    if (!id.startsWith('grant-')) return res.status(400).json({ error: 'only for grants' });
+    const browser = require(path.join(ROOT, 'browser', 'session'));
+    const s = browser.createSession({
+      grantSourceId: id.slice(6),
+      heartbeatAt: Date.now()
+    });
+    res.json({ sessionId: s.sessionId, transport: s.transport, plan: s.plan });
+  } catch (e) {
+    const status = e.code === 'GOVERNANCE_VIOLATION' ? 403 : 500;
+    res.status(status).json({ error: e.message, code: e.code });
+  }
+});
+
+router.post('/api/grants/:id/fill-report', (req, res) => {
+  try {
+    const audit = require(path.join(ROOT, 'browser', 'audit'));
+    audit.record(Object.assign({ event: 'client.fill_report' }, req.body || {}));
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+router.get('/api/browser/audit/verify', (_req, res) => {
+  try {
+    const audit = require(path.join(ROOT, 'browser', 'audit'));
+    res.json(audit.verifyChain());
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 router.post('/api/run', async (_req, res) => {
   try {
     const core = require(path.join(ROOT, 'NIA-CEO', 'executive-core'));
