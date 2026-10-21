@@ -1,7 +1,7 @@
 'use strict';
 
-const audit = require('./audit');
-const guard = require('./guardrails');
+const audit  = require('./audit');
+const guard  = require('./guardrails');
 const finder = require('./field-finder');
 
 let puppeteer = null;
@@ -15,7 +15,6 @@ async function open({ url, mode = 'headed', sessionId }) {
   if (!puppeteer) throw Object.assign(new Error('puppeteer-core not installed'), { code: 'NO_TRANSPORT' });
   if (!isAvailable()) throw Object.assign(new Error('CHROME_EXECUTABLE or PUPPETEER_EXECUTABLE_PATH required'), { code: 'NO_CHROME' });
 
-  // Guardrails: check BEFORE launching — never launch headless on .gov
   guard.assertSafeNavigation({ url, mode });
 
   const browser = await puppeteer.launch({
@@ -32,14 +31,12 @@ async function open({ url, mode = 'headed', sessionId }) {
     guardrailPassed: true
   });
 
-  // Intercept click attempts on submit-like elements — hard guardrail
   await page.evaluateOnNewDocument(() => {
     document.addEventListener('click', (ev) => {
       const el = ev.target.closest('button,input[type=submit],input[type=button]');
       if (!el) return;
       const text = (el.textContent || el.value || '').trim();
       if (/submit|apply|attest|finalize|transmit|certify/i.test(text)) {
-        // Allowed only if ev.isTrusted === true (real human click)
         if (!ev.isTrusted) {
           ev.preventDefault();
           ev.stopImmediatePropagation();
@@ -54,16 +51,17 @@ async function open({ url, mode = 'headed', sessionId }) {
 }
 
 async function fill(page, specs, { sessionId } = {}) {
-  const results = await page.evaluate((specsArg) => {
-    const F = (${finder.FINDER_SOURCE});
+  const finderSource = finder.FINDER_SOURCE;
+  const results = await page.evaluate((specsArg, src) => {
+    var F = eval(src);
     return F.fillSpecs(specsArg, { overwrite: false });
-  }, specs);
+  }, specs, finderSource);
 
   audit.record({
     event: 'transport.fill',
     sessionId, transport: 'puppeteer', count: results.length,
-    filled: results.filter(r => r.status === 'FILLED').length,
-    results
+    filled: results.filter(function (r) { return r.status === 'FILLED'; }).length,
+    results: results
   });
   return results;
 }
@@ -82,7 +80,7 @@ async function assertNoSubmitClicked(page, { sessionId, url } = {}) {
       sessionId, url, elementText: blocked
     });
     throw Object.assign(
-      new Error(`GOVERNANCE_VIOLATION: attempted programmatic submit on ${guard.hostOf(url)}`),
+      new Error('GOVERNANCE_VIOLATION: attempted programmatic submit on ' + guard.hostOf(url)),
       { code: 'GOVERNANCE_VIOLATION' }
     );
   }
