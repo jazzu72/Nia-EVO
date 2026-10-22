@@ -133,10 +133,18 @@ router.get('/api/health', (_req, res) => {
 });
 
 router.get('/api/summary', (_req, res) => {
+  let portfolio = null;
+  try {
+    const sm = require(path.join(ROOT, 'aios', 'funding-state-machine'));
+    const records = sm.load ? sm.load() : (sm.readState ? sm.readState() : []);
+    if (sm.portfolioMetrics && Array.isArray(records)) portfolio = sm.portfolioMetrics(records);
+  } catch(e) {}
+
   try {
     const tickets = [...loadTickets(), ...loadSubmissions().map(submissionToTicket).filter(Boolean)];
     const s = summarize(tickets);
     const state = execState();
+    s.portfolio = portfolio;
     s.cycle = state.cycle || 0;
     s.lastRun = state.lastRun || null;
     res.json(s);
