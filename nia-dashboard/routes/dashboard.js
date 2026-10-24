@@ -367,6 +367,16 @@ router.get('/api/browser/audit/verify', (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+router.get('/api/sam/opportunities', async (req, res) => {
+  try {
+    const sam = require(path.join(ROOT, 'aios', 'sam-api'));
+    const naics = req.query.naics || '541715';
+    const days = parseInt(req.query.days || '30', 10);
+    const data = await sam.searchOpportunities({ naics, days });
+    res.json({ ok: true, total: data.totalRecords || (data.opportunitiesData || []).length, opportunities: data.opportunitiesData || [] });
+  } catch (e) { res.status(e.code === 'NO_KEY' ? 501 : 500).json({ error: e.message, code: e.code }); }
+});
+
 router.post('/api/run', async (_req, res) => {
   try {
     const core = require(path.join(ROOT, 'NIA-CEO', 'executive-core'));
