@@ -10,9 +10,9 @@ const decision = require('../core/decision-engine');
 const intelligenceHub = require('../providers/intelligence-hub');
 const actionGate = require('../governor/action-gate');
 
-router.post('/reason', async (req, res) => {
+router.post('/reason', requireOwnerAuth, async (req, res) => {
   try {
-    const { objective, symbol } = req.body || {};
+    const { objective, symbol, branching } = req.body || {};
     if (!objective) throw new Error('Objective required');
 
     let market_data = null;
@@ -23,7 +23,11 @@ router.post('/reason', async (req, res) => {
       );
     }
 
-    const result = await decision.decide(objective, { market_data, symbol: symbol || null });
+    const result = await decision.decide(objective, {
+      market_data,
+      symbol: symbol || null,
+      ...(branching === undefined ? {} : { branching })
+    });
     res.json(result);
   } catch (error) {
     res.status(400).json({
