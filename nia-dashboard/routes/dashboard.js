@@ -377,6 +377,28 @@ router.get('/api/sam/opportunities', async (req, res) => {
   } catch (e) { res.status(e.code === 'NO_KEY' ? 501 : 500).json({ error: e.message, code: e.code }); }
 });
 
+router.get('/api/company', (_req, res) => {
+  try {
+    const helper = require(path.join(ROOT, 'tools', 'vault-helpers'));
+    let owner = {}, profile = {};
+    try { owner = helper.readVaultJSON(path.join(ROOT, 'data', 'owner-identity.json')); } catch (e) {}
+    try { profile = helper.readVaultJSON(path.join(ROOT, 'data', 'funding', 'house-of-jazzu-profile.json')); } catch (e) {}
+    res.json({
+      ok: true,
+      company: {
+        name: owner.organization || profile.name || 'House of Jazzu',
+        uei: owner.uei || process.env.NIA_UEI || null,
+        ein: owner.ein || profile.ein || null,
+        entityType: profile.entityType || profile.organizationType || null,
+        city: owner.city || null,
+        state: owner.state || null,
+        founderName: owner.name || null,
+        founderTitle: owner.title || null
+      }
+    });
+  } catch (e) { res.status(500).json({ error: e.message, code: e.code }); }
+});
+
 router.post('/api/run', async (_req, res) => {
   try {
     const core = require(path.join(ROOT, 'NIA-CEO', 'executive-core'));

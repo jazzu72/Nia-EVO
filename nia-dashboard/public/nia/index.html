@@ -487,6 +487,40 @@ h2 button:hover { color: var(--ochre); border-color: var(--ochre); }
   color: var(--ink-light);
   font-style: italic;
 }
+.company-strip {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-faded);
+  min-height: 1.1rem;
+}
+.company-strip .uei {
+  color: var(--ochre);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: 'Palatino Linotype',Palatino,Garamond,Georgia,serif;
+}
+.company-strip .label {
+  color: var(--ink-light);
+  font-size: 0.7rem;
+  margin-right: 0.35rem;
+  letter-spacing: 0.12em;
+}
+.company-strip .divider {
+  color: var(--rule);
+  opacity: 0.6;
+}
+.company-strip .loading {
+  color: var(--ink-light);
+  font-style: italic;
+  opacity: 0.7;
+}
+
 @media (max-width: 720px) {
   body { font-size: 15px; }
   .codex { padding: 1.5rem 1.2rem 3rem; }
@@ -517,6 +551,7 @@ h2 button:hover { color: var(--ochre); border-color: var(--ochre); }
       <div class="folio-mark">Folio I · Anno MMXXVI</div>
       <h1>Nia<small>Codex Executivus</small></h1>
       <div class="subtitle">A treatise on autonomous commerce · House of Jazzu</div>
+      <div class="company-strip" id="company-strip"><span class="loading">loading company profile…</span></div>
     </div>
     <div class="header-aside">
       <div class="seal" aria-hidden="true">

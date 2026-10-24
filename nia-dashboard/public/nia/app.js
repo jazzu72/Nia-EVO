@@ -339,6 +339,28 @@
     }
   }
 
+  async function renderCompany() {
+    const el = document.getElementById('company-strip');
+    if (!el) return;
+    try {
+      const r = await api('api/company');
+      const c = r.company || {};
+      const parts = [];
+      if (c.uei) {
+        parts.push('<span><span class="label">UEI</span><span class="uei">' + escapeHtml(c.uei) + '</span></span>');
+      }
+      if (c.entityType) parts.push('<span>' + escapeHtml(c.entityType) + '</span>');
+      if (c.city && c.state) parts.push('<span>' + escapeHtml(c.city) + ', ' + escapeHtml(c.state) + '</span>');
+      if (c.ein) {
+        const masked = String(c.ein).replace(/^(\d{2})\d{5}(\d{2})$/, '$1-•••••$2');
+        parts.push('<span><span class="label">EIN</span>' + escapeHtml(masked) + '</span>');
+      }
+      el.innerHTML = parts.join('<span class="divider">·</span>') || '<span class="loading">no company data</span>';
+    } catch (e) {
+      el.innerHTML = '<span class="loading">company data unavailable</span>';
+    }
+  }
+
   async function loadAll() {
     try {
       const results = await Promise.all([api('api/summary'), api('api/tickets')]);
@@ -360,6 +382,7 @@
     tickClock();
     setInterval(tickClock, 30000);
     loadAll();
+    renderCompany();
     setInterval(loadAll, 15000);
 
     const queueBtn = document.getElementById('open-queue-btn');
