@@ -4,6 +4,8 @@ const fabric = require('../tools/register-business-tools');
 const intelligenceHub = require('../providers/intelligence-hub');
 const credentials = require('../providers/credential-router');
 const intelligenceGateway = require('../providers/intelligence-hub');
+const { QuantumBranchingAdapter } = require('../../quantum-branching-adapter');
+const branchingAdapter = new QuantumBranchingAdapter();
 
 const READ_ONLY = new Set([
     'intelligence_snapshot',
@@ -44,6 +46,14 @@ async function inspect() {
 }
 
 async function decide(objective, context = {}) {
+  const branching = context.branching;
+  if (branching !== undefined && (
+    !branching || typeof branching !== 'object' || Array.isArray(branching) ||
+    !branching.graph || typeof branching.graph !== 'object' ||
+    typeof branching.startNodeId !== 'string'
+  )) {
+    throw new Error('Invalid branching input: graph and startNodeId are required');
+  }
   if (!objective || !objective.trim()) {
     throw new Error('Objective required');
   }
@@ -53,10 +63,27 @@ async function decide(objective, context = {}) {
       symbol: context.symbol || context.market_data?.data?.data?.chart?.result?.[0]?.meta?.symbol || null
     });
 
+  const branchingResult = branching === undefined ? null : branchingAdapter.evaluate({
+    graph: branching.graph,
+    startNodeId: branching.startNodeId,
+    context: branching.context || {},
+    constraints: branching.constraints || {},
+    weights: branching.weights || {},
+    maxExpansions: branching.maxExpansions ?? 1000,
+    maxDepth: branching.maxDepth ?? 50,
+    topN: branching.topN ?? 5
+  });
+
   return {
     ok: true,
     objective,
     mode: 'READ_ONLY',
+    branching: branchingResult ? {
+      ...branchingResult,
+      executionPerformed: false,
+      executionAllowed: false,
+      ownerAuthorizationRequired: true
+    } : null,
     instruction:
       'Analyze the supplied Nia business state. Recommend actions, but do not claim that any action was executed.',
     available_tools: fabric.list(),
