@@ -361,8 +361,9 @@ function appShell(){
           </div>
         </div>
         <div class="head-actions">
-          <button class="icon-button" data-action="command">⌘</button>
-          <button class="profile-button">J</button>
+          <a class="text-button" href="/dashboard/chat.html" style="text-decoration:none">Chat with Nia ↗</a>
+          <button class="icon-button" data-action="command" aria-label="Open Nia owner chat">⌘</button>
+          <button class="profile-button" aria-label="Owner profile">J</button>
         </div>
       </header>
 
@@ -402,6 +403,132 @@ function render(){
   bindEvents();
 }
 
+function openNiaChat(){
+  let panel = document.getElementById("nia-owner-chat-panel");
+  if (panel) { panel.style.display = "block"; return; }
+
+  panel = document.createElement("section");
+  panel.id = "nia-owner-chat-panel";
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-label", "Owner-only Nia chat");
+  panel.style.cssText = "position:fixed;z-index:9999;right:16px;bottom:84px;width:min(440px,calc(100vw - 32px));max-height:75vh;display:flex;flex-direction:column;padding:16px;background:#11151a;color:#f5f0e4;border:1px solid #806b3b;border-radius:14px;box-shadow:0 12px 40px #000b;box-sizing:border-box";
+
+  const heading = document.createElement("div");
+  heading.style.cssText = "display:flex;justify-content:space-between;align-items:center;gap:12px";
+  const title = document.createElement("h2");
+  title.textContent = "Nia · Owner Channel";
+  title.style.margin = "4px 0 12px";
+  const close = document.createElement("button");
+  close.type = "button";
+  close.textContent = "Close";
+  close.style.cssText = "padding:8px 12px;cursor:pointer";
+  close.addEventListener("click", () => panel.remove());
+  heading.append(title, close);
+
+  const history = document.createElement("div");
+  history.id = "nia-owner-chat-history";
+  history.setAttribute("aria-live", "polite");
+  history.style.cssText = "overflow:auto;min-height:100px;max-height:42vh;display:grid;gap:10px;padding:8px 0";
+
+  const form = document.createElement("form");
+  form.style.cssText = "display:grid;gap:10px";
+  const input = document.createElement("textarea");
+  input.id = "nia-owner-chat-input";
+  input.rows = 3;
+  input.maxLength = 6000;
+  input.required = true;
+  input.placeholder = "Message Nia…";
+  input.setAttribute("aria-label", "Message Nia");
+  input.style.cssText = "width:100%;box-sizing:border-box;padding:12px;border-radius:8px;background:#0b0d10;color:#f5f0e4;border:1px solid #49443a;font:inherit";
+  const send = document.createElement("button");
+  send.type = "submit";
+  send.textContent = "Send to Nia";
+  send.style.cssText = "padding:12px;cursor:pointer";
+  const note = document.createElement("small");
+  note.textContent = "Owner authorization required. No financial or external actions are enabled by this chat panel.";
+  form.append(input, send, note);
+  panel.append(heading, history, form);
+  document.body.appendChild(panel);
+
+  function addMessage(who, message, meta) {
+    const item = document.createElement("div");
+    item.style.cssText = "padding:10px;border-radius:8px;background:#191f25;overflow-wrap:anywhere";
+    const label = document.createElement("strong");
+    label.textContent = who;
+    const body = document.createElement("p");
+    body.textContent = message;
+    body.style.cssText = "white-space:pre-wrap;margin:6px 0";
+    item.append(label, body);
+    if (meta) {
+      const detail = document.createElement("small");
+      detail.textContent = meta;
+      item.appendChild(detail);
+    }
+    history.appendChild(item);
+    history.scrollTop = history.scrollHeight;
+  }
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const message = input.value.trim();
+    if (!message || send.disabled) return;
+
+    let token = localStorage.getItem("nia-owner-token");
+    if (!token) {
+      token = window.prompt("Enter your Nia owner token:");
+      if (!token || !token.trim()) {
+        addMessage("SYSTEM", "Owner authorization is required.");
+        return;
+      }
+      token = token.trim();
+      localStorage.setItem("nia-owner-token", token);
+    }
+
+    addMessage("YOU", message);
+    input.value = "";
+    send.disabled = true;
+    send.textContent = "Nia is thinking…";
+    const pending = document.createElement("p");
+    pending.textContent = "Waiting for Nia…";
+    history.appendChild(pending);
+
+    try {
+      const response = await fetch("/api/nia/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({message})
+      });
+      const data = await response.json().catch(() => ({}));
+      pending.remove();
+
+      if (response.status === 401 || response.status === 403 ||
+          data.error === "OWNER_AUTH_REQUIRED" ||
+          data.error === "OWNER_AUTH_NOT_CONFIGURED") {
+        localStorage.removeItem("nia-owner-token");
+        addMessage("SYSTEM", "Owner authorization failed. Reopen chat and enter a valid token.");
+      } else if (!response.ok || !data.ok) {
+        addMessage("SYSTEM", "Request failed: " + String(data.error || ("HTTP " + response.status)));
+      } else {
+        const meta = String(data.provider || data.generator || "NIA") +
+          (data.model ? " · " + data.model : "") +
+          (data.fallback ? " · fallback response" : "");
+        addMessage("NIA", String(data.reply || "Nia returned an empty response."), meta);
+      }
+    } catch (error) {
+      pending.remove();
+      addMessage("SYSTEM", "Connection error. No external action was taken.");
+    } finally {
+      send.disabled = false;
+      send.textContent = "Send to Nia";
+      input.focus();
+    }
+  });
+  input.focus();
+}
+
 function bindEvents(){
   document.querySelectorAll('[data-tab]').forEach(el=>{
     el.addEventListener('click',()=>{
@@ -417,7 +544,7 @@ function bindEvents(){
       if(a==='review-deal'){ state.activeTab='analyze'; state.selectedDeal=topDeal(); render(); }
       if(a==='open-anatomy'){ state.anatomyOpen=true; render(); }
       if(a==='close-anatomy'){ state.anatomyOpen=false; render(); }
-      if(a==='command') showToast('Command palette — connecting to NIA search.');
+      if(a==='command') openNiaChat();
       if(a==='edit-assumptions') showToast('Assumption editor is the next workflow.');
       if(a==='view-sources') showToast('Source viewer ready for HUD, REIN, and local integrations.');
     });
@@ -434,14 +561,54 @@ function showToast(msg){
 }
 
 async function refreshAll(){
-  state.syncStatus = 'SYNCING'; render();
-  const [capital, health, owner] = await Promise.all([api.capital(), api.health(), api.owner()]);
-  state.capital = capital;
-  state.health = health;
-  state.owner = owner;
-  state.syncStatus = navigator.onLine ? 'SYNCED' : 'OFFLINE';
-  if(!state.selectedDeal) state.selectedDeal = topDeal();
+  if (state.refreshing) return;
+  state.refreshing = true;
+  state.syncStatus = navigator.onLine ? 'SYNCING' : 'OFFLINE';
   render();
+
+  try {
+    const results = await Promise.allSettled([
+      api.capital(), api.health(), api.owner()
+    ]);
+
+    const [capitalResult, healthResult, ownerResult] = results;
+    let failed = false;
+
+    if (capitalResult.status === 'fulfilled' &&
+        capitalResult.value && capitalResult.value.ok !== false &&
+        Array.isArray(capitalResult.value.opportunities)) {
+      state.capital = capitalResult.value;
+    } else {
+      failed = true;
+    }
+
+    if (healthResult.status === 'fulfilled' && healthResult.value) {
+      state.health = healthResult.value;
+      if (healthResult.value.ok === false) failed = true;
+    } else {
+      state.health = {ok:false};
+      failed = true;
+    }
+
+    if (ownerResult.status === 'fulfilled' && ownerResult.value &&
+        !ownerResult.value.error) {
+      state.owner = ownerResult.value;
+    } else {
+      // Keep the owner queue visibly unavailable; do not pretend it is empty.
+      state.owner = {drafts:[], count:0, unavailable:true};
+      failed = true;
+    }
+
+    if (!state.selectedDeal) state.selectedDeal = topDeal();
+    state.syncStatus = !navigator.onLine ? 'OFFLINE' :
+      (failed ? 'PARTIAL' : 'SYNCED');
+  } catch (err) {
+    state.syncStatus = navigator.onLine ? 'ERROR' : 'OFFLINE';
+    console.error('[NIA DASHBOARD] Refresh failed:', err);
+  } finally {
+    state.refreshing = false;
+    render();
+  }
 }
 
 window.addEventListener('online',()=>{state.syncStatus='SYNCED';render();});
