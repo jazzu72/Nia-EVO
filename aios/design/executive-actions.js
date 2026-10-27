@@ -35,6 +35,14 @@ function saveQueue(q) {
 
 // ─── SEND EMAIL (via Resend) ────────────────────────────────
 async function sendEmail(spec) {
+  // NIA_EXACT_APPROVAL_REQUIRED_V1
+  return {
+    ok: false,
+    blocked: true,
+    execution_performed: false,
+    reason: "EXACT_MESSAGE_APPROVAL_NOT_IMPLEMENTED"
+  };
+
   const decision = envelopes.checkEnvelope("send_email", 0, { to: spec.to });
   if (!decision.allowed) {
     return { ok: false, blocked: true, reason: decision.reason, envelope: decision };

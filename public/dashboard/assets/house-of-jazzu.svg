@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="64" fill="#080d12"/>
+<circle cx="256" cy="235" r="190" fill="none" stroke="#d4b46a" stroke-width="9"/>
+<circle cx="256" cy="235" r="172" fill="none" stroke="#80652d" stroke-width="2"/>
+<path d="M256 91 L279 191 L379 145 L333 245 L433 268 L333 291 L379 391 L279 345 L256 445 L233 345 L133 391 L179 291 L79 268 L179 245 L133 145 L233 191 Z"
+fill="none" stroke="#d4b46a" stroke-width="3" opacity=".72"/>
+<circle cx="256" cy="235" r="67" fill="#101a1b" stroke="#d4b46a" stroke-width="5"/>
+<path d="M220 285 L256 174 L292 285 M233 253 H279"
+fill="none" stroke="#f0d99b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="256" y="469" fill="#d4b46a" font-family="Georgia,serif" font-size="25" letter-spacing="3" text-anchor="middle">HOUSE OF JAZZU</text>
+</svg>

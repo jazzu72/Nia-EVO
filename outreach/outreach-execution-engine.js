@@ -186,8 +186,28 @@ function prepare(id, channel = "email") {
     };
 }
 
+
+// NIA_LEGACY_SIMULATION_VIEW_V1
 function queue() {
-    return loadExecutions();
+    return loadExecutions().map(execution => {
+        if (
+            execution.mode === "DRY_RUN" &&
+            execution.status === "SENT"
+        ) {
+            return Object.assign({}, execution, {
+                status: "DRY_RUN_COMPLETED",
+                sentAt: null,
+                simulatedAt: execution.sentAt || null,
+                externalExecutionPerformed: false,
+                legacyRecord: {
+                    status: execution.status,
+                    sentAt: execution.sentAt || null,
+                    interpretation: "SIMULATION_NOT_DELIVERY"
+                }
+            });
+        }
+        return execution;
+    });
 }
 
 function ready() {
@@ -196,83 +216,41 @@ function ready() {
     );
 }
 
+
+// NIA_DRY_RUN_TRUTH_V1
 function markDryRunSent(id) {
-
     const executions = loadExecutions();
+    const execution = executions.find(e => e.id === id);
 
-    const execution =
-        executions.find(
-            e => e.id === id
-        );
+    if (!execution) return null;
 
-    if (!execution) {
-        return null;
+    if (execution.mode !== "DRY_RUN") {
+        throw new Error("DRY_RUN_MODE_REQUIRED");
     }
 
-    if (execution.status !== "READY_TO_SEND") {
+    if (execution.status === "DRY_RUN_COMPLETED") {
         return execution;
     }
 
-    execution.status = "SENT";
-
-    execution.sentAt =
-        new Date().toISOString();
-
-    execution.mode =
-        "DRY_RUN";
-
-    saveExecutions(executions);
-
-    /*
-     * Complete the originating revenue action.
-     *
-     * DRY RUN means no external provider was contacted.
-     * This records only the internal execution lifecycle.
-     */
-    if (fs.existsSync(ACTION_DB)) {
-
-        const actions =
-            JSON.parse(
-                fs.readFileSync(
-                    ACTION_DB,
-                    "utf8"
-                )
-            );
-
-        const action =
-            actions.find(
-                a => a.id === execution.actionId
-            );
-
-        if (action) {
-
-            action.status = "COMPLETED";
-
-            action.executionId =
-                execution.id;
-
-            action.completedAt =
-                execution.sentAt;
-
-            action.result = {
-                mode: "DRY_RUN",
-                channel: execution.channel,
-                executionId: execution.id,
-                status: "SENT",
-                sentAt: execution.sentAt
-            };
-
-            fs.writeFileSync(
-                ACTION_DB,
-                JSON.stringify(
-                    actions,
-                    null,
-                    2
-                )
-            );
-        }
+    if (execution.status !== "READY_TO_SEND") {
+        throw new Error("DRY_RUN_INVALID_STATE");
     }
 
+    if (execution.sentAt != null) {
+        throw new Error("DRY_RUN_HAS_DELIVERY_TIMESTAMP");
+    }
+
+    execution.status = "DRY_RUN_COMPLETED";
+    execution.simulatedAt = new Date().toISOString();
+    execution.sentAt = null;
+    execution.externalExecutionPerformed = false;
+    execution.simulation = {
+        completed: true,
+        externalProviderContacted: false,
+        businessActionCompleted: false
+    };
+
+    saveExecutions(executions);
     return execution;
 }
 

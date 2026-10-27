@@ -142,7 +142,7 @@ async function sendInquiry(dealId, customMessage) {
     "lesane1972@gmail.com"
   ].join("\n");
 
-  const result = await exec.sendViaGmail({
+  const result = await exec.sendEmail({
     to: [deal.agent_email],
     subject: "Inquiry: " + (deal.address || "Norfolk area property"),
     body: body,
