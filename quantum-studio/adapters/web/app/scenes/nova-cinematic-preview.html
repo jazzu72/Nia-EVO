@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Cinematic Preview</title>
+<style>body{margin:0;background:#061019;color:#f0c75e;font-family:system-ui,sans-serif}#preview{padding:18px;text-align:center}button{background:#f0c75e;color:#061019;border:0;border-radius:10px;padding:12px 20px;font-weight:800;cursor:pointer}</style>
+</head>
+<body>
+<div id="preview"><h2>HOUSE OF JAZZU</h2><p>NOVA · CINEMATIC ARRIVAL TEST</p><button onclick="playNova()">Replay Nova Arrival</button></div>
+<script src="/scenes/nova-cinematic-arrival.js"></script>
+<script>function playNova(){const old=document.getElementById("nova-cinematic-arrival");if(old)old.remove();const s=document.createElement("script");s.src="/scenes/nova-cinematic-arrival.js?replay="+Date.now();document.body.appendChild(s)}</script>
+</body>
+</html>

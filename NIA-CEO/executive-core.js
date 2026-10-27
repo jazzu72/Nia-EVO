@@ -18,6 +18,7 @@
 
 const fs = require('fs');
 const approvalLedger = require('../aios/approvals/approval-ledger');
+const privateGovernance = require('./house-of-jazzu-governance');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -168,6 +169,7 @@ async function observe() {
   const revenue = safeLoad('../revenue/revenue-engine');
   const houseRevenue = safeLoad('../house-of-jazzu/lib/revenue-ledger');
   const operatingPlan = safeLoad('./strategy/revenue-operating-plan');
+const quantumStudio = safeLoad('../quantum-studio/core/studio');
   const revenueIntel = safeLoad('../intelligence/revenue-engine');
   const acquisition = safeLoad('../acquisition/lead-acquisition-engine');
   const capital = safeLoad('../intelligence/capital-engine');
@@ -302,7 +304,24 @@ async function observe() {
           products: {}
         };
 
-  const houseOperatingPlan =
+  const quantumStudioSnapshot =
+  quantumStudio &&
+  typeof quantumStudio.status === 'function'
+    ? await safeCall(
+        () => quantumStudio.status(),
+        {
+          ok: false,
+          system: 'QUANTUM_STUDIO',
+          status: 'UNAVAILABLE'
+        }
+      )
+    : {
+        ok: false,
+        system: 'QUANTUM_STUDIO',
+        status: 'UNAVAILABLE'
+      };
+
+const houseOperatingPlan =
     operatingPlan &&
     typeof operatingPlan.getOperatingPlan === 'function'
       ? await safeCall(
@@ -443,6 +462,7 @@ async function observe() {
       houseRevenue: houseRevenueSnapshot,
 
       houseOperatingPlan: houseOperatingPlan,
+      quantumStudio: quantumStudioSnapshot,
 
       acquisition: {
         stats: acquisitionStats,
@@ -856,148 +876,175 @@ function prioritize(observations) {
  * Decision disposition does NOT authorize execution.
  */
 function decide(priorities) {
+  const policy = privateGovernance.evaluateAction("prepare_internal_plan");
+
   return priorities.map(priority => ({
     ...priority,
-
-    disposition: 'RECOMMEND',
-
+    disposition: "RECOMMEND",
+    governance: {
+      policyStatus: policy.status,
+      internalPreparationAllowed: policy.allowed,
+      externalExecution: "BLOCKED",
+      ownerAuthorizationRequired: true
+    },
     execution: {
-      status: 'BLOCKED_PENDING_AUTHORIZATION',
+      status: "BLOCKED_PENDING_AUTHORIZATION",
       ownerAuthorizationRequired: true,
-      autonomousExecution: false
+      autonomousExecution: false,
+      executionAllowed: false
     }
   }));
 }
 
 /**
  * PREPARE
- *
- * Creates an action plan without executing anything.
+ * Creates internal work plans only; it never executes external actions.
  */
 function buildActionPlan(priorities) {
-  return priorities.map(priority => {
+  const plans = priorities.map(priority => {
+    const evidence = priority.evidence || {};
     let proposedActions = [];
     let opportunityEvidence = [];
 
-    /*
-     * REV-001 uses the commercial intelligence already
-     * collected during the current observation cycle.
-     *
-     * This prepares work for owner review only.
-     * It does not authorize outreach or execution.
-     */
-    if (priority.id === 'REV-001') {
-      const evidence =
-        priority.evidence || {};
-
-      const topOpportunity =
-        evidence.topOpportunity || null;
-
-      const houseRevenue =
-        evidence.houseRevenue || {};
-
-      const highestGapProduct =
-        houseRevenue.highestGapProduct || null;
-
-      if (
-        Number(evidence.qualifiedOpportunityBriefs || 0) > 0
-      ) {
-        opportunityEvidence = [{
-          title:
-            topOpportunity?.title || 'Qualified opportunity',
-
-          commercialFit:
-            topOpportunity?.commercialFit || 'UNKNOWN',
-
-          serviceFit:
-            topOpportunity?.serviceFit || 'UNKNOWN',
-
-          confidence:
-            Number(topOpportunity?.confidence || 0),
-
-          commercialIntent:
-            topOpportunity?.commercialIntent ||
-            'NOT_EXPLICIT'
-        }];
-
-        proposedActions = [
-          'Review the highest-confidence qualified opportunity',
-          'Validate the underlying customer problem and public evidence',
-          'Map the problem to a concrete House of Jazzu capability',
-          'Define a preliminary service scope and offer hypothesis',
-          'Identify budget, timeline, decision-maker, and scope unknowns',
-          'Present the opportunity and offer hypothesis for owner authorization'
-        ];
-      } else {
-        proposedActions = [
-          'Research qualified revenue prospects',
-          'Score prospects against House of Jazzu criteria',
-          'Prepare owner-review opportunity briefs'
-        ];
-
-        if (highestGapProduct) {
-          proposedActions.unshift(
-            `Prioritize ${highestGapProduct.id} as the current largest House revenue gap`,
-            ...(
-              Array.isArray(highestGapProduct.priorities)
-                ? highestGapProduct.priorities.map(
-                    priority => `Plan: ${priority}`
-                  )
-                : []
-            )
-          );
-        }
-      }
-    }
-
     switch (priority.id) {
-      case 'ACQ-001':
+      case "REV-001": {
+        const top = evidence.topOpportunity || null;
+        const houseRevenue = evidence.houseRevenue || {};
+        const gapProduct = houseRevenue.highestGapProduct || null;
+
+        if (Number(evidence.qualifiedOpportunityBriefs || 0) > 0) {
+          opportunityEvidence = [{
+            title: top?.title || "Qualified opportunity",
+            commercialFit: top?.commercialFit || "UNKNOWN",
+            serviceFit: top?.serviceFit || "UNKNOWN",
+            confidence: Number(top?.confidence || 0),
+            commercialIntent: top?.commercialIntent || "NOT_EXPLICIT"
+          }];
+
+          proposedActions = [
+            "Review the highest-confidence qualified opportunity",
+            "Validate customer need and supporting evidence",
+            "Map the need to a concrete House of Jazzu capability",
+            "Prepare a preliminary offer and economics for owner review"
+          ];
+        } else {
+          proposedActions = [
+            "Research qualified revenue prospects",
+            "Score prospects against House of Jazzu criteria",
+            "Prepare owner-review opportunity briefs"
+          ];
+
+          if (gapProduct) {
+            proposedActions.unshift(
+              "Prioritize " + String(gapProduct.id) +
+              " as the largest recorded House of Jazzu revenue gap"
+            );
+            if (Array.isArray(gapProduct.priorities)) {
+              proposedActions.push(...gapProduct.priorities.map(
+                item => "Prepare internal plan: " + String(item)
+              ));
+            }
+          }
+        }
+        break;
+      }
+
+      case "CAP-001":
         proposedActions = [
-          'Identify qualified acquisition targets',
-          'Collect supporting public evidence',
-          'Score targets for review',
-          'Prepare approved outreach candidates'
+          "Find grants and capital partners relevant to actual House of Jazzu activities",
+          "Check current status, eligibility, deadlines, geography, and matching-fund requirements",
+          "Record source links and evidence for each opportunity",
+          "Prepare a funding brief and required-document checklist",
+          "Keep applications and external contact for owner review"
         ];
         break;
 
-      case 'CAP-001':
+      case "ACQ-001":
         proposedActions = [
-          'Research relevant funding opportunities',
-          'Verify eligibility and deadlines',
-          'Prepare opportunity briefs',
-          'Queue applications only after owner authorization'
+          "Identify qualified acquisition and partnership targets",
+          "Collect supporting public evidence",
+          "Score targets against House of Jazzu criteria",
+          "Prepare outreach drafts for owner review; do not send automatically"
         ];
         break;
 
-      case 'OPS-001':
+      case "OPS-001":
         proposedActions = [
-          'Refresh executive evidence',
-          'Verify engine availability',
-          'Record operating state',
-          'Audit unresolved executive priorities'
+          "Refresh executive evidence",
+          "Verify engine availability",
+          "Record operating state",
+          "Audit unresolved executive priorities"
         ];
         break;
 
-      case 'REV-001':
-        break;
+      default:
+        proposedActions = [
+          "Review evidence and identify the next internal research task",
+          "Prepare recommendations for owner review"
+        ];
     }
+
+    const policy = privateGovernance.evaluateAction("prepare_internal_plan");
 
     return {
       priorityId: priority.id,
       area: priority.area,
       objective: priority.objective,
-      evidence: priority.evidence || {},
-
+      evidence,
       opportunityEvidence,
-
+      proposedActions,
+      governance: {
+        policyStatus: policy.status,
+        internalPreparationAllowed: policy.allowed,
+        externalExecution: "BLOCKED",
+        executionAllowed: false,
+        ownerAuthorizationRequired: true
+      },
       authorizationRequired: true,
-
-      externalExecution: 'BLOCKED',
-
-      proposedActions
+      externalExecution: "BLOCKED"
     };
   });
+
+  const hasRealEstate = plans.some(plan =>
+    String(plan.area || "").toLowerCase().includes("real") ||
+    String(plan.priorityId || "").toUpperCase().startsWith("REAL-")
+  );
+
+  if (!hasRealEstate) {
+    const policy = privateGovernance.evaluateAction("prepare_internal_plan");
+    plans.push({
+      priorityId: "REAL-001",
+      area: "real_estate",
+      objective: "Evaluate Hampton Roads real-estate opportunities and capital partners",
+      evidence: {
+        geography: ["Norfolk", "Hampton Roads"],
+        acquisitionCapitalAvailable: 0,
+        capitalStrategy: ["grants where eligible", "joint ventures", "capital partners"]
+      },
+      opportunityEvidence: [],
+      proposedActions: [
+        "Research publicly documented Hampton Roads property and partnership opportunities",
+        "Record asking price, property status, and source date",
+        "Estimate acquisition costs, repairs, operating expenses, and conservative income",
+        "Calculate cash required, potential return, and downside scenarios",
+        "Identify due-diligence gaps and potential capital partners",
+        "Prepare a deal brief for owner review; do not bid, buy, or contact parties automatically"
+      ],
+      governance: {
+        policyStatus: policy.status,
+        internalPreparationAllowed: policy.allowed,
+        externalExecution: "BLOCKED",
+        executionAllowed: false,
+        ownerAuthorizationRequired: true
+      },
+      authorizationRequired: true,
+      externalExecution: "BLOCKED"
+    });
+  }
+
+  return plans;
 }
+
 /**
  * ONE EXECUTIVE CYCLE
  */

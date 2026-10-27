@@ -2,7 +2,7 @@
   "campaign": "Money Munchkins 2 Grant Campaign",
   "owner": "Jason Lesane",
   "product": "Money Munchkins 2",
-  "status": "ACTIVE",
+  "status": "ACTIVE_RESEARCH_REQUIRED",
   "submission_policy": {
     "drafting": true,
     "eligibility_review": true,
@@ -19,8 +19,10 @@
       "amount": 10000,
       "deadline": "2026-09-18T23:59:00-04:00",
       "priority": 1,
-      "status": "RESEARCH_AND_DRAFT",
-      "application_url": "https://helloskip.com/dashboard/opportunity/10k-fall-grants"
+      "status": "CLOSED_OR_EXPIRED",
+      "application_url": "https://helloskip.com/dashboard/opportunity/10k-fall-grants",
+      "submissionEvidenceStatus": "NOT_VERIFIED",
+      "next_action": "Find and verify a current official cycle; do not reuse the expired deadline."
     },
     {
       "id": "OUTTA-EXCUSES-2026-Q3",
@@ -28,8 +30,10 @@
       "amount": 3000,
       "deadline": "2026-09-30T23:59:00-04:00",
       "priority": 2,
-      "status": "RESEARCH_AND_DRAFT",
-      "application_url": "https://www.outtaexcuses.com/general-5-1"
+      "status": "CLOSED_OR_EXPIRED",
+      "application_url": "https://www.outtaexcuses.com/general-5-1",
+      "submissionEvidenceStatus": "NOT_VERIFIED",
+      "next_action": "Find and verify a current official cycle; do not reuse the expired deadline."
     },
     {
       "id": "SECRETSOS-2026-Q3",
@@ -37,8 +41,10 @@
       "amount": 2500,
       "deadline": "2026-09-30T23:59:00-04:00",
       "priority": 3,
-      "status": "RESEARCH_AND_DRAFT",
-      "application_url": "https://assets.secretsos.com/"
+      "status": "CLOSED_OR_EXPIRED",
+      "application_url": "https://assets.secretsos.com/",
+      "submissionEvidenceStatus": "NOT_VERIFIED",
+      "next_action": "Find and verify a current official cycle; do not reuse the expired deadline."
     }
   ],
   "workflow": [
@@ -64,5 +70,7 @@
     "use_of_funds",
     "business_plan",
     "website_or_product_url"
-  ]
+  ],
+  "lastReviewedAt": "2026-10-14",
+  "reviewNote": "The listed Q3 2026 deadlines have passed. Refresh current cycles from official sources. This file does not verify submission."
 }

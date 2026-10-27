@@ -1,0 +1,23 @@
+[
+  {
+    "eventId": "evt_1791128509169_1",
+    "timestamp": "2026-10-04T15:41:49.169Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  },
+  {
+    "eventId": "evt_1791128509177_2",
+    "timestamp": "2026-10-04T15:41:49.177Z",
+    "type": "MISSION_COMPLETED",
+    "missionId": "MMQ-003",
+    "triggeredEvents": [
+      "event_unlock_savings_station",
+      "event_unlock_quantum_lab"
+    ]
+  }
+]

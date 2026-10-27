@@ -46,7 +46,11 @@ async function askGemini(message) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("GEMINI_NOT_CONFIGURED");
 
-  const model = "gemini-3.6-flash";
+  const configuredModel = process.env.NIA_GEMINI_MODEL ||
+    (process.env.NIA_AI_MODEL || "").replace(/^models\//, "");
+  const model = configuredModel.startsWith("gemini-")
+    ? configuredModel
+    : "gemini-2.5-flash";
 
   const url =
     `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
@@ -109,22 +113,35 @@ router.post("/message", async (req, res) => {
   let answer;
   let provider;
 
-  // Gemini-only provider: no OpenAI calls or fallback.
-  if (!process.env.GEMINI_API_KEY) {
-    return res.status(503).json({
-      ok: false,
-      error: "NIA_GEMINI_NOT_CONFIGURED"
-    });
+
+  // Prefer Gemini; use OpenAI only if Gemini is unavailable or fails.
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      answer = await askGemini(message);
+      provider = "gemini";
+    } catch (err) {
+      console.error("NIA_GEMINI_FAILED:", err.message);
+    }
   }
 
-  try {
-    answer = await askGemini(message);
-    provider = "gemini";
-  } catch (err) {
-    console.error("NIA_GEMINI_FAILED:", err.message);
-    return res.status(502).json({
+  if (!answer && process.env.OPENAI_API_KEY) {
+    try {
+      answer = await askOpenAI(message);
+      provider = "openai";
+    } catch (err) {
+      console.error("NIA_OPENAI_FAILED:", err.message);
+    }
+  }
+
+  if (!answer) {
+    const configured = Boolean(
+      process.env.OPENAI_API_KEY || process.env.GEMINI_API_KEY
+    );
+    return res.status(configured ? 502 : 503).json({
       ok: false,
-      error: "NIA_GEMINI_REQUEST_FAILED"
+      error: configured
+        ? "NIA_ALL_PROVIDERS_FAILED"
+        : "NIA_LLM_NOT_CONFIGURED"
     });
   }
 

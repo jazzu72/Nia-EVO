@@ -1,0 +1,123 @@
+{
+  "id": "financial-literacy-core-001",
+  "title": "Money Munchkins Financial Literacy Core",
+  "ageRange": "8-11",
+  "version": "1.0.0",
+  "framework": "Quantum Branch Studio",
+  "lessons": [
+    {
+      "id": "FL-001",
+      "title": "Money Is a Tool",
+      "concepts": ["money", "choices", "value"],
+      "objective": "Understand that money is a tool used to exchange, save, and make choices.",
+      "mechanic": "choice",
+      "mission": "MMQ-001"
+    },
+    {
+      "id": "FL-002",
+      "title": "Needs, Wants, and Tradeoffs",
+      "concepts": ["needs", "wants", "opportunity_cost"],
+      "objective": "Distinguish needs from wants and recognize that spending on one thing can mean giving up another.",
+      "mechanic": "sorting_and_choice",
+      "mission": "MMQ-002"
+    },
+    {
+      "id": "FL-003",
+      "title": "Build a Budget",
+      "concepts": ["income", "expenses", "budget", "tradeoffs"],
+      "objective": "Create a simple spending plan using limited resources.",
+      "mechanic": "budget_simulation",
+      "mission": "MMQ-003"
+    },
+    {
+      "id": "FL-004",
+      "title": "Earn It",
+      "concepts": ["work", "skills", "income", "entrepreneurship"],
+      "objective": "Understand that people can earn money by providing useful work, skills, or products.",
+      "mechanic": "micro_business"
+    },
+    {
+      "id": "FL-005",
+      "title": "Save for a Goal",
+      "concepts": ["saving", "goals", "delayed_gratification"],
+      "objective": "Set a goal and compare saving now with spending now.",
+      "mechanic": "goal_simulation"
+    },
+    {
+      "id": "FL-006",
+      "title": "Inside the Bank",
+      "concepts": ["banking", "checking", "savings", "interest"],
+      "objective": "Understand basic banking services and why people use savings accounts.",
+      "mechanic": "bank_simulation"
+    },
+    {
+      "id": "FL-007",
+      "title": "The Cost of Borrowing",
+      "concepts": ["credit", "loans", "interest", "repayment"],
+      "objective": "Understand that borrowed money must be repaid and borrowing can have a cost.",
+      "mechanic": "loan_choice"
+    },
+    {
+      "id": "FL-008",
+      "title": "The Opportunity Cost Engine",
+      "concepts": ["opportunity_cost", "tradeoffs", "consequences"],
+      "objective": "Identify what is given up when choosing one financial path over another.",
+      "mechanic": "branching_simulation"
+    },
+    {
+      "id": "FL-009",
+      "title": "Protect Your Spark",
+      "concepts": ["scams", "fraud", "privacy", "risk"],
+      "objective": "Recognize common warning signs of scams and unsafe financial requests.",
+      "mechanic": "detective"
+    },
+    {
+      "id": "FL-010",
+      "title": "Growing Money",
+      "concepts": ["investing", "risk", "return", "diversification"],
+      "objective": "Understand at a basic level that investments can grow or lose value and that risk matters.",
+      "mechanic": "simulation"
+    },
+    {
+      "id": "FL-011",
+      "title": "Build a Business",
+      "concepts": ["revenue", "costs", "profit", "customers"],
+      "objective": "Understand the relationship between money earned, money spent, and profit.",
+      "mechanic": "business_simulation"
+    },
+    {
+      "id": "FL-012",
+      "title": "Your Financial Future",
+      "concepts": ["goals", "planning", "compound_growth", "persistence"],
+      "objective": "Connect repeated financial choices with long-term outcomes.",
+      "mechanic": "quantum_future_simulation"
+    }
+  ],
+  "mastery": {
+    "levels": [
+      "recognize",
+      "understand",
+      "apply",
+      "compare",
+      "reason",
+      "plan"
+    ],
+    "evidence": [
+      "decision",
+      "explanation",
+      "simulation_result",
+      "replay_choice",
+      "goal_completion"
+    ]
+  },
+  "designRules": {
+    "learningBeforeReward": true,
+    "decisionsCreateConsequences": true,
+    "replayShowsAlternateOutcomes": true,
+    "noRealMoney": true,
+    "noFinancialAdvice": true,
+    "noAdvertising": true,
+    "noPublicChat": true,
+    "minimalData": true
+  }
+}

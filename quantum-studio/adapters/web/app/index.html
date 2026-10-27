@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Money Munchkins: Quantum Odyssey</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 10%,#193d67 0,#091322 48%,#050911 100%);color:#fff;font-family:system-ui,-apple-system,sans-serif}
+button{font:inherit}
+#app{min-height:100vh}
+.hud{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;gap:8px;padding:12px 16px;background:rgba(5,9,17,.92);backdrop-filter:blur(12px);border-bottom:1px solid #294566}
+.stat{padding:8px 13px;border-radius:12px;background:#132943;font-weight:800}
+.screen{min-height:calc(100vh - 65px);display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(900px,100%);padding:clamp(24px,6vw,56px);border:1px solid #315477;border-radius:28px;background:rgba(12,24,42,.94);box-shadow:0 25px 80px rgba(0,0,0,.5)}
+.center{text-align:center}
+.logo{font-size:clamp(4rem,15vw,8rem)}
+h1{font-size:clamp(2.3rem,8vw,5rem);line-height:1;margin:12px 0}
+h2{font-size:clamp(1.5rem,5vw,2.7rem)}
+p{font-size:1.12rem;line-height:1.65;color:#c9d8ea}
+.tag{display:inline-block;padding:7px 13px;border-radius:99px;background:#17385e;color:#8fdcff;font-weight:800}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.btn{width:100%;border:0;border-radius:15px;padding:17px 20px;background:#ffd34d;color:#111827;font-weight:900;cursor:pointer}
+.btn.alt{background:#244467;color:#fff}
+.btn:active{transform:scale(.98)}
+.mission{padding:20px;margin:12px 0;border:1px solid #315477;border-radius:18px;background:#122640}
+.mission h2{margin-top:0}
+.reward{color:#ffd34d;font-weight:800}
+.choice{margin:12px 0}
+.hidden{display:none!important}
+#loading{text-align:center;padding:80px 20px}
+.error{color:#ff8f8f}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="loading">⚛️ LOADING QUANTUM ODYSSEY…</div>
+</div>
+
+<script>
+const SAVE="money-munchkins-quantum-state";
+let world=null;
+let state={
+  coins:50,xp:0,
+  skills:{money_basics:0,needs_vs_wants:0,saving:0,planning:0},
+  completed:[],
+  unlocked:["loc_market_district"],
+  mission:null,
+  node:null
+};
+
+const app=document.getElementById("app");
+
+function save(){localStorage.setItem(SAVE,JSON.stringify(state))}
+function load(){
+  try{
+    const x=JSON.parse(localStorage.getItem(SAVE));
+    if(x) state={...state,...x,skills:{...state.skills,...(x.skills||{})}};
+  }catch(e){}
+}
+function reset(){localStorage.removeItem(SAVE);location.reload()}
+
+function hud(){
+ return `<div class="hud">
+   <span class="stat">⭐ ${state.coins} Spark</span>
+   <span class="stat">✨ ${state.xp} XP</span>
+   <span class="stat">🏆 ${state.completed.length}/3</span>
+ </div>`;
+}
+
+function render(html){
+ app.innerHTML=hud()+`<main class="screen"><div class="card">${html}</div></main>`;
+}
+
+function intro(){
+ render(`<div class="center">
+   <div class="logo">🚀</div>
+   <span class="tag">QUANTUM BRANCH STUDIO</span>
+   <h1>MONEY MUNCHKINS</h1>
+   <h2>Quantum Odyssey</h2>
+   <p>Welcome, Nova.</p>
+   <p>Something has changed beneath Spark City. A hidden quantum path has opened.</p>
+   <div class="actions">
+    <button class="btn" onclick="city()">ENTER SPARK CITY →</button>
+   </div>
+ </div>`);
+}
+
+function city(){
+ const locations=world.locations||[];
+ render(`<div class="center">
+   <span class="tag">SPARK CITY</span>
+   <h1>🏙️ Spark City</h1>
+   <p>Every decision opens another path.</p>
+   <div class="actions">
+    <button class="btn" onclick="missions()">🛒 MARKET DISTRICT — MISSIONS</button>
+    ${locations.filter(x=>x.id!=="loc_market_district").map(x=>{
+      const unlocked=state.unlocked.includes(x.id);
+      return `<button class="btn alt" onclick="${unlocked?`locationScene('${x.id}')`:`locked('${String(x.name||x.id).replace(/'/g,"\\'")}')`}">
+      ${unlocked?"✨":"🔒"} ${x.name||x.id}</button>`;
+    }).join("")}
+    <button class="btn alt" onclick="progress()">📊 NOVA'S JOURNEY</button>
+   </div>
+ </div>`);
+}
+
+function missions(){
+ const ms=world.missions||[];
+ render(`<span class="tag">QUANTUM MISSION SELECT</span>
+ <h1>Choose a Mission</h1>
+ <p>Complete the paths to unlock deeper parts of Spark City.</p>
+ ${ms.map((m,i)=>{
+   const done=state.completed.includes(m.id);
+   return `<div class="mission">
+    <h2>${done?"✅":"🌟"} ${m.name||m.title||m.id}</h2>
+    <p>${m.description||"A new quantum challenge awaits Nova."}</p>
+    <p>Difficulty: ${m.difficulty||1} · Reward: ${m.reward?.coins||m.rewards?.coins||((i+1)*10)} Spark / ${m.reward?.xp||m.rewards?.xp||((i+1)*10)} XP</p>
+    <button class="btn" onclick="startMission('${m.id}')">${done?"REPLAY":"START MISSION →"}</button>
+   </div>`;
+ }).join("")}
+ <div class="actions"><button class="btn alt" onclick="city()">← RETURN TO SPARK CITY</button></div>`);
+}
+
+function startMission(id){
+ state.mission=id;
+ const m=world.missions.find(x=>x.id===id);
+ state.node=m.startingNode||m.startNode;
+ save();
+ decision();
+}
+
+function getNode(id){
+ return (world.decisionNodes||[]).find(n=>n.id===id);
+}
+
+function decision(){
+ const n=getNode(state.node);
+ if(!n){completeMission();return}
+ render(`<span class="tag">MISSION ${state.mission}</span>
+ <h1>${n.title||"A Quantum Decision"}</h1>
+ <p>${n.prompt||n.description||"Choose your path."}</p>
+ <div class="actions">
+ ${(n.options||[]).map(o=>`
+  <button class="btn choice" onclick="choose('${String(o.id).replace(/'/g,"\\'")}')">
+   ${o.label||o.text||o.id}
+  </button>`).join("")}
+ </div>
+ <div class="actions"><button class="btn alt" onclick="missions()">← LEAVE MISSION</button></div>`);
+}
+
+function choose(optionId){
+ const n=getNode(state.node);
+ const o=(n.options||[]).find(x=>x.id===optionId);
+ if(!o)return;
+
+ (o.effects||[]).forEach(e=>{
+   if(e.type==="RESOURCE"&&e.resource==="spark_coins")state.coins+=Number(e.amount||0);
+   if(e.type==="SKILL")state.skills[e.skill]=(state.skills[e.skill]||0)+Number(e.amount||0);
+   if(e.type==="UNLOCK_LOCATION"&&!state.unlocked.includes(e.location))state.unlocked.push(e.location);
+ });
+ state.xp+=10;
+ save();
+
+ if(o.nextNode){state.node=o.nextNode;save();decision()}
+ else completeMission();
+}
+
+function completeMission(){
+ if(!state.completed.includes(state.mission))state.completed.push(state.mission);
+ const id=state.mission;
+ if(id==="MMQ-001")state.xp+=10;
+ if(id==="MMQ-002")state.xp+=20;
+ if(id==="MMQ-003"){
+   state.xp+=30;
+   if(!state.unlocked.includes("loc_quantum_lab"))state.unlocked.push("loc_quantum_lab");
+ }
+ save();
+ const m=world.missions.find(x=>x.id===id);
+ render(`<div class="center">
+   <div class="logo">✨</div>
+   <span class="tag">PATH COMPLETE</span>
+   <h1>Mission Complete!</h1>
+   <h2>${m?.name||id}</h2>
+   <p>Nova has changed the world state.</p>
+   <p class="reward">⭐ ${state.coins} Spark · ✨ ${state.xp} XP</p>
+   <div class="actions">
+    <button class="btn" onclick="missions()">CONTINUE JOURNEY →</button>
+    <button class="btn alt" onclick="city()">RETURN TO SPARK CITY</button>
+   </div>
+ </div>`);
+}
+
+function locationScene(id){
+ if(id==="loc_quantum_lab"){
+   render(`<div class="center"><div class="logo">⚛️</div><span class="tag">QUANTUM LAB</span><h1>THE ODYSSEY OPENS</h1><p>Nova has completed the first quantum learning paths.</p><p>The Lab is where alternate worlds, consequences and new adventures will be created.</p><div class="actions"><button class="btn" onclick="missions()">EXPLORE MORE →</button><button class="btn alt" onclick="city()">SPARK CITY</button></div></div>`);
+   return;
+ }
+ render(`<div class="center"><div class="logo">✨</div><h1>${id}</h1><p>This location is now part of Nova's world.</p><button class="btn" onclick="city()">RETURN TO CITY</button></div>`);
+}
+
+function locked(name){
+ render(`<div class="center"><div class="logo">🔒</div><h1>${name}</h1><p>Nova hasn't unlocked this location yet.</p><button class="btn" onclick="missions()">COMPLETE A MISSION →</button><button class="btn alt" onclick="city()">RETURN</button></div>`);
+}
+
+function progress(){
+ render(`<span class="tag">NOVA'S JOURNEY</span><h1>Progress</h1>
+ <div class="mission"><h2>⭐ Spark Coins</h2><p>${state.coins}</p></div>
+ <div class="mission"><h2>✨ Experience</h2><p>${state.xp} XP</p></div>
+ <div class="mission"><h2>🧠 Skills</h2><p>${Object.entries(state.skills).map(([k,v])=>`${k.replaceAll("_"," ")}: ${v}`).join(" · ")}</p></div>
+ <div class="mission"><h2>🌌 Missions</h2><p>${state.completed.length} of ${world.missions.length} completed</p></div>
+ <div class="actions"><button class="btn" onclick="city()">CONTINUE</button><button class="btn alt" onclick="reset()">NEW GAME</button></div>`);
+}
+
+async function boot(){
+ try{
+  const r=await fetch("/world.json",{cache:"no-store"});
+  if(!r.ok)throw Error("WORLD HTTP "+r.status);
+  world=await r.json();
+  load();
+  intro();
+ }catch(e){
+  app.innerHTML=`<main class="screen"><div class="card center"><h1>⚠️ Quantum World Offline</h1><p class="error">${e.message}</p></div></main>`;
+ }
+}
+boot();
+</script>
+  /game-loop.jsscript>
+</body>
+</html>

@@ -44,8 +44,49 @@ Your
 *.secret
 *.secrets
 secrets.enc
+/data/private/owner-sessions.json
+runtime/
+runtime/
+*.bak*
+*.backup*
+
+# Backups
+*.bak
+*.bak.*
+*.backup
+*.backup.*
+*.before-*
+*.broken-backup
+*.dup-fix
+*.pre-*
+# runtime / generated state
+data/nia-executive-audit.jsonl
+.local-tests/
+reports/
+data/tasks.json
+data/opportunities.json
+data/deals.json
+data/prospects/
+ceo/action-queue.json
+runtime/
+data/realestate/deals.json
+data/revenue/deals.json
+data/grants/applications/
+data/funding/
+grants-engine/submission-tracker.json
+grants-engine/submissions.json
+nia-production-readiness.json
+nia-grant-application-packages.json
 
 # Re-include nia-dashboard code (data/state stays ignored)
 !nia-dashboard/
 !nia-dashboard/**
 nia-dashboard/data/*.pre-test
+
+
+# Keep dashboard runtime data private
+/nia-dashboard/data/
+
+# Local private funding plaintext; never stage
+/data/funding/house-of-jazzu-profile.json
+/data/funding/nsf-sbir-phase1-application-package.json

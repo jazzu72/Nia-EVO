@@ -1,69 +1,2743 @@
 {
   "system": "NIA GRANT APPLICATION BUILDER",
+  "version": "2.0.0",
   "mode": "FUNDING_FIRST",
+  "generatedAt": "2026-10-14T19:46:21.471Z",
+  "safety": {
+    "autoSubmit": false,
+    "ownerApprovalRequired": true,
+    "ownerSignatureRequired": true,
+    "eligibilityMustBeVerified": true,
+    "submissionRequiresPortalEvidence": true
+  },
+  "inputSources": [
+    "nia-grant-execution-queue.json",
+    "data/funding/owner-funding-action-queue.json",
+    "data/funding/house-of-jazzu-profile.json"
+  ],
+  "packageCount": 13,
   "packages": [
     {
       "applicationId": "APP-NSF-SBIR",
       "grant": "NSF-SBIR",
       "source": "NSF",
-      "status": "DRAFT_READY",
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
       "sections": {
-        "companyProfile": "House of Jazzu / NIA Capital OS",
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
         "innovationSummary": "AI-powered operating system for capital discovery, business intelligence, and automated execution.",
         "problemStatement": "Small businesses lack access to efficient funding discovery, capital planning, and operational intelligence.",
         "solution": "NIA uses autonomous AI workflows to discover opportunities, organize capital strategy, and accelerate execution.",
         "commercializationPlan": "Deploy SaaS-based AI business operating platform across startups, investors, and small businesses.",
+        "milestones": [],
         "useOfFunds": [
           "Software development",
           "Cloud infrastructure",
           "AI research",
           "Market expansion"
         ],
-        "reviewStatus": "PENDING_HUMAN_APPROVAL"
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
       },
-      "created": "2026-09-11T13:51:14.852Z"
+      "created": "2026-10-14T17:28:11.552Z",
+      "name": "NSF",
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "updated": "2026-10-14T19:46:21.464Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.677Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
     },
     {
       "applicationId": "APP-SBA-SBIR",
       "grant": "SBA-SBIR",
       "source": "SBA",
-      "status": "DRAFT_READY",
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
       "sections": {
-        "companyProfile": "House of Jazzu / NIA Capital OS",
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
         "innovationSummary": "AI-powered operating system for capital discovery, business intelligence, and automated execution.",
         "problemStatement": "Small businesses lack access to efficient funding discovery, capital planning, and operational intelligence.",
         "solution": "NIA uses autonomous AI workflows to discover opportunities, organize capital strategy, and accelerate execution.",
         "commercializationPlan": "Deploy SaaS-based AI business operating platform across startups, investors, and small businesses.",
+        "milestones": [],
         "useOfFunds": [
           "Software development",
           "Cloud infrastructure",
           "AI research",
           "Market expansion"
         ],
-        "reviewStatus": "PENDING_HUMAN_APPROVAL"
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
       },
-      "created": "2026-09-11T13:51:14.852Z"
+      "created": "2026-10-14T17:28:11.555Z",
+      "name": "SBA",
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
     },
     {
       "applicationId": "APP-VIRGINIA-INNOVATION",
       "grant": "VIRGINIA-INNOVATION",
       "source": "VIRGINIA_PROGRAMS",
-      "status": "DRAFT_READY",
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
       "sections": {
-        "companyProfile": "House of Jazzu / NIA Capital OS",
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
         "innovationSummary": "AI-powered operating system for capital discovery, business intelligence, and automated execution.",
         "problemStatement": "Small businesses lack access to efficient funding discovery, capital planning, and operational intelligence.",
         "solution": "NIA uses autonomous AI workflows to discover opportunities, organize capital strategy, and accelerate execution.",
         "commercializationPlan": "Deploy SaaS-based AI business operating platform across startups, investors, and small businesses.",
+        "milestones": [],
         "useOfFunds": [
           "Software development",
           "Cloud infrastructure",
           "AI research",
           "Market expansion"
         ],
-        "reviewStatus": "PENDING_HUMAN_APPROVAL"
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
       },
-      "created": "2026-09-11T13:51:14.852Z"
+      "created": "2026-10-14T17:28:11.555Z",
+      "name": "VIRGINIA_PROGRAMS",
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0002",
+      "grant": "CAP-0002",
+      "name": "Small Business Grants: Funding Grants",
+      "source": {
+        "officialUrl": "https://www.thegrantportal.com/grants-for-small-business",
+        "domain": "www.thegrantportal.com"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.380Z",
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0005",
+      "grant": "CAP-0005",
+      "name": "64+ Active Technology Grants in The U.S.",
+      "source": {
+        "officialUrl": "https://www.instrumentl.com/browse-grants/technology-grants",
+        "domain": "www.instrumentl.com"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.380Z",
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0006",
+      "grant": "CAP-0006",
+      "name": "How to Apply for NEFE Grant Funding",
+      "source": {
+        "officialUrl": "https://www.nefe.org/research/get-funding/apply.aspx",
+        "domain": "www.nefe.org"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.380Z",
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0007",
+      "grant": "CAP-0007",
+      "name": "Community Impact Grants",
+      "source": {
+        "officialUrl": "https://www.aps.com/en/About/Community/In-the-Community/Community-Impact-Grants",
+        "domain": "www.aps.com"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.470Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0011",
+      "grant": "CAP-0011",
+      "name": "Teaching Innovation Grants",
+      "source": {
+        "officialUrl": "https://cte.ku.edu/teaching-innovation-grants",
+        "domain": "cte.ku.edu"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-CAP-0012",
+      "grant": "CAP-0012",
+      "name": "Assistive Technology Funding Sources",
+      "source": {
+        "officialUrl": "https://www.ucdenver.edu/center-for-innovative-design-and-engineering/community-engagement/colorado-assistive-technology-act-program/assistive-technology-funding-sources",
+        "domain": "www.ucdenver.edu"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.678Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-VIPC-LAUNCH-CYCLE-7",
+      "grant": "VIPC-LAUNCH-CYCLE-7",
+      "name": "VIPC Launch Grant — Cycle 7",
+      "source": {
+        "officialUrl": "https://vipc.org/funding/virginia-venture-partners/"
+      },
+      "officialUrl": null,
+      "deadline": "2026-10-30 noon as listed by VIPC",
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.679Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": [
+          {
+            "id": "official_cycle",
+            "requirement": "Verify Cycle 7 is open, the exact deadline, award amount and all current program rules on VIPC’s official page.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "stage_fit",
+            "requirement": "Verify required company/product stage and revenue restrictions against current rules.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "match",
+            "requirement": "Verify required cash or in-kind match, eligible sources, valuation rules and documentary proof.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "virginia_connection",
+            "requirement": "Document the required Virginia business presence and project impact with evidence.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "use_of_funds",
+            "requirement": "Map each requested expense to an eligible program cost and a verified quote or calculation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ]
+      }
+    },
+    {
+      "applicationId": "APP-NSF-SBIR-26-510",
+      "grant": "NSF-SBIR-26-510",
+      "name": "NSF SBIR/STTR Phase I — America’s Seed Fund",
+      "source": {
+        "officialUrl": "https://www.nsf.gov/funding/opportunities/small-business-innovation-research-small-business-technology/nsf26-510/solicitation"
+      },
+      "officialUrl": null,
+      "deadline": "2026-11-04 5:00 PM submitter local time",
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.679Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": [
+          {
+            "id": "solicitation",
+            "requirement": "Confirm the current NSF solicitation, submission window, topic fit and required registrations.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "technical_merit",
+            "requirement": "Document a specific, testable R&D question and technical uncertainty; ordinary product development alone may not qualify.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "research_plan",
+            "requirement": "Specify research aims, methods, technical risks, success criteria and Phase I deliverables.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "principal_investigator",
+            "requirement": "Verify PI eligibility, required time commitment and applicable company ownership/control rules.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "commercial_potential",
+            "requirement": "Provide evidence-backed customer need, competitive analysis and commercialization path.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "prior_pitch",
+            "requirement": "Check the official NSF Project Pitch portal/email for the prior pitch outcome and any invitation requirement.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ]
+      }
+    },
+    {
+      "applicationId": "APP-VIPC-FFAP-SBIR-STTR",
+      "grant": "VIPC-FFAP-SBIR-STTR",
+      "name": "VIPC Federal Funding Assistance Program",
+      "source": {
+        "officialUrl": "https://www.virginiaipc.org/funding/startups/"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.679Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
+    },
+    {
+      "applicationId": "APP-VA-DSBSD-SSBCI-TA",
+      "grant": "VA-DSBSD-SSBCI-TA",
+      "name": "Virginia SSBCI 2.0 Technical Assistance",
+      "source": {
+        "officialUrl": "https://sbsd.virginia.gov/virginia-small-business-financing-authority/ssbci-2-0/technical-assistance/"
+      },
+      "officialUrl": null,
+      "deadline": null,
+      "listedAmount": null,
+      "status": "DRAFT_REQUIRES_OWNER_REVIEW",
+      "sections": {
+        "companyProfile": {
+          "name": "House of Jazzu",
+          "owner": "Jason LeSane",
+          "location": "Norfolk, Virginia, United States",
+          "mission": "Find and prepare legitimate grants, non-dilutive funding, sponsorships and strategic support for House of Jazzu, prioritizing its flagship Money Munchkins: Quantum Odyssey. Separately screen real-estate opportunities. Nia remains private.",
+          "legalEntityStatus": "PENDING_VERIFICATION"
+        },
+        "project": {
+          "flagship": "Money Munchkins: Quantum Odyssey",
+          "summary": "Child-focused financial literacy game designed to make financial concepts accessible through interactive technology.",
+          "currentStage": "ACTIVE_DEVELOPMENT",
+          "technicalInnovation": "",
+          "targetUsers": "Children ages 8–11; verify intended pilot and customer evidence.",
+          "targetAgeRange": "8-11",
+          "revenueStatus": "NOT_VERIFIED"
+        },
+        "innovationSummary": "",
+        "problemStatement": "",
+        "solution": "",
+        "commercializationPlan": "",
+        "milestones": [],
+        "useOfFunds": [],
+        "budget": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "currency": "USD",
+          "items": []
+        },
+        "eligibility": {
+          "status": "NOT_VERIFIED",
+          "checks": [
+            "Verify the official program page, current deadline, award amount and application route",
+            "Confirm legal entity status, ownership and applicant eligibility",
+            "Verify current product stage, revenue, traction and pilot evidence"
+          ]
+        },
+        "requiredEvidence": [
+          "Verify the official program page, current deadline, award amount and application route",
+          "Confirm legal entity status, ownership and applicant eligibility",
+          "Verify current product stage, revenue, traction and pilot evidence",
+          "Prepare a justified project budget and milestones",
+          "Collect required registrations, certifications and supporting documents",
+          "Owner review and signature before any submission"
+        ],
+        "reviewStatus": "PENDING_HUMAN_APPROVAL",
+        "ownerInputsRequired": [
+          "Confirm legal entity type and registration status",
+          "Confirm current product stage and development work proposed",
+          "Provide evidence of customer demand, pilots or partnerships, if any",
+          "Provide verified project costs and requested funding amount",
+          "Confirm team qualifications and applicant registrations",
+          "Review grant-specific eligibility, deadline and required attachments"
+        ]
+      },
+      "submission": {
+        "allowed": false,
+        "verifiedSubmitted": false,
+        "evidence": null
+      },
+      "created": "2026-10-14T17:30:29.381Z",
+      "updated": "2026-10-14T19:46:21.471Z",
+      "completionPlan": {
+        "version": 1,
+        "generatedAt": "2026-10-14T19:46:21.679Z",
+        "status": "INCOMPLETE_REQUIRES_EVIDENCE",
+        "instructions": "Replace prompts only with owner-confirmed facts and supporting evidence.",
+        "narrativeFields": [
+          {
+            "id": "problemStatement",
+            "prompt": "Describe the specific problem, who experiences it, and evidence of the problem.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "targetCustomers",
+            "prompt": "Identify intended customers, users, and how demand has been validated.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "innovationSummary",
+            "prompt": "Explain the technical or program innovation and how it differs from existing alternatives.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "solution",
+            "prompt": "Describe the proposed solution, current development stage, and work still required.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "workPlan",
+            "prompt": "Specify research or development tasks, milestones, deliverables, and responsible people.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "commercializationPlan",
+            "prompt": "Explain the route to market, competitors, pricing assumptions, and evidence of demand.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "teamQualifications",
+            "prompt": "Provide verified applicant and team qualifications relevant to the project.",
+            "status": "OWNER_INPUT_REQUIRED"
+          },
+          {
+            "id": "impactMetrics",
+            "prompt": "Define measurable outcomes and explain how each will be tracked.",
+            "status": "OWNER_INPUT_REQUIRED"
+          }
+        ],
+        "evidenceChecklist": [
+          {
+            "id": "legal_identity",
+            "requirement": "Verify legal business name, entity type, state registration and EIN documentation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ownership",
+            "requirement": "Verify owners, control, and authorized applicant/signatory.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "ueI_sam",
+            "requirement": "Check whether UEI and active SAM.gov registration are required; verify from official records.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "financials",
+            "requirement": "Attach verified financial statements, funding history and revenue figures, if required.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_budget",
+            "requirement": "Build an itemized budget from documented costs and verify allowability against the solicitation.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "project_plan",
+            "requirement": "Document objectives, milestones, timeline, deliverables and measurable outcomes.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "supporting_evidence",
+            "requirement": "Collect product evidence, intellectual property records, quotes, letters and other required attachments.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          },
+          {
+            "id": "certifications",
+            "requirement": "Identify required certifications and obtain owner review before signing.",
+            "status": "MISSING_OR_UNVERIFIED",
+            "evidence": null
+          }
+        ],
+        "budgetPlan": {
+          "status": "REQUIRES_VERIFIED_COSTS",
+          "requiredFields": [
+            "costCategory",
+            "description",
+            "amount",
+            "calculation",
+            "sourceEvidence",
+            "solicitationAllowability"
+          ],
+          "items": [],
+          "rule": "Do not invent amounts, matching funds, quotes, salaries, or committed resources."
+        },
+        "milestonePlan": {
+          "status": "OWNER_INPUT_REQUIRED",
+          "items": [],
+          "requiredFields": [
+            "milestone",
+            "deliverable",
+            "targetDate",
+            "estimatedCost",
+            "verificationMethod"
+          ]
+        },
+        "ownerReview": [
+          "Verify opportunity is open and deadline/time zone against the official solicitation.",
+          "Confirm applicant, project and funding eligibility from primary sources.",
+          "Check every factual claim and budget figure against evidence.",
+          "Review all required attachments and certifications.",
+          "Owner must approve the final application and personally authorize any submission."
+        ],
+        "programSpecificChecks": []
+      }
     }
   ]
 }

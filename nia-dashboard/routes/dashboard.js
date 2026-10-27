@@ -95,7 +95,7 @@ function summarize(tickets) {
       pendingApprovalValue += v;
       if (at && (oldestPendingAt === null || at < oldestPendingAt)) oldestPendingAt = at;
     }
-    if (t.stage === 'executed' && at >= monthStart) revenueThisMonth += v;
+    if (t.stage === 'executed' && t.countsAsRevenue === true && at >= monthStart) revenueThisMonth += v;
     if (t.tier === 'tier2' && t.stage !== 'executed' && t.stage !== 'declined') grantPipelineValue += v;
   }
   return {
@@ -116,6 +116,10 @@ function execState() {
 
 const router = express.Router();
 router.use(express.json());
+router.use('/api', (req, res, next) => {
+  const { requireOwnerAuth } = require(path.join(ROOT, 'owner-auth-middleware'));
+  return requireOwnerAuth(req, res, next);
+});
 router.use(express.static(PUBLIC_DIR));
 
 router.get('/api/health', (_req, res) => {
@@ -289,33 +293,6 @@ router.get('/api/tickets/:id/dossier', (req, res) => {
 router.get('/api/grants/:id/fill-plan', (req, res) => {
   const id = req.params.id;
   try {
-    if (!id.startsWith('grant-')) return res.status(400).json({ error: 'Fill-plan only for grants' });
-    const eng = require(path.join(ROOT, 'grants-engine', 'assisted-submit'));
-    res.json({ plan: eng.buildFillPlan(id.slice(6)) });
-  } catch (e) { res.status(e.code === 'NOT_FOUND' ? 404 : 500).json({ error: e.message }); }
-});
-
-router.get('/api/grants/:id/bookmarklet', (req, res) => {
-  try {
-    const eng = require(path.join(ROOT, 'grants-engine', 'assisted-submit'));
-    res.type('text/plain; charset=utf-8').send(eng.buildBookmarklet());
-  } catch (e) { res.status(500).json({ error: e.message }); }
-});
-
-router.post('/api/grants/:id/fill-report', (req, res) => {
-  try {
-    const id = req.params.id;
-    const report = Object.assign({ grantId: id, receivedAt: new Date().toISOString() }, req.body || {});
-    const file = path.join(ROOT, 'runtime', 'assist-reports.jsonl');
-    fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.appendFileSync(file, JSON.stringify(report) + '\n');
-    res.json({ ok: true });
-  } catch (e) { res.status(500).json({ error: e.message }); }
-});
-
-router.get('/api/grants/:id/fill-plan', (req, res) => {
-  const id = req.params.id;
-  try {
     if (!id.startsWith('grant-')) return res.status(400).json({ error: 'only for grants' });
     const browser = require(path.join(ROOT, 'browser', 'session'));
     res.json({ plan: browser.buildFillPlan(id.slice(6)) });
@@ -355,7 +332,7 @@ router.post('/api/grants/:id/session', (req, res) => {
 router.post('/api/grants/:id/fill-report', (req, res) => {
   try {
     const audit = require(path.join(ROOT, 'browser', 'audit'));
-    audit.record(Object.assign({ event: 'client.fill_report' }, req.body || {}));
+    audit.record(Object.assign({}, req.body || {}, { event: 'client.fill_report', grantId: req.params.id }));
     res.json({ ok: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });

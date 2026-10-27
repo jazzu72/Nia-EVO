@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission 003 | Build Your First Budget</title>
+<style>
+html,body{margin:0;height:100%;background:#02060b;color:#fff;font-family:system-ui}
+body{display:grid;place-items:center}
+.card{width:min(780px,88vw);padding:38px;border:1px solid rgba(212,180,106,.45);border-radius:28px;background:rgba(5,12,20,.94);box-shadow:0 0 90px rgba(255,100,220,.12)}
+h1{font-size:clamp(30px,6vw,56px);margin:10px 0}
+p{font-size:18px;line-height:1.6;color:#b9c7d4}
+.choice{width:100%;margin:12px 0;padding:20px;border-radius:16px;border:1px solid rgba(120,220,255,.35);background:#0b1824;color:#fff;font-size:18px;text-align:left}
+.choice:hover{background:#123047;border-color:#d4b46a}
+#result{margin-top:24px;color:#d4b46a;font-weight:700}
+</style>
+</head>
+<body>
+<main class="card">
+<div>MISSION MMQ-003 • BUILDER'S WORKSHOP</div>
+<h1>Build Your First Budget</h1>
+<p id="story">
+Nova has limited Spark Coins. A new opportunity has appeared in Spark City.
+She must decide what to do with the resources she has.
+</p>
+
+<button class="choice" onclick="choose('save')">
+🌱 Save some for later
+</button>
+
+<button class="choice" onclick="choose('spend')">
+⚡ Spend them now
+</button>
+
+<div id="result"></div>
+</main>
+
+<script>
+function choose(path){
+  if(localStorage.getItem("mmq003_complete")==="true" || localStorage.getItem("mmq003_reward_claimed")==="true"){localStorage.setItem("mmq003_complete","true");localStorage.setItem("mmq003_reward_claimed","true");return;}
+  let spark=Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? "50");
+  if(!Number.isFinite(spark)) spark=50;
+  let xp=Number(localStorage.getItem("mm_xp")||0);
+
+  spark+=30;
+  xp+=30;
+
+  localStorage.setItem("mm_spark",spark);
+  localStorage.setItem("spark_coins",spark);
+  localStorage.setItem("mmq003_reward_claimed","true");
+  localStorage.setItem("mm_xp",xp);
+  localStorage.setItem("mmq003_complete","true");
+  localStorage.setItem("mmq003_choice",path);
+
+  if(path==="save"){
+    localStorage.setItem("mm_saving","1");
+    localStorage.setItem("mm_planning","1");
+  }else{
+    localStorage.setItem("mm_planning","1");
+  }
+
+  localStorage.setItem(
+    "mm_unlocks",
+    JSON.stringify(["market","savings","builder","lab"])
+  );
+
+  document.querySelectorAll(".choice").forEach(b=>b.style.display="none");
+
+  document.getElementById("story").textContent=
+    path==="save"
+    ? "Nova saves resources for the future. Delayed gratification opens a new possibility."
+    : "Nova spends the resources and discovers the tradeoff. Every choice teaches something.";
+
+  document.getElementById("result").textContent=
+    "MISSION COMPLETE  •  +30 Spark  •  +30 XP  •  QUANTUM LAB UNLOCKED";
+
+  setTimeout(()=>{
+    location.href="/quantum-lab.html";
+  },2200);
+}
+</script>
+</body>
+</html>

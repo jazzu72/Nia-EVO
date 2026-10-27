@@ -1,3 +1,4 @@
+const { readVaultJSON } = require("../tools/vault-helpers");
 const fs = require("fs");
 const path = require("path");
 
@@ -10,10 +11,10 @@ const PROFILE_PATH = path.join(
 );
 
 function loadProfile() {
-  if (!fs.existsSync(PROFILE_PATH)) {
+  if (!fs.existsSync(PROFILE_PATH) && !fs.existsSync(PROFILE_PATH + ".enc")) {
     throw new Error("HOUSE_OF_JAZZU_PROFILE_MISSING");
   }
-  return JSON.parse(fs.readFileSync(PROFILE_PATH, "utf8"));
+  return readVaultJSON(PROFILE_PATH);
 }
 
 function normalize(value) {

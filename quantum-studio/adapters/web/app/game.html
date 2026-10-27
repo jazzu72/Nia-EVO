@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Munchkins: Quantum Odyssey</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 20%,#17365f,#080d1c 65%);color:white;font-family:system-ui,sans-serif}
+#game{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.screen{display:none;width:min(900px,100%);text-align:center}
+.screen:target{display:block}
+#intro{display:block}
+#intro:target~#city,#intro:target~#mission1,#intro:target~#mission2,#intro:target~#mission3,#intro:target~#lab{display:none}
+h1{font-size:clamp(2rem,8vw,5rem);margin:.2em 0}
+h2{font-size:clamp(1.6rem,5vw,3rem)}
+p{font-size:1.15rem;line-height:1.6;color:#cbd8ee}
+.logo{font-size:4rem}
+.card{background:rgba(16,25,48,.9);border:1px solid #36527d;border-radius:24px;padding:32px;box-shadow:0 20px 70px rgba(0,0,0,.45)}
+.btn{display:inline-block;margin:10px;padding:16px 26px;border-radius:14px;background:#ffd34d;color:#101522;font-weight:900;text-decoration:none;font-size:1.05rem}
+.btn.secondary{background:#27446d;color:white}
+.choice{display:block;margin:14px auto;max-width:600px}
+.hud{display:flex;justify-content:space-between;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.stat{background:#142544;border-radius:12px;padding:10px 16px;font-weight:800}
+.tag{display:inline-block;padding:6px 12px;border-radius:99px;background:#213d68;color:#8fdcff}
+</style>
+</head>
+<body>
+
+<div id="game">
+
+<section id="intro" class="screen">
+<div class="card">
+<div class="logo">🚀</div>
+<span class="tag">QUANTUM BRANCH STUDIO</span>
+<h1>MONEY MUNCHKINS</h1>
+<h2>Quantum Odyssey</h2>
+<p>Something has changed beneath Spark City.</p>
+<p>Nova discovers a hidden doorway — and the first quantum path is waiting.</p>
+<a class="btn" href="#city">ENTER SPARK CITY →</a>
+</div>
+</section>
+
+<section id="city" class="screen">
+<div class="card">
+<div class="hud"><span class="stat">⭐ 50 Spark Coins</span><span class="stat">✨ 0 XP</span></div>
+<h1>🏙️ Spark City</h1>
+<p>Choose where Nova goes next.</p>
+<a class="btn choice" href="#mission1">🛒 Market District — Mission 001</a>
+<a class="btn secondary choice" href="#mission2">🔒 Savings Station — Locked</a>
+<a class="btn secondary choice" href="#mission3">🔒 Builder's Workshop — Locked</a>
+<p><small>Complete the missions to unlock the Quantum Lab.</small></p>
+</div>
+</section>
+
+<section id="mission1" class="screen">
+<div class="card">
+<span class="tag">MISSION MMQ-001</span>
+<h1>🌟 Welcome to Quantum Odyssey</h1>
+<p>Nova has arrived in Spark City.</p>
+<p>A mysterious guide appears. The first lesson is simple: every choice creates a path.</p>
+<a class="btn" href="#mission1-success">LEARN THE FIRST SECRET →</a>
+<a class="btn secondary" href="#city">← RETURN TO CITY</a>
+</div>
+</section>
+
+<section id="mission1-success" class="screen">
+<div class="card">
+<h1>✨ PATH DISCOVERED</h1>
+<p>Nova learned the first money skill.</p>
+<div class="stat">+10 Spark Coins · +10 XP</div>
+<br><br>
+<a class="btn" href="#mission2">CONTINUE TO MISSION 002 →</a>
+</div>
+</section>
+
+<section id="mission2" class="screen">
+<div class="card">
+<span class="tag">MISSION MMQ-002</span>
+<h1>🧠 Needs vs. Wants</h1>
+<p>Nova discovers two paths. One represents a need. One represents a want.</p>
+<a class="btn choice" href="#mission2-success">MAKE THE CHOICE →</a>
+<a class="btn secondary" href="#city">← RETURN TO CITY</a>
+</div>
+</section>
+
+<section id="mission2-success" class="screen">
+<div class="card">
+<h1>💡 CHOICE RECORDED</h1>
+<p>Nova understands that choices have consequences.</p>
+<div class="stat">+20 Spark Coins · +20 XP</div>
+<br><br>
+<a class="btn" href="#mission3">UNLOCK MISSION 003 →</a>
+</div>
+</section>
+
+<section id="mission3" class="screen">
+<div class="card">
+<span class="tag">MISSION MMQ-003</span>
+<h1>💰 Build Your First Budget</h1>
+<p>Nova has limited Spark Coins.</p>
+<p>Save some for later — or spend them now?</p>
+<a class="btn choice" href="#save">💎 SAVE SOME FOR LATER</a>
+<a class="btn secondary choice" href="#spend">🛍️ SPEND THEM NOW</a>
+</div>
+</section>
+
+<section id="save" class="screen">
+<div class="card">
+<h1>💎 SAVING PATH</h1>
+<p>Nova discovers the power of delayed gratification.</p>
+<div class="stat">+30 XP · SAVING SKILL +1</div>
+<br><br>
+<a class="btn" href="#lab">ENTER THE QUANTUM LAB →</a>
+</div>
+</section>
+
+<section id="spend" class="screen">
+<div class="card">
+<h1>🛍️ SPENDING PATH</h1>
+<p>Nova sees the result of spending the available coins.</p>
+<div class="stat">+30 XP · PLANNING SKILL +1</div>
+<br><br>
+<a class="btn" href="#lab">ENTER THE QUANTUM LAB →</a>
+</div>
+</section>
+
+<section id="lab" class="screen">
+<div class="card">
+<div class="logo">⚛️</div>
+<span class="tag">QUANTUM LAB UNLOCKED</span>
+<h1>THE ODYSSEY BEGINS</h1>
+<p>Nova completed the first three quantum paths.</p>
+<p>The next world is waiting to be built.</p>
+<a class="btn" href="#city">REPLAY SPARK CITY</a>
+</div>
+</section>
+
+</div>
+</body>
+</html>

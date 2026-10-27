@@ -1,0 +1,13 @@
+[
+  {
+    "eventId": "evt_1791129494898_1",
+    "timestamp": "2026-10-04T15:58:14.898Z",
+    "type": "DECISION_MADE",
+    "nodeId": "node_budget_choice",
+    "optionId": "opt_save",
+    "nextNodeId": "node_savings_result",
+    "triggeredEvents": [
+      "event_unlock_savings_station"
+    ]
+  }
+]

@@ -112,6 +112,13 @@ function calculateScore(data){
     return Math.min(100,score);
 }
 
+function classifyScore(score) {
+const value = Number(score) || 0;
+if (value >= 60) return "HOT";
+if (value >= 30) return "WARM";
+return "COLD";
+}
+
 function topProspects(limit=10){
     return load()
         .sort((a,b)=>(Number(b.score)||0)-(Number(a.score)||0))
@@ -120,5 +127,6 @@ function topProspects(limit=10){
 
 module.exports={
     addProspect,
-    topProspects
+    topProspects,
+    classifyScore
 };

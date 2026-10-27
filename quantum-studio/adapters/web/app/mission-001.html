@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission 001 | Money Munchkins: Quantum Odyssey</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#02060b;color:white;font-family:system-ui}
+body{display:grid;place-items:center}
+.card{width:min(720px,88vw);padding:38px;border:1px solid rgba(212,180,106,.45);border-radius:28px;background:rgba(5,12,20,.92);box-shadow:0 0 70px rgba(80,180,255,.18)}
+h1{font-size:clamp(30px,6vw,58px);margin:0 0 12px}
+p{font-size:18px;line-height:1.6;color:#b9c7d4}
+.choice{display:block;width:100%;margin:14px 0;padding:18px;border-radius:16px;border:1px solid rgba(120,220,255,.35);background:#0b1824;color:white;font-size:17px;text-align:left}
+.choice:hover{background:#123047;border-color:#d4b46a}
+#result{margin-top:25px;color:#d4b46a;font-weight:700}
+
+/* MISSION 001 QUANTUM CHOICE ENHANCEMENT */
+.mmq001-choice-enhancement{
+  position:fixed;
+  inset:0;
+  z-index:9997;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(3,7,12,.94);
+  backdrop-filter:blur(12px);
+}
+
+.mmq001-choice-enhancement.active{
+  display:flex;
+}
+
+.mmq001-choice-grid{
+  width:min(94vw,820px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.mmq001-choice{
+  position:relative;
+  min-height:230px;
+  padding:28px;
+  border:1px solid rgba(212,180,106,.35);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(15,28,38,.96),rgba(7,13,20,.96));
+  color:#fff;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.mmq001-choice:hover{
+  transform:translateY(-6px);
+  border-color:#54c78a;
+  box-shadow:0 18px 50px rgba(0,0,0,.4);
+}
+
+.mmq001-choice.mirror:hover{
+  border-color:#ff66d9;
+}
+
+.mmq001-choice-label{
+  color:#d4b46a;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.2em;
+}
+
+.mmq001-choice h2{
+  margin:18px 0 10px;
+  font-size:24px;
+}
+
+.mmq001-choice p{
+  color:#aeb9c4;
+  line-height:1.6;
+}
+
+.mmq001-choice-core{
+  position:absolute;
+  right:22px;
+  top:22px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff,#54c78a 38%,transparent 70%);
+  box-shadow:0 0 25px rgba(84,199,138,.45);
+}
+
+.mmq001-choice.mirror .mmq001-choice-core{
+  background:radial-gradient(circle,#fff,#ff66d9 38%,transparent 70%);
+  box-shadow:0 0 25px rgba(255,102,217,.45);
+}
+
+.mmq001-choice-result{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#03070c;
+  color:#fff;
+}
+
+.mmq001-choice-result.active{
+  display:flex;
+}
+
+.mmq001-result-title{
+  font-size:clamp(30px,7vw,60px);
+  font-weight:950;
+  letter-spacing:.08em;
+}
+
+.mmq001-result-sub{
+  margin-top:14px;
+  color:#d4b46a;
+  letter-spacing:.14em;
+}
+
+@media(max-width:650px){
+  .mmq001-choice-grid{
+    grid-template-columns:1fr;
+  }
+  .mmq001-choice{
+    min-height:170px;
+  }
+}
+
+</style>
+
+<!-- MMQ001-PATH-BRANCH-V1 -->
+<style id="mmq001-path-style">
+#mmq001PathGate{
+  position:relative;
+  z-index:20;
+  margin:0 auto 34px;
+  max-width:920px;
+  padding:28px 18px 8px;
+  font-family:inherit;
+}
+.mmq001-kicker{
+  color:#d9b75b;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.24em;
+  margin-bottom:12px;
+}
+.mmq001-title{
+  color:#fff;
+  font-size:clamp(2rem,7vw,4rem);
+  line-height:.98;
+  font-weight:900;
+  margin:0 0 14px;
+}
+.mmq001-subtitle{
+  color:#aebccc;
+  font-size:clamp(1rem,3.8vw,1.35rem);
+  line-height:1.55;
+  max-width:720px;
+  margin:0 0 28px;
+}
+.mmq001-question{
+  color:#fff;
+  font-size:1.05rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:0 0 16px;
+}
+.mmq001-paths{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.mmq001-path{
+  position:relative;
+  overflow:hidden;
+  min-height:250px;
+  padding:24px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(circle at 88% 14%,rgba(255,255,255,.06),transparent 18%),
+    linear-gradient(145deg,rgba(13,28,38,.98),rgba(4,11,18,.98));
+  color:#fff;
+  text-align:left;
+  cursor:pointer;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
+}
+.mmq001-path:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,.38);
+}
+.mmq001-path:active{transform:scale(.985)}
+.mmq001-path.learn{border-color:rgba(53,224,145,.48)}
+.mmq001-path.explore{border-color:rgba(245,91,224,.40)}
+.mmq001-path.selected{
+  transform:translateY(-5px) scale(1.01);
+  border-color:#fff;
+  box-shadow:0 0 0 2px rgba(255,255,255,.08),0 18px 55px rgba(0,0,0,.4);
+}
+.mmq001-path.dimmed{opacity:.32;transform:scale(.98)}
+.mmq001-path-label{
+  color:#d9b75b;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.22em;
+  margin-bottom:18px;
+}
+.mmq001-path-title{
+  font-size:clamp(1.45rem,5vw,2.15rem);
+  line-height:1;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.mmq001-path-copy{
+  color:#aebccc;
+  font-size:1rem;
+  line-height:1.5;
+  max-width:460px;
+}
+.mmq001-spark{
+  position:absolute;
+  top:22px;
+  right:22px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  opacity:.95;
+}
+.mmq001-spark.learn{
+  background:radial-gradient(circle,#fff 0 9%,#55efa0 20%,#22c978 43%,rgba(34,201,120,0) 72%);
+  box-shadow:0 0 30px rgba(55,238,157,.55);
+}
+.mmq001-spark.explore{
+  background:radial-gradient(circle,#fff 0 9%,#ff86ed 20%,#ef42d8 43%,rgba(239,66,216,0) 72%);
+  box-shadow:0 0 30px rgba(239,66,216,.55);
+}
+.mmq001-select{
+  display:inline-flex;
+  margin-top:22px;
+  padding:11px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.mmq001-confirm{
+  display:none;
+  margin-top:22px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(8,17,25,.9);
+}
+.mmq001-confirm.show{display:block;animation:mmq001Fade .35s ease}
+.mmq001-confirm-title{
+  color:#fff;
+  font-size:1.25rem;
+  font-weight:900;
+  margin-bottom:7px;
+}
+.mmq001-confirm-copy{
+  color:#aebccc;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+.mmq001-continue{
+  border:0;
+  border-radius:999px;
+  padding:14px 22px;
+  background:#fff;
+  color:#071019;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.mmq001-status{
+  margin-top:14px;
+  color:#8293a5;
+  font-size:.78rem;
+}
+@keyframes mmq001Fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:700px){
+  .mmq001-paths{grid-template-columns:1fr}
+  .mmq001-path{min-height:220px}
+}
+</style>
+
+</head>
+<body>
+
+<div id="mmq001-choice-enhancement">
+  <div class="mmq001-choice-grid">
+
+    <button class="mmq001-choice" id="mmq001-learn" type="button">
+      <span class="mmq001-choice-core"></span>
+      <div class="mmq001-choice-label">PATH A</div>
+      <h2>LEARN THE CITY</h2>
+      <p>Understand how Spark City works before stepping deeper into the Quantum Odyssey.</p>
+    </button>
+
+    <button class="mmq001-choice mirror" id="mmq001-explore" type="button">
+      <span class="mmq001-choice-core"></span>
+      <div class="mmq001-choice-label">PATH B</div>
+      <h2>EXPLORE FIRST</h2>
+      <p>Trust curiosity. Discover the city before anyone tells Nova what she is supposed to find.</p>
+    </button>
+
+  </div>
+</div>
+
+<div id="mmq001-choice-result" class="mmq001-choice-result">
+  <div>
+    <div id="mmq001-result-title" class="mmq001-result-title">CHOICE RECORDED</div>
+    <div id="mmq001-result-sub" class="mmq001-result-sub">THE QUANTUM PATH IS CHANGING</div>
+  </div>
+</div>
+
+<main class="card">
+<div>MISSION MMQ-001 • SPARK CITY</div>
+<h1 id="mission-title">Welcome to Quantum Odyssey</h1>
+<p id="story">
+Nova has arrived in Spark City. Every decision creates a path.
+Before exploring the city, choose how Nova begins her journey.
+</p>
+
+<button class="choice" onclick="choose('learn')">
+🧠 Learn how Spark City works
+</button>
+
+<button class="choice" onclick="choose('explore')">
+🌌 Explore first and discover the city
+</button>
+
+<div id="result"></div>
+</main>
+
+<script>
+const alternateBranch =
+  new URLSearchParams(location.search).get("branch")==="alternate";
+
+if(alternateBranch){
+  document.getElementById("mission-title").textContent =
+    "Mirror Market • Alternate Branch";
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    '<div style="position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;color:#ff66d9;font-weight:800;letter-spacing:.12em;font-size:12px">◆ QUANTUM ALTERNATE PATH</div>'
+  );
+}
+
+function mmq001Choose(path){
+  if(path !== "learn" && path !== "explore") return;
+
+  localStorage.setItem("mmq001_selected_path", path);
+  localStorage.setItem("mmq001_path", path);
+
+  if(alternateBranch){
+    localStorage.setItem("quantum_alternate_path", "true");
+    localStorage.setItem("quantum_branch_origin", "mirror_market");
+  }
+
+  window.location.href =
+    "/scenes/spark-city.html?mission=MMQ-001&path=" +
+    encodeURIComponent(path);
+}
+</script>
+
+<script>
+(function(){
+  const choice=document.getElementById("mmq001-choice-enhancement");
+  const learn=document.getElementById("mmq001-learn");
+  const explore=document.getElementById("mmq001-explore");
+  const result=document.getElementById("mmq001-choice-result");
+  const title=document.getElementById("mmq001-result-title");
+  const sub=document.getElementById("mmq001-result-sub");
+
+  if(!choice||!learn||!explore)return;
+
+  function openChoices(){
+    choice.classList.add("active");
+  }
+
+  function cinematicChoose(label){
+    result.innerHTML =
+      '<div style="font-size:12px;letter-spacing:.18em;color:#d4b46a;font-weight:800">CHOICE RECORDED</div>' +
+      '<h2 style="margin:10px 0;color:#fff">'+label+'</h2>' +
+      '<p style="margin:0;color:#b9c2cc">THE QUANTUM PATH IS CHANGING</p>';
+    result.classList.add("show");
+    mmq001Choose(label === "LEARN PATH" ? "learn" : "explore");
+  }
+
+  learn.addEventListener("click",(event)=>{
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    localStorage.setItem("mmq001_selected_path","learn");
+    localStorage.setItem("mmq001_path","learn");
+    window.location.assign("/scenes/spark-city.html?mission=MMQ-001&path=learn");
+  },true);
+  explore.addEventListener("click",(event)=>{
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    localStorage.setItem("mmq001_selected_path","explore");
+    localStorage.setItem("mmq001_path","explore");
+    window.location.assign("/scenes/spark-city.html?mission=MMQ-001&path=explore");
+  },true);
+
+  window.addEventListener("mmq001:showChoices",openChoices);
+})();
+</script>
+
+<script id="mmq001-path-aware">
+(function(){
+  const path=new URLSearchParams(window.location.search).get("path")||localStorage.getItem("mmq001_path")||"";
+  if(path!=="learn"&&path!=="explore")return;
+
+  function apply(){
+    const title=document.querySelector(".mmq001-title");
+    const subtitle=document.querySelector(".mmq001-subtitle");
+    const question=document.querySelector(".mmq001-question");
+
+    if(path==="learn"){
+      if(title) title.innerHTML="PATH A<br>LEARN THE CITY";
+      if(subtitle) subtitle.textContent="Nova chose knowledge first. Spark City will teach her how every district, resource, and choice connects.";
+      if(question) question.textContent="Knowledge is Nova's first Spark.";
+    }else{
+      if(title) title.innerHTML="PATH B<br>EXPLORE FIRST";
+      if(subtitle) subtitle.textContent="Nova chose curiosity first. She will discover Spark City by moving through it and seeing what happens.";
+      if(question) question.textContent="Curiosity is Nova's first Spark.";
+    }
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",apply);
+  }else{
+    apply();
+  }
+})();
+</script>
+
+<script id="mmq001-path-script">
+(function(){
+  "use strict";
+
+  const KEY = "mmq001_selected_path";
+  const gate = document.createElement("section");
+  gate.id = "mmq001PathGate";
+
+  gate.innerHTML = `
+    <div class="mmq001-kicker">MISSION MMQ-001</div>
+    <h1 class="mmq001-title">WELCOME TO<br>QUANTUM ODYSSEY</h1>
+    <p class="mmq001-subtitle">
+      Nova has arrived in Spark City. Every decision creates a path.
+      How should Nova begin her journey?
+    </p>
+
+    <div class="mmq001-question">Choose how Nova begins</div>
+
+    <div class="mmq001-paths">
+      <button class="mmq001-path learn" data-path="learn" type="button">
+        <span class="mmq001-spark learn"></span>
+        <div class="mmq001-path-label">PATH A</div>
+        <div class="mmq001-path-title">LEARN THE CITY</div>
+        <div class="mmq001-path-copy">
+          Understand how Spark City works before stepping deeper
+          into the Quantum Odyssey.
+        </div>
+        <span class="mmq001-select">Choose Path A</span>
+      </button>
+
+      <button class="mmq001-path explore" data-path="explore" type="button">
+        <span class="mmq001-spark explore"></span>
+        <div class="mmq001-path-label">PATH B</div>
+        <div class="mmq001-path-title">EXPLORE FIRST</div>
+        <div class="mmq001-path-copy">
+          Trust curiosity. Discover the city before anyone tells
+          Nova what she is supposed to find.
+        </div>
+        <span class="mmq001-select">Choose Path B</span>
+      </button>
+    </div>
+
+    <div class="mmq001-confirm" id="mmq001Confirm">
+      <div class="mmq001-confirm-title" id="mmq001ConfirmTitle"></div>
+      <div class="mmq001-confirm-copy" id="mmq001ConfirmCopy"></div>
+      <button class="mmq001-continue" id="mmq001Continue" type="button">
+        ENTER SPARK CITY →
+      </button>
+      <div class="mmq001-status">
+        Your choice becomes Nova's first path.
+      </div>
+    </div>
+  `;
+
+  function findMissionAnchor(){
+    const all = document.querySelectorAll("h1,h2,h3,h4,p,div,section");
+    for(const el of all){
+      const t = (el.textContent || "").trim();
+      if(t.includes("MISSION MMQ-001") && t.includes("SPARK CITY")){
+        return el.closest("section,article,main,div") || el;
+      }
+    }
+    return null;
+  }
+
+  function enterPath(path){
+    const url = new URL(window.location.href);
+    url.searchParams.set("path", path);
+    localStorage.setItem(KEY, path);
+
+    // Keep the branch available to Spark City and any later mission logic.
+    localStorage.setItem("mmq001_path", path);
+
+    window.location.href =
+      "/scenes/spark-city.html?mission=MMQ-001&path=" +
+      encodeURIComponent(path);
+  }
+
+  function choose(path){
+    const cards = gate.querySelectorAll(".mmq001-path");
+    cards.forEach(card => {
+      card.classList.toggle("selected", card.dataset.path === path);
+      card.classList.toggle("dimmed", card.dataset.path !== path);
+    });
+
+    const confirm = gate.querySelector("#mmq001Confirm");
+    const title = gate.querySelector("#mmq001ConfirmTitle");
+    const copy = gate.querySelector("#mmq001ConfirmCopy");
+
+    if(path === "learn"){
+      title.textContent = "PATH A SELECTED • LEARN THE CITY";
+      copy.textContent =
+        "Nova will learn the rules of Spark City first. Knowledge becomes her first Spark.";
+    }else{
+      title.textContent = "PATH B SELECTED • EXPLORE FIRST";
+      copy.textContent =
+        "Nova will follow her curiosity first. What she discovers will shape what happens next.";
+    }
+
+    confirm.classList.add("show");
+    confirm.scrollIntoView({behavior:"smooth",block:"center"});
+    localStorage.setItem(KEY,path);
+  }
+
+  function mount(){
+    const existing = findMissionAnchor();
+
+    if(existing && existing.parentNode){
+      existing.parentNode.insertBefore(gate, existing);
+    }else{
+      document.body.insertBefore(gate, document.body.firstChild);
+    }
+
+    gate.querySelectorAll(".mmq001-path").forEach(card => {
+      card.addEventListener("click", () => choose(card.dataset.path));
+    });
+
+    gate.querySelector("#mmq001Continue").addEventListener("click", () => {
+      const path = localStorage.getItem(KEY);
+      if(path) enterPath(path);
+    });
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", mount);
+  }else{
+    mount();
+  }
+})();
+</script>
+
+</body>
+</html>

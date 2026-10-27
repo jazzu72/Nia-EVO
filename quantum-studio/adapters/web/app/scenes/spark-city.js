@@ -1,0 +1,3676 @@
+"use strict";
+
+window.addEventListener("error", e => {
+  const box=document.createElement("pre");
+  box.id="runtime-error";
+  box.style.cssText="position:fixed;inset:0;z-index:99999;margin:0;padding:24px;background:#120306;color:#ff6b6b;font:14px monospace;white-space:pre-wrap;overflow:auto";
+  box.textContent="SPARK CITY RUNTIME ERROR\\n\\n"+(e.error?.stack || e.message || "Unknown error");
+  document.body.appendChild(box);
+});
+
+window.addEventListener("unhandledrejection", e => {
+  const box=document.createElement("pre");
+  box.style.cssText="position:fixed;inset:0;z-index:99999;margin:0;padding:24px;background:#120306;color:#ff6b6b;font:14px monospace;white-space:pre-wrap;overflow:auto";
+  box.textContent="SPARK CITY PROMISE ERROR\\n\\n"+(e.reason?.stack || e.reason || "Unknown rejection");
+  document.body.appendChild(box);
+});
+
+
+const canvas=document.createElement("canvas");
+canvas.id="quantum-canvas";
+canvas.style.cssText="position:fixed;inset:0;width:100%;height:100%;z-index:10";
+document.body.appendChild(canvas);
+
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+const keys={};
+window.addEventListener("keydown",e=>{
+  keys[e.key]=true;
+  if(e.key==="e"||e.key==="E") interact();
+});
+window.addEventListener("keyup",e=>keys[e.key]=false);
+
+const touch=document.createElement("div");
+touch.id="touch-controls";
+touch.innerHTML=`
+<button data-key="ArrowUp">▲</button>
+<div>
+<button data-key="ArrowLeft">◀</button>
+<button data-key="KeyE">E</button>
+<button data-key="ArrowRight">▶</button>
+</div>
+<button data-key="ArrowDown">▼</button>`;
+touch.style.cssText="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:30;text-align:center;display:none;user-select:none";
+document.body.appendChild(touch);
+
+if("ontouchstart" in window||navigator.maxTouchPoints>0){
+  touch.style.display="block";
+  touch.querySelectorAll("button").forEach(btn=>{
+    btn.style.cssText="width:58px;height:48px;margin:3px;border:1px solid #d4b46a;border-radius:12px;background:rgba(10,15,25,.82);color:#fff;font-size:20px";
+    const key=btn.dataset.key;
+    const down=e=>{
+      e.preventDefault();
+      keys[key]=true;
+      if(key==="KeyE")interact();
+    };
+    const up=e=>{
+      e.preventDefault();
+      keys[key]=false;
+    };
+    btn.addEventListener("pointerdown",down);
+    btn.addEventListener("pointerup",up); btn.addEventListener("pointercancel",up); btn.addEventListener("click",()=>{if(key==="KeyE")interact();});
+    btn.addEventListener("touchcancel",up,{passive:false});
+  });
+}
+
+let dialogueOpen=false;
+let dialogueNPC=null;
+
+const state={
+  spark:Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? 50),
+  xp:Number(localStorage.getItem("mm_xp")||0),
+  unlocked:JSON.parse(localStorage.getItem("mm_unlocks")||'["market"]')
+};
+
+const mmq001Path=new URLSearchParams(window.location.search).get("path")||localStorage.getItem("mmq001_path")||"";
+if(mmq001Path==="learn"||mmq001Path==="explore"){
+  localStorage.setItem("mmq001_path",mmq001Path);
+}
+/* MMQ_CITY_LIFE */
+const MMQ_CITY_LIFE={
+  enabled:true,
+  pedestrians:[
+    {x:300,y:180,vx:.45,vy:0,emoji:"🧑‍🔧",name:"Builder"},
+    {x:430,y:290,vx:-.35,vy:.1,emoji:"🧒",name:"Munchkin"},
+    {x:690,y:210,vx:.28,vy:.08,emoji:"🧑‍🍳",name:"Vendor"},
+    {x:610,y:450,vx:-.25,vy:0,emoji:"👩‍🚀",name:"Explorer"}
+  ],
+  discoveries:[
+    {x:340,y:230,text:"A street vendor is comparing two prices."},
+    {x:470,y:170,text:"A child is counting Spark Coins carefully."},
+    {x:720,y:390,text:"Someone is sketching a plan for a new workshop."}
+  ]
+};
+function updateCityLife(){
+  for(const p of MMQ_CITY_LIFE.pedestrians){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<80||p.x>canvas.width-80)p.vx*=-1;
+    if(p.y<100||p.y>canvas.height-80)p.vy*=-1;
+  }
+}
+function drawCityLife(){
+  if(!MMQ_CITY_LIFE.enabled)return;
+  ctx.save();
+  ctx.font="24px system-ui";
+  ctx.textAlign="center";
+  for(const p of MMQ_CITY_LIFE.pedestrians){
+    ctx.globalAlpha=.92;
+    ctx.fillText(p.emoji,p.x,p.y);
+    ctx.font="10px system-ui";
+    ctx.fillStyle="rgba(255,255,255,.65)";
+    ctx.fillText(p.name,p.x,p.y+18);
+    ctx.font="24px system-ui";
+  }
+  ctx.restore();
+}
+
+const player={
+  x:360,
+  y:290,
+  r:18,
+  speed:4,
+  facing:"right"
+};
+
+const quantumShop={
+  id:"quantum_shop",
+  name:"Quantum Shop",
+  x:620,
+  y:300,
+  color:"#f0c75e"
+};
+
+const locations=[
+  quantumShop,
+
+  {id:"market",name:"Market District",x:180,y:220,color:"#54c78a"},
+  {id:"alternate_market",name:"Mirror Market",x:180,y:220,color:"#ff66d9"},
+  {id:"savings",name:"Savings Station",x:520,y:180,color:"#d4b46a"},
+  {id:"builder",name:"Builder Workshop",x:760,y:340,color:"#6ba8ff"},
+  {id:"lab",name:"Quantum Lab",x:500,y:520,color:"#ff66d9"}
+];
+
+const particles=Array.from({length:70},()=>({
+  x:Math.random()*Math.max(innerWidth,800),
+  y:Math.random()*Math.max(innerHeight,600),
+  v:.2+Math.random()*.8,
+  r:1+Math.random()*2,
+  a:.15+Math.random()*.35
+}));
+
+let introUntil=Date.now()+3500;
+let interactionLocked=false;
+
+function alternate(){
+  return localStorage.getItem("quantum_alternate_path")==="true";
+}
+
+function getObjective(){
+  if(alternate())return "alternate_market";
+  if(!localStorage.getItem("mmq001_complete"))return "market";
+  if(!localStorage.getItem("mmq002_complete"))return "savings";
+  if(!localStorage.getItem("mmq003_complete"))return "builder";
+  if(localStorage.getItem("quantum_lab_entered")==="true")return "branch_portal";
+  return "lab";
+}
+
+function sync(){
+  state.spark=Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? 50);
+  state.xp=Number(localStorage.getItem("mm_xp")||0);
+  state.unlocked=JSON.parse(localStorage.getItem("mm_unlocks")||'["market"]');
+}
+
+function drawBackground(){
+
+  const mirror=alternate();
+
+  const g=ctx.createLinearGradient(0,0,0,canvas.height);
+  g.addColorStop(
+    0,
+    mirror ? "#18091d" : "#09131d"
+  );
+  g.addColorStop(
+    1,
+    mirror ? "#08030b" : "#030709"
+  );
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  const centerX=canvas.width/2;
+  const centerY=canvas.height/2;
+
+  const worldGlow=ctx.createRadialGradient(
+    centerX,
+    centerY,
+    20,
+    centerX,
+    centerY,
+    Math.max(canvas.width,canvas.height)*.65
+  );
+
+  worldGlow.addColorStop(
+    0,
+    mirror
+      ? "rgba(255,102,217,.12)"
+      : "rgba(84,199,138,.08)"
+  );
+
+  worldGlow.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+  );
+
+  ctx.fillStyle=worldGlow;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  const glow=ctx.createRadialGradient(
+    player.x,
+    player.y,
+    10,
+    player.x,
+    player.y,
+    420
+  );
+
+  glow.addColorStop(
+    0,
+    mirror
+      ? "rgba(255,102,217,.22)"
+      : "rgba(84,199,138,.18)"
+  );
+
+  glow.addColorStop(
+    1,
+    "rgba(3,7,9,0)"
+  );
+
+  ctx.fillStyle=glow;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  const grid=60;
+  const ox=(-(player.x%grid)+canvas.width/2)%grid;
+  const oy=(-(player.y%grid)+canvas.height/2)%grid;
+
+  ctx.strokeStyle=mirror
+    ? "rgba(255,102,217,.09)"
+    : "rgba(212,180,106,.07)";
+
+  ctx.lineWidth=1;
+
+  for(let x=ox;x<canvas.width;x+=grid){
+    ctx.beginPath();
+    ctx.moveTo(x,0);
+    ctx.lineTo(x,canvas.height);
+    ctx.stroke();
+  }
+
+  for(let y=oy;y<canvas.height;y+=grid){
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(canvas.width,y);
+    ctx.stroke();
+  }
+
+  if(mirror){
+    ctx.fillStyle="rgba(255,102,217,.035)";
+    for(let i=0;i<7;i++){
+      const y=(i*97+(Date.now()/18)%97)%canvas.height;
+      ctx.fillRect(0,y,canvas.width,1);
+    }
+  }
+}
+
+function drawWorldLandmarks(){
+
+  const mirror=alternate();
+  const resonance=getQuantumResonance();
+  const now=Date.now();
+
+  const cx=canvas.width/2;
+  const cy=canvas.height/2;
+
+  const glowRadius=
+    120+
+    resonance*.9+
+    Math.sin(now/500)*8;
+
+  const gradient=ctx.createRadialGradient(
+    cx,cy,10,
+    cx,cy,glowRadius
+  );
+
+  if(mirror){
+    gradient.addColorStop(0,"rgba(255,102,217,.22)");
+    gradient.addColorStop(.45,"rgba(180,70,190,.10)");
+    gradient.addColorStop(1,"rgba(0,0,0,0)");
+  }else{
+    gradient.addColorStop(0,"rgba(84,199,138,.18)");
+    gradient.addColorStop(.45,"rgba(212,180,106,.08)");
+    gradient.addColorStop(1,"rgba(0,0,0,0)");
+  }
+
+  ctx.fillStyle=gradient;
+  ctx.fillRect(0,100,canvas.width,canvas.height-100);
+
+  const corePulse=
+    22+
+    resonance*.12+
+    Math.sin(now/240)*3;
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,corePulse+14,0,Math.PI*2);
+  ctx.fillStyle=mirror
+    ?"rgba(255,102,217,.08)"
+    :"rgba(84,199,138,.08)";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,corePulse,0,Math.PI*2);
+  ctx.fillStyle=mirror
+    ?"rgba(255,102,217,.22)"
+    :"rgba(84,199,138,.18)";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,8,0,Math.PI*2);
+  ctx.fillStyle=mirror?"#ff66d9":"#ffd34d";
+  ctx.fill();
+
+  for(let i=0;i<3;i++){
+
+    const ring=
+      corePulse+
+      18+
+      i*16+
+      ((now/20+i*30)%28);
+
+    ctx.beginPath();
+    ctx.arc(cx,cy,ring,0,Math.PI*2);
+
+    ctx.strokeStyle=mirror
+      ?"rgba(255,102,217,.10)"
+      :"rgba(84,199,138,.08)";
+
+    ctx.lineWidth=1;
+    ctx.stroke();
+  }
+
+  ctx.textAlign="center";
+  ctx.fillStyle=mirror?"#ff66d9":"#d4b46a";
+  ctx.font="bold 10px sans-serif";
+  ctx.fillText(
+    mirror?"MIRROR CORE":"QUANTUM CORE",
+    cx,
+    cy+corePulse+28
+  );
+}
+
+function drawParticles(){
+
+  const mirror=alternate();
+  const now=Date.now();
+
+  for(let i=0;i<particles.length;i++){
+
+    const p=particles[i];
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    if(p.x<-20)p.x=canvas.width+20;
+    if(p.x>canvas.width+20)p.x=-20;
+    if(p.y<120)p.y=canvas.height;
+    if(p.y>canvas.height)p.y=120;
+
+    const pulse=
+      0.55+
+      Math.sin(now/700+i)*0.25;
+
+    ctx.beginPath();
+    ctx.arc(
+      p.x,
+      p.y,
+      p.size+(mirror?1:0),
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=mirror
+      ?`rgba(255,102,217,${pulse})`
+      :`rgba(84,199,138,${pulse})`;
+
+    ctx.fill();
+  }
+
+  // Quantum energy stream
+  ctx.save();
+
+  const centerX=canvas.width/2;
+  const centerY=canvas.height/2;
+
+  for(let i=0;i<8;i++){
+
+    const angle=
+      now/1800+
+      i*(Math.PI*2/8);
+
+    const radius=
+      90+
+      Math.sin(now/900+i)*18;
+
+    const x=centerX+Math.cos(angle)*radius;
+    const y=centerY+Math.sin(angle)*radius;
+
+    ctx.beginPath();
+    ctx.arc(x,y,2.5,0,Math.PI*2);
+
+    ctx.fillStyle=mirror
+      ?"rgba(255,102,217,.8)"
+      :"rgba(212,180,106,.75)";
+
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawQuantumBranchPortal(){
+
+  if(!alternate()) return;
+
+  const t=Date.now()/500;
+  const x=canvas.width/2;
+  const y=72;
+  const pulse=1+Math.sin(t)*0.08;
+
+  ctx.save();
+  ctx.translate(x,y);
+
+  for(let i=0;i<4;i++){
+    ctx.beginPath();
+    ctx.arc(0,0,(30+i*11)*pulse,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(255,102,217,${0.42-i*0.07})`;
+    ctx.lineWidth=2;
+    ctx.stroke();
+  }
+
+  const core=ctx.createRadialGradient(0,0,2,0,0,28);
+  core.addColorStop(0,"rgba(255,255,255,.95)");
+  core.addColorStop(.25,"rgba(255,102,217,.8)");
+  core.addColorStop(1,"rgba(255,102,217,0)");
+
+  ctx.fillStyle=core;
+  ctx.beginPath();
+  ctx.arc(0,0,30*pulse,0,Math.PI*2);
+  ctx.fill();
+
+  for(let i=0;i<8;i++){
+    const a=t+i*Math.PI/4;
+    const r=38+Math.sin(t*2+i)*5;
+
+    ctx.beginPath();
+    ctx.arc(Math.cos(a)*r,Math.sin(a)*r,3,0,Math.PI*2);
+    ctx.fillStyle="#54c78a";
+    ctx.fill();
+  }
+
+  ctx.textAlign="center";
+  ctx.font="900 12px sans-serif";
+  ctx.fillStyle="#ff66d9";
+  ctx.fillText("QUANTUM BRANCH PORTAL",0,58);
+
+  ctx.font="700 9px sans-serif";
+  ctx.fillStyle="#d4b46a";
+  ctx.fillText("MIRROR TIMELINE",0,73);
+
+  ctx.restore();
+}
+
+function drawPathArrival(){
+  if(mmq001Path!=="learn"&&mmq001Path!=="explore")return;
+  const now=Date.now();
+  const title=mmq001Path==="learn"?"PATH A • LEARN THE CITY":"PATH B • EXPLORE FIRST";
+  const copy=mmq001Path==="learn"
+    ?"Nova chose knowledge first. Spark City will reveal its rules."
+    :"Nova chose curiosity first. Spark City will reveal itself through discovery.";
+
+  ctx.save();
+  const alpha=Math.max(0,1-(now-(window._pathArrivalAt||Date.now()))/5000);
+  if(!window._pathArrivalAt)window._pathArrivalAt=now;
+  ctx.fillStyle=`rgba(2,6,10,${Math.min(.78,alpha*.78)})`;
+  ctx.fillRect(0,0,canvas.width,118);
+
+  ctx.textAlign="center";
+  ctx.font="900 13px sans-serif";
+  ctx.fillStyle=mmq001Path==="learn"?"#54c78a":"#ff66d9";
+  ctx.fillText(title,canvas.width/2,42);
+
+  ctx.font="700 11px sans-serif";
+  ctx.fillStyle="#ffffff";
+  ctx.fillText(copy,canvas.width/2,66);
+
+  ctx.font="700 9px sans-serif";
+  ctx.fillStyle="#d4b46a";
+  ctx.fillText("EVERY CHOICE OPENS A POSSIBILITY",canvas.width/2,88);
+  ctx.restore();
+}
+
+function drawLocations(){
+
+  const shop=locations.find(l=>l.id==="quantum_shop");
+  if(shop){
+    ctx.save();
+    ctx.translate(shop.x,shop.y);
+
+    ctx.fillStyle="rgba(240,199,94,.16)";
+    ctx.beginPath();
+    ctx.arc(0,0,52,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle="#0b1620";
+    ctx.strokeStyle="#f0c75e";
+    ctx.lineWidth=3;
+    ctx.beginPath();
+    ctx.roundRect(-34,-28,68,56,12);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle="#f0c75e";
+    ctx.font="900 11px system-ui";
+    ctx.textAlign="center";
+    ctx.fillText("QUANTUM SHOP",0,-38);
+
+    ctx.fillStyle="#fff";
+    ctx.font="900 18px system-ui";
+    ctx.fillText("◇",0,7);
+    ctx.restore();
+  }
+
+
+  const objective=getObjective();
+  const mirror=alternate();
+  const now=Date.now();
+
+  const districts=[
+    {id:"market", x:180,y:220,w:150,h:92,accent:"#54c78a",roof:"#173b32",label:"MARKET DISTRICT"},
+    {id:"alternate_market",x:180,y:220,w:150,h:92,accent:"#ff66d9",roof:"#421936",label:"MIRROR MARKET"},
+    {id:"savings",x:520,y:180,w:150,h:92,accent:"#d4b46a",roof:"#40351d",label:"SAVINGS STATION"},
+    {id:"builder",x:760,y:340,w:165,h:98,accent:"#6ba8ff",roof:"#1d3047",label:"BUILDER'S WORKSHOP"},
+    {id:"lab",x:500,y:520,w:160,h:100,accent:"#ff66d9",roof:"#35183d",label:"QUANTUM LAB"}
+  ];
+
+  for(const d of districts){
+    if(!mirror&&d.id==="alternate_market")continue;
+    if(mirror&&d.id==="market")continue;
+
+    const loc=locations.find(x=>x.id===d.id);
+    if(!loc)continue;
+
+    const unlocked=
+      state.unlocked.includes(d.id) ||
+      d.id==="alternate_market";
+
+    ctx.save();
+
+    const pulse=1+Math.sin(now/420+d.x)*.025;
+    ctx.translate(d.x,d.y);
+    ctx.scale(pulse,pulse);
+
+    // district glow
+    const glow=ctx.createRadialGradient(0,0,18,0,0,105);
+    glow.addColorStop(0,d.accent+"35");
+    glow.addColorStop(1,"rgba(0,0,0,0)");
+    ctx.fillStyle=glow;
+    ctx.fillRect(-110,-85,220,170);
+
+    // ground platform
+    ctx.fillStyle=unlocked?"rgba(5,12,15,.94)":"rgba(20,22,24,.72)";
+    ctx.strokeStyle=unlocked?d.accent:"rgba(255,255,255,.16)";
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.roundRect(-d.w/2,-d.h/2,d.w,d.h,14);
+    ctx.fill();
+    ctx.stroke();
+
+    // building body
+    ctx.fillStyle=unlocked?d.roof:"rgba(55,55,55,.45)";
+    ctx.fillRect(-d.w/2+12,-d.h/2+24,d.w-24,d.h-36);
+
+    // roof
+    ctx.fillStyle=unlocked?d.accent:"rgba(120,120,120,.35)";
+    ctx.beginPath();
+    ctx.moveTo(-d.w/2+5,-d.h/2+25);
+    ctx.lineTo(0,-d.h/2-8);
+    ctx.lineTo(d.w/2-5,-d.h/2+25);
+    ctx.closePath();
+    ctx.fill();
+
+    // windows
+    const cols=4;
+    for(let i=0;i<cols;i++){
+      const wx=-d.w/2+28+i*30;
+      ctx.fillStyle=unlocked
+        ? `rgba(255,211,79,${.45+.25*Math.sin(now/500+i)})`
+        : "rgba(100,100,100,.18)";
+      ctx.fillRect(wx,-2,14,18);
+    }
+
+    // entrance
+    ctx.fillStyle=unlocked?"rgba(255,255,255,.12)":"rgba(100,100,100,.15)";
+    ctx.fillRect(-15,20,30,28);
+
+    // objective beacon
+    if(d.id===objective&&unlocked){
+      const beacon=28+Math.sin(now/180)*6;
+      ctx.beginPath();
+      ctx.arc(0,-d.h/2-16,beacon,0,Math.PI*2);
+      ctx.strokeStyle="#ffd34d";
+      ctx.lineWidth=2;
+      ctx.stroke();
+
+      ctx.fillStyle="#ffd34d";
+      ctx.beginPath();
+      ctx.moveTo(0,-d.h/2-30);
+      ctx.lineTo(-7,-d.h/2-16);
+      ctx.lineTo(7,-d.h/2-16);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    ctx.textAlign="center";
+    ctx.font="900 11px sans-serif";
+    ctx.fillStyle=unlocked?"#ffffff":"rgba(255,255,255,.35)";
+    ctx.fillText(unlocked?d.label:"LOCKED",0,d.h/2+22);
+
+    ctx.font="700 8px sans-serif";
+    ctx.fillStyle=unlocked?d.accent:"rgba(255,255,255,.22)";
+    ctx.fillText(
+      d.id==="market"||d.id==="alternate_market"?"SPARK CITY":
+      d.id==="savings"?"RESOURCE HUB":
+      d.id==="builder"?"CREATION HUB":"QUANTUM ZONE",
+      0,d.h/2+35
+    );
+
+    ctx.restore();
+  }
+
+  // Quantum branch portal
+  if(localStorage.getItem("quantum_lab_entered")==="true"){
+    const x=canvas.width/2;
+    const y=90;
+    const intensity=Math.max(
+      0,
+      1-Math.min(Math.hypot(player.x-x,player.y-y)/300,1)
+    );
+
+    ctx.save();
+    ctx.translate(x,y);
+
+    for(let i=0;i<5;i++){
+      const r=25+i*9+Math.sin(now/220+i)*4;
+      ctx.beginPath();
+      ctx.arc(0,0,r,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(255,102,217,${.10+i*.04+intensity*.18})`;
+      ctx.lineWidth=1.5;
+      ctx.stroke();
+    }
+
+    ctx.beginPath();
+    ctx.arc(0,0,18+intensity*7,0,Math.PI*2);
+    const portal=ctx.createRadialGradient(0,0,2,0,0,28);
+    portal.addColorStop(0,"#ffffff");
+    portal.addColorStop(.3,"#ff66d9");
+    portal.addColorStop(1,"rgba(255,102,217,0)");
+    ctx.fillStyle=portal;
+    ctx.fill();
+
+    ctx.textAlign="center";
+    ctx.font="900 12px sans-serif";
+    ctx.fillStyle="#ff66d9";
+    ctx.fillText("QUANTUM BRANCH PORTAL",0,55);
+
+    ctx.font="700 9px sans-serif";
+    ctx.fillStyle="#d4b46a";
+    ctx.fillText("EXPLORE ANOTHER FUTURE",0,70);
+
+    ctx.restore();
+  }
+}
+
+/* MMQ_CINEMATIC_CAMERA */
+let mmqCamera={
+  x:0,
+  y:0,
+  zoom:1,
+  targetZoom:1,
+  intro:true,
+  introTime:0
+};
+
+function updateCinematicCamera(){
+  const now=Date.now();
+
+  if(mmqCamera.intro){
+    mmqCamera.introTime+=16;
+
+    const t=Math.min(mmqCamera.introTime/2200,1);
+    const ease=t*t*(3-2*t);
+
+    mmqCamera.zoom=1.45-(0.45*ease);
+
+    if(t>=1){
+      mmqCamera.intro=false;
+      mmqCamera.zoom=1;
+    }
+  }else{
+    mmqCamera.zoom+=(mmqCamera.targetZoom-mmqCamera.zoom)*0.08;
+  }
+
+  mmqCamera.x+=(player.x-mmqCamera.x)*0.08;
+  mmqCamera.y+=(player.y-mmqCamera.y)*0.08;
+}
+
+function beginSparkCityGameplay(){
+  if(localStorage.getItem("mmq_city_intro_started")==="true")return;
+
+  localStorage.setItem("mmq_city_intro_started","true");
+
+  mmqCamera.intro=true;
+  mmqCamera.introTime=0;
+
+  const overlay=document.createElement("div");
+  overlay.id="mmq-city-opening";
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(2,6,10,.88);
+    color:white;
+    font-family:system-ui;
+    text-align:center;
+    pointer-events:none;
+    transition:opacity 900ms ease;
+  `;
+
+  overlay.innerHTML=`
+    <div>
+      <div style="font-size:12px;letter-spacing:4px;color:#f0c75e">
+        SPARK CITY
+      </div>
+      <div style="font-size:34px;font-weight:900;margin-top:10px">
+        THE FIRST SPARK
+      </div>
+      <div style="margin-top:14px;color:#b8c7c2">
+        Nova has arrived.
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  setTimeout(()=>{
+    overlay.style.opacity="0";
+    setTimeout(()=>overlay.remove(),950);
+  },1100);
+}
+
+beginSparkCityGameplay();
+
+/* MMQ_NOVA_LIFE */
+let novaFacing="down";
+let novaWalkPhase=0;
+let novaInteracting=false;
+
+function updateNovaLife(){
+  const moving =
+    keys["ArrowUp"]||keys["ArrowDown"]||
+    keys["ArrowLeft"]||keys["ArrowRight"];
+
+  if(keys["ArrowUp"]) novaFacing="up";
+  else if(keys["ArrowDown"]) novaFacing="down";
+  else if(keys["ArrowLeft"]) novaFacing="left";
+  else if(keys["ArrowRight"]) novaFacing="right";
+
+  if(moving) novaWalkPhase+=0.22;
+  else novaWalkPhase*=0.82;
+
+  novaInteracting=!!(keys["e"]||keys["E"]);
+}
+
+function drawNovaLife(){
+  const walk=Math.sin(novaWalkPhase)*3;
+  const facing=novaFacing;
+
+  ctx.save();
+  ctx.translate(player.x,player.y);
+
+  if(facing==="left") ctx.scale(-1,1);
+
+  /* walking legs */
+  ctx.strokeStyle="#183d35";
+  ctx.lineWidth=4;
+  ctx.lineCap="round";
+
+  ctx.beginPath();
+  ctx.moveTo(-6,20);
+  ctx.lineTo(-7+walk,31);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(6,20);
+  ctx.lineTo(7-walk,31);
+  ctx.stroke();
+
+  /* directional face cue */
+  if(facing==="up"){
+    ctx.fillStyle="#33251f";
+    ctx.beginPath();
+    ctx.arc(0,-15,12,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  /* interaction glow */
+  if(novaInteracting){
+    ctx.strokeStyle="#f0c75e";
+    ctx.lineWidth=2;
+    ctx.shadowColor="#f0c75e";
+    ctx.shadowBlur=14;
+    ctx.beginPath();
+    ctx.arc(0,-5,34+Math.sin(Date.now()/120)*3,0,Math.PI*2);
+    ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+
+  ctx.restore();
+}
+
+/* MMQ_NOVA_AVATAR */
+function drawNovaAvatar(){
+  ctx.save();
+  ctx.translate(player.x,player.y);
+
+  const moving =
+    keys["ArrowUp"]||keys["ArrowDown"]||
+    keys["ArrowLeft"]||keys["ArrowRight"];
+
+  const bob=moving ? Math.sin(Date.now()/90)*2.5 : 0;
+  ctx.translate(0,bob);
+
+  /* soft character shadow */
+  ctx.fillStyle="rgba(0,0,0,.32)";
+  ctx.beginPath();
+  ctx.ellipse(0,19,18,7,0,0,Math.PI*2);
+  ctx.fill();
+
+  /* body */
+  const body=ctx.createLinearGradient(-12,-2,12,22);
+  body.addColorStop(0,"#54c78a");
+  body.addColorStop(1,"#245d4b");
+  ctx.fillStyle=body;
+  ctx.beginPath();
+  ctx.roundRect(-13,-2,26,30,10);
+  ctx.fill();
+
+  /* jacket highlight */
+  ctx.strokeStyle="#f0c75e";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(0,1);
+  ctx.lineTo(0,23);
+  ctx.stroke();
+
+  /* head */
+  ctx.fillStyle="#c98f68";
+  ctx.beginPath();
+  ctx.arc(0,-14,13,0,Math.PI*2);
+  ctx.fill();
+
+  /* hair */
+  ctx.fillStyle="#33251f";
+  ctx.beginPath();
+  ctx.arc(0,-18,13,Math.PI,Math.PI*2);
+  ctx.fill();
+
+  /* eyes */
+  ctx.fillStyle="#071018";
+  ctx.beginPath();
+  ctx.arc(-5,-14,1.5,0,Math.PI*2);
+  ctx.arc(5,-14,1.5,0,Math.PI*2);
+  ctx.fill();
+
+  /* Spark Coin */
+  ctx.fillStyle="#f0c75e";
+  ctx.shadowColor="#f0c75e";
+  ctx.shadowBlur=12;
+  ctx.beginPath();
+  ctx.arc(17,-4,5,0,Math.PI*2);
+  ctx.fill();
+
+  ctx.shadowBlur=0;
+
+  /* nameplate */
+  ctx.font="900 11px system-ui";
+  ctx.textAlign="center";
+  ctx.fillStyle="#fff";
+  ctx.fillText("NOVA",0,39);
+
+  ctx.restore();
+}
+
+function drawPlayer(){
+
+  const mirror=alternate();
+
+  const moving=
+    keys.ArrowUp||keys.ArrowDown||
+    keys.ArrowLeft||keys.ArrowRight||
+    keys.w||keys.a||keys.s||keys.d;
+
+  const bob=Math.sin(
+    Date.now()/(moving?90:520)
+  )*(moving?3:1.5);
+
+  // Ground shadow
+  ctx.beginPath();
+  ctx.ellipse(
+    player.x,
+    player.y+player.r+8,
+    player.r+5,
+    7,
+    0,
+    0,
+    Math.PI*2
+  );
+  ctx.fillStyle="rgba(0,0,0,.38)";
+  ctx.fill();
+
+  // Quantum aura
+  const aura=
+    player.r+7+
+    Math.sin(Date.now()/180)*3+
+    (mirror?4:0);
+
+  ctx.beginPath();
+  ctx.arc(
+    player.x,
+    player.y+bob,
+    aura,
+    0,
+    Math.PI*2
+  );
+  ctx.fillStyle=mirror
+    ?"rgba(255,102,217,.18)"
+    :"rgba(84,199,138,.18)";
+  ctx.fill();
+
+  // Nova body
+  ctx.beginPath();
+  ctx.arc(
+    player.x,
+    player.y+bob,
+    player.r,
+    0,
+    Math.PI*2
+  );
+  ctx.fillStyle="#fff";
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(
+    player.x,
+    player.y+bob,
+    player.r-4,
+    0,
+    Math.PI*2
+  );
+  ctx.strokeStyle=mirror?"#ff66d9":"#54c78a";
+  ctx.lineWidth=3;
+  ctx.stroke();
+
+  // Direction indicator
+  const dir={
+    up:[0,-1],
+    down:[0,1],
+    left:[-1,0],
+    right:[1,0]
+  }[player.facing]||[0,1];
+
+  ctx.beginPath();
+  ctx.arc(
+    player.x+dir[0]*8,
+    player.y+bob+dir[1]*8,
+    3,
+    0,
+    Math.PI*2
+  );
+  ctx.fillStyle=mirror?"#ff66d9":"#54c78a";
+  ctx.fill();
+
+  // Name
+  ctx.fillStyle="#ffd34d";
+  ctx.font="bold 16px sans-serif";
+  ctx.textAlign="center";
+  ctx.fillText(
+    "Nova",
+    player.x,
+    player.y-24+bob
+  );
+
+  // Identity plate
+  ctx.fillStyle="rgba(3,7,9,.72)";
+  ctx.fillRect(
+    player.x-58,
+    player.y+34,
+    116,
+    20
+  );
+
+  ctx.fillStyle=mirror?"#ff66d9":"#d4b46a";
+  ctx.font="bold 9px sans-serif";
+  ctx.fillText(
+    mirror?"ALTERNATE NOVA":"SPARK CITY EXPLORER",
+    player.x,
+    player.y+47
+  );
+}
+
+function drawObjectiveBanner(){
+
+  const mirror=alternate();
+
+  let title="ENTER SPARK CITY";
+  let subtitle="Find the first quantum mission.";
+
+  if(mirror){
+    title="MIRROR MARKET";
+    subtitle="A different choice has opened a different future.";
+  }else if(!localStorage.getItem("mmq001_complete")){
+    title="MISSION 001 • THE FIRST CHOICE";
+    subtitle="Enter the Market District to begin Nova's journey.";
+  }else if(!localStorage.getItem("mmq002_complete")){
+    title="MISSION 002 • NEEDS & WANTS";
+    subtitle="Travel to Savings Station and test your judgment.";
+  }else if(!localStorage.getItem("mmq003_complete")){
+    title="MISSION 003 • BUILD YOUR FUTURE";
+    subtitle="Enter the Builder Workshop and make a consequential choice.";
+  }else if(!localStorage.getItem("quantum_lab_entered")){
+    title="QUANTUM LAB";
+    subtitle="Your choices have created a new possibility.";
+  }else{
+    title="QUANTUM BRANCH";
+    subtitle="Return to the portal and explore another future.";
+  }
+
+  const width=Math.min(canvas.width-36,560);
+  const x=(canvas.width-width)/2;
+  const y=24;
+
+  ctx.fillStyle=mirror
+    ?"rgba(38,8,43,.88)"
+    :"rgba(5,12,18,.88)";
+  ctx.fillRect(x,y,width,58);
+
+  ctx.strokeStyle=mirror
+    ?"rgba(255,102,217,.45)"
+    :"rgba(212,180,106,.35)";
+  ctx.lineWidth=1;
+  ctx.strokeRect(x,y,width,58);
+
+  ctx.textAlign="center";
+
+  ctx.fillStyle=mirror?"#ff66d9":"#d4b46a";
+  ctx.font="bold 12px sans-serif";
+  ctx.fillText(title,canvas.width/2,y+22);
+
+  ctx.fillStyle="#d9e0e7";
+  ctx.font="11px sans-serif";
+  ctx.fillText(subtitle,canvas.width/2,y+42);
+}
+
+function getQuantumResonance(){
+
+  let resonance=50;
+
+  const choice=localStorage.getItem("mmq003_choice");
+
+  if(choice==="save") resonance=85;
+  if(choice==="spend") resonance=35;
+
+  if(alternate()) resonance=Math.min(100,resonance+10);
+
+  return resonance;
+}
+
+function drawQuantumResonance(){
+  const resonance=getQuantumResonance();
+  const mirror=alternate();
+  const x=18;
+  const y=canvas.width<560?142:164;
+  const width=Math.min(190,canvas.width-36);
+  const height=45;
+  const accent=mirror?"#ff66d9":"#55e6c1";
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect(x,y,width,height,11);
+  ctx.fillStyle="rgba(4,14,31,.91)";
+  ctx.fill();
+  ctx.strokeStyle=mirror?"rgba(255,102,217,.52)":"rgba(85,230,193,.42)";
+  ctx.lineWidth=1;
+  ctx.stroke();
+
+  ctx.textAlign="left";
+  ctx.fillStyle=accent;
+  ctx.font="800 9px system-ui, sans-serif";
+  ctx.fillText("QUANTUM RESONANCE",x+10,y+14);
+
+  ctx.fillStyle="rgba(255,255,255,.10)";
+  ctx.beginPath();
+  ctx.roundRect(x+10,y+23,width-48,7,4);
+  ctx.fill();
+
+  const bar=ctx.createLinearGradient(x+10,y,x+width-38,y);
+  bar.addColorStop(0,accent);
+  bar.addColorStop(1,mirror?"#a18aff":"#ffd36b");
+  ctx.fillStyle=bar;
+  ctx.beginPath();
+  ctx.roundRect(x+10,y+23,(width-48)*(Math.max(0,Math.min(100,resonance))/100),7,4);
+  ctx.fill();
+
+  ctx.textAlign="right";
+  ctx.fillStyle="#f5f8ff";
+  ctx.font="900 11px system-ui, sans-serif";
+  ctx.fillText(resonance+"%",x+width-9,y+17);
+  ctx.restore();
+}
+function drawHUD(){
+  const branch=localStorage.getItem("mmq003_choice");
+  const done=[
+    localStorage.getItem("mmq001_complete")==="true" || !!localStorage.getItem("mmq001_complete"),
+    localStorage.getItem("mmq002_complete")==="true" || !!localStorage.getItem("mmq002_complete"),
+    localStorage.getItem("mmq003_complete")==="true" || !!localStorage.getItem("mmq003_complete")
+  ].filter(Boolean).length;
+
+  const mobile=canvas.width<560;
+  const x=mobile?12:20;
+  const y=mobile?12:18;
+  const w=Math.min(mobile?canvas.width-24:354,canvas.width-24);
+  const h=mobile?118:132;
+  const mirror=alternate();
+  const accent=mirror?"#ff66d9":"#55e6c1";
+  const gold="#ffd36b";
+
+  ctx.save();
+
+  // Deep glass panel with a subtle vertical sheen.
+  const panel=ctx.createLinearGradient(x,y,x+w,y+h);
+  panel.addColorStop(0,"rgba(7,20,42,.96)");
+  panel.addColorStop(.55,"rgba(5,13,29,.93)");
+  panel.addColorStop(1,"rgba(7,24,36,.91)");
+
+  ctx.beginPath();
+  ctx.roundRect(x,y,w,h,16);
+  ctx.fillStyle=panel;
+  ctx.fill();
+
+  ctx.strokeStyle=mirror?"rgba(255,102,217,.78)":"rgba(85,230,193,.65)";
+  ctx.lineWidth=1.25;
+  ctx.stroke();
+
+  // Corner highlights.
+  ctx.strokeStyle=accent;
+  ctx.lineWidth=2.5;
+  ctx.beginPath();
+  ctx.moveTo(x+16,y+2);ctx.lineTo(x+42,y+2);
+  ctx.moveTo(x+2,y+16);ctx.lineTo(x+2,y+38);
+  ctx.moveTo(x+w-42,y+h-2);ctx.lineTo(x+w-16,y+h-2);
+  ctx.stroke();
+
+  ctx.textAlign="left";
+  ctx.fillStyle=accent;
+  ctx.font="800 9px system-ui, sans-serif";
+  ctx.fillText("MONEY MUNCHKINS  /  QUANTUM ODYSSEY",x+14,y+17);
+
+  // Resource capsules.
+  const gap=8;
+  const capsuleY=y+26;
+  const capsuleH=37;
+  const capsuleW=(w-36-gap)/2;
+
+  function capsule(cx,label,value,icon,color){
+    ctx.beginPath();
+    ctx.roundRect(cx,capsuleY,capsuleW,capsuleH,9);
+    ctx.fillStyle="rgba(255,255,255,.045)";
+    ctx.fill();
+    ctx.strokeStyle="rgba(160,205,255,.19)";
+    ctx.lineWidth=1;
+    ctx.stroke();
+
+    ctx.fillStyle=color;
+    ctx.font="bold 10px system-ui, sans-serif";
+    ctx.fillText(icon+" "+label,cx+9,capsuleY+13);
+
+    ctx.fillStyle="#f4f8ff";
+    ctx.font="900 16px system-ui, sans-serif";
+    ctx.fillText(String(Math.max(0,Number(value)||0)),cx+9,capsuleY+30);
+  }
+
+  capsule(x+12,"SPARK COINS",state.spark,"◈",gold);
+  capsule(x+24+capsuleW,"EXPERIENCE",state.xp,"✦","#83baff");
+
+  const progressY=y+76;
+  ctx.fillStyle="rgba(255,255,255,.07)";
+  ctx.beginPath();
+  ctx.roundRect(x+13,progressY,w-26,6,3);
+  ctx.fill();
+
+  ctx.fillStyle=accent;
+  ctx.beginPath();
+  ctx.roundRect(x+13,progressY,(w-26)*(done/3),6,3);
+  ctx.fill();
+
+  ctx.fillStyle="#eaf2ff";
+  ctx.font="800 10px system-ui, sans-serif";
+  ctx.fillText("MISSION PROGRESS",x+13,progressY+19);
+  ctx.textAlign="right";
+  ctx.fillStyle=gold;
+  ctx.fillText(String(done).padStart(2,"0")+" / 03",x+w-13,progressY+19);
+
+  if(alternate()){
+    ctx.textAlign="left";
+    ctx.fillStyle="#ff8ee4";
+    ctx.font="800 9px system-ui, sans-serif";
+    ctx.fillText("◆ MIRROR TIMELINE ACTIVE",x+13,y+h-8);
+  }else if(branch){
+    ctx.textAlign="left";
+    ctx.fillStyle="#a9c9e8";
+    ctx.font="700 9px system-ui, sans-serif";
+    ctx.fillText("QUANTUM PATH: "+branch.toUpperCase(),x+13,y+h-8);
+  }
+
+  ctx.restore();
+}
+function drawObjectiveArrow(){
+  const objective=getObjective();
+  let target=locations.find(l=>l.id===objective);
+
+  if(objective==="branch_portal"){
+    target={
+      x:canvas.width/2,
+      y:90
+    };
+  }
+
+  if(!target)return;
+
+  const dx=target.x-player.x;
+  const dy=target.y-player.y;
+  const angle=Math.atan2(dy,dx);
+
+  const cx=canvas.width/2;
+  const cy=canvas.height-115;
+
+  ctx.save();
+  ctx.translate(cx,cy);
+  ctx.rotate(angle);
+
+  ctx.fillStyle=alternate()?"#ff66d9":"#ffd34d";
+  ctx.beginPath();
+  ctx.moveTo(22,0);
+  ctx.lineTo(-12,-9);
+  ctx.lineTo(-5,0);
+  ctx.lineTo(-12,9);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
+
+  ctx.fillStyle="#fff";
+  ctx.textAlign="center";
+  ctx.font="bold 11px sans-serif";
+  ctx.fillText(
+    alternate()?"MIRROR":"NEXT",
+    cx,
+    cy+25
+  );
+}
+
+const npcs=[
+  {
+    id:"guide",
+    name:"Astra",
+    x:330,
+    y:260,
+    color:"#ffd34d",
+    normal:"Nova, every choice opens a possibility. Start by finding the Market District.",
+    mirror:"Nova... this timeline should not exist. But you are here."
+  },
+  {
+    id:"archivist",
+    name:"Orin",
+    x:650,
+    y:470,
+    color:"#6ba8ff",
+    normal:"The Quantum Lab records consequences. Nothing you choose is meaningless.",
+    mirror:"I remember another version of this city."
+  }
+];
+
+function drawNPCs(){
+
+  const mirror=alternate();
+
+  npcs.forEach(npc=>{
+
+    if(npc.id==="guide" && mirror===false){}
+    
+    const pulse=Math.sin(Date.now()/260)*2;
+
+    // aura
+    ctx.beginPath();
+    ctx.arc(
+      npc.x,
+      npc.y,
+      18+pulse,
+      0,
+      Math.PI*2
+    );
+    ctx.fillStyle=mirror
+      ?"rgba(255,102,217,.12)"
+      :"rgba(255,211,77,.10)";
+    ctx.fill();
+
+    // body
+    ctx.beginPath();
+    ctx.arc(
+      npc.x,
+      npc.y,
+      13,
+      0,
+      Math.PI*2
+    );
+    ctx.fillStyle=npc.color;
+    ctx.fill();
+
+    // core
+    ctx.beginPath();
+    ctx.arc(
+      npc.x,
+      npc.y,
+      5,
+      0,
+      Math.PI*2
+    );
+    ctx.fillStyle="#101820";
+    ctx.fill();
+
+    ctx.textAlign="center";
+    ctx.fillStyle="#fff";
+    ctx.font="bold 11px sans-serif";
+    ctx.fillText(
+      npc.name,
+      npc.x,
+      npc.y-22
+    );
+  });
+}
+
+function getNPCDialogue(npc){
+
+  const choice=localStorage.getItem("mmq003_choice");
+  const mirror=alternate();
+
+  if(npc.id==="guide"){
+
+    if(mirror){
+      return "Nova... this timeline should not exist. Your alternate choice changed the resonance of Spark City.";
+    }
+
+    if(choice==="save"){
+      return "I can feel it, Nova. Your saving choice strengthened the city's future resonance.";
+    }
+
+    if(choice==="spend"){
+      return "The city remembers your choice. Spending opened a different lesson about tradeoffs.";
+    }
+
+    return npc.normal;
+  }
+
+  if(npc.id==="archivist"){
+
+    if(mirror){
+      return "The alternate branch is unstable, but it is revealing possibilities the original timeline cannot show.";
+    }
+
+    if(choice==="save"){
+      return "The Quantum Core is responding strongly to your patience and planning.";
+    }
+
+    if(choice==="spend"){
+      return "The Core recorded the tradeoff. Consequences are part of the lesson.";
+    }
+
+    return npc.normal;
+  }
+
+  return mirror?npc.mirror:npc.normal;
+}
+
+function nearbyNPC(){
+
+  let closest=null;
+  let distance=Infinity;
+
+  for(const npc of npcs){
+
+    const dx=player.x-npc.x;
+    const dy=player.y-npc.y;
+    const d=Math.hypot(dx,dy);
+
+    if(d<distance){
+      distance=d;
+      closest=npc;
+    }
+  }
+
+  return distance<70?closest:null;
+}
+
+function drawNPCInteraction(){
+
+  if(!dialogueOpen || !dialogueNPC)return;
+
+  const npc=dialogueNPC;
+  const mirror=alternate();
+  const text=getNPCDialogue(npc);
+
+  const width=Math.min(canvas.width-36,620);
+  const x=(canvas.width-width)/2;
+  const y=canvas.height-126;
+
+  ctx.fillStyle="rgba(3,7,9,.96)";
+  ctx.fillRect(x,y,width,88);
+
+  ctx.strokeStyle=mirror
+    ?"rgba(255,102,217,.65)"
+    :"rgba(255,211,77,.55)";
+  ctx.lineWidth=2;
+  ctx.strokeRect(x,y,width,88);
+
+  ctx.textAlign="center";
+
+  ctx.fillStyle=mirror?"#ff66d9":"#ffd34d";
+  ctx.font="bold 12px sans-serif";
+  ctx.fillText(
+    npc.name,
+    canvas.width/2,
+    y+22
+  );
+
+  ctx.fillStyle="#fff";
+  ctx.font="12px sans-serif";
+
+  const words=text.split(" ");
+  let line="";
+  let lineY=y+44;
+
+  for(const word of words){
+
+    const test=line+word+" ";
+
+    if(ctx.measureText(test).width>width-44){
+      ctx.fillText(line,canvas.width/2,lineY);
+      line=word+" ";
+      lineY+=16;
+    }else{
+      line=test;
+    }
+  }
+
+  if(line){
+    ctx.fillText(line,canvas.width/2,lineY);
+  }
+
+  ctx.fillStyle="#8f9aa6";
+  ctx.font="10px sans-serif";
+  ctx.fillText(
+    "PRESS E TO CLOSE",
+    canvas.width/2,
+    y+78
+  );
+}
+
+function talkToQuantumShopkeeper(){
+  const overlay=document.createElement("div");
+
+  overlay.style.cssText=
+    "position:fixed;inset:0;z-index:10000;display:flex;" +
+    "align-items:center;justify-content:center;" +
+    "background:rgba(0,0,0,.72);padding:24px;" +
+    "box-sizing:border-box;font-family:system-ui;";
+
+  overlay.innerHTML=`
+    <div style="
+      max-width:560px;width:100%;
+      background:linear-gradient(145deg,#091722,#102534);
+      border:1px solid rgba(240,199,94,.45);
+      border-radius:24px;padding:28px;color:white;
+      box-shadow:0 24px 80px rgba(0,0,0,.55)">
+
+      <div style="
+        font-size:12px;font-weight:900;letter-spacing:2px;
+        color:#f0c75e">QUANTUM SHOP</div>
+
+      <h2 style="margin:8px 0 12px">Quinn has an offer.</h2>
+
+      <p style="line-height:1.6;color:#c9d5dc">
+        A strange little invention glows on the counter.
+      </p>
+
+      <p style="line-height:1.6;color:#c9d5dc">
+        “You can pay
+        <strong style="color:#fff">10 Spark Coins today</strong>,
+        or take it now and pay
+        <strong style="color:#f0c75e">12 later</strong>.”
+      </p>
+
+      <p style="line-height:1.6;color:#9fb3bf">
+        Nova realizes this isn't just about getting something she wants.
+        She needs to understand what the choice will really cost.
+      </p>
+
+      <button id="quantumShopDecision" type="button" style="
+        width:100%;padding:15px;border:0;border-radius:14px;
+        background:#f0c75e;color:#071018;
+        font-weight:900;cursor:pointer">
+        EXAMINE THE OFFER →
+      </button>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector("#quantumShopDecision").addEventListener("click",()=>{
+    overlay.remove();
+    openMMQ004Challenge();
+  });
+}
+
+function talkToNPC(){
+
+  const npc=nearbyNPC();
+  if(!npc)return;
+
+  dialogueOpen=true;
+  dialogueNPC=npc;
+
+  localStorage.setItem(
+    "mm_last_dialogue",
+    getNPCDialogue(npc)
+  );
+
+  localStorage.setItem(
+    "mm_last_npc",
+    npc.id
+  );
+}
+
+function closeDialogue(){
+  dialogueOpen=false;
+  dialogueNPC=null;
+}
+
+function triggerQuantumShift(){
+
+  if(document.getElementById("quantum-shift"))return;
+
+  const overlay=document.createElement("div");
+  overlay.id="quantum-shift";
+
+  overlay.innerHTML=`
+    <div class="quantum-shift-core">
+      <div class="shift-ring"></div>
+      <div class="shift-ring shift-ring-2"></div>
+      <div class="shift-title">QUANTUM SHIFT</div>
+      <div class="shift-subtitle">ANOTHER POSSIBILITY IS OPENING</div>
+    </div>
+  `;
+
+  Object.assign(overlay.style,{
+    position:"fixed",
+    inset:"0",
+    zIndex:"9999",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    background:"rgba(4,0,12,.96)",
+    color:"#fff",
+    fontFamily:"sans-serif",
+    opacity:"0",
+    transition:"opacity .35s ease"
+  });
+
+  document.body.appendChild(overlay);
+
+  const style=document.createElement("style");
+  style.textContent=`
+    .quantum-shift-core{
+      position:relative;
+      width:280px;
+      height:280px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .shift-ring{
+      position:absolute;
+      width:150px;
+      height:150px;
+      border:2px solid #ff66d9;
+      border-radius:50%;
+      animation:quantumPulse 1.2s ease-out infinite;
+    }
+
+    .shift-ring-2{
+      width:220px;
+      height:220px;
+      border-color:#54c78a;
+      animation-delay:.3s;
+    }
+
+    .shift-title{
+      position:relative;
+      z-index:2;
+      color:#ff66d9;
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.18em;
+    }
+
+    .shift-subtitle{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      color:#d4b46a;
+      font-size:10px;
+      letter-spacing:.14em;
+    }
+
+    @keyframes quantumPulse{
+      0%{transform:scale(.45);opacity:.9}
+      100%{transform:scale(1.35);opacity:0}
+    }
+  `;
+
+  document.head.appendChild(style);
+
+  requestAnimationFrame(()=>{
+    overlay.style.opacity="1";
+  });
+
+  setTimeout(()=>{
+    localStorage.setItem("quantum_alternate_path","true");
+    location.href="/scenes/spark-city.html";
+  },1400);
+}
+
+function nearbyLocation(){
+  let best=null;
+  let bestDistance=Infinity;
+
+  for(const loc of locations){
+    const d=Math.hypot(player.x-loc.x,player.y-loc.y);
+    if(d<bestDistance){
+      bestDistance=d;
+      best=loc;
+    }
+  }
+
+  // Quantum branch portal becomes interactable after visiting the lab.
+  if(localStorage.getItem("quantum_lab_entered")==="true"){
+    const portal={
+      id:"branch_portal",
+      name:"Quantum Branch Portal",
+      x:canvas.width/2,
+      y:90
+    };
+    const d=Math.hypot(player.x-portal.x,player.y-portal.y);
+    if(d<bestDistance){
+      bestDistance=d;
+      best=portal;
+    }
+  }
+
+  return best && bestDistance<85 ? best : null;
+}
+
+
+let mmq001ChallengeOpen=false;
+let mmq001Complete=localStorage.getItem("mmq001_complete")==="true";
+let mmq001Choice=localStorage.getItem("mmq001_choice")||"";
+
+
+
+
+
+function applyQuantumWorldState(){
+  const path=localStorage.getItem("quantum_replay_choice")||"";
+  if(!path)return;
+
+  const marker=document.getElementById("quantumWorldState");
+  if(marker)marker.remove();
+
+  const el=document.createElement("div");
+  el.id="quantumWorldState";
+  el.style.cssText=
+    "position:fixed;left:50%;bottom:92px;transform:translateX(-50%);" +
+    "z-index:10000;padding:12px 18px;border-radius:16px;" +
+    "background:rgba(3,12,20,.92);color:#fff;font:700 13px system-ui;" +
+    "border:1px solid rgba(212,180,106,.45);pointer-events:none;" +
+    "box-shadow:0 10px 35px rgba(0,0,0,.35);";
+
+  if(path==="save"){
+    el.innerHTML="✦ FUTURE-FIRST PATH • Savings momentum increased";
+  }else{
+    el.innerHTML="◆ SPEND-FIRST PATH • Tradeoff recorded";
+  }
+
+  document.body.appendChild(el);
+
+  setTimeout(()=>{
+    if(el.parentNode)el.remove();
+  },5000);
+}
+
+
+function openMMQ004Challenge(){
+  const overlay=document.createElement("div");
+  overlay.id="mmq004Gameplay";
+
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">SPARK CITY • CHAPTER 4</div>
+      <div class="mmq001-game-title">THE COST OF BORROWING</div>
+
+      <div class="mmq001-game-story">
+        Nova discovers a Quantum Shop offering an item she wants now.
+        The shopkeeper says she can take it today and pay later.
+        But paying later may cost more than the original price.
+      </div>
+
+      <div style="margin:18px 0;padding:18px;border-radius:18px;background:rgba(255,255,255,.06)">
+        <strong>ITEM PRICE: 10 SPARK COINS</strong><br>
+        <span style="color:#aebbc5">
+          Pay now: 10 coins<br>
+          Pay later: 12 coins
+        </span>
+      </div>
+
+      <div class="mmq001-game-question">
+        What should Nova investigate before borrowing?
+      </div>
+
+      <div class="mmq001-game-options">
+        <button type="button" data-mm4="cost">
+          <span>◎</span>
+          <b>CHECK THE TOTAL COST</b>
+          <small>Find out exactly how much she will repay.</small>
+        </button>
+
+        <button type="button" data-mm4="take">
+          <span>◆</span>
+          <b>TAKE IT NOW</b>
+          <small>Get the item immediately without checking the final cost.</small>
+        </button>
+      </div>
+
+      <div class="mmq001-game-hint">
+        Borrowing can make something available now, but repayment is part of the decision.
+      </div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelectorAll("[data-mm4]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const choice=btn.dataset.mm4;
+      const informed=choice==="cost";
+
+      localStorage.setItem("mmq004_choice",choice);
+      localStorage.setItem("mmq004_complete","true");
+      localStorage.setItem("mmq004_reward","40");
+      localStorage.setItem("mm_credit_awareness",informed?"1":"0");
+      localStorage.setItem(
+        "mm_xp",
+        String(Number(localStorage.getItem("mm_xp")||"0")+40)
+      );
+
+      overlay.innerHTML=`
+        <div class="mmq001-game-panel">
+          <div class="mmq001-game-kicker">FINANCIAL CONSEQUENCE</div>
+          <div class="mmq001-game-title">
+            ${informed?"KNOW THE COST BEFORE YOU COMMIT":"THE PRICE IS NOT THE WHOLE COST"}
+          </div>
+
+          <div class="mmq001-game-story">
+            ${informed
+              ?"Nova discovers that borrowing is a promise to repay. The amount repaid can be greater than the original price."
+              :"Nova learns that getting something now does not make the future payment disappear."
+            }
+            <br><br>
+            <strong>Lesson unlocked:</strong>
+            Credit and loans have a cost, and repayment matters.
+          </div>
+
+          <div class="mmq001-game-question">
+            +40 XP • CREDIT AWARENESS +1
+          </div>
+
+          <button id="mmq004Continue" type="button"
+            style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+            CONTINUE EXPLORING →
+          </button>
+        </div>`;
+
+      overlay.querySelector("#mmq004Continue").addEventListener("click",()=>{
+        overlay.remove();
+        if(typeof showGameNotice==="function"){
+          showGameNotice(
+            "NEW KNOWLEDGE UNLOCKED",
+            "Nova now understands that borrowing includes repayment and cost."
+          );
+        }
+      });
+    });
+  });
+}
+
+function openQuantumReplay(){
+  const overlay=document.createElement("div");
+  overlay.id="quantumReplay";
+
+  const choice=localStorage.getItem("mmq003_choice")||"budget";
+  const needs=Number(localStorage.getItem("mmq003_needs")||15);
+  const saving=Number(localStorage.getItem("mmq003_saving")||10);
+  const wants=Number(localStorage.getItem("mmq003_wants")||5);
+
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">QUANTUM LAB • FUTURE SIMULATION</div>
+      <div class="mmq001-game-title">SEE WHAT COULD HAVE HAPPENED</div>
+
+      <div class="mmq001-game-story">
+        The Quantum Lab can replay Nova's financial decision.
+        Your original budget was:
+        <br><br>
+        🧭 Needs: <strong>${needs}</strong><br>
+        ✦ Savings: <strong>${saving}</strong><br>
+        ◆ Wants: <strong>${wants}</strong>
+        <br><br>
+        Choose another path and discover how the outcome changes.
+      </div>
+
+      <div class="mmq001-game-options">
+        <button type="button" data-replay="save">
+          <span>✦</span>
+          <b>REPLAY: SAVE FIRST</b>
+          <small>Protect the future goal before spending.</small>
+        </button>
+
+        <button type="button" data-replay="spend">
+          <span>◆</span>
+          <b>REPLAY: SPEND FIRST</b>
+          <small>Enjoy the want now and accept the tradeoff.</small>
+        </button>
+      </div>
+
+      <div class="mmq001-game-hint">
+        Different decisions can create different futures.
+      </div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelectorAll("[data-replay]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const replay=btn.dataset.replay;
+      const alternate=replay==="save" ? "future_goal" : "tradeoff";
+
+      localStorage.setItem("quantum_replay_choice",replay);
+      localStorage.setItem("quantum_replay_complete","true");
+      localStorage.setItem("quantum_alternate_consequence",alternate);
+
+      if(replay==="save"){
+        localStorage.setItem("mm_saving","3");
+        localStorage.setItem("quantum_future_bias","saving");
+      }else{
+        localStorage.setItem("mm_spending_reflection","2");
+        localStorage.setItem("quantum_future_bias","spending");
+      }
+
+      overlay.innerHTML=`
+        <div class="mmq001-game-panel">
+          <div class="mmq001-game-kicker">ALTERNATE FUTURE GENERATED</div>
+          <div class="mmq001-game-title">
+            ${replay==="save" ? "THE FUTURE GOAL GROWS" : "THE TRADEOFF APPEARS"}
+          </div>
+
+          <div class="mmq001-game-story">
+            ${replay==="save"
+              ? "Nova protects resources for a future goal. Waiting changes what becomes possible later."
+              : "Nova gets the reward immediately, but fewer resources remain for the future goal."
+            }
+            <br><br>
+            The important lesson is not that one choice is always correct.
+            The lesson is that <strong>choices have consequences</strong>.
+          </div>
+
+          <div class="mmq001-game-question">
+            QUANTUM PATH RECORDED
+          </div>
+
+          <button id="quantumReplayContinue" type="button"
+            style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+            RETURN TO SPARK CITY →
+          </button>
+        </div>`;
+
+      overlay.querySelector("#quantumReplayContinue").addEventListener("click",()=>{
+        overlay.remove();
+        localStorage.setItem("quantum_lab_entered","true");
+        if(typeof showGameNotice==="function"){
+          showGameNotice(
+            "ALTERNATE FUTURE RECORDED",
+            "The Quantum Lab remembers this path. Explore Spark City to discover what changes."
+          );
+        }
+      });
+    });
+  });
+}
+
+function openMMQ003Challenge(){
+  const availableCoins = Math.max(0, Number(
+    localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? "50"
+  ) || 0);
+  const budgetCoins = 30;
+  const overlay=document.createElement("div");
+  overlay.id="mmq003Gameplay";
+
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">BUILDER'S WORKSHOP • CHAPTER 3</div>
+      <div class="mmq001-game-title">BUILD YOUR FIRST BUDGET</div>
+
+      <div class="mmq001-game-story">
+        Nova has <strong>${budgetCoins} practice coins</strong> to plan her budget. Your current balance is <strong>${availableCoins} Spark Coins</strong>.
+        Her journey needs supplies, she wants something fun,
+        and she can save for what comes next.
+      </div>
+
+      <div style="margin:18px 0;padding:16px;border-radius:18px;background:rgba(255,255,255,.06)">
+        <div style="font-size:14px;color:#aebbc5">SPARK COINS AVAILABLE</div>
+        <div id="mmq003Remaining" style="font-size:32px;font-weight:900">0</div>
+      </div>
+
+      <div style="display:grid;gap:14px;text-align:left">
+        <label>
+          <b>🧭 Journey Needs</b>
+          <input id="mmq003Needs" type="range" min="0" max="30" value="15" style="width:100%">
+          <span id="mmq003NeedsValue">15</span> coins
+        </label>
+
+        <label>
+          <b>✦ Save for Later</b>
+          <input id="mmq003Save" type="range" min="0" max="30" value="10" style="width:100%">
+          <span id="mmq003SaveValue">10</span> coins
+        </label>
+
+        <label>
+          <b>◆ Fun / Wants</b>
+          <input id="mmq003Wants" type="range" min="0" max="30" value="5" style="width:100%">
+          <span id="mmq003WantsValue">5</span> coins
+        </label>
+      </div>
+
+      <div id="mmq003BudgetStatus"
+        style="margin:18px 0;padding:14px;border-radius:16px;background:rgba(84,199,138,.12)">
+        Budget balanced: 30 / 30 Spark Coins
+      </div>
+
+      <button id="mmq003Submit" type="button"
+        style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+        LOCK IN BUDGET →
+      </button>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  const needs=overlay.querySelector("#mmq003Needs");
+  const save=overlay.querySelector("#mmq003Save");
+  const wants=overlay.querySelector("#mmq003Wants");
+  const remaining=overlay.querySelector("#mmq003Remaining");
+  const status=overlay.querySelector("#mmq003BudgetStatus");
+
+  function updateBudget(){
+    const n=Number(needs.value);
+    const sv=Number(save.value);
+    const w=Number(wants.value);
+    const total=n+sv+w;
+    const left=30-total;
+
+    overlay.querySelector("#mmq003NeedsValue").textContent=n;
+    overlay.querySelector("#mmq003SaveValue").textContent=sv;
+    overlay.querySelector("#mmq003WantsValue").textContent=w;
+    remaining.textContent=Math.max(0,left);
+
+    if(total===30){
+      status.textContent="Budget balanced: 30 / 30 Spark Coins";
+      status.style.background="rgba(84,199,138,.12)";
+    }else if(total<30){
+      status.textContent=`${left} Spark Coins still need a job.`;
+      status.style.background="rgba(212,180,106,.12)";
+    }else{
+      status.textContent=`Budget is ${total-30} coins over the limit.`;
+      status.style.background="rgba(255,90,110,.14)";
+    }
+  }
+
+  [needs,save,wants].forEach(x=>x.addEventListener("input",updateBudget));
+
+  overlay.querySelector("#mmq003Submit").addEventListener("click",()=>{
+    const n=Number(needs.value);
+    const sv=Number(save.value);
+    const w=Number(wants.value);
+    const total=n+sv+w;
+
+    if(total!==30){
+      status.textContent=total>30
+        ? "You cannot spend more Spark Coins than you have."
+        : "Every Spark Coin needs a job before Nova can lock the budget.";
+      return;
+    }
+
+    const strongPlan=n>=15 && sv>=10 && w<=5;
+
+    localStorage.setItem("mmq003_complete","true");
+    localStorage.setItem("mmq003_reward","30");
+    localStorage.setItem("mmq003_needs",String(n));
+    localStorage.setItem("mmq003_saving",String(sv));
+    localStorage.setItem("mmq003_wants",String(w));
+    localStorage.setItem("mm_planning","1");
+    localStorage.setItem("mmq003_consequence",
+      strongPlan ? "balanced_budget" : "budget_tradeoff"
+    );
+
+    const firstMMQ003Reward = localStorage.getItem("mmq003_reward_claimed") !== "true";
+    if(firstMMQ003Reward){
+      let coins=Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? "50");
+      if(!Number.isFinite(coins)) coins=50;
+      coins+=30;
+      localStorage.setItem("spark_coins",String(coins));
+      localStorage.setItem("mm_spark",String(coins));
+      localStorage.setItem("mm_xp",String(Number(localStorage.getItem("mm_xp")||"0")+30));
+      localStorage.setItem("mmq003_reward_claimed","true");
+    }
+
+    const unlocks=JSON.parse(localStorage.getItem("mm_unlocks")||"[]");
+    ["market","savings","builder","lab"].forEach(x=>{
+      if(!unlocks.includes(x)) unlocks.push(x);
+    });
+    localStorage.setItem("mm_unlocks",JSON.stringify(unlocks));
+
+    overlay.innerHTML=`
+      <div class="mmq001-game-panel">
+        <div class="mmq001-game-kicker">BUDGET LOCKED • CONSEQUENCE</div>
+        <div class="mmq001-game-title">
+          ${strongPlan?"NOVA BUILT A STRONG PLAN":"NOVA MADE A REAL TRADEOFF"}
+        </div>
+
+        <div class="mmq001-game-story">
+          Journey Needs: <strong>${n}</strong><br>
+          Saved: <strong>${sv}</strong><br>
+          Fun / Wants: <strong>${w}</strong>
+          <br><br>
+          ${strongPlan
+            ?"Nova protected her needs and future while still leaving room for fun."
+            :"Nova's plan works, but her choices show that money available for one goal cannot be used for another at the same time."
+          }
+          <br><br>
+          <strong>That is a budget:</strong> deciding what your money will do before it is gone.
+        </div>
+
+        <div class="mmq001-game-question">
+          +30 XP • QUANTUM LAB UNLOCKED
+        </div>
+
+        <button id="mmq003Continue" type="button"
+          style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+          CONTINUE →
+        </button>
+      </div>`;
+
+    overlay.querySelector("#mmq003Continue").addEventListener("click",()=>{
+      overlay.remove();
+      if(typeof showGameNotice==="function"){
+        showGameNotice(
+          "QUANTUM LAB UNLOCKED",
+          "Nova's budget now becomes part of her future story paths."
+        );
+      }
+    });
+  });
+
+  updateBudget();
+}
+
+function openMMQ002Challenge(){
+  const overlay=document.createElement("div");
+  overlay.id="mmq002Gameplay";
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">SAVINGS STATION • CHAPTER 2</div>
+      <div class="mmq001-game-title">NEEDS OR WANTS?</div>
+      <div class="mmq001-game-story">
+        Nova is preparing for her next journey.
+        She sees two things she could buy:
+        a warm travel jacket or a glowing Spark toy.
+        She has enough coins for only one.
+      </div>
+      <div class="mmq001-game-question">
+        Which choice is a <strong>need</strong> for the journey?
+      </div>
+      <div class="mmq001-game-options">
+        <button type="button" data-mm2="need">
+          <span>✦</span>
+          <b>TRAVEL JACKET</b>
+          <small>Something useful for staying warm on the journey.</small>
+        </button>
+        <button type="button" data-mm2="want">
+          <span>◆</span>
+          <b>SPARK TOY</b>
+          <small>Something fun that Nova would enjoy owning.</small>
+        </button>
+      </div>
+      <div class="mmq001-game-hint">
+        Needs help you live, work, or reach a goal. Wants are things you would like to have.
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelectorAll("[data-mm2]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const correct=btn.dataset.mm2==="need";
+      localStorage.setItem("mmq002_choice",btn.dataset.mm2);
+      const firstMMQ002Reward = localStorage.getItem("mmq002_reward_claimed") !== "true";
+      localStorage.setItem("mmq002_complete","true");
+      localStorage.setItem("mm_needs_vs_wants",String(
+        Number(localStorage.getItem("mm_needs_vs_wants")||"1")+1
+      ));
+      localStorage.setItem("mmq002_reward","20");
+      if(firstMMQ002Reward){
+        let coins=Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? "50");
+        if(!Number.isFinite(coins)) coins=50;
+        coins+=20;
+        localStorage.setItem("spark_coins",String(coins));
+        localStorage.setItem("mm_spark",String(coins));
+        localStorage.setItem("mm_xp",String(Number(localStorage.getItem("mm_xp")||"0")+20));
+        localStorage.setItem("mmq002_reward_claimed","true");
+      }
+      localStorage.setItem("mm_unlocks",JSON.stringify(
+        Array.from(new Set([
+          ...(state.unlocked||[]),
+          "market","savings","builder"
+        ]))
+      ));
+
+      overlay.innerHTML=`
+        <div class="mmq001-game-panel">
+          <div class="mmq001-game-kicker">CONSEQUENCE • FINANCIAL LITERACY</div>
+          <div class="mmq001-game-title">${correct?"GREAT CHOICE.":"GOOD THINKING."}</div>
+          <div class="mmq001-game-story">
+            ${correct
+              ?"Nova identified a need: something that supports her goal."
+              :"Nova discovered an important distinction: something can be fun without being a need."
+            }
+            <br><br>
+            This is how financial decisions work in the real world:
+            every choice has a tradeoff.
+          </div>
+          <div class="mmq001-game-question">
+            +20 XP • Builder's Workshop unlocked
+          </div>
+          <button id="mmq002Continue" type="button"
+            style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+            CONTINUE THE JOURNEY →
+          </button>
+        </div>
+      `;
+
+      overlay.querySelector("#mmq002Continue").addEventListener("click",()=>{
+        overlay.remove();
+        showGameNotice(
+          "BUILDER'S WORKSHOP UNLOCKED",
+          "Nova is ready to learn how to build a real budget."
+        );
+      });
+    });
+  });
+}
+
+function openMMQ001Challenge(){
+  if(mmq001Complete){
+    showGameNotice("MMQ-001 COMPLETE","The Market District remembers your choice. Savings Station is ready.");
+    return;
+  }
+
+  mmq001ChallengeOpen=true;
+
+  const overlay=document.createElement("div");
+  overlay.id="mmq001Gameplay";
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">SPARK CITY • MARKET DISTRICT</div>
+      <div class="mmq001-game-title">THE FIRST FINANCIAL CHOICE</div>
+      <div class="mmq001-game-story">
+        Nova has <strong>50 Spark Coins</strong>.
+        A shopkeeper offers two ways to use them.
+        One choice helps her prepare for the future.
+        The other gives her something fun right now.
+      </div>
+
+      <div class="mmq001-game-question">
+        Nova can only choose one. What should she do?
+      </div>
+
+      <div class="mmq001-game-options">
+        <button type="button" data-choice="save">
+          <span>✦</span>
+          <b>SAVE FOR LATER</b>
+          <small>Keep 20 Spark Coins for a future goal.</small>
+        </button>
+
+        <button type="button" data-choice="spend">
+          <span>◆</span>
+          <b>SPEND NOW</b>
+          <small>Spend 20 Spark Coins on something fun.</small>
+        </button>
+      </div>
+
+      <div class="mmq001-game-hint">
+        There is no magic answer. Think about what Nova might need next.
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const style=document.createElement("style");
+  style.id="mmq001-game-style";
+  style.textContent=`
+    #mmq001Gameplay{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      box-sizing:border-box;
+      background:rgba(1,5,9,.82);
+      backdrop-filter:blur(8px);
+      font-family:system-ui,sans-serif;
+    }
+    .mmq001-game-panel{
+      width:min(720px,100%);
+      padding:30px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:30px;
+      background:linear-gradient(145deg,#0b1820,#03090e);
+      box-shadow:0 30px 90px rgba(0,0,0,.65);
+      color:#fff;
+    }
+    .mmq001-game-kicker{
+      color:#d4b46a;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.2em;
+      margin-bottom:12px;
+    }
+    .mmq001-game-title{
+      font-size:clamp(28px,7vw,52px);
+      line-height:.95;
+      font-weight:950;
+      margin-bottom:20px;
+    }
+    .mmq001-game-story{
+      color:#c3d0da;
+      font-size:17px;
+      line-height:1.65;
+      margin-bottom:22px;
+    }
+    .mmq001-game-question{
+      color:#fff;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:16px;
+    }
+    .mmq001-game-options{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .mmq001-game-options button{
+      min-height:150px;
+      padding:20px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.15);
+      background:#0d2027;
+      color:#fff;
+      text-align:left;
+      cursor:pointer;
+    }
+    .mmq001-game-options button:first-child{
+      border-color:rgba(84,199,138,.55);
+    }
+    .mmq001-game-options button:last-child{
+      border-color:rgba(255,102,217,.45);
+    }
+    .mmq001-game-options button:hover{
+      transform:translateY(-3px);
+      border-color:#fff;
+    }
+    .mmq001-game-options span{
+      display:block;
+      font-size:26px;
+      margin-bottom:12px;
+    }
+    .mmq001-game-options b{
+      display:block;
+      font-size:16px;
+      margin-bottom:8px;
+    }
+    .mmq001-game-options small{
+      display:block;
+      color:#aebbc5;
+      line-height:1.45;
+      font-size:13px;
+    }
+    .mmq001-game-hint{
+      margin-top:18px;
+      color:#7f92a2;
+      font-size:12px;
+      line-height:1.5;
+    }
+    @media(max-width:650px){
+      .mmq001-game-panel{padding:22px}
+      .mmq001-game-options{grid-template-columns:1fr}
+      .mmq001-game-options button{min-height:110px}
+    }
+  `;
+  document.head.appendChild(style);
+
+  overlay.querySelectorAll("[data-choice]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      completeMMQ001(button.dataset.choice,overlay,style);
+    });
+  });
+}
+
+function completeMMQ001(choice,overlay,style){
+  mmq001Choice=choice;
+  mmq001Complete=true;
+
+  localStorage.setItem("mmq001_choice",choice);
+  localStorage.setItem("mmq001_complete","true");
+  localStorage.setItem("mmq001_reward","10");
+  localStorage.setItem("mmq001_path",choice==="save"?"learn":"explore");
+
+  const save=choice==="save";
+  const firstMMQ001Reward =
+    localStorage.getItem("mmq001_reward_claimed") !== "true";
+
+  let coins=Number(
+    localStorage.getItem("spark_coins") ??
+    localStorage.getItem("mm_spark") ?? "50"
+  );
+  if(!Number.isFinite(coins)) coins=50;
+  const startingCoins=coins;
+
+  if(save){
+    localStorage.setItem("mm_saving","1");
+    localStorage.setItem("mmq001_consequence","future_goal");
+  }else{
+    localStorage.setItem("mm_spending_reflection","1");
+    localStorage.setItem("mmq001_consequence","tradeoff");
+  }
+
+  if(firstMMQ001Reward){
+    if(!save) coins=Math.max(0,coins-20);
+    coins+=10;
+    localStorage.setItem("spark_coins",String(coins));
+    localStorage.setItem("mm_spark",String(coins));
+    localStorage.setItem(
+      "mm_xp",
+      String(Number(localStorage.getItem("mm_xp")||"0")+10)
+    );
+    localStorage.setItem("mmq001_reward_claimed","true");
+  }
+
+  state.spark=coins;
+  state.xp=Number(localStorage.getItem("mm_xp")||"0");
+  state.unlocked=Array.from(
+    new Set([...(state.unlocked||[]),"market","savings"])
+  );
+  localStorage.setItem("mm_unlocks",JSON.stringify(state.unlocked));
+
+  overlay.innerHTML=`
+    <div class="mmq001-game-panel">
+      <div class="mmq001-game-kicker">${save?"SAVING PATH":"SPENDING PATH"} • CONSEQUENCE</div>
+      <div class="mmq001-game-title">${save?"NOVA PLANNED AHEAD.":"NOVA MADE A CHOICE."}</div>
+      <div class="mmq001-game-story">
+        ${save
+          ? "Nova kept her Spark Coins available for a future goal. She learned that saving means choosing something later instead of spending everything now."
+          : "Nova spent 20 Spark Coins on something fun. She enjoyed the reward, but now she has fewer coins available for future goals."
+        }
+      </div>
+
+      <div class="mmq001-game-question">
+        ${save
+          ? "LESSON UNLOCKED: SAVING • DELAYED GRATIFICATION"
+          : "LESSON UNLOCKED: SPENDING • TRADEOFFS"
+        }
+      </div>
+
+      <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.06);margin-bottom:18px">
+        <strong>${startingCoins} → ${coins} Spark Coins</strong><br>
+        <span style="color:#aebbc5">${firstMMQ001Reward ? "+10 XP • Reward earned" : "Reward already claimed • No additional XP"} • Your choice changed Nova's financial state</span>
+      </div>
+
+      <button id="mmq001ContinueGame" type="button"
+        style="border:0;border-radius:999px;padding:15px 24px;background:#fff;color:#071019;font-weight:900;cursor:pointer">
+        CONTINUE EXPLORING →
+      </button>
+    </div>
+  `;
+
+  overlay.querySelector("#mmq001ContinueGame").addEventListener("click",()=>{
+    mmq001ChallengeOpen=false;
+    overlay.remove();
+    style.remove();
+    showGameNotice(
+      "SAVINGS STATION UNLOCKED",
+      "Your decision changed Nova's world. Travel to the glowing Savings Station."
+    );
+  });
+}
+
+function showGameNotice(title,copy){
+  const old=document.getElementById("gameNotice");
+  if(old)old.remove();
+
+  const el=document.createElement("div");
+  el.id="gameNotice";
+  el.style.cssText="position:fixed;left:50%;top:24px;transform:translateX(-50%);z-index:900;width:min(620px,calc(100% - 32px));padding:18px 22px;border:1px solid rgba(212,180,106,.45);border-radius:18px;background:rgba(5,12,17,.94);color:white;font-family:system-ui,sans-serif;box-shadow:0 18px 60px rgba(0,0,0,.45);text-align:center";
+  el.innerHTML=`<strong style="display:block;color:#d4b46a;margin-bottom:6px">${title}</strong><span style="color:#b9c6d0">${copy}</span>`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),4500);
+}
+
+/* MMQ_KAI_FIRST_MEETING */
+let mmqKaiMeetingOpen=false;
+
+function openKaiFirstMeeting(){
+  localStorage.setItem("mmq_kai_meeting_seen","true");
+  if(mmqKaiMeetingOpen)return;
+  if(localStorage.getItem("mmq_discovery_complete")==="true")return;
+
+  mmqKaiMeetingOpen=true;
+
+  const overlay=document.createElement("div");
+  overlay.id="mmq-kai-meeting";
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding:24px;
+    box-sizing:border-box;
+    background:linear-gradient(
+      to top,
+      rgba(2,6,10,.94),
+      rgba(2,6,10,.20)
+    );
+    color:white;
+    font-family:system-ui;
+  `;
+
+  overlay.innerHTML=`
+    <div style="
+      width:min(680px,100%);
+      padding:24px;
+      border:1px solid rgba(240,199,94,.45);
+      border-radius:20px;
+      background:rgba(5,12,17,.94);
+      box-shadow:0 20px 70px rgba(0,0,0,.55);
+    ">
+      <div style="
+        color:#f0c75e;
+        font-size:11px;
+        font-weight:800;
+        letter-spacing:3px;
+        margin-bottom:8px;
+      ">SPARK CITY • MARKET DISTRICT</div>
+
+      <div style="
+        font-size:24px;
+        font-weight:900;
+        margin-bottom:10px;
+      ">Kai is counting Spark Coins.</div>
+
+      <div style="
+        color:#b9c7c3;
+        line-height:1.6;
+        font-size:15px;
+      ">
+        Kai looks up as Nova approaches.
+        <br><br>
+        <span style="color:#fff">
+          “I can only afford one thing today.”
+        </span>
+        <br><br>
+        Two choices sit on the shop counter.
+        Kai clearly wants both.
+      </div>
+
+      <button id="mmq-kai-continue" type="button" style="
+        margin-top:20px;
+        width:100%;
+        min-height:48px;
+        border:0;
+        border-radius:12px;
+        background:#f0c75e;
+        color:#071018;
+        font-weight:900;
+        font-size:15px;
+        cursor:pointer;
+      ">TALK TO KAI →</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document
+    .getElementById("mmq-kai-continue")
+    .addEventListener("click",()=>{
+      overlay.remove();
+      mmqKaiMeetingOpen=false;
+      openKaiDialogueBranch();
+    });
+}
+
+/* MMQ_DISCOVERY_NPC */
+let mmqDiscoveryOpen=false;
+/* MMQ_MARKET_PATH_REACTION */
+function drawMarketPathReaction(){
+  const state=localStorage.getItem("mmq_kai_world_state")||"";
+  if(!state)return;
+
+  ctx.save();
+
+  const pulse=.8+Math.sin(Date.now()/520)*.1;
+  ctx.globalAlpha=pulse;
+
+  if(state==="needs_first"){
+    ctx.strokeStyle="rgba(84,199,138,.65)";
+    ctx.fillStyle="rgba(84,199,138,.12)";
+  }else{
+    ctx.strokeStyle="rgba(240,199,94,.65)";
+    ctx.fillStyle="rgba(240,199,94,.12)";
+  }
+
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.roundRect(470,145,110,54,14);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.globalAlpha=1;
+  ctx.textAlign="center";
+  ctx.font="900 10px system-ui";
+
+  ctx.fillStyle=state==="needs_first"?"#54c78a":"#f0c75e";
+
+  ctx.fillText(
+    state==="needs_first"
+      ? "PATH UNLOCKED"
+      : "TRADEOFF AHEAD",
+    525,
+    166
+  );
+
+  ctx.font="800 9px system-ui";
+  ctx.fillStyle="#dce7e3";
+
+  ctx.fillText(
+    state==="needs_first"
+      ? "SAVINGS STATION"
+      : "MARKET DISTRICT",
+    525,
+    184
+  );
+
+  ctx.restore();
+}
+
+/* MMQ_CHAPTER1_PROGRESS_TRACKER */
+function getChapter1Progress(){
+  if(localStorage.getItem("mmq_kai_consequence_seen")==="true")return 4;
+  if(localStorage.getItem("mmq_dialogue_choice"))return 3;
+  if(localStorage.getItem("mmq_kai_meeting_seen")==="true")return 2;
+  return 1;
+}
+
+function drawChapter1Progress(){
+  const progress=getChapter1Progress();
+
+  const labels=[
+    "EXPLORE",
+    "DISCOVER",
+    "CHOOSE",
+    "CONSEQUENCE"
+  ];
+
+  ctx.save();
+
+  const totalW=Math.min(360,canvas.width-40);
+  const x=(canvas.width-totalW)/2;
+  const y=canvas.height-46;
+  const gap=8;
+  const stepW=(totalW-(gap*3))/4;
+
+  for(let i=0;i<4;i++){
+    const active=i<progress;
+    const current=i===progress-1;
+
+    ctx.fillStyle=active
+      ? (current?"#f0c75e":"#54c78a")
+      : "rgba(255,255,255,.14)";
+
+    ctx.beginPath();
+    ctx.roundRect(
+      x+i*(stepW+gap),
+      y,
+      stepW,
+      5,
+      3
+    );
+    ctx.fill();
+
+    ctx.font="800 8px system-ui";
+    ctx.textAlign="center";
+    ctx.fillStyle=active?"#dce7e3":"#66736f";
+    ctx.fillText(
+      labels[i],
+      x+i*(stepW+gap)+stepW/2,
+      y+17
+    );
+  }
+
+  ctx.restore();
+}
+
+/* MMQ_CHAPTER1_STATE_HUD */
+function getChapter1State(){
+  if(localStorage.getItem("mmq_kai_consequence_seen")==="true"){
+    const choice=localStorage.getItem("mmq_dialogue_choice")||"";
+    if(choice==="need")return {
+      phase:"CONSEQUENCE",
+      title:"Prepare for the Journey",
+      detail:"Kai's choice revealed what matters first.",
+      next:"Savings Station"
+    };
+    if(choice==="want")return {
+      phase:"TRADEOFF",
+      title:"Discover the Tradeoff",
+      detail:"A want can be exciting — but every choice changes what comes next.",
+      next:"Market District"
+    };
+  }
+
+  if(localStorage.getItem("mmq_discovery_complete")==="true"){
+    return {
+      phase:"DISCOVER",
+      title:"A Spark City Discovery",
+      detail:"Nova found the first financial clue.",
+      next:"Continue exploring"
+    };
+  }
+
+  return {
+    phase:"EXPLORE",
+    title:"Nova's First Day",
+    detail:"Explore Spark City and meet someone who needs help.",
+    next:"Find Kai"
+  };
+}
+
+function drawChapter1StateHUD(){
+  const state=getChapter1State();
+  if(!state)return;
+
+  ctx.save();
+
+  const w=Math.min(420,canvas.width-32);
+  const x=16;
+  const y=16;
+
+  ctx.fillStyle="rgba(3,10,14,.88)";
+  ctx.strokeStyle="rgba(84,199,138,.28)";
+  ctx.lineWidth=1;
+
+  ctx.beginPath();
+  ctx.roundRect(x,y,w,82,16);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.textAlign="left";
+
+  ctx.font="900 10px system-ui";
+  ctx.fillStyle="#54c78a";
+  ctx.fillText(
+    "CHAPTER 1 • THE FIRST SPARK • "+state.phase,
+    x+16,
+    y+19
+  );
+
+  ctx.font="900 17px system-ui";
+  ctx.fillStyle="#ffffff";
+  ctx.fillText(state.title,x+16,y+42);
+
+  ctx.font="12px system-ui";
+  ctx.fillStyle="#aebdb8";
+  ctx.fillText(
+    "NEXT: "+state.next,
+    x+16,
+    y+63
+  );
+
+  ctx.restore();
+}
+
+/* MMQ_KAI_BEHAVIOR_REACTION */
+function applyKaiBehaviorReaction(){
+  const state=localStorage.getItem("mmq_kai_world_state")||"";
+  if(!state)return;
+
+  const kai=MMQ_CITY_LIFE?.pedestrians?.find(p=>p.name==="Munchkin");
+  if(!kai)return;
+
+  if(state==="needs_first"){
+    kai.x=430;
+    kai.y=290;
+    kai.vx=0.18;
+    kai.vy=0;
+    kai.emoji="🧒";
+  }else{
+    kai.x=450;
+    kai.y=300;
+    kai.vx=-0.16;
+    kai.vy=0.08;
+    kai.emoji="🧒";
+  }
+}
+
+function drawKaiBehaviorReaction(){
+  const state=localStorage.getItem("mmq_kai_world_state")||"";
+  if(!state)return;
+
+  ctx.save();
+
+  const x=state==="needs_first"?430:450;
+  const y=state==="needs_first"?290:300;
+
+  ctx.globalAlpha=.9;
+  ctx.font="20px system-ui";
+  ctx.textAlign="center";
+  ctx.fillText("🧒",x,y-24);
+
+  ctx.font="800 10px system-ui";
+  ctx.fillStyle=state==="needs_first"?"#54c78a":"#f0c75e";
+
+  ctx.fillText(
+    state==="needs_first"
+      ? "Kai is planning first"
+      : "Kai is weighing the tradeoff",
+    x,
+    y+20
+  );
+
+  ctx.restore();
+}
+
+/* MMQ_KAI_WORLD_REACTION */
+function applyKaiWorldReaction(){
+  const choice=localStorage.getItem("mmq_dialogue_choice")||"";
+  const seen=localStorage.getItem("mmq_kai_consequence_seen")==="true";
+  if(!seen||!choice)return;
+
+  localStorage.setItem(
+    "mmq_kai_world_state",
+    choice==="need" ? "needs_first" : "wants_first"
+  );
+
+  localStorage.setItem(
+    "mmq_next_goal",
+    choice==="need" ? "savings_station" : "market_tradeoff"
+  );
+}
+
+function drawKaiWorldReaction(){
+  const state=localStorage.getItem("mmq_kai_world_state")||"";
+  if(!state)return;
+
+  ctx.save();
+
+  const pulse=.85+Math.sin(Date.now()/420)*.08;
+
+  ctx.globalAlpha=pulse;
+  ctx.beginPath();
+  ctx.arc(430,290,54,0,Math.PI*2);
+  ctx.strokeStyle=
+    state==="needs_first"
+      ? "rgba(84,199,138,.65)"
+      : "rgba(240,199,94,.65)";
+  ctx.lineWidth=3;
+  ctx.stroke();
+
+  ctx.globalAlpha=1;
+  ctx.textAlign="center";
+  ctx.font="900 12px system-ui";
+  ctx.fillStyle=
+    state==="needs_first"
+      ? "#54c78a"
+      : "#f0c75e";
+
+  ctx.fillText(
+    state==="needs_first"
+      ? "KAI • NEEDS FIRST"
+      : "KAI • TRADEOFF DISCOVERED",
+    430,
+    358
+  );
+
+  ctx.restore();
+}
+
+/* MMQ_KAI_CONSEQUENCE */
+function showKaiDialogueConsequence(){
+  const choice=localStorage.getItem("mmq_dialogue_choice")||"";
+  if(!choice)return;
+
+  const need=choice==="need";
+
+  const old=document.getElementById("mmq-kai-consequence");
+  if(old)old.remove();
+
+  const overlay=document.createElement("div");
+  overlay.id="mmq-kai-consequence";
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    z-index:10002;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    box-sizing:border-box;
+    background:rgba(2,6,10,.82);
+    color:white;
+    font-family:system-ui;
+  `;
+
+  overlay.innerHTML=`
+    <div style="
+      width:min(560px,100%);
+      padding:30px;
+      border-radius:22px;
+      background:rgba(5,12,17,.98);
+      border:1px solid ${need?"rgba(84,199,138,.55)":"rgba(240,199,94,.55)"};
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    ">
+      <div style="font-size:38px;margin-bottom:12px;">
+        ${need?"✦":"◆"}
+      </div>
+
+      <div style="
+        color:${need?"#54c78a":"#f0c75e"};
+        font-size:11px;
+        font-weight:900;
+        letter-spacing:3px;
+      ">KAI REMEMBERS</div>
+
+      <div style="
+        margin-top:12px;
+        font-size:23px;
+        font-weight:900;
+        line-height:1.25;
+      ">
+        ${need
+          ?"Needs come before wants."
+          :"Wants can be fun — but they are choices."}
+      </div>
+
+      <div style="
+        margin-top:14px;
+        color:#aebdb8;
+        line-height:1.6;
+      ">
+        ${need
+          ?"Nova helped Kai notice what matters first. That insight opens a new path through Spark City."
+          :"Nova helped Kai recognize that wanting something does not make it a need. The choice has consequences."}
+      </div>
+
+      <div style="
+        margin-top:18px;
+        padding:14px;
+        border-radius:12px;
+        background:rgba(255,255,255,.04);
+        color:#dce7e3;
+        font-size:13px;
+      ">
+        <strong>DISCOVERY RECORDED</strong><br>
+        ${need
+          ?"Financial evidence: needs-first reasoning"
+          :"Financial evidence: wants-and-tradeoffs reasoning"}
+      </div>
+
+      <button id="kai-consequence-continue" type="button" style="
+        margin-top:22px;
+        width:100%;
+        min-height:52px;
+        border:0;
+        border-radius:12px;
+        background:#f0c75e;
+        color:#071018;
+        font-weight:900;
+        font-size:14px;
+      ">CONTINUE THE STORY →</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const continueButton = overlay.querySelector("#kai-consequence-continue");
+  continueButton.addEventListener("click",()=>{
+    continueButton.disabled = true;
+    overlay.remove();
+    localStorage.setItem("mmq_kai_consequence_seen","true");
+
+    try {
+      const existingChallenge = document.getElementById("mmq001Gameplay");
+      if (existingChallenge) existingChallenge.remove();
+
+      openMMQ001Challenge();
+
+      if (!document.getElementById("mmq001Gameplay")) {
+        console.error("[MMQ_KAI_CONTINUE] Challenge did not open");
+        alert("Kai's discovery was saved, but MMQ-001 did not open. Check the browser console.");
+      }
+    } catch (error) {
+      console.error("[MMQ_KAI_CONTINUE]", error);
+      alert("Story transition error: " + error.message);
+    }
+  });
+}
+
+/* MMQ_KAI_DIALOGUE_BRANCH */
+function openKaiDialogueBranch(){
+  const existing=document.getElementById("mmq-kai-dialogue");
+  if(existing)existing.remove();
+
+  const overlay=document.createElement("div");
+  overlay.id="mmq-kai-dialogue";
+  overlay.style.cssText=`
+    position:fixed;
+    inset:0;
+    z-index:10001;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding:24px;
+    box-sizing:border-box;
+    background:linear-gradient(to top,rgba(2,6,10,.96),rgba(2,6,10,.18));
+    color:white;
+    font-family:system-ui;
+  `;
+
+  overlay.innerHTML=`
+    <div style="
+      width:min(680px,100%);
+      padding:24px;
+      border-radius:20px;
+      background:rgba(5,12,17,.96);
+      border:1px solid rgba(84,199,138,.42);
+    ">
+      <div style="
+        color:#54c78a;
+        font-size:11px;
+        font-weight:900;
+        letter-spacing:3px;
+      ">KAI • MARKET DISTRICT</div>
+
+      <div style="
+        margin-top:10px;
+        font-size:20px;
+        font-weight:900;
+      ">“What would you choose?”</div>
+
+      <div style="
+        margin-top:8px;
+        color:#aebdb8;
+        line-height:1.5;
+      ">
+        Kai points toward two items on the counter.
+        One could help with the journey. The other is simply exciting.
+      </div>
+
+      <div style="
+        display:grid;
+        gap:10px;
+        margin-top:20px;
+      ">
+        <button id="kai-need" type="button" style="
+          min-height:52px;border-radius:12px;
+          border:1px solid rgba(84,199,138,.55);
+          background:rgba(84,199,138,.12);
+          color:#fff;font-weight:800;font-size:14px;
+        ">ASK WHAT KAI NEEDS</button>
+
+        <button id="kai-want" type="button" style="
+          min-height:52px;border-radius:12px;
+          border:1px solid rgba(240,199,94,.55);
+          background:rgba(240,199,94,.10);
+          color:#fff;font-weight:800;font-size:14px;
+        ">ASK WHAT KAI WANTS</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const choose=(choice)=>{
+    localStorage.setItem("mmq_dialogue_choice",choice);
+    overlay.remove();
+
+    if(choice==="need"){
+      localStorage.setItem("mmq_dialogue_insight","needs_before_wants");
+    }else{
+      localStorage.setItem("mmq_dialogue_insight","wants_are_choices");
+    }
+
+    showKaiDialogueConsequence();
+  };
+
+  document.getElementById("kai-need")
+    .addEventListener("click",()=>choose("need"));
+
+  document.getElementById("kai-want")
+    .addEventListener("click",()=>choose("want"));
+}
+
+function openCityDiscovery(){
+  if(mmqDiscoveryOpen)return;
+  mmqDiscoveryOpen=true;
+  const overlay=document.createElement("div");
+  overlay.style.cssText="position:fixed;inset:0;z-index:30000;display:flex;align-items:flex-end;justify-content:center;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.72));font-family:system-ui";
+  overlay.innerHTML=`
+    <div style="max-width:680px;width:100%;background:linear-gradient(145deg,#081722,#102735);border:1px solid rgba(240,199,94,.45);border-radius:22px;padding:26px;color:white;box-shadow:0 25px 80px #000">
+      <div style="font-size:11px;letter-spacing:3px;color:#f0c75e;font-weight:900">SPARK CITY • DISCOVERY</div>
+      <h2 style="margin:8px 0">Nova meets Kai.</h2>
+      <p style="color:#c6d3da;line-height:1.6">Kai is counting coins outside a shop.</p>
+      <p style="color:#c6d3da;line-height:1.6">“I really want that glowing Spark toy,” Kai says, “but I only have enough coins for one thing.”</p>
+      <p style="color:#f0c75e;font-weight:800">What should Nova ask first?</p>
+      <div style="display:grid;gap:10px">
+        <button id="mmqNeed" type="button" style="padding:14px;border-radius:13px;border:1px solid #54c78a;background:#102d25;color:white;font-weight:900">“What do you actually need?”</button>
+        <button id="mmqWant" type="button" style="padding:14px;border-radius:13px;border:1px solid #f0c75e;background:#2d2510;color:white;font-weight:900">“Which thing do you want most?”</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  const finish=(choice)=>{
+    localStorage.setItem("mmq_discovery_choice",choice);
+    localStorage.setItem("mmq_discovery_complete","true");
+    overlay.remove();
+    mmqDiscoveryOpen=false;
+    const result=document.createElement("div");
+    result.style.cssText="position:fixed;inset:0;z-index:30001;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.72);font-family:system-ui;color:white;text-align:center;padding:24px";
+    result.innerHTML=`<div style="max-width:560px"><div style="font-size:12px;letter-spacing:3px;color:#f0c75e;font-weight:900">DISCOVERY COMPLETE</div><h2>${choice==="need"?"Needs come before wants.":"Wants can be fun, but they are choices."}</h2><p style="color:#c6d3da;line-height:1.6">Nova learns that money decisions start with knowing what problem you are trying to solve.</p><button id="mmqClose" style="margin-top:14px;padding:14px 24px;border:0;border-radius:12px;background:#f0c75e;font-weight:900">CONTINUE EXPLORING →</button></div>`;
+    document.body.appendChild(result);
+    result.querySelector("#mmqClose").onclick=()=>{
+      result.remove();
+      applyDiscoveryProgression();
+      showDiscoveryProgression();
+      setTimeout(()=>{
+        if(choice==="need"){
+          openMMQ002Challenge();
+        }else{
+          openMMQ001Challenge();
+        }
+      },250);
+    };
+  };
+  overlay.querySelector("#mmqNeed").onclick=()=>finish("need");
+  overlay.querySelector("#mmqWant").onclick=()=>finish("want");
+}
+
+/* MMQ_DISCOVERY_PROGRESSION */
+function applyDiscoveryProgression(){
+  if(localStorage.getItem("mmq_discovery_complete")!=="true")return;
+
+  const choice=localStorage.getItem("mmq_discovery_choice")||"";
+  localStorage.setItem("mm_needs_vs_wants",choice==="need"?"1":"0");
+  localStorage.setItem("mmq_discovery_evidence",choice==="need"?"needs_first":"want_first");
+
+  if(choice==="need"){
+    localStorage.setItem("mmq_next_goal","savings_station");
+  }else{
+    localStorage.setItem("mmq_next_goal","needs_vs_wants_reflection");
+  }
+}
+applyDiscoveryProgression();
+
+function showDiscoveryProgression(){
+  const goal=localStorage.getItem("mmq_next_goal");
+  if(!goal)return;
+
+  const existing=document.getElementById("mmq-progression-banner");
+  if(existing)return;
+
+  const banner=document.createElement("div");
+  banner.id="mmq-progression-banner";
+  banner.style.cssText=
+    "position:fixed;top:18px;left:50%;transform:translateX(-50%);" +
+    "z-index:25000;padding:12px 18px;border-radius:14px;" +
+    "background:rgba(5,16,23,.94);border:1px solid rgba(240,199,94,.45);" +
+    "color:white;font-family:system-ui;box-shadow:0 12px 40px rgba(0,0,0,.4);" +
+    "font-weight:800;text-align:center;";
+
+  banner.innerHTML=
+    goal==="savings_station"
+      ? "✦ DISCOVERY COMPLETE • Savings Station is calling"
+      : "✦ NEW INSIGHT • Learn why needs and wants matter";
+
+  document.body.appendChild(banner);
+  setTimeout(()=>banner.remove(),4500);
+}
+
+/* MMQ_DISCOVERY_WORLD_STATE */
+function applyDiscoveryWorldState(){
+  if(localStorage.getItem("mmq_discovery_complete")!=="true")return;
+
+  const choice=localStorage.getItem("mmq_discovery_choice")||"";
+  const markerId="mmq-discovery-world-marker";
+  if(document.getElementById(markerId))return;
+
+  const marker=document.createElement("div");
+  marker.id=markerId;
+  marker.style.cssText=
+    "position:fixed;left:50%;bottom:22px;transform:translateX(-50%);" +
+    "z-index:24000;padding:13px 20px;border-radius:999px;" +
+    "background:rgba(5,16,23,.94);border:1px solid rgba(84,199,138,.45);" +
+    "color:white;font:800 13px system-ui;box-shadow:0 12px 40px rgba(0,0,0,.45);" +
+    "text-align:center;pointer-events:none;";
+
+  marker.innerHTML=choice==="need"
+    ? "✦ NOVA'S PATH • Find a way to prepare for the journey"
+    : "◆ NOVA'S PATH • Discover the cost of wanting more";
+
+  document.body.appendChild(marker);
+
+  const old=window.__mmqDiscoveryWorldState;
+  if(old)return;
+
+  window.__mmqDiscoveryWorldState=true;
+
+  if(choice==="need"){
+    localStorage.setItem("mmq_world_state","needs_first");
+    localStorage.setItem("mmq_next_location","savings");
+  }else{
+    localStorage.setItem("mmq_world_state","wants_first");
+    localStorage.setItem("mmq_next_location","market");
+  }
+}
+
+function drawDiscoveryWorldState(){
+  if(localStorage.getItem("mmq_discovery_complete")!=="true")return;
+
+  const choice=localStorage.getItem("mmq_discovery_choice")||"";
+  ctx.save();
+
+  if(choice==="need"){
+    ctx.strokeStyle="rgba(84,199,138,.55)";
+    ctx.fillStyle="rgba(84,199,138,.12)";
+  }else{
+    ctx.strokeStyle="rgba(240,199,94,.55)";
+    ctx.fillStyle="rgba(240,199,94,.12)";
+  }
+
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(430,290,42+Math.sin(Date.now()/500)*4,0,Math.PI*2);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font="11px system-ui";
+  ctx.textAlign="center";
+  ctx.fillStyle="#fff";
+  ctx.fillText(
+    choice==="need" ? "GOAL DISCOVERED" : "TRADEOFF DISCOVERED",
+    430,350
+  );
+
+  ctx.restore();
+}
+
+applyDiscoveryWorldState();
+
+/* MMQ_OPENING_OBJECTIVE_ACTIVE */
+let mmqOpeningObjectiveActive=true;
+let mmqOpeningObjectiveTimer=0;
+
+function updateOpeningObjective(){
+  if(!mmqOpeningObjectiveActive)return;
+
+  const moving =
+    keys["ArrowUp"]||keys["ArrowDown"]||
+    keys["ArrowLeft"]||keys["ArrowRight"];
+
+  if(moving){
+    mmqOpeningObjectiveTimer+=16;
+  }
+
+  if(mmqOpeningObjectiveTimer>900){
+    mmqOpeningObjectiveActive=false;
+  }
+}
+
+/* MMQ_OPENING_OBJECTIVE */
+let mmqOpeningObjectiveShown=false;
+
+function drawOpeningObjective(){
+  if(!mmqOpeningObjectiveActive)return;
+  if(mmqOpeningObjectiveShown)return;
+  if(localStorage.getItem("mmq_discovery_complete")==="true")return;
+
+  const w=canvas.width;
+  const pulse=0.92+Math.sin(Date.now()/500)*0.04;
+
+  ctx.save();
+  ctx.globalAlpha=pulse;
+
+  const panelW=Math.min(430,w-36);
+  const panelX=(w-panelW)/2;
+  const panelY=34;
+
+  ctx.fillStyle="rgba(2,8,12,.90)";
+  ctx.strokeStyle="rgba(240,199,94,.75)";
+  ctx.lineWidth=1.5;
+
+  ctx.beginPath();
+  ctx.roundRect(panelX,panelY,panelW,92,16);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.textAlign="center";
+  ctx.fillStyle="#f0c75e";
+  ctx.font="800 11px system-ui";
+  ctx.fillText("NOVA'S FIRST DAY",w/2,panelY+23);
+
+  ctx.fillStyle="#fff";
+  ctx.font="800 19px system-ui";
+  ctx.fillText("Explore Spark City",w/2,panelY+49);
+
+  ctx.fillStyle="#aebdb8";
+  ctx.font="500 13px system-ui";
+  ctx.fillText("Move around. Meet someone. Find out what the city needs.",w/2,panelY+72);
+
+  ctx.restore();
+}
+
+/* MMQ_CHAPTER1_OBJECTIVE */
+function chapter1Objective(){
+  if(localStorage.getItem("mmq_discovery_complete")!=="true")return null;
+
+  const choice=localStorage.getItem("mmq_discovery_choice")||"";
+
+  if(choice==="need"){
+    return {
+      label:"Prepare for the journey",
+      target:"Savings Station",
+      x:520,y:180,
+      color:"#54c78a"
+    };
+  }
+
+  return {
+    label:"Investigate the tradeoff",
+    target:"Market District",
+    x:180,y:220,
+    color:"#f0c75e"
+  };
+}
+
+function drawChapter1Objective(){
+  const objective=chapter1Objective();
+  if(!objective)return;
+
+  const dx=objective.x-player.x;
+  const dy=objective.y-player.y;
+  const distance=Math.hypot(dx,dy);
+
+  if(distance<75)return;
+
+  const angle=Math.atan2(dy,dx);
+  const cx=canvas.width/2;
+  const cy=76;
+
+  ctx.save();
+  ctx.translate(cx,cy);
+  ctx.rotate(angle);
+
+  ctx.fillStyle=objective.color;
+  ctx.shadowColor=objective.color;
+  ctx.shadowBlur=16;
+
+  ctx.beginPath();
+  ctx.moveTo(28,0);
+  ctx.lineTo(4,-10);
+  ctx.lineTo(8,-3);
+  ctx.lineTo(-24,-3);
+  ctx.lineTo(-24,3);
+  ctx.lineTo(8,3);
+  ctx.lineTo(4,10);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
+
+  ctx.save();
+  ctx.textAlign="center";
+  ctx.font="900 12px system-ui";
+  ctx.fillStyle="#fff";
+  ctx.fillText("NEXT: "+objective.target,cx,104);
+  ctx.font="11px system-ui";
+  ctx.fillStyle="rgba(255,255,255,.65)";
+  ctx.fillText(objective.label+" • "+Math.round(distance)+"m",cx,121);
+  ctx.restore();
+}
+
+function interact(){
+  if(!mmqDiscoveryOpen && !localStorage.getItem('mmq_discovery_complete')){
+    const d=Math.hypot(player.x-430,player.y-290);
+    if(d<75){openCityDiscovery();return;}
+  }
+
+  if(dialogueOpen){
+    closeDialogue();
+    return;
+  }
+
+  const npc=nearbyNPC();
+
+  if(npc){
+    if(npc.id==="quantum_shopkeeper"){
+      talkToQuantumShopkeeper();
+    }else{
+      talkToNPC();
+    }
+    return;
+  }
+
+  const loc=nearbyLocation();
+  if(!loc)return;
+
+  if(loc.id==="branch_portal"){
+    localStorage.setItem("quantum_branch_active","true");
+    location.href="/quantum-lab.html";
+    return;
+  }
+  if(loc.id==="quantum_shop"){
+    openMMQ004Challenge();
+    return;
+  }
+  if(loc.id==="lab"){
+    if(localStorage.getItem("quantum_replay_complete")==="true"){
+      openMMQ004Challenge();
+    }else{
+      openQuantumReplay();
+    }
+    return;
+  }
+
+  if(loc.id==="alternate_market"){
+    triggerQuantumShift();
+    return;
+  }
+
+  if(loc.id==="market"){
+    openMMQ001Challenge();
+    return;
+  }
+
+  if(loc.id==="savings"){
+    openMMQ002Challenge();
+    return;
+  }
+
+  if(loc.id==="builder"){
+    openMMQ003Challenge();
+    return;
+  }
+
+}
+
+/* MMQ_CHAPTER1_ARRIVAL */
+/* MMQ_CHAPTER1_HANDOFF */
+let mmqArrivalTriggered=false;
+
+function checkChapter1Arrival(){
+  if(mmqArrivalTriggered)return;
+
+  const objective=chapter1Objective();
+  if(!objective)return;
+
+  const distance=Math.hypot(
+    player.x-objective.x,
+    player.y-objective.y
+  );
+
+  if(distance>70)return;
+
+  mmqArrivalTriggered=true;
+
+  const choice=localStorage.getItem("mmq_discovery_choice")||"";
+  const overlay=document.createElement("div");
+
+  overlay.style.cssText=
+    "position:fixed;inset:0;z-index:40000;" +
+    "display:flex;align-items:center;justify-content:center;" +
+    "background:rgba(1,5,8,.92);font-family:system-ui;" +
+    "color:white;text-align:center;padding:24px;";
+
+  overlay.innerHTML=`
+    <div style="max-width:650px;width:100%">
+      <div style="font-size:12px;letter-spacing:4px;color:#f0c75e;font-weight:900">
+        CHAPTER 1 • THE FIRST SPARK
+      </div>
+
+      <h1 style="font-size:clamp(34px,7vw,64px);margin:16px 0">
+        ${choice==="need" ? "THE SAVINGS STATION" : "THE MARKET HAS MORE TO SAY"}
+      </h1>
+
+      <p style="font-size:18px;line-height:1.6;color:#b9c8d0">
+        ${choice==="need"
+          ? "Nova follows the clue she discovered. Somewhere in Spark City, she may find a way to prepare for what comes next."
+          : "Nova realizes the decision isn't finished. The market has another clue waiting for her."
+        }
+      </p>
+
+      <div style="
+        margin:28px auto;
+        width:90px;height:90px;border-radius:50%;
+        border:2px solid #f0c75e;
+        box-shadow:0 0 45px rgba(240,199,94,.35);
+        display:flex;align-items:center;justify-content:center;
+        font-size:34px">✦</div>
+
+      <button id="mmqArrivalContinue" type="button" style="
+        padding:16px 28px;
+        border:0;border-radius:999px;
+        background:#f0c75e;color:#071018;
+        font-weight:900;letter-spacing:1px;cursor:pointer">
+        CONTINUE THE STORY →
+      </button>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector("#mmqArrivalContinue").onclick=()=>{
+    overlay.remove();
+
+    const destination =
+      choice==="need" ? "savings_station" : "market_followup";
+
+    localStorage.setItem("mmq_chapter1_arrival",destination);
+    localStorage.setItem("mmq_chapter1_handoff","ready");
+
+    setTimeout(()=>{
+      mmqArrivalTriggered=false;
+
+      if(destination==="savings_station"){
+        openMMQ002Challenge();
+      }else{
+        openMMQ001Challenge();
+      }
+    },350);
+  };
+}
+
+function update(){
+  applyKaiWorldReaction();
+  applyKaiBehaviorReaction();
+  if(
+    !mmqKaiMeetingOpen &&
+    !document.getElementById("mmq-kai-dialogue") &&
+    !document.getElementById("mmq-kai-consequence") &&
+    localStorage.getItem("mmq_kai_consequence_seen")!=="true" &&
+    localStorage.getItem("mmq_discovery_complete")!=="true" &&
+    Math.hypot(player.x-430,player.y-290)<85
+  ){
+    openKaiFirstMeeting();
+  }
+
+  updateCinematicCamera();
+  updateCameraFollow();
+  updateNovaLife();
+  updateOpeningObjective();
+  checkChapter1Arrival();
+  updateCityLife();
+  sync();
+
+  if(keys.ArrowUp||keys.w){
+    player.y-=player.speed;
+    player.facing="up";
+  }
+
+  if(keys.ArrowDown||keys.s){
+    player.y+=player.speed;
+    player.facing="down";
+  }
+
+  if(keys.ArrowLeft||keys.a){
+    player.x-=player.speed;
+    player.facing="left";
+  }
+
+  if(keys.ArrowRight||keys.d){
+    player.x+=player.speed;
+    player.facing="right";
+  }
+
+  player.x=Math.max(40,Math.min(canvas.width-40,player.x));
+  player.y=Math.max(140,Math.min(canvas.height-40,player.y));
+}
+
+
+function applyCurriculumWorldState(){
+  const completed=localStorage.getItem("mmq004_complete")==="true";
+  const marker=document.getElementById("curriculumWorldState");
+  if(marker)marker.remove();
+
+  if(!completed)return;
+
+  const el=document.createElement("div");
+  el.id="curriculumWorldState";
+  el.style.cssText=
+    "position:fixed;top:72px;left:50%;transform:translateX(-50%);" +
+    "z-index:9999;padding:10px 16px;border-radius:14px;" +
+    "background:rgba(3,12,20,.9);color:#fff;font:800 12px system-ui;" +
+    "border:1px solid rgba(84,199,138,.45);pointer-events:none;";
+
+  el.textContent="📚 FINANCIAL LITERACY • CREDIT & BORROWING UNLOCKED";
+  document.body.appendChild(el);
+
+  setTimeout(()=>{
+    if(el.parentNode)el.remove();
+  },5000);
+}
+
+/* MMQ_CAMERA_FOLLOW */
+function updateCameraFollow(){
+  if(!mmqCamera || mmqCamera.intro)return;
+
+  const margin=120;
+  const targetX=Math.max(
+    margin,
+    Math.min(player.x,canvas.width-margin)
+  );
+  const targetY=Math.max(
+    margin,
+    Math.min(player.y,canvas.height-margin)
+  );
+
+  mmqCamera.x+=(targetX-mmqCamera.x)*0.12;
+  mmqCamera.y+=(targetY-mmqCamera.y)*0.12;
+
+  const mobile=Math.min(window.innerWidth,window.innerHeight)<700;
+  mmqCamera.targetZoom=mobile?0.88:1.0;
+}
+
+/* MMQ_CAMERA_RENDER */
+function beginCameraRender(){
+  ctx.save();
+
+  const scale=mmqCamera.zoom;
+
+  ctx.translate(
+    canvas.width/2 - mmqCamera.x*scale,
+    canvas.height/2 - mmqCamera.y*scale
+  );
+
+  ctx.scale(scale,scale);
+}
+
+function endCameraRender(){
+  ctx.restore();
+}
+
+function render(){
+  applyCurriculumWorldState();
+  applyQuantumWorldState();
+  update();
+
+  beginCameraRender();
+
+  drawBackground();
+  drawWorldLandmarks();
+  drawParticles();
+  drawLocations();
+  drawPathArrival();
+  drawQuantumBranchPortal();
+  drawNPCs();
+  drawCityLife();
+  drawKaiWorldReaction();
+  drawKaiBehaviorReaction();
+  drawChapter1StateHUD();
+  drawChapter1Progress();
+  drawMarketPathReaction();
+  drawDiscoveryWorldState();
+  drawPlayer();
+  drawNovaAvatar();
+  drawNovaLife();
+  drawObjectiveBanner();
+  drawQuantumResonance();
+  drawNPCInteraction();
+  drawObjectiveArrow();
+  drawChapter1Objective();
+  drawOpeningObjective();
+
+  endCameraRender();
+
+  drawHUD();
+  showDiscoveryProgression();
+
+  requestAnimationFrame(render);
+}
+
+render();

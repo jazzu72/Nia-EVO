@@ -90,42 +90,6 @@
     ]
   },
   {
-    "id": "SUB-1785838246878",
-    "grant": "Virginia Innovation Partnership Corporation",
-    "amount": 250000,
-    "status": "READY_FOR_SUBMISSION",
-    "timeline": [
-      {
-        "event": "PACKAGE_CREATED",
-        "date": "2026-08-04T10:10:46.878Z"
-      }
-    ]
-  },
-  {
-    "id": "SUB-1785838246878",
-    "grant": "Virginia Innovation Partnership Corporation",
-    "amount": 250000,
-    "status": "READY_FOR_SUBMISSION",
-    "timeline": [
-      {
-        "event": "PACKAGE_CREATED",
-        "date": "2026-08-04T10:10:46.878Z"
-      }
-    ]
-  },
-  {
-    "id": "SUB-1785838246879",
-    "grant": "Virginia Innovation Partnership Corporation",
-    "amount": 250000,
-    "status": "READY_FOR_SUBMISSION",
-    "timeline": [
-      {
-        "event": "PACKAGE_CREATED",
-        "date": "2026-08-04T10:10:46.879Z"
-      }
-    ]
-  },
-  {
     "id": "SUB-1785838246879",
     "grant": "Virginia Innovation Partnership Corporation",
     "amount": 250000,
@@ -150,7 +114,7 @@
     ]
   },
   {
-    "id": "SUB-1785838246880",
+    "id": "SUB-1791814875702-8a11f9a1",
     "grant": "NSF America Seed Fund",
     "amount": 256000,
     "status": "READY_FOR_SUBMISSION",
@@ -174,7 +138,7 @@
     ]
   },
   {
-    "id": "SUB-1785838246881",
+    "id": "SUB-1791814875704-4fe94008",
     "grant": "Virginia Innovation Partnership Corporation",
     "amount": 250000,
     "status": "READY_FOR_SUBMISSION",
@@ -198,7 +162,7 @@
     ]
   },
   {
-    "id": "SUB-1785838246882",
+    "id": "SUB-1791814875704-442a34a3",
     "grant": "Small Business Innovation Research",
     "amount": 150000,
     "status": "READY_FOR_SUBMISSION",
@@ -208,5 +172,45 @@
         "date": "2026-08-04T10:10:46.882Z"
       }
     ]
+  },
+  {
+    "id": "SUB-1791810145577",
+    "grant": "Virginia Innovation Partnership Corporation",
+    "amount": 250000,
+    "company": "House of Jazzu",
+    "status": "IN_PROGRESS",
+    "checklist": [
+      {
+        "item": "Executive Summary",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Problem Statement",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Innovation Description",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Milestone Plan",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Budget",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Founder Information",
+        "status": "PENDING"
+      },
+      {
+        "item": "Financial Documents",
+        "status": "PENDING"
+      }
+    ],
+    "readinessScore": 71,
+    "nextAction": "Complete founder information and financial documentation",
+    "created": "2026-10-12T13:02:25.577Z"
   }
 ]

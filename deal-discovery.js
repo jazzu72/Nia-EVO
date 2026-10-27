@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
 
 /**
  * DEAL DISCOVERY ENGINE
@@ -10,14 +12,63 @@ const https = require('https');
 const http = require('http');
 const { parseString } = require('xml2js');
 
-function fetchURL(url) {
+function fetchURL(url, redirects = 0) {
   return new Promise((resolve, reject) => {
-    const lib = url.startsWith('https') ? https : http;
-    lib.get(url, (res) => {
+    let parsed;
+    try {
+      parsed = new URL(url);
+    } catch {
+      reject(new Error('Invalid feed URL'));
+      return;
+    }
+
+    const lib = parsed.protocol === 'https:' ? https :
+                parsed.protocol === 'http:' ? http : null;
+
+    if (!lib) {
+      reject(new Error('Unsupported URL protocol'));
+      return;
+    }
+
+    const req = lib.get(parsed, {
+      headers: {
+        'User-Agent': 'HouseOfJazzu-Nia-DealDiscovery/1.0',
+        'Accept': 'application/rss+xml, application/atom+xml, application/xml, text/xml'
+      }
+    }, res => {
+      const status = res.statusCode || 0;
+      const location = res.headers.location;
+
+      if ([301, 302, 303, 307, 308].includes(status) && location) {
+        res.resume();
+        if (redirects >= 5) {
+          reject(new Error('Too many redirects'));
+          return;
+        }
+        resolve(fetchURL(new URL(location, parsed).toString(), redirects + 1));
+        return;
+      }
+
       let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
-    }).on('error', reject);
+      res.setEncoding('utf8');
+      res.on('data', chunk => {
+        data += chunk;
+        if (data.length > 5 * 1024 * 1024) {
+          req.destroy(new Error('Feed exceeds 5 MB'));
+        }
+      });
+
+      res.on('end', () => {
+        if (status < 200 || status >= 300) {
+          reject(new Error('HTTP ' + status));
+          return;
+        }
+        resolve(data);
+      });
+    });
+
+    req.setTimeout(15000, () => req.destroy(new Error('Feed timeout')));
+    req.on('error', reject);
   });
 }
 
@@ -27,6 +78,55 @@ function parseRSS(xml) {
       if (err) reject(err);
       else resolve(result);
     });
+  });
+}
+
+
+// CSV parser supports quoted commas, escaped quotes, and CRLF.
+function parseCSVRows(input) {
+  const rows = [];
+  let row = [], field = "", quoted = false;
+
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i];
+
+    if (quoted) {
+      if (ch === '"' && input[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (ch === '"') {
+        quoted = false;
+      } else {
+        field += ch;
+      }
+    } else if (ch === '"' && field.length === 0) {
+      quoted = true;
+    } else if (ch === ',') {
+      row.push(field);
+      field = "";
+    } else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && input[i + 1] === '\n') i++;
+      row.push(field);
+      if (row.some(v => v.trim() !== "")) rows.push(row);
+      row = [];
+      field = "";
+    } else {
+      field += ch;
+    }
+  }
+
+  if (quoted) throw new Error("CSV has an unclosed quoted field.");
+  row.push(field);
+  if (row.some(v => v.trim() !== "")) rows.push(row);
+  if (rows.length < 2) return [];
+
+  const headers = rows.shift().map(h => h.trim().replace(/^\uFEFF/, "").toLowerCase());
+  return rows.map(values => {
+    const item = {};
+    headers.forEach((header, index) => {
+      if (header) item[header] = (values[index] || "").trim();
+    });
+    return item;
   });
 }
 
@@ -59,6 +159,45 @@ class DealDiscoveryEngine {
    * Markov Lead Scoring (0-100)
    * Higher = more likely to convert
    */
+
+  loadLocalCSV() {
+    const csvPath = path.join(__dirname, "data", "property-leads.csv");
+    if (!fs.existsSync(csvPath)) {
+      console.log(`ℹ️  No local CSV yet: ${csvPath}`);
+      return [];
+    }
+
+    const rows = parseCSVRows(fs.readFileSync(csvPath, "utf8"));
+    const leads = rows.filter(r => r.title || r.description).map((r, index) => {
+      const title = r.title || "Untitled property lead";
+      const description = r.description || "";
+      const extracted = this.extractDealData(title, description);
+      const numericPrice = Number(String(r.price || "").replace(/[$,\s]/g, ""));
+
+      return {
+        ...r,
+        ...extracted,
+        title,
+        description,
+        price: Number.isFinite(numericPrice) && numericPrice > 0
+          ? numericPrice : extracted.price,
+        location: r.location || extracted.location || "",
+        condition: r.condition || extracted.condition || "unknown",
+        contact: r.contact || null,
+        link: r.link || "",
+        pubDate: r.pubdate || r.date || "",
+        source: r.source || "CSV Import",
+        id: r.id || `csv-${index + 1}`,
+        verified: false,
+        verificationStatus: "UNVERIFIED",
+        listingDataSource: "local_csv"
+      };
+    });
+
+    console.log(`📄 Loaded ${leads.length} local CSV lead(s).`);
+    return leads;
+  }
+
   scoreLeadMarkov(text, source) {
     let score = 0;
 
@@ -108,8 +247,8 @@ class DealDiscoveryEngine {
 
     // Try to extract location (Baltimore, MD region)
     const locationPatterns = [
-      /Baltimore|Canton|Hampden|Fells Point|Remington|Downtown/i,
-      /(\d+\s+[\w\s]+(?:St|Ave|Rd|Blvd|Drive))/i
+      /Norfolk|Virginia Beach|Chesapeake|Portsmouth|Suffolk|Hampton|Newport News|Williamsburg|Yorktown|Peninsula|Hampton Roads/i,
+      /(\d+\s+[\w\s]+(?:St|Ave|Rd|Blvd|Drive|Dr|Lane|Ln|Court|Ct))/i
     ];
 
     for (const pattern of locationPatterns) {
@@ -161,11 +300,15 @@ class DealDiscoveryEngine {
       }
     }
 
+    // Include authorized local CSV exports when available.
+    allItems.push(...this.loadLocalCSV());
+
     // Deduplicate
     const seen = new Set();
     const unique = allItems.filter(i => {
-      if (seen.has(i.link)) return false;
-      seen.add(i.link);
+      const key = i.link || `${i.source || ''}|${i.title || ''}|${i.location || ''}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
 
@@ -183,8 +326,15 @@ class DealDiscoveryEngine {
       return {
         ...item,
         ...dealData,
+        price: item.price ?? dealData.price,
+        location: item.location || dealData.location || "",
+        condition: item.condition || dealData.condition || "unknown",
+        contact: item.contact || null,
+        verified: item.verified === true,
+        verificationStatus: item.verificationStatus || "UNVERIFIED",
+        listingDataSource: item.listingDataSource || "feed",
         leadScore: score,
-        quality: score > 70 ? 'HOT' : score > 50 ? 'WARM' : 'COLD'
+        quality: score > 70 ? "HOT" : score > 50 ? "WARM" : "COLD"
       };
     });
 
@@ -223,17 +373,20 @@ class DealDiscoveryEngine {
    */
   getDealsForAPI() {
     return this.deals.map(d => ({
-      id: d.link,
+      id: d.link || d.id || `${d.source || "lead"}-${d.title || "untitled"}`,
       title: d.title,
-      description: d.description.substring(0, 200),
-      price: d.price,
-      location: d.location,
-      condition: d.condition,
+      description: (d.description || "").substring(0, 200),
+      price: d.price ?? null,
+      location: d.location || "",
+      condition: d.condition || "unknown",
       leadScore: d.leadScore,
       quality: d.quality,
-      source: d.source,
-      link: d.link,
-      pubDate: d.pubDate
+      source: d.source || "unknown",
+      link: d.link || "",
+      pubDate: d.pubDate || "",
+      verified: d.verified === true,
+      verificationStatus: d.verificationStatus || "UNVERIFIED",
+      listingDataSource: d.listingDataSource || "feed"
     }));
   }
 }

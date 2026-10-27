@@ -14,6 +14,7 @@ value.length > 20 &&
 !/XXXXX|PLACEHOLDER|PASTE|_HERE/i.test(value);
 }
 
+
 function errorCategory(message) {
 const value = String(message || "").toLowerCase();
 if (value.includes("not configured")) return "credential_missing";

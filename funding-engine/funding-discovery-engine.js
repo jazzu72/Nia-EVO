@@ -1,3 +1,4 @@
+const { readVaultJSON } = require("../tools/vault-helpers");
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
@@ -7,7 +8,7 @@ const PROFILE_PATH = path.join(
 );
 
 function loadProfile() {
-  return JSON.parse(fs.readFileSync(PROFILE_PATH, "utf8"));
+  return readVaultJSON(PROFILE_PATH);
 }
 
 function fetchJson(url) {

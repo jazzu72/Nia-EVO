@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission 002 | Needs vs. Wants</title>
+<style>
+html,body{margin:0;height:100%;background:#02060b;color:#fff;font-family:system-ui}
+body{display:grid;place-items:center}
+.card{width:min(760px,88vw);padding:38px;border:1px solid rgba(212,180,106,.45);border-radius:28px;background:rgba(5,12,20,.94);box-shadow:0 0 80px rgba(80,180,255,.18)}
+h1{font-size:clamp(30px,6vw,56px);margin:10px 0}
+p{font-size:18px;line-height:1.6;color:#b9c7d4}
+.choice{width:100%;margin:10px 0;padding:18px;border-radius:16px;border:1px solid rgba(120,220,255,.35);background:#0b1824;color:#fff;font-size:17px;text-align:left}
+#result{margin-top:22px;color:#d4b46a;font-weight:700}
+</style>
+</head>
+<body>
+<main class="card">
+<div>MISSION MMQ-002 • MARKET DISTRICT</div>
+<h1>Needs vs. Wants</h1>
+<p id="story">Nova finds 20 Spark Coins. A storm is coming, and the Market District offers two paths.</p>
+
+<button class="choice" onclick="choose('need')">🏠 Buy something useful for the journey</button>
+<button class="choice" onclick="choose('want')">✨ Spend the coins on something exciting</button>
+
+<div id="result"></div>
+</main>
+
+<script>
+function choose(path){
+  if(localStorage.getItem("mmq002_complete")==="true" || localStorage.getItem("mmq002_reward_claimed")==="true"){localStorage.setItem("mmq002_complete","true");localStorage.setItem("mmq002_reward_claimed","true");return;}
+  let spark=Number(localStorage.getItem("spark_coins") ?? localStorage.getItem("mm_spark") ?? "50");
+  if(!Number.isFinite(spark)) spark=50;
+  let xp=Number(localStorage.getItem("mm_xp")||0);
+
+  spark+=20;
+  xp+=20;
+
+  localStorage.setItem("mm_spark",spark);
+  localStorage.setItem("spark_coins",spark);
+  localStorage.setItem("mmq002_reward_claimed","true");
+  localStorage.setItem("mm_xp",xp);
+  localStorage.setItem("mmq002_complete","true");
+  localStorage.setItem("mmq002_choice",path);
+  localStorage.setItem("mm_needs_vs_wants","2");
+const unlocks=JSON.parse(localStorage.getItem("mm_unlocks")||'["market","savings"]');
+if(!unlocks.includes("builder")) unlocks.push("builder");
+localStorage.setItem("mm_unlocks",JSON.stringify(unlocks));
+
+  document.querySelectorAll(".choice").forEach(b=>b.style.display="none");
+
+  document.getElementById("story").textContent=
+    path==="need"
+    ? "Nova learns that needs can protect a future goal."
+    : "Nova discovers that wants can be fun, but every purchase has a tradeoff.";
+
+  document.getElementById("result").textContent=
+    "MISSION COMPLETE  •  +20 Spark  •  +20 XP";
+
+  setTimeout(()=>{
+    location.href="/mission-003.html";
+  },1800);
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 const fs=require("fs");
+const crypto=require("crypto");
 
 const FILE="./grants-engine/submission-tracker.json";
 
@@ -20,7 +21,14 @@ function createSubmission(grant){
 
  const submission={
 
-   id:"SUB-"+Date.now(),
+   id:(() => {
+     const crypto = require("crypto");
+     let id;
+     do {
+       id = "SUB-" + Date.now() + "-" + crypto.randomBytes(4).toString("hex");
+     } while (submissions.some(existing => existing && existing.id === id));
+     return id;
+   })(),
 
    grant:{
      name:grant.name,

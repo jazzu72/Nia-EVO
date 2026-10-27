@@ -1,0 +1,326 @@
+{
+  "id": "world_money_munchkins",
+  "worldId": "money-munchkins",
+  "name": "Money Munchkins: Quantum Odyssey",
+  "schemaVersion": "2.0.0",
+  "worldVersion": "4.2.0",
+  "contentVersion": "7.1.5",
+  "studio": "Quantum Branch Studio",
+  "owner": "House of Jazzu",
+  "status": "DEVELOPMENT",
+  "characters": [
+    {
+      "id": "char_nova_001",
+      "name": "Nova",
+      "role": "guide",
+      "personality": [
+        "curious",
+        "encouraging",
+        "clever",
+        "playful",
+        "empathetic"
+      ],
+      "skills": [
+        "money_basics",
+        "planning",
+        "problem_solving"
+      ],
+      "startingRelationship": 0
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc_market_district",
+      "name": "Market District",
+      "type": "HUB",
+      "unlockCondition": null
+    },
+    {
+      "id": "loc_savings_station",
+      "name": "Savings Station",
+      "type": "HUB",
+      "unlockCondition": {
+        "type": "SKILL_AT_LEAST",
+        "key": "saving",
+        "amount": 1
+      }
+    },
+    {
+      "id": "loc_builders_workshop",
+      "name": "Builder's Workshop",
+      "type": "HUB",
+      "unlockCondition": {
+        "type": "SKILL_AT_LEAST",
+        "key": "planning",
+        "amount": 1
+      }
+    },
+    {
+      "id": "loc_quantum_lab",
+      "name": "Quantum Lab",
+      "type": "HUB",
+      "unlockCondition": {
+        "type": "MISSION_COMPLETE",
+        "missionId": "MMQ-003"
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "MMQ-001",
+      "title": "Welcome to Quantum Odyssey",
+      "category": "money_basics",
+      "difficulty": 1,
+      "reward": {
+        "spark_coins": 10,
+        "xp": 10
+      },
+      "startingNode": "node_mmq001_start"
+    },
+    {
+      "id": "MMQ-002",
+      "title": "Needs vs. Wants",
+      "category": "needs_vs_wants",
+      "difficulty": 1,
+      "reward": {
+        "spark_coins": 20,
+        "xp": 20
+      },
+      "startingNode": "node_mmq002_start"
+    },
+    {
+      "id": "MMQ-003",
+      "title": "Build Your First Budget",
+      "category": "budgeting",
+      "difficulty": 2,
+      "reward": {
+        "spark_coins": 30,
+        "xp": 30
+      },
+      "startingNode": "node_mmq003_start"
+    }
+  ],
+  "decisionNodes": [
+    {
+      "id": "node_budget_choice",
+      "missionId": "MMQ-003",
+      "prompt": "You have limited Spark Coins. What should you do with some of them?",
+      "options": [
+        {
+          "id": "opt_save",
+          "label": "Save some for later",
+          "effects": [
+            {
+              "type": "RESOURCE",
+              "key": "spark_coins",
+              "amount": -10
+            },
+            {
+              "type": "SKILL",
+              "key": "saving",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": "node_savings_result"
+        },
+        {
+          "id": "opt_spend",
+          "label": "Spend them now",
+          "effects": [
+            {
+              "type": "RESOURCE",
+              "key": "spark_coins",
+              "amount": -10
+            }
+          ],
+          "nextNodeId": "node_spending_result"
+        }
+      ],
+      "reflectionPrompt": "How might your choice affect what you can do later?"
+    },
+    {
+      "id": "node_mmq001_start",
+      "missionId": "MMQ-001",
+      "prompt": "Welcome to Spark City! What do you think money can help you do?",
+      "options": [
+        {
+          "id": "opt_mmq001_learn",
+          "label": "Learn how money works",
+          "effects": [
+            {
+              "type": "SKILL",
+              "key": "money_basics",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": null
+        }
+      ],
+      "reflectionPrompt": "What is one thing you learned about money?"
+    },
+    {
+      "id": "node_mmq002_start",
+      "missionId": "MMQ-002",
+      "prompt": "You have a choice to make. Which purchase is a need and which is a want?",
+      "options": [
+        {
+          "id": "opt_mmq002_reflect",
+          "label": "Think about what you truly need",
+          "effects": [
+            {
+              "type": "SKILL",
+              "key": "needs_vs_wants",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": null
+        }
+      ],
+      "reflectionPrompt": "How can knowing the difference between needs and wants help you make better choices?"
+    },
+    {
+      "id": "node_mmq003_start",
+      "missionId": "MMQ-003",
+      "prompt": "You are ready to build your first budget. Choose how you want to handle your Spark Coins.",
+      "options": [
+        {
+          "id": "opt_mmq003_budget",
+          "label": "Make a plan before spending",
+          "effects": [
+            {
+              "type": "SKILL",
+              "key": "planning",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": "node_budget_choice"
+        }
+      ],
+      "reflectionPrompt": "Why can planning before spending help you reach a goal?"
+    },
+    {
+      "id": "node_savings_result",
+      "missionId": "MMQ-003",
+      "prompt": "You chose to save some Spark Coins. What could saving help you do later?",
+      "options": [
+        {
+          "id": "opt_savings_reflect",
+          "label": "Keep saving toward a future goal",
+          "effects": [
+            {
+              "type": "SKILL",
+              "key": "saving",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": null
+        }
+      ],
+      "reflectionPrompt": "How can saving now help you reach something you want later?"
+    },
+    {
+      "id": "node_spending_result",
+      "missionId": "MMQ-003",
+      "prompt": "You chose to spend some Spark Coins. What should you think about before spending again?",
+      "options": [
+        {
+          "id": "opt_spending_reflect",
+          "label": "Think about the tradeoff",
+          "effects": [
+            {
+              "type": "SKILL",
+              "key": "planning",
+              "amount": 1
+            }
+          ],
+          "nextNodeId": null
+        }
+      ],
+      "reflectionPrompt": "What could you consider before spending your Spark Coins next time?"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "SKILL_AT_LEAST",
+      "key": "saving",
+      "amount": 1
+    },
+    {
+      "type": "SKILL_AT_LEAST",
+      "key": "planning",
+      "amount": 1
+    },
+    {
+      "type": "MISSION_COMPLETE",
+      "missionId": "MMQ-003"
+    }
+  ],
+  "events": [
+    {
+      "id": "event_unlock_savings_station",
+      "trigger": {
+        "type": "SKILL_AT_LEAST",
+        "key": "saving",
+        "amount": 1
+      },
+      "effect": {
+        "type": "UNLOCK_LOCATION",
+        "locationId": "loc_savings_station"
+      }
+    },
+    {
+      "id": "event_unlock_quantum_lab",
+      "trigger": {
+        "type": "MISSION_COMPLETE",
+        "missionId": "MMQ-003"
+      },
+      "effect": {
+        "type": "UNLOCK_LOCATION",
+        "locationId": "loc_quantum_lab"
+      }
+    }
+  ],
+  "startingState": {
+    "playerResources": {
+      "spark_coins": 50
+    },
+    "skills": {
+      "money_basics": 0,
+      "needs_vs_wants": 0,
+      "saving": 0,
+      "budgeting": 0,
+      "planning": 0
+    },
+    "relationships": {
+      "char_nova_001": 0
+    },
+    "completedMissions": [],
+    "unlockedLocations": [
+      "loc_market_district"
+    ],
+    "decisions": [],
+    "currentPath": []
+  },
+  "scenarioRules": {
+    "learningSignals": {
+      "opt_save": [
+        "SAVING_REINFORCED",
+        "DELAYED_GRATIFICATION"
+      ],
+      "opt_spend": [
+        "SPENDING_REFLECTION",
+        "TRADEOFF_AWARENESS"
+      ]
+    },
+    "recoveryOptions": {
+      "opt_save": [
+        "REFLECT_ON_OUTCOME",
+        "TRY_ALTERNATE_PATH"
+      ],
+      "opt_spend": [
+        "REFLECT_ON_OUTCOME",
+        "TRY_ALTERNATE_PATH"
+      ]
+    }
+  }
+}
