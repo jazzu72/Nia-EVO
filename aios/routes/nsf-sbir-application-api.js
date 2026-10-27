@@ -1,3 +1,4 @@
+const { readVaultJSON } = require("../../tools/vault-helpers");
 const fs = require("fs");
 const path = require("path");
 
@@ -9,7 +10,7 @@ module.exports = function registerNsfSbirApplication(app) {
         "data/funding/nsf-sbir-phase1-application-package.json"
       );
 
-      const data = JSON.parse(fs.readFileSync(file, "utf8"));
+      const data = readVaultJSON(file);
 
       res.json({
         ok: true,

@@ -9,33 +9,85 @@ const path = require("path");
 require("dotenv").config();
 
 const {
-  requireOwnerAuth, timingSafeEqual, getPresentedToken,
-  validateOwnerSession, issueOwnerSession, revokeOwnerSession
+  requireOwnerAuth,
+  timingSafeEqual,
+  getPresentedToken,
+  validateOwnerSession,
+  issueOwnerSession,
+  revokeOwnerSession
 } = require("./owner-auth-middleware");
 
 const app = express();
 
+app.use(express.json());
+// NIA_PRIVATE_BUSINESS_AUTH_V1
+app.use([
+  "/api/revenue",
+  "/api/revenue-engine",
+  "/api/revenue-brain",
+  "/api/prospects",
+  "/api/outreach",
+  "/api/acquisition",
+  "/api/conversion",
+  "/api/proposals",
+  "/api/operator",
+  "/api/followup",
+  "/api/cashflow",
+  "/api/briefing",
+  "/api/command",
+  "/api/sales",
+  "/api/sales-dashboard",
+  "/api/autonomous-sales",
+  "/api/autonomous",
+  "/api/autopilot"
+], (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
+  return requireOwnerAuth(req, res, next);
+});
+
+const PORT = process.env.PORT || 3000;
+
+
+// ============================================================
+// MIDDLEWARE
+// ============================================================
+
+
 app.get("/api/owner/session", (req, res) => {
   try {
-    return res.json({ ok: true, authenticated: validateOwnerSession(req) });
+    return res.json({
+      ok: true,
+      authenticated: validateOwnerSession(req)
+    });
   } catch (err) {
     console.error("[OWNER_SESSION] Read failed:", err.message);
-    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+    return res.status(500).json({
+      ok: false,
+      error: "OWNER_SESSION_ERROR"
+    });
   }
 });
 
 app.post("/api/owner/session", (req, res) => {
   const expected = process.env.NIA_OWNER_AUTH_TOKEN;
   const presented = getPresentedToken(req);
+
   if (!expected || !presented || !timingSafeEqual(presented, expected)) {
-    return res.status(401).json({ ok: false, error: "OWNER_AUTH_REQUIRED" });
+    return res.status(401).json({
+      ok: false,
+      error: "OWNER_AUTH_REQUIRED"
+    });
   }
+
   try {
     issueOwnerSession(req, res);
     return res.json({ ok: true, authenticated: true });
   } catch (err) {
     console.error("[OWNER_SESSION] Create failed:", err.message);
-    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+    return res.status(500).json({
+      ok: false,
+      error: "OWNER_SESSION_ERROR"
+    });
   }
 });
 
@@ -45,22 +97,21 @@ app.delete("/api/owner/session", (req, res) => {
     return res.json({ ok: true, authenticated: false });
   } catch (err) {
     console.error("[OWNER_SESSION] Revoke failed:", err.message);
-    return res.status(500).json({ ok: false, error: "OWNER_SESSION_ERROR" });
+    return res.status(500).json({
+      ok: false,
+      error: "OWNER_SESSION_ERROR"
+    });
   }
 });
 
+// Keep preflight requests working while protecting owner APIs.
 app.use("/api/owner", (req, res, next) => {
   if (req.method === "OPTIONS") return next();
   return requireOwnerAuth(req, res, next);
 });
-const PORT = process.env.PORT || 3000;
+app.use("/api/owner/chat", require("./nia-chat-api"));
 
-
-// ============================================================
-// MIDDLEWARE
-// ============================================================
-
-
+// Funding routes are mounted after owner authentication.
 app.get("/api/owner/funding/action-queue",(req,res)=>{
   const fs=require("fs");
   try{
@@ -595,7 +646,6 @@ app.get("/api/executive/dashboard", async (req,res)=>{
 });
 
 app.use("/commercial", express.static(path.join(__dirname, "commercial/public")));
-app.use(express.json());
 app.use("/api/aios/tools", require("./aios/routes/tool-api"));
 app.get("/api/aios/providers/status",(req,res)=>res.json({ok:true,providers:["public-market"],mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
 app.get("/api/aios/tools/status",(req,res)=>res.json({ok:true,service:"aios-tools",mode:"READ_ONLY",execution_allowed:false,execution_authorized:false,execution_performed:false,autonomous_execution:false,human_approval_required:true}));
@@ -603,8 +653,8 @@ console.log("✅ /api/aios/tools loaded");
 app.get("/executive-v2.html", (req, res) => res.sendFile(path.join(__dirname, "dashboard/public/executive-v2.html")));
 app.use(express.static(path.join(__dirname, "public"), { index: false }));
 app.get("/", (_req, res) => res.redirect("/dashboard/index.html"));
+// Owner session endpoints must be reachable before protected owner routes.
 
-app.use("/api/owner/chat", require("./nia-chat-api"));
 
 require('./aios/tools/register-core-tools');
 console.log('🧠 NIA AIOS CORE TOOLS LOADED');
@@ -1477,6 +1527,7 @@ require('./aios/routes/official-capital-opportunities-api')(app);
 
 require("./aios/routes/nsf-sbir-application-api")(app);
 
+app.use('/nia', require('./nia-dashboard/routes/dashboard'));
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
@@ -1505,7 +1556,11 @@ app.use((err, req, res, next) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`\n🚀 Nia Capital OS ONLINE`);
 
-try { require("./aios/design/scheduler").start(); } catch (e) { console.warn("[scheduler] failed:", e.message); }
+try { if (process.env.NIA_SCHEDULER_ENABLED === "true") {
+    require("./aios/design/scheduler").start();
+  } else {
+    console.log("[scheduler] disabled");
+  } } catch (e) { console.warn("[scheduler] failed:", e.message); }
   console.log(`📍 Listening on port ${PORT}`);
   console.log(`🌍 http://0.0.0.0:${PORT}`);
   console.log(`⏰ Started at ${new Date().toISOString()}\n`);

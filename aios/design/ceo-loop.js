@@ -44,9 +44,9 @@ async function outreachBatch(maxToSend) {
   maxToSend = maxToSend || 5;
   console.log("[CEO] Outreach batch");
 
-  const decision = envelopes.checkEnvelope("send_email", 0, {});
+  const decision = envelopes.checkEnvelope("draft_outreach", 0, {});
   if (!decision.allowed) {
-    console.log("  ⚠️  No active email envelope — skipping");
+    console.log("  ⚠️  No active draft_outreach envelope — skipping");
     return { sent: 0, skipped: true };
   }
 
@@ -92,25 +92,20 @@ async function outreachBatch(maxToSend) {
       "757-339-9245 · lesane1972@gmail.com"
     ].join("\n");
 
-    const r = await exec.sendViaGmail({
-      to: [c.email],
+    const r = await exec.draftOutreach({
+      to: c.email,
       subject: c.kind === "grant"
         ? "House of Jazzu — Funding Inquiry"
         : "Grant writing for your business — $500 per application",
       body: body,
       reply_to: "lesane1972@gmail.com"
     });
-    console.log("  " + (r.ok ? "✅" : "❌") + " " + c.name + " <" + c.email + ">");
-    if (r.ok) {
-      sent++;
-      tried.emails.push(c.email);
-    }
-    await new Promise(function (rs) { setTimeout(rs, 2500); });
+    console.log("  " + (r.ok ? "📝 DRAFT QUEUED: " : "❌ BLOCKED: ") + c.name + " <" + c.email + ">");
+    if (r.ok) sent++;
+
   }
 
-  tried.emails = Array.from(new Set(tried.emails));
-  fs.writeFileSync("runtime/contacts-tried.json", JSON.stringify(tried, null, 2));
-  return { sent: sent, attempted: batch.length };
+  return { queued: sent, attempted: batch.length, sent: 0 };
 }
 
 // ─── 3. GRANT DRAFTING (2 PM) ──────────────────────────────
@@ -164,7 +159,7 @@ async function eveningReport(dayResult) {
     "  " + (dayResult.scan.qualified || 0) + " qualified for outreach",
     "",
     "OUTREACH:",
-    "  " + (dayResult.outreach.sent || 0) + " emails sent",
+    "  " + (dayResult.outreach.queued || 0) + " outreach drafts queued",
     "",
     "GRANT DRAFTING:",
     "  " + (dayResult.drafting.drafted || 0) + " applications queued",

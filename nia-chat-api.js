@@ -113,22 +113,23 @@ router.post("/message", async (req, res) => {
   let answer;
   let provider;
 
-  // Prefer OpenAI when available; fall back to Gemini on failure.
-  if (process.env.OPENAI_API_KEY) {
-    try {
-      answer = await askOpenAI(message);
-      provider = "openai";
-    } catch (err) {
-      console.error("NIA_OPENAI_FAILED:", err.message);
-    }
-  }
 
-  if (!answer && process.env.GEMINI_API_KEY) {
+  // Prefer Gemini; use OpenAI only if Gemini is unavailable or fails.
+  if (process.env.GEMINI_API_KEY) {
     try {
       answer = await askGemini(message);
       provider = "gemini";
     } catch (err) {
       console.error("NIA_GEMINI_FAILED:", err.message);
+    }
+  }
+
+  if (!answer && process.env.OPENAI_API_KEY) {
+    try {
+      answer = await askOpenAI(message);
+      provider = "openai";
+    } catch (err) {
+      console.error("NIA_OPENAI_FAILED:", err.message);
     }
   }
 

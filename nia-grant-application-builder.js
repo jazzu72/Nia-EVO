@@ -1,3 +1,4 @@
+const { readVaultJSON } = require("./tools/vault-helpers");
 const fs = require("fs");
 const path = require("path");
 
@@ -28,7 +29,7 @@ return String(g.grantId || g.id || g.applicationId || g.name || g.source || "")
 }
 
 function build() {
-const profile = readJson(PROFILE_FILE, {});
+const profile = readVaultJSON(path.resolve(__dirname, PROFILE_FILE));
 const oldOutput = readJson(OUTPUT, {});
 const existingPackages = Array.isArray(oldOutput.packages)
 ? oldOutput.packages : [];

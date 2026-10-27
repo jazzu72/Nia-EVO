@@ -39,7 +39,7 @@ async function sendDailySummary() {
   ].filter(Boolean).join("\n");
 
   const exec = require("./executive-actions");
-  return exec.sendViaGmail({
+  return exec.sendEmail({
     to: [OWNER_EMAIL],
     subject: "Nia Daily Report — " + today,
     body: body
@@ -48,7 +48,7 @@ async function sendDailySummary() {
 
 async function notifyOwner(subject, body) {
   const exec = require("./executive-actions");
-  return exec.sendViaGmail({
+  return exec.sendEmail({
     to: [OWNER_EMAIL],
     subject: "[NIA] " + subject,
     body: body

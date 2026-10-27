@@ -77,3 +77,16 @@ grants-engine/submission-tracker.json
 grants-engine/submissions.json
 nia-production-readiness.json
 nia-grant-application-packages.json
+
+# Re-include nia-dashboard code (data/state stays ignored)
+!nia-dashboard/
+!nia-dashboard/**
+nia-dashboard/data/*.pre-test
+
+
+# Keep dashboard runtime data private
+/nia-dashboard/data/
+
+# Local private funding plaintext; never stage
+/data/funding/house-of-jazzu-profile.json
+/data/funding/nsf-sbir-phase1-application-package.json
